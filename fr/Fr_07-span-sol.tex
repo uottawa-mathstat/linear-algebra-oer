@@ -1,0 +1,174 @@
+
+\begin{sol}{prob06.1} Justifiez vos réponses aux questions suivantes :
+\medskip
+
+(b) Le vecteur $(1,2)$ est-il une combinaison linéaire de $(1,1)$ et $(2,2)$ ?
+
+\soln Non, car si on avait $(1,2)=a(1,1)+b(2,2)$, alors on aurait $a+2b=1$ et $a+2b=2$, ce qui est impossible. 
+\medskip
+
+(d) Le vecteur $(1,2,2,3)$ est-il une combinaison linéaire de $(1,0,1,2)$ et $(0,0,1,1)$ ?
+
+\soln Non, puisque toute combinaison linéaire de $(1,0,1,2)$ et $(0,0,1,1)$ aura $0$ comme deuxième composante, mais la deuxième composante de $(1,2,2,3)$ est $2 \not=0$.
+\medskip
+
+
+(f)  La matrice $C=\scriptsize\bmatrix 1&2\\2&3\endbmatrix $ est-elle une combinaison linéaire de $A=\scriptsize\bmatrix 1&0\\1&2\endbmatrix $ et de $B=\scriptsize\bmatrix 0&1\\0&1\endbmatrix $ ?
+
+\soln Non, car si $C=k A +l B$ pour $k,l \in \R$, alors en comparant les entrées $(1,1)$ et $(2,1)$ des deux côtés, on obtient $k=1$ et $k=2$, ce qui est impossible. 
+\medskip
+
+
+(h) Le polynôme $1+x^2$ est-il une combinaison linéaire de $1+x-x^2$ et $x$ ?
+
+\soln Non, car si $1+x^2 =a(1+x-x^2)+bx$, alors $(a+1)x^2-(a+b)x +1-a=0$  pour tout $x\in \R$. Mais une équation quadratique non nulle admet au plus deux racines, donc le polynôme ne peut pas être de degré deux et $a+1=0$. Ainsi $-(a+b)x +1-a=0$ pour tout $x\in \R$. Mais de m\^eme, une équation linéaire non-nulle a au plus une racine, donc ce n'est pas un polynôme de degré $1$ et $a+b=0$. On se retrouve donc avec $1-a=0$ ce qui est impossible car on aussi $a+1=0$.  
+\medskip
+
+(j)  La fonction $\sin x$ est-elle une combinaison linéaire de la fonction constante $1$ et de $\cos x$ ?
+
+\soln Non. Supposons qu'il existe des scalaires $a,b \in \R$ tels que pour tout $x\in \R$ on ait $\sin x =a 1+b\cos x$ . En particulier pour $x=0$ on obtient l'équation $a+b=0$ et pour $x=\pi$ on obtient l'équation $a-b=0$. Ceci implique que $a=b=0$ et alors $\sin x =0$, pour tout $x\in \R$, ce qui est absurde (car par exemple $\sin(\frac{\pi}2)=1\not=0$).
+\medskip
+
+(l)  Si $\uu$, $\vv$ et $\ww$ sont des vecteurs quelconques d'un espace vectoriel $V$, le vecteur $\uu-\vv$ est-il une combinaison linéaire de $\uu$, $\vv$ et $\ww$ ?
+
+\soln Oui, car $\uu-\vv =(1) \uu -(1) \vv + (0) \ww$.
+\medskip
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob06.2}  Justifiez vos réponses aux questions suivantes.
+
+\medskip
+(b) Est-ce que l'assertion «~$(3,4) \in\sp{(1,2)} $~» est vraie ? (Notez que c'est la même assertion que dans la question précédente mais écrite en utilisant les notations mathématiques).
+
+\soln Non, car si $(3,4) \in\sp{(1,2)} $, alors $(3,4)=a (1,2)$ pour un certain $a\in \R$. Ceci implique que $a=3$ et $a=2$; contradiction.
+\medskip
+
+(d) Combien de vecteurs appartiennent à $\sp{(1,2)}$ ?
+
+\soln Il y a une infinit\'e de vecteurs dans $\sp{(1,2)}= \set{a(1,2)\st a\in \R}$, car pour deux scalaires $a\not= a'$ on a $a(1,2)\not=a'(1,2)$.
+
+\medskip
+
+(f) Est-ce que $\set{(1,2)}$ est un sous-ensemble de $\sp{(1,2)}$ ?
+
+\soln Oui, car $(1,2)$ est clairement un multiple de $(1,2)$ et donc $(1,2) \in \sp{(1,2)} =\set{a(1,2)\st a\in \R}$.
+\medskip
+
+(h)  Supposons que $S$ soit un sous-ensemble d'un espace vectoriel $V$.  Si $S= \sp{S}$, expliquez pourquoi $S$ doit être un sous-espace de $V$.  
+
+\soln Comme toute enveloppe lin\'eaire est  un sous-espace, alors $\sp{S}$ est un sous-espace. D'où $S$ est aussi un sous-espace puisque $S=\sp{S}$.  
+\medskip
+
+
+
+
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob06.3}  Donnez \underbar{deux} ensembles distincts {\it finis} g\'en\'erateurs pour chacun des sous-espaces suivants. (Notez qu'il y a une  infinit\'e de choix pour le deuxi\`eme ensemble. On ne donne ici qu'un seul.)
+\medskip
+
+
+
+(b)  $\set{(x, y) \in \R^2\st 3x - y=0 }$.
+
+\soln Comme $$\set{(x, y) \in \R^2\st 3x - y=0 }=\set{(x, 3x)\st x\in \R}=\set{x(1,3)\st x\in \R}=\set{a(2,6)\st a\in \R},$$ alors $\set{(1,3)}$ et $\set{(2,6)}$ sont g\'en\'erateurs de $\set{(x, y) \in \R^2\st 3x - y=0 }$.
+
+\medskip
+(d)  $U=\set{(x, y, z, w) \in \R^4\st x-y+z-w=0 }$.
+
+\soln On a vu dans la question 1(k) que $$\set{(x, y, z, w) \in \R^4\st x-y+z-w=0 }=\sp{(1,1,0,0),(-1, 0,1,0),(1,0,0,1) }\,.$$
+
+Donc $\set{(1,1,0,0),(-1, 0,1,0),(1,0,0,1) }$ engendre $U$. Maintenant, si on multiplie les vecteurs g\'en\'erateurs par un scalaire non-nul, on obtient encore un ensemble g\'en\'erateur. Par exemple, l'ensemble $\set{(2,2,0,0),(-3, 0,3,0),(4,0,0,4) }$ aussi engendre $U$.
+
+  \medskip
+
+(f)  $X=\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\;a=d=0\quad \&\quad b=-c  \Bigg\}$.
+  
+\soln On a vu dans la question 4(b) que $X=\text{Vect}\left\{ \scriptsize\bmatrix 0&-1\\ 1&0\endbmatrix\right\}$, donc $\left\{ \scriptsize\bmatrix 0&-1\\ 1&0\endbmatrix\right\}$ est un ensemble qui engendre $X$. Comme dans (d), l'ensemble $\left\{ \scriptsize\bmatrix 0&-2\\ 2&0\endbmatrix\right\}$ est aussi générateur. \medskip
+
+
+(h)  $V=\Bigg\{  \bmatrix a&0\\ 0&b\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\;  a, b \in \R\Bigg\}$. 
+
+\soln Comme $V=\scriptsize\Bigg\{a\bmatrix 1&0\\ 0&0\endbmatrix+ b\bmatrix 0&0\\ 0&1\endbmatrix \Bigg|\;  a, b \in \R\Bigg\}$, on a que $\scriptsize\Bigg\{\bmatrix 1&0\\ 0&0\endbmatrix, \bmatrix 0&0\\ 0&1\endbmatrix \Bigg\}$ est un ensemble qui engendre $V$. Un deuxi\`eme ensemble générateur est $\scriptsize\Bigg\{\bmatrix 2&0\\ 0&0\endbmatrix, \bmatrix 0&0\\ 0&3\endbmatrix \Bigg\}$.
+
+ \medskip
+(j)  $U=\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; a+b+c+d=0\Bigg\}$.   
+
+\soln
+
+Puisque $$U=\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; a=-b-c-d\Bigg\}=\Bigg\{  \bmatrix -b-c-d&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; b,c,d\in \R\Bigg\},$$ 
+on a 
+$$U=\Bigg\{b \bmatrix -1 &1\\ 0&0\endbmatrix+c \bmatrix -1&0\\ 1&0\endbmatrix+ d\bmatrix -1&0\\ 0&1\endbmatrix \;\Bigg|\; b,c,d\in \R\Bigg\}=\text{Vect}\Bigg\{ \bmatrix -1 &1\\ 0&0\endbmatrix,\bmatrix -1&0\\ 1&0\endbmatrix,  \bmatrix -1&0\\ 0&1\endbmatrix \Bigg\}$$ 
+et donc $\scriptsize\Bigg\{ \bmatrix -1 &1\\ 0&0\endbmatrix,\bmatrix -1&0\\ 1&0\endbmatrix,  \bmatrix -1&0\\ 0&1\endbmatrix \Bigg\}$ engendre $U$. 
+Clairement $\scriptsize\Bigg\{ \bmatrix -2 &2\\ 0&0\endbmatrix,\bmatrix -1&0\\ 1&0\endbmatrix,  \bmatrix -2&0\\ 0&2\endbmatrix \Bigg\}$ est un ensemble diff\'erent (m\^eme si, et seulement si, ils ont un vecteur en commun), et il engendre aussi $U$. Rappel : deux ensembles sont identiques s'ils contiennent exactement les mêmes éléments.
+   \medskip
+
+(l) $ \PP_n=\set{p\st p \text{ est un polyn\^ome avec } \deg(p)\le n} $.
+
+\soln De $ \PP_n=\set{a_0 + a_1 x +\cdots a_n x^n \st a_0, a_1, \dots, a_n \in \R}=\sp{1, x, \dots, x^n}$, on a que $\set{1, x, \dots, x^n}$ engendre $ \PP_n$. Clairement $\set{2, x, \dots, x^n}$ en est un autre.\medskip 
+
+
+(n)  $ Y=\set{p \in \PP_3 \st  p(2)=p(3)=0}$. 
+
+\soln Comme $p(2)=p(3)=0$, on peut dire que $$Y=\set{(x-2)(x-3)q(x)\st \deg q \le 1}=\set{(x-2)(x-3)(a+bx)\st a,b \in \R}$$ et donc  $Y=\set{a(x-2)(x-3) + b x(x-2)(x-3)\st a,b \in \R }=\sp{(x-2)(x-3), x(x-2)(x-3)}$. On peut alors conclure que $\set{(x-2)(x-3), x(x-2)(x-3)}$ engendre $Y$.  Pour un autre ensemble g\'en\'erateur pour $Y$  on peut prendre $\set{2(x-2)(x-3), x(x-2)(x-3)}$ par exemple.
+\medskip
+
+
+
+(p) $W= \sp{\sin x, \cos x}$.
+
+\soln Celle-ci est facile ! La définition de $W$ nous donne explicitement un ensemble gén\'erateur, à savoir $\set{\sin x, \cos x}$. De plus, l'ensemble $\set{\sin x, 2\cos x}$ est différent et engendre aussi $W$.   \medskip
+
+(r)  $ Z=\sp{1, \sin^2 x, \cos^2 x}$.   
+
+\soln   Là encore, on nous en donne un premier ensemble: $\set{1, \sin^2 x, \cos^2 x}$. Un autre ensemble plus petit qui engendre $Z$ est $\set{1, \sin^2 x}$, puisque $\cos^2 x =1-\sin^2 x$. (Tout ce qui est dans $Z$ est de la forme $a+ b\sin^2x + c \cos^2x$ pour certains $a,b,c\in \R$. Mais $a+ b\sin^2x + c \cos^2x= a+ b\sin^2x + c (1-\sin^2 x)= (a+c) + (b-c)\sin^2x$ et donc tout vecteur de $Z$ est en fait une combinaison linéaire de $1$ et de $\sin^2x$.)\medskip
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob06.4} Justifiez vos réponses aux questions suivantes :
+\medskip
+
+(b) Supposons que $\uu$ et $\vv$ appartiennent à un espace vectoriel $V$. Montrez soigneusement que $\sp{\uu,\vv}=\sp{\uu-\vv, \uu+\vv}$. Autrement dit, vous devez montrer que :
+\begin{enumerate}[(i)]
+\item si $\ww\in \sp{\uu,\vv}$, alors $\ww \in \sp{\uu-\vv, \uu+\vv}$;
+\item et si $\ww\in \sp{\uu-\vv, \uu+\vv}$, alors $\ww\in \sp{\uu,\vv} $.
+
+
+\soln (i) Si $\ww\in \sp{\uu,\vv}$, alors $\ww=a\uu+b\vv$ pour certains scalaires $a$ et $b$. Mais $$a\uu+b\vv=\dfrac{(a-b)}2 (\uu-\vv) +\dfrac{(a+b)}2 (\uu+\vv)$$ et alors $\ww \in \sp{\uu-\vv, \uu+\vv}$. 
+
+(ii) Si $\ww\in \sp{\uu-\vv, \uu+\vv}$, alors $\ww=a(\uu-\vv)+b(\uu+\vv)$ pour certains scalaires $a$ et $b$. Mais $$a(\uu-\vv)+b(\uu+\vv)=(a+b)\uu + (b-a)\vv \in \sp{\uu,\vv}$$ et alors $\ww\in \sp{\uu,\vv}$.
+
+\end{enumerate}
+\medskip
+
+
+(d)  Supposons que $\sp{\vv,\ww}=\sp{\uu,\vv,\ww}$. Montrez soigneusement que $\uu \in \sp{\vv,\ww}$. 
+
+\soln Comme $\sp{\uu,\vv,\ww}=\sp{\vv,\ww}$ et $\uu=1\, \uu +0\,\vv +0\, \ww\in \sp{\uu,\vv,\ww}$, alors $\uu \in \sp{\vv,\ww}$.
+\medskip
+
+(f)  Montrez que $x^{n+1} \notin \PP_n$. \footnote{\it Indication : généraliser l'idée de l'indice dans l'exercice précédent. Rappelez-vous que tout polynôme non-nul de degré $n+1$ admet au plus $n+1$ racines distinctes.}
+
+\soln Supposons $x^{n+1} \in \PP_n$. Alors $x^{n+1}=a_0 + a_1 x + \cdots + a_nx^n$ pour certains scalaires $a_0, \dots, a_n$. R\'e\'ecrivez ceci comme
+
+$$ a_0 + a_1 x + \cdots + a_nx^n - x^{n+1}=0$$ qui est vrai {\it pour tout $x$ r\'eel !} Mais un polynôme non-nul de degré $n+1$ (ce que nous avons ici) a au plus $n+1$ racines distinctes; c'est-à-dire, $ a_0 + a_1 x + \cdots + a_nx^n - x^{n+1}=0$ pour au plus $n+1$ nombres réels différents $x$.  Mais il y a plus de $n+1$ nombres dans $\R$, pour n'importe quel $n$ aussi grand que ce que l'on veut. Nous avons donc une contradiction et donc notre hypothèse que $x^{n+1} \in \PP_n$ est forcément fausse. D'où $x^{n+1} \notin \PP_n$.
+\medskip
+
+(h) Supposons pour le moment (nous le prouverons plus tard) que si $W$ est un sous-espace d'un espace vectoriel $V$ et que $V$ est engendr\'e par un ensemble fini de vecteurs, alors $W$ est aussi engendré par un nombre fini de vecteurs. 
+
+Utilisez ce fait et la question précédente pour montrer que $\F(\R)$ n'admet aucun ensemble fini de g\'en\'erateurs.
+
+ 
+\soln Supposons que $\F(\R)$ soit engendré par un ensemble fini. Puisque $\PP$ est un sous-espace de $\F(\R)$, alors $\PP$ doit aussi être engendré par un ensemble fini. Mais la question (f) indique que cela est impossible et donc, par l'absurde, on a montré que $\F(\R)$ ne peut \^etre aussi engendr\'e par un ensemble fini !
+\medskip 
+
+
+
+
+\end{sol}
+

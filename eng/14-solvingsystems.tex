@@ -1,0 +1,443 @@
+\chapter{Solving systems of linear equations, continued}
+\label{chapter:12solvingsystems2}
+   
+
+Last time, we introduced the notion of the augmented matrix
+of  a linear system, and defined the three \emph{elementary row operations}
+that we may perform:
+\begin{itemize}
+\item Add a multiple of one row \emph{to} another row.
+\item Interchange two rows.
+\item Multiply a row by a nonzero scalar.
+\end{itemize}
+
+\begin{definition}
+We say that two linear systems  are \defn{equivalent} if they
+have the same general solution. 
+\end{definition}
+
+
+\begin{theorem}[Equivalence of linear systems under row reduction]\index{equivalence of linear systems under row reduction} 
+ If an elementary row operation is performed
+on the augmented matrix of a linear system, the resulting linear system
+is equivalent to the original one.
+\end{theorem}
+
+Hence we make the following definition:
+
+\begin{definition}
+Two matrices $A$ is \defn{row-equivalent} to $B$, written $A \sim B$, if
+$B$ can be obtained from $A$ by a finite sequence of elementary
+row operations.
+\end{definition}
+
+(See problem \ref{prob12.3} for interesting properties of this relation.)
+
+So how does this help?  Here, we'll show how to \defn{row reduce}
+ANY linear system to RREF, and also show how to read the general
+solution from the RREF.
+
+Recall: 
+A matrix (augmented or not) is in \emph{row echelon form} or REF if
+\begin{description}
+\item[(1)] All zero rows are at the bottom.
+\item[(2)] The first nonzero entry in each row is a $1$ (called a \emph{leading one} or a \emph{pivot}).
+\item[(3)] Each leading 1 is to the right of the leading 1s in the rows above.
+\end{description}
+If, in addition, the matrix satisfies
+\begin{description}
+\item[(4)] Each leading 1 is the only nonzero entry in its column
+\end{description}
+then the matrix is said to be in \emph{reduced row echelon form} or RREF.
+
+\begin{theorem}[Uniqueness of the RREF]\index{uniqueness of RREF} 
+
+Every matrix is row equivalent to a
+\emph{unique} matrix in RREF.  
+\end{theorem}
+
+(But matrices in just REF are not unique.)
+
+\section{Reading the solution from RREF}
+
+In the last chapter, we worked through several general examples of reading the solution from the RREF:
+
+\begin{myexample} From Example~\ref{ex:uniquesol}:
+$$\text{RREF:} \quad 
+\mat{1 & 0 & 0 &|& a\\
+0 & 1 & 0 & | & b\\
+0 & 0 & 1 & | & c} \qquad
+\text{Solution:} \quad \left\{\mat{a\\b\\c}\right\}.
+$$
+%Then the linear system corresponding to this augmented matrix is
+%$x=a$, $y=b$ and $z=c$.  In other words, the solution to this
+%linear system is unique and is given by
+%$$
+%\mat{x\\y\\z} = \mat{a\\b\\c}
+%$$
+\end{myexample}
+
+\begin{myexample}  From Example~\ref{ex:inconsis}:
+$$
+\text{RREF:} \quad \mat{1 & a & 0 & b & | & d\\
+0 & 0 & 1 & e &|& f\\
+0 & 0 & 0 & 0 &|& 0
+}\qquad
+\text{Solution:} \quad \left\{ \mat{d\\0\\f\\0} + s\mat{-a\\1\\0\\0} + t\mat{-b\\0\\-e\\1} \middle| s,t\in \mathbb{R}\right\},
+$$
+whereas
+$$
+\text{REF:} \quad \mat{1 & a & 0 & b & | & d\\
+0 & 0 & 1 & e &|& f\\
+0 & 0 & 0 & 0 &|& g
+}, g \neq 0 \qquad
+\text{Solution:} \quad \emptyset.
+$$
+%
+%If $g \neq 0$, then the last
+%row corresponds to a degenerate equation, and so the system
+%is inconsistent.
+%
+%If $g = 0$, then this system is in RREF, and to get the general
+%solution, we set the \emph{non-leading variables}, that is, 
+%the variables corresponding to columns of the coefficient
+%matrix which don't have a leading 1, equal to parameters.
+%Here, set $x_2 = s$ and $x_4 = t$; then we deduce (by writing
+%out the equations corresponding to this matrix):
+%$$
+%x_1 = -as-bt+d, \quad x_2 = s, \quad x_3 = f-et, \quad x_4 = t
+%$$
+%So our general solution is
+%$$
+%\{ ( -as-bt+d, s, f-et, t) \mid s,t\in\R\}.
+%$$
+\end{myexample}
+
+%Rows of zeros are completely accidental; they happen whenever 
+%you started off with one or more completely redundant equations.
+%In particular, please note that having infinitely many solutions
+%is related to having non-leading variables, not to the nonzero rows.
+
+\begin{myexample} From Example~\ref{ex:infsol}:
+$$
+\text{RREF:} \quad \mat{1 & a & 0 & 0 & | & c\\
+0 & 0 & 1 & 0 & | & d\\
+0 & 0 & 0 & 1 & | & e} \qquad \text{Solution:}\quad \left\{ \mat{c\\0\\d\\e}+s\mat{-a\\1\\0\\0} \middle| s\in \mathbb{R}\right\}.
+$$
+\end{myexample}
+
+Now we ask ourselves: can we infer some general patterns, applicable to \emph{any} system whose augmented matrix is in RREF?
+
+\medskip
+
+The general rule for reading off the \emph{type} of general solution
+from the REF:
+\begin{itemize}
+\item If your system contains a degenerate equation {\it with a non-zero right hand side}, then it is inconsistent.
+So if the augmented matrix contains a row like
+$$
+\mat{ 0 & 0 & \cdots & 0 &|& b}
+$$
+with $b\neq 0$, then STOP!  The system is inconsistent; the general solution
+is the empty set.
+
+\item Otherwise, look at the columns of the coefficient matrix. 
+\begin{itemize}
+\item If every column has a leading 1, then there is a unique solution.
+\item If there is a column which does not have a leading 1, then you
+have infinitely many solutions.
+\end{itemize}
+\end{itemize}
+
+The general rule for writing down the general solution of a consistent system from the RREF:
+\begin{itemize}
+\item If there is a unique solution, then this is the vector in the augmented
+column.
+\item Otherwise, identify all your variables as leading or non-leading.
+\begin{itemize}
+\item Each leading varible corresponds to one row of the augmented matrix; write
+down the equation for this row.  Solve for the leading variable in terms of
+the non-leading variables (by putting them all on the right hand side).
+\item Set each non-leading variable equal to a different parameter, and substitute these into the equations for the leading variables as well.
+\item Write down the general solution; do NOT forget to include ALL of your variables.  (Eg:  $x_1=2-s$ and $x_3 = 3$ is not a general solution because you haven't
+said what $x_2$ is.)
+\end{itemize}
+\end{itemize}
+
+\begin{myexample} Suppose the RREF of our system is
+$$
+\mat{1 & 0 & 0 & 2 & 0 &|& 3\\
+     0 & 0 & 1 & 1 & 0 &|& 4\\
+     0 & 0 & 0 & 0 & 1 &|& 0}
+$$
+This system is 
+$$
+x_1 + 2x_4 = 3, \quad x_3 + x_4 = 4, \quad x_5=0;
+$$
+it is
+consistent.  The leading variables are $x_1$, $x_3$ and $x_5$
+and the non-leading variables are $x_2$ and $x_4$.  So we set
+$$
+x_2 = s, \qquad x_4 = t
+$$
+and thus conclude that
+$$
+\mat{x_1\\x_2\\x_3\\x_4\\x_5} = \mat{3-2x_4\\ x_2 \\ 4-x_4\\ x_4 \\ 0} = \mat{3-2t\\s\\4-t\\t\\0}
+$$
+So the general solution (written in parametric vector form) is
+$$
+\left\{ \mat{3\\0\\4\\0\\0}+s\mat{0\\1\\0\\0\\0} + t\mat{-2\\0\\-1\\1\\0} \mid s,t\in\R\right\}.
+$$
+\end{myexample}
+
+\section{Reducing systems to REF and RREF:  Gaussian elimination}
+
+Let's write down the process for Gaussian elimination. It can be applied to any matrix $C$, and stops at a matrix $\tilde C$ which is in RREF.
+
+
+\begin{description}
+\item[Step 1] If the matrix $C$ is zero, stop.
+\item[Step 2] Locate the left-most nonzero column, and interchange the top row with another, if necessary, to bring a non-zero entry to the first row of this column.
+\item[Step 3] Scale the first row, as necessary, to get a leading 1.
+\item[Step 4] If necessary, annihilate the rest of the column BELOW using this leading 1 as a pivot.  That is, if $a_i$ is the entry in this column of Row $i$, then add $-a_i R_1$ to $R_i$, and put the result back in the $i^{\text{th}}$ row.
+\item[Step 5] This completes the operations (for now) with the first row. If there was only one row in your matrix, at this stage, stop. Otherwise, {\it ignore the first row} (but don't lose it!) and go back to step 1.
+\end{description}
+When this stops, the matrix you have will
+be in REF. Now proceed with the following steps to
+put the matrix in RREF:
+\begin{description}
+\item[Step 6] If the {\it right most} leading 1 is in row 1, stop.
+\item[Step 7] Start with the {\it right most} leading 1 -- this will be in the last non-zero row.  Use it to annihilate every entry {\it above} it in its column. That is, if $a_i\not=0$ is the entry in this column in row $i$,
+then add $-a_i$ times this row to $R_i$, and put the result back in the $i^{\text{th}}$ row. 
+\item[Step 8]Cover up the row you used and go to step 6.
+\end{description}
+
+
+\begin{myexample} 
+
+Let's run this on $C=
+\mat{0 & 0 & -2 & 2 \\
+ 1 & 1 & 3 & -1 \\
+ 1 & 1 & 2 & 0 \\
+ 1 & 1 & 0 & 2}$.
+
+\begin{description}
+\item[Step 1] The matrix is not zero, so we proceed.
+\item[Step 2] The left-most nonzero column is column 1, but we need to get a non-zero entry in row 1, so let's interchange rows 1 and 2:
+$$\mat{0 & 0 & -2 & 2 \\
+ 1 & 1 & 3 & -1 \\
+ 1 & 1 & 2 & 0 \\
+ 1 & 1 & 0 & 2} 
+\begin{matrix} R_1\leftrightarrow R_2\\ \sim  \end{matrix} 
+\mat{ \pivot & 1 & 3 & -1\\ 
+0 & 0 & -2 & 2 \\
+ 1 & 1 & 2 & 0 \\
+ 1 & 1 & 0 & 2}$$
+\item[Step 3] There's no need to rescale: we already have a leading 1 in row 1.
+\item[Step 4] We need to clear the column  below our leading 1: we subtract the first row from rows 3 and 4:
+
+$$\mat{ 1 & 1 & 3 & -1\\ 
+0 & 0 & -2 & 2 \\
+ 1 & 1 & 2 & 0 \\
+ 1 & 1 & 0 & 2}
+\begin{matrix} -R_1+R_3\to R_3 \\ \sim \\-R_1+R_4\to R_4 \end{matrix} 
+\mat{ 
+1 & 1 & 3 & -1\\ 
+0 & 0 & -2 & 2 \\
+0 & 0 & -1 & 1 \\
+0 & 0 & -3 & 3}$$
+
+\item[Step 5] We ignore the first row and go to Step 1.
+\item[Step 1] Even ignoring the original first row, the matrix is not zero.
+\item[Step 2] The left-most non zero column now (remember: we ignore row 1) is column 3, and there is a non-zero entry ($2$) in the second row (which is the {\it first} row of the matrix left when we ignore the first row of the whole matrix), so there's nothing to do now.
+\item[Step 3] Let's divide row 2 by -2 to get a leading one in the second row.
+$$\mat{1 & 1 & 3 & -1\\ 
+0 & 0 & -2 & 2 \\
+0 & 0 & -1 & 1 \\
+0 & 0 & -3 & 3}
+\begin{matrix} -\frac{1}{2} R_2\to R_2 \\ \sim \end{matrix} 
+\mat{ 
+1 & 1 & 3 & -1\\ 
+0 & 0 & \pivot & -1 \\
+0 & 0 & -1 & 1 \\
+0 & 0 & -3 & 3}$$  
+
+\item[Step 4] Now we need to clear column 3 below our new leading one: 
+
+$$\mat{
+1 & 1 & 3 & -1\\ 
+0 & 0 & \pivot & -1 \\
+0 & 0 & -1 & 1 \\
+0 & 0 & -3 & 3}
+\begin{matrix}  R_2+ R_3\to R_3 \\ 3R_2+ R_4\to R_4 \\\sim \end{matrix} 
+\mat{ 
+1 & 1 & 3 & -1\\ 
+0 & 0 & 1 & -1 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0}$$
+\item[Step 5] Now we ignore the first two rows, and go to Step 1
+
+\item[Step 1] Well if we we ignore the first two rows, the matrix we see is zero, so we stop this part and proceed to Step 6
+
+\item[Step 6] The {\it right most} leading 1 is in row 2, so we proceed to Step 7
+
+\item[Step 7] We use the leading one in row two to clear its column above it:  
+
+
+$$\mat{ 
+1 & 1 & 3 & -1\\ 
+0 & 0 & \pivot & -1 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0}
+\begin{matrix}  -3R_2+ R_1\to R_1  \\\sim \end{matrix} 
+\mat{ 
+1 & 1 & 0 & 2\\ 
+0 & 0 & 1 & -1 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0}$$
+
+\item[Step 8] We cover up row 2 and go back to Step 6
+\item[Step 6] Ignoring row 2, now the right-most leading 1 {\it is} in row 1! So we stop. The matrix is now in RREF.
+
+\end{description}
+
+We're not machines, of course, and we could see at the end of Step 7 that the matrix was in RREF, so there was no need to have done Steps 8 and 6, but we did it above to illustrate the algorithm. 
+
+\end{myexample}
+
+
+\section{Using the Gaussian algorithm to solve a linear system}
+
+
+Now let's see how we use this to solve a linear system with augmented matrix $[A|b]$. The idea is that
+we apply the row operations in the algorithm above to the rows of the whole augmented matrix, but {\it with the aim of getting the coefficient matrix into RREF} - then we'll stop.  The coefficient matrix  will be in RREF -- the augmented matrix might not be, but it doesn't matter.
+
+
+
+Once the coefficient matrix is  in RREF, the general solution can be found as follows:
+\begin{enumerate}
+\item Decide if the system is consistent or not.  If consistent:
+\item Assign parameters to non-leading variables.
+\item Solve for leading variables in terms of parameters.
+\end{enumerate}
+
+Let's illustrate this with an example. Remember: our goal is to get the coefficient matrix into RREF, but we apply each and every row operation to the rows of the whole augmented matrix. All decisions in the algorithm will only depend on the coefficient side.
+
+\begin{myexample} We begin with the following augmented matrix: 
+$$
+\mat{0 & 1 & 2 & 3&|& 4\\
+1 & 2 & 3 & 4 &|& 5\\
+2 & 3 & 4 & 5 & |& 6}
+$$
+\begin{description}
+\item[Step 1]  It's not the zero matrix!
+
+\item[Step 2]   It's the first column (but sometimes it isn't!).  
+The top row has a zero, which can't be a pivot.  So 
+interchange $R_1$ and $R_2$, for example:
+$$\mat{0 & 1 & 2 & 3&|& 4\\
+1 & 2 & 3 & 4 &|& 5\\
+2 & 3 & 4 & 5 & |& 6}
+\mt{R_1 \leftrightarrow R_2 \\ \sim}
+\mat{
+1 & 2 & 3 & 4 &|& 5\\
+0 & 1 & 2 & 3 &|& 4\\
+2 & 3 & 4 & 5 & |& 6}
+$$
+\item[Step 3] There's already a leading 1. Move on.
+
+\item[Step 4] We just need to zero off the 2 in $R_3$:
+$$\mat{
+\pivot & 2 & 3 & 4 &|& 5\\
+0 & 1 & 2 & 3 &|& 4\\
+2 & 3 & 4 & 5 & |& 6}
+\mt{\sim\ \\ \\ -2R_1+R_3\to R_3}
+\mat{
+1 & 2 & 3 & 4 &|& 5\\
+0 & 1 & 2 & 3 &|& 4\\
+0 & -1 & -2 & -3 & |& -4}
+$$
+\item[Step 5] We're done with the first row.
+Back to Step 1, just considering $R_2$ and $R_3$:
+
+\item[Step 1]  It's not the zero matrix. On we go.
+
+\item[Step 2] The first non-zero column (ignoring row 1) is in column 2.  And the entry in the ``top row'' (which is $R_2$ this time) is nonzero, so no row interchanges needed.
+
+\item[Step 3]  It's already a leading 1.
+
+\item[Step 4]  We just need to zero off the -1 in $R_3$:
+$$\mat{
+1 & 2 & 3 & 4 &|& 5\\
+0 & \pivot & 2 & 3 &|& 4\\
+0 & -1 & -2 & -3 & |& -4}
+\mt{\sim \\ \\ R_2+R_3\to R_3}
+\mat{
+1 & 2 & 3 & 4 &|& 5\\
+0 & 1 & 2 & 3 &|& 4\\
+0 & 0 & 0 & 0 & |& 0}
+$$
+\item[Step 5] We're  done using the second row.  Back to Step 1, just considering $R_3$:
+
+\item[Step 1] It's the zero matrix (ignoring rows 1 and 2), so we proceed to Step 6.
+
+And yes, indeed, the coefficient matrix is in REF (coincidentally, so is the whole augmented matrix).
+We see that we will have infinitely many solutions (since the system
+is consistent {\it and} we have non-leading variables).
+
+To write down the solution, we continue to RREF:
+
+\item[Step 6] The {\it right most} leading 1 is not in row 1, so on we go.
+
+\item[Step 7] The right-most leading 1 is in column 2.  Annihilate the 2 above it:
+$$\mat{
+1 & 2 & 3 & 4 &|& 5\\
+0 & \pivot & 2 & 3 &|& 4\\
+0 & 0 & 0 & 0 & |& 0}
+\mt{-2R_2+R_1\to R_1\\ \sim \\ }
+\mat{
+1 & 0 & -1 & -2 &|& -3\\
+0 & 1 & 2 & 3 &|& 4\\
+0 & 0 & 0 & 0 & |& 0}
+$$
+
+\item[Step 8] We cover up the second row, and go to step 6.
+
+\item[Step 6] Stop! -- the  {\it right most} leading 1 is in row 1.
+
+
+The coefficient matrix is in RREF.\footnote{Coincidentally, so is the augmented matrix. This will always occur for consistent systems.} After some experience, you'll notice after step 7 that RREF had been reached. 
+\end{description}
+ 
+
+The nonleading variables are $x_3$ and $x_4$, so 
+let $x_3 = s$, $x_4 = t$.  Then $x_1 = x_3+2x_4-3 = -3+s+2t$ and
+$x_2 = 4-2x_3-3x_4 = 4-2s-3t$.  Thus the general solution is
+\begin{align*}
+x_1 &= -3+s+2t\\
+x_2 &= 4-2s-3t\\
+x_3 &= s \\
+x_4 &= t
+\end{align*}
+with $s,t \in \R$.  
+\end{myexample}
+
+
+\section{Key concept: the rank of a matrix}
+
+So we've stated the theorem that says that the RREF of a matrix exists and
+is
+unique.  The existence is obvious from our algorithm; uniqueness takes
+some extra work to see, but also follows from our algorithm.  Since 
+the RREF is unique, this means in particular that the number of leading
+1s in the RREF of a matrix doesn't depend on any choices made in
+the row reduction.  This number is very important to us!
+ 
+\begin{definition}  The \defn{rank} of a matrix $A$, denoted $\rnk(A)$, is the number of leading ones (`pivots') in any REF of $A$.
+\end{definition}
+
+\emph{Remark:} In the Gaussian Algorithm, the passage from the REF to the RREF does not change the number of leading ones.
+
+\begin{myexample} The rank of $\mat{1 & 2  & 3\\ 0 & 1  &3}$ is $2$.\end{myexample}
+
+ 

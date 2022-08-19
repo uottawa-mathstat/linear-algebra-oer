@@ -1,0 +1,176 @@
+
+\begin{sol}{prob13.1} 
+
+ 
+
+(b) Find the ranks of the coefficient matrices and the ranks of the augmented matrices corresponding to the linear systems in question \ref{prob12.2}.
+
+\soln
+
+
+
+ [\ref{prob12.2}(b)] The rank of the coefficient matrix is 2 and the rank of the augmented matrix is 3. (That's why the corresponding  linear system is inconsistent.)
+\medskip
+
+[\ref{prob12.2}(d)] Both ranks are 3.
+
+\medskip 
+%
+\end{sol}
+
+\begin{sol}{prob13.2} Suppose $a,c\in \R$   and consider the following linear system
+in the variables
+$x,y$ and $z$: 
+$$\begin{matrix}  x&+&y &+&az&=&2\\
+2x&+&y&+&2a z  &=&3\\ 
+3x&+&y &+&3az&=&c \end{matrix}. $$
+
+Note that the general solution of this system may depend on the 
+values of $a$ and $c$. Let $[\,A\,|\, b\,]$ denote  the
+augmented matrix of the
+system above.
+
+\medskip 
+(b)  Find \underbar{all} values of
+$a$ and $c$ so that
+this system has \smallskip
+\begin{enumerate}[(i)]
+  
+\item a unique solution,\smallskip
+\item  infinitely many
+solutions,  or \smallskip
+\item  
+no solutions. 
+\end{enumerate}
+
+\soln  
+
+$$[\,A\,|\, b\,] =\bmatrix 1&1&a&|&2\\ 2&1&2a&|&3\\ 3&1&3a&|&c\endbmatrix \sim
+\bmatrix 1&1&a&|&2\\ 0&1&0&|&1\\ 0&0&0&|&c-4\endbmatrix $$
+
+Since $\rank A=2<3=\#$ variables,  for {\it all} values of $a,c$, this system {\it never} has a unique solution.
+\smallskip
+
+Since $\rank A=2=\rank[\,A\,|\, b\,]$ iff $c=4$, this system will be consistent and have infinitely many
+solutions, since then there will be  ($\#\text{variables}-\rank A=3-2=)1$  parameter in the general solution.
+\smallskip
+
+Since $\rank A=2<3=\rank[\,A\,|\, b\,]$ iff $c\not=4$, this system will be inconsistent for all values of $c$ except for $c=4$.
+\medskip
+
+
+
+\end{sol}
+
+
+
+\begin{sol}{prob13.3} Consider the network of streets with
+intersections A, B, C, D and E below.   The arrows
+indicate the direction of traffic flow along the
+{\bf one-way streets}, and the numbers refer to the
+{\bf exact} number  of cars observed to enter or
+leave  A, B, C, D and E during one minute.  Each
+$x_i$ denotes the unknown number of cars which
+passed along the indicated streets during the 
+same period.
+$$\xymatrix@=3pt{
+&&&&&&&&&&&&\\ 
+&&&&&&&&&&&&\\
+&&&&&&&&&&&&\\
+&&&&&&&&B\ar[rrdd]^{x_4}\ar[uuu]_{50}&&&&\\ 
+&&&&&&&&&&&&\\
+&&&&&&A\ar[lll]^{60}\ar[rruu]^{x_5}&&&&C\ar[lddd]_{x_3}\ar[llll]_{x_6}&&&&\ar[llll]^{70}\\
+&&&&&&&&&&&&\\
+&&&&&&&&&&&&\\
+&&&&&&&E\ar[luuu]^{x_1}&&D\ar[ll]_{x_2}\ar[dddr]^{60}&&\\  
+&&&&&&&&&&&&\\ 
+&&&&&&&&&&&&\\
+&&&&&&\ar[uuur]^{100}&&&&&&&&\\} 
+$$
+
+(b)  The reduced row-echelon form of the augmented matrix of the system in
+part (a) is 
+$$ \bmatrix 
+  1 & 0 & 0 & 0 & -1 & 1 &|& 60 \\
+ 0 & 1 & 0 & 0 & -1 & 1 &|& -40 \\
+ 0 & 0 & 1 & 0 & -1 & 1 &|& 20 \\
+ 0 & 0 & 0 & 1 & -1 & 0 &|&  -50 \\
+ 0 & 0 & 0 & 0 & 0 & 0 &|& 0
+\endbmatrix$$ Give the general
+solution. (Ignore the constraints from (a) at this
+point.)
+\smallskip
+
+
+\soln  The general solution is 
+ 
+ 
+\begin{align*} 
+x_1&=60 +s-t&\\
+x_2&=-40 +s-t&\\
+x_3&=20 +s-t& s,t \in \R\\
+x_4&=-50 +s&\\
+x_5&= s &\\
+x_6&=t &
+\end{align*}
+ 
+
+Or it can be written as $$\set{(60 +s-t,-40 +s-t,20 +s-t,-50 +s,s,t)\st st,t \in \R}.$$
+
+ 
+
+
+\end{sol}
+
+\begin{sol}{prob13.4}   State whether each of the following is (always) true,
+or is (possibly) false.    
+   \medskip    
+\begin{enumerate}[$\bullet$]
+\item If you say the statement may be false, you   must give an explicit example.  
+\item If you say the statement is true, you must give a clear explanation -   by quoting a theorem presented in class, or by giving a {\it proof valid for every  case}. 
+\end{enumerate}
+\medskip
+
+(b)  Every non-homogenous system of 3 equations in 2 unknowns is consistent.
+
+
+\soln This is false. For example, the system whose augmented matrix is 
+$\bmatrix  
+1 & 0 &|& 1 \\
+0 & 1 &|& 0\\
+0 & 0 &|& 1 \endbmatrix$ is inconsistent.
+\medskip
+%
+
+(d) Every  system of 2 equations in 2 unknowns has a unique solution.
+
+\soln This is false. For example, the system whose augmented matrix is 
+$\bmatrix  
+1 & 0 &|& 0 \\
+0 & 0 &|& 0\\
+ \endbmatrix$ has infinitely many solutions, namely $ (0,s) $ for every $s\in \R$
+\medskip
+
+(f) If there is a column of zeroes in the coefficient matrix of a consistent linear system, the system will have infinitely many solutions.
+
+\soln This is true, since once the augmented matrix has been reduced, there will still be a column of zeroes in the coefficient matrix, which means that (as it is assumed consistent), there will be at least one parameter in the general solution.
+\medskip
+
+(h) If a consistent linear system has infinitely many solutions, there must be a column of zeroes in the reduced coefficient matrix (i.e. when the augmented matrix has been reduced so that the coefficient matrix is in RRE form.)
+
+\soln This is false. Look at Q.4 (d).
+\medskip
+%
+
+(j) If a homogenous linear system has a unique solution, it must the same number of equations as unknowns. 
+
+\soln This is false. For example, the system whose augmented matrix is 
+$\bmatrix  
+1 & 0 &|& 0 \\
+0 & 1 &|& 0\\
+0 & 0 &|& 0 \endbmatrix$ has a unique solution, namely $(0,0)$.
+\medskip
+%
+
+\end{sol}
+

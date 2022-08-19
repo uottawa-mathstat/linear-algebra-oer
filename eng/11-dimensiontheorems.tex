@@ -1,0 +1,336 @@
+\chapter{Dimension Theorems}
+\label{Chapter:10dimensionThm}
+
+In the previous chapter, we saw the \red{important inequality}:
+
+\standout{
+the size of any LI set in $V$ \; $\leq$ \; the size of any spanning set of $V$}
+
+We used this result to deduce that 
+any \stress{linearly independent
+spanning set} of a vectors space $V$ (which we called a \stress{basis of $V$})
+has the same number of elements.  
+  We called the number $n$ of elements in
+a basis for $V$ the \stress{dimension of $V$}, denoted $\dim(V)$.
+
+
+
+We also found bases for many of our favourite vector spaces, and 
+started to see how to find bases of other, more complicated, subspaces.
+
+From the definition of dimension, we can now improve our inequality:
+
+\standout{
+the size of any LI set in $V$ \; $\leq\;\dim V\;\leq$ \;  
+the size of any spanning set of $V$}
+
+\section{Every subspace of a finite-dimensional space has a finite basis}
+
+In the past chapters, we have shown that:
+\begin{itemize}
+\item If $\{\vv_1, \cdots, \vv_m\}$ is a LI subset of $V$, then there are
+vectors $\vv_{m+1}, \cdots, \vv_n$ in $V$ such that $\{\vv_1, \cdots, \vv_m,$ $ \vv_{m+1}, \cdots, \vv_n\}$ is a basis for $V$ \stress{(that is, every linearly independent subset of $V$ can be extended to a basis of $V$);}
+\item Conversely, we saw that if $S = \{\vv_1, \cdots, \vv_l\}$ is a spanning set of $V$, then there
+is a subset of $S$ which is a basis of $V$ \stress{(that is, every spanning set can be reduced to a basis of $V$).}
+\end{itemize}
+
+\begin{remark}
+If you were in an infinite-dimensional space, the process of adding more
+vectors to your LI set might never stop, since it could happen that you
+can't span your subspace with a finite number of vectors.  Hence our
+restriction.  See also MAT2141.\end{remark}
+
+This means that in theory at least, you can always find a basis for
+any subspace:  either start with a spanning set and cut it down, or
+else start taking nonzero vectors from your set and forming larger
+and larger LI sets.  
+
+A problem:  this is computationally intensive.  (We'll come back to
+it soon!)
+
+\section{A shortcut to checking if a set is a basis}
+
+\begin{theorem}[Shortcut to deciding if a set is a basis]\index{shortcut for deciding when a set is a basis}
+Let $V$ be a vector space and suppose that we know that $\dim(V) = n$ (and $n < \infty$).
+Then:
+\begin{enumerate}
+\item Any LI set $\{\vv_1, \cdots, \vv_n\}$ of $  n $ vectors in $V$ is a basis of $V$  \stress{(that is, it also necessarily spans $V$!);}
+\item Any spanning set $\{\vv_1, \cdots, \vv_n\}$ of $V$ consisting of exactly 
+$  n $ vectors is a basis of $V$  \stress{(that is, it is also necessarily LI!);}
+\end{enumerate}
+\end{theorem}
+
+So this theorem says that if you already know the dimension of $V$, you have a shortcut to finding a basis:  just find an LI \emph{or} a spanning set with the \stress{right number of elements}. 
+
+\begin{proof}~
+\begin{enumerate}
+\item Suppose that $\{\vv_1, \cdots, \vv_n\} \subseteq V$ is LI and suppose
+instead that $\{\vv_1, \cdots, \vv_n\}$ didn't span $V$.
+Then that would mean we could find $\vv \in V$, such that $\{\vv, \vv_1, \cdots, \vv_n\}$ is LI (\emph{cf} results last week about extending LI sets).
+But then we'd have a set with $n+1$ LI elements in $V$, even though
+$\dim(V)=n$ means $V$ can be spanned by just $n$ elements.  This 
+contradicts our \red{important inequality}, so can't be true.  Thus
+our set must already span $V$, and hence be a basis.
+
+\item Suppose now that  $\spn\{\vv_1, \cdots, \vv_n\} = V$ but that
+ $\{\vv_1, \cdots, \vv_n\}$ is NOT LI.  Since it is LD, we can 
+remove at least one ``redundant'' vector without changing the span.
+That is, there is a subset $S \subset  \{\vv_1, \cdots, \vv_n\}$
+with less than $n$ elements such that $\spn(S) = \spn\{\vv_1, \cdots, \vv_n\}=V$.  But then we'd have a spanning set for $V$ with fewer than $n$ elements,
+contradicting our \red{important inequality}.  So that can't be true;
+the spanning set must have been LI, and hence a basis.
+\end{enumerate}
+\end{proof}
+
+\begin{myprob} Show that $\{(2,2,2), (7,1,-11)\}$ is a basis for $U = \{(x,y,z) | 2x-3y+z = 0\}$.  
+
+\begin{mysol}  We see this is a plane through the origin, hence a 2-dimensional
+space.  We verify that both of the vectors given lie in $U$, since
+$$
+2(2) -3(2) + 2 = 0 \qquad and \qquad 2(7)-3(1)+(-11) = 0.
+$$
+Moreover, since there are just two vectors, and they are not multiples
+of one another, we see they are linearly independent.  So:
+\begin{itemize}
+\item we have 2 vectors
+\item they lie in a 2-dimensional space
+\item they are linearly independent
+\end{itemize}
+So by the theorem, $\{(2,2,2), (7,1,-11)\}$ is in fact a basis for $U$.
+\end{mysol}\end{myprob}
+
+\begin{myprob} Extend $\{(2,2,2), (7,1,-11)\}$ to a basis for $\R^3$.
+
+\begin{mysol} We know that $\dim(\R^3) = 3$; so 
+if we can find one more vector $\vv$  so that $\{\vv, (2,2,2), (7,1,-11)\}$
+is LI, we can deduce by the theorem that this new set is a basis for
+$\R^3$.
+
+Now recall that since $\{(2,2,2), (7,1,-11)\}$ is LI, the larger
+set $\{\vv, (2,2,2), (7,1,-11)\}$ is LI if and only if $\vv \notin \spn\{(2,2,2), (7,1,-11)\}$.  That is, if and only if $\vv \notin U$.  So pick
+any $\vv=(x,y,z)$ which does not satisfy the condition for being in $U$,
+such as $\vv = (1,0,0)$.  
+
+Then $\{(1,0,0), (2,2,2), (7,1,-11)\}$ is a basis for $\R^3$.
+\end{mysol}\end{myprob}
+
+\standout{Caution: we get this ``shortcut'' for checking that a set is a basis for $V$ \emph{only if} you know the dimension of $V$.}
+
+So what kinds of clues help us to figure out the dimension of a space?
+
+\section{Dimension of subspaces of $V$}
+
+\begin{theorem}[Dimensions of subspaces] \label{dimsubspaces}
+ Suppose that $\dim(V) = n$ and that 
+$W$ is a subspace of $V$.  Then
+\begin{enumerate}
+\item $0 \leq \dim(W) \leq \dim(V)$
+\item $\dim(W) = \dim(V)$ if and only if $W=V$.
+\item $\dim(W)=0$ if and only if $W = \{\zero\}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}~
+\begin{enumerate}
+\item Start with a basis of $W$; it has $\dim(W)$ elements (which is $\geq 0$!).  
+Then this is a LI set in $W \subset V$, so by our \red{important inequality}, 
+$\dim(W) \leq \dim(V)$
+since $V$ is spanned by $\dim(V)$ elements.
+
+\item Suppose $\dim(W) = \dim(V)=n$.  If $W\neq V$,
+then that means there is a vector $\vv \in V$, such that $\vv \notin W$.
+But then if $\{\vv_1,\cdots,\vv_n\}$ is a basis for $W$, 
+we would deduce that $\{\vv, \vv_1,\cdots,\vv_n\}$ is a LI set in $V$
+with $n+1$ elements, which contradicts the \red{important inequality} for $V$.
+So this is impossible; we must have $V\subset W$.  (And we started with
+$W \subset V$ so we conclude $W=V$.)
+
+\item If $\dim (W)=0$, and $W$ contains a non-zero vector  then by the \red{important inequality} we have a contradiction, since then $\dim (W) \ge 1$. Thus $\dim W=0 \implies W=\set{\zero}$. If on the other hand $W=\set{\zero}$, then we shall take it as a convention that $\dim(W)=0$.\footnote{There are two other ways to define the dimension of a vector space: (a) take it to be the size of the largest linearly independent set, or (b) the size of the smallest spanning set. These are equivalent to our definition for $\dim(W)\ge 1$, and if we use (a), for $W=\set{\vec 0}$, it's clear that the largest subset of $W$ that is linearly independent is the empty set, which of course has size $0$. One can reconcile this with (b) if we all agree that that the span of the empty set is $\set{\vec0}$. If this sounds too weird to you, stick with (a).}
+\end{enumerate}
+\end{proof}
+
+This theorem has some great consequences!
+
+\begin{myexample} Any subspace of $\R^3$ has dimension $0$, $1$, $2$ or $3$,
+by Theorem part (1).  These correspond to: the zero space (Theorem part (3)),
+lines (we proved this long ago), planes (ditto), and all of $\R^3$ (Theorem part (2)). \end{myexample}
+
+\begin{myexample} Any $4$-dimensional subspace of $M_{2\times 2}(\R)$ is all
+of  $M_{2\times 2}(\R)$.   \end{myexample}
+
+\begin{myexample}
+Any $2$-dimensional subspace of $U = \{(x,y,z) | 2x-3y+z = 0\}$ 
+is all of $U$.  \end{myexample}
+
+This last example illustrates an important idea:
+
+\standout{If $U$ is a subspace of $V$ such that $\dim(U) = m$,
+then any subspace of $V$ which is contained in $U$ is a subspace of $U$
+and so has dimension at most $m$.}
+
+That is, we don't have to apply the theorem to just our favourite ``big''
+vector spaces $V$.
+
+\section{What subspaces and dimension have given us}
+
+At the beginning of the course, we talked about lines and planes
+in $\R^2$ and $\R^3$ and wondered what their generalizations to
+$\R^n$ should be.
+
+We proposed the general concept of vector spaces, of which subspaces
+of $\R^n$ are an example, and deduced that lines and planes through
+the origin were subspaces of $\R^2$ and $\R^3$, and (besides the
+zero space and the whole space) these were \emph{all} subspaces of
+$\R^2$ and $\R^3$.
+
+So we agreed that ``subspaces'' provide the correct higher-dimensional
+analogue of ``lines and planes'' (at least, the ones that go through the origin).
+
+Now we have learned that every subspace has a basis, and that if $S$
+is a basis for $U$, then $U = \spn(S)$.  In other words, we can
+describe every subspace of every vector space using parametric
+equations which are like ``higher-dimensional analogues'' of the
+parametric equation for a line.
+
+Furthermore, we have learned how to measure the size of a subspace
+(namely, by its dimension), and thereby can classify all the possible
+subspaces of any vector space by their dimension.  (For example,
+in $\R^n$ we have subspaces of every dimension up to and including $n$,
+in $\PP_n$ we have subspaces of every dimension up to and including $n+1$,
+and in $M_{m\times n}(\R)$ we have subspaces of every dimension up to and including $mn$.)
+
+So the first step in taking geometry to higher dimensions is behind us.
+
+\section{What bases of subspaces give us, Part I}
+
+So what is a basis good for?  Last chapter, we alluded to one 
+very important application:  namely, you know that any
+plane through the origin in $\R^3$ is ``basically the same''
+as $\R^2$ --- it looks the same, and geometrically it is
+the same kind of object, but algebraically, it's quite
+a challenge!
+
+\begin{myprob} Consider the plane $U = \{ (x,y,z) | x-4y+z = 0\}$ in $\R^3$.
+Show that $$\{(2/3,1/3,2/3), (1/\sqrt{2},0,-1/\sqrt{2})\}$$ is
+a basis for $U$, and that moreover these basis vectors are
+orthogonal and have norm one.  (We will call such a special basis
+an \stress{orthonormal basis} when we get to Chapter ~\ref{chapter:orthog}.)   
+
+\begin{mysol}  As before, we see that it suffices to verify that these two
+vectors (a) lie in $U$ and (b) are LI, since $\dim(U)=2$.  So
+they form a basis.  Next, we calculate their dot product (and get
+zero) so they are orthogonal.  Finally, we calculate their
+norms, and deduce that each has norm equal to $1$.
+
+(Recall that $\Vert (x,y,z) \Vert = \sqrt{x^2+y^2+z^2}$.)\end{mysol}\end{myprob}
+
+
+What makes such a basis special is that these are \emph{exactly}
+the properties that make the standard basis special!  So
+this is ``like'' a standard basis of $U$.
+
+So as an application:  Suppose you have an image in $\R^2$
+(say, a photograph whose lower left corner is at the origin,
+and whose upper right corner is at the point $(640,480)$, so
+that each integer coordinate pair corresponds to a pixel.).
+Then you can map this image onto the plane $U$ by thinking
+of 
+$$
+(a,b) \in \R^2 \Leftrightarrow a\mat{2/3,1/3,2/3} + b\mat{1/\sqrt{2},0,-1/\sqrt{2}}
+$$
+So for example if you want to colour the picture, then you have a colour
+for each integer coordinate pair $(a,b)$ and this tells you which 
+$(x,y,z)$ you should colour in $\R^3$ to make it look like your
+picture is on this plane.
+\qed
+
+This opens up more questions, though:  how did I get such a nice
+basis for $U$?  Can I do that in different vector spaces and
+higher dimensions?  We'll see part of the answer in this course,
+and you'll do more of it later on.
+
+
+\section{What bases of subspaces are good for, Part II}
+
+An even more startling and wonderful application of bases is
+as follows. 
+
+First we need a definition.
+
+\begin{definition} An {\it ordered basis} $\set{\vv_1,\cdots, \vv_n}$ is the set $\set{\vv_1,\cdots, \vv_n}$ with the given order of the vectors.
+
+\end{definition}
+\begin{myexample} The ordered basis  $\set{(1,0), (0,1)}$ of $\R^2$ is not the same ordered basis as $\set{ (0,1), (1,0)}$ --- even though, {\it as sets}, $\set{(1,0), (0,1)}= \set{ (0,1), (1,0)}$, since both sides have exactly the same vectors in them.  The apparent order matters when we talk about ordered bases.
+\end{myexample}
+
+\begin{theorem}[Coordinates]\index{coordinates}
+ 
+
+Suppose $B = \{\vv_1,\cdots, \vv_n\}$ is an {\it ordered }basis for a vector
+space $V$.  Then for every $\vv \in V$, there are \emph{unique}
+scalars $x_1, \cdots, x_n \in \R$ so that 
+$$
+\vv = x_1\vv_1 + \cdots + x_n\vv_n.
+$$
+We call the $n$-tuple $(x_1,x_2, \ldots, x_n)$ the \defn{coordinates of
+$\vv$ relative to the ordered basis $B$}.
+\end{theorem}
+
+\begin{proof}
+This isn't hard to prove:  Since $B$ spans $V$, you can certainly
+write any vector as a linear combination of elements of $B$.  For
+uniqueness, we suppose we have two such expressions  and prove
+they are the same, as follows:
+
+Suppose $\vv = x_1\vv_1 + \cdots + x_n\vv_n$ and $\vv = y_1\vv_1 + \cdots + y_n\vv_n$.  Subtract these two expressions; the answer is $\vv-\vv = \zero$.
+So we have
+$$
+(x_1-y_1)\vv_1 + \cdots + (x_n-y_n)\vv_n = \zero
+$$
+but $B$ is LI, so each of these coefficients must be zero, which
+says $x_i = y_i$ for all $i$.  Uniqueness follows.
+\end{proof}
+
+We can use this to \emph{identify} $n$-dimensional vector spaces with $\R^n$, 
+just like we identified that plane $U$ with $\R^2$, above.
+
+The idea is:
+
+\begin{center}
+\begin{tabular}{ccc}
+$V$ &$\leftarrow \kern-.1em\rightarrow$ &$\R^n$ \\ 
+$\vv = x_1\vv_1 + \cdots + x_n\vv_n$ & $\leftarrow \kern-.1em\rightarrow$ & $(x_1,x_2, \ldots, x_n)$ 
+\end{tabular}
+\end{center}
+
+For example, choosing the ordered basis  $B=\Big\{\bmatrix 1&0\\0&0\endbmatrix, \bmatrix 0&1\\0&0\endbmatrix,\bmatrix 0&0\\1&0\endbmatrix,\bmatrix 0&0\\0&1\endbmatrix \Big\}$  (the so-called `standard ordered' basis) of $M_{22}(\R)$, 
+we have:
+
+\begin{center}
+\begin{tabular}{ccc}
+$M_{22}(\R)$  &$\leftarrow \kern-.1em\rightarrow$&  $\R^4$ \\ 
+$\mat{a&b\\c&d}$&$\leftarrow \kern-.1em\rightarrow$ & $(a,b,c,d)$
+\end{tabular}
+\end{center}
+
+Or, choosing $B = \left\{\mat{1&0\\0 & -1}, \mat{0&1\\0&0}, \mat{0&0\\1&0}\right\}$ as an ordered basis for $\mathfrak{sl}_2$, we have
+
+\begin{center}
+\begin{tabular}{ccc}
+$\mathfrak{sl}_2 $ &$\leftarrow \kern-.1em\rightarrow$& $\R^3$ \\ 
+$\mat{a&b\\c&-a}$&$\leftarrow \kern-.1em\rightarrow$ & $(a,b,c)$
+\end{tabular}
+\end{center}
+
+Another example: choosing the standard ordered basis $\set{1, x, x^2}$ for $\PP_2$ we have
+
+\begin{center}
+\begin{tabular}{ccc}
+$\PP_2$ &$\leftarrow \kern-.1em\rightarrow$& $\R^3$ \\ 
+$a+bx+cx^2$&$\leftarrow \kern-.1em\rightarrow$ & $(a,b,c)$
+\end{tabular}
+\end{center}
+
+\standout{Caution: note that the order of your basis matters!  If we'd picked $B = \{ x^2,x,1\}$ as our ordered basis for $\PP_2$, we'd get coordinates $(c,b,a)$ instead of $(a,b,c)$, which has the potential for a great deal of confusion.  Hence:  always be a bit cautious to keep the order in mind.}
+
+

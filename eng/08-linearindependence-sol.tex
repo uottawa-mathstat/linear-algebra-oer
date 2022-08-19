@@ -1,0 +1,107 @@
+
+\begin{sol}{prob07.1} Which of the following sets are linearly independent in the indicated vector space? (If you say they are, you must prove it using the definition; if you say the set is dependent, you must give a non-trivial linear dependence relation that supports your answer. For example, if you say $\set{v_1, v_2, v_3}$ is dependent, you must write something like  $v_1-2 v_2 +v_3=0$, or $v_1=2 v_2 -v_3$.)
+\medskip
+
+(b) $\set{(1,1), (2, 2)}$; $\R^2$.
+
+\soln This set is dependent, since $2(1,1)-(2,2)=0$.
+\medskip
+%
+
+
+(d) $\set{(1,1), (1, 2), (1,0)}$; $\R^2$.
+
+\soln This set is dependent, since $2(1,1)- (1, 2), -(1,0)=(0,0)$
+\medskip
+%
+
+(f) $\set{(1,1,1), (1,0,3), (0,0,0)}$; $\R^3$.
+
+\soln This set is dependent, as it contains the zero vector. Explicitly: $$0(1,1,1)+ 0(1,0,3) +1\, (0,0,0)=(0,0,0).$$
+\medskip
+
+(h) $\set{(1,1,1), (1,0,3), (0,3,4)}$; $\R^3$.
+
+\soln This set is independent: Suppose $a(1,1,1)+b(1,0,3)+c (0,3,4)=(0,0,0)$. Equating components of each side, we obtain the equations $a+b=0$, $a+3c=0$ and $a +3b+4c=0$. This system of equations has only one solution, namely $a=b=c=0$. 
+\medskip 
+
+(j) $\set{(0,-3), (3, 0)}$; $\R^2$.
+
+\soln This set is independent, as $a(0,-3) + b(3, 0)=(0,0)$ implies $3b=0$ and $-3a=0$, and so $a=b=0$.
+\medskip
+%
+
+(l) $\set{(1,0,0), (2,0,-2)}$; $\R^3$.
+
+\soln This set is independent, as $a(1,0,0)+b (2,0,-2)=(0,0,0)$ implies $a+2b=0$,  and $-2b=0$, and hence $a=b=0$.
+\medskip
+
+
+
+\end{sol}
+
+\begin{sol}{prob07.2} Which of the following sets are linearly independent in $\M_{2 \,2}$? (If you say they are, you must prove it using the definition; if you say   set is dependent, you must give a non-trivial linear dependence relation that supports your answer. For example, if you say $\set{v_1, v_2, v_3}$ is dependent, you must write something like  $v_1-2 v_2 +v_3=0$, or $v_1=2 v_2 -v_3$.)
+\medskip
+
+(b)  $\Big\{\bmatrix 1&0\\1&2\endbmatrix, \bmatrix 0&1\\0&1\endbmatrix , \bmatrix 1&-2\\-1&0\endbmatrix \Big\}$.
+
+\soln This set is independent: Suppose $ a\bmatrix 1&0\\1&2\endbmatrix +b \bmatrix 0&1\\0&1\endbmatrix +c \bmatrix 1&-2\\-1&0\endbmatrix =\bmatrix 0&0\\0&0\endbmatrix $. This yields the equations $a+c=0$, $b-2c=0$, $a-c=0$ and $2a+b=0$. The first and third of these equations imply $a=c=0$, and so using either the second or the fourth yields $b=0$. Hence $a=b=c=0$.   \medskip
+%
+
+(d)  $\Big\{\bmatrix 1&0\\0&0\endbmatrix, \bmatrix 0&1\\0&0\endbmatrix,\bmatrix 0&0\\1&0\endbmatrix,\bmatrix 0&0\\0&1\endbmatrix \Big\}$ 
+
+\soln We saw in class that this set is independent. Consult your notes. \medskip
+%
+
+ 
+
+\end{sol}\begin{sol}{prob07.3} Which of the following sets are linearly independent in the indicated vector space? ? (If you say they are, you must prove it using the definition; if you say   set is dependent, you must give a non-trivial linear dependence relation that supports your answer. For example, if you say $\set{v_1, v_2, v_3}$ is dependent, you must write something like  $v_1-2 v_2 +v_3=0$, or $v_1=2 v_2 -v_3$.)
+
+(b)  $\set{1, 1+x, x^2}$;  $\mathcal P_2$. 
+
+\soln This set of polynomials is independent: Suppose $a 1 + b(1+x)+ cx^2=0$, for every $x\in \R$. Then, $(a+b) +bx +cx^2=0$, for every $x\in \R$. But a non-zero polynomial of degree 2 has at most 2 different roots, and $(a+b) +bx +cx^2=0$ has infinitely many, so this polynomial must be the zero polynomial. This means that $a+b=0$, $b=0$ and $c=0$. But this easliy implies $a=b=c=0$. \medskip 
+%
+
+(d)  $\set{1, \sin x, 2 \cos x}$;  $\F(\R)$.
+
+\soln This set is independent: Suppose $a1 + b\sin x +c\, 2 \cos x=0$ for  every $x\in \R$. In particular, for $x=0$, we obtain the equation $a+ 2c=0$; for $x=\pi$ we obtain $a- 2c=0$ , and for $x=\frac{\pi}2$, we obtain $a+b=0$. The first two equations here imply $a=c=0$ and then with this, the last implies $b=0$. Hence $a1 + b\sin x +c\, 2 \cos x=0$ for  every $x\in \R$ implies $a=b=c=0$.
+ \medskip  
+
+(f)  $\set{\cos 2x, \sin^2 x,  \cos^2 x}$;  $\F(\R)$.
+
+\soln This set is dependent. Remember the double angle formula: $\cos 2x= \cos^2x -\sin^2 x$ holds {\it for every $x\in \R$}. Hence we have the identity $\sin 2x + \sin^2 x  -\cos^2 x=0$, {\it for  every $x\in \R$}. This shows that three functions $\cos 2x, \sin^2 x$ and  $\cos^2 x$ are linearly dependent.
+
+ \medskip  
+
+(h)  $\set{\sin 2x, \sin x \cos x }$;  $\F(\R)$. 
+
+\soln Remember the double angle formula: $\sin 2x= 2\sin x \cos x$ holds {\it for every $x\in \R$}. Hence we have the identity $\sin 2x -2 \sin x \cos x=0$, {\it for  every $x\in \R$}. This shows that two functions $\sin 2x$ and $ \sin x \cos x,$  are linearly dependent.
+
+
+
+\end{sol}
+
+\begin{sol}{prob07.4} Justify your answers to the following:\medskip 
+
+
+(b) Suppose $V$ is a vector space, and a   subset $\set{v_1, \dots , v_k}\subset V$ is known to be linearly independent. Show carefully that $ \set{v_2, \dots , v_k}$ is also linearly independent.
+
+\soln Suppose $c_2v_2 +c_3 v_3+ \cdots + c_k v_k=0$ for some scalars $c_2, \dots , c_k$. Then it is also true that $0\, v_1 +c_2v_2 +c_3 v_3+ \cdots + c_k v_k=0$. But as $\set{v_1, \dots , v_k}$ is linearly independent, this implies all the scalars you see must be zero: that is, $0=c_2=c_3=\cdots = c_k=0$. Thus $c_2=c_3=\cdots = c_k=0$. Hence $c_2v_2 +c_3 v_3+ \cdots + c_k v_k=0$ implies $c_2=c_3=\cdots = c_k=0$, and so $\set{v_2, \dots , v_k}$ is linearly independent.
+
+\medskip
+ 
+
+(d) Give an example of a linearly independent subset $\set{v_1, v_2}$ in $\R^3$, and a vector $v\in  \R^3$ such that $\set{v, v_1, v_2}$ is  linearly {\it dependent}.
+
+\soln Set $v_1=(1,0,0), v_2=(0,1,0)$ and $v=(1,1,0)$. Then, $\set{(1,0,0), (0,1,0)}$ is independent, but $\set{(1,1,0), (1,0,0), (0,1,0)}$ isn't, since $ (1,1,0)- (1,0,0)-(0,1,0)=(0,0,0)$, or $(1,1,0)= (1,0,0)+(0,1,0)$.
+
+\medskip
+
+(f) Give an example of a linearly independent subset $\set{p, q}$ in $\mathcal P_2$, and a polynomial $r\in  \mathcal P_2$ such that $\set{p, q,r}$ is   linearly {\it dependent}.
+
+\soln Let $p(x)=1, q(x)=x$ and $r(x)=1+x$. Then $\set{1, x}$ is independent, but $\set{1, x, 1+x}$ is not: $1 + x -(1+x)=0$, for all $x\in R$.
+
+\end{sol}
+
+
+

@@ -1,0 +1,383 @@
+\begin{sol}{prob04.1}  Déterminez si les
+ensembles suivants sont fermés pour la loi de l'addition indiquée.
+
+\medskip
+(b) $L=\set{(x, y) \in \R^2\st x -3y=0 }$; l'addition standard dans $\R^2$.
+
+
+\soln Ceci est vrai. Soient $(x,y), (x',y')\in L$. On a
+$x -3y=0$ et $x' -3y'=0$. Puisque $(x,y)+ (x',y')=(x+x', y+y')$
+satisfait $(x+x') -3(y+y')= (x -3y) +(x' -3y')=0+0=0$, nous avons que
+$(x,y)+ (x',y')\in L$.  
+
+\medskip
+(d) $S=\set{(x, y) \in \R^2\st xy \ge 0 }$; l'addition standard dans $\R^2$.
+
+\soln C'est faux, car par exemple $(1,2)$ et
+$(-2,-1)$ appartiennent à $S$, mais leur somme $(-1,1)$
+n'y appartient pas.  
+
+\medskip
+(f) $K=\set{(x, y, z) \in \R^3\st x+2y+z=1 }$; l'addition standard dans $\R^3$. 
+
+\soln C'est faux, car par exemple
+$(1,0,0)$ et $(0,0,1)$ appartiennent à $K$ mais leur somme
+$(1,0,1)$ n'y appartient pas.  
+
+\medskip
+(h) $M=\set{(x, x+2) \in \R^2\st x\in \R}$; {\emph{l'addition non-standard}}: $(x,y) \tilde+ (x',y')=(x+x', y+y-2)$.
+
+\soln C'est bien {\it fermé} pour l'addition non-standard (mais pas pour
+l'addition standard --- voir question (a)). En effet, soient $\uu=(x, x+2)$ et
+$\vv=(x', x'+2)$ deux vecteurs quelconques de $M$. Alors on a
+$\uu \tilde+ \vv=(x+x', (x+2)+(x'+2)-2)=(x+x', x+x'+2) \in M$.
+\end{sol}
+\medskip
+ 
+\bigskip
+\begin{sol}{prob04.2} Déterminez si les
+ensembles suivants sont fermés pour la loi de la multiplication par scalaire indiquée.
+
+\medskip
+(b) $L=\set{(x, y) \in \R^2\st x -3y=0 }$; la multiplication standard par scalaire dans $\R^2$.
+
+\soln Vrai! Soient
+$\uu=(x,y)\in L$ (et donc $x -3y=0$) et $k\in \R$. Alors $k \uu= (kx, ky)$ satisfait aussi $kx-3(ky)=k(x-3y)=k0=0$
+et donc $k\uu\in L$. 
+
+\medskip
+(d) $S=\set{(x, y) \in \R^2\st xy \ge 0 }$; la multiplication par scalaire standard dans $\R^2$.
+
+\soln Il est fermé pour la multiplication par scalaire (bien qu'il ne soit
+pas fermé pour l'addition --- voir question 1(d)). Soient $\uu=(x,y)\in S$ (et donc
+$xy \ge 0$) et $k\in \R$ n'importe quel scalaire. Alors
+$k \uu= (kx, ky)$ satisfait $kx(ky)=k^2 xy \ge 0$ puisque $xy \ge 0$
+et $k^2\ge 0$. Donc $k\uu\in S$. 
+
+\medskip
+(f) $K=\set{(x, y, z) \in \R^3\st x+2y+z=1 }$; la multiplication par scalaire standard dans $\R^3$.
+
+\soln Faux ! Par exemple
+$\uu=(1,0,0)\in K$ mais $2\uu =(2,0,0)\notin K$. 
+
+\medskip
+(h) $M=\set{(x, x+2) \in \R^2\st x\in \R}$; {\emph{la multiplication scalaire non-standard définie par}}:
+\[k\circledast (x,y)=(kx, ky-2k+2).\]
+
+\soln C'est bien {\emph{fermé}}  pour cette multiplication par scalaire (mais pas pour la standard --- voir
+question (a)). En effet, soient $\uu=(x, x+2)\in M$ et $k\in \R$. Alors
+$k\circledast \uu =k\circledast (x,x+2)= (kx, k(x+2)-2k+2)=(kx, kx+2) \in M$!
+ 
+\end{sol}
+\medskip
+
+\bigskip
+\begin{sol}{prob04.3}  Déterminez si les
+sous-ensembles suivants de $\F(\R)=\set{f \st f: \R \to \R}$ sont
+fermés pour l'addition standard de fonctions dans $\F(\R)$.
+(Rappelez-vous que $\F(\R)$ est l'espace de toutes les fonctions à
+valeurs réelles en une variable réelle; c'est-à-dire toutes les fonctions
+avec domaine $\R$ et valeurs dans $\R$).
+
+\medskip
+(b) $T=\set{f \in \F(\R) \st f(2)=1 }$.
+
+\soln Faux, car par exemple la fonction constante
+$f(x)=1, \forall x\in \R$, appartient à $T$ mais $f+f$, qui est la
+fonction constante $2$, n'y appartient pas. 
+
+\medskip
+(d) $N=\set{f \in \F(\R) \st \text{ pour tout } x\in \R,   \, f(x)\le 0}$.
+
+\soln Vrai! Soient $f, g \in N$ (et donc $f(x)\le 0$ et
+$g(x)\le 0$). Alors, puisque la somme de deux nombres n\'egatifs
+est toujours n\'egative, on a
+$\forall x \in \R,, (f+g)(x)= f(x)+g(x)\le 0$. D'où $f+g\in N$.  
+
+\medskip
+(f) $O=\set{f \in \F(\R) \st \text{ pour tout } x\in \R,   \, f(-x)= -f(x)}$.
+
+\soln C'est l'ensemble des fonctions dites \og impaires \fg. Il est
+fermé pour l'addition. En effet, soient $f,g \in O$ et donc
+$\forall x \in \R, f(-x)= -f(x)$ et $g(-x)= -g(x)$. On a 
+$\forall x \in \R, (f+g)(-x)=f(-x)+g(-x)=-f(x)-g(x)=-(f(x)+g(x))=-(f+g)(x)$.
+D'où $f+g\in O$.
+\medskip
+\end{sol}
+
+\bigskip
+\begin{sol}{prob04.4} Déterminez si les
+ensembles suivants sont fermés pour la multiplication par scalaire standard des fonctions dans $\F(\R)$.
+
+\medskip
+(b) $T=\set{f \in \F(\R) \st f(2)=1 }$.
+
+\soln Ce {\emph{n'est pas fermé}} pour la multiplication par scalaire.
+Par exemple, la fonction constante égale à $1$ appartient à $T$, mais si on
+la multiplie par le scalaire 2, on obtient la fonction
+constante égale à $2$, laquelle n'appartient pas à $T$. 
+
+\medskip
+(d) $\set{f \in \F(\R) \st \text{ pour tout } x\in \R,   \, f(x)\le 0}$.
+
+\soln Ce {\emph{n'est pas fermé}} pour la multiplication par scalaire 
+(bien qu'il soit fermé pour l'addition --- voir question (d) de l'exercice
+précédent). Par exemple, la fonction constante
+$g(x)=-1, \forall x\in \R$, appartient à $N$ mais $(-1)g$, qui est
+la fonction constante $1$, n'y appartient pas.
+
+\medskip
+(f) $O=\set{f \in \F(\R) \st \text{ pour tout } x\in \R,   \, f(-x)= -f(x)}$.
+
+\soln Vrai! Soit $f \in O$ et donc
+$\forall x \in \R, f(-x)= -f(x)$. Alors pour tout $k\in \R$ 
+$\forall x \in \R, (kf)(-x)=k (f(-x))=k(-f(x))=-kf(x)=-(kf)(x)$. D'où
+$kf\in O$.
+\medskip
+\end{sol}
+
+\bigskip
+\begin{sol}{prob04.5}  Déterminez si les
+ensembles suivants sont fermés sous l'opération standard d'addition de
+matrices dans $\M_{2 \,2}(\R)$.
+
+\medskip
+(b)
+$S=\Bigg\{  \bmatrix a&b \\c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; a+d=0\Bigg\}$.
+
+\soln C'est fermé pour l'addition. Soient
+$A=\scriptsize\bmatrix a&b\\ c&d\endbmatrix$ et
+$B=\scriptsize\bmatrix a'&b'\\ c'&d'\endbmatrix$ deux vecteurs de $S$. On a 
+$a+d=0$ et $a'+d'=0$ et alors
+$A+B=\scriptsize\bmatrix a+a'&b+b'\\ c+c'&d+d'\endbmatrix$ appartient à $S$ car cette somme satisfait bien
+$(a+a')+(d+d')= (a+d) +(a'+d')=0+0=0$.
+
+\medskip
+(d)
+$U=\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; ad=0\Bigg\}$.
+
+\soln Faux, car par exemple,
+$A=\scriptsize\bmatrix 1&0 \\0&0\endbmatrix$ et
+$A=\scriptsize\bmatrix 0&0\\ 0&1\endbmatrix$ appartiennent $U$,
+mais $A+B= \scriptsize\bmatrix 1&0\\ 0&1\endbmatrix$ n'y appartient pas.
+\medskip
+\end{sol}
+
+\bigskip
+\begin{sol}{prob04.6} Déterminez si les
+ensembles suivants sont fermés pour la multiplication par scalaire standard
+des matrices dans $\M_{2 \,2}(\R)$.
+
+\medskip
+(b)
+$\Bigg\{  \bmatrix a&b \\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; a+d=0\Bigg\}$.
+
+\soln Vrai! Soit 
+$A=\scriptsize\bmatrix a&b\\ c&d\endbmatrix$ dans $S$ (et donc $a+d=0$) et soit $k\in\R$ est un scalaire. Alors
+$kA =\scriptsize\bmatrix ka &kb \\ kc & kd \endbmatrix$ satisfait
+$ka + kd = k(a+d)=k0=0$ et donc $kA \in S$.
+
+\medskip
+(d)
+$U=\Bigg\{  \bmatrix a&b \\c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; ad=0\Bigg\}$.
+
+\soln C'{\emph{est}} fermé pour la multiplication par scalaire (mais pas fermé pour l'addition --- voir question (d) de l'exercice
+précédent). Soit $A=\scriptsize\bmatrix a&b\\ c&d\endbmatrix\in U$ (et donc $a  d=0$) et soit $k\in\R$ un 
+scalaire. Alors $kA =\scriptsize\bmatrix ka &kb \\ kc & kd \endbmatrix$ satisfait
+$(ka)  (kd) = k^2(a d)=k^20=0$ et donc $kA \in U$.
+\medskip
+\end{sol}
+
+\bigskip
+\begin{sol}{prob04.7}  Les ensembles
+suivants sont munis des lois d'addition et de
+multiplication scalaire indiquées (dites {\emph{\text{«} opérations vectorielles \text{»}} }). Dans chaque cas, vérifiez
+s'il existe un vecteur nul $\zero$ dans le sous-ensemble. Sinon, donnez un argument qui justifie votre réponse.
+
+(Remarque: dans les deux dernières questions, comme les opérations
+vectorielles ne sont pas standards, le vecteur nul ne
+sera probablement pas celui auquel vous êtes habitués!)
+
+\medskip
+(b) $L=\set{(x, y) \in \R^2\st x -3y=0 }$; opérations vectorielles
+standards dans $\R^2$.
+
+\soln Puisque les opérations sont standards, le vecteur nul $\zero$ est bien le vecteur est $(0,0)$. Comme $0- 3(0)=0$, on a bien $(0,0)\in L$.
+
+\medskip
+(d) $S=\set{(x, y) \in \R^2\st xy \ge 0 }$; opérations vectorielles
+standards dans $\R^2$.
+
+\soln Puisque les opérations sont standards, le vecteur nul $\zero$ est bien $(0,0)$. Comme $\zero\cdot \zero=0\ge 0$, on a bien $(0,0)\in S$.
+
+\medskip
+(f) $K=\set{(x, y, z) \in \R^3\st x+2y+z=1 }$; opérations vectorielles
+standards dans $\R^3$.
+
+\soln Puisque les opérations sont standards, le vecteur nul $\zero$ est bien $(0,0,0)$. Cependant, $0+2(0)+0=0\not=1$ et donc
+$(0,0,0)\notin K$.
+
+\medskip
+(h) $M=\set{(x, x+2) \in \R^2\st x\in \R}$; Addition:
+$(x,y) \tilde+ (x',y')=(x+x', y+y' -2)$. Multiplication des vecteurs
+par les scalaires $k\in \R$: $k\circledast (x,y)=(kx, ky-2k+2)$.
+
+\soln Puisque les opérations {\emph{ne sont pas}} standards, il est peu probable
+que le vecteur nul $\tilde\zero$ soit encore $(0,0)$. Découvrons ce que cela
+pourrait être. Nous avons besoin de $\tilde \zero=(a,b)$ tel que
+$(x,y) \tilde+ (a,b)=(x , y )$ pour tous les $(x,y) \in M$. Il faudrait alors avoir $(x,x+2) \tilde+ (a,b)=(x, x+2)$ pour tout
+$x\in \R$. On a
+$(x,x+2) \tilde+ (a,b)=(x+a, (x+2)+b -2)=(x+a, x+b)$ et donc
+$(x,x+2) \tilde+ (a,b)=(x, x+2)$ ssi $x=x+a$ et
+$x+b=x+2$ pour tout $x\in \R$. Ceci donne $a=0$
+et $b=2$. D'o\`u le vecteur $\tilde \zero=(0,2)$ {\emph{est}} le
+vecteur nul dans ce cas. De plus, comme vous pouvez le voir, on a bien
+$(0,2)\in M$, donc cet ensemble avec ces opérations non-standards {\emph{admet
+en effet un vecteur nul!}}
+\medskip
+\end{sol}
+
+\bigskip
+\begin{sol}{prob04.8} Justifiez clairement vos
+réponses aux questions suivantes:
+
+\medskip
+(a) Pour chacun des sous-ensembles de l'exercice 3, déterminez si la fonction nulle (dénotons-la par $\zero$) de
+$\F(\R)$ y appartient.
+
+\medskip
+(3b) $T=\set{f \in \F(\R) \st f(2)=1 }$.
+
+\soln Depuis ${\bf 0}(2)=0\not=1$, donc cet ensemble ne contient pas la fonction
+nulle.
+
+\medskip
+(3d) $\set{f \in \F(\R) \st \text{ pour tout } x\in \R,   \, f(x)\le 0}$.
+
+\soln Depuis ${\bf 0}(x) = 0 \le 0$ qui est vraie pour tout $x\in \R$, donc on voit que cet ensemble
+contient bien la fonction nulle.
+
+\medskip
+(3f) $O=\set{f \in \F(\R) \st \text{ pour tout } x\in \R,   \, f(-x)= -f(x)}$.
+
+\soln Comme ${\bf 0}(-x) = 0=-0=-{\bf 0}(x)$ pour tout $x\in \R$, on a bien que cet
+ensemble contient la fonction nulle.
+\medskip
+\end{sol}
+
+\bigskip
+\begin{sol}{prob04.9} Les ensembles
+suivants sont munis des lois d'addition et de
+multiplication par scalaire indiquées (dites {\emph{\text{«} opérations vectorielles \text{»}} }).  Dans chaque cas, si
+possible, vérifiez si l'opposé de tout vecteur du sous-ensemble appartient aussi à ce sous-ensemble.
+
+Encore une fois, comme les opérations vectorielles ne sont pas standards, l'opposé d'un vecteur ne sera probablement pas
+celui auquel vous penserez au début.
+
+\medskip
+(a) $M=\set{(x, x+2) \in \R^2\st x\in \R}$; Addition:
+\[(x,y) \tilde+ (x',y')=(x+x', y+y-2).\] Multiplication par
+scalaire $k\in \R$: $k\circledast (x,y)=(kx, ky-2k+2)$.
+
+\soln Pour trouver l'oppos\'e d'un vecteur (s'il existe), il faudrait d'abord d\'eterminer le vecteur nul $\zero$. Mais nous avons déjà trouvé ceci dans la question (h) de l'exercice 7: $\tilde \zero=(0,2)$ est
+le vecteur nul de $M$. Pour trouver l'oppos\'e d'un vecteur
+$\uu=(x,x+2) \in M$, nous devons résoudre l'équation
+$(x,x+2) \tilde+ (c,d)= \tilde \zero=(0,2)$ pour $c$ et $d$. Mais
+$(x,x+2) \tilde+ (c,d)=(x+c, (x+2) +d-2)=(x+c, x+d)$, et donc nous aurons
+besoin de $x+c=0$ et $x+d=2$. Ainsi, $c=-x$ et $d=2-x$. D'o\`u l'oppos\'e de $(x, x+2)$ est $(-x, 2-x)$.
+
+Pour conclure, on r\'e\'ecrit $2-x =(-x)+2$ pour avoir $(-x, 2-x)$ de la forme $(x', x'+2)$ (posez $x'=-x$). C'est donc un élément de $M$. D'o\`u cet ensemble contient bien l'oppos\'e de chacun de ces éléments!
+\medskip
+\end{sol}
+
+\bigskip
+\begin{sol}{prob04.10} Justifiez clairement vos
+réponses aux questions suivantes:
+
+\medskip
+(b)  Déterminez si les sous-ensembles de $\F(\R)$ à l'exercice 3,
+  munis des opérations vectorielles standards de $\F(\R)$, sont des
+  espaces vectoriels.
+
+\medskip
+(3b) $T=\set{f \in \F(\R) \st f(2)=1 }$.
+
+\soln Puisque cet ensemble ne contient pas une fonction nulle $\zero$ (voir question 8 (a)),
+cet ensemble ne peut pas être un espace vectoriel.
+
+\medskip
+(3d)
+$\set{f \in \F(\R) \st \text{ pour tout } x\in \R,   \, f(x)\le 0}$.
+
+\soln Nous avons vu à la question 4 (d) que cet ensemble n'est pas fermé pour la
+multiplication par scalaire, donc il ne peut pas être un espace vectoriel.
+
+\medskip
+(3f)
+$O=\set{f \in \F(\R) \st \text{ pour tout } x\in \R,   \, f(-x)= -f(x)}$.
+
+\soln Nous avons vu dans les questions précédentes que l'ensemble $O$ est fermé pour
+l'addition et la multiplication par scalaire et qu'il admet un vecteur nul $\zero$. Il reste \`a v\'erifier
+l'existence de l'oppos\'e et les 6 crit\`eres d'arithmétiques.
+
+Pour voir que $O$ contient l'opposé de tout vecteur $f\in O$, définissez la fonction
+$g: \R \to \R$ par $g(x)=-f(x), \forall x\in \R$. Il est clair que
+$f+g=\zero$, il reste donc à v\'erifier que $g\in O$. Mais,
+$\forall x\in \R, g(-x)= -f(-x)=-(-f(x))=f(x)=-g(x)$. Donc on a bien $g\in O$, et $O$ contient l'opposé de $f$. CQFD.
+
+Les crit\`eres d'arithmétiques sont des identités
+valables pour {\emph{toutes}} les fonctions dans $\F(\R)$, donc en particulier pour le sous-ensemble $O$. 
+
+Ainsi $O$, muni des opérations standards héritées de $\F(\R)$, est bien
+un espace vectoriel.
+\medskip
+\end{sol}
+
+\bigskip
+\begin{sol}{prob04.11} Justifiez clairement vos
+réponses aux questions suivantes:
+
+\medskip
+(a) Soit $V=\R^2$ muni des lois suivante. Addition:
+  \[(x,y) \tilde+ (x',y')=(x+x', y+y'-2).\] Multiplication
+  par scalaire, pour $k\in \R$, \[k\circledast (x,y)=(kx, ky-2k+2).\]
+  Vérifiez que $\R^2$, avec ces nouvelles lois, est encore un
+  espace vectoriel.
+
+\soln Il est clair que $\R^2$ avec ces opérations est fermé sous ces
+opérations --- les vecteurs r\'esultants sont tous dans $\R^2$. Nous avons vu aussi à la question 7(h) que le vecteur $\tilde \zero=(0,2)$
+représente le vecteur nul dans le sous-ensemble que nous avons appelé
+$M$. Il est facile de vérifier qu'il est aussi le vecteur nul de $\R^2$ muni de ces même opérations non-standards.
+Nous avons également vu à la question 9(a) que l'oppos\'e de $(x,y)$ était
+$(-x, 2-y)$, et vous pouvez vérifier que cela fonctionne encore pour
+$\R^2$ tout entier.
+
+Il nous ne reste plus qu'à vérifier les 6 axiomes d'arithmétique. Nous n'en vérifions que trois et nous laissons les autres aux soins du lecteur. 
+
+Vérifions l'axiome de distributivit\'e:
+$k\circledast (\uu \tilde+ \vv)  = k\circledast \uu \tilde+ k\circledast \vv$.
+
+On a \[\begin{aligned}
+k\circledast ((x,y) \tilde+ (x',y'))  &=k\circledast(x+x', y+y'-2)\\
+&=(k(x+x'), k(y+y'-2)-2k+2)\\ 
+&=(kx+ k x', ky+ky'-2k-2k+2)\\
+&=(kx +ky, (ky -2k +2)+ (ky' -2k +2)-2)\\
+&=(kx, ky -2k +2) \tilde+(kx', ky' -2k +2)\\
+&=k\circledast (x,y) \tilde+ k\circledast (x',y')\,.\end{aligned}\] 
+D'où la distributivit\'e est v\'erifi\'ee!
+
+On a bien aussi l'axiome: $1\circledast \uu=\uu$ :
+$$1\circledast (x,y)=(x, y -2(1) +2)=(x,y)\,.$$
+
+Le dernier qu'on vérifiera est le suivant: pour tous $k,l\in \R$ et $\uu\in \R^2$,
+\[(k+l)\circledast \uu= (k\circledast \uu)\tilde+ (l \circledast \uu).\]
+
+On a  \[\begin{aligned}
+ (k+l)\circledast (x,y)  &=((k+l)x, (k+l)y -2(k+l)+2)\\
+&=(kx+ lx , ky+ly-2k-2l+2)\\ 
+&= (kx +lx,(ky-2k+2)+(ly-2l+2)-2)\\ 
+&= (kx, ky-2k+2)\tilde+ (lx, ly-2l+2)\\
+&= (k\circledast (x,y)\tilde+ (l \circledast (x,y)),\end{aligned}\]
+comme voulu. D'où le résultat.
+\end{sol}
+

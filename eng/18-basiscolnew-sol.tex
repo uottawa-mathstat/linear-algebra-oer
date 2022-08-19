@@ -1,0 +1,111 @@
+
+\begin{sol}{prob16.1} Find the a basis for the row space and column space for each of the matrices below, and check that $\dim \row A= \dim \col A $ in each case.
+\medskip
+
+(b) 
+$A=\bmatrix 1&0&1&2\cr 0&1&1&2\endbmatrix $ 
+
+\soln Row-reduction to RRE form does the trick here. Note that since $A$ is already in RRE form, the Row Space Algorithm yields $\set{(1,0,1,2),(0,1,1,2)}$ as a basis for $\row A$ and $ \set{(1,0),(0,1)}$ as a basis for $\col A$. 
+\medskip 
+
+(d) $A=\bmatrix 1&2&-1&-1\\2&4&-1&3\\ -3&-6&1&-7\endbmatrix$
+
+\soln Here we must first reduce $A$ to RRE form, and find $A\sim \bmatrix 1 & 2 & 0 & 4 \\
+ 0 & 0 & 1 & 5 \\
+ 0 & 0 & 0 & 0 \endbmatrix$. Now the the Row Space Algorithm yields $\set{(1,2,0,4),(0,0,1,5)}$ as a basis for $\row A$ and $ \set{(1,2,-3),(-1,-1,1)}$ as a basis for $\col A$.  
+\medskip
+
+(f) $A=\bmatrix 1 & -1 & 1 & 0 \\
+ 0 & 1 & 1 & 1 \\
+ 1 & 2 & 4 & 3 \\
+ 1 & 0 & 2 & 1\endbmatrix$
+
+\soln Here we must first reduce $A$ to RREF, and find $A\sim \bmatrix 1 & 0 & 2 & 1 \\
+ 0 & 1 & 1 & 1 \\
+ 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0  \endbmatrix$. Now the the Row Space Algorithm yields $\set{(1,0,2,1),(0,1,1,1)}$ as a basis for $\row A$ and $ \set{(1,0,1,1),(-1,1,2,0)}$ as a basis for $\col A$.\medskip
+
+
+\end{sol}
+
+\begin{sol}{prob16.2}  Find a basis of the desired type for the given subspace in each case. (Use your work from the previous question where useful.)
+\medskip
+
+(b) $W=\spn\{(1,2,-1,-1),(2,4,-1,3),(-3,-6,1,-7)\}$: any basis suffices.
+
+\soln We note that $W= \row A$ for the matrix $A$ of part (b) in the previous question. So we use the basis for $\row A$ we found there, namely $\set{(1,2,04),(0,0,1,5)}$.
+\medskip
+
+(d) $Y=\spn\{(1,0,1,1), (-1,1,2,0), (1,1,4,2), (0,1,3,1)\}$: the basis must be a subset of the given spanning set.
+
+\soln We note that $Y= \col A$ for the matrix $A$ of part (f) in the previous question. So we use the basis for $\col A$ we found there, namely $ \set{(1,0,1,1),(-1,1,2,0)}$.
+
+
+
+\medskip 
+\end{sol}
+
+\begin{sol}{prob16.3}
+
+(b) We extend $\set{(1,0,1,2),(0,1,1,2)}$ to a basis of $\R^4$: \smallskip
+
+Set $A=\mat{1&0&1&2\\0&1&1&2\\ &&\uu_3 \\ && \uu_4}$. We can see two leading ones in columns 1 and 2,  so if we set $\uu_3=(0,0,1,0)$ and $\uu_4=(0,0,0,1)$, then
+$$A =\mat{\pivot&0&1&2\\0&\pivot&1&2\\ 0&0&\pivot&0\\ 0&0&0&\pivot}$$ It is now clear that $\rank A=4$, so a desired extension is 
+
+$$ \set{(1,0,1,2),(0,1,1,2), (0,0,1,0),(0,0,0,1)}$$
+\medskip
+
+(d) We extend $ \set{(1,0,1,1),(-1,1,2,0)}$ to a basis of $\R^4$:\smallskip
+
+Set $A=\mat{1&0&1&1\\-1&1&2&0\\ &&\uu_3 \\ && \uu_4}$. We row reduce as far as we can:
+
+$$\mat{1&0&1&1\\-1&1&2&0\\ &&\uu_3 \\ && \uu_4} \sim \mat{
+\pivot&0&1&1\\
+0&\pivot&3&1\\ &&\uu_3 \\ && \uu_4} $$ Again, we can see two leading ones in columns 1 and 2,  so if we set $\uu_3=(0,0,1,0)$ and $\uu_4=(0,0,0,1)$, then
+
+$$A =\mat{1&0&1&1\\0&-1&1&2&0\\ 0&0&1&0\\ 0&0&0&1}\sim \mat{
+\pivot&0&1&1\\
+0&\pivot&3&1\\ 0&0&\pivot&0 \\ 0&0&0&\pivot} $$ 
+
+It is now clear that $\rank A=4$, so a desired extension is 
+
+$$  \set{(1,0,1,1),(-1,1,2,0), (0,0,1,0),(0,0,0,1)}$$
+
+\end{sol}
+\begin{sol}{prob16.4} State whether each of the following is (always) true,
+or is (possibly) false.     
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item If you say the statement may be false, you must give an explicit example.   
+\item If you say the statement is true, you must give a clear explanation -   by quoting a theorem presented in class, or by giving a {\it proof valid for every  case}. 
+\end{enumerate}
+
+
+(b) For some matrices $A$, $\dim \row A+ \dim \ker A= \dim \col A$
+
+\soln Since we always have $\dim \row A=\dim \col A$, the equation above holds if and only if $\dim \ker A=0$. There are such matrices,  so the statement --which merely asserts that there are {\it some}   matrices for which the equation holds -- {\it is} true. For example,  it is true for any invertible  matrix, such as  $\bmatrix 1&0\\0&1\endbmatrix$, where $\dim \row A=\dim \row A=2$ and $\dim \ker A=0$.
+\medskip
+%
+
+(d) For all matrices $A$, $\dim \row A+ \dim \ker A= n$, where $n$ is the number of columns of $A$.
+
+\soln This is always true, indeed we called it the `conservation of dimension'. We know $\dim \ker A$ is the number of parameters in the general solution to $Ax=0$, which we also know is the number of columns of $A$ where there are not leading ones, which of course is the number of columns, less its rank. We also know $\rank A=\dim \row A$. So $\dim \ker A = n-\dim \row A$, which is equivalent to the given equation.
+\medskip
+
+(f) For all $m\times n$ matrices $A$, $\dim \set{Ax\st x\in \R^n} + \dim\set{x \in \R^n \st Ax=0}= m$.
+
+\soln We actually know that $\dim \set{Ax\st x\in \R^n} + \dim\set{x \in \R^n \st Ax=0}= n$ for all $m\times n$ matrices $A$, so the stated equation is true iff $n=m$. Thus the statement above -- which asserts that this holds for all $m\times n$ matrices -- is false. 
+
+For example, let $A=\bmatrix 1&0 \endbmatrix$, where $m=1$ and $n=2$. Then
+$\dim \set{Ax\st x\in \R^n}=\dim \col A= \rank A=1$, and $\dim\set{x \in \R^n \st Ax=0}=\dim \ker A=1$, so the equation asserted in the statement is $1+1=1$, which of course is false.
+\medskip
+%
+
+
+(h) For all $m\times n$ matrices $A$, the dot product of every vector in $\ker A$ with any of the rows of $A$ is zero.
+
+\soln This is true, and is an easy consequence of block multiplication and of the definition of the kernel of $A$: Let $x\in \R^n$ belong to $\ker A$, so $Ax=0$. Write $A$ in block row form: $A=\bmatrix r_1\\\vdots\\ r_m\endbmatrix$, so that $r_i$ is the $i^{th}$ row of $A$. Then $Ax= \bmatrix r_1\\\vdots\\ r_m\endbmatrix x=\bmatrix r_1\cdot x \\ \vdots\\ r_m\cdot x\endbmatrix= \bmatrix 0\\\vdots\\ 0\endbmatrix$. That is , $r_i \cdot x =0$ for every $i$, $1\le i\le m$.
+
+
+\end{sol}
+

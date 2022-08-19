@@ -1,0 +1,186 @@
+\chapter{Bases for finite dimensional vector spaces}
+
+\label{chapter:17wrapupbases}
+
+Let $A$ be an $m\times n$ matrix.
+We have now established techniques for finding bases of
+\begin{itemize}
+\item $\Null(A)$, the nullspace of $A$, which is a subspace of $\R^n$;
+\item $\col(A)$, the column space of $A$, which is a subspace of $\R^m$;
+\item $\row(A)$, the row space of $A$, which is a subspace of $\R^n$.
+\end{itemize}
+Along the way, we determined that 
+$$
+\dim(\Null(A)) + \rnk(A) = n;
+$$
+this is called the rank-nullity theorem.  But since $$\rnk(A) = \dim(\col(A)) = \dim(\row(A)),$$ we could equally rephrase this as
+$$
+\dim(\Null(A)) + \dim(\col(A)) = n,  
+$$
+which expresses a ``conservation of dimension'' of matrix multiplication, 
+since $\Null(A) = \{ \xx \mid A\xx=\zero\}$
+and $\col(A) = \im(A) = \{ A\xx \mid \xx\in \R^n\}$; We can therefor write this equation as
+$$
+ \dim(\Null(A)) + \dim(\row(A)) = n.
+$$
+which is particularly interesting in light of the fact
+(check!) that every vector in the rowspace of $A$ is orthogonal to every 
+vector in the nullspace of $A$ --- so these spaces are \defn{orthogonal complements},  coming up soon in Chapter~\ref{chapter:20OrthogComp}.
+
+\section{Finding bases for general vector spaces}
+
+We mentioned last time that the algorithms for finding bases for $\col(A)$
+and $\row(A)$ can be used to find a basis for any subspace $W$ of $\R^n$, if
+we start with a spanning set of $W$.  But in fact it works for any subspace of
+any vector space.
+
+\begin{myprob} Find a basis for the subspace $W$ of $\PP_3$ spanned by
+$$
+\{ 3+x+4x^2+2x^3, 2+4x+6x^2+8x^3, 1+3x+4x^2+6x^3, -1+2x +x^2 + 4x^3\}
+$$
+
+\begin{mysol} Begin by writing down these vectors in coordinates relative to
+the standard basis $\{1,x,x^2,x^3\}$:
+$$
+\uu_1 = \mat{3\\1\\4\\2}, \uu_2=\mat{2\\4\\6\\8}, \uu_3=\mat{1\\3\\4\\6}, \uu_4=\mat{-1\\2\\1\\4}.
+$$
+By our previous discussion about coordinates, we see that if we are able to 
+find a basis for 
+$$
+U = \spn\{ \uu_1, \uu_2,\uu_3,\uu_4\}
+$$
+(which is a subspace of $\R^4$), then this basis will be the set of coordinate
+vectors of a basis for $W$.
+
+Let's use the rowspace algorithm, so that our result is a nice basis.
+$$
+A = \mat{
+3&1&4&2\\
+2&4&6&8\\
+1&3&4&6\\
+-1&2&1&4} \sim \cdots \sim R= \mat{1&0&1&0\\0&1&1&2\\0&0&0&0\\0&0&0&0}
+$$
+By our algorithm last time, we conclude that $\{ (1,0,1,0), (0,1,1,2)\}$
+is a basis for $U$.
+
+So, going back to the polynomial expressions,  we deduce that $\{ 1+x^2, x+x^2+2x^3\}$ is a basis for $W$.
+
+Check!  These polynomials are certainly linearly independent; we next
+need to check that each of the four polynomials above is a linear combination
+of these two.  But this isn't hard:  look at the coefficients of $1$ and
+$x$:
+$$
+a(1+x^2) + b(x+x^2+2x^3) = a + bx + (a+b)x^2 + 2bx^3.
+$$
+So it's easy to see when something is (or isn't) a linear combination
+of these; we don't need to do any work to find $a$ and $b$. (Now do the
+check.)
+\end{mysol}\end{myprob}
+
+\section{Enlarging linearly independent sets to bases}
+
+Another problem that we have considered before:  what if you
+have a linearly independent set, and you want to extend it to
+a basis for your space?  Where this arises most often is the
+following type of example, so we give a solution in that case.
+
+\begin{myprob} The set $\{ (1,2,3,1), (1,2,3,2)\}$ is a basis for a subspace of $\R^4$.
+Extend this to a basis for $\R^4$.
+
+\begin{mysol} We need to find vectors that are not linear combinations of these.
+There are lots of techniques we could try (recall that even random guessing
+works well!) but here's a nice useful one.
+
+Put the vectors in the rows of matrix.
+$$
+A = \mat{ 1&2&3&1\\ 1&2&3&2}
+$$
+and reduce to REF:
+$$
+R = \mat{ 1 & 2&3 & 1\\ 0 & 0 & 0 & 1}
+$$
+We see that we are missing pivots (leading ones) in 
+the second and third columns.  So the two vectors
+we will add to our set are
+$$
+(0,1,0,0) \quad \textrm{and} \quad (0,0,1,0).
+$$
+Let's see if $\{ (1,2,3,1), (1,2,3,2), (0,1,0,0), (0,0,1,0)\}$
+spans $\R^4$ (and thus a basis for $\R^4$ since
+these are 4 vectors and $\dim(\R^4)=4$):
+$$
+B = \mat{
+ 1 & 2&3 & 1\\
+ 1 & 2 & 3 &2\\
+ 0 & 1 & 0 & 0\\
+ 0 & 0 & 1 & 0}
+\sim
+\mat{ 1 & 2&3 & 1\\
+ 0 & 0 & 0 &1\\
+ 0 & 1 & 0 & 0\\
+ 0 & 0 & 1 & 0}
+\sim
+\mat{ 1 & 2&3 & 1\\
+0 & 1 & 0 & 0\\
+ 0 & 0 & 1 & 0\\
+ 0 & 0 & 0 &1}
+$$
+So there's a leading 1 in every row, meaning $\dim(\row(B)) = 4$.
+Hence the rows of $B$ are a basis for $\R^4$.
+
+The point:  we are just exactly adding the missing leading 1s!
+\end{mysol}\end{myprob}
+
+So:  row reduction (surprisingly!) gave us some easy techniques
+for getting bases of subspaces --- better techniques than what
+we'd decided on theoretically a few weeks ago!  Moreover,
+by working in coordinates relative to a standard basis, 
+all these techniques apply to any subspace of any vector
+space (by turning all vectors into elements of $\R^n$ for some
+$n$).
+
+\section{More about bases}
+We've spent a lot of time talking about the row space and column space
+of a matrix, and have characterizations of those matrices that are
+great in the sense that every consistent system has a unique solution
+(equivalently, its columns are linearly independent); and characterizations
+of matrices that are great in the sense that every system is consistent
+(equivalently, that its columns span $\R^m$).  What can we say
+about a matrix which has BOTH of these great properties?
+
+Well, right off the bat:  it has to be square.  (Look back at the
+characterizations to convince yourself of this --- compare the
+ranks.)  So the following theorem is about square matrices.
+
+\begin{theorem}
+Let $A$ be an $n\times n$ matrix. 
+Then the  following are all equivalent:
+\begin{enumerate}[(1)]
+\item $\rnk(A) = n$.
+\item $\rnk(A^T) = n$.
+\item Every linear system $A\xx=\bb$ has a unique solution.
+\item The RREF of $A$ is $I$.
+\item $\Null(A) = \{\zero\}$.
+\item $\col(A) = \R^n$.
+\item $\row(A) = \R^n$.
+\item The columns of $A$ are linearly independent.
+\item The rows of $A$ are linearly independent.
+\item The columns of $A$ form a basis for $\R^n$.
+\item The rows of $A$ form a basis for $\R^n$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+We just have to put our two theorems from before together.
+The nice statement (3)
+about getting consistency and uniquness together.  Statement
+(4) is just pointing out that the RREF of a square matrix
+with a leading one in every row and column is just exactly
+the identity matrix.  The last
+two are just using the definition of a basis.
+\end{proof}
+
+So matrices which satisfy the conditions of this theorem are
+quite special: our next goal is to show that they are beyond
+special, they are fantastic:  they are \stress{invertible}.
+

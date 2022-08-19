@@ -1,0 +1,52 @@
+
+
+\count58 = 0
+ \countdef\probno=58
+\def\qqq{\advance\probno by 1 {\qq{\the\probno}}}
+
+
+
+% 
+\input xy
+\xyoption{all}
+\def\ex{Exercise }
+\font\realcmr=cmr10
+\overfullrule=0pt
+% GREEK LETTERS
+\def\ep{\epsilon} 
+
+%SYMBOLS
+\newcommand{\F}{\mathbf{F}}
+\newcommand{\E}{\mathbf{E}}
+\newcommand{\M}{\mathbf{M}}
+
+%OPERATORS, RELATIONS
+
+\newcommand{\lam}{\lambda} 
+\newcommand{\dsum}{\oplus} 
+\newcommand{\set}[1]{\{#1 \}} 
+\newcommand{\st}{\,\mid \,}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+ 
+%FUNCTION NAMES, etc.
+\newcommand{\Vect}{\operatorname{Vect}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\rk}{\operatorname{rank}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\im}{\operatorname{im}\,}
+\newcommand{\col}{\operatorname{Col\,}}
+\newcommand{\row}{\operatorname{Row\,}}
+\newcommand{\Arg}{\operatorname{Arg}}
+%
+
+
+%FOR TEACHING 
+
+\newcommand{\q}[1]{\noindent \textbf{#1.}~}
+\newcommand{\qq}[1]{\bigskip\noindent \textbf{#1.}~}
+\newcommand{\soln}{\medskip \textbf{Solution: }}
+
+
+\newcommand{\sov}{\hglue-.30em$^{\star}$}
+

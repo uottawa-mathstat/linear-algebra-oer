@@ -1,0 +1,234 @@
+\section*{Exercices}
+\addcontentsline{toc}{section}{Exercices}
+
+\medskip {\bf Remarques:} 
+\begin{enumerate}
+\item Une question avec un astérisque $ ^\ast$ (ou deux) indique une question de niveau bonus.
+ \item Vous devez justifier toutes vos réponses.  
+\end{enumerate}
+\bigskip
+
+\centerline{\bf  {Multiplication matricielle}} 
+ \begin{prob} \label{prob14.1}
+\begin{enumerate}[a)]
+\item Trouvez le résultat du produit matriciel $\bmatrix 1&
+2\\ 3&6\endbmatrix \bmatrix a&b\\ c&d\endbmatrix$.
+\medskip
+ 
+\item\sov~Écrivez le résultat du produit $\scriptsize\bmatrix 1&
+2\\ 3&6\endbmatrix \bmatrix a\\ b\endbmatrix$ comme une combination lin\'eaire des colonnes de $A=\scriptsize\bmatrix 1&
+2\\ 3&6\endbmatrix$.
+\medskip
+ 
+\item  \'Ecrivez le produit matriciel $\bmatrix 1&
+2\endbmatrix \bmatrix a&b\\ c&d\endbmatrix$ comme une combination lin\'eaire des lignes de  $B=\bmatrix a&b\\ c&d\endbmatrix$.
+\medskip
+ 
+\item\sov~ Calculez le produit matriciel $\bmatrix a \\ b \endbmatrix \bmatrix c&d \endbmatrix$.
+\medskip
+ 
+
+\item Calculez le produit matriciel $\bmatrix c&d \endbmatrix \bmatrix a \\ b \endbmatrix $.
+\medskip
+ 
+\item\sov~ Soit $A=\bmatrix \cc_1&\cc_2 &\cc_3\endbmatrix$ une matrice $m\times 3$ donn\'ee en écriture par blocs colonnes, et $\xx=\scriptsize\bmatrix 2\\1\\ 4\endbmatrix$ un  vecteur de $\R^3$. Exprimez $A\xx$ comme une combination lin\'eaire de $\cc_1, \cc_2$ et $\cc_3$. 
+\medskip
+ 
+\item Montrez que $
+\bmatrix 1&2\\ 3&6\endbmatrix \bmatrix 2&-4\\ -1&2\endbmatrix=\bmatrix0&0\cr 0&0\endbmatrix$.
+\medskip
+ 
+\item\sov~ Montrez que si $A=
+\bmatrix 0&1\\ 0&0\endbmatrix$, alors $A^2=\bmatrix0&0\cr 0&0\endbmatrix$. 
+\medskip
+ 
+\item Montrez que si $A=
+\bmatrix 0&1\\ 0&0\endbmatrix$ et $B=\bmatrix 0&0\\ 1&0\endbmatrix$, alors $AB \not= BA$. 
+\medskip
+ 
+\item\sov~ Soit $C$ une matrice $m\times 4$ et $D  =\scriptsize\bmatrix 1&0&1\\0&1&1\\ 1&0&0\\0&0&0 \endbmatrix $. Exprimer les colonnes du produit $CD$ en fonction des colonnes de $C$.
+\medskip
+ 
+\item Si $A=\scriptsize\bmatrix 1&0&1\\0&1&1\\ 1&0&0\\0&0&0 \endbmatrix  $ et $B$ est une matrice $3\times n$, exprimer les lignes de $AB$ en fonction des lignes de $B$.
+\medskip
+ 
+\item\sov~  Trouvez toutes les valeurs $ (a,\ b,\ c)$ telle que $\scriptsize\bmatrix 1&
+2\\ 3&6\endbmatrix \bmatrix a&b\\ c&a\endbmatrix=\bmatrix0&0\cr 0&0\endbmatrix
+ $.
+\medskip
+ 
+\item Calculez $ \scriptsize\bmatrix  1&0&0&-3\\ 0&1&3&0\\ 0&0&1&0
+\\ 0&0&0&1
+\endbmatrix^{2015}$.
+\medskip
+ 
+\end{enumerate}
+ \end{prob}
+\begin{prob}
+\label{prob14.2}
+Montrez que la formule $A^2 - \tr(A)\,A + \det(A)\,I_2 = 0$ est vraie pour toute matrice $A$ de taille $2\times 2$.
+\end{prob}
+
+\begin{prob} \label{prob14.3} Pour chacun des énoncés suivants, indiquez s'il est (toujours) vrai
+ou s'il est (possiblement) faux.     Dans cet exercice, les matrices $A$, $B$ et $C$ sont de tailles adéquates de telle manière à ce que les produits et sommes à calculer soient bien définis.
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item Si vous dites que l'\'enonc\'e peut être faux, donnez un contre-exemple.   
+\item Si vous dites que l'\'enonc\'e est vrai, donnez une explication claire - en citant un théorème ou en donnant une {\it preuve valide dans tous les cas}. 
+\end{enumerate}
+\medskip
+\begin{enumerate}[a)]
+\item  $(A+B)^2= A^2 + 2 AB + B^2$.
+\medskip
+ 
+\item\sov~$C(A+B)=CA+CB$.
+\medskip
+ 
+\item $(A+B)I_6=A+B$.
+\medskip
+ 
+\item\sov~$AB=BA$.
+\medskip
+ 
+\item $(AB)C=A(BC)$.
+\medskip
+ 
+\item\sov~ Si $A$ est une matrice carrée et que $A^2=0$, alors $A=0$.
+\medskip
+ 
+\end{enumerate}
+ 
+\end{prob} \begin{prob} \label{prob14.4}$^\ast$ Supposons que $A$ soit une matrice {\it symétrique} $n \times n$; c'est-à-dire que $A=A^T$. Soient $\vv$ et $\ww$  des vecteurs quelconques de $\R^n$. Montrer que $(A\vv)\cdot \ww= \vv \cdot (A\ww)$.\footnote{Indication : rappelez-vous que si nous écrivons les vecteurs en colonnes, le produit scalaire $\xx\cdot \yy$ est identique au produit matriciel $\xx^T \yy$. Écrivez les produits scalaires comme des produits matriciels puis  développez.}\end{prob}
+
+\bigskip
+
+\centerline{\bf  {Applications aux systèmes linéaires}} 
+ \begin{prob} \label{prob14.5} \'Ecrivez l'équation matricielle équivalente à chacun des systèmes linéaires suivants.
+\medskip
+\begin{enumerate}[a)]
+\item 
+$$\begin{matrix} 
+x&+&y&+&z&=&0\\
+-9x&-&2y&+&5z&=&0\\
+-x&+&y&+&3z&=&0\\
+-7x&-&2y&+&3z&=&0\,. \end{matrix} $$
+\medskip
+ 
+
+\item\sov~$$\begin{matrix} x&&&&&+&w&=&1\\
+x&&&+&z&+&w&=&0\\
+x&+&y&+&z&&&=&-3\\
+x&+&y&&&-&2w&=&2\,. \end{matrix} $$
+\medskip
+  
+\item 
+$$\begin{matrix} &&&-&2x_{3}&&&+&7x_{5}&=12\\
+2x_{1}&+&4x_{2}&-&10x_{3}&+&6x_{4}&+&12x_{5}&=28\\
+2x_{1}&+&4x_{2}&-&5x_{3}&+&6x_{4}&-&5x_{5}&=-1\,.\end{matrix}$$
+\medskip
+ 
+\end{enumerate}
+ 
+
+\end{prob} \begin{prob} \label{prob14.6}  \'Ecrivez l'équation matricielle du système linéaire correspondant à chacune des matrices augmentées suivantes.
+\medskip
+\begin{enumerate}[a)]
+
+\item $\bmatrix  0 & 1 &|& 0 \\
+ 0 & 0 &|& 0 \endbmatrix\,.$
+\medskip
+ 
+\item\sov~$ \bmatrix 1 & 0 & -1 &|&0 \\
+ 0 & 1 & 2 &|&0\\
+ 0 & 0 & 0&|&1 \\
+ 0 & 0 & 0 &|&0\endbmatrix\,.$
+\medskip
+ 
+\item $\bmatrix  1 & 0 & 0 & 3 &|& 3 \\
+ 0 & 1 & 0 & 2 &|& -5 \\
+ 0 & 0 & 1 & 1 &|& -1 \\
+ 0 & 0 & 0 & 0 &|& 0\endbmatrix\,.$
+\medskip
+ 
+\item\sov~$\bmatrix  1 & 2 & 0 & 3 & 0 &|& 7 \\
+ 0 & 0 & 1 & 0 & 0 &|& 1 \\
+ 0 & 0 & 0 & 0 & 1 &|& 2 \endbmatrix\,.$
+\medskip
+ 
+
+\item $ \bmatrix 
+1& 0& 0& -1& 0&|& 10\\  
+0& 1& 0& 1&1&|& 1\\ 
+0& 0& 1& 1& 1&|& 4\\ 
+0& 0& 0& 0& 0&|& 0\endbmatrix\,.$
+\medskip
+ 
+\end{enumerate}
+
+\end{prob} 
+
+ \begin{prob} \label{prob14.7} Pour chacun des énoncés suivants, indiquez s'il est (toujours) vrai ou s'il est (possiblement) faux.     Les matrices dans cet exercice sont supposées être carrées.  
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item Si vous dites que l'\'enonc\'e peut être faux, donnez un contre-exemple.   
+\item Si vous dites que l'\'enonc\'e est vrai, donnez une explication claire - en citant un théorème ou en donnant une {\it preuve valide dans tous les cas}. 
+\end{enumerate}
+\medskip
+\begin{enumerate}[a)]
+\item Si $[A\,|\,\bb\,]$ est la matrice augmentée d'un système linéaire, alors on peut avoir $\rank (A) > \rank ([A\,|\,\bb\,])$.
+\medskip
+ 
+\item\sov~Si $[A\,|\,\bb\,]$ est la matrice augmentée d'un système linéaire, alors on peut avoir $\rank (A)<\rank( [A\,|\,\bb\,])$.
+\medskip
+ 
+
+\item Si $[A\,|\,\bb\,]$ est la matrice augmentée d'un système linéaire telle que $\rank(A)=\rank ([A\,|\,\bb\,])$, alors ce système est incompatible.\medskip
+
+ 
+\item\sov~Si $[A\,|\,\bb\,]$ est la matrice augmentée d'un système linéaire et que  $\rank(A)=\rank ([A\,|\,\bb\,])$, alors le système est compatible. 
+ 
+ 
+\medskip
+\item Si $[A\,|\,\bb\,]$ est la matrice augmentée d'un système linéaire et que $\rank(A)=\rank ([A\,|\,\bb\,])$, alors le vecteur $\bb$ est une combinaison linéaire des colonnes de $A$. 
+\medskip
+ 
+\item\sov~Si $A$ est une matrice $m \times n$ telle que l'équation $A\xx=\zero$ admette une solution unique $\xx\in \R^n$, alors les colonnes de $A$ sont linéairement indépendantes.
+ 
+\medskip
+\item Si $A$ est une matrice $m \times n$ telle que l'équation $A\xx=\zero$ admette une solution unique $\xx\in \R^n$, alors les lignes de $A$ sont linéairement indépendantes.
+\medskip
+
+ 
+\item\sov~Si $A$ est une matrice $m \times n$ telle que l'équation $A\xx=\zero$ admette une infinité de solutions $\xx\in \R^n$, alors les colonnes de $A$ sont linéairement dépendantes.
+ 
+\medskip
+\item Si $A$ est une matrice $m \times n$ telle que l'équation $A\xx=\zero$ admet une infinité de solutions $\xx\in \R^n$, alors les lignes de $A$ sont linéairement dépendantes.
+ 
+\medskip
+\item\sov~Si $A$ est une matrice $6 \times 5$ telle que $\rank(A)=5$, alors $A\xx=\zero$ implique $\xx=\zero\in \R^5$.
+\medskip
+ 
+\item Si $A$ est une matrice $6 \times 5$ telle que $\rank(A)=5$, alors l'équation $A\xx=\bb$ est compatible pour tout $\bb \in \R^6$.
+\medskip
+ 
+\item\sov~Si $A$ est une matrice $5 \times 6$ telle que $\rank(A)=5$, alors l'équation $A\xx=\bb$ est compatible pour chaque $\bb\in \R^5$.
+\medskip
+ 
+\item Si $A$ est une matrice $ 5 \times 6$ telle que $\rank(A)=5$, alors $A\xx=\zero$ implique $\xx=\zero\in \R^6$.
+\medskip
+ 
+\item\sov~Si $A$ est une matrice $3 \times 2$ telle que $\rank(A)=1$, alors $A\xx=\zero$ implique $\xx=\zero\in \R^2$.
+\medskip
+ 
+\item Les colonnes d'une matrice $19\times 24$ sont toujours linéairement dépendantes.
+\medskip
+ 
+\item\sov~Les lignes d'une matrice de $19 \times 24$ sont toujours linéairement dépendantes.
+\medskip
+ 
+\end{enumerate}
+
+
+
+\end{prob}
+

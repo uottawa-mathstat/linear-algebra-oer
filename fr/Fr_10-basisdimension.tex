@@ -1,0 +1,218 @@
+\chapter{Bases, dimension}\label{chapter:Fr_10-basisdimension}
+
+Dans le Chapitre \ref{chapter:Fr_08-independence_span}, nous avons montré les deux résultats suivants :
+\begin{itemize}
+\item Tout ensemble qui est linéairement dépendant (LD) peut être réduit sans affecter l'enveloppe lin\'eaire qu'il engendre. La technique est de retirer tout vecteur qui est combinaison lin\'eaire des autres.
+\item Tout sous-ensemble de $V$ linéairement indépendant (LI) qui n'engendre pas $V$ tout entier peut être \'etendu en un ensemble LI plus grand. La technique consiste à ajouter un vecteur qui n'appartient pas \`a l'enveloppe lin\'eaire engendr\'ee par le sous-ensemble de départ.
+\end{itemize}
+
+\begin{myexample} L'ensemble $\{(1,2,1,1), (1,3,5,6)\}\subseteq \R^4$ est LI (car il est constitué de deux vecteurs et qu'aucun n'est un multiple scalaire de l'autre).  Trouvons 
+un ensemble LI plus grand dans $\R^4$ contenant ces deux vecteurs.
+
+Pour trouver un vecteur qui n'est pas dans l'enveloppe lin\'eaire engendr\'ee par ces deux vecteurs, on commence par r\'e\'ecrire $\spn\tiny\left\{ \mat{1\\2\\1\\1}, \mat{1\\3\\5\\6} \right\}$ comme suit :
+$$
+\spn\left\{ \mat{1\\2\\1\\1}, \mat{1\\3\\5\\6} \right\} =
+\left\{ a \mat{1\\2\\1\\1}+b \mat{1\\3\\5\\6} \Bigg|\, a,b \in \R\right\} 
+= 
+\left\{ \mat{a+b\\2a+3b\\a+5b\\a+6b} \Bigg|\, a,b \in \R\right\}\,.
+$$
+Donc nous voulons choisir un vecteur $(x_1,x_2,x_3,x_4)$ qui
+n'a pas cette forme typique.  En fait, sans faire beaucoup d'effort, on peut voir que $(1,0,0,0)$ en est un. 
+Pour v\'erifier ceci, essayons de résoudre l'équation qu'on obtiendrait à chacune des quatre coordonnées :
+$$
+a+b=1,\quad  2a+3b=0,\quad a+5b=0,\quad a+6b=0\,.
+$$
+On obtient facilement une contradiction comme suit. Les deux dernières équations donnent $b=0$, puis la première équation impliquerai que $a=1$ et finalement une des trois derni\`eres équations donnerait la contradiction $1=0$... Absurde ! 
+
+Conclusion : $\{(1,2,1,1), (1,3,5,6), (1,0,0,0)\}$ est LI et contient l'ensemble de départ.
+\end{myexample}
+
+\begin{remark} En général, si notre ensemble de départ n'engendre pas l'espace vectoriel $V$ tout entier, alors nous pouvons choisir un vecteur au hasard dans $V$ et
+ il y a de fortes chances que ce nouveau vecteur n'appartienne pas
+\`a l'espace engendr\'e par notre ensemble de départ. En effet, un sous-espace vectoriel est souvent très «~petit~» comparé à l'espace vectoriel tout entier. (Pensez par exemple à une droite ou un plan dans $\R^3$ :
+il y a BEAUCOUP PLUS de points qui sont hors de la droite ou du plan qu'il n'y en a dedans !)
+\end{remark}
+
+\begin{myprob} L'ensemble $\{(1,0), (0,1)\}$ est LI comme nous l'avons vu précédemment dans l'Exemple \ref{R2}.
+Pouvons nous trouver un vecteur $\vv \in \R^2$ tel que l'ensemble $\{(1,0), (0,1), \vv\}$ soit
+LI aussi ?
+
+\begin{mysol} NON !  Nous savons que $\spn\{ (1,0), (0,1) \} = \R^2$ puisque
+chaque $(x,y)\in \R^2$ peut être exprimé comme $x(1,0)+y(0,1)$.
+Donc il n'y a pas de vecteur $\vv$ qui r\'epond à la question. \end{mysol}\end{myprob}
+
+En fait, nous savons que deux vecteurs non-nuls et non-colinéaires (donc LI) dans $\R^2$ engendrent $\R^2$ tout entier. Donc on ne pourra \emph{jamais} \'etendre cet ensemble à deux éléments \`a un ensemble LI avec plus d'éléments.  Nous pouvons reformuler ceci comme suit :
+
+\begin{fac}  Tout ensemble de $3$ ou plus vecteurs dans $\R^2$ est forcément LD. \end{fac}
+
+\begin{proof} Soit $S$ un sous-ensemble de $\R^2$ contenant $3$ vecteurs ou plus. Considérons $\vv_1, \vv_2 \in S$.
+Si l'ensemble $\{\vv_1, \vv_2\}$ est LD, alors nous avons terminé car $S$ est alors nécessairement aussi LD (voir Fait \#2 à la page \pageref{fact 2}). \\
+Sinon, comme nous l'avons vu dans la preuve du théorème \ref{subspaces$R^2$}, ces deux vecteurs engendrent $\R^2$ tout entier. 
+Dans ce cas, si $\vv_3 \in S$ est un troisième vecteur, alors nécessairement $\vv_3 \in \spn\{\vv_1,\vv_2\}$.  
+Ceci signifie exactement que $\{\vv_1,\vv_2,\vv_3\}$ est un sous-ensemble LD de $S$, et donc $S$ est aussi LD. \\
+En bref, dans tous les cas, l'ensemble $S$ est bien LD. \end{proof}
+
+\standout{Par conséquent : tout sous-ensemble LI de $\R^2$ contient
+AU PLUS deux vecteurs,  et tout ensemble g\'en\'erateur de $\R^2$ contient AU MOINS deux vecteurs LI.  En combinant les deux énoncés, on arrive à : TOUT sous-ensemble de $\R^2$ qui est à la fois LI et g\'en\'erateur contient exactement deux vecteurs. Pas plus, pas moins. Fascinant!}
+
+\section[Grand théorème : ensembles LI et ensembles gén\'erateurs]{Le GRAND théorème reliant les ensembles LI aux ensembles gén\'erateurs}
+
+Jusqu'à présent, nous avons vu que si $S$ est un ensemble qui génère l'espace vectoriel $V$ tout entier, alors 
+tout ensemble contenant $S$ doit être LD également.  Si de plus $S$ est linéairement indépendant, alors aucun sous-ensemble propre de $S$ ne peut
+engendrer $V$.  En fait, cette idée nous emmène au résultat PLUS FORT suivant: 
+
+\begin{theorem}[Les ensembles LI ne sont jamais plus grands que les ensembles g\'en\'erateurs]\index{les ensembles linéairement indépendants ne sont jamais plus grands que les ensembles g\'en\'erateurs} \label{le GRAND theoreme}
+S'il est possible d'engendrer l'espace vectoriel $V$ tout entier avec seulement $n$ vecteurs, alors
+tout sous-ensemble LI de $V$ possède \emph{au plus} $n$ vecteurs.
+
+De manière équivalente : s'il est possible de trouver un sous-ensemble de $V$ qui est LI et qui contient $m$ vecteurs distincts, alors tout ensemble qui engendre $V$ contient nécessairement \emph{au moins} $m$ vecteurs.
+\end{theorem}
+
+
+\standout{ En d'autres termes :\\
+\noindent Taille de tout ensemble LI dans $V\  \leq\ $ 
+Taille de tout ensemble g\'en\'erateur de $V$.}
+
+La preuve de ce théorème est intéressante. Nous ne prouverons qu'un cas particulier plus simple (le cas où $V$ est un sous-espace de $\R^n$), mais les idées pourront être généralisées pour comprendre la preuve générale. \\
+
+
+Mais avant de voir la preuve, appliquons d'abord ce théorème à quelques exemples.
+
+\begin{myexample} Nous savons que $\R^3$ est engendré par $3$ vecteurs, par exemple : $(1,0,0), (0,1,0), (0,0,1)$.  Donc \emph{tout ensemble
+dans $\R^3$ avec 4 vecteurs (ou plus) est forcément LD!} \end{myexample}
+
+\begin{myexample} Nous avons vu que $4$ vecteurs suffisent pour générer l'ensemble $M_{2,2}(\R)$.
+ Donc tout ensemble de $5$ matrices $2 \times 2$ (ou plus) est forcément LD !  \end{myexample}
+
+\begin{myexample} L'ensemble des matrices diagonales $2\times 2$ est engendr\'e par deux vecteurs. Donc tout ensemble de $3$ matrices diagonales $2\times 2$ (ou plus) est nécessairement LD. \end{myexample}
+
+\begin{myexample} Soit $W$ un plan passant par l'origine dans $\R^3$.
+Il peut être engendré par $2$ vecteurs non-nuls et non-colinéaires. Donc
+3 vecteurs (ou plus) de $W$ sont forcément LD.   
+(Remarque : on peut trouver des sous-ensembles LI constitués de $3$ vecteurs de $\R^3$, mais on ne peut pas trouver de sous-ensemble LI constitué de $3$ vecteurs de $W$). \end{myexample}
+
+Ce dernier exemple n'est en fait pas si surprenant: il nous dit simplement que 3 vecteurs coplanaires quelconques sont forcément linéairement dépendants; c'était notre point de départ. En fait, la seule nouveaut\'e est :
+
+\standout{Le théorème s'applique à \stress{n'importe quel espace vectoriel}, par uniquement à $\R^n$. En particulier, on peut appliquer le théorème aux sous-espaces vectoriels !}
+
+Par exemple, dans l'exemple précédent le nombre maximum de vecteurs linéairement indépendants DANS LE SOUS-ESPACE $W$ est $2$.
+
+\section{L'équilibre critique : base d'un espace vectoriel}
+
+
+
+\begin{definition}
+Un ensemble $\{\vv_1,\vv_2, \cdots, \vv_m\}$ de vecteurs de $V$ est
+appelé \defn{base} de $V$ si :
+\begin{enumerate}
+\item $\{\vv_1,\vv_2, \cdots, \vv_m\}$ est linéairement indépendant ET
+\item $\{\vv_1,\vv_2, \cdots, \vv_m\}$ engendre $V$.
+\end{enumerate}
+\end{definition}
+
+Différentes façons d'interpr\'eter une base :
+\begin{itemize}
+\item c'est un sous-ensemble à la fois g\'en\'erateur et LI de $V$;
+\item c'est le plus grand ensemble (en taille) qui LI dans $V$;
+\item c'est c'est le plus petit sous-ensemble (en taille) qui engendre $V$.
+\end{itemize}
+ 
+\begin{myexample} L'ensemble $\{(1,0), (0,1)\}$ est une base de $\R^2$. \end{myexample}
+
+\begin{myexample} L'ensemble $\{1,x,x^2\}$ est une base de $\PP_2$. \end{myexample}
+
+\begin{myexample}  L'ensemble $\left\{ \mat{1&0\\0&0},  \mat{0&1\\0&0},  \mat{0&0\\1&0},  \mat{0&0\\0&1}\right\}$ est une base de $\M_{2,2}(\R)$. \end{myexample}
+
+\begin{myexample} L'ensemble $\{(1,0)\}$ n'est pas une base de $\R^2$ car il n'engendre pas $\R^2$.  (En revanche, cet ensemble est une base de l'axe des $x$ dans $\R^2$.) \end{myexample}
+
+\begin{myexample} L'ensemble $\{(1,0), (0,1), (1,1)\}$ n'est pas une base de $\R^2$ parce qu'il est LD. \end{myexample}
+
+\begin{theorem}[Invariance de la taille d'une base]\index{toutes les bases ont le même nombre de vecteurs}  
+Si $\{\vv_1, \cdots, \vv_m\}$ et $\{\ww_1, \cdots, \ww_k\}$ sont 
+deux bases d'un espace vectoriel $V$, alors nécessairement $m=k$.
+\end{theorem}
+
+\begin{proof}
+La preuve découle du grand Théorème \ref{le GRAND theoreme} appliqué deux fois.
+
+D'une part, comme $\{\vv_1, \cdots, \vv_m\}$ engendre l'espace vectoriel $V$ et que $\{\ww_1, \cdots, \ww_k\}$ est LI, on a nécessairement que $m \geq k$.
+
+D'autre part, comme $\{\ww_1,\cdots, \ww_k\}$ engendre $V$ et que $\{\vv_1, \cdots, \vv_m\}$ est LI, on a obligatoirement que $k \geq m$.
+
+D'o\`u l'égalité $m=k$. CQFD.
+\end{proof}
+
+\standout{En d'autres termes : TOUTES les bases de $V$ ont le M\^EME nombre de vecteurs !}
+
+\section{Dimension d'un espace vectoriel}
+
+\begin{definition}  Si $V$ admet une base
+$\{\vv_1,\cdots, \vv_n\}$ de cardinal fini $n$, alors la \defn{dimension} de $V$ est
+$n$, le nombre de vecteurs dans cette base.  On écrit
+$$
+\dim(V) = n\,.
+$$
+En particulier, on dit que $V$ est \defn{de dimension finie}.  Sinon, si $V$ 
+n'admet pas de base finie, alors on dit que $V$ est \defn{de dimension infinie}.
+\end{definition}
+
+\begin{remark} Dans ce manuel, nous nous concentrerons principalement sur les espaces vectoriels de dimension finie. 
+\end{remark}
+
+\begin{myexample} $\dim(\R^2) = 2$, car nous avons trouvé une base avec 2 vecteurs. \end{myexample}
+
+\begin{myexample} $\dim(\PP_2) = 3$, parce que nous avons trouvé une base avec 3 vecteurs. \end{myexample}
+
+\begin{myexample} $\dim(M_{2,2}(\R)) = 4$, car nous avons trouvé une base avec 4 vecteurs. \end{myexample}
+
+\begin{myexample} L'ensemble $\{(1,0,\cdots, 0), (0,1,\cdots, 0), \cdots, (0,0, \cdots, 1)\}\subset\R^n$ est LI et il engendre $\R^n$ (vérifiez-le !). Donc $\dim(\R^n) = n$.  \end{myexample}
+
+\begin{myexample} L'ensemble $\{1,x,x^2, \cdots, x^n\}$ est linéairement indépendant (généralisez la preuve de l'exemple \ref{imp} qui montrait que l'ensemble $\{1, x, x^2\}$ est LI), et
+il engendre $\PP_n$ (vérifiez-le !). Donc $\dim(\PP_n) = n+1$.  \end{myexample}
+
+\begin{myexample} Considérons l'ensemble $\{ E_{ij} \st 1 \leq i \leq m, 1 \leq j \leq n\}$,
+où $E_{ij}$ est la matrice $m \times n$ avec des zéros partout sauf dans
+la $(i,j)$-ème position qui est un $1$.  Elles sont linéairement indépendantes car la somme
+$$
+\sum_{i,j} a_{ij}E_{ij}
+$$
+donne précisément la matrice dont l'entrée $a_{ij}$ est la $(i,j)$-ème entrée, donc si cette somme était
+la matrice nulle, alors chaque entrée serait nulle et donc l'équation de dépendance n'aurait que la solution triviale.  
+Par ailleurs, ces matrices engendrent $\M_{m,n}(\R)$ tout entier puisque toute matrice peut être écrite sous la forme de la somme ci-dessus, où les coefficients $a_{ij}$ sont les entr\'ees $(i,j)$ de cette matrice. 
+
+Par conséquent, cet ensemble de matrices forme une base de $\M_{m,n}(\R)$, et en comptant son cardinal on en déduit que: $$\dim(\M_{m,n}(\R)) = m\,n\,.$$  \end{myexample}
+
+\begin{myexample} L'espace vectoriel des polynômes $\PP$ est de dimension infinie, car pour
+tout entier naturel $n$, l'ensemble $\{1,x,x^2, \cdots, x^n\}$ est linéairement indépendant (généralisez la preuve de l'exemple \ref{imp} qui montrait que l'ensemble $\{1, x, x^2\}$ est linéairement indépendant). Or, par définition, une base est forcément au moins aussi grande (sinon plus !) que tout ensemble linéairement indépendant. C'est pourquoi il est impossible de trouver une base finie et ainsi $\dim(\PP)=+\infty$.  \end{myexample}
+
+\begin{myexample} L'espace vectoriel $\F(\R)$ est également de dimension infinie par un argument similaire.  \end{myexample}
+
+Nous pouvons également considérer les notions de base et de dimension pour les sous-espaces :
+
+\begin{myexample} Considérons l'ensemble $L = \{ A \in \M_{2,2}(\R) \st \tr(A) = 0\}$.  Nous avons vu que
+cet ensemble est \'egale \`a
+$$
+L = \left\{ \mat{a & b \\ c& -a} \st a,b,c\in \R \right\} = \spn\left\{ M_1=\mat{1 & 0 \\ 0 & -1}, M_2=\mat{0 & 1\\ 0 & 0}, M_3=\mat{0 & 0 \\ 1 & 0}\right\}\,.
+$$
+Il s'agit donc d'un sous-espace de $\M_{2,2}(\R)$. Aussi, de cette \'egalit\'e on déduit que $\{M_1, M_2, M_3\}$ engendre $L$.  Est-il
+linéairement indépendant ?  Oui, car on a les équivalences suivantes :
+$$
+aM_1 + bM_2 + cM_3 = 0 \quad\Longleftrightarrow\quad \mat{a & b \\ c& -a} = \mat{0 & 0\\0 & 0} \quad\Longleftrightarrow\quad a=b=c=0\,,
+$$
+c.a.d. la solution triviale.  Au final, l'ensemble $\{M_1, M_2,M_3\}$ est linéairement indépendant et
+engendre $L$, donc c'est une base de $L$ et ainsi $\dim(L)=3$.  \end{myexample}
+
+\begin{myprob} Trouvez une base pour $W = \spn\{1, \sin(x), \cos(x)\}$ qui est un sous-espace de $\F(\R)$.
+
+\begin{mysol} Par construction $\{ 1, \sin(x), \cos(x)\}$ engendre $W$.  De plus, nous avons vérifié dans un chapitre pr\'ec\'edent que cet ensemble est linéairement indépendant. D'o\`u c'est une base de $W$, et on obtient $\dim(W) = 3$. \end{mysol}\end{myprob}
+
+\begin{myprob} Trouvez une base pour $U = \{ (x,y,z) \st x+z = 0\}$.
+
+\begin{mysol} D'abord, notons que   
+$$
+U = \{ (x,y,-x) \st x,y \in \R\} = \spn\{(1,0,-1), (0,1,0)\}\,.
+$$
+Donc $U$ est bien un sous-espace vectoriel, et l'ensemble $\{(1,0,-1), (0,1,0)\}$ engendre $U$. De plus, cet ensemble est aussi linéairement indépendant
+puisqu'il est constitué de deux vecteurs qui ne sont pas des multiples  scalaires l'un de l'autre. D'o\`u cet ensemble est une base de $U$, et on conclut que $\dim(U)=2$.
+\end{mysol}\end{myprob}
+

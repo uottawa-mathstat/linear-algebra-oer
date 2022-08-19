@@ -1,0 +1,199 @@
+\section*{Exercices}
+\addcontentsline{toc}{section}{Exercices}
+
+
+\medskip {\bf Remarques:} 
+\begin{enumerate}
+\item Une question marquée d'un astérisque $ ^\ast$ (ou deux !) indique une question de niveau bonus.
+ \item Vous devez justifier toutes vos réponses.
+\end{enumerate}
+\bigskip
+
+
+
+\begin{prob} \label{prob21.1} Calculez le déterminant des matrices suivantes. Ici $\lambda$ est un paramètre réel variable. Utilisez les opérations sur les lignes et/ou colonnes appropriées lorsque cela est utile; n'utilisez la formule de Laplace qu'en dernier recours !
+\medskip
+\begin{enumerate}[a)]
+\item 
+$\bmatrix
+2&-1\\3&0 \endbmatrix $.
+\medskip
+
+
+\item\sov~$\bmatrix 
+2&-1&3\\3&0&-5\\1&1&2 \endbmatrix $.
+\medskip
+% 30
+\item 
+$\bmatrix
+1&1&1\\1&2&3\\0&1&1 \endbmatrix $.
+\medskip
+% -1
+\item\sov~$\bmatrix 3&4&-
+1\\1&0&3\\2&5&-4\endbmatrix$.\medskip
+% -10
+\item 
+$\bmatrix 0&1&0&0\\
+2&0&0&0\\
+0&0&3&0\\
+0&0&0&4\\
+\endbmatrix$.
+\medskip
+% -24
+\item\sov~$\bmatrix \lambda-6&0&0\\0&\lambda&3\\0&4&\lambda+4\endbmatrix $.\medskip
+%-(\lambda -6)(\lambda +6)(\lambda +2)
+ \item $\bmatrix 2&0&0&0&0&0\cr0&1&0&0&0&0\cr0&0&0&1&0&0\cr
+0&0&0&0&0&3\cr0&0&1&0&0&0\cr0&0&0&0&3&0\endbmatrix$.
+\medskip
+
+\item\sov~$\bmatrix
+-\lambda&2&2\\ 2&-\lambda&2\\ 2&2&-\lambda \endbmatrix$.
+\medskip 
+
+
+\end{enumerate}
+
+\end{prob} \begin{prob} \label{prob21.2} Supposons que $\left|\begin{matrix} a&b&c\cr d&e&f\cr g&h&i\end{matrix} \right|=3$. Alors, 
+trouvez les valeurs suivantes :
+\medskip
+\begin{enumerate}[a)]
+ 
+\item $\left|\begin{matrix}  d&e&f \\ a&b&c\\ g&h&i\end{matrix}\right|$.
+\medskip
+%-3
+\item\sov~$\left|\begin{matrix}  b&a&c\\ e&d&f\\ h&g&i\end{matrix}\right|$.
+\medskip
+%-3
+\item $\left|\begin{matrix}  b&3a&c\\ e&3d&f\\ h&3g&i\end{matrix}\right|$.
+\medskip
+%-9
+\item\sov~$\left|\begin{matrix}  b&3a&c-4b\\ e&3d&f-4e\\ h&3g&i-4h\end{matrix}\right|$.
+\medskip
+%-9
+\item $\left|\begin{matrix} 4g&a&d-2a\cr4h&b&e-2b\cr4i&c&f-2c \end{matrix}\right|$.
+%12
+\medskip
+
+\end{enumerate}
+
+\end{prob} \begin{prob} 
+\label{prob21.3} 
+
+ 
+
+\begin{enumerate}[a)]
+
+
+\item Si $Q$ est une matrice $3\times 3$ telle que $\det(Q)=2$, déterminez $\det((3Q)^{-1})$.
+\medskip
+% $\frac{1}{54}$
+\item\sov~Si $B$ est une matrice $4\times 4$ telle que $\det(2BB^T)=64$, déterminez $|\det(3B^2B^T)|$.
+\medskip
+
+\item Si $A$ et $B$ sont deux matrices $4\times 4$ telles que $\det (A)=2$
+et $\det(B)=-1$, déterminez $\det(3AB^TA^{-2}BA^TB^{-1})$.
+\smallskip
+
+\item\sov~Calculez le d\'eterminant de la matrice égale au produit suivant:
+$\scriptsize\bmatrix 1&2\cr3&4 \endbmatrix\bmatrix 5&6\cr7&8\endbmatrix 
+\bmatrix9&10\cr11&12\endbmatrix\bmatrix 13&14\cr15&16\endbmatrix.$
+\smallskip
+%16
+\item  Trouvez toutes les valeurs de $x\in\R$ pour lesquelles la matrice $\scriptsize\bmatrix 0&x&-
+4\cr2&3&-2\cr1&4&1\endbmatrix$ n'est pas inversible.
+\medskip
+%-5
+\end{enumerate}
+\end{prob} \begin{prob} \label{prob21.4} Pour chacun des énoncés suivants, indiquez s'il est (toujours) vrai ou s'il est (possiblement) faux.   
+\begin{enumerate}[$\bullet$]
+\item Si vous dites que l'\'enonc\'e est faux, donnez un contre-exemple.   
+\item Si vous dites que l'\'enonc\'e est vrai, donnez une explication claire - en citant un théorème ou en donnant une {\it preuve valide dans tous les cas}. 
+\end{enumerate}
+
+\medskip Dans ce qui suit, $A$ et $B$ sont des matrices $n \times n$ (avec $n>1$) et $k$ est un scalaire.
+
+\medskip
+\begin{enumerate}[a)]
+\item $\det (AB) = \det (A) \, \det (B)$.
+\medskip
+
+\item\sov~$\det (A +B) = \det (A) +\det (B)$.
+\medskip
+
+\item $\det (k A)= k \det (A)$.
+\medskip
+
+\item\sov~$\det (k A)= k^n \det (A)$.
+\medskip
+
+\item $\det  (A^T) = \det (A)$.
+\medskip
+
+\item\sov~Si $A$ et $B$ sont identiques, sauf pour la première ligne o\`u celle de $A$ est le double de celle de $B$, alors $\det(A)=2 \det(B)$.
+\medskip
+
+\item$^{\ast\ast}$ Si $A=\bmatrix \cc_1 +\bb_1 & \cc_2 & \cdots& \cc_n \endbmatrix$ est donn\'ee en blocs de colonnes (ce qui signifie que la première colonne de $A$ est $\cc_1 +\bb_1$ et que $\cc_2, \cc_3, \dots, \cc_n$ sont les colonnes suivantes de $A$), alors $\det(A)=   \det \bmatrix \cc_1  & \cc_2 & \cdots& \cc_n \endbmatrix + \det \bmatrix  \bb_1 & \cc_2 & \cdots& \cc_n \endbmatrix $\,. 
+\medskip
+
+
+\end{enumerate}
+\end{prob} \begin{prob} \label{prob21.5}
+\medskip
+\begin{enumerate}[a)]
+\item 
+\medskip Si $A$ est une matrice $2\times2$ et que $\vv_1, \vv_2, \vv_3, \vv_4$ sont des vecteurs de $\R^3$ satisfaisant $$\bmatrix \vv_1 &\vv_2 \endbmatrix= A  \bmatrix \vv_3 &\vv_4 \endbmatrix,$$ alors montrez que $\vv_1\times \vv_2 =(\det(A))\, \vv_3\times \vv_4$.
+\medskip
+
+\item\sov~Si $\uu, \vv$ et $\ww$ sont des vecteurs de $\R^3$, utilisez les propriétés des déterminants des matrices $3\times 3$ pour montrer que $$ \uu\cdot \vv\times \ww=  \ww\cdot \uu\times \vv= \vv\cdot \ww\times \uu\,.$$
+
+
+\item Soit $B$ une matrice $1\times n$, soit $D$ une matrice $n\times n$  et soit $a\in \R$ un scalaire. Montrez que $\det \scriptsize\bmatrix a&B\\0&D\endbmatrix= a\,\det(D)$. (La matrice ici est exprimée sous forme de blocs.)
+\medskip
+
+\item$^\ast$\footnote{C'est pour ceux d'entre vous qui connaissent les «~preuves par recurrence~».    Sinon recherchez «~recurrence mathématique~» sur internet.} Soit $D$ une matrice $n\times n$ et soit $B$ une matrice de $m\times n$. Montrer que $\det \scriptsize\bmatrix I_m&B\\0&D\endbmatrix= \det(D)$. (La matrice $\scriptsize\bmatrix I_m&0\\0&B\endbmatrix$ ici,  de taille $(m+n)\times (m+n)$, est exprimée sous forme de blocs.)
+\medskip
+
+
+\item$^\ast$\footnote{Utilisez la même technique que dans la question précédente.} Soit $A$ une matrice $m\times m$. Montrer que $\det \scriptsize\bmatrix A&B\\0&I_n\endbmatrix= \det(A)$. 
+\medskip
+ 
+\item Soient $A, B$ et $D$ des matrices respectivement de tailles $m\times m$, $m \times n$ et $n \times n$. En remarquant que $ \scriptsize\bmatrix A&B\\0&D\endbmatrix =\bmatrix I_m&0\\0&D\endbmatrix\bmatrix A&B\\0&I_n\endbmatrix$, montrez que $\det \scriptsize\bmatrix A&B\\0&D\endbmatrix= \det(A) \det(D)$. 
+\medskip
+
+\item\sov~ Soient $A, B, C$ et $D$ des matrices respectivement de tailles $m\times m$,   $m \times n$, $n \times m$ et $n \times n$. Supposons que $D$ soit inversible. En remarquant que $ \scriptsize\bmatrix A&B\\C&D\endbmatrix \bmatrix I_m&0\\-D^{-1}C&I_n\endbmatrix  =\bmatrix A-BD^{-1}C&B\\0&D\endbmatrix$, montrez que $\det \scriptsize\bmatrix A&B\\C&D\endbmatrix= \det (A-BD^{-1}C) \det(D)$.
+\medskip
+ 
+\item Soient $A, B, C$ et $D$ des matrices $n\times n$. On suppose que $D$ soit inversible et que $CD=DC$. Soit $E=\scriptsize\bmatrix A&B\\C&D\endbmatrix$,  une matrice $(2n)\times (2n)$, exprimée ici sous forme de blocs. Utilisez la question pr\'ec\'edente et les propriétés du déterminant pour montrer que $\det \scriptsize\bmatrix A&B\\C&D\endbmatrix= \det (AD-BC)$.  \medskip
+
+\item$^{\ast\ast\ast}$ \footnote{Ceci s'adresse à ceux d'entre vous qui connaissent la {\it continuité} et le fait que les matrices inversibles $n\times n$ sont {\it denses} dans l'espace des matrices $n\times n$. Recherchez \og\ Matrice inversible\ \fg sur internet. Il existe une autre preuve de cette identité qui n'utilise pas l'argument de la densité, donnée par J.R. Silvester dans {\it Determinants of block matrices}, Math. Gaz., 84(501) (2000), pp. 460-467.} Supposons que $A, B, C$ et $D$ sont des matrices $n\times n$ telles que $CD=DC$. Montrez que $\det \scriptsize\bmatrix A&B\\C&D\endbmatrix= \det (AD-BC)$.  \medskip
+
+\item$^{\ast\ast}$ Soit $A$ une matrice $3 \times 3$ qui satisfait $AA^T=I_3$. \medskip
+
+\begin{enumerate}[i)]
+\item Montrez qu'on a aussi $A^TA=I_3$.
+\medskip
+
+\item Notons $\set{\ee_1, \ee_2, \ee_3}$ la base ordonnée standard (orthonorm\'ee) de $\R^3$. En utilisant le fait que le produit scalaire $\vv\cdot \ww$ est égal au produit matriciel $\vv^T \ww$ (en écrivant les vecteurs comme des matrices $3 \times 1 $), montrez que $\set{A\ee_1, A\ee_2, A\ee_3}$ est aussi un ensemble orthogonal, qui est même {\it orthonorm\'e}.
+\medskip
+
+\item Si $\uu$ et $\vv$ sont deux vecteurs quelconques de $\R^3$, utilisez le Théorème \ref{expansion} pour montrer que $$\uu \times \vv=  \displaystyle \sum_{i=1}^3 (\uu \times \vv)\cdot \ee_i$$ et $$A\uu \times A\vv= \dsize\sum_{i=1}^3 (A\uu \times A\vv)\cdot A\ee_i\,.$$
+\medskip
+
+\item En rappelant la définition du déterminant d'une matrice $3\times 3$, montrez que $$(\uu \times \vv)\cdot \ee_i=\det\bmatrix \uu&\vv&\ee_i\endbmatrix$$ et   $$(A\uu \times A\vv)\cdot A\ee_i=\det\bmatrix A\uu&A\vv&A\ee_i\endbmatrix,$$ o\`u les matrices $\bmatrix \uu&\vv&\ee_i\endbmatrix$ et $ \bmatrix A\uu&A\vv&A\ee_i\endbmatrix$ à droite sont données sous forme de blocs en colonnes.
+\medskip
+
+\item En utilisant ce que vous savez sur la multiplication par blocs et les propriétés des déterminants (cf les exercices ci-dessus), montrez que $$\det\bmatrix A\uu&A\vv&A\ee_i\endbmatrix=\det(A)\det \bmatrix  \uu& \vv& \ee_i\endbmatrix.$$
+\medskip
+
+\item Prouvez maintenant que pour tous vecteurs $\uu, \vv \in \R^3$, (quand $AA^T=I_3$) $$A\uu \times A\vv =\det(A) \, (\uu\times \vv)\,.$$
+\medskip
+
+\item Donnez un exemple de matrice $A$ qui ne satisfait pas $AA^T=I_3$ et de deux vecteurs $\uu,\vv \in \R^3$ pour lesquels $A\uu \times A\vv \not=\det(A) \, (\uu\times \vv)$.
+\medskip
+
+
+\end{enumerate}
+
+\end{enumerate}
+\end{prob}
+

@@ -1,0 +1,349 @@
+\chapter{Eigenvalues and Eigenvectors}
+% of a (square) matrix}
+\label{chapter:22Eigen}
+This chapter and the next are amongst two of the most useful and applicable parts of all of linear algebra! Get ready for a great ride.
+
+\section{Eigenvalues and Eigenvectors of a (square) matrix}
+\begin{definition}\label{section:eigen}
+Let $A$ be an $n\times n$ matrix.  
+If $\lambda\in \R$ is a scalar and $\xx \in \R^n$ is a \stress{nonzero} vector 
+such that
+$$
+A \xx = \lambda \xx
+$$
+then $\xx$ is called an \defn{eigenvector of $A$} and $\lambda$ is its
+corresponding \defn{eigenvalue}.
+\end{definition}
+
+\begin{myexample}
+Let $A = \mat{3 & -1 \\ -2 & 2}$.  Then:
+\begin{itemize}
+\item $1$ is an eigenvalue and $(1,2)$ is an eigenvector corresponding to $\lambda = 1$ because $$A\mat{1\\2} = \mat{1\\2}=1\mat{1\\2}.$$
+\item $4$ is an eigenvalue and $(-1,1)$ is an eigenvector corresponding to $\lambda = 4$ because $$A\mat{-1\\1} = \mat{-4\\4}.$$
+\end{itemize}
+Note that $(10,20)$ and $(17,-17)$ are also eigenvectors of $A$; but
+they are just multiples of what we already found.
+\end{myexample}
+
+\begin{myexample}
+Let $A = \mat{1 & 1\\ 2 & 2}$.  Then 
+$0$ is an eigenvalue, and $(1,-1)$ is a corresponding eigenvector,
+since $A\mat{1\\-1} = \zero = 0\mat{1\\-1}$.
+\end{myexample}
+
+\standout{The matrix $A$ can have $0$ as an \stress{eigenvalue}
+but the vector $\zero$ is NEVER an \stress{eigenvector}.}
+
+The essential application:  
+suppose you can find a basis  $\{ \xx_1,\cdots,\xx_n\}$  for $\R^n$ consisting of
+eigenvectors of $A$, with corresponding eigenvalues $\lambda_1,\cdots, \lambda_n$.
+Then if $\vv = a_1 \xx_1 + \cdots + a_n \xx_n$
+then
+\begin{align*}
+A\vv &= A(a_1 \xx_1 + \cdots + a_n \xx_n)\\
+ &= A(a_1 \xx_1) + \cdots + A( a_n \xx_n)\\
+&= a_1 A\xx_1 + \cdots + a_n A\xx_n\\
+&= a_1\lambda_1 \xx_1 + \cdots + a_n\lambda_n \xx_n\\
+&= \lambda_1a_1\xx_n + \cdots + \lambda_na_n\xx_n.
+\end{align*}
+So although the answer won't be a scalar multiple of $\vv$ (since the
+$\lambda_i$ may be different), the point
+is:  given a vector $\vv$ in coordinates relative to an eigenbasis, calculating
+$A\vv$ doesn't require us to multiply matrices at all --- we just have to
+scale each of the coordinates (coefficients) by the appropriate $\lambda_i$.
+
+(For those of you thinking in terms of computarional complexity:  this means
+going from $O(n^2)$ to $O(n)$ --- fairly significant!)
+
+
+\section{Finding eigenvalues of $A$}
+
+Since both $\lambda$ and $\xx$ are unknown, the equation $A\xx = \lambda \xx$ is
+in fact nonlinear.  As we've seen previously, however, we can sometimes 
+turn nonlinear equations into linear ones by focussing on solving for
+one set of variables at a time.
+
+The \stress{key} is the following chain of equalities, which
+turns $A\xx = \lambda \xx$ into the equation $( A- \lambda I) \xx = \zero$:
+\begin{align*}
+& A\xx = \lambda \xx \\
+\iff & A\xx = \lambda I \xx\\
+\iff & A\xx - \lambda I \xx =\zero  \\
+\iff & (A-\lambda I )\xx=\zero  
+\end{align*}
+This point of view is the key to letting us solve the problem using
+our methods from before, as follows.
+
+First think of $\lambda$ as being a fixed, known quantity.  Then
+this equation is a homogeneous system of linear equations, and
+any \stress{nontrivial} solution is an eigenvector of $A$.  In
+other words:  
+\begin{itemize}
+\item if this system has a unique solution, then there
+are no eigenvectors corresponding to $\lambda$, which means
+$\lambda$ is not an eigenvalue.
+\item if this system has infinitely many solutions, then any nontrivial
+one of these is an eigenvector, and so $\lambda$ is an eigenvalue.
+\end{itemize}
+We can rephrase this as follows, by remembering that when $A$ is
+a square matrix, having infinitely many solutions to a linear
+system is the same as being not invertible:
+
+\standout{The number $\lambda$ is an eigenvalue of $A$ if 
+and only if the matrix $A-\lambda I $ is NOT invertible.}
+
+We could use many different methods to check if the matrix is not
+invertible, but since the matrix has a variable in it (namely,
+$\lambda$) the nicest one is the determinant condition:
+
+\standout{The number $\lambda$ is an eigenvalue of $A$ if 
+and only if $\det( A- \lambda I)=0$.}
+
+\begin{definition}\label{charpoly}
+The polynomial $\det( A- \lambda I)$ is called the \defn{characteristic
+polynomial} of $A$\footnote{Some authors prefer $\det( \lambda I -A)$, but for our computational purposes, using $\det( A- \lambda I)$ is less prone to error, and gives exactly the same answer, up to a sign.}.
+\end{definition}
+
+\begin{myprob}
+Find all the eigenvalues of $A = \mat{1 & 3 \\ 3 & 1}$.
+
+\begin{mysol}
+We need to find all values of $\lambda$ so that $A-\lambda I $ is
+not invertible.  Begin by writing down $A-\lambda I $:
+$$
+A-\lambda I = \mat{1 & 3 \\ 3 & 1} -\mat{\lambda & 0 \\ 0 & \lambda}
+= \mat{  1-\lambda & 3\\ 3 &   1-\lambda}
+$$
+(watch those negative signs on the two $\lambda$s!).
+
+We calculate the characteristic polynomial:
+$$
+\det(A-\lambda I) = (1-\lambda)(1-\lambda) - 9  = \lambda^2 -2\lambda -8
+ = (\lambda - 4)(\lambda + 2),
+$$
+and deduce that this is zero iff $\lambda$ is either $4$ or $-2$.
+Hence, the eigenvalues of $A$ are $4$ and $-2$.  
+
+To check, let's write down $ A-4I$ and $A+2I$ and make sure they are
+in fact non-invertible:
+$$
+A-4I = \mat{-3&3\\3&-3}\sim \mat{1&-1\\0&0}, \qquad A+2I = \mat{3&3\\3&3}\sim \mat{1&1\\0&0}
+$$
+Good! Because both these matrices are not invertible, it's now clear that $4$ and $-2$ are eigenvalues of $A$. To
+see that these are ALL the eigenvalues of $A$, note that $\det(A-\lambda I)$
+is a quadratic polynomial and so has {\it at most} two roots.
+
+ 
+\end{mysol}\end{myprob}
+ 
+ Key for calculations:
+The eigenvalues of $A$ are the roots of the characteristic polynomial 
+$\det( A-\lambda I )$.  
+
+\begin{definition}\label{def:algmult}
+The multiplicity of $\lambda$ as a root of the characteristic polynomial
+is called its \emph{algebraic multiplicity}.
+\end{definition}
+ 
+\begin{myexample}
+The characteristic polynomial of $\mat{16& 2 & 17 \\ 0 & -43 & 14\\ 0 & 0 & 16}$
+is $-(\lambda - 16)^2(\lambda + 43)$. (Check!)  Hence the eigenvalues of this
+matrix are $\lambda = -43$ (with algebraic multiplicity $1$) and
+$\lambda = 16$ (with algebraic multiplicity $2$).
+\end{myexample}
+
+\section{Finding the eigenvectors of $A$}
+
+Suppose now that you have found some eigenvalues of the
+matrix $A$.  To find the eigenvectors of $A$ associated
+to that eigenvalue, recall that they are all the nontrivial
+solutions $\xx$ of
+$$
+( A- \lambda I) \xx = \zero.
+$$
+In other words: the eigenvectors of $A$ asssociated to $\lambda$
+are the nonzero vectors in $\ker( A- \lambda I)= \Null( A- \lambda I)$.
+
+\begin{definition}
+Let $\lambda$ be an eigenvalue of $A$.  Then the subspace
+\begin{align*}
+E_\lambda &= \Null(A- \lambda I)\\
+&= \{ \xx \in \R^n \mid (A- \lambda I)\xx = \zero \} \\
+& = \{ \xx \in \R^n \mid A\xx = \lambda \xx \}
+\end{align*}
+is called the $\lambda$-eigenspace of $A$.
+Its {\it nonzero} elements are the eigenvectors of $A$ corresponding
+to the eigenvalue $\lambda$.
+\end{definition}
+
+So rather than ask: ``What are the eigenvectors of $A$?'' it's
+simpler to ask: ``What is a basis for each eigenspace of $A$?''.
+
+\begin{myprob} Find a basis for each eigenspace of 
+$$
+A = \mat{1 & 3 \\ 3 & 1}
+$$
+(recalling that its eigenvalues were $4$ and $-2$).
+
+\begin{mysol}
+For the eigenvalue $\lambda = 4$:
+$$
+A-\lambda I = A-4I = \mat{-3&3\\3&-3} \sim \mat{1 & -1\\0&0}
+$$
+so the general solution to $(A-4I)\xx = \zero$ is
+$$
+E_4 = \Null(A-4I) = \{(r,r) \mid r\in\R\}
+$$
+and a basis for $E_4$ is
+$$
+\{ (1,1) \}.
+$$
+(Notice that with $\xx = (1,1)$, $A\xx = 4\xx$, as required.)
+
+
+For the eigenvalue $\lambda = -2$:
+$$
+ A-\lambda I = A+2I = \mat{3&3\\3&3} \sim \mat{1&1\\0&0}
+$$
+so the general solution to $(A-2I)\xx = \zero$ is
+$$
+E_{-2} = \Null(A+2I) = \{(-r,r) \mid r\in\R\}
+$$
+and a basis for $E_{-2}$ is
+$$
+\{ (-1,1) \}.
+$$
+(Notice that with $\xx = (-1,1)$, $A\xx = -2\xx$, as required.)
+\end{mysol}\end{myprob}
+
+The dimension of the eigenspace associated to the eigenvalue $\lambda$ is another important number we want to keep track of.
+
+\begin{definition}
+The dimension of the eigenspace $E_\lambda$ is called the
+\defn{geometric multiplicity} of $\lambda$.
+\end{definition}
+
+\section{Towards an eigenvector basis of $\R^n$}
+
+We notice that so far, the eigenvectors we are getting for 
+different eigenvalues are linearly independent.  That's not
+too hard to see for two vectors, but takes a little more work for more.\footnote{The best way is to use {\it Induction}.}  
+
+\begin{theorem}[Independence of Eigenvectors --- Distinct Eigenvalues]
+Let $A$ be an $n\times n$ matrix.  Then any set consisting
+of eigenvectors of $A$ corresponding to distinct eigenvalues
+is linearly independent.
+\end{theorem}
+
+Let's put this together:
+\begin{itemize}
+\item The characteristic polynomial of an $n\times n$ matrix $A$ is
+a polynomial of degree $n$, so it has at most $n$ distinct roots.
+\item Each root of the characteristic polynomial is an eigenvalue of $A$.
+\item Each eigenvalue of $A$ gives an eigenspace of dimension at least $1$.
+\item So IF the characteristic polynomial has exactly $n$ distinct
+roots, then we can choose one eigenvector from each eigenspace and
+thus produce a basis of $\R^n$ consisting entirely of eigenvectors
+of $A$.
+\end{itemize}
+
+\begin{definition}\label{diagble}
+The $n\times n$ matrix $A$ is said to be \defn{diagonalizable over the reals} if there
+is a basis of $\R^n$ consisting entirely of eigenvectors of $A$.
+\end{definition}
+
+(Why ``diagonalizable'', you say?  We'll come back to this in a bit.)
+
+\begin{fac}If an $n\times n$ matrix $A$ has $n$ distinct
+{\it real} eigenvalues then $A$ is diagonalizable.\end{fac}
+
+\medskip
+Can a matrix  ever fail to be diagonalizable?
+ 
+\section{Problematic cases: Case I (not enough real roots)}
+
+\begin{myexample} What are the eigenvalues of 
+$$
+A = \mat{\cos \theta & \sin \theta \\ -\sin \theta & \cos \theta}?
+$$
+Well:  the characteristic polynomial is
+\begin{align*}
+\det( A-\lambda I )& = \det\mat{ \cos \theta-\lambda  & \sin \theta \\ -\sin \theta & cos \theta-\lambda}\\
+& = (\lambda-\cos \theta)^2 + \sin^2\theta\\&= \lambda^2 -2\cos(\theta)\lambda + \cos^2\theta + \sin^2\theta\\
+&= \lambda^2 -2\cos(\theta)\lambda +1.
+\end{align*}
+Its roots, using the quadratic formula, are:
+$$
+\lambda = \frac{1}{2}\left(2\cos\theta \pm \sqrt{4\cos^2\theta - 4}\right)
+= \cos\theta \pm \sqrt{-\sin^2\theta} = \cos\theta \pm i \sin\theta
+$$
+which are complex numbers unless $\sin \theta=0$, \emph{i.e.}, $\theta=0$ or $\pi$.  
+
+If we were to calculate the eigenvectors associated to these
+eigenvalues for $\theta\not=0, \pi$, they would have complex coordinates --- meaning
+they aren't in $\R^2$, but in $\C^2$.  That's fine for 
+certain types of applications but not for others; mathematically
+we usually work over $\C$ (because the fundamental theorem
+of algebra tells us that's where all the roots will lie)\footnote{\label{diagC}Indeed, if we allow complex scalars, and so complex eigenvalues and complex eigenvectors in $\C^2$, $\C^2$ does have a basis of eigenvectors of the matrix $A$. In this case, we say $A$ is {\it diagonalizable over $\C$.}}.
+
+If you happen to know that  $
+A = \mat{\cos \theta & \sin \theta \\ -\sin \theta & \cos \theta}
+$ is a rotation matrix, it's pretty clear why (when $\theta\not=0, \pi$) there are no real values of $\lambda$ for which rotation of a vector $\xx \in \R^2$ by $\theta$, namely $A\xx$,  will result in a real multiple $\lambda \xx$ of $\xx$!
+\end{myexample}
+
+\standout{Moral:  it can happen that some eigenvalues are
+complex numbers.  In this case, you will not get an eigenvector
+basis of $\R^n$; $A$ is not diagonalizable over $\R$. }
+
+
+\section{Problematic cases: Case II (not ``enough'' eigenvectors)}
+
+By definition, if $\lambda$ is an eigenvalue then $\dim(E_\lambda) \geq 1$.
+But it $\lambda$ is a repeated root of the characteristic equation,
+say of multiplicity $k$, then we'd really need $\dim(E_\lambda) = k$,
+and that doesn't always happen:
+
+\begin{myprob} Find the eigenvalues of $A = \mat{3 & 1\\ 0 & 3}$ and a
+basis for each eigenspace.
+
+\begin{mysol} The characteristic polynomial is $(\lambda -3)^2$ so
+the only eigenvalue is $3$ (with algebraic multiplicity $2$).
+But  $\rnk(A- 3I) = 1$ so $\dim E_2 = \dim \Null(A- 3I) = 2-1=1$.
+That is, we only got a 1-dimensional subspace of eigenvectors,
+so it's impossible to find an eigenvector basis of $\R^n$.
+$A$ is not diagonalizable over the reals (or even over $\C$). % - see the footnote on P. \pageref{diagC}).
+\end{mysol}\end{myprob}
+
+\standout{If the characteristic polynomial has a
+repeated root, then it \stress{can happen} that we do not have enough
+linearly independent eigenvectors of $A$ to form a basis.}
+
+\begin{myexample} Consider 
+$$
+A = \mat{3 & 2 & 4\\ 2& 0 & 2\\ 4 & 2 & 3}
+$$
+Find all eigenvalues and a basis for each eigenspace and decide
+if $A$ is diagonalizable.\footnote{This example is done in detail in Section~\ref{section:diag}.  }
+
+You'll find that $A$ is in fact diagonalizable, even though
+its characteristic polynomial has a repeated root.  
+\end{myexample}
+
+
+These examples illustrate a fundamental fact.
+
+\begin{theorem}[Limits of geometric multiplicity]\index{limits of geometric multiplicity}\label{thm:limitsmult}
+Let $\lambda$ be an eigenvalue of $A$.  Then 
+the geometric multiplicity of $\lambda$ is at least $1$, and
+at most equal to the algebraic multiplicity of $\lambda$.  That
+is,
+$$
+1 \leq \dim E_\lambda \leq \textrm{algebraic multiplicity of $\lambda$}
+$$
+\end{theorem}
+
+Note that the first inequality  follows directly from the definition:  $\lambda$
+being an eigenvalue implies that the eigenspace is nonzero (and so
+must have dimension at least $1$).  (Showing the other inequality is
+more work and we will not prove it here.)
+

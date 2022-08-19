@@ -1,0 +1,254 @@
+\chapter{Basis and Dimension}\label{Chapter:09dimension}
+
+Last time, we showed that:
+\begin{itemize}
+\item Any spanning set which is linearly dependent can be reduced (without changing its span), by removing a vector which is in the span of the rest.
+\item Any linearly independent set in $W$  which doesn't span $W$ can be made into a larger linearly independent set in $W,$ by throwing in a vector which
+is not in the span of the set.
+\end{itemize}
+
+\begin{myexample} The set $\{(1,2,1,1), (1,3,5,6)\}$ is LI (since there
+are two vectors and neither is a multiple of the other).  Let's 
+find a bigger LI set containing these two vectors.
+
+To
+find something not in their span, write it out:
+$$
+\spn\left\{ \mat{1\\2\\1\\1}, \mat{1\\3\\5\\6} \right\} =
+\left\{ a \mat{1\\2\\1\\1}+b \mat{1\\3\\5\\6} \st a,b \in \R\right\} 
+= 
+\left\{ \mat{a+b\\2a+3b\\a+5b\\a+6b} \st a,b \in \R\right\}
+$$
+So we want to choose a vector $(x_1,x_2,x_3,x_4)$ which
+can't be expressed in this way.  Well, we don't
+need to try hard, actually:  what about $(1,0,0,0)$?
+Then we'd have
+$$
+a+b=1, 2a+3b=0, a+5b=0, a+6b=0
+$$
+the last two equations give $b=0$, so the first equation gives $a=1$,
+but then the second equation fails.  
+
+Conclusion:  $\{(1,2,1,1), (1,3,5,6), (1,0,0,0)\}$ is LI.
+\end{myexample}
+
+\begin{remark}  Generally speaking, if your set doesn't span the whole space,
+then if you pick a vector at random, chances are it won't be
+in the span of your set.  (Think of a line or plane in $\R^3$:
+there are FAR MORE points NOT on the line or plane than are
+actually on the line or plane.)
+\end{remark}
+
+\begin{myprob} The set $\{(1,0), (0,1)\}$ is LI, as we saw before in example \ref{R2}.
+Can we find $\vv \in \R^2$ so that $\{(1,0), (0,1), \vv\}$ is
+LI?
+
+\begin{mysol} NO!  We know that $\spn\{ (1,0), (0,1) \} = \R^2$ since
+every $(x,y)\in \R^2$ can be expressed as $x(1,0)+y(0,1)$.
+So there are no vectors $\vv$ that satisfy the required
+condition of not being in the span of our set. \end{mysol}\end{myprob}
+
+In fact, we know that any two non-zero non-collinear (in other
+words, LI) vectors in $\R^2$ span all of $\R^2$, so we
+can \emph{never} make such a set bigger.  We can rephrase
+this as:
+
+\begin{fac} Any set of $3$ or more vectors in $\R^2$ is LD.\end{fac}
+
+\begin{proof}  Suppose $S$ is a subset of $\R^2$
+with $3$ or more vectors.  Let $\vv_1, \vv_2 \in S$.\\
+If these are LD, we're done (by our facts).\\
+Otherwise, we know they span $\R^2$, as we saw in the proof of Theorem \ref{subspacesR^2} -- and noted afterwards. \\
+So if $\vv_3 \in S$ is a third vector,
+it satisfies $\vv_3 \in \spn\{\vv_1,\vv_2\}$.  \\
+But
+that means $\{\vv_1,\vv_2,\vv_3\}$ is a LD subset of $S$.\\
+So $S$ is LD. \end{proof}
+
+\standout{In other words:  any LI set in $\R^2$ has
+at most two vectors; and any spanning set of $\R^2$ has at least
+two vectors.  So EVERY linearly independent spanning set has
+exactly two vectors.  WOW!}
+
+\section{The BIG theorem relating LI sets to spanning sets}
+
+So what we know so far is:  if $S$ is a spanning set, then 
+any bigger set (containing $S$) has to be LD.  And if instead
+$S$ is a linearly independent set, then no proper subset could
+span the whole space.  In fact, a MUCH stronger result is true:
+
+\begin{theorem}[LI sets are never bigger than spanning sets]\index{linearly independent sets are never bigger than spanning sets} 
+If a vector space $V$ can be spanned by $n$ vectors, then
+any linearly independent subset has \emph{at most} $n$ vectors.
+
+Equivalently:  if $V$ has a subset of $m$ linearly independent
+vectors, then any spanning set has \emph{at least} $m$ vectors.
+\end{theorem}
+
+
+\standout{In other words:
+the size of any linearly independent set in $V$ \; $\leq$ \;
+ the size of any spanning set of $V$.}
+
+The proof of this theorem is interesting; we'll prove a special case later on, when $V$ is a subspace of $\R^n$,  and this can be used  to see it in general. See me, or
+take  MAT2141!   
+
+Let's apply this theorem in some examples.
+
+\begin{myexample} We know that $\R^3$ is spanned by $3$ vectors
+(eg:  $(1,0,0), (0,1,0), (0,0,1)$).  So \emph{any set
+in $\R^3$ with 4 or more vectors is LD!} \end{myexample}
+
+\begin{myexample} We saw that $M_{2,2}(\R)$ is spanned by $4$
+vectors.  So any set of 5 or more $2 \times 2$ matrices is LD!  \end{myexample}
+
+\begin{myexample} The set of diagonal $2\times 2$ matrices is spanned
+by two vectors, so any set of $3$ or more diagonal $2\times 2$
+matrices is LD. \end{myexample}
+
+\begin{myexample} let $W$ be a plane through the origin in $\R^3$.
+Then it is spanned by $2$ vectors, so
+any 3 or more vectors in $W$ are LD.   (But of course you
+can always find a set of $3$ vectors in $\R^3$ that are LI --- 
+you just can't find a set of $3$ vectors that all lie in 
+the subspace $W$ that are LI.) \end{myexample}
+
+Well, this last example wasn't really news (it amounts to
+saying that any three coplanar vectors are linearly dependent,
+which is where we started before), \emph{except}  to say:
+
+\standout{The theorem applies to \stress{any vector space}, including
+SUBSPACES; it talks about the maximum number of linearly independent vectors IN THE SUBSPACE.}
+
+\section{The critical balance:  a basis of a vector space}
+
+
+
+\begin{definition}
+A set $\{\vv_1,\vv_2, \cdots, \vv_m\}$ of vectors in $V$ is
+called a \defn{basis} of $V$ if:
+\begin{enumerate}
+\item $\{\vv_1,\vv_2, \cdots, \vv_m\}$ in linearly independent, AND
+\item $\{\vv_1,\vv_2, \cdots, \vv_m\}$ spans $V$.
+\end{enumerate}
+\end{definition}
+
+Different ways to think about a basis:
+\begin{itemize}
+\item It's a linearly independent spanning set of $V$.
+\item It's a biggest possible linearly independent set in $V$.
+\item It's a smallest possible spanning set of $V$.
+\end{itemize}
+ 
+\begin{myexample} $\{(1,0), (0,1)\}$ is a basis of $\R^2$. \end{myexample}
+
+\begin{myexample} $\{1,x,x^2\}$ is a basis of $\PP_2$. \end{myexample}
+
+\begin{myexample} $\left\{ \mat{1&0\\0&0},  \mat{0&1\\0&0},  \mat{0&0\\1&0},  \mat{0&0\\0&1}\right\}$ is a basis of $M_{2,2}(\R)$. \end{myexample}
+
+\begin{myexample} $\{(1,0)\}$ is not a basis for $\R^2$, because it does not span $\R^2$.  (It is a basis for $U$,
+the line which is the $x$-axis in $\R^2$.) \end{myexample}
+
+\begin{myexample} $\{(1,0), (0,1), (1,1)\}$ is not a basis for $\R^2$, because
+it is LD. \end{myexample}
+
+\begin{theorem}[All bases have the same size]\index{all bases have the same number of vectors}  
+If $\{\vv_1, \cdots, \vv_m\}$ and $\{\ww_1,\cdots, \ww_k\}$ are
+two bases for a vector space $V$, then $m=k$.
+\end{theorem}
+
+\begin{proof}
+Since  $\{\vv_1, \cdots, \vv_m\}$ spans $V$, and $\{\ww_1,\cdots, \ww_k\}$
+is LI, we know that $m \geq k$ (big theorem).
+
+Since  $\{\ww_1,\cdots, \ww_k\}$ spans $V$ and $\{\vv_1, \cdots, \vv_m\}$
+is LI, we also know that $k \geq m$ (big theorem).
+
+So $m=k$.
+\end{proof}
+
+\standout{In other words:  all bases of $V$ have the SAME number of vectors.}
+
+\section{Dimension of a vector space}
+
+\begin{definition}  If $V$ has a finite basis
+$\{\vv_1,\cdots, \vv_n\}$, then the \defn{dimension} of $V$ is
+$n$, the number of vectors in this basis.  We write
+$$
+\dim(V) = n
+$$
+and also can say that $V$ is \defn{finite-dimensional}.  If $V$ 
+doesn't have a finite basis, then $V$ is \defn{infinite dimensional}.
+\end{definition}
+
+\begin{remark} We will mainly focus on finite dimensional vector spaces in
+this course.  To do interesting things with infinite-dimensional 
+spaces, take the next step after Calculus: \emph{analysis} (MAT2125).
+\end{remark}
+
+\begin{myexample} $\dim(\R^2) = 2$, because we found a basis with 2 elements. \end{myexample}
+
+\begin{myexample} $\dim(\PP_2) = 3$, because we found a basis with 3 elements. \end{myexample}
+
+\begin{myexample} $\dim(M_{2,2}(\R)) = 4$, because we found a basis with 4 elements. \end{myexample}
+
+\begin{myexample} The set $\{(1,0,\cdots, 0), (0,1,\cdots, 0), \cdots, (0,0, \cdots, 1)\}$
+of vectors in $\R^n$ is linearly independent and spans $\R^n$ (check!) 
+and so $\dim(\R^n) = n$.  \end{myexample}
+
+\begin{myexample} \label{example:pnbasis} The set $\{1,x,x^2, \cdots, x^n\}$ is linearly independent -- generalize the proof (found in Example~\ref{imp}) that $\set{1, x, x^2}$ is linearly independent.
+It also  spans $\PP_n$ (check!) and so $\dim(\PP_n) = n+1$.  \end{myexample}
+
+\begin{myexample} Consider the  set of $m \times n$ matrices $\{ E_{ij} \st 1 \leq i \leq m, 1 \leq j \leq n\}$
+where $E_{ij}$ is the matrix with zeros everywhere except for a $1$ in
+the $(i,j)$th position.  These are linearly independent since
+$$
+\sum_{i,j} a_{ij}E_{ij}
+$$
+is the matrix with $(i,j)$th entry $a_{ij}$.  Hence if this sum is
+zero, each entry is zero, and so the dependence equation has only the
+trivial solution.  They span $M_{m,n}(\R)$ since an arbitrary matrix
+can be written in the above form, with $a_{ij}$ equal to its $(i,j)$th
+coefficient for each $i,j$.
+
+So this is a basis; and counting its elements we deduce that $\dim(M_{m,n}(\R)) = mn$.  \end{myexample}
+
+\begin{myexample} The vector space $\PP$ is infinite dimensional.  Why? We saw in Example~\ref{example:pnbasis} that for
+any $n$, the set $\{1,x,x^2, \cdots, x^n\}$ is linearly independent.  Since a basis must be larger than any linearly independent
+set, this shows that you couldn't possibly find a finite basis for all of $\PP$.  \end{myexample}
+
+\begin{myexample} The vector space $F(\R)$ is also infinite dimensional, by
+the same argument.  \end{myexample}
+
+We can also consider bases and dimensions of subspaces.
+
+\begin{myexample} Consider $L = \{ A \in M_{2,2}(\R) \st \tr(A) = 0\}$.  We saw
+this is equal to 
+$$
+L = \left\{ \mat{a & b \\ c& -a} \st a,b,c\in \R \right\} = \spn\left\{ \mat{1 & 0 \\ 0 & -1}, \mat{0 & 1\\ 0 & 0}, \mat{0 & 0 \\ 1 & 0}\right\}
+$$
+so it is a subspace and we have a spanning set $\{M_1, M_2, M_3\}$.  Is this spanning set
+linearly independent?  We check
+$$
+aM_1 + bM_2 + cM_3 = 0 \Leftrightarrow \mat{a & b \\ c& -a} = \mat{0 & 0\\0 & 0}
+$$
+which means $a=b=c=0$.  So $\{M_1, M_2,M_3\}$ is linearly independent and
+also spans $L$.  This means it's a basis of $L$.  So $\dim(L)=3$.  \end{myexample}
+
+\begin{myprob} Find a basis for  $W = \spn\{1, \sin(x), \cos(x)\}$, a subspace of $F(\R)$.
+
+\begin{mysol} We note right away that $\{ 1, \sin(x), \cos(x)\}$ is a spanning set for
+$W$.  Is it linearly independent?  YES, as we verified a while ago.
+Therefore it is a basis for $W$ and $\dim(W) = 3$. \end{mysol}\end{myprob}
+
+\begin{myprob} Find a basis for $U = \{ (x,y,z) \st x+z = 0\}$
+
+\begin{mysol} First we find a spanning set.  
+$$
+U = \{ (x,y,-x) \st x,y \in \R\} = \spn\{(1,0,-1), (0,1,0)\}
+$$
+So $\{(1,0,-1), (0,1,0)\}$ spans $U$ and it is linearly independent
+(since it consists of two vectors which are not multiples of one 
+another) so it is a basis.  Thus $\dim(U)=2$.
+\end{mysol}\end{myprob}
+

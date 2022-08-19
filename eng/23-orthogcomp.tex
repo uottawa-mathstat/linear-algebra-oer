@@ -1,0 +1,409 @@
+\chapter{Orthogonal Complements and Applications}
+\label{chapter:20OrthogComp}
+
+\section{Orthogonal Complements}
+You will recall that one of two important properties of the orthogonal projection $\proj_W(\vv)$ onto a subspace  $W$ was that $\vv-\proj_W(\vv)$ was {\it orthogonal to every vector in that subspace.} This suggests the following definition.
+
+
+
+\begin{definition}
+Let $U$ be a subspace of $\R^n$.  The \defn{orthogonal complement} of $U$
+is the set, denoted $U^\perp$ (pronounced: `$U$-perp') defined by
+$$
+U^\perp = \set{ \vv \in \R^n \st\uu \cdot \vv = 0 \textrm{\; for all $\uu\in U$}}.
+$$
+\end{definition}
+
+\begin{myexample}
+
+
+Let $U = \spn\{ (1,0,3), (0,1,2)\}$. We know that $U$ is the plane through the origin with normal $(1,0,3) \times (0,1,2)=(-3, -2, 1)$. 
+
+
+
+So a vector is orthogonal to $U$ iff it is parallel to $(-3, -2, 1)$. Thus,  
+
+$$U^\perp=\spn\{(-3, -2, 1)\}.$$ 
+\begin{figure}
+\begin{center}
+\includegraphics[scale=.5] {img/uperp.jpg}~
+\end{center} 
+\vglue-.5cm
+\caption{The plane $U$ and its orthogonal complement.}\label{figure:Uperp}
+\end{figure}
+
+Of course $U^\perp$ is the line through the origin with direction vector $(-3, -2, 1)$.
+
+
+\end{myexample}
+
+
+\begin{myexample}
+Let $U$ be the subspace of $\R^4$ defined by  $$U=\spn\{(1,-1,0,-1)\} $$ 
+
+
+
+
+Since we already noted that a vector is orthogonal to every vector in a subspace iff it is orthogonal to a basis of the subspace (see the proof of Theorem~\ref{orthogproj}) a vector $(x,y,z,w) \in U^\perp$ iff 
+$$(x,y,z,w)\cdot (1,-1,0,-1)= x - y - w=0.$$ That is, in this case, 
+
+$$U^\perp=\set{(x,y,z,w)\in \R^4\st x - y - w = 0}.
+$$
+You will recognize this subspace as $W$ of Example~\ref{example:GS} from the last two examples in the previous chapter. 
+\end{myexample}
+
+What about $W^\perp$ from the example just above?\medskip
+
+\begin{myexample}
+Let $W=\set{(x,y,z,w)\in \R^4\st x - y - w = 0}$.
+
+ \medskip
+
+We know that $\vv \in W^\perp$ iff $\vv$ is orthogonal to any basis of $W$. Well, we've lots of those: \emph{e.g.} from Example~\ref{Wagain}: we know that $$ \set{\vv_1=(1,0,0,1), \vv_2=(1,1,1,0), \vv_3=(2,1,-1,1)}$$ is a basis of $W$, so we just need to find  all $\vv$ such that 
+\begin{align}\label{eqn:aaa}
+\notag \vv_1\cdot \vv&=0\\
+\vv_2\cdot \vv&=0\\
+\notag \vv_3\cdot \vv&=0.
+  \end{align}
+We've seen this sort of thing before! Remember Remark~\ref{NullperpRow}? It said, in part, that for a matrix $A$, $\vv\in \Null(A)$ iff $ \vv$ is orthogonal to every row of $A$.
+
+That's what we're staring at above in \eqref{eqn:aaa}. If we set (in block row form)  
+$$  A=  \bmatrix \vv_1\\\vv_2 \\\vv_3\endbmatrix$$
+So solving the system in (\ref{eqn:aaa}) is equivalent to finding $\Null(A)$! Let's do it:
+$$\Null(A)=\Null \bmatrix  1&0&0&1\\1&1&1&0\\2&1&-1&1\endbmatrix =\Null\bmatrix  1 & 0 & 0 & 1 \\
+ 0 & 1 & 0 & -1 \\
+ 0 & 0 & 1 & 0 \\\endbmatrix=\set{(-s,s,0,s)\st s\in \R}.$$
+So the set of basic solutions -- just one in this case -- namely $\set{(-1,1,0,1)}$ is a basis for $\Null(A)= W^\perp$. But this subspace is our original $U$! 
+
+So $U^\perp=W$ and $W^\perp=U$, or said differently, $(U^\perp)^\perp=U$!  Is this always true?
+\end{myexample}
+
+Indeed it is, and more is true as well:
+
+\begin{theorem}[Properties of the orthogonal complement]\index{properties of the orthogonal complement}\label{orthogcompprop}
+Let $U$ be a subspace of $\R^n$.  Then:
+\begin{enumerate}[(1)]
+\item $U^\perp$ is a subspace of $\R^n$
+\item $(U^\perp)^\perp = U$
+\item $\dim(U) + \dim(U^\perp) = n$.
+\end{enumerate}
+When two subspaces $U$ and $V$ satisfy $U = V^\perp$ (or equivalently,
+$V = U^\perp$) then we say they are \defn{orthogonal complements}.
+\end{theorem}
+
+\begin{proof}
+(1) We apply the subspace test.  We have
+$$
+U^\perp = \{ \vv \in \R^n \mid \uu \cdot \vv = 0 \textrm{\; for all $\uu\in U$}.
+ \}
+$$
+(a) Since the zero vector is orthogonal to every vector in $U$ (it's orthogonal
+to everything!), $\zero \in U^\perp$. Good.
+
+(b) Suppose $\vv, \ww\in U^\perp$.  That means $\uu \cdot \vv= 0$ and $\uu \cdot \ww =0$.  Is $\vv + \ww \in U^\perp$?  We calculate
+$$
+\uu \cdot (\vv + \ww) = \uu \cdot \vv + \uu \cdot \ww = 0 + 0 = 0.
+$$
+OK!
+
+(c) Suppose $\vv \in U^\perp$ and $k\in \R$.  That means $\uu \cdot \vv = 0$.
+We calculate
+$$
+\uu \cdot (k\vv) = k\uu \cdot \vv = k (0) = 0
+$$
+so indeed $k\vv \in U^\perp$. 
+
+Thus $U^\perp$ is a subspace.
+
+
+Let's prove (3) next.  Let $\{\uu_1,\ldots, \uu_k\}$ be a basis for $U$.
+Create the matrix $A$ whose rows are these vectors (transposed!).
+Then the set of all vectors $\vv$ which are orthogonal to $U$
+is exactly the set of vectors $\vv$ such that $A\vv = \zero$
+(using the argument of the example above).  Hence $U^\perp = \Null(A)$.
+By the rank-nullity theorem, 
+$$
+\dim(\row(A)) + \dim(\Null(A)) = n \Leftrightarrow \dim(U) + \dim(U^\perp) = n.
+$$
+
+Finally, to prove (2):  Let $V = U^\perp$; this is a subspace by (1)
+and its dimension is $n - \dim(U)$ by (3).   We want to conclude that $U = V^\perp$.  Since every vector in $U$ is indeed orthogonal to every vector in $V$,
+it is true that $U \subseteq V^\perp$.  Furthermore, by (3), we have that  $\dim(V^\perp) = n-(n-\dim(U)) = \dim(U)$.  So $U$ is a subspace of $V^\perp$
+but has the same dimension as $V^\perp$: it must be all of $V^\perp$.
+(This is the theorem about how a subspace that isn't the whole space
+must have a strictly smaller dimension.)
+
+\end{proof}
+
+\begin{myprob}
+Let $A$ be any matrix.  Show that $\row(A)$ and $\Null(A)$ are orthogonal complements, as are  $\col(A)$ and $\Null(A^T)$.  
+
+\medskip
+
+\begin{mysol}
+
+This is a reprise of our example above, in general.
+Suppose $A$ is an $m \times n$ matrix.
+Recall that $\Null A=\set{\xx \in \R^n\st A \xx=0}$.
+But by definition of the multiplication of matrices, this is
+exactly saying that that dot product of each row of $A$ with $\xx$
+gives 0.  So $$\Null(A)=\set{\xx \in \R^n \st \xx \text{ is orthogonal to every row of }A}$$ 
+
+Since the rows of $A$ span $\row(A)$, by the footnote \ref{CheckOrthogOnSpan} on page \pageref{CheckOrthogOnSpan},  $\xx \in \Null(A)$ iff $\xx$   is orthogonal to every  vector in $\row(A)$, i.e. $\Null(A)=\row(A)^\perp$, as required.
+
+To see that $\Null(A^T)=\col(A)^\perp$, substitute $A^T$ for $A$ in   $\Null(A)=\row(A)^\perp$ to obtain $\Null(A^T)=\row(A^T)^\perp$ and note that $\col(A)=\row(A^T)$.
+\end{mysol}
+\end{myprob}
+
+
+
+
+
+ 
+
+
+\section{Orthogonal projection --- an encore}
+
+Let's use what we know about orthogonal complements to find another way to compute the orthogonal projection. Don't be put off by the first example. It is easy --- we could have done it in high school, but the method we use will be quite different, and will lead to the new way to compute the orthogonal projection.
+
+\bigskip
+\begin{myprob}
+Find the projection of $\bb = (1,2,3)$ on the subspace $U$
+spanned by $\{ (1,1,1)\}$.
+
+\medskip
+
+\begin{mysol}
+We're looking for a point $\vv \in U$ such that $\bb-\vv \in U^\perp$.
+Think of $U = \col(A)$ where $A = \mat{1\\1\\1}$.
+Then $U^\perp = \Null(A^T)$.  
+
+An element of $U$ is the same thing as an element of $\col(A)$, which can
+be written as $\vv=Ax$ for some $x$ (in this silly case, $x\in\R$).
+To say that $\bb-\vv = \bb-Ax$ is in $U^\perp = \Null(A^T)$
+means that 
+$$
+A^T(\bb-Ax) = 0
+$$
+or
+$$
+A^TAx = A^T\bb.
+$$
+Now $A^TA = (1,1,1)\cdot (1,1,1) = 3$; and $A^T\bb = \mat{1 & 1 & 1}\mat{1\\2\\3} = 6$ so $x = 2$.  Our answer
+is 
+$$
+\proj_U(\bb) = \vv = Ax = \mat{2\\2\\2}
+$$
+which coincides with our known formula from before:
+$$
+\proj_{(1,1,1)}((1,2,3)) = \frac{(1,2,3)\cdot (1,1,1)}{\|(1,1,1)\|^2} \mat{1\\1\\1} = \mat{2\\2\\2}.
+$$
+\end{mysol}\end{myprob}
+
+But we've just found another way to calculate the projection onto
+{\it any} subspace of $\R^n$:
+
+\begin{theorem}[Second method to calculate the projection]\index{calculating the projection- second method}
+Let $U$ be a subspace of $\R^n$ and let $A$ be a matrix such that
+$\col(A) = U$.  Then $\proj_U(\bb)$ is the vector $A\xx$ 
+where $\xx$ is any solution to the system
+$$
+A^TA \xx = A^T \bb.
+$$
+\end{theorem}
+
+To prove it, just apply the argument in the example above.
+
+Note that because we know that $\proj_U(\bb)$ always exists, the system  
+$A^TA \xx = A^T \bb$ will {\it always} be consistent!
+
+\section{Application: Best approximations to solutions of inconsistent systems}
+
+\begin{corollary}[Best Approximation to a Solution]\index{best approximation to a solution of an inconsistent system}
+Suppose that $A\xx = \bb$ is inconsistent.  Then the
+\defn{best approximation} to a solution of this system is
+any vector $\zz$ which solves
+$$
+A^TA \zz = A^T \bb
+$$
+That is, such a $\zz$ minimizes $\Vert A\zz - \bb \Vert$.
+\end{corollary}
+
+\begin{proof}
+Minimizing $\Vert A\zz - \bb \Vert$ over all $\zz \in \R^n$
+means finding the closest vector in $\col(A)$ to $\bb$,
+since $\col(A)$ is exactly the set of vectors of the form $A\zz$.
+So $A\zz$ will be have to be $\proj_{\col A}(\bb)$. This is found exactly as in the theorem above.
+\end{proof}
+
+\begin{myprob}
+Find the best approximation to a solution for the inconsistent system $A\xx = \bb$ where $\bb = (1,2,1,2)$ and
+$$
+A = \mat{1 & 0 & 1 \\ 0 & 1 & 0 \\ 0 & 0 & 1\\ 0 & 0 & 0}.
+$$
+ 
+\begin{mysol}
+Let's apply
+the corollary.
+We calculate
+$$
+A^T A = \mat{1 & 0 & 0 & 0\\ 0 & 1 & 0 & 0 \\ 1 & 0 & 1 & 0}
+\mat{1 & 0 & 1 \\ 0 & 1 & 0 \\ 0 & 0 & 1\\ 0 & 0 & 0}
+=\mat{1 & 0 & 1\\ 0 & 1 & 0 \\ 1 & 0 & 2}
+$$
+and 
+$$
+A^T\bb = \mat{1 & 0 & 0 & 0\\ 0 & 1 & 0 & 0 \\ 1 & 0 & 1 & 0}\mat{1\\2\\1\\2} = \mat{1 \\ 2\\ 2}
+$$
+So we need to solve
+$$
+\mat{1 & 0 & 1\\ 0 & 1 & 0 \\ 1 & 0 & 2}\mat{x\\y\\z} = \mat{1 \\ 2\\ 2}
+$$
+which we do by row reducing the augmented matrix
+$$
+\mat{1 & 0 & 1 &|& 1\\ 0 & 1 & 0 &|& 2\\ 1 & 0 & 2&|& 2}
+\sim \cdots \sim
+\mat{
+1 & 0 & 0 &|& 0\\ 
+0 & 1 & 0 &|& 2\\ 
+0 & 0 & 1&|& 1}
+$$
+which has unique solution $(0,2,1)$.  So we claim that
+$$
+\xx=\mat{0\\2\\1}
+$$
+gives the best possible approximation to a solution to the
+system $A \xx = \bb$; we have
+$$
+\mat{1 & 0 & 1 \\ 0 & 1 & 0 \\ 0 & 0 & 1\\ 0 & 0 & 0}\mat{0\\2\\1} = \mat{1\\2\\1\\0}
+$$
+which isn't quite $\bb$ but is fairly close.
+
+To be really convinced this is the best, consider any other $\vv=(x,y,z)$;
+then 
+$$
+A\vv = (x+z, y, z, 0)
+$$
+so 
+$$
+\Vert (1,2,1,2) - (x+z, y, z, 0) \Vert^2 = (1-(x+z))^2 + (2-y)^2 + (1-z)^2 + 2^2 
+$$
+and the answer we found makes the first three terms 0, which clearly gives the 
+minimum possible value (4) for the total distance squared.
+\end{mysol}\end{myprob}
+
+
+
+
+\section{Application: Least-Squares Best Fitting Line or Curve}\label{leastsquares}
+
+\begin{myprob} Suppose you collect the following data
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline x & y \\
+\hline 
+-2 & 18 \\
+-1 &  8.1 \\
+0 & 3.8\\
+1 & 3.1\\
+2 & 6.1\\
+\hline
+\end{tabular}
+\end{center}
+These data points don't exactly lie on a parabola, but you think that's
+experimental error; what is the best-fitting quadratic function
+through these points?
+
+\medskip
+
+\begin{mysol} 
+This doesn't seem to be a linear problem, at first.
+Let's rephrase this as a problem in linear algebra!
+
+We want to find a quadratic polynomial
+$$
+y = a + bx + cx^2
+$$
+so that when we plug in one of the $x$-values above, we get ``close''
+to the $y$ value we measured.
+
+Well, what we're really saying is:  solve for $a,b,c$ (or at least,
+try to) in the following linear system:
+\begin{align*}
+a + b(-2) + c(-2)^2 &= 18\\
+a + b(-1) + c(-1)^2 &= 8.1\\
+a + b(0) + c(0)^2 &= 3.8\\
+a + b(1) + c(1)^2 &= 3.1\\
+a+ b(2) + c(2)^2 &= 6.1\,.
+\end{align*}
+This is the matrix equation
+$
+A\xx = \bb
+$
+where 
+$$
+A = \mat{1 & -2 & 4\\ 1 & -1 & 1\\ 1 & 0 & 0 \\ 1 &  1& 1\\ 1 & 2 & 4}, \qquad \bb = \mat{18\\8.1\\3.8\\3.1\\6.1}.
+$$
+You can check that this is inconsistent.
+
+So:  we know from above that we should solve instead
+$$
+A^TA \xx = A^T\bb
+$$
+where
+$$
+A^TA = \mat{5&0&10\\0&10&0\\10&0&34}
+\qquad
+\textrm{and} 
+\qquad 
+A^T\bb = \mat{39.1\\-28.8\\107.6}
+$$
+which gives (after a bit of row reduction, and maybe the help of a calculator)
+$$
+\xx = \mat{3.62\\-2.88\\2.1} = \mat{a\\b\\c}
+$$
+meaning our quadratic polynomial is
+$$
+y = (3.62) - (2.88)x + (2.1) x^2.
+$$
+(You'd need a graphing calculator to see if this is really the best possible fit.)
+\end{mysol}\end{myprob}
+
+In what sense was this the ``best answer''?  We minimized the distance between
+$A\xx$ and $\bb$.  Recall that if $\xx = (a,b,c)$ then $A\xx$ is
+the $y$-values for the points on the curve $a+bx+cx^2$ at the given
+$x$-values in the table (or, in the second column of $A$). Call these $(y_{-2}, y_{-1}, y_0, y_1, y_2)$.
+ And $\bb$
+is the measured values in the table; call these $(y'_{-2}, y'_{-1}, y'_0, y'_1, y'_2)$.
+So we've minimized
+$$
+\Vert A\xx - \bb \Vert^2 = (y_{-2}-y'_{-2})^2 + (y_{-1}-y'_{-1})^2 + (y_0-y'_0)^2 + (y_1-y'_1)^2 + (y_2-y'_2)^2
+$$
+that is, we've found the  \defn{least squares best fit}: the curve that minimizes the sum of the squares
+of the differences in $y$-values.
+
+\standout{This is the de facto standard for fitting curves to experimental data.}
+
+\paragraph{Summary of method:}
+
+\begin{enumerate}
+\item Given: data points $(x_i,y_i)$, $i=1,\cdots, n$.
+\item Goal: to find the best polynomial of degree $m$ fitting these data points, say
+$$
+p(x) = a_0 + a_1x+ \cdots + a_mx^m
+$$
+\item Set $$
+A = \mat{1 & x_1 & x_1^2 & \cdots & x_1^m \\
+1 & x_2 & x_2^2 & \cdots & x_2^m \\
+\ldots & \ldots & \ldots & \ddots & \ldots \\
+1 & x_n & x_n^2 & \cdots & x_n^m}
+\qquad \textrm{and} \qquad
+\bb = \mat{y_1\\y_2 \\ \ldots \\ y_n}
+$$
+\item Solve $(A^TA) \xx = (A^T\bb)$ for the vector $\xx = (a_0,a_1, \cdots, a_m)$
+of coefficients of your best-fitting polynomial.
+\end{enumerate}
+
+
+

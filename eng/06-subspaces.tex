@@ -1,0 +1,248 @@
+\chapter{Subspaces and Spanning Sets}\label{Chapter:05subspaces}
+
+In the last chapter, we established the concept of a \emph{vector space},
+which is a set $V$ on which we can perform two operations
+(addition and scalar multiplication) such that 10 axioms
+are satisfied.  The result is:  a vector space is algebraically
+indistinguishable from things like $\R^n$ (as far
+as addition and scalar multiplication go).
+
+We met some particularly nice vector spaces:
+\begin{itemize}
+\item $\R^n$, $n\geq 1$
+\item $\mathcal{E}$, a space of linear equations in 3 variables
+\item $F[a,b]$, functions on the interval $[a,b]$
+\item $F(\R)$, functions on the real line
+\item $M_{m\times n}(\R)$, $m\times n$ real matrices
+\end{itemize}
+And for each of these, we had to check 10 axioms.  But we
+noticed that sometimes, the last 6 axioms (the ones dealing
+purely with algebraic properties) were ``obvious''.
+
+Let's consider this more carefully.
+
+
+
+
+\section{Subsets of Vectors Spaces}  
+Suppose $V$ is a vector space, and $W \subseteq V$ is a \emph{subset} of 
+$V$.  
+
+\begin{myexample}
+Let $V = \R^2$ (we know it's a vector space), and let $W = \{(x,2x) | x\in \R\}$.  Use the \emph{same} operations of addition and scalar multiplication
+on $W$ as we use in $\R^2$.  What do we really need to verify to decide
+if
+it's a vector space?
+
+{\bf closure:}  (1) closure under addition:  if $(x,2x)$ and $(y,2y)$ are in $W$,
+then $(x,2x) + (y,2y) = (x+y, 2(x+y))$, which is in $W$ because it has
+the correct form $(z,2z)$ with $z=x+y$.  YES.
+
+(2) closure under scalar multiplication:  if $(x,2x) \in W$ and $c\in \R$
+then $c(x,2x) = (cx,2(cx))\in W$ as well.  YES.
+
+{\bf existence:}  (3) the zero vector is $(0,0)$, which is in $W$.  But we
+don't need to bother checking if $\zero + \uu = \uu$ for
+each $\uu \in W$, because we know this is true for all $\uu \in \R^2$
+already (since $V$ is a vector space and so satisfies axiom (3)).  So
+it's enough to know that $\zero \in W$.
+
+(4) if $\uu \in W$, then we know that $-\uu = (-1)\uu \in W$
+because (2) is true.  And again, we know that the negative has the 
+correct property because we checked it when we decided that $V$
+was a vector space.
+
+{\bf algebraic properties:} (5)-(10)  All of these properties are
+known to be true for any vectors in $V$; so in particular they
+are true for any vectors in the smaller set $W \subset V$.  So
+we don't need to check them again!
+
+We conclude:  $W$ is a vector space.  \end{myexample}
+
+\begin{definition}
+A subset $W$ of a vector space $V$ is called a \defn{subspace}
+(or \emph{subspace of $V$}) if it is a vector space when
+given the \stress{same
+operations} of addition and scalar multiplication as $V$.
+\end{definition}
+
+\begin{myexample}
+$W = \{ (x,2x) | x\in \R\}$ is a subspace of $\R^2$. \end{myexample}
+
+\begin{theorem}[Subspace Test]\index{subspace test} : 
+If $V$ is a vector space and $W \subseteq V$, then $W$ is 
+a subspace of $V$ if and only if the following 3 conditions
+hold:
+\begin{enumerate}
+\item $\zero \in W$.
+\item $W$ is closed under addition:  for every $\uu, \vv \in W$, $\uu+\vv$ is again in $W$.
+\item $W$ is closed under multiplication by scalars: for every $\uu \in W$ and $r\in \R$, $r\uu$ is again in $W$.
+\end{enumerate}
+\end{theorem}
+
+Think of this theorem as giving you a shortcut to working out
+if certain sets are vector spaces.  We saw in the example above
+why it comes down to just these three axioms. \footnote{You might wonder why we have to include the first one, though,
+since $0 \uu = \zero$ so it ought to follow from closure
+under scalar multiplication.  It does, but only if the set
+$W$ is not the empty set.  So if $W$ isn't empty, then it's 
+enough to check axioms (2) and (3).  BUT as a general rule, 
+(1) is super-easy to check;  and if it fails you know $W$ isn't
+a subspace.  So it's a quick way to exclude certain sets and
+we always use it.}
+
+\section{Many examples}  Now let us apply the subspace
+test to acquire many more examples of vector spaces.  On
+the homework and in the suggested exercises, you'll see
+many examples of subsets to which the subspace test does
+not apply (because the operations aren't the same) or where
+the subspace test fails.  Do many examples to develop your
+intution about what does and does not constitute a vector
+space!
+
+\begin{myprob} Let $T = \{ \uu \in \R^3 | \uu \cdot (1,2,3) = 0\}$,
+with the usual operations on $\R^3$.  Is this a subspace?
+
+\begin{mysol} Notice that $T \subset \R^3$ and $T \neq \R^3$.  In fact, 
+$T$ is the plane with equation
+$$
+x + 2y + 3z= 0.
+$$
+Since we're using the usual operations on $\R^3$, we apply
+the subspace test:
+\begin{enumerate}
+\item Is $\zero \in T$?  Yes, since $\zero = (0,0,0)$ satisfies
+the condition $\uu \cdot (1,2,3) = 0$.
+\item Is $T$ closed under addition? \\
+ Well, suppose $\uu$ and $\vv$
+are in $T$. \\
+ That means $\uu \cdot (1,2,3) = 0$ and $\vv \cdot (1,2,3) = 0$.  \\
+We need to decide if $\uu + \vv \in T$.  \\
+That means we
+need to decide if $(\uu + \vv) \cdot (1,2,3) = 0$. \\
+ We calculate: $(\uu + \vv) \cdot (1,2,3) = (\uu \cdot (1,2,3)) + (\vv \cdot (1,2,3)) = 0 + 0 = 0$.\\
+So $\uu + \vv \in T$, and we conclude $T$ is closed under addition.
+\item Is $T$ closed under multiplication by scalars?\\
+Let $k \in \R$ and $\uu \in T$.  \\
+So we have that $\uu \cdot (1,2,3) = 0$.\\
+We want to decide if $k\uu \in T$.\\
+That means we need to see if $(k\uu)\cdot (1,2,3) = 0$.\\
+We calculate: $(k\uu)\cdot (1,2,3) = k(\uu \cdot (1,2,3)) = k(0) = 0$.\\
+So $k\uu \in T$ and so $T$ is closed under scalar multiplication.
+\end{enumerate}
+So YES, $T$ is a subspace of $\R^3$. \end{mysol}\end{myprob}
+
+Notice that we could have replaced the vector $(1,2,3)$ with any
+vector $\nn$, and the result would have been the same.  In
+fact:
+
+\standout{Any plane through the origin in $\R^3$ is a subspace.}
+
+Furthermore, if a plane in $\R^3$ \emph{doesn't} go through
+the origin, then it fails the first condition of the subspace
+test.  So we have:
+
+\standout{Any plane in $\R^3$ which doesn't go through the origin is not a subspace.}
+
+
+
+\begin{myprob} Let $\vv \in \R^n$ and set $L = \{ t\vv | t\in \R\}$ to be
+the line in $\R^n$ through the origin with direction vector $\vv$
+(with the usual operations from $\R^n$).  Is $L$ a subspace?
+
+\begin{mysol} We apply the subspace test.
+\begin{enumerate}
+\item Yes, $\zero \in L$: take $t=0$.
+\item If $t\vv$ and $s\vv$ are two points in $L$, then $t\vv + s\vv = (t+s)\vv$
+which is again a multiple of $\vv$, so lies in $L$.  So $L$ is closed
+under addition.
+\item If $t\vv \in L$ and $k\in\R$ then $k(t\vv) = (kt)\vv$, which is a 
+multiple of $\vv$, so it lies in $L$.  Thus $L$ is closed under scalar
+multiplication.
+\end{enumerate}
+We conclude that $L$ is a subspace of $\R^n$. \end{mysol}\end{myprob}
+
+Similarly to above, we deduce:
+
+\standout{Any line through the origin in $\R^n$ is a subspace.  Any line in $\R^n$ which does not go through the origin is not a subspace.}
+
+\begin{myprob} Let $V = F(\R)$, the vector space of all functions with domain $\R$.
+Let $\mathbb{P}$ be the set of all \emph{polynomial functions}, that is,
+$\mathbb{P}$ consists of all functions that can be written as
+$$
+p(x) = a_0 + a_1 x + a_2 x^2 + \cdots + a_n x^n
+$$
+for some $n \geq 0$ and $a_i \in \R$.  Is $\PP$ a vector space?
+
+\begin{mysol} We first note (it may not seem obvious) that the natural
+operations of adding two polynomials, and multiplying a polynomial
+by a scalar, are exactly the usual operations on functions $F(\R)$.
+So $\PP \subset F(\R)$ with the same operations, so we can apply
+the subspace test.  (Phew!)
+\begin{enumerate}
+\item Is $\zero \in \PP$?  Remember that $\zero$, here, is the
+function which when you plug in any $x$ you get $0$ as an answer.
+Well, that's the zero polynomial:  $p(x) = 0 + 0x + 0x^2$.  (Or just
+$p(x) = 0$, for short.)  It's a polynomial, so $\zero \in \PP$.
+\item Is $\PP$ closed under addition?  Yes: the sum of two polynomials
+is again a polynomial (it's not as though you could get an exponential
+function or something like that).
+\item Is $\PP$ closed under scalar multiplication?  Yes: multiplying
+a polynomial by a scalar gives another polynomial.
+\end{enumerate}
+So yes, $\PP$ is a subspace, so a vector space.
+\end{mysol}\end{myprob}
+
+
+\begin{definition}\label{transpose}
+The \defn{transpose} of an $m\times n$ matrix $A$ is the $n \times m$ matrix $A^T$
+whose rows are the columns of $A$.  For example,
+$$
+\mat{a&b\\c&d}^T = \mat{a&c\\b&d}.
+$$
+\end{definition}
+
+\begin{myprob} Let $S = \{ A \in M_{22}(\R) | A^T = A\}$ be the set of \emph{symmetric} $2 \times 2$ matrices (with the usual operations).  Is this a vector space?
+
+\begin{mysol} Since $S \subset M_{22}(\R)$, and we're using the same operations,
+we can apply the subspace test.
+
+But it's helpful to get more comfortable with this set $S$, first.
+Rewrite it as:
+\begin{align*}
+S &= \left\{ \mat{a&b\\c&d} |  \mat{a&b\\c&d}^T = \mat{a&b\\c&d}\right\}\\
+&= \left\{ \mat{a&b\\c&d} |  \mat{a&c\\b&d} = \mat{a&b\\c&d}\right\}\\
+&= \left\{ \mat{a&b\\b&d} | a,b,d \in \R\right\}
+\end{align*}
+Oh, that's more clear!
+
+\begin{enumerate}
+\item By taking $a=0$, $b=0$ and $d=0$, we get the zero matrix; so this
+is in $S$.
+\item Take two arbitary matrices in $S$, and add them:
+$$
+\mat{a&b\\b&d} + \mat{a'&b' \\ b'&d'} = \mat{a+a' & b+b' \\ b+b' & d+d'}
+$$
+This is again in $S$, since it matches the required pattern to be
+in $S$ (that the (1,2) and (2,1) entries of the matrix are equal).
+So $S$ is closed under addition.
+\item Let $k\in \R$; then
+$$
+k\mat{a&b\\b&d} = \mat{ka & kb \\ kb& kd}
+$$
+is again in $S$, so $S$ is closed under scalar multiplication.
+\end{enumerate}
+So $S$ is a subspace of $M_{22}(\R)$.
+\end{mysol}\end{myprob}
+
+
+
+
+\section*{Problems}
+\addcontentsline{toc}{section}{Problems}
+%
+% Use the following environment.
+% Don't forget to label each problem;
+% the label is needed for the solutions' environment
+
+

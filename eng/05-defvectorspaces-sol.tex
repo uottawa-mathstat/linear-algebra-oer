@@ -1,0 +1,308 @@
+
+\begin{sol}{prob04.1} Determine whether   the following sets are closed under the indicated rule for addition. 
+
+  
+
+\medskip
+
+
+(b)  $L=\set{(x, y) \in \R^2\st x -3y=0 }$; standard addition of vectors in $\R^2$. 
+
+\soln This is closed under addition: Suppose $(x,y), (x',y')\in L$. Then $x -3y=0$ and $x' -3y'=0$. Since $(x,y)+ x',y')=(x+x', y+y')$ satisfies $x+x' -3(y+y')= (x -3y) +(x' -3y')=0+0=0$, we see that  $(x,y)+ (x',y')\in L$.\medskip
+%
+ 
+
+(d) $S=\set{(x, y) \in \R^2\st xy \ge 0 }$ ; standard addition of vectors in $\R^2$. 
+
+\soln This is not closed under addition. For example, $(1,2)$ and $(-2,-1)$ both belong to $S$, but their sum, $(-1,1)$ does not.\medskip
+
+
+(f)  $K=\set{(x, y, z) \in \R^3\st x+2y+z=1 }$ ; standard addition of vectors in $\R^3$. \soln This is not closed under addition. For example, both $(1,0,0)$ and $(0,0,1)$ belong to $K$ but their sum, $(1,0,1)$ does not.  \medskip 
+%
+
+ 
+
+
+(h)  $M=\set{(x, x+2) \in \R^2\st x\in \R}$; {\it Non-standard addition}: $(x,y) \tilde+ (x',y')=(x+x', y+y-2)$.  
+
+\soln  This {\it is }closed under the weird addition rule (but not under the standard one- see part (a)): Let $u=(x, x+2)$ and $v=(x', x'+2)$ be any two points in $M$. Then $u \tilde+ v=(x+x', (x+2)+(x'+2)-2)=(x+x', x+x'+2) \in M$.\medskip
+
+\end{sol} 
+
+\begin{sol}{prob04.2} Determine whether each of the following sets is closed under the indicated rule for multiplication of vectors  by scalars.
+ 
+\medskip
+ 
+
+(b)  $L=\set{(x, y) \in \R^2\st x -3y=0 }$;  standard rule for multiplication of vectors  in $\R^2$ by scalars.  
+
+\soln This is closed under multiplication by scalars: Let $u=(x,y)\in L$ (so $x -3y=0$) and $k\in \R$ be any scalar. Then $k u= (kx, ky)$ satisfies $kx-3(ky)=k(x-3y)=k0=0$, and so $ku\in L$.\medskip
+%
+ 
+
+(d)  $S=\set{(x, y) \in \R^2\st xy \ge 0 }$; standard rule for multiplication of vectors  in $\R^2$ by scalars. 
+
+\soln This is closed under multiplication by scalars (despite not being closed under addition- see (d) in Q.1): Let $u=(x,y)\in S$ (so $xy \ge 0$) and $k\in \R$ be any scalar. Then $k u= (kx, ky)$ satisfies $kx(ky)=k^2 xy \ge 0$, since  $xy \ge 0$ and $k^2\ge 0$. So $ku\in S$. \medskip
+%
+
+
+
+(f) $K=\set{(x, y, z) \in \R^3\st x+2y+z=1 }$; standard rule for multiplication of vectors  in $\R^3$ by scalars. 
+
+\soln This is not closed under multiplication by scalars. For example, $u=(1,0,0)\in K$ but $2u =(2,0,0)\notin K$\medskip 
+%
+
+ 
+
+(h)  $M=\set{(x, x+2) \in \R^2\st x\in \R}$; {\it Non-standard  multiplication of vectors  by  scalars $k\in \R$}: $$k\circledast (x,y)=(kx, ky-2k+2).$$   
+
+
+\soln This {\it is} closed under this weird rule for multiplication of vectors  by  scalars (but not under the standard rule: see part (a)): Let $u=(x, x+2)\in M$, and $k\in \R$. Then$k\circledast u =k\circledast (x,x+2)= (kx, k(x+2)-2k+2)=(kx, kx+2) \in M$!
+\medskip
+  
+
+
+\end{sol} 
+
+\begin{sol}{prob04.3}  Determine whether   the following subsets of $\F(\R)=\set{f \st f: \R \to \R}$ are closed under the standard addition of functions in  $\F(\R)$. (Recall that $\F(\R)$ consists of all real-valued functions of a real variable; i.e., all functions with domain $\R$, taking values in $\R$). 
+ \medskip
+ 
+(b) $T=\set{f \in \F(\R) \st f(2)=1 }$. 
+
+\soln This is not closed under addition: for example, the constant function $f(x)=1, \forall x\in \R$ belongs to $T$ but $f+f$, which is the constant function $2$, does not.
+\medskip  
+
+
+
+(d)  $N=\set{f \in \F(\R) \st \text{ for all } x\in \R,   \, f(x)\le 0}$. 
+
+\soln This is closed under addition: Let $f, g \in N$ (so $\forall x \in \R, f(x)\le 0$ and $g(x)\le 0$. Then,  since the sum of two non-positve numbers is is still non-positive,  $\forall x \in \R,, (f+g)(x)= f(x)+g(x)\le 0$. Hence $f+g\in N$.\medskip 
+%
+
+
+
+(f) $O=\set{f \in \F(\R) \st \text{ For all } x\in \R,   \, f(-x)= -f(x)}$. 
+
+\soln This is the set of all so-called `odd' functions, and it is closed under addition: Let $f,g \in O$. Then, $\forall x \in \R, f(-x)= -f(x)$ and $g(-x)= -g(x)$, so, $\forall x \in \R, (f+g)(-x)=f(-x)+g(-x)=-f(x)-g(x)=-(f(x)+g(x))=-(f+g)(x)$. Hence $f+g\in O$.\medskip 
+%
+
+
+\end{sol} 
+
+\begin{sol}{prob04.4} Determine whether  the following sets are closed under the standard rule  for multiplication of functions  by scalars in $\F(\R)$. 
+\medskip
+
+
+(b)  $T=\set{f \in \F(\R) \st f(2)=1 }$. 
+
+\soln This is {\it not} closed under multiplication by all scalars. For example, the constant function $1$ belongs to $T$, but if we multiply this function by the scalar 2, we obtain the constant function $2$, which does not belong to $T$. \medskip
+% 
+
+
+
+(d)  $\set{f \in \F(\R) \st \text{ For all } x\in \R,   \, f(x)\le 0}$. 
+
+\soln This is {\it not} closed under multiplication by all scalars (despite being closed under addition - see part (d) in the previous question): for example, the constant function $g(x)=-1, \forall x\in \R$ belongs to $N$ but $(-1)g$, which is the constant function $1$, does not.\medskip 
+%
+
+
+
+(f)  $O=\set{f \in \F(\R) \st \text{ For all } x\in \R,   \, f(-x)= -f(x)}$. 
+
+\soln This is  closed under addition: Let $f \in O$. Then, $\forall x \in \R, f(-x)= -f(x)$. Now let $k\in \R$ be any scalar. Then, $\forall x \in \R, (kf)(-x)=k (f(-x))=k(-f(x))=-kf(x)=-(kf)(x)$. Hence $kf\in O$. \medskip 
+ 
+
+
+\end{sol} 
+
+\begin{sol}{prob04.5} Determine whether   the following sets are closed under the standard operation of addition of matrices in $\M_{2 \,2}(\R)$. 
+ \medskip
+
+
+
+
+
+(b)  $S=\Bigg\{  \bmatrix a&b \\c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; a+d=0\Bigg\}$. 
+
+\soln This is closed under addition: suppose $A=\bmatrix a&b\\ c&d\endbmatrix$ and $b=\bmatrix a'&b'\\ c'&d'\endbmatrix$ belong to $S$. So $a+d=0$ and $a'+d'=0$. Then $A+B=\bmatrix a+a'&b+b'\\ c+c'&d+d'\endbmatrix$ satisfies $(a+a')+(d+d')= (a+d) +(a'+d')=0+0=0$, and so $A+B \in S$. \medskip
+%
+
+
+
+
+(d)  $U=\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; ad=0\Bigg\}$.  
+
+\soln This is not closed under addition: for example, $A=\bmatrix 1&0 \\0&0\endbmatrix$ and  $A=\bmatrix 0&0\\ 0&1\endbmatrix$ both belong to $U$, but $A+B= \bmatrix 1&0\\ 0&1\endbmatrix$ does not.\medskip
+%
+
+
+
+\end{sol} 
+
+\begin{sol}{prob04.6} Determine whether   the following sets are closed under the  standard rule  for multiplication of matrices by scalars in $\M_{2 \,2}(\R)$. 
+ \medskip
+
+
+
+
+(b)  $\Bigg\{  \bmatrix a&b \\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; a+d=0\Bigg\}$.  
+
+\soln This is closed under multiplication  by scalars: suppose $A=\bmatrix a&b\\ c&d\endbmatrix$ belongs to $S$. So $a+d=0$. If $k\in\R$ is any scalar, Then $kA =\bmatrix ka &kb \\ kc & kd \endbmatrix$ satisfies $ ka + kd = k(a+d)=k0=0$, and so $kA \in S$.  \medskip
+%
+
+ 
+
+(d)  $U=\Bigg\{  \bmatrix a&b \\c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; ad=0\Bigg\}$. 
+  
+\soln This {\it is} closed under multiplication  by scalars (despite not being  closed under addition - see part (d) of the previous question):  suppose $A=\bmatrix a&b\\ c&d\endbmatrix$ belongs to $U$. So $a  d=0$. If $k\in\R$ is any scalar, Then $kA =\bmatrix ka &kb \\ kc & kd \endbmatrix$ satisfies $ (ka)  (kd) = k^2(a d)=k^20=0$, and so $kA \in U$.    \medskip
+
+
+
+\end{sol} 
+
+\begin{sol}{prob04.7} The following sets have been given   the indicated rules for addition of vectors,  and multiplication of objects  by real scalars (the so-called  {\it `vector operations' }). If possible, check if there is a zero vector in the subset in each case. If it is possible, show your choice works in {\it all } cases, and if it is not possible, give an example to illustrate your answer. 
+
+(Note: in the last two parts, since the vector operations are not the standard ones, the zero vector will probably not be the one you're accustomed to.)
+ 
+\medskip
+ 
+
+(b)  $L=\set{(x, y) \in \R^2\st x -3y=0 }$; standard  vectors operations in $\R^2$. 
+
+\soln Since the operations are standard, the zero vector is the standard one, namely $(0,0)$. Since $0- 3(0)=0$, $(0,0)\in L$. \medskip
+%
+
+
+
+
+(d)  $S=\set{(x, y) \in \R^2\st xy \ge 0 }$;  standard  vectors operations in $\R^2$.  
+
+\soln Since the operations are standard, the zero vector is the standard one, namely $(0,0)$. Since $0\, 0=0\ge 0$, $(0,0)\in S$. \medskip
+%
+ 
+
+
+
+(f)  $K=\set{(x, y, z) \in \R^3\st x+2y+z=1 }$; standard  vectors operations in $\R^3$. 
+
+\soln Since the operations are standard, the zero vector is the standard one, namely $(0,0,0)$. However, $0+2(0)+0=0\not=1$, so $(0,0,0)\notin K$.\medskip 
+%
+
+
+(h) $M=\set{(x, x+2) \in \R^2\st x\in \R}$; \underbar{\it Non-standard operations:--} Addition: $(x,y) \tilde+ (x',y')=(x+x', y+y' -2)$. Multiplication of vectors  by  scalars $k\in \R$: $k\circledast (x,y)=(kx, ky-2k+2)$.    
+
+\soln Since the operations are {\it not} standard, the zero vector is unlikely to be the standard one. Let's find out what it might be: we need $\tilde O=(a,b)$, such that $(x,y) \tilde+ (a,b)=(x , y )$, for all $(x,y) \in M$. So we need $(x,x+2) \tilde+ (a,b)=(x, x+2)$ for all $x\in \R$. Well, $(x,x+2) \tilde+ (a,b)=(x+a, (x+2)+b -2)=(x+a, x+b)$. So $(x,x+2) \tilde+ (a,b)=(x, x+2)$ for all $x$ iff $x=x+a$ and $x+b=x+2$ for all $x\in \R$. So we need $a=0$ and $b=2$. So the vector $\tilde O=(0,2)$ {\it works} as the zero vector in this case. Moreover, as you can see, $(0,2)\in M$, so this set with the weird operations {\it does indeed have a zero!} \medskip
+%
+
+
+\end{sol} 
+
+\begin{sol}{prob04.8} Explain your answers to the following:
+
+\medskip
+(a)  Determine whether the  zero function (let's denote it ${\bf 0}$) of $\F(\R)$ belongs to each of the subsets in  question 3. \medskip
+
+ 
+ (3b) $T=\set{f \in \F(\R) \st f(2)=1 }$. 
+
+\soln Since ${\bf 0}(2)=0\not=1$, this set does not contain the zero function.
+
+\medskip
+
+ (3d) $\set{f \in \F(\R) \st \text{ For all } x\in \R,   \, f(x)\le 0}$. Since ${\bf 0}(x) = 0 \le 0$ for all $x\in \R$, this set does contain the zero function.
+
+\medskip
+
+ (3f) $O=\set{f \in \F(\R) \st \text{ For all } x\in \R,   \, f(-x)= -f(x)}$. Since ${\bf 0}(-x) = 0=-0=-{\bf 0}(x)  $ for all $x\in \R$, this set does contain the zero function.
+
+\medskip
+ 
+
+\end{sol} 
+
+
+\begin{sol}{prob04.9}  The following sets have been given   the indicated rules for addition of vectors,  and multiplication of objects  by real scalars. In each case, If possible, check if vector in the subset has a `negative' in the subset. 
+
+Again, since the vector operations are not the standard ones, the negative of a vector will probably not be the one you're accustomed to seeing.
+ 
+\medskip
+
+(a) $M=\set{(x, x+2) \in \R^2\st x\in \R}$; \underbar{\it Non-standard Operations:--} Addition: $$(x,y) \tilde+ (x',y')=(x+x', y+y-2).$$ Multiplication of vectors  by  scalars $k\in \R$: $k\circledast (x,y)=(kx, ky-2k+2)$.    
+
+\soln To find the negative of a vector (if it exists), we need to know the zero. But we found this in  Q. 7(h): $\tilde 0=(0,2)$ is the zero for this weird addition. To find the negative of a vector $u=(x,x+2) \in M $, we need to solve the equation $(x,x+2) \tilde+ (c,d)= \tilde 0=(0,2)$ for $c$ and $d$. But $(x,x+2) \tilde+ (c,d)=(x+c, (x+2) +d-2)=(x+c, x+d) $, so we need $x+c=0$ and $x+d=2$. Thus, $c=-x$ and $d=2-x$, so that the negative of $(x, x+2)$ is actually $(-x, 2-x)$. 
+
+Now, since $2-x =(-x)+2$, this puts $(-x, 2-x)$ in M, i.e.$(-x, 2-x)$ really is of the form $(x', x'+2)$ -- take $x'=-x$ ! So this set {\it does} contain the negative of every element!\medskip
+% 
+
+
+\end{sol} \begin{sol}{prob04.10} Explain your answers to the following:
+
+ 
+ 
+\medskip 
+% 
+
+(b)  Determine whether the  subsets  of $\F(\R)$ in  question 3, equipped with the standard vector operations of  $\F(\R)$ are vector spaces. 
+\medskip
+ 
+ 
+ (3b) $T=\set{f \in \F(\R) \st f(2)=1 }$. 
+
+\soln Since this set does not contain the zero function (see Q.8(a)), it is not a vector space. \smallskip
+
+
+(3d) $\set{f \in \F(\R) \st \text{ For all } x\in \R,   \, f(x)\le 0}$. 
+
+\soln We saw in Q.4(d) that this set is not closed under multiplication by scalars, so it is not a vector space.\smallskip
+
+
+
+(3f) $O=\set{f \in \F(\R) \st \text{ For all } x\in \R,   \, f(-x)= -f(x)}$.  
+
+\soln We saw in previous questions that $O$ is closed under addition, under multiplication by scalars, and has a zero. There remains the existence of negatives, and  the 6 arithmetic axioms.
+ 
+To see that $0$ has negatives, let $f\in 0$. Then $\forall x\in \R, f(-x)= -f(x)$. Define a function $g: \R \to \R$ by $g(x)=-f(x), \forall x\in \R$. It is clear that $f+g={\bf 0}$, so it remains to see that $g\in O$. But, $\forall x\in \R, g(-x)= -f(-x)=-(-f(x))=f(x)=-g(x)$, so indeed $g\in O$. 
+
+The arithmetic axioms are identities that hold for {\it all} functions in $\F(\R)$, so in particular these identities are satisfied for any subset. In particular, all the arithmetic axioms hold for $O$.
+
+Thus $O$, with the standard operations inherited from $\F(\R)$, is indeed itself a vector space.
+
+
+
+\end{sol} 
+
+
+\begin{sol}{prob04.11} Justify your answers to the following:
+
+\medskip
+
+(a)  Equip the set $V=\R^2$ with the \underbar{\it non-standard operations:--} Addition: $$(x,y) \tilde+ (x',y')=(x+x', y+y-2).$$ Multiplication of vectors  by  scalars $k\in \R$: $$k \circledast (x,y)=(kx, ky-2k+2).$$  Check that  $\R^2$, with these new operations, is indeed a vector space. 
+
+\soln It is clear that $\R^2$ with these operations is closed under these weird operations ---look at the right hand side of the definitions: they live in $\R^2$. We saw in Q.7(h) that the vector $\tilde 0=(0,2)$ works as a zero in the subset we called $M$. It's easy to check it works on all of $\R^2$. We also saw in Q.9(a) that the negative of $(x,y)$ was $(-x, 2-y)$, and you can check that this works for all of $\R^2$. 
+
+That leaves us with 6 aritmetic  axioms to check. Here, I will check only 3, and leave the rest to you. (They all hold.)
+
+Let's check the distributive axiom:  $k\circledast (u \tilde+ v)  = k\circledast u \tilde+ k\circledast v$. 
+
+Well,
+\begin{align*} 
+k\circledast ((x,y) \tilde+ (x',y'))  &=k\circledast(x+x', y+y'-2)\\
+&=(k(x+x'), k(y+y'-2)-2k+2)\\ 
+&=(kx+ k x', ky+ky'-2k-2k+2)\\
+&=(kx +ky, (ky -2k +2)+ (ky' -2k +2)-2)\\
+&=(kx, ky -2k +2) \tilde+(kx', ky' -2k +2)\\
+&=k\circledast (x,y) \tilde+ \circledast (x',y')
+\end{align*}
+Hence the distributive law holds! 
+
+Let's check the axiom: $1\circledast u=u$: Well, $1\circledast (x,y)=(x, y -2(1) +2)=(x,y)$, so that's OK too.
+
+The last one I'll check is that for all $k,l\in \R$ and for all $u\in \R^2$,   $$(k+l)\circledast u= (k\circledast u)\tilde+ (l \circledast u).$$
+
+Well,  \begin{align*} (k+l)\circledast (x,y)  &=((k+l)x, (k+l)y -2(k+l)+2)\\
+&=(kx+ lx , ky+ly-2k-2l+2)\\ 
+&= (kx +lx,(ky-2k+2)+(ly-2l+2)-2)\\ 
+&= (kx, ky-2k+2)\tilde+ (lx, ly-2l+2)\\
+&= (k\circledast (x,y)\tilde+ (l \circledast (x,y)),\end{align*}
+as required.
+\end{sol} 

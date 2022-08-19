@@ -1,0 +1,140 @@
+
+\begin{sol}{prob22.1} Find the eigenvalues of the following matrices. 
+\medskip
+
+(b)  $\bmatrix 
+1&1&1\\1&1&-1\\1&1&2 \endbmatrix $
+
+\soln 
+
+\begin{equation*}
+\begin{split}
+  \det \bmatrix 
+1-\lam&1&1\\1&1-\lam&-1\\1&1&2-\lam \endbmatrix &= \det \bmatrix 
+1-\lam&1&1\\2-\lam&2-\lam&0\\1&1&2-\lam \endbmatrix \quad (R_1+R_2\to R_2) \\
+  &=(2-\lam)\det \bmatrix 
+1-\lam&1&1\\1&1&0\\1&1&2-\lam \endbmatrix \quad (\text{Factor of  }(2-\lam) \text{ in } R_2)\\
+  &=(2-\lam)\det \bmatrix 
+1-\lam&1&1\\1&1&0\\0&0&2-\lam \endbmatrix \quad (-R_2+R_3\to R_3)\\
+  &=(2-\lam)^2 \det \bmatrix 
+1-\lam&1\\1&1\endbmatrix \quad (\text{Laplace expansion along }R_3)\\
+  &= -\lam(2-\lam)^2\\
+\end{split}\end{equation*}
+Hence the eigenvalues  are $0$ and $2$. (The eigenvalue $2$ has an `algebraic multiplicity' of 2.)
+
+\medskip
+
+(d) $\bmatrix 
+1&0&1\\0&1&0\\1&1&1 \endbmatrix $
+
+\soln 
+\begin{equation*}
+\begin{split}
+ \det  \bmatrix 
+1-\lam&1&1\\0&1-\lam&0\\1&1&1-\lam \endbmatrix   &= (1-\lam)\det  \bmatrix 
+1-\lam&1\\1&1-\lam \endbmatrix\quad (\text{Laplace expansion along }R_3)\\
+  &=(1-\lam)\{(1-\lam)^2-1\} \\
+  &=(1-\lam)\lam(2-\lam)
+\end{split}\end{equation*}
+Hence the eigenvalues  are $0$, $1$ and $2$.
+\medskip
+%{2, 1, 0};{{1, 0, 1}, {-1, 1, 0}, {-1, 0, 1}}
+
+(f) $\bmatrix 
+2&1&0\\0&2&1\\0&0&2 \endbmatrix $
+
+\soln Since this matrix is an upper triangular matrix, its eigenvalues are the diagonal entries. Hence $2$ is the only eigenvalue (with algebraic multiplicity $3$).
+\medskip
+
+(h) $\bmatrix 
+2&1&0\\0&2&0\\0&0&2 \endbmatrix $
+
+\soln Since this matrix is an upper triangular matrix, its eigenvalues are the diagonal entries. Hence $2$ is the only eigenvalue (with algebraic multiplicity $3$).
+\medskip
+
+
+\end{sol}\begin{sol}{prob22.2}
+For each of the matrices in the previous question, find a basis for each eigenspace.
+
+\soln 
+
+\begin{enumerate}[]
+\item (b) The eigenvalues of $A=\bmatrix 
+1&1&1\\1&1&-1\\1&1&2 \endbmatrix $ are $0$ and $2$, as we saw.  
+
+\begin{align*}E_0&=\ker(A-0I_3)\\
+&=\ker A\\
+&=\ker\bmatrix 
+1&1&1\\1&1&-1\\1&1&2 \endbmatrix =\ker \bmatrix 
+ 1 & 1 & 0 \\
+ 0 & 0 & 1 \\
+ 0 & 0 & 0 \endbmatrix\\
+& =\set{(-s,s,0)\st s\in \R}\\
+&=\spn\{(-1,1,0)\} \end{align*}
+
+ Hence $\set{(-1,1,0)} $ is basis for $E_0$.
+\smallskip
+
+\begin{align*}
+E_2&=\ker(A-2I_3)\\
+& =\ker\bmatrix 
+-1&1&1\\1&-1&-1\\1&1&0 \endbmatrix \\
+&=\ker \bmatrix 
+ 1 & 0 & -\frac{1}{2} \\
+ 0 & 1 & \frac{1}{2} \\
+ 0 & 0 & 0 \endbmatrix \\
+&=\set{(\frac{s}2,-\frac{s}2,s)\st s\in \R}\\
+&=\spn\{(1,-1,2)\}\end{align*}
+ 
+ Hence $\set{(1,-1,2)} $ is basis for $E_2$.
+\medskip
+\item (d) The eigenvalues of $\bmatrix 
+1&0&1\\0&1&0\\1&1&1 \endbmatrix $ are $0$, $1$ and $2$, as we saw. 
+
+\begin{align*}
+E_0&=\ker(A-0I_3)\\
+&=\ker A=\ker\bmatrix 
+1&0&1\\0&1&0\\1&1&1 \endbmatrix\\
+& =\ker \bmatrix 
+ 1 & 0 & 1 \\
+ 0 & 1 & 0 \\
+ 0 & 0 & 0 \endbmatrix \\
+&=\set{(-s,0,s)\st s\in \R}\\
+&=\spn\{(-1,0,1)\} \end{align*} Hence $\set{(-1,0,1)} $ is basis for $E_0$.
+
+\smallskip
+\begin{align*}
+E_1&=\ker(A-I_3)\\ 
+&=\ker\bmatrix 
+0&0&1\\0&0&0\\1&1&0 \endbmatrix \\
+&=\ker \bmatrix 
+ 1 & 1 & 0 \\
+ 0 & 0 & 1 \\
+ 0 & 0 & 0 \endbmatrix \\
+&=\set{(-s,s,0)\st s\in \R}\\
+&=\spn\{(-1,1,0)\} \end{align*} Hence $\set{(-1,1,0)} $ is basis for $E_0$.
+\smallskip
+$E_2=\ker(A-2I_3) =\ker\bmatrix 
+-1&0&1\\0&-1&0\\1&1&-1 \endbmatrix  =\ker \bmatrix 
+ 1 & 0 & -1 \\
+ 0 & 1 & 0 \\
+ 0 & 0 & 0  \endbmatrix =\set{(s,0,s)\st s\in \R}=\spn\{(1,0,1)\} $. Hence $\set{(1,0,1)} $ is basis for $E_2$.
+\medskip
+\item (f)  The single eigenvalue of $A=\bmatrix 
+2&1&0\\0&2&1\\0&0&2 \endbmatrix $ is $2$, as we saw.
+\smallskip
+
+$E_2=\ker(A-2I_3)=\ker\bmatrix 
+0&1&0\\0&0&1\\0&0&0\endbmatrix    =\set{(s,0,0)\st s\in \R}=\spn\{(1,0,0)\} $. Hence $\set{(1,0,0)} $ is basis for $E_2$.
+\medskip
+\item (h)  The single eigenvalue of $A=\bmatrix 
+2&1&0\\0&2&0\\0&0&2 \endbmatrix $ is $2$, as we saw.
+\smallskip
+
+$E_2=\ker(A-2I_3)=\ker\bmatrix 
+0&1&0\\0&0&0\\0&0&0\endbmatrix    =\set{(s,0,t)\st s\in \R}=\spn\{(1,0,0), (0,0,1)\} $. Hence $\set{1,0,0), (0,0,1)} $ is basis for $E_2$.
+\medskip
+\end{enumerate}
+
+\end{sol}
+

@@ -1,0 +1,205 @@
+
+\begin{sol}{prob24.1} State whether each of the following defines a linear transformation.    
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item If you say it isn't linear, you must give an explicit example to illustrate.   
+\item If you say it is linear, you must give a clear explanation -   by quoting a theorem presented in class, or by verifying the conditions in the definition {\it  in every  case}. 
+\end{enumerate}
+\medskip
+\begin{enumerate}[]
+
+
+\item (b) $T:\R^3 \to \R^2$ defined by $T(x,y,z)=(x+ 2 z, y)$
+
+\soln This is indeed a linear transformation, since the formula comes from multiplication by the matrix $A=\bmatrix 1&0&2\\0&1&0 \endbmatrix$: i.e., if $v=\bmatrix x\\y\\z\\ \endbmatrix \in \R^3$ (is written as a column), then $Av=\bmatrix x+2z\\y \endbmatrix$, which is the formula above (written as a column).
+\medskip
+
+
+
+\item (d) $T:\R^2 \to \R^2$ defined by $T(v)=\bmatrix 0&-1\\ 1&0 \endbmatrix v$
+
+\soln This is indeed a linear transformation, since we know  (first example, section 24.1) that multiplication by a matrix always gives a linear transformation.
+\medskip
+%
+
+
+
+\item (f) $T:\R^3 \to \R^3$ defined by $T(v)= \proj_{(1,1,-1)}(v)$.
+
+\soln This is a linear transformation. We can show this in two ways: via the definition, or by finding the standard matrix of $T$.
+
+First, we need just to write out the formula for $T$ more explicitly: $$ (1)\quad T(v)= \proj_{(1,1,-1)}(v)=\dfrac{v\cdot (1,1,-1)}{\|(1,1,-1)\|}(1,1,-1)=\dfrac{v\cdot (1,1,-1)}{3}(1,1,-1).$$ In Cartesian coordinates,  if $v=(x,y,z)$,   this is
+$$(2)\quad T(v)=  \dfrac{(x,y,z)\cdot (1,1,-1)}{\|(1,1,-1)\|}(1,1,-1)= \dfrac{ (x+y-z )}{3}(1,1,-1)$$ which simplifies to $\frac13(x+y-z,x+y-z,-x-y+z).$
+
+\underbar{1. Via the definition:} 
+\smallskip
+\begin{enumerate}[(i)]
+\item If $u, v \in \R^3$, then by (1) above, 
+\begin{equation*}
+\begin{split}
+ T(u+v) &=\dfrac{u\cdot (1,1,-1)}{3}(1,1,-1)+ \dfrac{v\cdot (1,1,-1)}{3}(1,1,-1) \\
+  &= \Big( \dfrac{u\cdot (1,1,-1)}{3}+ \dfrac{v\cdot (1,1,-1)}{3}\Big)(1,1,-1)\\
+  &= \dfrac{(u+v)\cdot (1,1,-1)}{3}(1,1,-1)\\
+  &= T(u)+T(v)\\
+\end{split}\end{equation*}
+\item If $k\in \R$ and $v\in \R^3$,
+ \begin{equation*}
+\begin{split}
+ T(k\,v) &=\dfrac{(k\,v)\cdot (1,1,-1)}{3}(1,1,-1) \\
+  &= k\,\Big( \dfrac{ v\cdot (1,1,-1)}{3}(1,1,-1)\Big)\\
+  &= k\,T(v)\\
+\end{split}\end{equation*}
+\end{enumerate}
+These show that $T$ satisfies the two conditions of the definition, so $T$ is linear.
+
+\medskip
+\underbar{2.}
+\smallskip
+If $v=\bmatrix x\\y\\z\endbmatrix$, then by (2) above, if $A= \frac13\bmatrix
+ 1& 1& -1\\
+ 1& 1& -1\\ 
+-1& -1& 1\endbmatrix$
+$$T(v)= \frac13\bmatrix x+y-z\\x+y-z\\-x-y+z\endbmatrix= \frac13\bmatrix
+ 1& 1& -1\\
+ 1& 1& -1\\ 
+-1& -1& 1\endbmatrix \, \bmatrix x\\y\\z\endbmatrix= A v.$$
+Hence, $T$ is multiplcation by a matrix, and so by Example~\ref{ex:multmatlintrans}, $T$ is linear.
+\medskip
+
+
+\item (h) $T:\R^3 \to \R^3$ defined by $T(v)= \proj_{v}(1,1,-1)$.
+
+\soln This looks at first like part (f), but isn't --- `$v$' is in the wrong spot. Indeed this is {\bf not} a linear transformation: look first at the formula for $T$:    $$T(v) =\dfrac{(1,1,-1)\cdot v }{\|v\|^2} (1,1,-1)$$ The dependence on $v$ is rather complicated: it appears in the numerator as `$(1,1,-1)\cdot v$' (which is fine in itself) but the warning bells go off when we see the factor of `$\dfrac{1}{\|v\|^2}$'! 
+
+So let's give a counterexample to show $T$ is not linear.
+
+Indeed, let $v=(1,0,0)$. Then $T(v)=(1,1,-1)$, but $$T(2v)=T(2,0,0)=\dfrac12 (1,1,-1)\not= 2 (1,1,-1)=2 T(v).$$ So $T$ is {\bf not} linear.
+\medskip
+%
+
+
+\item (j) $T:\R^3 \to \R^3$ defined by $T(v)= 2 v$.
+\soln This is a linear transformation. It is easy to check it satisfies the conditions of the definition, but it's even easier to note that if $v\in \R^3$, then $T(v)=2I_3\, v$, i.e., $T$ is multiplication by the matrix $2I_3$ and so is a linear transformation. 
+\medskip
+%
+
+
+\item (l) $T:\R^3 \to \R^2$ defined by $T(v)= Av$, where $A=\bmatrix 1&0&1\\ 1&2&3\endbmatrix$.
+
+\soln This is a linear transformation, since it is defined by multiplication by a matrix!
+\medskip
+
+\end{enumerate} 
+
+\end{sol}
+\begin{sol}{prob24.2} In each of the following, find the standard matrix of $T$ and use it to give a basis for $\ker T$ and $\im T$ and verify the conservation of dimension.
+
+\medskip
+\begin{enumerate}[]
+
+
+\item (b) $T:\R^3 \to \R^2$ defined by $T(x,y,z)=(2 z+x, y)$
+
+\soln We saw in Q.1 (b) that the standard matrix for $T$ here is $A=\bmatrix 1&0&2\\0&1&0 \endbmatrix$.
+
+Since $A$ is already in RRE form, a basis for $\ker T= \ker A$ is easily seen to be $\set{(-2,0,1)}$. The column space algorithm yields the basis $\set{(1,0), (0,1)}$ for  $\im T = \col A$.
+\medskip
+%
+
+
+\item (d) $T:\R^3 \to \R^3$ defined by $T(v)= \proj_{(1,1,-1)}(v)$.
+
+\soln We saw in \ref{prob24.1}(f) that  $T$ is multiplication by $A= \frac13\bmatrix
+ 1& 1& -1\\
+ 1& 1& -1\\ 
+-1& -1& 1\endbmatrix$. 
+
+A short computation shows that the RRE form of $A$ is $\bmatrix 1 & 1 & -1 \\
+ 0 & 0 & 0 \\
+ 0 & 0 & 0  \endbmatrix$, and so a basis for $\ker T= \ker A$ is easily seen to be $\set{(-1,1,0),(1,0,1)}$.
+
+The column space algorithm yields the basis $\set{(1,1,-1)}$ for  $\im T = \col A$ -- as you would expect from a projection onto the line with direction $(1,1,-1)$! 
+\medskip
+%(-s+t,s,t)
+
+
+\item (f) $T:\R^3 \to \R^3$ defined by $T(v)= \proj_H(v)$, where $H$ is the plane through the origin with normal $(1,1,0)$.
+
+\soln We first need the formula for $T$. Since the 
+subspace $H$ is a plane in $\R^3$, we  don't have to find an orthogonal basis of $H$ and use the projection formula: instead, we note that if $n$ is any normal vector for $H$, and $v$ is any vector in $\R^3$, that
+$$ v= \proj_n(v) + (v-\proj_n(v)),$$ and that the vector $w=v-\proj_n(v)$ {\it will indeed be the orthogonal projection of $v$ onto $H$}, since it satisfies both the conditions of Theorem~\ref{orthogproj}! That is\footnote{First: Note that $w\cdot n=\big(v-\proj_n(v)\big)\cdot n =\big( v- \dfrac{v\cdot n}{\|n\|^2}n\big)\cdot n= v\cdot n - \dfrac{v\cdot n}{\|n\|^2}n\cdot n=v\cdot n-v\cdot n=0$, so it is true that $w=v-\proj_n(v) \in H$. Secondly, $w-v=(v-\proj_n(v)\big)-v= -\proj_n(v)$ which is certainly orthogonal to $H$, since it is a multiple of the normal $n$ to $H$. Draw yourself a picture to convince yourself geometrically.}, 
+$$   \proj_H(v)=  v-\proj_n(v). $$
+
+So the formula for $T$ is
+$T(v)=v- \dfrac{v\cdot n}{\|n\|^2}n$. Let $v=(x,y,z)$. Since $n=(1,1,0)$,
+$$T(x,y,z)=(x,y,z)- \dfrac{x+y}{2}(1,1,0)=(\frac{y-x}2,\frac{x-y}2, z ).$$Now it is a simple matter to check that $T$ is multiplication by the matrix $A=\dfrac12\bmatrix -1&1&0\\1&-1&0\\ 0&0&2\endbmatrix $.
+
+A short computation shows that the RRE form of $A$ is $\bmatrix 
+1 & -1 & 0 \\
+ 0 & 0 & 1 \\
+ 0 & 0 & 0 \endbmatrix$, and so a basis for $\ker T= \ker A$ is easily seen to be $\set{(1,1,0)}$, as you would expect for the projection onto the plane through $0$ with normal $(1,1,0)$.
+
+The column space algorithm yields the basis $\set{(-1,1,0), (0,0,1)}$ for  $\im T = \col A$ -- and you can check yourself that $\spn\{(-1,1,0), (0,0,1)\}=H$, as you'd expect!
+
+ 
+\medskip
+%
+\end{enumerate}
+
+\end{sol}
+
+\begin{sol}{prob24.3} State whether each of the following is (always) true,
+or is (possibly) false.    
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item If you say the statement may be false, you must give an explicit example.   
+\item If you say the statement is true, you must give a clear explanation -   by quoting a theorem presented in class, or by giving a {\it proof valid for every  case}. 
+\end{enumerate}
+
+\medskip
+\begin{enumerate}[]
+ 
+
+\item (b) If $T:\R^4 \to \R^2$ is linear, then $\dim \ker T \ge 2$.
+
+\soln This is true, since we know that $\dim \ker T + \dim \im T =4$, and that, as $\im T$ is a subspace of $\R^2$, $\dim \im T \le \dim \R^2 =2$. Thus, $\dim \ker T =4- \dim \im T \ge 4-2 =2$.
+\medskip
+% 
+
+ 
+\item (d) If $T:\R^3 \to \R^2$ is linear, and $\set{v_1,v_2} \subset \R^3$ is linearly independent, then $\set{T(v_1),T(v_2)} \subset \R^2$ is linearly independent.
+
+\soln This is false, indeed it is only (always) true if $\ker T=\set{0}$. For example, define $T:\R^3 \to \R^2$ by $T(x,y,z)=(0,0)$, and let $v_1=(1,0,0)$ and $v_2=(0,1,0)$. Then $\set{T(v_1), T(v_2)}$ is not independent as it contains the zero vector.
+\medskip
+%
+
+
+\item (f) If $T:\R^3 \to \R^3$ is linear, and $\ker T=\set{0}$, then $\im T=\R^3$.
+
+\soln This is true. Recall that $\dim \ker T + \dim \im T =3$ in this case, so if $\ker T=\set{0}$, then $\dim \ker T=0$ and so $\dim \im T =3$. But $\im T$ is then a 3-dimensional subspace of $\R^3$, which also has a dimension of $3$, so by the Theorem \ref{dimsubspaces}, $\im T= \R^3$.
+\medskip
+
+\end{enumerate}
+
+\end{sol}
+
+\begin{sol}{prob24.4}$^\ast$ State whether each of the following defines a linear transformation.    
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item If you say it isn't linear, you must give an explicit example to illustrate.   
+\item If you say it is linear, you must give a clear explanation -   by quoting a theorem presented in class, or by verifying the conditions in the definition {\it  in every  case}. 
+\end{enumerate}
+ \medskip
+\begin{enumerate}[ ]
+ 
+\item (b) $T: \mathcal P \to \mathcal P$ defined by $T(p)(t)=\dsize \int_0^tp(s) ds$.
+
+\soln You've learned in calculus (and will prove, if you take a course in analysis) that if $p$ and $q$ are (integrable) functions, then $$\dsize \int_0^t(p+q)(s) ds= \dsize \int_0^tp(s) ds+ \dsize \int_0^tq(s) ds.$$ Moreover you've also seen that if $k\in \R$ is a scalar, then $\dsize \int_0^t kp(s) ds=\dsize k\int_0^tp(s) ds$. Together, these show that $T$ is indeed linear.
+\medskip 
+ 
+\item (d) $\det: \M_{2\,2} \to \R$ defined by $\det \bmatrix a&b\\c&d\endbmatrix = ad-bc.$
+
+\soln The determinant is {\it not} linear. For example if $A=\bmatrix 1&0\cr0&0\endbmatrix$ and $B=\bmatrix 0&0\cr0&1\endbmatrix$, then $$\det(A+B)=\det \bmatrix 1&0\cr0&1\endbmatrix =1 \not= 0=0+0= \det A + \det B.$$ (We saw this example in the solution to problem \ref{prob21.4}(b)  on determinants.)
+\medskip 
+\end{enumerate}
+\end{sol}

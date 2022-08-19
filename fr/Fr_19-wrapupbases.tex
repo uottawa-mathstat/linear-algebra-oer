@@ -1,0 +1,172 @@
+\chapter{Bases en dimension finie}
+
+\label{chapter:Fr_19-wrapupbases}
+
+Soit $A$ une matrice de taille $m\times n$.
+\`A ce stade du cours, nous avons déjà établi des techniques pour trouver les bases des espaces vectoriels suivants :
+\begin{itemize}
+\item $\ker(A)\subseteq \R^n$, le noyau de $A$;
+\item $\im(A)\subseteq \R^m$, l'espace des colonnes de $A$ (attention : ici c'est $m$ et pas $n$ dans $\R^m$!\!!);
+\item $\row(A)\subseteq \R^n$, l'espace des lignes de $A$.
+\end{itemize}
+En cours de route, nous avons aussi montré la formule suivante : 
+$$
+\dim(\ker(A)) + \rank(A) = n\,,
+$$
+qui est connue sous le nom de Théorème du rang.  Or, on sait que $$\rank(A) = \dim(\im(A)) = \dim(\row(A))\,,$$ donc cette égalité se reformule comme suit :
+$$
+\dim(\ker(A)) + \dim(\im(A)) = n\,.  
+$$
+C'est en quelques sortes une \og\ conservation de la dimension\ \fg\ de la multiplication matricielle. On aussi la reformulation suivante qui est possible :
+$$
+ \dim(\ker(A)) + \dim(\row(A)) = n\,,
+$$
+ce qui fait la lumière sur le fait que tout vecteur dans l'espace des lignes de $A$ est orthogonal à tout vecteur du noyau de $A$ (en d'autres termes, ces sous-espaces sont des \defn{compléments orthogonaux l'un de l'autre}, notion qu'on introduira dans le Chapitre~\ref{chapter:Fr_22-orthogproj}).
+
+
+\section{Bases d'un espace vectoriel quelconque (de dimension finie)}
+
+Nous avons vu dans le chapitre pr\'ec\'edent des algorithmes permettant de trouver des bases pour $\im(A)$ et $\row(A)$. Ils peuvent être aussi utilisés pour avoir  une base de n'importe quel sous-espace $W$ de $\R^n$ (étant donné un ensemble gén\'erateur de $W$).  Et comme brièvement mentionné dans le chapitre précédent, cette technique est en fait applicable à n'importe quel sous-espace d'un espace vectoriel, tant que la dimension est FINIE. \\
+
+\begin{myprob} Trouvez une base du sous-espace $W$ de $\PP_3$ engendr\'e par l'ensemble suivant:
+$$
+\{ 3+x+4x^2+2x^3, 2+4x+6x^2+8x^3, 1+3x+4x^2+6x^3, -1+2x +x^2 + 4x^3\}\,.
+$$
+
+\begin{mysol} Commençons par écrire ces vecteurs en coordonnées relatives par rapport à
+la base standard $\{1,x,x^2,x^3\}$ de $\PP_3$ :
+$$
+\uu_1 = \mat{3\\1\\4\\2}, \quad\uu_2=\mat{2\\4\\6\\8}, \quad\uu_3=\mat{1\\3\\4\\6}, \quad\uu_4=\mat{-1\\2\\1\\4}.
+$$
+Grâce à notre discussion sur les coordonnées, il suffit en fait de 
+trouver une base pour l'espace vectoriel
+$$
+U = \spn\{ \uu_1, \uu_2,\uu_3,\uu_4\},
+$$
+lequel est un sous-espace de $\R^4$ ! On peut donc appliquer les raisonnements du chapitre précédent. Puis, il suffit de reconvertir les vecteurs de cette base de $W$ vu comme $\subseteq \R^4$ en des polyn\^omes pour avoir une base de $W$ vu comme $\subseteq \PP_3$.
+
+Utilisons l'algorithme de l'espace des lignes pour avoir une base simple. On obtient la MER suivante :
+$$
+A = \mat{
+3&1&4&2\\
+2&4&6&8\\
+1&3&4&6\\
+-1&2&1&4} \sim \cdots \sim R= \mat{1&0&1&0\\0&1&1&2\\0&0&0&0\\0&0&0&0}\,.
+$$
+Nous concluons donc que $\{ (1,0,1,0), (0,1,1,2)\}$ est une base pour $U$.
+
+D'o\`u, en reconvertissant ces deux vecteurs en polyn\^omes, nous déduisons que $\{ 1+x^2,\, x+x^2+2x^3\}$ est une base de $W$.
+
+Comme c'est la première fois qu'on fait ça, vérifions quand même pour être sûrs!  Ces deux polynômes sont bien LI puisqu'ils ne sont pas multiples scalaires l'un de l'autre. Il reste à vérifier que ces deux polynômes engendrent $W$. Pour ce faire, vérifions que chacun des quatre polynômes g\'en\'erateurs de $W$ peut s'exprimer comme une combinaison linéaire
+de ces deux polynômes.  Toute combinaison lin\'eaire des polynômes  $1+x^2$ et $x+x^2+2x^3$ s'\'ecrit comme suit :
+$$
+a(1+x^2) + b(x+x^2+2x^3) = a + bx + (a+b)x^2 + 2bx^3\,,
+$$
+donc il est facile de voir que, pour des choix judicieux des paramètres $a$ et $b$, les quatre vecteurs g\'en\'erateurs en sont bien des combinaisons lin\'eaires.
+(La vérification de cette derni\`ere \'etape est laiss\'ee au soin du lecteur.) Donc $\{ 1+x^2,\, x+x^2+2x^3\}$ est une bien base de $W$, ouf !
+
+\end{mysol}\end{myprob}
+
+\section{Extension d'un ensemble LI en une base (en dimension finie)}
+
+Un autre problème que nous avions considéré auparavant \'etait: comment \'etendre un ensemble linéairement indépendant en 
+une base ?  Le problème se pose le plus souvent dans le type d'exemple suivant, pour lequel nous donnons donc une solution.
+
+\begin{myprob} \'Etendre l'ensemble $\{ (1,2,3,1), (1,2,3,2)\}$ en une base de $\R^4$.
+
+\begin{mysol} Tout d'abord, notez que l'ensemble donné est bien LI. Maintenant, pour répondre à la question, nous devons trouver deux vecteurs qui ne sont pas combinaisons linéaires des deux vecteurs donnés. 
+Il existe de nombreuses techniques que nous pourrions essayer (rappelez-vous par exemple que les suppositions aléatoires
+fonctionnent assez rapidement !). En voici une très utile pour la suite du cours :
+
+Écrivez les deux vecteurs en ligne pour former une matrice :
+$$
+A = \mat{ 1&2&3&1\\ 1&2&3&2}\,,
+$$
+et réduisez-la par rapport aux lignes en une ME:
+$$
+R = \mat{ \pivot & 2&3 & 1\\ 0 & 0 & 0 & \pivot}\,.
+$$
+Nous constatons qu'il n'y a pas de pivot dans 
+la deuxième et troisième colonnes.  Donc les deux vecteurs
+que nous allons ajouter à notre ensemble sont
+$$
+(0,1,0,0) \quad \textrm{et } \quad (0,0,1,0).
+$$
+Ainsi, ces deux vecteurs ajoutés aux deux vecteurs de l'énoncé forment une base de $\R^4$.
+
+Comme c'est la première fois que nous faisons cela, v\'erifions que 
+$$\{ (1,2,3,1), (1,2,3,2), (0,1,0,0), (0,0,1,0)\}$$ 
+est bien une base de $\R^4$. Pour ce faire, il suffit de vérifier qu'ils engendrent $\R^4$, puisqu'ils sont 4 vecteurs et que $\dim(\R^4)=4$. Écrivez les quatre vecteurs en ligne pour former une certaine matrice et réduisez-là par rapport aux lignes pour obtenir une ME:
+
+$$
+B = \mat{
+ 1 & 2&3 & 1\\
+ 1 & 2 & 3 &2\\
+ 0 & 1 & 0 & 0\\
+ 0 & 0 & 1 & 0}
+\sim
+\mat{ 1 & 2&3 & 1\\
+ 0 & 0 & 0 &1\\
+ 0 & 1 & 0 & 0\\
+ 0 & 0 & 1 & 0}
+\sim
+\mat{ 1 & 2&3 & 1\\
+0 & 1 & 0 & 0\\
+ 0 & 0 & 1 & 0\\
+ 0 & 0 & 0 &1}\,.
+$$
+Il y a donc bien un pivot dans chaque ligne, ce qui signifie que $\dim(\row(B)) = 4$, et par conséquent les lignes de $B$ forment une base pour $\R^4$. D'où le résultat.
+
+
+\end{mysol}\end{myprob}
+
+En conclusion, l'algorithme de Gauss-Jordan nous a donné quelques techniques faciles
+pour obtenir une base d'un sous-espace, et ces techniques sont même  meilleures que certaines méthodes qu'on pourrait trouver théoriquement !  Cette idée peut même se généraliser :
+en travaillant en coordonnées relatives par rapport à une base standard, 
+toutes ces techniques s'appliquent même à \emph{n'importe quel} sous-espace d'un espace vectoriel
+de dimension finie ! (Comme précédemment, il suffit de transformant les vecteurs du sous-espace en vecteurs de $\R^n$ pour un certain $n$, potentiellement très grand mais fini).
+
+
+\section{En savoir plus sur les bases}
+Nous avons passé beaucoup de temps à parler de l'espace des lignes et de l'espace des colonnes
+d'une matrice $A$. Nous comprenons maintenant beaucoup mieux quelles sont les matrices $A$ pour lesquelles un système $[A|\bb]$ admet au plus une solution (ce sont les matrices $A$ dont les colonnes sont linéairement indépendantes).
+Également, nous appréhendons maintenant bien mieux 
+les matrices $A$ telles tout système $[A|\bb]$ est compatible
+(ce sont les matrices $A$ dont les colonnes engendrent $\R^m$).  
+
+Mais que pouvons-nous dire
+d'une matrice qui possède ces DEUX grandes propriétés ?\\
+
+En premier lieu, ces matrices $A$ doivent être carrées.  (R\'eferez-vous aux
+caractérisations qu'on a citées ci-dessus pour vous en convaincre, ou comparez les rangs).  
+Le théorème suivant concerne donc les matrices carrées.
+
+\begin{theorem}\label{thm:inv_charact}
+Soit $A$ une matrice $n\times n$. 
+Alors les propositions suivantes sont toutes équivalentes :
+\begin{enumerate}[(1)]
+\item $\rank(A) = n$;
+\item $\rank(A^T) = n$;
+\item le syst\`eme $A\xx=\bb$ admet une solution unique, quel que soit $\bb\in\R^n$;
+\item la MER de $A$ est $I_n$;
+\item $\ker(A) = \{\zero\}$;
+\item $\im(A) = \R^n$;
+\item $\row(A) = \R^n$;
+\item les colonnes de $A$ sont linéairement indépendantes;
+\item les lignes de $A$ sont linéairement indépendantes;
+\item les colonnes de $A$ forment une base de $\R^n$;
+\item les lignes de $A$ forment une base de $\R^n$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Il suffit de mettre ensemble nos deux théorèmes précédents.
+Le point (3) parle du fait de réunir la condition de compatibilité et la condition d'unicité.  Le point 
+(4) indique simplement que la MER d'une matrice carrée
+avec un pivot dans chaque ligne et colonne est exactement
+la matrice identité.  Les deux derni\`ers points utilisent  la définition d'une base.
+\end{proof}
+
+Ainsi, les matrices qui satisfont les conditions de ce théorème sont 
+assez spéciales. Notre prochain objectif est de montrer qu'elles sont plus importantes que spéciales; elles sont \stress{inversibles}.
+

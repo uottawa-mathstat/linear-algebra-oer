@@ -1,0 +1,400 @@
+\chapter{Enveloppe linéaire dans un espace vectoriel} \label{chapter:Fr_06-span}
+
+
+Notre objectif dans ce chapitre est de rendre l'infini fini !  Tous\footnote{Sauf un, le sous-espace nul $\set{0}$...} les sous-espaces dans ce manuel sont des ensembles avec une infinité de vecteurs.  Nous avons différentes manières de décrire un sous-espace, par exemple :
+\begin{enumerate}
+	\item[(1)] $W = \{ \textrm{objets} \st \textrm{conditions sur les objets} \}$,
+e.g. $$W = \big\{ (x,y,z) \in \R^3\st x -2y+ z=0\big\}\,;$$
+	\item[(2)] $U = \{ \textrm{des objets avec des paramètres} \st \textrm{paramètres sont réels}\}$,
+e.g $$S = \left\{ \mat{a & b\\ b & d} \Big| \,a,b,d \in \R\right\}.$$
+\end{enumerate}
+Chacune des notations (1) et (2) a ses avantages et ses inconvénients. Dans ce chapitre, nous allons voir
+que l'on peut décrire simplement mais complètement un sous-espace donné sous la forme (2) grâce à une liste \emph{finie} de vecteurs.
+
+Cette idée est cruciale lorsqu'il s'agit de l'appliquer dans le monde réel. Lorsque vous devez envoyer un sous-espace à quelqu'un d'autre (comme dans un code correcteur d'erreurs), il est BEAUCOUP plus simple d'envoyer seulement $n$ vecteurs et de dire : \og prenez-en l'enveloppe linéaire \fg, plutôt que
+d'essayer de communiquer numériquement un ensemble infini défini par
+des équations et/ou des paramètres.
+
+En prime, nous allons démontrer un autre raccourci pour tester si
+un ensemble est un espace vectoriel (et ce raccourci va même être plus efficace que celui qu'on avait vu au chapitre précédent !). Voir Théorème \ref{span}.
+
+\section{Ré-écriture d'un ensemble de la forme (1) à la forme (2)}
+
+\begin{myexample} Considérons $W = \{ (x,y,z) \st x -2y+ z=0\}$. Ce sous-espace est de la forme (1), mais on peut le ré-écrire comme suit :
+\begin{align*}
+W &= \{ (x,y,z) \st x -2y+ z=0\}\\
+&= \{ (x,y,z) \st x = 2y-z \}\\
+&= \{ (2y-z,y,z) \st y,\,z \in \R\}
+\end{align*}
+qui est alors de la forme (2).  
+\end{myexample}
+
+L'idée est simple : la « condition » à droite peut toujours être reformulée sous forme d'une ou plusieurs équations, et il ne reste plus qu'à les résoudre en fonction d'une ou de plusieurs variables.  (Nous reviendrons sur ce point plus en profondeur au chapitre  ~\ref{chapter:Fr_13-solvingsystems}.)
+
+\section[Description d'un ensemble infini avec un nombre fini de vecteurs]{Description d'un ensemble (infini) de la forme (2) avec un nombre fini de vecteurs}
+
+\begin{myexample} \label{ex6.2.1}  Soit $W$ comme dans l'exemple précédent. Alors
+\begin{align*}
+W &= \{ (2y-z,y,z) \st y,z \in \R\}\\
+&= \{ (2y, y,0) + (-z,0, z) \st y,z\in\R\}\\
+&= \{ y(2,1,0) + z(-1, 0,1) \st y,z\in \R\}\,,
+\end{align*}
+ce qui montre que $W$ est en fait \emph{l'ensemble des combinaisons linéaires} en les deux vecteurs $(2,1,0)$
+et $(-1,0,1)$. Nous lui donnons un nom et une notation spéciale :
+$$
+W = \spn\{ (2,1,0), (-1,0,1)\}\,,
+$$
+qui signifie que $W$ est «~l'enveloppe linéaire engendrée par les deux vecteurs $(2,1,0)$
+et $(-1,0,1)$~». \end{myexample}
+
+\begin{myexample}\label{ex6.2.2} Voici un autre exemple :
+\begin{align*}
+S &= \left\{  \mat{a & b\\ b & d} \Big|\, a,b,d \in \R\right\}\\
+&=  \left\{ a\mat{1&0\\0&0} + b\mat{0&1\\1&0} + d\mat{0&0\\0&1}
+ \Big|\, a,b,d \in \R\right\}\\
+&= \spn\left\{ \mat{1&0\\0&0},\mat{0&1\\1&0},\mat{0&0\\0&1}\right\}.
+\end{align*}
+\end{myexample}
+
+
+\section{Définition d'une enveloppe linéaire}
+
+Soient $\vv_1$, $\vv_2, \cdots, \vv_m$ des vecteurs d'un espace vectoriel $V$.
+\begin{definition}
+ \begin{enumerate}
+\item Si $a_1, a_2, \cdots, a_m$ sont des scalaires, alors le
+vecteur
+$$
+a_1\vv_1 + a_2\vv_2 + \cdots + a_m \vv_m
+$$
+est appelée une \defn{combinaison linéaire} en $\vv_1, \ldots, \vv_m$.
+\item L'ensemble de \emph{TOUTES} les combinaisons linéaires en $\vv_1, \ldots, \vv_m$
+est appelé l'\defn{enveloppe linéaire engendrée par $\vv_1, \ldots, \vv_m$}.  On note alors
+$$
+\spn\{\vv_1, \ldots, \vv_m\} = \{ a_1\vv_1 + a_2\vv_2 + \cdots + a_m \vv_m \st a_1, \cdots, a_m \in \R\}.
+$$
+Dans ce cas, l'ensemble $\{\vv_1, \ldots, \vv_m\}$ est appelé l'\defn{ensemble générateur}
+de $\spn\{\vv_1, \ldots, \vv_m\}$, et on dira que $\{\vv_1, \ldots, \vv_m\}$
+\defn{engendre} $\spn\{\vv_1, \ldots, \vv_m\}$.
+\item Un espace vectoriel (ou sous-espace) $W$ est \stress{engendré par des vecteurs $\vv_1, \ldots, \vv_m \in W$} si l'on a $W = \spn\{\vv_1, \ldots, \vv_m\}$.  On dit alors que $\{\vv_1, \ldots, \vv_m\}$ \stress{engendre} $W$.
+\end{enumerate}
+\end{definition}
+
+\begin{myexample} Dans l'exemple \ref{ex6.2.1}, on obtenait $W = \spn\{ (2,1,0), (-1,0,1)\}$. Si l'on note respectivement $\vv_1$ et $\vv_2$ ces deux vecteurs, alors on peut dire que $W$ engendré par $\vv_1$ et $\vv_2$, ou encore que $\{ \vv_1,\vv_2\}$ engendre $W$. \end{myexample}
+
+\begin{myexample} Dans l'exemple \ref{ex6.2.2}, on peut voir que l'ensemble $S$  est l'enveloppe linéaire engendrée par trois matrices qu'on appellera
+$M_1$, $M_2$ et $M_3$.  Donc $S$ engendré par $M_1, M_2$ et $M_3$, et l'ensemble $\{M_1, M_2, M_3\}$ engendre $S$.
+\end{myexample}
+
+\begin{myexample} Une droite de $\R^n$ passant par l'origine est de la forme $L = \{ t\vv \st t\in \R\}$ pour un certain vecteur $\vv\in\R^n$.
+Donc $L = \spn\{ \vv\}$, et $L$ est le sous-espace engendré par le vecteur
+$\vv$.
+\end{myexample}
+
+\begin{myexample} Le vecteur $(1,2)\in \R^2$ engendre la droite dirigée par $(1,2)$ et qui passe par l'origine.
+Le vecteur $(1,2)$ est un élément de $\R^2$ mais il \emph{n'engendre pas sur tout le plan $\R^2$} car, par exemple, le vecteur $(1,3)$ ne peut être obtenu à partir de $(1,2)$ en utilisant des opérations vectorielles (combinaisons linéaires).
+\end{myexample}
+
+\standout{Attention : dire qu'un ensemble fini de vecteurs appartient à $\R^n$ ne signifie pas qu'ils engendrent $\R^n$.  Le sous-espace qu'ils engendrent est généralement
+plus petit que $\R^n$: c'est le sous-espace de tous les vecteurs obtenus à partir de combinaisons linéaires de cet ensemble fini.}
+
+\section{Le THÉORÈME IMPORTANT sur les enveloppes linéaires}
+
+\begin{theorem}[Les enveloppes linéaires sont des sous-espaces]\label{span}\index{enveloppes linéaires sont des sous-espaces}
+Soit $V$ un espace vectoriel. \hfill \\ Étant donnés $\vv_1, \ldots, \vv_m \in V$, on definit $U = \sp{ \vv_1, \ldots, \vv_m} $.
+Alors : 
+\begin{enumerate}
+\item[(1)] $U  $ est \emph{toujours} un sous-espace de $V$.
+\item[(2)] Si $W$ est sous-espace \emph{quelconque} de $V$ et qu'il contient TOUS les vecteurs $\vv_1, \ldots, \vv_m$, alors on a l'inclusion $U \subseteq W$. En d'autres termes, le sous-espace
+$W$ doit aussi contenir tous les combinaisons linéaires en ces $m$ vecteurs.  Conséquence: $\sp{ \vv_1, \ldots, \vv_m}$ est
+le plus petit sous-espace qui contient $\vv_1, \ldots, \vv_m$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Pour montrer (1), nous appliquons le test du sous-espace :
+\begin{itemize}
+\item Nous avons bien que $\zero = 0 \vv_1 + \cdots + 0\vv_m \in U$.
+\item Si $\uu = a_1\vv_1 + \cdots + a_m\vv_m$ et $\ww = b_1\vv_1 + \cdots + b_m\vv_m$, alors $\uu + \ww = (a_1+b_1)\vv_1 + \cdots + (a_m+b_m)\vv_m$ est aussi une combinaison linéaire de $\vv_1, \cdots, \vv_m$ et donc est à nouveau dans $U$.
+D'o\`u $U$ est fermé par addition.
+\item Si $\uu \in U$ est comme ci-dessus et $k \in \R$, alors
+$k\uu = (ka_1)\vv_1 + \cdots + (ka_m)\vv_m$  est aussi dans $U$.  Donc
+$U$ est fermé sous la multiplication par scalaire.
+\end{itemize}
+Ainsi $U$ est un sous-espace de $V$.
+
+La preuve de (2) est un exercice simple\footnote{Si vous n'\^etes pas d'accord, SVP voir votre professeur!} utilisant les propriétés de fermeture des sous-espaces.
+\end{proof}
+
+\begin{myexample} Une preuve rapide pour montrer que $W$ est un sous-espace est de l'écrire comme suit :
+
+\begin{align*}W &= \{(x,y,x-y) \st x,y\in \R\}\\ &= \set{x\, (1,0,1)+ y\, (0,1,-1)\st x,y \in \R}\\&=\spn\{ (1,0,1),(0,1,-1)\}\,,
+\end{align*}
+puis d'appliquer le théorème pour conclure que $W$ est bien un sous-espace de $\R^3$. \end{myexample}
+
+\standout{Si l'on peut écrire un ensemble comme \emph{l'enveloppe linéaire engendrée} par certains vecteurs,
+alors le théorème nous dit que c'est automatiquement un espace vectoriel.  On n'a même pas besoin d'utiliser le test du sous-espace ! C'est ça qui fait que le théorème \ref{span} est surpuissant !}
+
+\section{Application du Théorème~\ref{span} pour identifier plus de sous-espaces}
+
+Voyons comment ce théorème peut nous aider.
+
+\begin{myprob} Soit $V = \F(\R)$ et soient $f(x) = \cos(x)$, $g(x) = \sin(x)$.
+On définit $W = \spn\{f,g\}$. Par le théorème, c'est donc un sous-espace de $\F(\R)$.
+
+Mais posons-nous deux questions :
+
+(a) Est-ce que $\sin(x+1) \in W$?
+
+(b) Est-ce que  la fonction $h(x) = 1$ appartient à $W$?
+
+\begin{mysol} Pour (a), nous rappelons l'identité trigonométrique suivante pour la somme d'angles :
+$$
+\sin(x+1) = \sin(x) \cos(1) + \sin(1) \cos(x) = \sin(1) f(x) + \cos(1) g(x).
+$$
+Donc, puisque $\sin(1)$ et $\cos(1)$ ne sont que des nombres dans $\R$, il s'agit simplement d'une combinaison linéaire en $f$ et $g$.
+ C'est pourquoi OUI  $\sin(x+1)$ appartient bien à $W$.
+
+Pour la question (b), il se peut que nous n'ayons aucune idée de ce qu'il faille faire.  La meilleure façon de procéder est sans doute de commencer par chercher
+des indices à tâtons : remplacez $x$ par certaines valeurs et voyez ce qui se passe.  Pour rester général,
+{\it supposons que} $h$ puisse s'écrire $h(x) = a f(x) + b\, g(x)$ pour certains scalaires $a$ et $b$.  On aurait alors :
+\begin{align*}
+\text{pour }x = 0&:\quad  1 = h(0) = a\times1 + b\times0 = a \Longrightarrow 1 = a\,,\\
+\text{pour }x=\pi/2 &:\quad 1 = h(\pi/2) = a\times0 + b\times1= b \Longrightarrow 1=b\,.
+\end{align*}
+Excellent jusqu'ici !  Donc SI c'est vrai que $h(x) = a f(x) + b\, g(x)$, ALORS
+nécessairement on doit avoir $a=1$ et $b=1$, de sorte que
+$h(x) = \cos(x) + \sin(x)$.
+Cependant, pour $x=\pi$, le côté gauche donne $1$ tandis que le côté droit donne $-1$...  Donc c'est une contradiction et il y a un problème... Comme les substitutions sont correctes, le problème doit donc venir de notre supposition: notre {\it hypothèse de base}  est donc fausse (celle qui suppose que $h$ est une combinaison linéaire de $f$ et $g$)...  Ainsi, on est certain que $h$ n'est pas dans $W$, ce qui donne la réponse NON à la question !
+\end{mysol}\end{myprob}
+
+\begin{myexample} L'ensemble $W = \{ a(1,0,1) + b(2,1,1) \st a,b \geq 0\}$ n'est PAS
+un sous-espace\footnote{Pourquoi ça ?\!?}.  De plus, ce n'est PAS l'enveloppe linéaire engendrée par les vecteurs $(1,0,1)$ et
+$(2,1,1)$, car il manque certaines combinaisons linéaires... 
+Moralité : il faut permettre aux paramètres de parcourir tous les nombres réels, pas juste une partie de $\R$ !
+\end{myexample}
+
+
+Pour l'exemple suivant, nous avons besoin d'une définition.
+
+
+\begin{definition}
+Étant donnée une matrice (\og carrée \fg) $A$ de taille $n \times n$, on définit la \defn{trace de $A$}
+comme étant la somme des éléments de sa diagonale principale. On note la trace $\tr(A)$, et on a $\tr(A) \in \R$ (donc la trace d'une matrice n'est pas une matrice !!).
+Par exemple :
+$$
+\tr\mat{a & b\\ c& d} = a + d\,.
+$$
+\end{definition}
+
+\begin{myprob} Montrez que l'ensemble $\sl_2 = \{ A \in \M_{22}(\R) \st \tr(A) = 0\}$
+est un sous-espace de $\M_{22}(\R)$. (On l'appelle \stress{groupe spécial linéaire} et il s'agit en fait d'un exemple d'\emph{algèbre de Lie}). \footnote{\emph{Lie} se prononce «~li~», du nom de Marius Sophus Lie, un mathématicien norvégien. Les algèbres de Lie et les groupes de Lie sont des structures mathématiques importantes. L'idée de Sophus Lie sur les «~symétries continues~», maintenant appelée Groupes de Lie, a été un énorme coup de pouce pour les mathématiques et l'idée de l'«~Algèbre de Lie~» est que c'est une façon de rendre fini l'infini, tout comme nous l'avons fait avec l'idée d'un ensemble générateur pour un sous-espace. Voir la page wiki de Sophus Lie.
+
+
+Il existe une histoire amusante mais apocryphe à propos des algèbres de Lie : c'est l'histoire d'un chercheur qui, travaillant sur les algèbres de Lie, avait besoin d'un financement public pour soutenir ses recherches. Alors qu'il soumettait sa requête, un membre du Parlement canadien vint à en lire une partie et, stupéfait, l'honorable député demanda alors à la Chambre des communes pourquoi le Canada devrait soutenir des recherches basées sur le «~lying~», qui signifie «~mensonge~» en anglais... Après ce moment un peu gênant, la signification des «~algèbres de Lie~» lui fut heureusement expliquée et tout rentra dans l'ordre !\!! }
+
+\begin{mysol} En utilisant la formule de la définition ci-dessus, nous pouvons réécrire cet
+ensemble comme
+$$
+\sl_2 = \left\{ \mat{a & b \\c & -a} \Big| \,a,b,c\in \R\right\}
+= \left\{ a\mat{1&0\\0&-1}+ b \mat{0&1\\ 0&0}+ c\mat{0&0\\1&0} \Big| \,a,b,c\in \R\right\}.
+$$
+Donc $\sl_2$ peut s'écrire sous la form d'une enveloppe linéaire :
+$$
+\sl_2 = \spn\left\{ \mat{1&0\\0&-1}, \mat{0&1\\ 0&0}, \mat{0&0\\1&0}\right\}\,,
+$$
+et on en déduit que c'est bien un sous-espace de $\M_{22}(\R)$ !
+\end{mysol}\end{myprob}
+
+
+\begin{myexample} Considérez l'ensemble des  \emph{matrices diagonales} $2\times 2$, c'est-à-dire
+$$
+D_2 = \left\{ \mat{a & 0 \\ 0 & d} \st a,d\in\R \right\}.
+$$
+Comme $D_2$ s'écrit :
+$$
+D_2 = \left\{ a\mat{1 & 0 \\ 0 & 0} +d\mat{0 & 0 \\ 0 & 1}  \st a,d\in\R \right\} = \spn\left\{\mat{1 & 0 \\ 0 & 0},\mat{0 & 0 \\ 0 & 1} \right\}\,,
+$$
+on déduit que c'est aussi un sous-espace de $\M_{22}(\R)$.
+\end{myexample}
+
+
+
+
+\section{Alors, quels sont tous les sous-espaces vectoriels de $\R^n$ ?}
+
+Nous pouvons répondre à cette question de manière géométrique pour $n=1,2,3$ et cela nous permettra certainement de mieux comprendre la réponse pour le cas plus général $n\geq 4$.
+
+\subsection{Sous-espaces de $\R$}
+
+Eh bien, $\{ \zero\}$ est un sous-espace de $\R^n$ pour tout $n$, donc en prenant $n=1$ on a que
+$\{\zero\}$ est aussi un sous-espace de $\R$.
+
+Si maintenant $W$ est un sous-espace de $\R$ et que $W$ n'est pas réduit au sous-espace nul $\{\zero\}$, alors
+il contient au moins un vecteur non nul, disons $\xx$.  Mais comme $W$ est
+un sous-espace, il doit contenir aussi tous les multiples scalaires de $\xx$, ce qui nous donne que $W$ doit en fait contenir tout $\R$ !
+
+Conclusion : $\R$ n'a que deux sous-espaces : l'espace nul et lui m\^eme.
+
+
+\subsection{Sous-espaces de $\R^2$}
+
+Là encore nous savons que les ensembles $\{ \zero\}$ et $\R^2$ sont deux sous-espaces évidents de $\R^2$.
+Mais on sait aussi par exemple que les droites passant par l'origine sont des sous-espaces de $\R^2$. Et en fait, on peut montrer que ce sont les seules possibilités !
+
+\begin{theorem}[Sous-espaces de $\R^2$]\index{sous-espaces de $\R^2$}\label{subspaces$R^2$}
+Les \emph{seuls} sous-espaces de $\R^2$ sont :
+\begin{itemize}
+\item le sous-espace nul $\{\zero\}$;
+\item les droites passant par l'origine; 
+\item et $\R^2$ lui-même.
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+Pour démontrer ceci, commençons par considérer $W$ un sous-espace arbitraire de $\R^2$.
+Nous voulons montrer qu'il n'a pas d'autre choix que d'être l'un des sous-espaces de la liste ci-dessus.
+
+Si $W$ n'est pas le sous-espace zéro,
+alors il contient au moins un vecteur non nul, disons $\vv$.  
+Puisque $W$ est un sous-espace, il doit contenir l'ensemble $\sp{\vv}$ (cf. Théorème~\ref{span}, point (2)).
+Mais $\sp{\vv}$ est la droite qui passe par l'origine et de vecteur directeur $\vv$.
+Donc si $W \neq \sp{\vv}$, alors il est plus grand et il doit contenir
+un vecteur qui n'est pas sur cette droite, appelons-le $\ww$.
+Alors $\vv$ et $\ww$ ne sont pas parallèles, ils ne sont pas \defn{colinéaires}.
+Par le Théorème~\ref{span}, partie (2), on a que $W$ contient l'ensemble $\spn\{\vv,\ww\}$, et il suffit maintenant de montrer que $\spn\{\vv,\ww\} = \R^2$.
+
+Cette dernière étape de la preuve pourrait se faire entièrement de fa\c{c}on géométrique, mais en voici une version algébrique.
+
+\'Ecrivez $\vv = (v_1,v_2)$ et $\ww = (w_1,w_2)$, et soit $(x,y)$ un vecteur arbitraire de $\R^2$.  Pour montrer que $(x,y) \in \spn\{\vv,\ww\}$,
+nous devons montrer que l'équation suivante admet une solution
+$$
+\mat{x\\y} = a\mat{v_1\\ v_2} + b\mat{w_1\\w_2}
+$$
+pour certains $a,b \in \R$.  Cela revient à résoudre le système linéaire en $a$ et $b$ :
+\begin{align*}
+av_1+bw_1 &= x\\
+av_2+bw_2 &= y
+\end{align*}
+Puisque $\vv$ et $\ww$ ne sont pas des multiples l'un de l'autre, l'aire du parallélogramme qu'ils forment, $|v_1w_2-v_2w_1|$, n'est pas nulle. Donc $v_1w_2-v_2w_1 \not=0$, et il est alors facile de
+vérifier que :
+$$
+\mat{x\\y} = \frac{xw_2-yw_1}{v_1w_2-v_2w_1}\vv + \frac{v_1y-v_2x}{v_1w_2-v_2w_1}\ww.
+$$
+En d'autres termes, ces fractions dont l'aspect est désagréable sont les valeurs de $a$ et $b$ que l'on trouve en
+en résolvant l'équation ci-dessus. L'équation a donc une solution, et $\spn\{\vv,\ww\} = \R^2$, ce qui achève la preuve.
+
+(Par exemple, si l'on calcule la première coordonnée du côté droit, on obtient :
+$$
+\frac{xw_2-yw_1}{v_1w_2-v_2w_1}v_1 + \frac{v_1y-v_2x}{v_1w_2-v_2w_1}w_1 =
+\frac{(xw_2v_1 - yw_1v_1 + v_1yw_1 - v_2xw_1)}{v_1w_2-v_2w_1} = x
+$$
+qui est bien égale à la première coordonnée du côté gauche.)
+\end{proof}
+
+\standout{Nous avons appris au passage que : si deux vecteurs non nuls $\vv, \ww \in\R^2$
+ne sont pas colinéaires (c'est-à-dire non-parallèles), alors $\spn\{\vv,\ww\} = \R^2$, c'est l'espace tout entier !}
+
+\subsection{Sous-espaces de $\R^3$}
+Nous connaissons plusieurs types de sous-espaces de $\R^3$, et en fait là encore
+nous les connaissons déjà tous !
+
+\begin{theorem}[Sous-espaces de $\R^3$]\index{sous-espaces de $\R^3$}
+Les \stress{seuls} sous-espaces de $\R^3$ sont :
+\begin{itemize}
+\item le sous-espace nul $\{\zero\}$;
+\item les droites passant par l'origine;
+\item les plans passant par l'origine;
+\item et $\R^3$ lui-même.
+\end{itemize}
+\end{theorem}
+
+C'est quelque chose que nous serons capables de prouver algébriquement plus tard, quand
+nous aurons plus d'outils à notre disposition.  Pour l'instant, on peut se contenter d'un argument géométrique comme suit :
+
+\begin{proof}
+Soit $W$ un sous-espace arbitraire de $\R^3$.  Si ce n'est pas l'espace nul,
+alors il contient $\spn\{\vv\}$ pour un vecteur non nul $\vv \in W$.
+Si $W$ n'est pas la droite $\spn\{\vv\}$, alors il contient $\spn\{\vv,\ww\}$ pour
+pour un certain vecteur $\ww\in W$ qui n'est pas colinéaire avec $\vv$.  En argumentant comme
+dans $\R^2$, on en déduit que cette enveloppe linéaire est un plan passant par l'origine.
+Enfin, si $W$ n'est pas égal à ce plan $\spn\{\vv,\ww\}$, alors il doit contenir un autre vecteur $\uu$ tel que $\uu \notin \spn\{\vv,\ww\}$.  Il est alors possible de montrer que chaque vecteur de $\R^3$ se trouve dans $\spn\{\vv,\ww,\uu\}$, et donc on a l'égalité $W = \R^3$, ce qui achève la preuve.
+\end{proof}
+
+\section{Reflexions finales sur les enveloppes linéaires \& quelques difficultés}
+
+\begin{myprob} Montrez que
+\begin{equation}\label{E:spans2}
+\spn\{(0,1,1),(1,0,1)\} = \spn\{(1,1,2), (-1,1,0)\}\,.
+\end{equation}
+
+\begin{mysol} On peut donner deux façons différentes de résoudre cette question. La première
+ne fonctionne que dans $\R^3$, mais elle est agréable et courte.  La seconde
+fonctionne dans n'importe quel espace vectoriel, elle est donc plus puissante, mais elle est aussi plus encombrante.
+
+\begin{enumerate}
+	\item Nous avons vu ci-dessus que l'enveloppe linéaire engendrée par deux vecteurs non-colinéaires est
+un plan passant par l'origine.  Nous pouvons ensuite trouver un vecteur normal à ce
+plan en utilisant le produit vectoriel, et vérifier que ce vecteur est normal aussi pour l'autre famille de vecteurs non-colinéaires.
+
+En d'autres termes, d'une part, le plan engendré par $\{ (0,1,1),(1,0,1)\}$ a pour vecteur normal par exemple
+$(0,1,1)\times(1,0,1) = (1,1,-1)$; ce plan est donc donné
+par l'équation cartésienne $x+y-z=0$.  Aussi, d'autre part le plan généré par $\{(1,1,2),\, (-1,1,0)\}$
+a pour vecteur normal par exemple $ (1,1,2)\times (-1,1,0)=(-2,-2,2)$; ce plan a donc pour équation $-2x-2y+2z=0$.  Ces deux équations sont différentes, mais elles décrivent le même
+plan !  (Il suffit de multiplier par $-2$ pour passer d'une équation à une autre.) Ainsi les deux côtés de \eqref{E:spans2} sont égaux.
+
+	\item Maintenant, faisons comme si nous n'avions pas vu que ces deux sous-espaces sont des plans.
+Dans ce cas, nous pouvons utiliser notre théorème sur les enveloppes linéaires. En effet, puisque
+$$
+(1,1,2) = 1(0,1,1)+1(1,0,1) \qquad \textrm{et}\qquad
+(-1,1,0) = 1(0,1,1)-1(1,0,1)
+$$
+nous avons que $(1,1,2), (-1,1,0) \in \spn\{(0,1,1),(1,0,1)\}$.
+Donc par le théorème \ref{span}(2), nous obtenons l'inclusion: $$\spn\{(1,1,2), (-1,1,0) \} \subseteq \spn\{(0,1,1),(1,0,1)\}.$$
+
+Inversement, comme
+$$
+(0,1,1) = \frac12(1,1,2) + \frac12(-1,1,0) \qquad \textrm{et}\qquad
+(1,0,1) = \frac12(1,1,2) - \frac12(-1,1,0)
+$$
+on a que $(0,1,1),(1,0,1) \in \spn\{(1,1,2), (-1,1,0) \}$ et donc, encore une fois, par le
+le théorème \ref{span}(2), nous obtenons l'inclusion inverse : $$\spn\{(0,1,1),(1,0,1)\} \subseteq \spn\{(1,1,2), (-1,1,0) \}.$$
+
+Ceci conclut la preuve (car les doubles inclusions $W \subseteq U$
+et $U \subseteq W$ impliquent toujours $W = U$).
+\end{enumerate}
+\end{mysol} \end{myprob}
+
+
+\standout{Nous rencontrons donc un premier problème avec les enveloppes linéaires : il n'est pas si facile de dire si deux sous-espaces sont égaux en se basant \stress{uniquement} sur les vecteurs générateurs...}
+
+\begin{myprob} Montrez que: $$\spn\{(0,1,1),(1,0,1)\} = \spn\{(0,1,1),(1,0,1),(1,1,2),(-1,1,0)\}\,.$$
+
+\begin{mysol} La réponse courte : à partir du problème précédent, nous savons que $\spn\{(0,1,1),(1,0,1)\}$ est en fait le plan d'équation $x+y-z=0$.
+Mais, on remarque que les deux vecteurs additionnels à droite $(1,1,2)$ et $(-1,1,0)$ satisfont également cette équation, donc ils sont tous les deux aussi dans le plan. De plus, l'ensemble que les vecteurs $(0,1,1)$ et $(1,0,1)$ engendrent ne peut pas être plus grand que ce plan, puisque par le théorème ce plan est le PLUS PETIT
+sous-espace qui contient les vecteurs générateurs.  Notez aussi qu'il ne peut pas être
+plus petit que le plan, puisque vous pouvez obtenir chaque vecteur
+de ce plan via des combinaisons linéaires de ces deux vecteurs. D'où l'égalité.
+
+La réponse la plus complète : utilisez la deuxième méthode de l'exercice ci-dessus. D'une part, il est clair que
+$(0,1,1), (1,0,1) \in \spn\{(0,1,1),(1,0,1),(1,1,2),(-1,1,0)\}$
+(puisqu'ils font partie de la liste !) et donc
+$$
+\spn\{(0,1,1),(1,0,1)\} \subseteq \spn\{(0,1,1),(1,0,1),(1,1,2),(-1,1,0)\}.
+$$
+D'autre aprt, en utilisant l'exemple précédent, on a que chacun
+chacun des 4 vecteurs de droite est compris dans l'enveloppe engendré par
+$(0,1,1)$ et $(1,0,1)$. Nous pouvons donc conclure de la même manière que
+$$
+\spn\{(0,1,1),(1,0,1),(1,1,2),(-1,1,0)\} \subseteq \spn\{(0,1,1),(1,0,1)\}.
+$$
+Ainsi, les sous-espaces sont égaux. \end{mysol}\end{myprob}
+
+\standout{Nous venons de rencontrer un deuxième problème : le fait de rajouter des vecteurs générateurs à un ensemble n'implique pas que le sous-espace qu'ils engendrent est plus grand... Vous ne pouvez pas juger de la taille d'un sous-espace en regardant simplement les vecteurs générateur...}
+
+(Enfin, pour le moment du moins... Nous y reviendrons bientôt avec les notions de \stress{famille libres} et \stress{familles génératrices}.)
+
+
+
+
+

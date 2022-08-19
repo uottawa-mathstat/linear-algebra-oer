@@ -1,0 +1,129 @@
+\section*{Problems}
+\addcontentsline{toc}{section}{Problems}
+
+ 
+
+
+\medskip {\bf Remarks:} 
+\begin{enumerate}
+\item A question with an asterisk `$ ^\ast$' (or two) indicates a bonus-level question.
+ \item You must justify all your responses.
+\end{enumerate}
+\bigskip
+
+
+\begin{prob} \label{prob23.1} 
+\begin{enumerate}[a)]
+\item For each of the matrices $A$  in Problem \ref{prob22.1}, if possible, find an invertible matrix $P$ and a diagonal matrix $D$ such that $P^{-1}AP =D$. If this is not possible, explain why. (Solutions to parts b, d, f and h are available.) 
+
+\item Use the fact that $A=\bmatrix 
+1&0&1\\0&1&0\\1&1&1 \endbmatrix $ is diagonalizable to compute  $A^{10^{1000}}$ before the sun becomes a red giant and (possibly) engulfs the earth.\footnote{You have between 5 and 6 billion years, but it should only take you less than 5 minutes.} 
+
+\end{enumerate}
+
+ 
+
+\end{prob} \begin{prob} \label{prob23.2} State whether each of the following is (always) true,
+or is (possibly) false.     
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item If you say the statement may be false, you must give an explicit example.   
+\item If you say the statement is true, you must give a clear explanation -   by quoting a theorem presented in class, or by giving a {\it proof valid for every  case}. 
+\end{enumerate}
+
+\begin{enumerate}[a)]
+\item If $3$ is an eigenvalue of an $n \times n$ matrix $A$, there must be a non-zero vector $\vv \in \R^n$ with $Av=3v$.
+\medskip
+%
+\item\sov The matrix $\bmatrix 0&-1\\1&0\endbmatrix$ has no real eigenvalues.
+\medskip
+%
+
+\item The matrix $\bmatrix -1&1\\0&-1\endbmatrix$ is
+diagonalizable.
+\medskip
+%
+\item\sov If $0$ is an eigenvalue of  $n \times n$ matrix  $A$, then $A$ is
+not invertible.
+\medskip
+%
+\item If an  $n \times n$ matrix  $A$ is
+not invertible, then $0$ is an eigenvalue of $A$.
+\medskip
+%
+\item\sov Every invertible matrix is diagonalizable.
+\medskip
+%
+\item Every diagonalizable  matrix is invertible.
+\medskip
+%
+\item\sov If an $n \times n$ matrix has $n$ distinct eigenvalues, then the matrix is diagonalizable. 
+\medskip
+%
+\item If an $n \times n$ matrix is diagonalizable then it must have $n$ distinct eigenvalues. 
+\medskip
+%
+\item\sov\footnote{ Hint: Use the fact that we know $\det(A-\lam I_n)=(-1)^n(\lam-\lam_1)(\lam-\lam_2)\dots(\lam-\lam_n) $.} If an  $n \times n$ matrix  $A$ has eigenvalues $\lam_1, \dots ,\lam_n$, then $\det A=\lam_1 \dots\lam_n $.
+\medskip
+%
+
+\item$^{\ast}$ If $\vv$ and $\ww$ are eigenvectors of a symmetric matrix $A$ (i.e. $A=A^T$) which correspond to different eigenvalues, then $\vv \cdot \ww=0$.\footnote{ Hint:  Remember that because $A$ is symmetric, $A\vv\cdot \ww=\vv\cdot A\ww$ (by Problem~\ref{prob14.4}). Now simplify both sides using the fact that $\vv$ and $\ww$ are eigenvectors and see what you obtain.}
+\medskip
+% 
+\end{enumerate}
+\end{prob} \begin{prob} \label{prob23.3}\sov Let $A=\bmatrix
+0&1&1\\ 1&0&1\\ 1&1&0 \endbmatrix$. 
+
+\begin{enumerate}[a)]
+
+\item Compute $\det(A-\lam I_3)$ and hence show that the eigenvalues of
+$A$ are $2$ and $-1$.
+
+\item Find a basis of $E_2 =\set{\xx\in \R^3 \st A\xx= 2\xx}$.
+\item Find a basis of $E_{-1} =\set{\xx\in \R^3 \st A\xx=-\xx}$. 
+ 
+\item Find an invertible  matrix 
+$P$ such that $P^{-1}AP=D$ is diagonal,  and give this diagonal matrix $D$. Explain why
+your choice of $P$ is invertible.
+\item Find an invertible  matrix 
+$Q \not=P$ such that $Q^{-1}AQ=\tilde D$ is also diagonal,  and give this diagonal matrix $\tilde D$.
+\end{enumerate}
+  
+
+
+\end{prob} \begin{prob} \label{prob23.4} $^{\ast}$\footnote{ This example is a simplified version of the equations of motion for 2 masses connected by springs. Search the web for `Normal mode' for an example. } Consider the coupled  system of second order differential equations for the the two functions $f$ and $g$:
+
+$$\begin{matrix} 
+\ddot f=-2 f +g  \\
+\ddot g=f-2g\\
+ \end{matrix} $$(Here $\ddot f$ and $\ddot g$ denote $\dfrac{d^2 f}{dt^2}$ and $\dfrac{d^2 g}{dt^2}$ respectively.)
+This can be also written in matrix form as: $\bmatrix \ddot f \,\\ \ddot g
+ \endbmatrix =\bmatrix -2 & 1 \\
+ 1 & -2 \endbmatrix \bmatrix  f \,\\   g
+ \endbmatrix$. 
+Let $A=\bmatrix -2 & 1 \\
+ 1 & -2 \endbmatrix $. Diagonalize $A$ to  write $A=PDP^{-1}$ for some invertible matix $P$ and some diagonal matrix $D=\bmatrix \lam_1 & 0 \\
+ 0 & \lam_2 \endbmatrix $. Now define two new functions $h$ and $k$ by  $\bmatrix h \,\\ k
+ \endbmatrix = P^{-1} \bmatrix  f \,\\   g
+ \endbmatrix$. Show that $\bmatrix \ddot f \,\\ \ddot g
+ \endbmatrix =\bmatrix -2 & 1 \\
+ 1 & -2 \endbmatrix \bmatrix  f \,\\   g
+ \endbmatrix$ is equivalent to $\bmatrix \ddot h\,\\ \ddot k
+ \endbmatrix =\bmatrix \lam_1 & 0 \\
+ 0 & \lam_2 \endbmatrix\bmatrix  h \,\\   k
+ \endbmatrix$, or, written out fully as
+$$\begin{matrix} 
+\ddot h=\lam_1 \,h  \\
+\ddot k=\lam_2 \,k\\
+ \end{matrix} $$ 
+
+  You will find that both $\lam_1$ and $\lam_2$ are negative, so the solutions to these two (linear) second order differential equations\footnote{ Search the web  for `Linear differential equation' for some details.} are $h(t)=a \sin( \sqrt{|\lam_1|}\,t) + b \cos( \sqrt{|\lam_1|}\,t)$ and $k(t)=c \sin( \sqrt{|\lam_2|}\,t) + c \cos( \sqrt{|\lam_2}|\,t)$, where $a,b,c,d$ are real constants.
+
+\medskip
+  Use this to find $f$ and $g$, and solve for $a,b,c$ and $d$  in terms of  the so-called {\it `initial conditions' $f(0), \dot f(0), g(0), \dot g(0)$}.
+\medskip
+%
+
+
+\end{prob}
+

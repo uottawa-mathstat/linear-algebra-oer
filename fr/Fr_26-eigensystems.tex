@@ -1,0 +1,336 @@
+\chapter{Valeurs propres, vecteurs propres}
+\label{chapter:Fr_26-Eigen}
+Ce chapitre et le suivant sont sans doute les deux chapitres les plus utiles de ce livre en l'algèbre linéaire et dont les applications sont innombrables ! Préparez-vous à un grand voyage !\!!
+
+\section[Valeurs et vecteurs propres]{Valeurs propres et vecteurs propres d'une matrice carr\'ee}
+\begin{definition}\label{section:eigen}
+Soit $A$ une matrice $n\times n$.  
+Si $\lambda\in \R$ est un scalaire et $\xx \in \R^n$ est un vecteur \stress{non-nul} tels que
+$$
+A \xx = \lambda \xx,
+$$
+alors $\xx$ est appell\'e un \defn{vecteur propre de $A$} et $\lambda$ est dite la \defn{valeur propre} correspondante à $\xx$.
+\end{definition}
+
+\begin{myexample}
+Soit $A = \mat{3 & -1 \\ -2 & 2}$.  Alors:
+\begin{itemize}
+\item $1$ est une valeur propre et $(1,2)$ est un vecteur propre correspondant à $\lambda = 1$ car $$A\mat{1\\2} = \mat{1\\2}=1\mat{1\\2}.$$
+\item $4$ est une valeur propre et $(-1,1)$ est un vecteur propre correspondant à $\lambda = 4$ car $$A\mat{-1\\1} = \mat{-4\\4}.$$
+\end{itemize}
+Notez que $(10,20)$ et $(17,-17)$ sont aussi des vecteurs propres de $A$; 
+mais ils ne sont que des multiples de ce que nous avons déjà trouvé. En fait, étant donnée une valeur propre, il n'y a pas unicité du vecteur propre, même si l'on fixe sa norme égale à $1$.
+\end{myexample}
+
+\begin{myexample}
+Soit $A = \scriptsize\mat{1 & 1\\ 2 & 2}$.  Alors 
+$0$ est une valeur propre de $A$ et $(1,-1)$ est un vecteur propre correspondant,
+puisque $A\scriptsize\mat{1\\-1} = \zero = 0\mat{1\\-1}$.
+\end{myexample}
+
+\standout{On autorise la \stress{valeur propre} $0$, mais on n'autorise jamais le vecteur nul $\zero$ comme \stress{vecteur propre}.}
+
+Application importante :  
+supposons que l'on puisse trouver une base $\{ \xx_1,\cdots,\xx_n\}$ de $\R^n$, constituée de
+vecteurs propres de $A$, et que ces vecteurs propres sont associ\'es respectivement aux valeurs propres $\lambda_1,\cdots, \lambda_n$.
+Alors, si $\vv = a_1 \xx_1 + \cdots + a_n \xx_n$,
+on a
+\begin{align*}
+A\vv &= A(a_1 \xx_1 + \cdots + a_n \xx_n)\\
+ &= A(a_1 \xx_1) + \cdots + A( a_n \xx_n)\\
+&= a_1 A\xx_1 + \cdots + a_n A\xx_n\\
+&= a_1\lambda_1 \xx_1 + \cdots + a_n\lambda_n \xx_n\\
+&= \lambda_1a_1\xx_n + \cdots + \lambda_na_n\xx_n.
+\end{align*}
+Donc, même si le vecteur $A\vv$ n'est pas un multiple scalaire de $\vv$ (puisque le
+$\lambda_i$ peuvent être différents les uns des autres), l'idée est la suivante: étant donné un vecteur $\vv$ en coordonnées relatives à une base propre, le calcul de
+$A\vv$ est très rapide puisqu'il ne nécessite pas de multiplier les matrices --- nous devons juste
+multiplier chacune des coordonnées (des coefficients) par le $\lambda_i$ approprié, ce qui est très rapide !
+
+(Pour ceux d'entre vous qui pensent en termes de complexité informatique, cela signifie qu'on
+passe d'une complexité $\mathcal O(n^2)$ à une complexité $\mathcal O(n)$ --- la différente est assez significative !\!!)
+
+
+\section{Trouver les valeurs propres de $A$}
+
+Puisque l'on ne connaît ni $\lambda$ ni $\xx$, l'équation $A\xx = \lambda \xx$ n'est
+en fait pas linéaire.  Cependant, comme nous l'avons vu précédemment, nous pouvons parfois 
+transformer des équations non-linéaires en des équations linéaires. La technique est de se concentrer sur une variable à la fois.
+
+Ici, la \stress{cl\'e} est la chaîne d'égalités suivante, qui
+transforme l'équation $A\xx = \lambda \xx$ en l'équation $( A- \lambda I_n) \xx = \zero$ :
+\begin{align*}
+& A\xx = \lambda \xx \\
+\iff\quad & A\xx = \lambda I_n \xx\\
+\iff\quad & A\xx - \lambda I_n \xx =\zero  \\
+\iff\quad & (A-\lambda I_n )\xx=\zero\,.  
+\end{align*}
+Ce point de vue est la clé pour nous permettre de déterminer $\xx$ et $\lambda$ avec
+nos méthodes précédentes. Voici la méthode :
+
+Tout d'abord, considérez que $\lambda$ est un scalaire fixe et connu.  Ainsi,
+cette équation est un système homogène d'équations linéaires, et
+toute solution \stress{non-triviale} est un vecteur propre de $A$.  En
+d'autres termes :  
+\begin{itemize}
+\item si ce système a une solution unique, alors il n'y a pas
+de vecteurs propres correspondant à $\lambda$, ce qui signifie que $\lambda$ n'est pas une valeur propre; 
+\item si en revanche ce système possède une infinité de solutions, alors toute solution non-triviale
+est un vecteur propre, et donc $\lambda$ est bien une valeur propre.
+\end{itemize}
+Nous pouvons reformuler cela de la manière suivante, en nous rappelant que lorsque $A$ est
+une matrice carrée, avoir une infinité de solutions pour un système 
+linéaire revient à dire qu'elle n'est pas inversible :
+
+\standout{Le scalaire $\lambda$ est une valeur propre de $A$ si 
+et seulement si la matrice $A-\lambda I_n $ n'est pas inversible.}
+
+Nous pourrions utiliser de nombreuses méthodes équivalentes pour vérifier si la matrice n'est pas
+inversible, mais puisque la matrice contient une variable, à savoir 
+$\lambda$, la plus simple est la condition avec le déterminant :
+
+\standout{Le scalaire $\lambda$ est une valeur propre de $A$ si et seulement si $\det( A- \lambda I_n)=0$.}
+
+\begin{definition}\label{charpoly}
+Le polynôme $\det( A- \lambda I_n)$ est appelé \defn{polynôme caractéristique} de $A$.\footnote{Certains auteurs préfèrent $\det( \lambda I_n -A)$, mais pour nos besoins de calcul, l'utilisation de $\det( A- \lambda I_n)$ est moins sujette aux erreurs et donne exactement la même réponse, à un signe près.} Donc les racines du polyn\^ome caract\'eristique de $A$ sont exactement les valeurs propres de $A$ !
+\end{definition}
+
+\begin{myprob}
+Trouvez les valeurs propres de $A = \mat{1 & 3 \\ 3 & 1}$.
+
+\begin{mysol}
+Nous devons trouver toutes les valeurs de $\lambda$ pour lesquelles la matrice $A-\lambda I_2$ n'est
+pas inversible.  Commencez par trouver l'expression de $A-\lambda I_2 $:
+$$
+A-\lambda I_2 = \mat{1 & 3 \\ 3 & 1} -\mat{\lambda & 0 \\ 0 & \lambda}
+= \mat{  1-\lambda & 3\\ 3 &   1-\lambda}
+$$
+(attention aux signes négatifs devant les deux $\lambda$ !)
+
+Nous calculons le polynôme caractéristique comme suit:
+$$
+\det(A-\lambda I_2) \,=\, (1-\lambda)(1-\lambda) - 3\times 3  \,=\, \lambda^2 -2\lambda -8
+ \,=\, (\lambda - 4)(\lambda + 2)\,.
+$$
+On voit donc que le polyn\^ome caract\'eristique s'annule exactement quand $\lambda$ est $4$ ou $-2$.
+Les valeurs propres de $A$ sont donc $4$ et $-2$.  
+
+Comme c'est la première fois, vérifions cela : écrivons les expressions des matrices $A-4I_2$ et $A+2I_2$ et assurons-nous qu'elles ne sont pas en fait inversibles :
+$$
+A-4I_2 = \mat{-3&3\\3&-3}\sim \mat{1&-1\\0&0}, \qquad A+2I_2 = \mat{3&3\\3&3}\sim \mat{1&1\\0&0}\,.
+$$
+Bien ! Comme ces deux matrices ne sont pas inversibles, il est maintenant clair que $4$ et $-2$ sont des valeurs propres de $A$. 
+Pour voir qu'il s'agit des SEULES valeurs propres de $A$, il suffit de remarquer que $\det(A-\lambda I)$ est un polynôme de degré $2$ car la matrice est de taille $2\times 2$, il a donc {\it au plus} deux racines réelles. D'où le résultat.
+
+ 
+\end{mysol}\end{myprob}
+
+Clé pour les calculs :
+Les valeurs propres de $A$ sont les racines du polynôme caractéristique 
+$\det( A-\lambda I_n )$.  
+
+\begin{definition}\label{def:algmult}
+La multiplicité de $\lambda$ en tant que racine du polynôme caractéristique
+est appelée \emph{multiplicité algébrique} de $\lambda$.
+\end{definition}
+ 
+\begin{myexample}
+Le polynôme caractéristique de la matrice $A=\scriptsize\mat{16& 2 & 17 \\ 0 & -43 & 14\\ 0 & 0 & 16}$
+est $$-(\lambda - 16)^2(\lambda + 43)\,.$$ 
+(V\'erifiez-le!)  C'est un polynôme de degré $3$ car $A$ est de taille $3\times 3$. On voit que les valeurs propres de $A$ sont  
+$\lambda = 16$ (avec multiplicité algébrique $2$) et $\lambda = -43$ (avec multiplicité algébrique $1$).
+\end{myexample}
+
+
+
+\section{Trouver les vecteurs propres de  $A$}
+
+Supposons maintenant que vous ayez trouvé les valeurs propres d'une
+matrice $A$.  Pour trouver des vecteurs propres de $A$ associés
+à ces valeurs propres, rappelez-vous que ce sont simplement les solutions non-triviales
+$\xx$ de l'équation matricielle :
+$$
+( A- \lambda I_n) \xx = \zero\,.
+$$
+En d'autres termes, les vecteurs propres de $A$ associés à $\lambda$
+sont les vecteurs non-nuls de $\ker( A- \lambda I_n)$.
+
+\begin{definition}
+Soit $\lambda$ une valeur propre de $A$.  Alors le sous-espace
+\begin{align*}
+E_\lambda &= \ker(A- \lambda I_n)\\
+&= \{ \xx \in \R^n \mid (A- \lambda I)\xx = \zero \} \\
+& = \{ \xx \in \R^n \mid A\xx = \lambda \xx \}
+\end{align*}
+est appelé l'\defn{espace propre} associé à la valeur propre $\lambda$ de $A$.
+Ses vecteurs {\it non nuls} sont les vecteurs propres de $A$ associ\'es
+à la valeur propre $\lambda$.
+\end{definition}
+
+Donc plutôt que de demander : \og Quels sont les vecteurs propres de $A$ ?\ \fg, 
+il est plus simple de demander : \og Quelle est une base de chaque espace propre $E_\lambda$ de $A$ ?\ \fg.
+
+\begin{myprob} Trouvez une base pour chaque espace propre de 
+$$
+A = \mat{1 & 3 \\ 3 & 1}
+$$
+(Rappelons que nous avions déjà trouvé ses valeurs propres : exactement $4$ et $-2$).
+
+\begin{mysol}
+Pour $\lambda = 4$:
+$$
+A-\lambda I_2 = A-4I_2 = \mat{-3&3\\3&-3} \sim \mat{1 & -1\\0&0}\,.
+$$
+Donc la solution générale de $(A-4I_2)\xx = \zero$ est
+$$
+E_4 = \ker(A-4I_2) = \{(r,r) \mid r\in\R\}
+$$
+et une base de $E_4$ est
+$$
+\{ (1,1) \}\,.
+$$
+(Notez qu'avec $\xx = (1,1)$, on a bien $A\xx = 4\xx$ comme voulu.)
+
+
+Pour $\lambda = -2$:
+$$
+ A-\lambda I_2 = A+2I_2 = \mat{3&3\\3&3} \sim \mat{1&1\\0&0}\,.
+$$
+Donc la solution générale de $(A-2I)\xx = \zero$ est
+$$
+E_{-2} = \ker(A+2I) = \{(-r,r) \mid r\in\R\}
+$$
+et une base de $E_{-2}$ est
+$$
+\{ (-1,1) \}\,.
+$$
+(Notez encore qu'avec $\xx = (-1,1)$, on a bien $A\xx = -2\xx$ comme voulu.)
+\end{mysol}\end{myprob}
+
+
+La dimension de l'espace propre associé à la valeur propre $\lambda$ est un autre nombre important, nous voulons en tenir compte.
+
+\begin{definition}
+La dimension de l'espace propre $E_\lambda$ est appelée la
+\defn{multiplicité géométrique} de $\lambda$.
+\end{definition}
+
+\section{Trouver une base de vecteurs propres dans $\R^n$}
+
+Jusqu'à présent, nous remarquons que les vecteurs propres que nous avons obtenus pour 
+différentes valeurs propres sont LI.
+Ce n'est pas trop difficile de le vérifier quand on n'a que deux vecteurs (il suffit de vérifier s'ils sont colinéaires), mais ceci demande un peu plus de travail quand on a plus de vecteurs.\footnote{Le meilleur moyen est sans doute d'utiliser {\it la démonstration par recurrence}.}  
+
+\begin{theorem}[Les vecteurs propres sont LI quand les valeurs propres sont distinctes] \label{theo: Les vecteurs propres sont LI quand les valeurs propres sont distinctes}
+Soit $A$ une matrice $n\times n$.  Alors tout ensemble constitué
+de vecteurs propres de $A$ associ\'es à des valeurs propres distinctes
+est linéairement indépendant.
+\end{theorem}
+
+Voici quelques déductions qu'on peut faire avec les résultats qu'on a énoncés jusqu'à maintenant :
+\begin{itemize}
+\item Le polynôme caractéristique d'une matrice $A$ de taille $n \times n$ est
+un polynôme de degré $n$. Il a donc au plus $n$ racines réelles distinctes.
+\item Chaque racine du polynôme caractéristique est une valeur propre de $A$. Et réciproquement chaque valeur propre de $A$ est une racine du polynôme caractéristique.
+\item Chaque valeur propre de $A$ donne un espace propre, de dimension $\geq1$.
+\item Supposons que le polynôme caractéristique ait exactement $n$ racines distinctes. Alors nous pouvons choisir un vecteur propre dans chaque espace propre $E_\lambda$
+et nous obtenons ainsi par le théorème ci-dessus un sous-ensemble LI de $\R^n$ constitué de $n$ vecteurs. Donc, par les chapitres précédents, on en déduit que c'est
+une base de $\R^n$, et par construction elle est constituée exclusivement de vecteurs propres
+de $A$ ! On a donc atteint notre objectif dans ce cas-là !
+\end{itemize}
+
+\begin{definition}\label{diagble}
+On dit que la matrice $A$ de taille $n \times n$ est \defn{diagonalisable sur les réels} s'il existe
+une base de $\R^n$ constituée entièrement de vecteurs propres de $A$.
+\end{definition}
+
+(Pourquoi le mot «~diagonalisable~», vous dîtes-vous peut-être ? Nous y reviendrons dans un instant, ceci a un lien avec les matrices diagonales !).
+
+\begin{fac} Si une matrice $A$ de taille $n\times n$ admet $n$ valeurs propres
+{\it réelles distinctes}, alors $A$ est diagonalisable.\end{fac}
+
+Cool, on connait donc certaines matrices diagonalisables. Mais est-ce que toutes les matrices sont diagonalisables ?
+ 
+\section{Cas problématiques I: pas assez de racines réelles}
+
+\begin{myexample} Soit $\theta\in\,[0,\, 2\pi[$. Quelle sont les valeurs propres de  
+$$
+A = \mat{\cos \theta & \sin \theta \\ -\sin \theta & \cos \theta}?
+$$
+Le polynôme caractéristique est
+\begin{align*}
+\det( A-\lambda I_2 )& = \det\mat{ \cos \theta-\lambda  & \sin \theta \\ -\sin \theta & cos \theta-\lambda}\\
+& = (\lambda-\cos \theta)^2 + \sin^2\theta\\&= \lambda^2 -2\cos(\theta)\lambda + \cos^2\theta + \sin^2\theta\\
+&= \lambda^2 -2\cos(\theta)\lambda +1.
+\end{align*}
+Ses racines, en utilisant la formule quadratique, sont :
+$$
+\lambda = \frac{1}{2}\left(2\cos\theta \pm \sqrt{4\cos^2\theta - 4}\right)
+= \cos\theta \pm \sqrt{-\sin^2\theta} = \cos\theta \pm i \sin\theta
+$$
+qui sont des nombres complexes, sauf lorsque $\sin \theta=0$, c'est-\`a-dire lorsque $\theta=0$ ou $\pi$.  
+
+Si nous devions calculer les vecteurs propres associés à ces
+valeurs propres pour $\theta\notin\{0, \pi\}$, alors ils auraient des coordonnées complexes --- ce qui signifie
+qu'ils ne seraient pas dans $\R^2$, mais plutôt dans $\C^2$.  C'est pratique pour 
+certains types d'applications, mais pas pour d'autres...
+En mathématiques, on travaille généralement sur le corps complexe $\C$ parce que le Théorème Fondamental de l'Algèbre nous dit que dans ce contexte tous les polynômes non-constants ont toujours au moins une racine.\footnote{\label{diagC}Si $A$ est une matrice $n\times n$ et que $\C^n$ admet une base compos\'ee de vecteurs propres de $A$, alors on dit que $A$ est {\it diagonalisable sur $\C$}, par opposition avec la définition qu'on vient juste de voir sur $\R$.} Mais dans ce cours, on travaille plutôt dans le corps réel $\R$ car c'est plus simple pour commencer.
+
+En fait, avec un peu plus de recul sur les matrices, vous comprendrez un jour que la matrice  $
+A = \scriptsize\mat{\cos \theta & \sin \theta \\ -\sin \theta & \cos \theta}
+$ est une matrice de rotation : si l'on prend un vecteur $\xx\in\R^2$, alors le vecteur $A\xx$ est une rotation de $\xx$ autour de l'origine, d'un angle $\theta$, dans le plan $\R^2$.
+Ainsi, on comprend clairement pourquoi $A$ admet des valeurs propres uniquement lorsque $\theta=0$ ou $\pi$ : si $\theta\notin\{0,\pi\}$, alors la rotation d'un vecteur $\xx \in \R^2$ par un angle $\theta$ ne donne jamais un multiple scalaire réel $\lambda \xx$ de $\xx$ et donc $A$ n'admet aucun vecteur propre (réel)...
+\end{myexample}
+
+\standout{Moralité : il peut arriver que certaines valeurs propres soient des
+nombres complexes non-réels.  Dans ce cas, il est alors \emph{impossible} d'obtenir une base de vecteurs propres de $\R^n$, et $A$ n'est pas diagonalisable sur $\R$. }
+
+
+\section{Cas problématiques II: pas \og assez\ \fg\ de vecteurs propres LI}
+
+Rappelons que l'on souhaite construire une base de $\R^n$ composée exclusivement de vecteurs propres d'une matrice $A$. Par définition, si $\lambda$ est une valeur propre, alors $\dim(E_\lambda) \geq 1$. 
+Mais si $\lambda$ est une racine multiple de l'équation caractéristique,
+disons de multiplicité $k\geq 2$, alors nous avons vraiment besoin que $E_\lambda$ soit dimension de $\dim(E_\lambda) = k$, car sinon on ne pourra pas construire la base voulue. Et le problème, c'est qu'on n'a pas toujours l'égalité $\dim(E_\lambda) = k$... :'(
+
+\begin{myprob} Trouvez les valeurs propres de $A = \scriptsize\mat{3 & 1\\ 0 & 3}$ et déterminez une
+base pour chaque espace propre.
+
+\begin{mysol} Après calcul, on obtient que le polynôme caractéristique est $(\lambda -3)^2$. Donc
+la seule valeur propre est $3$, avec multiplicité algébrique $2$.
+Mais  $\rank(A- 3I) = 1$ et donc $\dim E_2 = \dim \ker(A- 3I_2) = 2-1=1$ par le Théorème du rang. Ainsi $\dim E_2 < 2$, c'est-à-dire que notre espace propre est unidimensionnel, il ne pourra pas engendré $\R^2$ tout entier...
+et il est donc impossible de trouver une base $\R^n$ compos\'ee de vecteurs propres de $A$ !
+Ainsi, la matrice $A$ n'est pas diagonalisable sur $\R$ (ou c'est même le cas sur $\C$ !).
+\end{mysol}\end{myprob}
+
+\standout{Si le polynôme caractéristique admet une
+racine multiple, alors il \stress{peut arriver} que nous n'ayons pas assez de
+vecteurs propres LI pour former une base de $\R^n$...}
+
+\begin{myprob} Consid\'erez la matrice suivante:
+$$
+A = \mat{3 & 2 & 4\\ 2& 0 & 2\\ 4 & 2 & 3}\,.
+$$
+Trouvez toutes les valeurs propres de $A$, ainsi qu'une base pour chaque espace propre. En déduire
+si $A$ est diagonalisable ou non. 
+
+(Vous verrez que $A$ est en fait diagonalisable, même si son polynôme caractéristique a une racine multiple.)
+\end{myprob}
+
+Ces exemples illustrent un fait fondamental.
+
+\begin{theorem}[Encadrement de la multiplicité géométrique]\index{limites de la multiplicité géométrique}\label{thm:limitsmult}
+Soit $\lambda$ une valeur propre de $A$.  Alors 
+la multiplicité géométrique de $\lambda$ est au moins égale à $1$ et elle est
+au plus égale à la multiplicité algébrique de $\lambda$ :
+$$
+1 \leq \dim E_\lambda \leq \textrm{multiplicité algébrique de $\lambda$}\,.
+$$
+\end{theorem}
+
+Notez que la première inégalité découle directement de la définition: $\lambda$
+étant une valeur propre, donc l'espace propre est non-nul et il
+doit avoir une dimension $\geq1$. L'autre inégalité en revanche demande
+plus de travail, nous ne la prouverons pas ici.
+
+
+

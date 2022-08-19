@@ -1,0 +1,384 @@
+\chapter{Espaces vectoriels associés à une matrice}
+\label{chapter:Fr_17-homogsystems}
+
+
+La dernière fois, nous avons établi que l'équation matricielle $A\xx = \bb$
+peut être considérée à la fois comme un système d'équations linéaires et comme une égalité entre $\bb$ et une combinaison linéaire des colonnes de $A$.  Cela nous permet
+de traduire et de relier des faits concrets concernant les systèmes d'équations linéaires aux 
+espaces vectoriels.
+
+Nous présentons ici trois espaces vectoriels associés à une matrice, et nous verrons à quel point ils sont très utiles. 
+
+
+
+
+\section{Espace des colonnes, espace des lignes, noyau d'une matrice}
+
+Dans tout ce qui suit, on se donne une matrice $A$ de taille $m \times n$.
+
+\begin{definition}
+L'\defn{espace colonnes} de $A$, également appelé \defn{image} de $A$, est noté $\im(A)$ ou $\col(A)$ et est d\'efini par
+$$
+\im(A)=\col(A) = \spn\{ \cc_1, \cc_2, \cdots, \cc_n\}\,,
+$$
+où $\{ \cc_1, \cc_2, \cdots, \cc_n\}$ sont les colonnes
+de $A$ consid\'er\'ees comme des vecteurs de $\R^m$.  
+\end{definition}
+
+Rappelons que si $\xx\in \R^n$, alors le vecteur $A\xx$ est une combinaison linéaire des colonnes de $A$, et réciproquement toute combinaison linéaire des colonnes de $A$ peut s'écrire sous la forme $A\xx$ pour un certain vecteur $\xx\in\R^n$. Nous pouvons donc en fait écrire
+$$
+\im(A) =\col(A)= \set{A\xx\st \xx\in \R^n}\,.
+$$
+De plus, puisque $\im(A)$ est l'enveloppe lin\'eaire engendr\'ee par des vecteurs de $\R^m$, il s'en suit que c'est un sous-espace de $\R^m$.\\
+
+On peut faire la même chose avec les lignes de la matrice $A$, en voyant les lignes comme des vecteurs de $\R^n$:
+
+\begin{definition}
+L'\defn{espace ligne} de $A$, not\'e $\row(A)$, est donn\'e par
+$$
+\row(A) = \spn\{ \rr_1, \rr_2, \cdots, \rr_m\}\,,
+$$
+où $\{ \rr_1, \rr_2, \cdots, \rr_m\}$ sont les lignes de $A$
+(généralement transposées pour les transformer en matrices $n\times 1$, 
+considérées alors comme des vecteurs dans $\R^n$).  
+\end{definition}
+
+Là encore, $\row(A)$ est un sous-espace, mais cette fois-ci pas de $\R^m$ mais plutôt de $\R^n$.\\
+
+Un troisième sous-espace important est celui qu'on appelle \emph{noyau}. Ce sous-espace vient en voyant la matrice $A$ comme un étant la matrices coefficients d'un système linéaire. 
+
+\begin{definition}
+Le \defn{noyau} de $A$, noté $\ker(A)$ (pour \emph{kernel} en anglais), est donn\'e par
+$$
+\ker(A) = \{ \xx \in \R^n \mid A\xx = \zero\}\,,
+$$
+c'est-à-dire que le noyau de $A$ est la solution générale du système linéaire homogène $A\xx = \zero$.
+\end{definition}
+
+
+\begin{lemma}
+$\ker(A)$ est un sous-espace de $\R^n$.
+\end{lemma}
+
+\begin{proof}
+Notons d'abord que $A$ est la matrices coefficients d'un système linéaire en $m$ équations et $n$ variables. Donc la solution consiste en des vecteurs à $n$ composantes et par conséquent on a bien l'inclusion $\ker(A) \subset \R^n$.  
+
+Nous devons maintenant vérifier que $\ker(A)$ est un sous-espace de $\R^n$, et nous allons utiliser
+le test du sous-espace.
+
+\begin{enumerate}
+\item On a $\zero \in \ker(A)$ puisque $A\zero = \zero$.
+\item Est-ce que $\ker(A)$ est fermé pour l'addition?  Supposons que $\xx$ et $\yy$ sont deux éléments de $\ker(A)$. Alors $A\xx = \zero$ et 
+$A\yy = \zero$.  Nous devons déterminer si leur somme $\xx+\yy$ appartient \`a $\ker(A)$. Pour cela nous devons calculer $A(\xx+\yy)$ et voir si l'on obtient encore le vecteur nul.
+Or, par distributivité du produit matriciel, on a $A(\xx+\yy) = A\xx+A\yy=\zero+\zero=\zero$.  On en déduit donc
+que $\ker(A)$ est fermé par addition.
+
+\item Est-ce que $\ker(A)$ est ferm\'e pour la multiplication par scalaire?  Soit $\xx\in \ker(A)$ (donc $A\xx = \zero$) et soit $k\in \R$ un scalaire quelconque.  Est-ce que $k\xx \in \ker(A)$ ?  Autrement dit, est-il vrai que $A(k\xx) = \zero$ ?  En utilisant
+les propri\'et\'es de la multiplication matricielle, on a  que :
+$$
+A(k\xx) = k(A\xx) = k(\zero) = \zero\,.
+$$
+Donc $k\xx \in \ker(A)$ et d'o\`u $\ker(A)$ est fermé pour la multiplication par scalaire.
+\end{enumerate}
+En conclusion, $\ker(A)$ est bien un sous-espace de $\R^n$.
+\end{proof}
+
+Il existe un quatrième espace vectoriel que nous pourrions naturellement associer à $A$ : le noyau de $A^T$, mais il n'a pas de nom propre et il est au final assez peu utilisé. Nous l'utiliserons néanmoins une fois plus tard lorsque nous parlerons des compléments orthogonaux d'un sous-espace.
+
+\standout{Veuillez noter que, étant donné une matrice $A$, ces espaces vectoriels sont généralement distincts les uns des autres!}
+
+Maintenant que nous avons introduit de nouveaux espaces vectoriels intéressants, déterminons
+leur dimension.  Nous commençons par $\ker(A)$ et reviendrons à $\im(A)$ plus tard. 
+
+\section{Trouver une base de $\ker(A)$}  \mbox{}
+
+\begin{myprob} \label{exo trouver base de ker} Trouvez une base de $\ker(A)$, o\`u $A$ est la matrice $A = \mat{
+1 & 2 & 3 &-3\\ 
+0 & 1 & 1 &-2\\ 
+1 & 0 & 1 & 1}$.
+
+\begin{mysol} Puisque $\ker(A)$ est la solution générale du système linéaire $A\xx=\zero$, notre première étape consiste à résoudre ce système linéaire avec l'algorithme de Gauss-Jordan que nous avions introduit dans les chapitres précédents.  Nous écrivons donc la matrice augmentée et nous la réduisons par rapport aux lignes en une MER comme suit:
+$$
+\mat{1 & 2 & 3&-3&|&0\\ 0 & 1 & 1&-2&|&0\\ 1 & 0 & 1&1&|&0}
+\mt{\\\sim \\ -L_1+L_3 \to L_3}
+\mat{
+1 & 2 & 3&-3&|&0\\ 
+0 & 1 & 1&-2&|&0\\ 
+0 & -2 & -2&4&|&0}
+\mt{2L_2+L_3 \to L_3 \\ \sim\\ -2L_2+L_1\to L_1 \\ }
+\mat{
+1 & 0 & 1&1&|&0\\ 
+0 & 1 & 1&-2&|&0\\ 
+0 & 0 & 0&0&|&0}
+$$
+qui est notre MER.
+
+La solution générale est obtenue en posant $x_3 = r$ et $x_4=t$, les deux variables libres (param\`etres), et en exprimant les variables de base en fonction des
+variables libres (donc $x_1 = -x_3-x_4 = -r-t$ et $x_2 = -x_3+2x_4 = -r+2t$). Sous forme vectorielle (puisque nous nous intéressons aux
+vecteurs), on obtient
+\begin{align*}
+\ker(A) &= \left\{ \mat{-r-t\\-r+2t\\r\\t} \Bigg|\, r,t\in \R\right\}\\
+&=  \left\{ r\mat{-1\\-1\\1\\0}+t\mat{-1\\2\\0\\1} \Bigg|\, r,t\in \R\right\}\\
+&= \spn\left\{ \mat{-1\\-1\\1\\0}, \mat{-1\\2\\0\\1} \right\}\,.
+\end{align*}
+Donc la famille $
+\left\{ \scriptsize\mat{-1\\-1\\1\\0}, \mat{-1\\2\\0\\1} \right\}
+$ engendre $\ker(A)$. De plus, ces deux vecteurs sont lin\'eairement ind\'ependants (il suffit de regarder les deux dernières entrées de ces vecteurs --- celles qui correspondent à nos variables libres), et nous en déduisons qu'il s'agit d'une base de $\ker(A)$.
+\end{mysol}\end{myprob}
+
+Les vecteurs de l'enveloppe lin\'eaire que l'on obtient en écrivant la solution de la 
+MER ont un nom particulier : ce sont les \defn{solutions de base}.  Ce nom suggère certainement qu'ils devraient former une base.
+
+\begin{theorem}[Les solutions de base forment une base pour $\ker(A)$]\index{les solutions de base forment une base pour $\ker(A)$} \label{kernelbasis}
+
+L'ensemble g\'en\'erateur de $\ker(A)$ obtenu à partir de la MER de $[A|\zero]$ est une base de $\ker(A)$. En d'autres termes, l'ensemble des solutions de base de $A\xx=\zero$ est une base de $\ker(A)$.
+\end{theorem}
+
+\begin{proof}
+Par définition, cet ensemble est g\'en\'erateur. Il ne reste donc plus qu'à prouver son indépendance linéaire.  Soit $\{\vv_1, \cdots, \vv_k\}$ l'ensemble des solutions de base.  
+Par construction, le nombre de solutions de base $k$ est égal au nombre de paramètres dans la solution générale, et ceci est égal au nombre de variables libres.  
+Remarquons maintenant que pour chaque variable libre $x_{n_i}$, 
+il existe un  unique vecteur $\vv_i$ qui a une entrée non-nulle dans la ligne $n_i$. 
+(C'est par construction, puisque la ligne $n_i$ correspond dans notre solution générale \`a l'équation $x_{n_i} = r_i$, où $r_i$ un paramètre. En particulier, un seul paramètre (et donc une seule solution de base) est associ\'e à cette variable).
+
+Pour chaque $1\leq i\leq k$, supposons que $\vv_i$ soit le vecteur de base correspondant \`a fixer le paramètre $x_{n_i}$ égal à 1 et le restant des param\`etres égals à zéro.
+
+Considérons maintenant l'équation de dépendance
+$$
+r_1 \vv_1 + r_2 \vv_2 + \cdots + r_k \vv_k = \zero\,.
+$$
+D'après ce que nous avons dit plus haut, pour chaque $i = 1,\, 2 \cdots,\, k$, 
+l'entr\'ee de la $n_i$-ème ligne du c\^ot\'e gauche est $r_i$, qui
+doit être égale \`a la $n_i$-ème entr\'ee du c\^ot\'e droit, laquelle est $0$.  On en
+déduit que $r_1=r_2 = \cdots = r_k = 0$.  Ainsi, l'ensemble des solutions de base
+est linéairement indépendant et donc c'est bien une base.
+\end{proof}
+
+\begin{corollary}[Th\'eor\`eme du rang]\index{Th\'eor\`eme du rang}\label{corollary:ranknull}
+
+La dimension du noyau de $A$ est égale au nombre de variables libres dans
+$A\xx=\zero$.  En particulier, on a 
+$$
+\dim (\ker(A)) + \rank(A) = n\,, 
+$$
+où $n$ est le nombre de colonnes de $A$.
+\end{corollary}
+
+\begin{proof}
+La dimension d'un espace est le nombre de vecteurs dans une base de cet espace.
+Donc par le théorème précédent, la dimension $\dim(\ker(A))$ est égale au nombre de variables libres dans $A\xx=\zero$.  Rappelons que le rang de $A$ est égal au nombre de variables de base et que $n$ est le nombre total de variables. Donc le nombre de variables libres est égal à $n-\rank(A)$, d'où le résultat.
+\end{proof}
+
+
+\section{Cons\'equences sur les solutions d'un système non-homogène}
+
+\begin{myprob} R\'esolvez l'équation $A\xx = \bb$, o\`u 
+$$
+A = \mat{
+1 & 2 & 3 &-3\\ 
+0 & 1 & 1 &-2\\ 
+1 & 0 & 1 & 1} \quad \textrm{et } \quad \bb = \mat{10 \\ 3\\ 4}\,.
+$$
+(C'est la même matrice $A$ que dans l'Exercice \ref{exo trouver base de ker}.)
+
+\begin{mysol} Nous réduisons la matrice augmentée par rapport aux lignes :
+$$
+\mat{
+1 & 2 & 3 &-3&|&10\\ 
+0 & 1 & 1 &-2&|&3\\ 
+1 & 0 & 1 & 1&|&4}
+\mt{\\\sim \\ -L_1+L_3 \to L_3}
+\mat{
+1 & 2 & 3 &-3&|&10\\ 
+0 & 1 & 1 &-2&|&3\\ 
+0 & -2 & -2 & 4&|&-6}
+$$
+$$
+\mt{2L_2+L_3 \to L_3\\ \sim \\ -2L_2+L_1 \to L_1}
+\mat{
+1 & 0 & 1 &1&|&4\\ 
+0 & 1 & 1 &-2&|&3\\ 
+0 & 0 & 0 & 0&|&0}\,,
+$$
+laquelle est donc la MER de notre système.  \stress{Notez que nous avons utilisé les MÊMES opérations que précédemment, lorsque nous avions résolu le système homogène $A\xx=\zero$ pour la même matrice $A$ !}
+
+Notre solution générale est donc :
+$$
+\left\{ \mat{4-r-t\\3-r+2t\\r\\t} \Bigg|\, r,t\in\R\right\}
+= \left\{ \mat{4\\3\\0\\0}+r\mat{-1\\-1\\1\\0} +t\mat{-1\\2\\0\\1} \Bigg|\, r,t\in\R\right\}\,.
+$$
+\end{mysol}\end{myprob}
+
+Ce qu'il faut remarquer, c'est que pour trouver la solution générale de l'équation non-homogène, il suffit simplement d'additionner une \emph{solution particulière} du système non-homogène avec la \emph{solution générale} du système homogène.  Géométriquement, cette addition signifie que nous translatons le sous-espace $\ker(A)$ (on obtient ce qui s'appelle une \emph{sous-espace affine}).  Et plus précisément, le vecteur par lequel nous translatons $\ker(A)$ est simplement une solution particulière (quelconque) du système non-homog\`ene !
+
+
+Nous pouvons énoncer ceci comme un théorème :
+
+\begin{theorem}[Systèmes non-homogènes et Noyau]\index{systèmes non homogènes et noyau}  
+
+Supposons que $A\xx=\bb$ soit un système linéaire \emph{compatible}. 
+\begin{enumerate}
+\item Si $\vv$ est une solution du système $A\xx = \bb$  et que $\uu$ est une solution quelconque du système homogène $A\xx = \zero$ associé,
+alors $\vv + \uu$ est une solution de $A\xx = \bb$.
+\item Si $\vv$ et $\ww$ sont deux solutions du système $A\xx = \bb$, alors $\xx = \vv-\ww$ est une solution du système homogène $A\xx = \zero$.
+\end{enumerate}
+Ces deux affirmations combinées assurent que la solution générale du système non-homogène est donnée exactement en additionnant $\vv$ et la solution générale du
+système homogène.
+\end{theorem}
+
+\begin{proof}
+
+(1) Nous avons $A\vv = \bb$ et $A\uu = \zero$ donc $A(\vv+\uu) = A\vv + A\uu = \bb + \zero = \bb$.
+
+(2) Nous avons $A\vv = \bb$ et $A\ww = \bb$ donc $A(\vv - \ww) = A\vv - A\ww = \bb - \bb = \zero$.
+\end{proof}
+
+L'intérêt de ce théorème, c'est qu'il nous donne une id\'ee g\'n\'erale de la structure de l'ensemble des solutions d'un système non-homogène.
+En particulier, si un système homogène admet une solution unique, alors il en est de même pour tout système non-homogène compatible ; et si un système homogène admet une infinité de solutions, indexées par $k$ solutions de base, alors le système non-homogène compatible aura également une infinité de solutions avec $k$ paramètres dans sa solution g\'en\'erale.\\
+
+\begin{remark}Cependant, à moins que vous ne trouviez une solution particulière  à votre système non-homogène (en la devinant ou en la connaissant à l'avance),
+notez que ce théorème ne vous sera d'aucune aide pour résoudre le système...  Par exemple, si $\bb \notin \im(A)$, alors
+il n'y aura pas de solution au système de non-homogène, et connaître le noyau ne sera d'aucune aide...
+\end{remark}
+
+\section{Résumé: compatibilité d'un système linéaire}\label{consistency}
+Soit $A$ une matrice $m\times n$.
+
+Un système linéaire $A\xx = \bb$ est compatible :
+\begin{itemize}
+\item  si et seulement si $\bb$ est une combinaison linéaire des colonnes de $A$;
+\item si et seulement si $\bb \in \im(A)$;
+\item si et seulement si $\rank [ A\, |\,\bb\,]=\rank A$.
+\end{itemize}
+
+\begin{theorem}\index{toujours compatible} Soit $A$ une matrice $m\times n$ et soit $\xx\in \R^n$ un vecteur.  Les \'enonc\'es suivants sont équivalents pour un système dont l'équation matricielle est $A\xx=\bb$ :
+
+\begin{enumerate}[(1)]
+\item l'équation $A\xx = \bb$ est compatible \stress{pour tous les choix de $\bb \in \R^m$};
+\item $\rank(A) = m$;  
+\item il n'y a pas de lignes nulles dans la MER de $A$; 
+\item chaque $\bb \in \R^m$ est une combinaison linéaire des colonnes de $A$;  
+\item $\im(A) = \R^m$;  
+\item $\dim(\im(A)) = m$.  
+ 
+\end{enumerate}
+\end{theorem}
+
+\begin{proof} Il y a plusieurs façons de le montrer. Nous allons prouver (1) $\implies$ (2) $\implies$ (3)$\implies$ (4) $\implies$ (5)$\iff$ (6) et (5)$\implies$ (1). Ainsi, nous aurons prouvé toutes les équivalences voulues.
+
+
+(1) $\implies$ (2) : Supposons que l'équation $A\xx=\bb$ soit compatible pour tout $\bb\in \R^m$, mais que par l'absurde $\rank (A) <m$. Alors la dernière ligne de la MER $\tilde A$ de $A$ est nécessairement nulle. 
+
+Considérons n'importe quel vecteur $\tilde{\bb} \in \R^n$ avec un $1$ en dernière entrée. Le système $[\tilde A | \tilde{\bb}]$ est alors incompatible à cause de la dernière équation qui est $0=1$. Maintenant, inversons les opérations sur les lignes qui ont transformé $A$ à $\tilde A$ et appliquons ces opération inversées sur la matrice augmentée $[ \tilde A | \tilde{\bb}]$ tout entier. Nous obtenons un système $[ A | \bb]$, pour un certain $\bb\in \R^n$, qui est également incompatible ; c'est-à-dire que nous avons trouvé un vecteur $\bb\in \R^n$ tel que l'équation $A\xx=\bb$ est incompatible. C'est une contradiction et donc on a bien $\rank (A) =m$.
+
+ 
+
+(2) $\implies$ (3) : Comme $A$ est une matrice $m \times n$, c'est évident.
+
+(3) $\implies$ (4) : S'il n'y a pas de ligne nulle dans la MER de $A$, alors l'équation $A \xx=\bb$ est compatible pour chaque $\bb \in \R^m$, et donc chaque $\bb \in \R^m$ est une combinaison linéaire des colonnes de $A$.
+
+
+(4) $\implies$ (5) : Si chaque $\bb \in \R^m$ est une combinaison linéaire des colonnes de
+$A$, alors les colonnes de $A$ engendrent $\R^m$. Donc $\im(A) \supseteq \R^m$.
+Bien sûr, réciproquement nous avons $\im(A) \subseteq \R^m$, d'où l'égalité voulue $\im(A) = \R^m$ par double-inclusions.
+
+(5) $\iff \,$(6) :  Nous savons qu'un sous-espace de $\R^m$ a une dimension $m$ si et seulement si c'est l'espace $\R^m$ tout entier. D'où l'équivalence.
+
+
+(5) $\implies$ (1) :  Puisque chaque $\bb \in \R^m$ appartient \`a $\im(A)$, chaque $\bb \in \R^m$ est une combinaison linéaire des colonnes de $A$, et donc $A\xx=\bb$ est compatible pour tout $\bb \in \R^m$.
+\end{proof}
+
+ 
+
+
+\section{Résumé : nombre de solutions d'un système linéaire compatible}
+\label{section:uniqesol}
+\begin{theorem}\label{thm:uniqesol}\index{solution unique}
+Soit $A$ une matrice $m\times n$ et soit $\bb\in \R^n$ un vecteur.
+Les \'enonc\'es suivants sont équivalents pour un système compatible dont l'équation matricielle est $A\xx=\bb$ : 
+\begin{enumerate}[(1)]
+
+\item le système $A\xx = \bb$ admet une unique solution; 
+\item chaque variable est une variable de base; 
+\item il y a un pivot dans chaque colonne de la MER de $A$; 
+
+\item le système homogène $A\xx = \zero$ associé admet une unique solution; 
+\item les colonnes de $A$ sont linéairement indépendantes; 
+\item $\ker(A) = \{\zero\}$; 
+\item $\dim(\ker(A)) = 0$; 
+\item $\rank(A)= n$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(1) $\implies$ (2) : Si la solution est unique, alors il ne peut y avoir de paramètres et donc chaque variable est une variable de base.
+
+(2) $\implies$ (3) : Les variables de base sont celles correspondant aux colonnes pivots dans la MER de $A$. D'où l'implication.
+
+(3) $\implies$ (4) : S'il y a un pivot dans chaque colonne de la MER de $A$, alors il n'y a pas de paramètre dans la solution générale de l'équation $A\xx = \zero$. Donc la solution est unique.
+
+
+(4) $\implies$ (5) : Le système linéaire $A\xx = \zero$ est \'equivalent à l'équation vectorielle
+$$
+x_1 \cc_1 + x_2\cc_2+ \cdots + x_n\cc_n = \zero\,,
+$$
+où les $\cc_i$ sont les colonnes de $A$. 
+Cette équation vectorielle a une solution unique si et seulement si les vecteurs $\cc_1,\cc_2, \ldots, \cc_n$ sont linéairement indépendants.
+
+(5) $\implies$ (6) : Le noyau $\ker(A)$ est la solution générale de $A\xx = \zero$. Donc il consiste en l'unique solution, qui est la solution triviale car on a toujours $\zero \in \ker(A)$.
+
+(6) $\implies$ (7) : Rappelez-vous encore une fois notre théorème sur les dimensions des sous-espaces. On a donc que le noyau $\ker(A)$ est le sous-espace nul si et seulement si sa dimension est $0$.
+
+(7) $\implies$ (8) : C'est une conséquence directe du Théorème du rang \ref{corollary:ranknull}.
+
+
+(8) $\implies$ (1) : Si $\rank (A)=n$, alors il n'y a aucun paramètre dans la solution générale de $A \xx=\bb$. Donc la solution est unique.
+\end{proof}
+
+\section{Applications}
+\label{section:subspacedescription}
+
+
+Nous avons vu deux manières différentes de définir un sous-espace de $\R^n$ : 
+
+\begin{enumerate}[(1)]
+\item donné comme le noyau d'une certaine matrice $A$, c'est-à-dire $W=\ker(A)$;
+\item donné comme l'enveloppe lin\'eaire engendr\'ee par certains vecteurs, c'est-à-dire $W=\sp{\vv_1, \dots, \vv_m}$.
+\end{enumerate}
+Nous savons déjà comment convertir le type (1) en le type (2) : il suffit de trouver une base de $\ker(A)$. Mais comment convertir un type (2) en type (1) ? 
+Mais pourquoi le ferions-nous ? 
+
+En fait, supposons que l'on nous donne des vecteurs $ \uu_1,\dots,\uu_k $ et qu'on nous demande si les vecteurs $\uu_1,\dots,\uu_k$ sont dans $W$. Si nous avons une description de $W$ sous la forme (1), tout ce que nous devons faire est de calculer $A\uu_1, \dots, A\uu_k$ et voir si nous obtenons zéro dans chaque cas. C'est facile. Si par contre nous ne connaissons que la forme (2) de $W$, alors nous devons {\it résoudre les  $k$ systèmes linéaires $\mat{\vv_1&\cdots&  \vv_m &|& \uu_j}$  pour tout $1\le j\le k$}! Cela représente plus de travail surtout lorsque $m$ devient très grand !\!!
+
+
+Examinons quelques exemples.
+
+\begin{myexample}
+Soit $W=\sp{(1,1,2)}$. Trouvons une matrice $A$ telle que $W=\ker (A)$.
+
+Le vecteur $(x,y,z)$ appartient à $W$ ssi le système dont la matrice augmentée est la suivante est compatible :
+$$\mat{1&|&x\\ 1&|&y\\ 2&|&z}\,.$$ 
+Mais nous savons que ce système est équivalent (après réduction par rapport aux lignes) au système dont la matrice augmentée est :  $$\mat{1&|&x\\0&|&y-x\\0&|&z-2x}\,.$$
+Nous obtenons alors que ce système est compatible ssi $x-y=0$ et $2x-z=0$. Donc
+$$W=\set{(x,y,z) \in \R^3 \st x-y=0\text{ et }2x-z=0 } = \set{(x,y,z) \in \R^3 \st y=x\text{ et }z=2x }\,.$$ 
+D'o\`u si $A=\mat{1&-1&0\\2&0&-1}$, alors $\ker A= W$.
+\end{myexample}
+
+Cet exemple était assez simple et il n'aurait pas été difficile de déterminer si un vecteur est un multiple de $(1,1,2)$ ou non. Néanmoins, nous avons fini par exprimer la droite $W$ comme l'intersection de deux plans, c'est très intéressant ! 
+
+Regardons maintenant un exemple encore plus intéressant. 
+
+\begin{myexample}
+Considérons le sous-espace $W$ de $\R^4$ suivant : $$W=\sp{ (1,0,0,1), (1,1,1,0), (2,1,-1,1)}\,.$$
+
+Nous allons procéder comme précédemment. Identifions $W$ avec l'espace des colonnes d'une matrice, c'est-à-dire
+$$W=\im \mat{1&1&2\\0&1&1\\0&1&-1\\1&0&1}\,.$$ 
+Le vecteur $(x,y,z,w)$ appartient à $W$ si et seulement si le syst\`eme dont la matrice augment\'ee est la suivante est compatible :
+$$\mat{1&1&2&|&x\\0&1&1&|&y\\0&1&-1&|&z\\1&0&1&|&w}\,.$$ Nous réduisons par rapport aux lignes (et nous n'avons pas besoin d'aller jusqu'\`a la MER, une ME suffit) et trouvons que ce système est équivalent à 
+
+$$\mat{1&1&2&|&x\\0&1&1&|&y\\0&0&-2&|&z-y\\0&0&0&|&-x+y+w}\,.$$
+On voit donc que le système est compatible ssi $x-y-w=0$, et donc : $$W=\set{(x,y,z,w)\st x-y-w=0 } \,.$$ Ainsi
+$W=\ker\mat{1&-1&0&-1}$. Savoir si un vecteur est dans $W$ est maintenant assez simple : il n'y qu'une seule équation à vérifier !
+\end{myexample}
+
+

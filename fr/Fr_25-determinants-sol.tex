@@ -1,0 +1,135 @@
+
+\begin{sol}{prob21.1} Calculez les déterminants des matrices suivantes. 
+\medskip
+
+(b) $A=\bmatrix 
+2&-1&3\\3&0&-5\\1&1&2 \endbmatrix $.
+\soln  $\det(A)=30$.
+
+\medskip
+(d) $A=\bmatrix 3&4&-
+1\\1&0&3\\2&5&-4\endbmatrix$.
+\soln  $\det(A)= -10$.
+
+\medskip
+(f) $A=\bmatrix \lambda-6&0&0\\0&\lambda&3\\0&4&\lambda+4\endbmatrix $.
+\soln $\det(A)= (\lam -6)(\lam +6)(\lam +2)$.
+\medskip
+ 
+(h) $A=\bmatrix
+-\lambda&2&2\\ 2&-\lambda&2\\ 2&2&-\lambda \endbmatrix$.
+\soln $\det(A)= (\lam -4)(\lam +2)^2$.
+\medskip
+  
+\end{sol}
+
+\bigskip
+\begin{sol}{prob21.2} Supposons que $\left|\begin{matrix} a&b&c\cr d&e&f\cr g&h&i\end{matrix} \right|=3$. Alors, 
+trouvez les valeurs suivantes :
+\medskip
+
+(b) $A=\left|\begin{matrix}  b&a&c\\ e&d&f\\ h&g&i\end{matrix}\right|$.
+
+\soln $\det(A)= -3$, car $C_1 \leftrightarrow C_2$ (qui r\'esulte un signe -) ramène cette matrice à la matrice d'origine.
+\medskip
+%-3
+
+(d) $\left|\begin{matrix}  b&3a&c-4b\\ e&3d&f-4e\\ h&3g&i-4h\end{matrix}\right|$.
+
+\soln $\det(A)= -9$, car $C_1+C_3\to C_3$ (n'affecte pas le d\'eterminant) suivi de la multiplication par scalaire $3$ dans $C_2$ (donnant un facteur $3$ au déterminant) nous ramènent au déterminant de la partie (b) qui était $-3$.
+\medskip
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob21.3} 
+
+ 
+\medskip
+(b) Si $B$ est une matrice $4\times 4$ telle que $\det(2BB^T)=64$, trouvez $|\det(3B^2B^T)|$.
+
+\soln Comme $64=\det (2BB^T)=2^4 (\det(B))^2$, on a $\det(B)=\pm 2$. Donc $$|\det(3B^2B^t)|=3^4|\det(B^2B^t)|=3^4(|\det(B)|)^3=81( 8)=648\,.$$
+\medskip
+
+
+(d) Calculez le d\'eterminant de la matrice égale au produit suivant:
+$\scriptsize\bmatrix 1&2\cr3&4 \endbmatrix\bmatrix 5&6\cr7&8\endbmatrix 
+\bmatrix9&10\cr11&12\endbmatrix\bmatrix 13&14\cr15&16\endbmatrix.$
+\soln On utilise le fait que le déterminant du produit est égal au produit des déterminants :
+\begin{equation*}
+\begin{split}
+\det(A) &=\det\Big(\bmatrix 1&2\cr3&4 \endbmatrix\bmatrix 5&6\cr7&8\endbmatrix 
+\bmatrix9&10\cr11&12\endbmatrix\bmatrix 13&14\cr15&16\endbmatrix\Big)\\&= \det \bmatrix 1&2\cr3&4 \endbmatrix \det \bmatrix 5&6\cr7&8\endbmatrix  \det \bmatrix9&10\cr11&12\endbmatrix \det \bmatrix 13&14\cr15&16\endbmatrix\\
+&= (-2) (-2) (-2) \det \bmatrix 13&14\cr2&2\endbmatrix\\
+&=(-2) (-2) (-2) (-2)\\
+&=16\,.
+\end{split}\end{equation*}
+\medskip
+
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob21.4}  Pour chacun des énoncés suivants, indiquez s'il est (toujours) vrai ou s'il est (possiblement) faux.   
+\begin{enumerate}[$\bullet$]
+\item Si vous dites que l'\'enonc\'e est faux, donnez un contre-exemple.   
+\item Si vous dites que l'\'enonc\'e est vrai, donnez une explication claire - en citant un théorème ou en donnant une {\it preuve valide dans tous les cas}. 
+\end{enumerate}
+
+\medskip  Dans ce qui suit, $A$ et $B$ sont des matrices $n \times n$ (avec $n>1$) et $k$ est un scalaire.
+
+\medskip
+
+(b) $\det (A +B) = \det(A) +\det(B)$.
+
+\soln Faux. Par exemple, si $A=\bmatrix 1&0\cr0&0\endbmatrix$ et $B=\bmatrix 0&0\cr0&1\endbmatrix$, alors $$\det(A+B)=\det \bmatrix 1&0\cr0&1\endbmatrix =1 \not= 0=0+0= \det(A) + \det(B).$$ 
+\medskip
+
+(d) $\det (k A)= k^n \det(A)$.
+
+\soln Vrai. Comme nous l'avons vu en cours, la multiplication d'une ligne (ou d'une colonne) de $A$ par un scalaire $k$ change le déterminant par un facteur $k$, et comme multiplier la matrice $A$ toute entière par un scalaire $k$ revient à multiplier ses $n$ lignes (ou $n$ colonnes) par $k$,  le déterminant est changé par $n$ fois le facteur $k$, c'est-à-dire par un facteur $k^n$. D'où la formule.
+\medskip
+
+
+(f) Si $A$ et $B$ sont identiques, sauf pour la première ligne o\`u celle de $A$ est le double de celle de $B$, alors $\det(A)=2 \det(B)$.
+
+\soln Vrai. Comme nous l'avons vu en cours, il suffit de développer $\det(A)$ et $\det(B)$ selon la première ligne et on obtient bien le résultat voulu.
+\medskip
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob21.5}
+\medskip
+ 
+
+(b) Si $\uu, \vv$ et $\ww$ sont des vecteurs de $\R^3$, utilisez les propriétés du déterminant d'une matrice $3\times 3$ pour montrer que 
+$$ \uu\cdot \vv\times \ww=  \ww\cdot \uu\times \vv= \vv\cdot \ww\times \uu\,.$$
+
+\soln On sait, puisque c'est la {\it définition} même du déterminant d'une matrice $3\times 3$, que 
+$$\uu\cdot \vv\times \ww =\det \bmatrix ~&~&\uu&~&~\\&&\vv\\&&\ww\endbmatrix\,,$$ 
+où nous avons écrit les vecteurs sous forme de blocs en lignes. Donc 
+$$\ww\cdot \uu\times \vv=\det \bmatrix ~&~&\ww&~&~\\&&\uu\\&&\vv\endbmatrix 
+=-\det \bmatrix ~&~&\uu&~&~\\&&\ww\\&&\vv\endbmatrix
+=\det \bmatrix ~&~&\uu&~&~\\&&\vv\\&&\ww\endbmatrix\,,$$ 
+où l'on a fait des \'echanges de lignes: $L_1
+\leftrightarrow L_2$ puis $L_2
+\leftrightarrow L_3 $.  De m\^eme, on a 
+$$\vv\cdot \ww\times \uu
+=  \det \bmatrix ~&~&\vv&~&~\\&&\ww\\&&\uu\endbmatrix 
+=- \det\bmatrix ~&~&\uu&~&~\\&&\ww\\&&\vv\endbmatrix
+= \det\bmatrix ~&~&\uu&~&~\\&&\vv\\&&\ww\endbmatrix\,,$$ 
+où l'on a fait des \'echanges de lignes encore: $L_1
+\leftrightarrow L_3$ puis $L_2
+\leftrightarrow L_3 $. D'où l'égalité voulue.
+
+\medskip
+
+(h) Soient $A, B, C$ et $D$ des matrices respectivement de tailles $m\times m$,   $m \times n$, $n \times m$ et $n \times n$. Supposons que $D$ soit inversible. En remarquant que $ \scriptsize\bmatrix A&B\\C&D\endbmatrix \bmatrix I_m&0\\-D^{-1}C&I_n\endbmatrix  =\bmatrix A-BD^{-1}C&B\\0&D\endbmatrix$, montrez que $\det \scriptsize\bmatrix A&B\\C&D\endbmatrix= \det (A-BD^{-1}C) \det(D)$.
+
+\soln Ceci découle de (g) et de la propriété multiplicative des déterminants.
+\medskip
+
+
+\end{sol}
+

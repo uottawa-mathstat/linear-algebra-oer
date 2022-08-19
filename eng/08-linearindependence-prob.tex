@@ -1,0 +1,132 @@
+\section*{Problems}
+\addcontentsline{toc}{section}{Problems}
+
+\medskip {\bf Remarks:} 
+\begin{enumerate}
+\item A question with an asterisk `$ ^\ast$' (or two) indicates a bonus-level question.
+ \item You must justify all your responses.
+\end{enumerate}
+\bigskip
+
+%\centerline{\bf \underbar{}} 
+\begin{prob} \label{prob07.1} Which of the following sets are linearly independent in the indicated vector space? (If you say they are, you must prove it using the definition; if you say  the set is dependent, you must give a non-trivial linear dependence relation that supports your answer. For example, if you say $\set{\vv_1, \vv_2, \vv_3}$ is dependent, you must write something like  $\vv_1-2 \vv_2 +\vv_3=0$, or $\vv_1=2 \vv_2 -\vv_3$.)
+\medskip
+\begin{enumerate}[a)]
+\item $\set{(1,1), (1, 2)}$; $\R^2$
+\medskip
+%
+\item\sov $\set{(1,1), (2, 2)}$; $\R^2$.
+\medskip
+%
+
+
+\item $\set{(0,0), (1, 1)}$; $\R^2$
+\medskip
+%
+\item\sov $\set{(1,1), (1, 2), (1,0)}$; $\R^2$.
+
+\medskip
+%
+\item $\set{(1,1,1), (1,0,3)}$; $\R^3$
+\medskip
+%
+\item\sov $\set{(1,1,1), (1,0,3), (0,0,0)}$; $\R^3$.
+
+\medskip
+%
+\item $\set{(1,1,1), (1,2,3), (2,3,4)}$; $\R^3$
+\medskip
+%
+ 
+\item\sov $\set{(1,1,1), (1,0,3), (0,3,4)}$; $\R^3$.
+
+
+\medskip 
+%
+\item $\set{(1,0,0), (0,1,0), (0,0,1), (1,2,3)}$; $\R^3$
+\medskip
+%
+\item\sov $\set{(0,-3), (3, 0)}$; $\R^2$.
+
+
+\medskip
+%
+
+\item$^\ast$\footnote{You may be surprised by the correct answer in this example. See the professor for details.}  $\set{(0,-3), (3, 0)}$; $V=\R^2$, but equipped with the \underbar{\it non-standard operations:--}  $$\text{Addition: }\quad(x,y) \tilde+ (x',y')=(x+x', y+y +3).$$ 
+$$\text{Multiplication of vectors  by  scalars $k\in \R$: }\quad k \odot (x,y)=(kx, ky+3k-3).$$    
+%
+\item\sov $\set{(1,0,0), (2,0,-2)}$; $\R^3$. 
+
+\medskip
+%
+\item$^\ast$\footnote{You may not be so surprised by the correct answer in this example if you've already done part (k). See the professor for details.}  $\set{(1,0,0), (2,0,-2)}$; $V=\R^3$, but equipped with \underbar{\it non-standard operations:--}  $$\text{Addition: }\quad(x,y,z) \tilde+ (x',y',z')=(x+x', y+y,z+z'-2).$$  $$\text{Multiplication of vectors  by  scalars $k\in \R$: }\quad k\odot (x,y,z)=(kx, ky, kz-2k+2)$$\medskip 
+%Remark:
+\end{enumerate}
+
+\end{prob} \begin{prob} \label{prob07.2} Which of the following sets are linearly independent in $\M_{2 \,2}$? (If you say they are, you must prove it using the definition; if you say   set is dependent, you must give a non-trivial linear dependence relation that supports your answer. For example, if you say $\set{A_1, A_2, A_3}$ is dependent, you must write something like  $A_1-2 A_2 +A_3=0$, or $A_1=2 A_2 -A_3$.)
+\medskip
+\begin{enumerate}[a)]
+
+\item  $\Big\{\bmatrix 1&0\\1&2\endbmatrix, \bmatrix 0&1\\0&1\endbmatrix \Big\}$   \medskip
+%
+
+\item\sov  $\Big\{\bmatrix 1&0\\1&2\endbmatrix, \bmatrix 0&1\\0&1\endbmatrix , \bmatrix 1&-2\\-1&0\endbmatrix \Big\}$   \medskip
+%
+
+\item  $\Big\{\bmatrix 1&0\\0&-1\endbmatrix, \bmatrix 0&1\\0&0\endbmatrix,\bmatrix 0&0\\1&0\endbmatrix\Big\}$  \medskip
+%
+ \item\sov  $\Big\{\bmatrix 1&0\\0&0\endbmatrix, \bmatrix 0&1\\0&0\endbmatrix,\bmatrix 0&0\\1&0\endbmatrix,\bmatrix 0&0\\0&1\endbmatrix \Big\}$  \medskip
+%
+
+\end{enumerate}
+
+\end{prob} \begin{prob} \label{prob07.3} Which of the following sets are linearly independent in the indicated vector space ? (If you say they are, you must prove it using the definition; if you say   set is dependent, you must give a non-trivial linear dependence relation that supports your answer. For example, if you say $\set{f_1, f_2, f_3}$ is dependent, you must write something like  $f_1-2 f_2 +f_3=0$, or $f_1=2 f_2 -f_3$.)
+\medskip
+\begin{enumerate}[a)]
+\item  $\set{1, 1-x, 1-2x}$;  $\PP_2$ . \medskip
+%
+\item\sov  $\set{1, 1+x, x^2}$;  $\PP_2$ . \medskip 
+%
+\item  $\set{ \sin x,  \cos x}$;  $\F(\R)$ . \medskip  
+%
+\item\sov  $\set{1, \sin x, 2 \cos x}$;  $\F(\R)$ . \medskip  
+%
+\item  $\set{2, 2\sin^2 x,  3\cos^2 x}$;  $\F(\R)$. \medskip  
+%
+\item\sov  $\set{\cos 2x, \sin^2 x,  \cos^2 x}$;  $\F(\R)$. \medskip  
+%
+\item  $\set{\cos 2x, 1,  \sin^2 x}$;  $\F(\R)$. \medskip  
+%
+\item\sov  $\set{\sin 2x, \sin x \cos x }$;  $\F(\R)$. \medskip  
+%
+\item  $\set{\sin(x+1), \sin x, \cos x }$;  $\F(\R)$. \medskip  
+%
+\end{enumerate}
+\end{prob} \begin{prob} \label{prob07.4} Justify your answers to the following:\medskip 
+
+\begin{enumerate}[a)]
+\item Suppose $V$ is a vector space, and a  subset $\set{\vv_1, \vv_2 , \vv_3}\subset V$ is known to be linearly independent.  Show carefully that $\set{\vv_2 , \vv_3}$ is also   linearly independent.\medskip
+
+\item\sov Suppose $V$ is a vector space, and a   subset $\set{\vv_1, \dots , \vv_k}\subset V$ is known to be linearly independent. Show carefully that $ \set{\vv_2, \dots , \vv_k}$ is also   linearly independent.\medskip
+ 
+
+\item Suppose $V$ is a vector space, and a  subset $\set{\vv_1, \dots , \vv_k}\subset V$ is known to be linearly independent. If $S$ is {\it any}   subset of $V$ with $S \subseteq \set{\vv_1, \dots , \vv_k}$, show carefully that $S$ is also   linearly independent.\medskip
+\item\sov Give an example of a linearly independent subset $\set{\vv_1, \vv_2}$ in $\R^3$, and a vector $\vv\in  \R^3$ such that $\set{\vv, \vv_1, \vv_2}$ is  linearly {\it dependent}.
+%
+\medskip
+%
+
+\item Give an example of a linearly independent subset $\set{A, B}$ in $\M_{2 \,2}(\R)$, and a matrix $C\in  \M_{2 \,2}(\R)$ such that $\set{A,B,C}$ is   linearly {\it dependent}.\medskip
+%
+
+\item\sov Give an example of a linearly independent subset $\set{p, q}$ in $\PP_2$, and a polynomial $r\in  \PP_2$ such that $\set{p, q,r}$ is   linearly {\it dependent}.\medskip
+
+\item Give an example of a linearly independent subset $\set{f, g}$ in $\F(\R)$, and a function $h\in   \F(\R)$ such that $\set{f,g,h}$ is   linearly {\it dependent}. \medskip
+%
+
+
+\end{enumerate}
+
+\end{prob} \begin{prob} \label{prob07.6} Give an example of 3 vectors in $\uu,\vv,\ww \in  \R^3$ such that no two of the vectors are multiples of each other, but $\set{\uu,\vv,\ww}$ is  linearly  dependent. Is this possible with just two vectors?
+
+\end{prob}

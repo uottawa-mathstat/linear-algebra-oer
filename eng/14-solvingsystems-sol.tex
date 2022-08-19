@@ -1,0 +1,81 @@
+
+
+
+
+\begin{sol}{prob12.1} Find the reduced row-echelon form of the following matrices:
+\medskip
+
+(b) 
+$\bmatrix 1&0&1&2\cr 0&1&1&2\endbmatrix $ 
+
+\soln This matrix is already in  reduced row-echelon form!
+\medskip
+
+(d) $\bmatrix 1&2&-1&-1\\2&4&-1&3\\ -3&-6&1&-7\endbmatrix$
+
+\soln
+$$\bmatrix 1&2&-1&-1\\2&4&-1&3\\ -3&-6&1&-7\endbmatrix\begin{matrix} -2R_1+R_2\to R_2 \\ \sim \\3R_1+R_3\to R_3 \end{matrix}\bmatrix 
+1&2&-1&-1\\
+0&0&1&5\\ 
+0&0&-2&-10\endbmatrix\begin{matrix} 2R_2+R_3\to R_3 \\ \sim \\R_2+R_1\to R_1 \end{matrix}\bmatrix
+1 & 2 & 0 & 4 \\
+ 0 & 0 & 1 & 5 \\
+ 0 & 0 & 0 & 0 \endbmatrix$$
+
+\medskip
+%
+
+(f) $\bmatrix 
+1 & -1 & 1 & 0 \\
+ 0 & 1 & 1 & 1 \\
+ 1 & 2 & 4 & 3 \\
+ 1 & 0 & 2 & 1\endbmatrix$
+
+\soln
+$$\bmatrix 
+1 & -1 & 1 & 0 \\
+ 0 & 1 & 1 & 1 \\
+ 1 & 2 & 4 & 3 \\
+ 1 & 0 & 2 & 1\endbmatrix \begin{matrix} -R_1+R_3\to R_3 \\ \sim \\-R_1+R_4\to R_4 \end{matrix} 
+\bmatrix 
+1 & -1 & 1 & 0 \\
+ 0 & 1 & 1 & 1 \\
+ 0 & 3 & 3 & 3 \\
+ 0 & 1 & 1 & 1\endbmatrix
+\begin{matrix} -3R_2+R_3\to R_3 \\ \sim \\-R_2+R_4\to R_4 \end{matrix}\bmatrix  1 & -1 & 1 & 0 \\
+ 0 & 1 & 1 & 1 \\
+ 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 \endbmatrix
+\begin{matrix} R_2+R_1\to R_1 \\ \sim \\
+ \end{matrix}\bmatrix  1 & 0 & 2 & 1 \\
+ 0 & 1 & 1 & 1 \\
+ 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 \endbmatrix$$
+\medskip 
+
+
+\end{sol}
+
+\begin{sol}{prob12.2} Find the general solutions to the linear systems whose augmented matrices are given below.
+\medskip
+
+(b) $ \bmatrix 1 & 0 & -1 &|&0 \\
+ 0 & 1 & 2 &|&0\\
+ 0 & 0 & 0&|&1 \\
+ 0 & 0 & 0 &|&0\endbmatrix$
+\soln This system is inconsistent.
+\medskip
+%
+
+(d) $\bmatrix  1 & 2 & 0 & 3 & 0 &|& 7 \\
+ 0 & 0 & 1 & 0 & 0 &|& 1 \\
+ 0 & 0 & 0 & 0 & 1 &|& 2 \endbmatrix$
+
+\soln $(x,y,z,u,v)=(7-2s-3t,s,1,t,2); \; s,t \in \R$, or we could write it as a set:
+
+$$ \set{(7-2s-3t,s,1,t,2); \st s,t \in \R} $$
+\medskip
+
+
+
+\end{sol}

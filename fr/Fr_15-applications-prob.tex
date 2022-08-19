@@ -1,0 +1,165 @@
+\newpage
+\section*{Exercices}
+\addcontentsline{toc}{section}{Exercices}
+
+
+
+
+\begin{prob} \label{prob13.1} 
+
+ 
+
+\begin{enumerate}[a)]
+
+\item Trouvez le rang de chaque matrice de l'Exercice \ref{prob12.1}.
+\medskip
+ 
+\item\sov~Trouver le rang des matrices coefficients ainsi que le rang des matrices augmentées correspondantes aux systèmes linéaires de l'Exercice \ref{prob12.2}.
+
+\medskip 
+ 
+
+\end{enumerate}
+\end{prob} \begin{prob} \label{prob13.2} Soit $a,c\in \R$. Considérez le système linéaire suivant en les variables
+$x,\, y,\,z$ : 
+$$\begin{matrix}  x&+&y &+&az&=&2\\
+2x&+&y&+&2a z  &=&3\\ 
+3x&+&y &+&3az&=&c \end{matrix}. $$
+
+Notez que la solution générale de ce système peut dépendre des
+valeurs des paramètres $a$ et $c$.
+Soit $[\,A\,|\, b\,]$ la matrice augmentée de ce système.
+
+\begin{enumerate}[a)]
+\item  Pour 
+\underbar{toutes} les valeurs de
+$a$ et $c$, trouvez:\smallskip
+\begin{enumerate}[(i)]
+\item 
+$\rank (A)$,
+\smallskip
+\item  $\rank[\,A\,|\, b\,]$.
+\end{enumerate}
+
+\item\sov~ Trouvez \underbar{toutes} les valeurs de
+$a$ et $c$ pour lesquelles ce syst\`eme \smallskip
+\begin{enumerate}[(i)]
+ 
+\item admet une solution unique,\smallskip
+\item  admet une infinit\'e de solutions,  \smallskip
+\item  n'admet aucune solution. 
+\end{enumerate}
+
+\medskip
+\item Dans le cas b (ii) ci-dessus, donnez la solution générale et sa description géométrique complète. 
+\end{enumerate}
+\end{prob} \begin{prob} \label{prob13.7} 
+Considérons le réseau routier ci-dessous avec
+intersections A, B, C et D. Les flèches
+indiquent le sens de la circulation sur les routes, elle se fait à
+sens unique. Les chiffres indiquent le nombre exact de voitures qui traversent les intersections A, B, C et D par minute.
+Chaque $x_i$ représente le nombre \emph{variable} de voitures qui passent par les routes en question chaque minute.
+
+ $$\xymatrix@=5pt{&&&&&&&&\\&&&&&&&&\\&&&&B\ar[uu]_{10}\ar[rrdd]^{x_4}&&&&\\&&&&&&&&\\
+{}\ar[rr]^{11}&&A\ar[rrrr]^{x_5}\ar[rrdd]_{x_2}\ar[rruu]^{x_1}&&&&C\ar[rr]^4
+&&\\&&&&&&&&\\&&&&D\ar[rruu]_{x_3}&&&&\\&&&&&&&&\\&&&&\ar[uu]^3&&&&\\}
+$$
+\begin{enumerate}[a)]
+\item \'Ecrivez le système linéaire qui décrit le flux du trafic {\bf
+ainsi que toutes les contraintes} sur les variables $x_i$, pour $i=1,\dots,5$. (Ne pas r\'esoudre ce syst\`eme pour le moment, cela sera fait à votre place dans  (b).)\smallskip
+
+\item La MER de la matrice augmentée de la partie (a) est la suivante: 
+$$ \bmatrix 
+1& 0& 0& -1& 0&|& 10\\  
+0& 1& 0& 1&1&|& 1\\ 
+0& 0& 1& 1& 1&|& 4\\ 
+0& 0& 0& 0& 0&|& 0\endbmatrix\,.$$ Donnez la solution générale. (Ignorez les contraintes à ce stade.)\smallskip
+
+\item Si la route $\overline{AC}$ est fermée en raison de travaux, trouvez tous les flux de circulation possibles, 
+ \underbar{en utilisant les résultats que vous avez obtenus à la question  (b)}. 
+
+\end{enumerate}
+
+\end{prob} \begin{prob} \label{prob13.3} Considérez le réseau routier avec
+intersections A, B, C, D et E ci-dessous.   Les flèches
+indiquent le sens de la circulation le long des routes, la circulation se faisant à sens unique. Les chiffres indiquent le nombre exact de voitures observées entrant ou sortant des intersections A, B, C, D et E pendant une minute.  Chaque
+$x_i$ désigne le nombre inconnu de voitures qui sont passées par les routes correspondantes en une minute.
+$$\xymatrix@=5pt{
+&&&&&&&&&&&&\\ 
+&&&&&&&&&&&&\\
+&&&&&&&&&&&&\\
+&&&&&&&&B\ar[rrdd]^{x_4}\ar[uuu]_{50}&&&&\\ 
+&&&&&&&&&&&&\\
+&&&&&&A\ar[lll]^{60}\ar[rruu]^{x_5}&&&&C\ar[lddd]_{x_3}\ar[llll]_{x_6}&&&&\ar[llll]^{70}\\
+&&&&&&&&&&&&\\
+&&&&&&&&&&&&\\
+&&&&&&&E\ar[luuu]^{x_1}&&D\ar[ll]_{x_2}\ar[dddr]^{60}&&\\  
+&&&&&&&&&&&&\\ 
+&&&&&&&&&&&&\\
+&&&&&&\ar[uuur]^{100}&&&&&&&&\\} 
+$$
+\smallskip     
+\begin{enumerate}[a)]
+\item \'Ecrivez le système linéaire qui décrit le flux du trafic {\bf
+ainsi que toutes les contraintes} sur les variables $x_i$, pour $i=1,\dots,6$. (Ne pas r\'esoudre se syst\`eme pour le moment car cela sera fait à votre place dans  (b).)\smallskip
+
+\item\sov~La MER de la matrice augmentée de la question (a) est la suivante: 
+$$ \bmatrix 
+  1 & 0 & 0 & 0 & -1 & 1 &|& 60 \\
+ 0 & 1 & 0 & 0 & -1 & 1 &|& -40 \\
+ 0 & 0 & 1 & 0 & -1 & 1 &|& 20 \\
+ 0 & 0 & 0 & 1 & -1 & 0 &|&  -50 \\
+ 0 & 0 & 0 & 0 & 0 & 0 &|& 0
+\endbmatrix\,.$$ Donnez la solution générale. (Ignorez les contraintes à
+à ce stade.)
+\smallskip
+ 
+
+\item Si la route $\overline{ED}$ est fermée en raison de travaux, trouvez le flux minimum le long de la route  $\overline{AC}$  \underbar{en utilisant les résultats que vous avez obtenus à la question (b)}. 
+  
+\end{enumerate}
+
+\end{prob} \begin{prob} \label{prob13.4}   Pour chacun des énoncés suivants, indiquez s'il est (toujours) vrai
+ou s'il est (possiblement) faux.    
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item Si vous dites que l'affirmation est vraie, vous devez donner une explication claire en r\'ef\'erant \`a un théorème, ou en donnant une {\it preuve valable pour tous les cas}.
+\item Si vous dites que l'affirmation est fausse, vous devez donner un contre-exemple explicite.  
+\end{enumerate}
+\medskip
+\begin{enumerate}[a)]
+\item Tout système non-homogène de 3 équations à 2 inconnues est incompatible.
+\medskip
+ 
+\item\sov~Tout système non-homogène de 3 équations à 2 inconnues est compatible.
+
+\medskip
+ 
+\item Tout système non-homogène de 2 équations à 3 inconnues a une infinité de solutions.
+\medskip
+ 
+\item\sov~Tout système de 2 équations à 2 inconnues admet une unique solution.
+\medskip
+ 
+\item S'il existe une ligne de zéros dans la matrice augmentée d'un système linéaire, alors le système admet une infinité de solutions.
+\medskip
+ 
+\item\sov~Si la matrice coefficients d'un système linéaire compatible comporte une colonne de zéros, alors le système admet une infinité de solutions.
+\medskip
+ 
+\item Si un système linéaire compatible admet une infinité de solutions, alors il doit y avoir une ligne de zéros dans la MER de la matrice augmentée.
+\medskip
+ 
+\item\sov~Si un système linéaire compatible admet une infinité de solutions, alors il doit y avoir une colonne de zéros dans la MER de la matrice coefficients.
+\medskip
+ 
+\item Si la matrice augmentée d'un système linéaire homogène de $3$ équations à $5$ inconnues est de rang $2$, alors il y a $4$ paramètres dans la solution générale.
+\medskip
+ 
+\item\sov~Si un système linéaire homogène admet une unique solution, alors ce système comprend le même nombre d'équations que d'inconnues.
+\medskip
+ 
+\end{enumerate}
+
+\end{prob}
+

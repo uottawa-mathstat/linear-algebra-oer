@@ -1,0 +1,213 @@
+
+ 
+
+
+\begin{sol}{prob19.1} In each case, find the Fourier coefficients of the vector $v$ with respect to the given orthogonal basis $\mathcal B$  of the indicated vector space $W$.
+\medskip
+
+(b)  $v=(1,2,3)$, $\mathcal B = \set{(1, 2 , 3 ),(-5, 4, -1),(1, 1, -1)}$, $W=\R^3$.
+
+\soln If we write $v= c_1 v_1+c_2 v_2+c_3 v_3$, then we know that 
+$ c_i= \dfrac{v\cdot v_i}{\| v_i\|^2}$ for $i=1,2,3$. Hence $(c_1, c_2, c_3)=(1,0,0)$. (Notice that $v$ itself is the first vector in the given orthogonal basis!)
+\medskip
+%
+
+(d) $v=(4,-5,0)$, $\mathcal B = \set{(-1, 0, 5),(10, 13, 2)}$   $W=\set{(x,y,z)\in\R^3 \st 5x-~4y+~z=~0}$
+
+\soln If we write $v= c_1 v_1+c_2 v_2$, then we know that 
+$ c_i= \dfrac{v\cdot v_i}{\| v_i\|^2}$ for $i=1,2$. Hence $(c_1, c_2)=(-\dfrac{2}{13},-\dfrac{25}{273})$. 
+\medskip
+%
+
+(f) $v=(1,0,1,2)$,  $\mathcal B =\set{(1, 0, 1, 1), (0, 1, 0, 0), (0, 0, 1, -1),(1, 0, 0, -1)}$, $W=~\R^4$.
+
+\soln
+If we write $v= c_1 v_1+c_2 v_2+c_3 v_3+c_4 v_4$, then we know that 
+$ c_i= \dfrac{v\cdot v_i}{\| v_i\|^2}$ for $i=1,\dots ,4$. Hence $(c_1, c_2, c_3, c_4)=(\dfrac{4}{3},0,-\dfrac{1}{2},-\dfrac{1}{2})$.
+\medskip
+
+\end{sol}
+
+\begin{sol}{prob19.2} Find the formula for the orthogonal projection onto the subspaces in parts c), d) and e) above.
+
+\soln  $$\proj_W(x,y,z)=\dfrac{(x,y,z)\cdot (-1, 0, 5)}{26}(-1, 0, 5)+\dfrac{(x,y,z)\cdot (10, 13, 2)}{273}(10, 13, 2).$$ After expansion and simplification, this becomes $$\proj_W(x,y,z)=\dfrac{1}{42}(17 x+20 y-5 z,20 x+26 y+4 z,-5 x+4 y+41 z)$$
+(Note that computations this `messy' will never occur on tests or exams.)
+
+\end{sol}
+
+\begin{sol}{prob19.3} Apply the Gram-Schmidt algorithm to each of the following linearly independent sets, and check that your resulting set of vectors is orthogonal.
+\medskip
+
+(b) $\set{(1, 0, 0, 1),(0, 1, 0, -1),(0, 0, 1, -1)}$
+%$x-y-z-w=0$
+\soln With the above ordered list denoted $\set{v_1, v_2, v_3}$, we begin by setting $u_1=v_1=(1, 0, 0, 1)$. 
+
+Then 
+
+\begin{align*}
+\tilde u_2&= v_2 -\dfrac{v_2\cdot u_1}{\| u_1\|^2}u_1=(0, 1, 0, -1)-\dfrac{(0, 1, 0, -1)\cdot (1, 0, 0, 1)}{\| (1, 0, 0, 1)\|^2}(1, 0, 0, 1)\\
+&=(0, 1, 0, -1)+\frac12 (1, 0, 0, 1)=(\frac12, 1,0,-\frac12).\end{align*}We can rescale at this stage to eliminate fractions -- in order to simplify subsequent calculations -- if we wish. So we set $u_2=(1,2,0,-1)$. 
+
+{\bf N.B. We check $u_1\cdot u_2=0$ before proceeding, and it's OK.}
+
+Now set 
+\begin{align*}
+ \tilde u_3 &=v_3 -\dfrac{v_3\cdot u_1}{\| u_1\|^2}u_1-\dfrac{v_3\cdot u_2}{\| u_2\|^2}u_2 \\
+  &= (0, 0, 1, -1)-\dfrac{(0, 0, 1, -1)\cdot (1, 0, 0, 1)}{\| (1, 0, 0, 1)\|^2}(1, 0, 0, 1)\\
+&\qquad-\dfrac{(0, 0, 1, -1)\cdot (1,2,0,-1)}{\| (1,2,0,-1)\|^2}(1,2,0,-1)\\
+  &=(0, 0, 1, -1)+\frac{1}{2}(1, 0, 0, 1)-\frac16 (1,2,0,-1)\\
+  &= (\frac13,-\frac13  , 1 ,-\frac13 )\end{align*}
+Once again we can (but we don't have to) rescale at this stage to eliminate fractions if we wish. So we set $u_3=(1,-1,3,-1)$. 
+ {\bf N.B. We check $u_1\cdot u_3=0=u_2\cdot u_3$ before leaving this problem, and it's all OK.}
+
+So after applying Gram-Schmidt (with optional rescaling), we obtain the orthogonal $$\set{(1, 0, 0, 1),(1,2,0,-1),(1,-1,3,-1)}.$$
+\medskip 
+%
+
+(d) $\set{(1, 1, 0),(1, 0, 2),(1, 2, 1)}$
+
+\soln  With the above ordered list denoted $\set{v_1, v_2, v_3}$, we begin by setting $u_1=v_1=(1, 1, 0)$.
+
+Then we set \begin{align*}\tilde u_2&= v_2 -\dfrac{v_2\cdot u_1}{\| u_1\|^2}u_1=(1, 0, 2)-\dfrac{(1, 0, 2)\cdot (1, 1, 0)}{\| (1, 1, 0))\|^2}(1, 1, 0)\\&=(1, 0, 2)-\frac12(1, 1, 0)=(\frac12,-\frac12, 2).\end{align*}We can rescale at this stage to eliminate fractions -- in order to simplify subsequent calculations -- if we wish. So we set $u_2=(1,-1,4)$.  {\bf N.B. We check $u_1\cdot u_2=0$ before proceeding, and it's OK.}
+
+Now set 
+\begin{align*}
+ \tilde u_3 &=v_3 -\dfrac{v_3\cdot u_1}{\| u_1\|^2}u_1-\dfrac{v_3\cdot u_2}{\| u_2\|^2}u_2 \\
+  &= (1,2,1)-\dfrac{(1,2,1)\cdot (1, 1,0)}{\| (1, 1, 0)\|^2}(1, 1,0)-\dfrac{(1,2,1)\cdot (1,-1,4)}{\| (1,-1,4)\|^2}(1,-1,4)\\
+  &=(1,2,1)-\frac32(1, 1,0)-\frac{1}{6}(1,-1,4)\\
+  &= (-\frac23,\frac23  ,\frac13 )\end{align*}
+Once again we can (but we don't have to) rescale at this stage to eliminate fractions if we wish. So we set $u_3=(-2,2,1)$. 
+ {\bf N.B. We check $u_1\cdot u_3=0=u_2\cdot u_3$ before leaving this problem, and it's all OK.}
+
+So after applying Gram-Schmidt (with optional rescaling), we obtain the orthogonal set (in this case an orthogonal basis of $\R^3$):  $$\set{(1, 1,0),(1,2,1),(-2,2,1)}.$$
+
+%
+
+\end{sol}
+
+\begin{sol}{prob19.4} Find an orthogonal basis for each of the following subspaces, and check that your basis is orthogonal. (First, find a basis in the standard way, and then apply the Gram-Schmidt algorithm.)
+\medskip
+
+(b) $U=\set{(x,y,z, w)\in\R^4 \st x+y-w=0}$
+
+\soln \underbar{Step 1: find any basis for $U$}: A basis for $U$ can be easily found by writing
+$$U=\set{(-y+w,y,z, w)\in\R^4 \st y,z,w\in \R}=\spn\{(-1,1,0,0),(0,0,1,0),(-1,0,0,1)\},$$ and noting that 
+$ y(-1,1,0,0)+z(0,0,1,0)+w(-1,0,0,1)=(-y+w,y,z, w)=(0,0,0,0)$ iff  $y=z=w=0$. So the spanning set $\set{(-1,1,0,0),(0,0,1,0),(-1,0,0,1)}$ we found is indeed a basis for $U$. 
+
+Alternatively (and this is a better way!), since $U=\ker \bmatrix 1&1&0&-1 \endbmatrix$, we can use the algorithm we have for finding a basis for the kernel of a matrix (which comes from Theorem \ref{kernelbasis} of ``Vector Spaces First"). Then
+\begin{align*}\ker \bmatrix 1&1&0&-1 \endbmatrix &=\set{(-r+t,r,s,t)\st r,s,t \in \R }\\&=\spn\{(-1,1,0,0),(0,0,1,0),(-1,0,0,1)\},\end{align*} and our algorithm (courtesy of Theorem \ref{kernelbasis}) {\it guarantees without us having to check} that the spanning set $\set{(-1,1,0,0),(0,0,1,0),(-1,0,0,1)}$ we found is indeed a basis for $U$!
+
+\smallskip
+\underbar{Step 2: Apply G-S, perhaps with rescaling}: With the above ordered list denoted $\set{v_1, v_2, v_3}$, we begin by setting $u_1=v_1=(1, -1, 0, 0)$. 
+
+Then $$\tilde u_2= v_2 -\dfrac{v_2\cdot u_1}{\| u_1\|^2}u_1=(0,0,1,0)-\dfrac{(0,0,1,0)\cdot (1, -1, 0, 0)}{\| (1, -1, 0, 0)\|^2}(1, -1, 0, 0)=(0,0,1,0).$$ No need to rescale at this stage! So we set $u_2=(0,0,1,0)$. 
+
+{\bf N.B. We check $u_1\cdot u_2=0$ before proceeding, and it's OK.}
+
+Now set 
+\begin{align*}
+ \tilde u_3 &=v_3 -\dfrac{v_3\cdot u_1}{\| u_1\|^2}u_1-\dfrac{v_3\cdot u_2}{\| u_2\|^2}u_2 \\
+  &= (-1,0,0,1)-\dfrac{(-1,0,0,1)\cdot (1, -1, 0, 0)}{\| (1, -1, 0, 0)\|^2}(1, -1, 0, 0)\\
+&\qquad-\dfrac{(-1,0,0,1)\cdot (0,0,1,0)}{\| (0,0,1,0)\|^2}(0,0,1,0)\\
+  &=(-1,0,0,1)+\frac12 (1, -1, 0, 0)-0\,(0,0,1,0)\\
+  &= (-\frac12,-\frac12  , 0 ,1 )\end{align*}
+Once again we can (but we don't have to) rescale at this stage to eliminate fractions if we wish. So we set $u_3=(1,1,0,-2)$. 
+ {\bf N.B. We check $u_1\cdot u_3=0=u_2\cdot u_3$ before leaving this problem, and it's all OK.}
+
+So after applying Gram-Schmidt (with optional rescaling), we obtain the orthogonal basis $$\set{(1, -1, 0, 0),(0,0,1,0),(1,1,0,-2)}$$ for $U$.
+
+{\bf N.B. Since we have a simple description of $U$ as $\set{(x,y,z, w)\in\R^4 \st x+y-w=0}$, this time we can also check $u_1, u_2, u_3 \in U$ before leaving this problem -- and it's all OK.}
+\medskip
+
+(d) $V=\ker \bmatrix 1 & 2 & -1 & -1 \\
+ 2 & 4 & -1 & 3 \\
+ -3 & -6 & 1 & -7 \endbmatrix$
+
+\soln \underbar{Step 1: find any basis for $V$}: $V=\ker \bmatrix 1 & 2 & -1 & -1 \\
+ 2 & 4 & -1 & 3 \\
+ -3 & -6 & 1 & -7 \endbmatrix=\ker
+\bmatrix 
+1 & 2 & 0 & 4 \\
+ 0 & 0 & 1 & 5 \\
+ 0 & 0 & 0 & 0 \\ \endbmatrix$. 
+
+This kernel is $\set{(-2s-4t,s,-5t,t)\st s,t \in \R }=\spn\{(-2,1,0,0),(-4,0,-5,1)\} $, and so (courtesy of Theorem \ref{kernelbasis}), a basis for $V$ is $\set{(-2,1,0,0),(-4,0,-5,1)}$.
+
+\underbar{Step 2: Apply G-S, perhaps with rescaling}: With the above ordered basis denoted $\set{v_1, v_2}$, we begin by setting $u_1=v_1=(-2,1,0,0)$. 
+
+Then 
+\begin{equation*}
+\begin{split}
+ \tilde u_2 &= v_2 -\dfrac{v_2\cdot u_1}{\| u_1\|^2}u_1\\
+  &= (-4,0,-5,1)-\dfrac{(-4,0,-5,1)\cdot (-2,1,0,0)}{\| (-2,1,0,0)\|^2}(-2,1,0,0)\\
+  &=(-4,0,-5,1)-\frac85(-2,1,0,0) \\
+  &= (-\frac45,-\frac85, -5, -1 )
+\end{split}\end{equation*}
+
+Again we can (but we don't have to) rescale at this stage to eliminate fractions, should we wish. Set $u_2=(4, 8, 25,5)$, so that $\set{(-2,1,0,0),(4, 8, 25,5)}$ is an orthogonal basis for $V$.
+  
+\medskip
+%
+
+\end{sol}
+
+\begin{sol}{prob19.5} Find the best approximation to each of the given vectors $v$ from the given subspace $W$. \medskip
+
+(b) $v=(1,1,1)$,   $W=\set{(x,y,z)\in\R^3 \st 5x-4y+z=0}$
+
+\soln From Q. 2 (d) we know 
+$$\proj_W(x,y,z)=\dfrac{1}{42}(17 x+20 y-5 z,20 x+26 y+4 z,-5 x+4 y+41 z),$$ so the best approximation to $v=(1,1,1)$ from  $W$ is $\proj_W(1,1,1)=\big(\dfrac{16}{21},\dfrac{25}{21},\dfrac{20}{21}\big)$.
+
+\medskip
+{\bf N.B. \underbar{You must not rescale this answer!} This is a very, very common error at this stage. Rescaling an orthogonal basis is fine, but the projection is a fixed answer.  $\,$For example, if we rescaled this to $(16,25,20)$, this is simply not the correct answer: check that $(16,25,20)\notin W$! The vector $\proj_W(v)$ always belongs to $W$.}
+\medskip
+
+
+\end{sol}
+
+\begin{sol}{prob19.6} State whether each of the following is (always) true,
+or is (possibly) false.    
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item If you say the statement may be false, you    must give an explicit example.   
+\item If you say the statement is true, you must give a clear explanation -   by quoting a theorem presented in class, or by giving a {\it proof valid for every  case}. 
+\end{enumerate}
+\medskip
+
+(b) Every linearly independent set is orthogonal.
+
+\soln This is false: for example $\set{(1,0), (1,1)}$ is linearly independent but is not orthogonal.
+\medskip
+%
+
+(d) When finding the orthogonal projection of a vector $v$ onto a subspace $W$, once the answer is obtained, it's OK to rescale the answer to eliminate fractions.
+
+\soln {\bf Absolutely false!} See comments at the end of Q.5(b).
+\medskip
+
+(f) When finding the orthogonal projection of a vector $v$ onto a subspace $W$, using different orthogonal bases of $W$ in the formula can give different answers.
+
+\soln This is false: it's a wonderful fact (and a consequence of Proposition \ref{orthogproj}) that even though the formula for the orthogonal projection looks different when using  a different orthogonal basis, the {\it answer} will \underbar{always} be the same. That is, using different {\it orthogonal} bases of $W$ in the formula will always give the same answer for the projection.
+\medskip
+%
+
+(h) To check that a vector, say $u$, is orthogonal to every vector in $W$, it suffices to check that $u$ is orthogonal to every vector in {\it any} basis of $W$.
+
+\soln This is true --- let's prove it. 
+
+Suppose $u$ is orthogonal to every vector in some basis $\mathcal B =\set{w_1, \dots , w_k}$ of $W$, i.e., $u\cdot w_i=0$ for every $i,\, 1\le i \le k$. 
+
+Now let $w$ be any vector in $W$. We show that $u\cdot w=0$ as follows. Since $\mathcal B$ is a basis of $W$, we can write $w=a_1 w_1 +a_2 w_2 +\cdots +a_kw_k$ for some scalars $a_1, \dots, a_k$. Then
+\begin{equation*}
+\begin{split}
+ u\cdot w &= u\cdot (a_1 w_1 +a_2 w_2 +\cdots +a_kw_k)\\
+  &=  a_1 (u\cdot w_1) +a_2 (u\cdot w_2) +\cdots +a_k (u\cdot w_k)  \\
+  &=  a_1 (0) +a_2 (0) +\cdots +a_k (0)\\
+  &= 0.\\
+\end{split}\end{equation*}
+
+That is, $u\cdot w=0$. So we've shown that if $u$ is orthogonal to every vector in any basis of $W$, then $u$ is  orthogonal to every vector in $W$. (The converse is also clear: if $u$ is  orthogonal to every vector in $W$, it will surely be orthogonal to every vector in any basis of $W$ -- since these basis vectors are in $W$.)
+\medskip
+
+\end{sol}
+  

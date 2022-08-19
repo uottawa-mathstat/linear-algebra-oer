@@ -1,0 +1,238 @@
+
+ 
+
+
+\begin{sol}{prob19.1} Dans chaque cas, trouvez les coefficients de Fourier (coordonn\'ees) du vecteur $\vv$ par rapport à la base orthogonale $\mathcal B$ donnée de l'espace vectoriel $W$ indiqué.
+\medskip
+
+(b)  $\vv=(1,2,3)$, $\mathcal B = \set{\vv_1=(1, 2 , 3 ),\vv_2=(-5, 4, -1),\vv_3=(1, 1, -1)}$, $W=\R^3$.
+
+
+\soln Si nous écrivons $\vv= c_1 \vv_1+c_2 \vv_2+c_3 \vv_3$, alors nous savons que 
+$ c_i= \frac{\vv\cdot \vv_i}{\| \vv_i\|^2}$ pour $i=1,2,3$. Donc après calculs, on obtient $(c_1, c_2, c_3)=(1,0,0)$. (Remarquez donc que $\vv=\vv_1$ est lui-même le premier vecteur dans la base orthogonale donnée !)
+\medskip
+
+
+(d) $\vv=(4,-5,0)$, $\mathcal B = \set{\vv_1=(-1, 0, 5),\vv_2=(10, 13, 2)}$,   $W=\set{(x,y,z)\in\R^3 \st 5x-~4y+~z=~0}$.
+
+
+\soln Si nous écrivons $\vv= c_1 \vv_1+c_2 \vv_2$, alors nous savons que 
+$ c_i= \frac{\vv\cdot \vv_i}{\| \vv_i\|^2}$ pout $i=1,2$. Donc après calculs, on obtient $(c_1, c_2)=(-\frac{2}{13},-\frac{25}{273})$. 
+\medskip
+
+
+(f) $\vv=(1,0,1,2)$,  $\mathcal B =\set{\vv_1=(1, 0, 1, 1), \vv_2=(0, 1, 0, 0), \vv_3=(0, 0, 1, -1),\vv_4=(1, 0, 0, -1)}$, $W=~\R^4$.
+
+
+\soln
+Si nous écrivons $\vv= c_1 \vv_1+c_2 \vv_2+c_3 \vv_3+c_4 \vv_4$, alors nous savons que 
+$ c_i= \frac{\vv\cdot \vv_i}{\| \vv_i\|^2}$ pour $i=1,\dots ,4$. Donc après calculs, on obtient $(c_1, c_2, c_3, c_4)=(\frac{4}{3},0,-\frac{1}{2},-\frac{1}{2})$.
+\medskip
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob19.2} Trouvez la formule de la projection orthogonale sur les sous-espaces des questions c), d)~\sov~et e) ci-dessus.
+
+
+\soln  $$\proj_W(x,y,z)=\frac{(x,y,z)\cdot (-1, 0, 5)}{26}(-1, 0, 5)+\frac{(x,y,z)\cdot (10, 13, 2)}{273}(10, 13, 2).$$ Après d\'eveloppement et simplification, cela devient $$\proj_W(x,y,z)=\frac{1}{42}(17 x+20 y-5 z,\,20 x+26 y+4 z,\,-5 x+4 y+41 z)\,.$$
+\medskip
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob19.3} Appliquez l'algorithme de Gram-Schmidt à chacun des ensembles LI suivants (pour obtenir un ensemble orthogonal), et vérifiez que l'ensemble de vecteurs que vous obtenez est bien orthogonal.
+\medskip
+
+(b) $\set{(1, 0, 0, 1),(0, 1, 0, -1),(0, 0, 1, -1)}$.
+%$x-y-z-w=0$
+
+\soln Avec la liste ordonnée ci-dessus désignée par $\set{\vv_1, \vv_2, \vv_3}$, nous commençons par définir $\uu_1=\vv_1=(1, 0, 0, 1)$. 
+
+Puis 
+
+\begin{align*}
+\tilde \uu_2&= \vv_2 -\frac{\vv_2\cdot \uu_1}{\| \uu_1\|^2}\uu_1=(0, 1, 0, -1)-\frac{(0, 1, 0, -1)\cdot (1, 0, 0, 1)}{\| (1, 0, 0, 1)\|^2}(1, 0, 0, 1)\\
+&=(0, 1, 0, -1)+\frac12 (1, 0, 0, 1)=\left(\frac12, 1,0,-\frac12\right)\,.\end{align*}
+Nous pouvons, si nous le souhaitons, multiplier par le scalaire 2 pour éliminer les fractions afin de simplifier les calculs ultérieurs. Nous définissons donc $\uu_2=(1,2,0,-1)$. 
+
+{\bf N.B.: On v\'erifie que $\uu_1\cdot \uu_2=0$ avant de proc\'eder au prochain vecteur. Ici, c'est bien le cas, donc on peut continuer!}
+
+On pose alors
+\begin{align*}
+ \tilde \uu_3 &=\vv_3 -\frac{\vv_3\cdot \uu_1}{\| \uu_1\|^2}\uu_1-\frac{\vv_3\cdot \uu_2}{\| \uu_2\|^2}\uu_2 \\
+  &= (0, 0, 1, -1)-\frac{(0, 0, 1, -1)\cdot (1, 0, 0, 1)}{\| (1, 0, 0, 1)\|^2}(1, 0, 0, 1)\\
+&\qquad-\frac{(0, 0, 1, -1)\cdot (1,2,0,-1)}{\| (1,2,0,-1)\|^2}(1,2,0,-1)\\
+  &=(0, 0, 1, -1)+\frac{1}{2}(1, 0, 0, 1)-\frac16 (1,2,0,-1)\\
+  &= \left(\frac13,-\frac13  , 1 ,-\frac13 \right)\,.\end{align*}
+Nous pouvons, si nous le souhaitons l\`a encore, multiplier par le scalaire 3 pour éliminer les fractions afin de simplifier les calculs ultérieurs. Nous définissons donc $\uu_3=(1,-1,3,-1)$. 
+ {\bf N.B.: On v\'erifie que $\uu_1\cdot \uu_3=0=\uu_2\cdot \uu_3$ avant de conclure. Tout est bon ici!}
+
+Ainsi, après avoir appliqué la méthode de Gram-Schmidt (apr\`es multiplication par scalaires convenable pour \'eliminer les fractions), nous obtenons l'ensemble orthogonal suivant (qui n'est pas une base puisqu'il n'y a que trois vecteurs et qu'il en faudrait quatre): 
+$$\set{(1, 0, 0, 1),(1,2,0,-1),(1,-1,3,-1)}.$$
+\medskip 
+
+
+(d) $\set{(1, 1, 0),(1, 0, 2),(1, 2, 1)}$.
+
+
+\soln  Avec la liste ordonnée ci-dessus désignée par $\set{\vv_1, \vv_2, \vv_3}$, nous commençons par définir  $\uu_1=\vv_1=(1, 1, 0)$.
+
+On pose alors \begin{align*}\tilde \uu_2&= \vv_2 -\frac{\vv_2\cdot \uu_1}{\| \uu_1\|^2}\uu_1=(1, 0, 2)-\frac{(1, 0, 2)\cdot (1, 1, 0)}{\| (1, 1, 0))\|^2}(1, 1, 0)\\&=(1, 0, 2)-\frac12(1, 1, 0)=\left(\frac12,-\frac12, 2\right)\,.\end{align*} 
+Nous multiplions par le scalaire 2 pour éliminer les fractions afin de simplifier les calculs ultérieurs. Nous définissons donc $\uu_2=(1,-1,4)$.  {\bf N.B.: On v\'erifie que $\uu_1\cdot \uu_2=0$ avant de proc\'eder au prochain vecteur. C'est bon!}
+
+Enfin, on pose
+\begin{align*}
+ \tilde \uu_3 &=\vv_3 -\frac{\vv_3\cdot \uu_1}{\| \uu_1\|^2}\uu_1-\frac{\vv_3\cdot \uu_2}{\| \uu_2\|^2}\uu_2 \\
+  &= (1,2,1)-\frac{(1,2,1)\cdot (1, 1,0)}{\| (1, 1, 0)\|^2}(1, 1,0)-\frac{(1,2,1)\cdot (1,-1,4)}{\| (1,-1,4)\|^2}(1,-1,4)\\
+  &=(1,2,1)-\frac32(1, 1,0)-\frac{1}{6}(1,-1,4)\\
+  &= \left(-\frac23,\frac23  ,\frac13 \right)\,.\end{align*}
+Nous multiplions par le scalaire 3 pour éliminer les fractions. Nous définissons donc $\uu_3=(-2,2,1)$. 
+ {\bf N.B.: On v\'erifie que $\uu_1\cdot \uu_3=0=\uu_2\cdot \uu_3$ avant de conclure. Tout est bon ici!}
+
+Ainsi, après avoir appliqué l'algorithme de Gram-Schmidt, nous obtenons l'ensemble orthogonal (dans ce cas, une base orthogonale de $\R^3$) :  $$\set{(1, 1,0),(1,2,1),(-2,2,1)}.$$
+
+
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob19.4} Trouvez une base orthogonale pour chacun des sous-espaces suivants et vérifiez que votre base est bien orthogonale. (Astuce : tout d'abord, trouvez une base quelconque de manière standard, puis appliquez l'algorithme de Gram-Schmidt pour en trouver un orthogonale.)
+\medskip
+
+(b) $\uu=\set{(x,y,z, w)\in\R^4 \st x+y-w=0}$
+
+
+\soln \underbar{Etape 1 : trouver une base quelconque pour $\uu$} : Une base pour $\uu$ peut être facilement trouvée en écrivant
+$$\uu=\set{(-y+w,y,z, w)\in\R^4 \st y,z,w\in \R}=\sp{(-1,1,0,0),(0,0,1,0),(-1,0,0,1)},$$ et en notant que 
+$ y(-1,1,0,0)+z(0,0,1,0)+w(-1,0,0,1)=(-y+w,y,z, w)=(0,0,0,0)$ ssi  $y=z=w=0$. Donc l'ensemble $\set{(-1,1,0,0),(0,0,1,0),(-1,0,0,1)}$ est générateur et LI, et c'est donc une base de $\uu$. 
+
+Alternativement (et c'est une meilleure solution !), puisque $\uu=\ker \bmatrix 1&1&0&-1 \endbmatrix$, nous pouvons aussi utiliser l'algorithme qui permet de trouver une base du noyau d'une matrice (Théorème \ref{kernelbasis}). Donc
+\begin{align*}\ker \bmatrix 1&1&0&-1 \endbmatrix &=\set{(-r+t,r,s,t)\st r,s,t \in \R }\\ 
+&=\sp{(-1,1,0,0),(0,0,1,0),(-1,0,0,1)},
+\end{align*}
+et notre algorithme {\it garantit sans que nous ayons à vérifier} que l'ensemble $$\set{(-1,1,0,0),(0,0,1,0),(-1,0,0,1)}$$ ainsi trouvé est bien une base pour $\uu$ !
+
+\smallskip
+\underbar{Etape 2 : Appliquer l'algorithme de Gram-Schmidt} : Avant de commencer, notez que nous pouvons multiplier les vecteurs de la base par des scalaires convenables pour avoir une base simple. 
+Avec la liste ordonnée ci-dessus désignée par $\set{\vv_1, \vv_2, \vv_3}$, nous commençons par définir $\uu_1=\vv_1=(1, -1, 0, 0)$. 
+
+Ensuite, on pose $$\tilde \uu_2= \vv_2 -\frac{\vv_2\cdot \uu_1}{\| \uu_1\|^2}\uu_1=(0,0,1,0)-\frac{(0,0,1,0)\cdot (1, -1, 0, 0)}{\| (1, -1, 0, 0)\|^2}(1, -1, 0, 0)=(0,0,1,0).$$ Il n'est pas nécessaire de mutiplier les vecteurs par des scalaires à ce stade ! Nous définissons donc $\uu_2=(0,0,1,0)$. 
+
+ {\bf N.B.: On v\'erifie que $\uu_1\cdot \uu_2=0$ avant de proc\'eder au prochain vecteur. C'est bon!}
+
+On pose alors
+\begin{align*}
+ \tilde \uu_3 &=\vv_3 -\frac{\vv_3\cdot \uu_1}{\| \uu_1\|^2}\uu_1-\frac{\vv_3\cdot \uu_2}{\| \uu_2\|^2}\uu_2 \\
+  &= (-1,0,0,1)-\frac{(-1,0,0,1)\cdot (1, -1, 0, 0)}{\| (1, -1, 0, 0)\|^2}(1, -1, 0, 0)\\
+&\qquad-\frac{(-1,0,0,1)\cdot (0,0,1,0)}{\| (0,0,1,0)\|^2}(0,0,1,0)\\
+  &=(-1,0,0,1)+\frac12 (1, -1, 0, 0)-0\,(0,0,1,0)\\
+  &= \left(-\frac12,\,-\frac12  ,\, 0 ,\,1 \right)\,.\end{align*}
+Nous multiplions par le scalaire 2 pour éliminer les fractions. Nous définissons donc  $\uu_3=(1,1,0,-2)$. 
+ {\bf N.B.: On v\'erifie que $\uu_1\cdot \uu_3=0=\uu_2\cdot \uu_3$ avant de conclure. Tout est bon ici!}
+
+Ainsi, après avoir appliqué l'algorithme de Gram-Schmidt, nous obtenons la base orthogonale $\set{(1, -1, 0, 0),(0,0,1,0),(1,1,0,-2)}$ de $\uu$.
+
+{\bf N.B.: Puisque nous avons une description simple de $\uu$ sous la forme $\set{(x,y,z, w)\in\R^4 \st x+y-w=0}$, nous pouvons également vérifier que les vecteur $\uu_1, \uu_2, \uu_3$ appartiennent bien à $\uu$ avant de passer \`a un autre exercice, c'est rapide et ça en vaut le coût. Ici, tout est bon!}
+\medskip
+
+(d) $V=\ker \bmatrix 1 & 2 & -1 & -1 \\
+ 2 & 4 & -1 & 3 \\
+ -3 & -6 & 1 & -7 \endbmatrix$.
+
+
+\soln \underbar{Étape 1 : trouver une base quelconque pour $\vv$}: 
+$$V=\ker \bmatrix 1 & 2 & -1 & -1 \\
+ 2 & 4 & -1 & 3 \\
+ -3 & -6 & 1 & -7 \endbmatrix=\ker
+\bmatrix 
+1 & 2 & 0 & 4 \\
+ 0 & 0 & 1 & 5 \\
+ 0 & 0 & 0 & 0 \\ \endbmatrix\,.$$
+Ce noyau est $\set{(-2s-4t,s,-5t,t)\st s,t \in \R }=\sp{(-2,1,0,0),(-4,0,-5,1)} $, et donc (grâce au Théorème \ref{kernelbasis}), on en déduit qu'une base pour $V$ est 
+$$\set{(-2,1,0,0),(-4,0,-5,1)}\,.$$
+
+\underbar{Étape 2 : Appliquer Gram-Schmidt} : Avec la base ordonnée ci-dessus désignée par $\set{\vv_1, \vv_2}$, nous commençons par définir $\uu_1=\vv_1=(-2,1,0,0)$. 
+
+On pose ensuite 
+\begin{equation*}
+\begin{split}
+ \tilde \uu_2 &= \vv_2 -\frac{\vv_2\cdot \uu_1}{\| \uu_1\|^2}\uu_1\\
+  &= (-4,0,-5,1)-\frac{(-4,0,-5,1)\cdot (-2,1,0,0)}{\| (-2,1,0,0)\|^2}(-2,1,0,0)\\
+  &=(-4,0,-5,1)-\frac85(-2,1,0,0) \\
+  &= \left(-\frac45,\,-\frac85,\, -5, \,-1 \right)\,.
+\end{split}\end{equation*}
+
+Multipliez par 8 pour \'eliminer les fractions. On d\'efinit donc $\uu_2=(4, 8, 25,5)$. D'o\`u l'ensemble $\set{(-2,1,0,0),(4, 8, 25,5)}$ est une base orthogonale de $V$.
+  
+\medskip
+
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob19.5} Dans chaque cas, trouvez la meilleure approximation du vecteur $\vv$ donné par un vecteur $\ww$ du sous-espace $W$ donné. \medskip
+
+(b) $\vv=(1,1,1)$,   $W=\set{(x,y,z)\in\R^3 \st 5x-4y+z=0}$.
+
+
+\soln De la question 2 (d), on sait que 
+$$\proj_W(x,y,z)=\frac{1}{42}(17 x+20 y-5 z,\,20 x+26 y+4 z,\,-5 x+4 y+41 z)\,.$$ Donc la meilleur approximation de $\vv=(1,1,1)$ par un vecteur de $W$ est $\proj_W(1,1,1)=\big(\frac{16}{21},\frac{25}{21},\frac{20}{21}\big)$.
+
+\medskip
+{\bf N.B. \underbar{Vous ne devez pas multiplier cette réponse par un scalaire!} Il s'agit d'une erreur très, très courante à ce stade. On a le droit de multiplier par un scalaire dans l'expression d'une base orthogonale, mais pas dans l'expression de la projection, cette réponse doit être une réponse fixe.  Par exemple, si nous multiplions par $21$ la projection pour obtenir $(16,25,20)$, ce n'est tout simplement pas la bonne réponse : on a même que le vecteur $(16,25,20)$ n'appartient même pas à  $W$ ! Au contraire, le vecteur $\proj_W(\vv)$ appartient toujours à $W$ lorsqu'on ne fait pas de multiplication par un scalaire ensuite.}
+\medskip
+
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob19.6} Pour chacun des énoncés suivants, indiquez s'il est (toujours) vrai ou s'il est (possiblement) faux.   
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item Si vous dites que l'\'enonc\'e est faux, donnez un contre-exemple.   
+\item Si vous dites que l'\'enonc\'e est vrai, donnez une explication claire - en citant un théorème ou en donnant une {\it preuve valide dans tous les cas}. 
+\end{enumerate}
+\medskip
+
+(b) Tout ensemble linéairement indépendant est orthogonal.
+
+
+\soln Faux ! Par exemple $\set{(1,0), (1,1)}$ est lin\'eairement ind\'ependant mais PAS orthogonal.
+\medskip
+
+
+(d) Lorsque l'on cherche la projection orthogonale d'un vecteur $\vv$ sur un sous-espace $W$, une fois la réponse obtenue, on peut la multiplier la réponse par un  scalaire convenable pour éliminer les fractions.
+
+
+\soln {\bf Absolument faux!} Voir le commentaire \`a la fin de la question 5(b).
+\medskip
+
+(f) Lorsque l'on recherche la projection orthogonale d'un vecteur $\vv$ sur un sous-espace $W$, si l'on utilise différentes bases orthogonales de $W$ dans la formule de la Définition~\ref{projdef} (page~\pageref{projdef}), alors on aura possiblement des réponses différentes.
+
+
+\soln Faux ! C'est un fait merveilleux (et une conséquence de la Proposition \ref{orthogproj}) que même si la formule de la projection orthogonale semble différente lorsque l'on utilise une base orthogonale différente, la {\it réponse} sera \underbar{toujours} la même. Autrement dit, l'utilisation de différentes bases {\it orthogonales} de $W$ dans la formule donnera toujours la même réponse pour la projection.
+\medskip
+
+
+(h) Pour vérifier qu'un vecteur, disons $\uu$, est orthogonal à tout vecteur dans $W$, il suffit de vérifier que $\uu$ est orthogonal à tout vecteur d'une base de $W$.
+
+
+\soln Vrai! Prouvons-le. 
+
+Supposons que $\uu$ soit orthogonal à chaque vecteur d'une base $\mathcal B =\set{\ww_1, \dots , \ww_k}$ de $W$; c'est-à-dire que $\uu\cdot \ww_i=0$ pour tout $i$ tel que $1\le i \le k$. 
+
+Soit maintenant $\ww$ un vecteur quelconque de $W$. Nous montrons que $\uu\cdot \ww=0$. Puisque $\mathcal B$ est une base de $W$, nous pouvons écrire $\ww=a_1 \ww_1 +a_2 \ww_2 +\cdots +a_k\ww_k$ pour certains scalaires $a_1, \dots, a_k$. Alors
+\begin{equation*}
+\begin{split}
+ \uu\cdot \ww &= \uu\cdot (a_1 \ww_1 +a_2 \ww_2 +\cdots +a_k\ww_k)\\
+  &=  a_1 (\uu\cdot \ww_1) +a_2 (\uu\cdot \ww_2) +\cdots +a_k (\uu\cdot \ww_k)  \\
+  &=  a_1 (0) +a_2 (0) +\cdots +a_k (0)\\
+  &= 0,\\
+\end{split}\end{equation*}
+
+c'est-à-dire $\uu\cdot \ww=0$. Nous avons donc montré que si $\uu$ est orthogonal à tout vecteur dans toute base de $W$, alors $\uu$ est orthogonal à tout vecteur dans $W$. (La réciproque est également claire : si $\uu$ est orthogonal à tout vecteur dans $W$, alors il sera également clairement orthogonal à tout vecteur d'une base de $W$ puisque les vecteurs de cette base sont dans $W$...)
+\medskip
+
+\end{sol}
+  

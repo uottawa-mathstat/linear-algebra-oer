@@ -1,0 +1,267 @@
+\chapter{Sous-espaces, ensembles g\'en\'erateurs}\label{chapter:Fr_05-subspaces}
+
+Dans le chapitre pr\'ec\'edent, nous avons introduit la notion d'\emph{espace
+vectoriel}: c'est un ensemble $V$ muni de deux
+lois (addition et multiplication par scalaire) satisfaisant 10 axiomes. 
+La moralité est que, algébriquement, un espace vectoriel n'est au final pas
+si diff\'erent que ça de $\R^n$ (du moins, ils ont des comportements similaires avec l'addition
+et avec la multiplication par scalaire).
+
+Nous avons aussi présenté des exemples d'espaces vectoriels particuliers:
+
+\begin{itemize}
+\item
+  $\R^n$ pour $n\geq 1$;
+\item
+  $\mathcal{E}$, l'espace des équations linéaires en 3 variables;
+\item
+  $\F([a,b])$, l'espace des fonctions d\'efinies sur l'intervalle $[a,b]$;
+\item
+  $\F(\R)$, l'espace des fonctions d\'efinies sur la droite réelle;
+\item
+  $\M_{m\times n}(\R)$, l'espace des matrices $m\times n$ avec entr\'ees réelles,
+\end{itemize}
+
+\noindent pour lesquels nous avons dû vérifier les 10 axiomes. Mais nous avons
+remarqué que parfois axiomes d'arithm\'etique (5)-(10) sont « automatiquement » vérifiés, sous prétexte que nous avons un sous-ensemble d'un espace vectoriel pour les mêmes lois.
+
+Examinons cela plus attentivement.
+
+\section{Sous-espaces d'un espace vectoriel}\label{subsets-of-vectors-spaces}
+
+Dans ce qui suit, considérons $V$ un espace vectoriel et $W \subseteq V$
+un \emph{sous-ensemble} de $V$.
+
+\begin{myexample}
+Soit $V = \R^2$, qui est bien un espace vectoriel, et
+soit $W = \{(x,2x) | x\in \R\}$, qui est bien un sous-ensemble de $V$. Avec les \emph{mêmes} opérations
+d'addition et de multiplication par scalaire que celles sur  $\R^2$, que faudrait-il  vraiment savoir pour décider si  $W$ est
+un espace vectoriel? 
+
+{\textbf{Fermeture:}} (1) Fermeture pour l'addition: si $(x,2x)$ et
+$(y,2y)$ sont dans $W$, alors $(x,2x) + (y,2y) = (x+y, 2(x+y))$ qui
+est dans $W$ car c'est de la forme $(z,2z)\in W$ avec $z=x+y$.
+Le premier axiome est donc vrai.
+
+(2) Fermeture pour la multiplication par scalaire: si $(x,2x) \in W$ et
+$c\in \R$, alors $c(x,2x) = (cx,2(cx))\in W$, ce qui montre que ce crit\`ere est aussi v\'erifi\'e.
+
+{\textbf{Existence:}}~(3) Le vecteur nul est $\zero=(0,0)$, qui est bien dans
+$W$. Cependant nous n'avons pas besoin de vérifier que
+$\mathbf 0 + \uu = \uu$ pour tout $\uu \in W$, car nous
+savons déjà que c'est vrai pour tout $\uu \in V$
+(en effet $V$ est un espace vectoriel donc satisfait l'axiome (3)).
+Donc il suffit de v\'erifier que $\mathbf 0 \in W$ !
+
+(4) Si $\uu \in W$, on a que
+$-\uu = (-1)\uu$ appartient à $W$ grâce au point (2). Remarquez que cette égalité découle du fait que $V$ est un espace vectoriel.
+
+{\textbf{Crit\`eres d'arithm\'etique :}}~(5) - (10) Tous ceux-ci sont
+vrais pour tous les vecteurs de $V$, donc ils le sont aussi en
+particulier pour tous les vecteurs du sous-ensemble
+$W \subset V$. Nous n'avons donc pas besoin de les vérifier à nouveau non plus !
+
+En conclusion, on obtient assez rapidement que $W$ est un espace vectoriel !
+\end{myexample}
+
+\begin{definition}
+Un sous-ensemble $W$ d'un espace vectoriel $V$ est appelé un \emph{sous-espace (vectoriel) de $V$} si $W$ est un espace vectoriel muni des même lois d'addition et de multiplication que scalaire sur $V$.
+\end{definition}
+
+
+\begin{myexample}
+$W = \{ (x,2x) | x\in \R\}$ est un sous-espace de $\R^2$.
+
+\end{myexample}
+
+
+\begin{theorem}[Test du sous-espace] 
+Soit $V$ un espace vectoriel et soit $W \subseteq V$ un sous-ensemble. Alors $W$ est
+un sous-espace de $V$ si et seulement si les 3 conditions suivantes sont v\'erifi\'ees:
+\begin{enumerate}
+\item
+  $\mathbf 0 \in W$;
+\item $W$ est fermé pour l'addition; c'est-\`a-dire, pour tous $\uu, \vv \in W$, $\uu+\vv\in W$;
+\item $W$ est fermé pour la multiplication par scalaire; c'est-\`a-dire, pour tous
+  $\uu \in W$ et $r\in \R$, $r\uu\in W$. 
+\end{enumerate}
+\end{theorem}
+
+Considérez ce théorème comme un raccourci pour vérifier si
+un ensemble donné est un espace vectoriel ou non. Nous avons vu dans
+l'exemple ci-dessus pourquoi cela se résume à ces trois
+axiomes.\footnote{Vous vous demandez peut-être pourquoi nous devons
+  inclure le premier point, surtout que «~$0 \uu = \mathbf 0$~» d\'ecoule de la fermeture pour la multiplication par scalaire.
+  On peut en fait ignorer le point 1, mais seulement si l'ensemble $W$ n'est pas vide.
+  Autrement dit, si $W$ n'est pas vide, il suffit en fait de vérifier les
+  points 2 et 3. MAIS de manière générale, le point 1 est très facile à
+  vérifier, et lorsque ce point 1 est faux, on peut conclure directement que $W$ n'est pas un
+  sous-espace. C'est donc un moyen assez rapide d'exclure certains ensembles
+  et nous l'utiliserons assez régulièrement.}
+
+\section{Exemples} \label{many-examples}
+
+Dans cette section, nous appliquons le test du sous-espace (cf. théorème précédent) pour donner davantage d'exemples d'espaces vectoriels. 
+Les exercices suggérés incluent de nombreux exemples de sous-ensembles, dont certains pour lesquels on ne peut pas appliquer le test du sous-espace (car les
+opérations ne sont pas les mêmes) ou pour lesquels le test du sous-espace échoue.
+Il est recommand\'e de résoudre le maximum d'exercices pour développer une intuition sur ce qu'est vraiment un sous-espace (et sur ce que n'est pas un sous-espace) !
+
+\begin{myprob}
+D\'eterminez si l'ensemble $T = \{ \uu \in \R^3 | \uu \cdot (1,2,3) = 0\}$, muni des
+opérations standards sur $\R^3$,  est un sous-espace de $\R^3$.
+
+\begin{mysol}
+Notez d'abord que $T \subset \R^3$ et que $T \neq \R^3$. En fait, $T$est le
+plan d'équation \[x + 2y + 3z= 0\,,\] puisque $(1,2,3)$ est un vecteur normal à $T$.
+Comme nous utilisons les opérations standards sur $\R^3$, on peut appliquer le test du
+sous-espace:
+
+\begin{enumerate}
+\item
+  Est-ce que $\mathbf 0 \in T$? Oui, puisque $\mathbf 0 = (0,0,0)$
+  satisfait la condition $\uu \cdot (1,2,3) = 0$.
+\item
+  $T$ est-il fermé pour l'addition?\\
+  Oui. En effet, pour tout $\uu,\ \vv\in T$, on a $\uu \cdot (1,2,3) = 0$ et $\vv \cdot (1,2,3) = 0$, et donc
+  $$(\uu + \vv) \cdot (1,2,3) = (\uu \cdot (1,2,3)) + (\vv \cdot (1,2,3)) = 0 + 0 = 0\,.$$
+  Il suit que $\uu + \vv \in T$ et donc que $T$ est fermé pour
+  l'addition.
+\item
+  $T$ est-il fermé pour la multiplication par scalaire?\\
+ Oui. En effet, soient $k \in \R$ et $\uu \in T$. Par définition on a $\uu \cdot (1,2,3) = 0$).\\
+  Pour voir si $k\uu \in T$ on regarde si $(k\uu)\cdot (1,2,3) = 0$.\\
+  On a bien
+  $(k\uu)\cdot (1,2,3) = k(\uu \cdot (1,2,3)) = k(0) = 0$.\\
+  Donc $k\uu \in T$ et $T$ est fermé pour la multiplication
+ par scalaire.
+\end{enumerate}
+
+D'o\`u,  $T$ est un sous-espace de $\R^3$.
+
+\end{mysol}
+
+\end{myprob}
+
+Notez que nous aurions pu en fait remplacer le vecteur $(1,2,3)$ par n'importe
+quel autre vecteur $\nn$ et le résultat aurait été le même. Plus généralement, on a le r\'esultat suivant:
+
+\standout{ Tout plan dans $\R^3$  passant par l'origine est un sous-espace de $\R^3$.}   
+
+En fait, si un plan \emph{ne passe pas} par l'origine, alors il ne satisfait pas la première condition du test du sous-espace test. Ceci nous amène à dire que :
+
+\standout{ Tout plan dans $\R^3$  qui NE PASSE PAS par l'origine N'EST PAS un sous-espace de $\R^3$.}   
+
+Remarque : on appelle d'ailleurs \stress{plan affine} un plan qui ne passe pas par $\zero$.
+
+
+\begin{myprob}
+Pour $\vv \in \R^n$ on définit $L = \{ t\vv \,|\, t\in \R\}$ comme
+étant la droite de $\R^n$ passant par l'origine et ayant pour vecteur
+directeur le vecteur $\vv$. On munit l'ensemble $L$ des opérations standards sur $\R^n$. Est-il alors un sous-espace de $\R^n$?
+
+\begin{mysol}
+Comme $T$ est muni des mêmes opérations que $\R^n$, on peut appliquer le test du sous-espace :
+
+\begin{enumerate}
+\item
+    On prenant $t=0$ on observe que $\mathbf 0 \in L$.
+\item
+  Si $t\vv$ et $s\vv$ sont deux vecteurs de $L$, alors
+  $t\vv + s\vv = (t+s)\vv$ qui est encore un multiple de
+  $\vv$ et donc appartient \`a $L$. Donc $L$ est fermé pour l'addition.
+\item
+  Si $t\vv \in L$ et $k\in\R$, alors $k(t\vv) = (kt)\vv$, qui est aussi
+  un multiple de $\vv$ et est donc un vecteur de $L$. Ainsi $L$ est
+  fermé pour la multiplication par scalaire.
+\end{enumerate}
+
+En conclusion $L$ est bien un sous-espace de $\R^n$.
+\end{mysol}
+\end{myprob}
+
+
+De même que ci-dessus, nous avons plus généralement que:
+
+\standout{ Toute droite de $\R^n$  passant par l'origine est un sous-espace de $\R^n$. Réciproquement, toute droite de $\R^n$  qui NE PASSE PAS par l'origine N'EST PAS un sous-espace de $\R^n$.}   
+
+
+
+\begin{myprob}
+Soit $V = \F(\R)$ l'espace vectoriel de toutes les fonctions d\'efinies sur $\R$ tout entier et à valeurs dans $\R$, et soit $\mathbb{P}$ l'ensemble de tous les \emph{fonctions
+polynomiales} qui peuvent être écrites comme :
+\[p(x) = a_0 + a_1 x + a_2 x^2 + \cdots + a_n x^n\] pour certains
+$n \geq 0$ et $a_i \in \R$. L'ensemble $\PP$ est-il un espace vectoriel?
+
+\begin{mysol}
+Nous notons d'abord (cela n'est pas forcément évident) que les
+opérations habituelles d'addition de deux polynômes et de multiplication d'un polynôme
+par un scalaire sont exactement les mêmes que les opérations standards sur l'espace  $\F(\R)$ des 
+fonctions. Donc on a bien l'inclusion $\PP \subset \F(\R)$ avec les mêmes
+opérations dans les deux ensembles, et on peut appliquer le test du sous-espace :
+
+\begin{enumerate}
+\item
+  Est-ce que $\mathbf 0 \in \PP$? Rappelez-vous que $\mathbf 0$ est la
+  fonction nulle. En fait, c'est aussi le polynôme nul
+  $p(x) = 0 + 0x + 0x^2$ (ou simplement $p(x) = 0$.)
+  Donc c'est un polynôme et alors $\mathbf 0 \in \PP$.
+\item
+  L'ensemble $\PP$ est-il fermé pour l'addition? Oui, car la somme de deux
+  polynômes est à nouveau un polynôme (on ne peut pas obtenir une fonction quelconque comme l'exponentielle par exemple).
+\item
+  L'ensemble $\PP$ est-il fermé pour la multiplication par scalaire? Oui, car multiplier un
+  polynôme par un scalaire donne encore un polynôme.
+\end{enumerate}
+
+D'o\`u $\PP$ est un sous-espace de $\F(\R)$, et est en particulier un espace vectoriel.
+
+\end{mysol}
+\end{myprob}
+
+\begin{definition}\label{transpose}  
+La \defn{transposée} d'une matrice
+ $A$ de taille $m\times n$ est la matrice de taille $n \times m$, not\'ee $A^T$, dont les
+lignes sont exactement les colonnes de $A$. Par example,
+
+\[\mat{a&b\\c&d}^T = \mat{a&c\\b&d}.\]
+\end{definition}
+
+
+\begin{myprob}
+Soit $S = \{ A \in \M_{22}(\R) | A^T = A\}$ l'ensemble
+des matrices \emph{symétriques} $2 \times 2$ (avec les opérations
+standards sur $\M_{mn}(\R)$). Est-ce que $S$ est un espace vectoriel ?
+
+\begin{mysol}
+Comme $S \subset \M_{22}(\R)$ et qu'il est muni des même opérations que $\M_{22}(\R)$, 
+nous pouvons appliquer le test du sous-espace.
+
+Toutefois, il est utile de se familiariser avec cet ensemble $S$.
+Réécrivez-le : \[\begin{aligned}
+S &= \left\{ \mat{a&b\\c&d} \Big|  \mat{a&b\\c&d}^T = \mat{a&b\\c&d}\right\}\\
+&= \left\{ \mat{a&b\\c&d} \Big|  \mat{a&c\\b&d} = \mat{a&b\\c&d}\right\}\\
+&= \left\{ \mat{a&b\\b&d} \Big| a,b,d \in \R\right\}\,.\end{aligned}\] 
+Tout à coup, on y voit plus clair !
+
+\begin{enumerate}
+\item
+  En prenant $a=0$, $b=0$ et $d=0$ on voit que la matrice nulle $\zero$ appartient bien \`a $S$.
+\item
+  On prend deux matrices arbitraires dans $S$ et on les additionne comme suit
+  \[\mat{a&b\\b&d} + \mat{a'&b' \\ b'&d'} = \mat{a+a' & b+b' \\ b+b' & d+d'}\,.\]
+  C'est à nouveau dans $S$, car c'est bien de la forme typique d'un vecteur de $S$ (c'est-à-dire les entrées (1,2) et (2,1) de la matrice sont bien
+  égales). Donc $S$ est fermé pour l'addition.
+\item
+  Soit $k\in \R$. Alors
+  \[k\mat{a&b\\b&d} = \mat{ka & kb \\ kb& kd}\] est à nouveau un vecteur de
+  $S$, et donc $S$ est fermé pour multiplication par scalaire.
+\end{enumerate}
+
+En conclusion, $S$ est un sous-espace de $\M_{22}(\R)$, et $S$ est donc bien un espace vectoriel.
+
+\end{mysol}
+\end{myprob}
+
+
+\section*{Exercices}
+\addcontentsline{toc}{section}{Exercices}

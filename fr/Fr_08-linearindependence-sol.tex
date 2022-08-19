@@ -1,0 +1,113 @@
+
+\begin{sol}{prob07.1}  Lesquels des ensembles suivants sont linéairement indépendants dans l'espace vectoriel indiqué ? (Si vous dites qu'ils le sont, vous devez le prouver en utilisant la définition. Si vous dites que l'ensemble est linéairement dépendant, vous devez donner une relation de dépendance linéaire non-triviale qui justifie votre réponse. Par exemple, si vous dites que $\set{\vv_1, \vv_2, \vv_3}$ est linéairement dépendant, vous devez donner une relation comme  $\vv_1-2 \vv_2 +\vv_3=0$ ou $\vv_1=2 \vv_2 -\vv_3$.)
+
+\medskip
+
+(b) $\set{(1,1), (2, 2)}$; $\R^2$.
+
+\soln Cet ensemble est LD car $2(1,1)-(2,2)=\zero$.
+\medskip
+ 
+
+
+(d) $\set{(1,1), (1, 2), (1,0)}$; $\R^2$.
+
+\soln Cet ensemble est LD car $2(1,1)- (1, 2), -(1,0)=\zero$
+\medskip
+ 
+
+(f) $\set{(1,1,1), (1,0,3), (0,0,0)}$; $\R^3$.
+
+\soln Cet ensemble est LD car il contient le vecteur nul $\zero$. Voici une relation de d\'ependance non-triviale $$0(1,1,1)+ 0(1,0,3) +1\, (0,0,0)=\zero\,.$$
+
+(h) $\set{(1,1,1), (1,0,3), (0,3,4)}$; $\R^3$.
+
+\soln Cet ensemble est LI. En fait, on a si $a(1,1,1)+b(1,0,3)+c (0,3,4)=(0,0,0)$, en comparant les composantes de deux côtés, on obtient les équations $a+b=0$, $a+3c=0$ et $a +3b+4c=0$. Ce système d'équations n'a qu'une seule solution : la solution triviale $a=b=c=0$. 
+\medskip 
+
+(j) $\set{(0,-3), (3, 0)}$; $\R^2$.
+
+\soln Cet ensemble est LI car la relation $a(0,-3) + b(3, 0)=(0,0)$ implique $3b=0$ et $-3a=0$, donc $a=b=0$.
+\medskip
+ 
+
+(l) $\set{(1,0,0), (2,0,-2)}$; $\R^3$.
+
+\soln Cet ensemble est LI car $a(1,0,0)+b (2,0,-2)=(0,0,0)$ entraine $a+2b=0$ et $-2b=0$, donc $a=b=0$ est la seule solution.
+\medskip
+
+
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob07.2} Lesquels des ensembles suivants sont linéairement indépendants dans $\M_{2 \,2}(\R)$ ? (Si vous dites qu'ils le sont, vous devez le prouver en utilisant la définition. Si vous dites que l'ensemble est linéairement dépendant, vous devez donner une relation de dépendance linéaire non-triviale qui justifie votre réponse. Par exemple, si vous dites que $\set{A_1, A_2, A_3}$ est LD, vous devez donner une relation comme  $A_1-2 A_2 +A_3=0$ ou $A_1=2 A_2 -A_3$.)
+\medskip
+
+(b)  $\Big\{\bmatrix 1&0\\1&2\endbmatrix, \bmatrix 0&1\\0&1\endbmatrix , \bmatrix 1&-2\\-1&0\endbmatrix \Big\}$.
+
+\soln Cet ensemble est indépendant. En effet, supposons que $ a\scriptsize\bmatrix 1&0\\1&2\endbmatrix +b \bmatrix 0&1\\0&1\endbmatrix +c \bmatrix 1&-2\\-1&0\endbmatrix =\bmatrix 0&0\\0&0\endbmatrix $ pour certains $a,b,c$. Ceci produit les quatre équations $a+c=0$, $b-2c=0$, $a-c=0$ et $2a+b=0$. La 1ère et la 3e impliquent que $a=c=0$, et en utilisant cette condition dans la 2nde équation, on obtient aussi $b=0$. D'où la solution triviale $a=b=c=0$.   \medskip
+ 
+
+(d)  $\Big\{\bmatrix 1&0\\0&0\endbmatrix, \bmatrix 0&1\\0&0\endbmatrix,\bmatrix 0&0\\1&0\endbmatrix,\bmatrix 0&0\\0&1\endbmatrix \Big\}$.
+
+\soln Nous avons vu en cours que cet ensemble est LI. Regardez vos notes de cous. \medskip
+ 
+
+ 
+
+\end{sol}
+
+\bigskip\begin{sol}{prob07.3}  Lesquels des ensembles suivants sont linéairement indépendants dans $\M_{2 \,2}(\R)$ ? (Si vous dites qu'ils le sont, vous devez le prouver en utilisant la définition. Si vous dites que l'ensemble est linéairement dépendant, vous devez donner une relation de dépendance linéaire non-triviale qui justifie votre réponse. Par exemple, si vous dites que $\set{f_1, f_2, f_3}$ est LD, vous devez donner une relation comme  $f_1-2 f_2 +f_3=0$ ou $f_1=2 f_2 -f_3$.)
+\medskip
+
+(b)  $\set{1, 1+x, x^2}$;  $\mathbb P_2$. 
+
+\soln Cet ensemble de polynômes est LI. En effet, supposons que $a 1 + b(1+x)+ cx^2=0$ pour tout $x\in \R$. Alors $(a+b) +bx +cx^2=0$ pour tout $x\in \R$. Or, un polynôme non-nul de degré 2 admet au plus 2 racines différentes. Mais $(a+b) +bx +cx^2=0$ en admet une infinité. Donc ce polynôme doit être le polynôme nul. Cela signifie que $a+b=0$, $b=0$ et $c=0$ ce qui implique que $a=b=c=0$. \medskip 
+ 
+
+(d)  $\set{1, \sin x, 2 \cos x}$;  $\F(\R)$.
+
+\soln Cet ensemble est LI.  Supposons que $a1 + b\sin x +c\, 2 \cos x=0$ pour tout $x\in \R$. En particulier, en $x=0$, on obtient l'équation $a+ 2c=0$ ; en $x=\pi$, on obtient $a- 2c=0$; et en $x=\frac{\pi}2$, on obtient $a+b=0$. Les deux premières équations impliquent que $a=c=0$ et puis la dernière entraine que $b=0$. Donc $a1 + b\sin x +c\, 2 \cos x=0$ pour tout $x\in \R$ implique la solution triviale $a=b=c=0$.
+ \medskip  
+
+(f)  $\set{\cos 2x, \sin^2 x,  \cos^2 x}$;  $\F(\R)$.
+
+\soln Cet ensemble est LD. Rappelez-vous de la formule suivante : $\cos 2x= \cos^2x -\sin^2 x$ qui est vérifiée {\it pour chaque $x\in \R$}. On a donc l'identité $\sin 2x + \sin^2 x -\cos^2 x=0$, {\it pour tout $x\in \R$}. Ceci montre que trois fonctions $\cos 2x, \sin^2 x$ et $\cos^2 x$ sont linéairement dépendantes.
+
+ \medskip  
+
+(h)  $\set{\sin 2x, \sin x \cos x }$;  $\F(\R)$. 
+
+\soln Rappelez-vous la formule suivante : $\sin 2x= 2\sin x \cos x$ qui est vraire {\it pour tout $x\in R$}. On a donc l'identité $\sin 2x -2 \sin x \cos x=0$, {\it pour tout $x\in \R$}. Ceci montre que deux fonctions $\sin 2x$ et $ \sin x \cos x$ sont linéairement dépendantes.
+\medskip
+
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob07.4} Justifiez clairement vos r\'eponses pour les questions suivantes.\medskip 
+
+
+(b) Supposons que, dans un espace vectoriel $V$, le sous-ensemble $\set{\vv_1, \dots , \vv_k}\subset V$ soit LI. Montrez soigneusement que le sous-ensemble $ \set{\vv_2, \dots , \vv_k}$ (sans $\vv_1$) est aussi LI.
+
+\soln Supposons que $c_2\vv_2 +c_3 \vv_3+ \cdots + c_k \vv_k=0$ pour certains scalaires $c_2, \dots , c_k$. Alors il est également vrai que $0\, \vv_1 +c_2\vv_2 +c_3 \vv_3+ \cdots + c_k \vv_k=0$. Mais comme $\set{\vv_1, \cdots , \vv_k}$ est linéairement indépendant, cela implique que tous les scalaires $c_i$ doivent être nuls; c'est-à-dire $0=c_2=c_3=\cdots = c_k=0$. en particulier $c_2=c_3=\cdots = c_k=0$, la solution triviale. D'o\`u $\set{\vv_2, \dots , \vv_k}$ est linéairement indépendant.
+
+\medskip
+ 
+
+(d) Donnez un exemple d'un sous-ensemble LI $\set{\vv_1, \vv_2}$ de $\R^3$ et d'un vecteur $\vv\in \R^3$ tels que l'ensemble $\set{\vv, \vv_1, \vv_2}$ soit LD.
+ 
+
+\soln Posons $\vv_1=(1,0,0), \vv_2=(0,1,0)$ et $\vv=(1,1,0)$. Alors $\set{(1,0,0), (0,1,0)}$ est LI, mais $\set{(1,1,0), (1,0,0), (0,1,0)}$ ne l'est pas car on a la relation $ (1,1,0)- (1,0,0)-(0,1,0)=(0,0,0)$ ou $(1,1,0)= (1,0,0)+(0,1,0)$.
+
+\medskip
+
+(f)  Donnez un exemple d'un sous-ensemble LI $\set{p, q}$ de $\PP_2$ et d'un polynôme $r\in \PP_2$ tels que l'ensemble $\set{p, q, r}$ soit LD.\medskip
+
+\soln On pose $p(x)=1, q(x)=x$ et $r(x)=1+x$. Alors $\set{1, x}$ LI, mais $\set{1, x, 1+x}$ ne l'est pas car $1 + x -(1+x)=0$ pour tout $x\in R$.
+
+\end{sol}
+
+
+

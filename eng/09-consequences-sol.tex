@@ -1,0 +1,75 @@
+\begin{sol}{prob08.1} Justify your answers to the following: (the setting is a general vector space $V$).\medskip
+
+(b)  Suppose $u \in \spn\{v,w\}$. Show carefully that $\spn\{v,w\}=\spn\{u,v,w\}$.
+
+\soln We show, under the assumption $u \in \spn\{v,w\}$, that  $\spn\{v,w\}\subseteq\spn\{u,v,w\}$ and $\spn\{u, v,w\}\subseteq\spn\{v,w\}$. 
+
+Now it is {\it always} true that $\spn\{v,w\}\subseteq\spn\{u,v,w\}$, since every linear combination of $v$ and $w$ (say) $a v +b w$ ($a,b\in \R$) is also a linear combination of $u$, $v$ and $w$, since $a v +b w = 0\, u +a v + b w$. (We did not need the assumption $u \in \spn\{v,w\}$ to get this far.)
+
+To show that $\spn\{u, v,w\}\subseteq\spn\{v,w\}$, we need to show that  every linear combination of $u$, $v$ and $w$ is also a linear combination of $v$ and $w$. Here, we will need to know that $u \in \spn\{v,w\}$: Suppose we take any linear combination of $u$, $v$ and $w$, say $au +bv +c w$ (with $a,b,c \in R$. Now, since $u \in \spn\{v,w\}$, we know $u= d v + e w$ for some scalars $e, d$. Now we can write $$au +bv +c w= a(d v + e w) + bv + cw=(b+ad)v +(c+ae) w,$$which shows that  every linear combination of $u$, $v$ and $w$ is also a linear combination of $v$ and $w$. Hence $\spn\{u,v,w\} \subseteq \spn\{v,w\}$, and we're done.
+
+(Note that this latter fact is not true unless $u \in \spn\{v,w\}$ -- for example, let $u=(1,0,0)$, $v=(0,1,0)$ and $w=(0,0,1)$. Then $\R^3=\spn\{u,v,w\}\not\subset \spn\{v,w\}$, the latter being only the $y$--$z$ plane.)
+\medskip
+%
+
+(d)  Suppose $\spn\{v,w\}=\spn\{u,v,w\}$. Show carefully that $\set{u,v,w}$ is linearly dependent. 
+
+\soln Use the previous part to conclude that $u \in \spn\{v,w\}$. Then, $u= a v + b w$ for some scalar $a, b$, and so $u-av -bw=0$, showing that $\set{u,v,w}$ is linearly dependent: no matter what $a$ and $b$ are, the coefficient of $u$ is $1\not=0$.
+\medskip
+%
+
+(f)  Suppose $\set{v,w}$ is linearly independent, and that $u \notin \spn\{v,w\}$. Show carefully that $\set{u,v,w}$ is linearly independent.
+
+\soln Suppose $a u + bv+ cw=0$ for some scalars $a,b,c$. If $a\not=0$, then we could write $u= \frac{b}{a} v+ \frac{b}{a} w$, which would mean that $u \in \spn\{v,w\}$, contrary to assumption. So $a$ must be zero. 
+
+Hence,  $a u + bv+ cw=0$ becomes the equation  $bv+ cw=0$. But $\set{v,w}$ is linearly independent, so this means that $b=c=0$. 
+
+So $a u + bv+ cw=0$ has now implied (under the assumptions) that $a=b=c=0$. So, $\set{u,v,w}$ is linearly independent.
+\medskip
+% 
+
+(h)  Suppose $\spn\{v,w\}\not=\spn\{u,v,w\}$. Show carefully that $u \notin \spn\{v,w\}$.
+
+\soln Here, we will use part (b) above: Suppose to the contrary that   $u\in \spn\{v,w\}$. By part (b) above, that would mean $\spn\{v,w\}=\spn\{u,v,w\}$, which contradicts the assumption $\spn\{v,w\}\not=\spn\{u,v,w\}$. So $u\in \spn\{v,w\}$ {\it cannot} be true: i.e., $u\notin \spn\{v,w\}$.
+\medskip
+
+\end{sol}
+
+\begin{sol}{prob08.2} Justify your answers to the following:\medskip
+ 
+
+
+(b) Suppose $p\not=0$ and two  polynomials $\set{p, q}$ satisfy $\deg(p) <\deg(q)$ Show carefully that $\set{p,q}$  is linearly independent. Note that 
+
+\soln Suppose $n=\deg(p) <\deg(q)=m$, and write $p(x)=a_0+a_1x +\cdots + a_n x^n$ and $q(x)=b_0+b_1x +\cdots + b_m x^m$. Since $n=\deg(p) $ and $\deg(q)=m$, we know $a_n\not=0$ and $b_m\not= 0$.
+
+Now suppose $ ap +b q=0$ is the zero polynomial. This implies that
+
+$$a(a_0+a_1x +\cdots + a_n x^n) + b(b_0+b_1x +\cdots + b_m x^m)=0 \quad \text{ for every } x\in \R $$ Since a non-zero polynomial can have only finitely many roots, the equation above implies that we're looking at the zero polynomial. In particular the coefficient of $x^m$ must be zero. But as $n<m$,  this coefficient is exactly $b \,b_m $, so $b \,b_m=0 $. Since $b_m\not= 0$, we conclude that $b=0$. 
+
+So now we have the equation
+
+$$a(a_0+a_1x +\cdots + a_n x^n) =0 \quad \text{ for every } x\in \R $$
+
+As before,  a non-zero polynomial can have only finitely many roots, so the equation just above implies that we're looking at the zero polynomial. So the coefficient of $x^n$ must be zero. That is, $a a_n=0$. But $a_n\not=0$, so $a=0$. 
+
+So we've shown that $ ap +b q=0$ implies $a=b=0$. So  $\set{p,q}$ is linearly independent.
+
+\medskip
+%
+
+
+
+(f) $^\ast$  Suppose $\set{u,v,w}$ are three vectors in $\R^3$ such that $u\cdot v\times w \not=0$. Prove carefully that $\set{u,v,w}$ is linearly independent.\footnote{ Hint: {\it A geometric argument involving `volume' is not sufficient.} Instead, first recall that  $\set{u,v,w}$ is linearly independent iff none of the vectors is a linear combination of the others. Now proceed by contradiction, and by recalling  from high school that for any three vectors $v_1, v_2, v_3 \in \R^3$ that $v_1\cdot v_2\times v_3=v_3\cdot v_1\times v_2=v_2\cdot v_3\times v_1$.}
+
+\soln We know that $\set{u,v,w}$ is linearly independent iff none of the vectors is a linear combination of the others. 
+
+So suppose to the contrary that $u\in \spn\{v,w\}$. So $u= av + b w$ for some scalars $a,b \in \R$. Then, $u\cdot v\times w=(av + b w)\cdot v\times w\not=0$. 
+
+Recall from high school that for any three vectors $v_1, v_2, v_3 \in \R^3$, we have $$v_1\cdot v_2\times v_3=v_3\cdot v_1\times v_2=v_2\cdot v_3\times v_1.$$ So $u\cdot v\times w=(av + b w)\cdot v\times w =w\cdot (av + b w)\times v=w \cdot bw \times v= v\cdot w \times bw=0$. But this contradicts  $u\cdot v\times w \not=0$. So, indeed, $u\notin \spn\{v,w\}$.
+
+Similar arguments show that $v\notin \spn\{u,w\}$ and $w\notin \spn\{u,v\}$. So we conclude that $\set{u,v,w}$ is indeed  linearly independent under the assumption that $u\cdot v\times w \not=0$.
+
+\medskip 
+ 
+\end{sol}

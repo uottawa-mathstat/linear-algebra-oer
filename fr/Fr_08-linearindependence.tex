@@ -1,0 +1,421 @@
+\chapter{D\'ependance et ind\'ependance lin\'eaires}\label{chapter:Fr_07-independence}
+
+
+
+Dans le chapitre pr\'ec\'edent, nous avons introduit la notion d'\stress{enveloppe lin\'eaire} : étant donné un nombre fini de vecteurs $\vv_1, \vv_2, \ldots, \vv_m$,
+leur enveloppe lin\'eaire est l'ensemble des \emph{combinaisons linéaires} en ces vecteurs :
+$$
+\spn\{ \vv_1, \vv_2, \ldots, \vv_m\} = \{ a_1\vv_1 + a_2\vv_2 + \cdots + a_m\vv_m \st a_i \in \R\}\,.
+$$
+
+Nous avons aussi observé que :
+\begin{itemize}
+\item  $\spn\{\zero\} = \{ \zero\}$;
+\item si $\vv \neq 0$, alors $\spn\{ \vv \}$ est la droite passant par l'origine et dirig\'ee par $\vv$;
+\item si $\uu, \vv \neq 0$ et $\uu$ et $\vv$ ne sont pas parallèles, alors $\spn\{\uu,\vv\}$ est un plan (du moins, nous l'avons vu dans $\R^2$ et $\R^3$).
+\end{itemize}
+(Nous avons aussi dit que trois vecteurs non coplanaires de $\R^3$ devraient engendrer $\R^3$ tout entier,
+mais nos arguments étaient assez succincts, les auteurs ne s'attendent pas à ce 
+que vous soyez déjà convaincus par cette preuve.)
+
+Remarquez que les conditions énoncées ci-dessus sont \stress{géométriques}. Ces conditions géométriques sont valables dans $\R^n$, mais comme on l'a vu, il existe d'autres espaces vectoriels comme $\F(\R)$ dans lesquels l'intuition géométrique est plus difficile à appréhender. Pour l'instant,
+admettons que ces conditions géométriques soient nécessaires et d\'eveloppons ensuite ce que serait
+la version algébrique correcte de ces conditions. Ces conditions algébriques auront un grand avantage : on pourra les 
+appliquer à \emph{n'importe quel} espace vectoriel, pas uniquement $\R^n$ !
+
+(Nous appellerons 
+\stress{indépendance linéaire} la condition qui garantira que si une famille $\{ \vv_1, \vv_2, \ldots, \vv_m\}$ est linéairement
+indépendante, alors le sous-espace $\spn\{\vv_1, \vv_2, \ldots, \vv_m\}$ est 
+strictement plus grand que le sous-espace $\spn\{\vv_1, \vv_2, \ldots, \vv_{m-1}\}$
+(on a enlevé $\vv_m$ dans les générateurs du second sous-espace, mais on aurait pu enlever un autre vecteur, ou même en enlever plusieurs, et on aurait  quand même eu que cet énoncé reste vrai)).
+
+\section[Difficulté avec les enveloppes lin\'eaires, I]{Difficulté \#1 avec les enveloppes lin\'eaires : non-unicité des ensembles g\'en\'erateurs}
+
+Le premier problème à mentionner ici est un gros problème puisque nous n'allons \stress{pas} être en mesure de le
+résoudre... Néanmoins, nous devons en discuter pour en être conscient ! 
+
+\begin{myexample} On sait que $\spn\{(1,2)\} = \spn\{(2,4)\}$ puisque les vecteurs $(1,2)$ et $(2,4)$ sont parallèles (on passe du premier au deuxième en multipliant par le scalaire $2$) et donc engendrent la même droite. 
+ \end{myexample}
+
+\begin{myexample} Si $W = \spn\{ (1,0,1), (0,1,0)\}$ et $U = \spn\{ (1,1,1), (1,-1,1)\}$, alors $W=U$.  Pourquoi ? 
+
+Notez d'abord que les deux vecteurs générateurs de $U$ s'écrivent en fonction des vecteurs générateurs de $W$: $$(1,1,1) = (1,0,1)+ (0,1,0) \quad\quad \text{et}\quad\quad (1,-1,1)=(1,0,1)-(0,1,0)\,.$$
+Appliquons maintenant le Théorème \ref{span} du cours précédent.
+
+L'ensemble $W = \spn\{ (1,0,1), (0,1,0)\}$ est un sous-espace de $\R^3$ par le point (1) du théorème.  
+Nous venons aussi de montrer que
+$(1,1,1)$ et $(1,-1,1)$ sont dans $W$ (car ce sont des combinaisons linéaires 
+des vecteurs qui engendrent $W$), donc d'apr\`es le point (2) du théorème, on a l'inclusion $\spn\{ (1,1,1), (1,-1,1)\} \subseteq W$.
+Donc $U \subseteq W$.
+
+Inversement, si on écrit $(1,0,1) = \frac12(1,1,1)+\frac12(1,-1,1)$ et
+$(0,1,0) = \frac12(1,1,1)-\frac12(1,-1,1)$, le
+même argument que précédemment en inversant les rôles de $U$ et $W$ entraîne l'inclusion $W \subseteq U$.
+
+En conclusion, on a $W=U$.
+\end{myexample}
+
+\standout{Moralit\'e : Généralement, on ne peut pas savoir si deux sous-espaces sont
+égaux simplement en regardant leurs vecteurs g\'en\'erateurs !  En fait, chaque espace vectoriel possède \emph{un nombre infini} de possibilités d'ensembles g\'en\'erateurs (sauf 
+l'espace vectoriel nul...).}
+
+\section[Difficulté avec les enveloppes lin\'eaires, II]{Difficulté \#2 avec les enveloppes lin\'eaires : rajouter un vecteur générateur à l'enveloppe linéaire ne la fait pas forcément grandir}
+
+Le second problème est plus sérieux, mais nous pourrons le résoudre rapidement ci-dessous.
+
+\begin{myprob} Montrez que
+$$
+\spn\{(1,2)\} = \spn\{ (0,0), (1,2) \} = \spn\{(1,2), (2,4), (3,6)\}.
+$$
+
+\begin{mysol} 
+Pour la première égalité, notez que :
+$$
+\spn\{ (0,0), (1,2) \} = \{ a(0,0) + b(1,2) \st a,b\in \R\} = \{ b(1,2) \st b\in \R\} = \spn\{(1,2)\}.
+$$
+Notez également que
+\begin{align*}
+\spn\{(1,2), (2,4), (3,6)\} &= \{ a(1,2) + b(2,4) + c(3,6) \st a,b,c\in\R\}\\
+&= \{ a(1,2) + 2b(1,2) + 3c(1,2) \st a,b,c\in \R\}\\
+&= \{ (a+2b+3c)(1,2) \st  a,b,c\in \R\}
+\end{align*}
+Cet ensemble est donc contenu dans $\spn\{(1,2)\}$.  
+Réciproquement, pour n'importe quel $t\in \R$, on peut poser $a=t, b=0, c=0$ pour obtenir que $t(1,2)$ 
+est un vecteur du sous-espace ci-dessus.  Au final, on a bien
+$$
+\spn\{(1,2), (2,4), (3,6)\} = \spn\{(1,2)\}\,.
+$$
+\end{mysol}\end{myprob}
+
+\standout{Moralit\'e : Le nombre de vecteurs dans un ensemble g\'en\'erateur d'un sous-espace $W$ ne vous indique pas nécessairement la \og\ taille\ \fg\ de $W$.}
+
+Géométriquement, ce qui pose problème dans l'exemple précédent est le fait que tous les vecteurs sont
+colinéaires (c'est-à-dire qu'ils sont parallèles, ou encore qu'ils sont alignés sur une même droite).  Notez que, de façon similaire, on rencontre des problèmes dans $\R^3$ lorsque l'on a des vecteurs \defn{coplanaires}
+(c'est-à-dire tous appartenant à un même plan).  Mais donc, quel est l'analogue algébrique
+de ces affirmations ?
+
+\section{Version algébrique de \texorpdfstring{\og 2 vecteurs sont colinéaires \fg}{2 vecteurs sont colinéaires}}
+
+Que signifie le fait que deux vecteurs $\uu$ et $\vv$ sont \defn{colinéaires} (ou parallèles)? Cela veut dire que 
+soit ils sont multiples l'un de l'autre, soit l'un d'entre eux est le vecteur nul.
+(Il ne suffit pas de vérifier la condition $\uu = k \vv$ pour un certain $k\in \R$ parce que
+$\vv$ pourrait être le vecteur nul $\zero$ et alors cette équation ne fonctionnerait pas, et pourtant le vecteur nul est toujours colinéaire à n'importe quel autre vecteur.)
+
+Alternativement, vous pouvez opter pour la définition suivante : les vecteurs $\uu$ et $\vv$ sont colinéaires ssi 
+\begin{itemize}
+\item $\uu = k \vv$ pour un certain $k\in \R$;
+\item ou $\vv = k \uu$ pour un certain $k\in \R$.
+\end{itemize}
+Mais voici une façon plus abr\'eg\'ee pour décrire les deux cas d'un coup :
+
+\standout{Deux vecteurs $\uu$ et $\vv$ sont \emph{colin\'eaires} ssi il existe des scalaires $a, b\in \R$, \emph{non tous deux nuls}, tels que :
+$$
+a\uu + b\vv = \zero\,.
+$$}
+
+
+\begin{myexample}
+Les vecteurs $(1,2,1)$ et $(2,4,2)$ sont colinéaires puisque
+$$
+2(1,2,1) + (-1)(2,4,2) = (0,0,0)
+$$
+et que les deux coefficients $2$ et $-1$ sont non tous deux nuls.
+\end{myexample}
+
+\begin{myexample} Les vecteurs $(1,2,1)$ et $(0,0,0)$ sont colinéaires puisque
+$$
+0(1,2,1) + 3(0,0,0)= (0,0,0)
+$$
+et qu'au moins un des coefficients n'est pas nul : ici le $3$. 
+\end{myexample}
+
+\section{Version algébrique de \texorpdfstring{\og 3 vecteurs sont coplanaires \fg}{3 vecteurs sont coplanaires}}
+
+Encore une fois, on pourrait interpreter l'énoncé «~trois vecteurs sont coplanaires~» en disant que l'un des trois vecteurs
+est dans l'enveloppe lin\'eaire engendr\'ee par les deux autres.  En d'autres termes, on dit que trois vecteurs
+$\uu$, $\vv$ et $\ww$ sont \stress{coplanaires} ssi :
+\begin{itemize}
+\item $\uu = a\vv+b\ww$ pour cerians $a,b\in \R$;
+\item ou $\vv = a\uu + b\ww$ pour certains $a,b\in \R$;
+\item ou $\ww = a\uu + b\vv$ pour certains $a,b\in \R$.
+\end{itemize}
+(Là encore, nous devons faire une disjonction de trois cas pour prendre en compte le cas où
+l'un des vecteurs est le vecteur nul...)
+
+De même que précédemment, cette disjonction de trois cas peut être simplifiée en :
+
+\standout{Trois vecteurs $\uu$, $\vv$ et $\ww$ sont
+\stress{coplanaires} (c.a.d. appartiennent au m\^eme plan) ssi il existe des scalaires $a,b,c \in \R$,
+\emph{non tous nuls}, tels que :
+$$
+a\uu + b\vv + c\ww = \zero\,.
+$$
+}
+
+\begin{myexample} Les vecteurs $(1,0,1), (0,1,0), (1,1,1)$ sont coplanaires car
+$$
+(1,0,1) + (0,1,0) - (1,1,1) = (0,0,0)\,.
+$$
+\end{myexample}
+
+\begin{myexample} Les vecteurs $(1,1,1), (2,2,2), (0,0,0)$ sont coplanaires parce que
+$$
+2(1,1,1) + (-1)(2,2,2)+0(0,0,0) = (0,0,0)
+$$
+ou encore parce que
+$$
+0(1,1,1) + 0(2,2,2) + 17(0,0,0) = (0,0,0)\,.
+$$
+(En fait, ces trois vecteurs sont même colinéaires, mais contentons-nous pour l'instant du fait qu'ils sont coplanaires).
+\end{myexample}
+
+\section[Dépendance linéaire]{«~Dépendance linéaire~» : la généralisation algébrique de «~colinéaire~» et «~coplanaire~»}
+
+
+
+\begin{definition}  Soit $V$ un espace vectoriel et soient
+$\vv_1, \vv_2, \ldots, \vv_m \in V$ des vecteurs.  L'ensemble 
+$\{\vv_1, \vv_2, \ldots, \vv_m\}$ est dit \emph{linéairement dépendant}\index{lineairement dependant@linéairement dépendant (LD)} ou plus simplement \emph{li\'e}\index{lie@li\'e}
+(ou bien encore on dit que les vecteurs $\vv_1, \vv_2, \ldots, \vv_m$ sont linéairement dépendants)
+si et seulement si il existe des scalaires $a_1, a_2, \ldots, a_m \in \R$,
+\stress{non tous nuls}, tels que 
+$$
+a_1\vv_1 + \cdots + a_m\vv_m = \zero.
+$$
+\end{definition}
+
+Cette définition, en plus de celle de l'indépendance linéaire (prochaine section), sera une \stress{notion clé} de ce cours.  Prenons le temps de comprendre ce que la définition ne dit \stress{pas}. Elle ne dit pas seulement qu'il existe une solution à l'équation de \stress{dépendance} $a_1\vv_1 + \cdots + a_m\vv_m = \zero$ , mais  elle dit plut\^ot qu'il existe une \stress{solution non triviale} : au moins l'un des coefficients $a_i$ est non-nul.  C'est une énorme différence !
+
+\section{La contrapos\'ee : ind\'ependance linéaire}
+
+En reformulant ce qui précède, nous pouvons dire que :
+\begin{itemize}
+\item Deux vecteurs $\uu$ et $\vv$ ne sont pas colinéaires (de manière équivalente, 
+$\uu$ et $\vv$ ne sont pas parallèles) si et seulement si on a l'équivalence suivante pour tous scalaires $a$ et $b$ :
+$$
+a\uu + b\vv = \zero \Leftrightarrow a=b=0\,.
+$$
+En d'autres termes, les vecteurs $\uu$ et $\vv$ ne sont pas parallèles si et seulement si la SEULE solution à
+l'équation $a\uu + b\vv = \zero$ est la solution \emph{triviale}
+$a=b=0$ (qui est, bien sûr, toujours une solution).
+
+\item Trois vecteurs $\uu$, $\vv$, $\ww$ ne sont pas coplanaires si et seulement si on a l'équivalence suivante pour tous scalaires $a$, $b$ et $c$ :
+$$
+a\uu + b\vv + c\ww = \zero \Leftrightarrow a=b=c=0\,.
+$$
+Autrement dit,  les vecteurs $\uu$, $\vv$ et $\ww$ ne sont pas coplanaires si et seulement si la SEULE solution à
+l'équation $a\uu + b\vv + c\ww = \zero$ est la solution triviale $a=b=c=0$.
+\end{itemize}
+
+\begin{definition}  Soit $V$ un espace vectoriel et soient
+$\vv_1, \vv_2, \ldots, \vv_m \in V$.  Alors l'ensemble \\
+$\{\vv_1, \vv_2, \ldots, \vv_m\}$ est dit \emph{linéairement indépendant}\index{lineairement independant@linéairement indépendant (LI)} ou \defn{libre}
+(on dit aussi que les vecteurs $\vv_1, \vv_2, \ldots, \vv_m$ sont linéairement indépendants)
+si et seulement si la \emph{seule solution} à l'équation
+$$
+a_1\vv_1 + \cdots + a_m\vv_m = \zero
+$$
+est la solution triviale $a_1=0$, $\cdots$, $a_m=0$.
+\end{definition}
+
+\standout{Notez que si des vecteurs ne sont pas linéairement dépendants, alors ils sont linéairement indépendants. Et vice versa s'ils ne sont pas linéairement indépendants, alors ils sont linéairement dépendants.}
+
+Dans la suite de ce cours, nous abrégerons linéairement indépendant en «~LI~», et linéairement dépendant par «~LD~».
+
+\section{Exemples}
+
+Appliquons cette définition à plusieurs exemples.
+
+\begin{myexample}\label{R2} La famille $\{(1,0), (0,1)\}$ est LI parce que lorsque l'on résout 
+$$
+a(1,0)+b(0,1) = (0,0)\,,
+$$
+on obtient que l'unique solution est :
+$$
+(a,b) = (0,0)\,.
+$$
+\end{myexample}
+
+\begin{myexample} La famille $\{(1,1), (1,-1)\}$ est LI car, l\`a encore, résoudre l'équation
+$$
+a(1,1)+b(1,-1) = (0,0)
+$$
+donne nécessairement la condition :
+$$
+(a+b,a-b)= (0,0)
+$$
+ qui elle-même implique $a=b$ et $a=-b$ et donc $a=0$ et $b=0$, la solution triviale. \end{myexample}
+
+\begin{myexample} La famille $\{(1,0), (0,1), (1,1)\}$ est LD : comme
+l'équation
+$$
+a(1,0) + b(0,1) + c(1,1) = (0,0)
+$$
+est vérifié pour $a=1$, $b=1$ et $c=-1$, on a bien une solution non-triviale !  (En fait, on a même ici
+une infinité de solutions non-triviales.)  Notez d'ailleurs que $(1,1) \in \spn\{(1,0),(0,1)\}$.
+\end{myexample}
+
+\begin{myexample} La famille $\{ (1,1,1)\}$ est LI puisque la seule solution à l'équation $k(1,1,1)=\zero$ est $k=0$, la solution triviale. \end{myexample}
+
+\begin{myexample} $\left\{ \mat{1&0\\0&0}, \mat{0&1\\0&0}, \mat{0&0\\1&0}, \mat{0&0\\0&1} \right\}$ est LI puisque l'équation
+$$
+a_1\mat{1&0\\0&0}+a_2\mat{0&1\\0&0}+a_3\mat{0&0\\1&0}+a_4 \mat{0&0\\0&1} =
+ \mat{0&0\\0&0}
+$$
+se simplifie sur le côté gauche et donne :
+$$
+\mat{a_1 & a_2 \\ a_3 & a_4} =  \mat{0&0\\0&0}\,.
+$$
+Donc toutes les entr\'ees $a_i$ sont nulles. \end{myexample}
+
+\begin{myexample} La famille $\left\{ \mat{1&0\\0&0}, \mat{0&0\\0&1},  \mat{1&0\\0&-1}, \mat{0&1\\0&0} \right\}$ est LD dans $\M_{22}(\R)$ puisque  l'on a la relation de dépendance suivante :
+$$
+\mat{1&0\\0&0} - \mat{0&0\\0&1} - \mat{1&0\\0&-1} + 0\mat{0&1\\0&0} = \mat{0&0\\0&0}.
+$$
+(Notez que la troisième matrice appartient \`a l'enveloppe lin\'eaire engendr\'ee pas les deux premières de la liste.) \end{myexample}
+
+\begin{myexample}\label{imp} La famille $\{ 1,x,x^2\}$ est LI dans $\PP_2$. On effet, si
+$$
+a\,1 + b\,x + c\,x^2 = \zero
+$$
+pour certains coefficients $a,b,c\in\R$, alors
+$$
+a + b\,x + c\, x^2 = 0 
+$$ pour {\it tout $x\in\R$}. Donc si $c$ était non-nul, alors le membre de gauche serait un polynôme quadratique et aurait donc au plus deux racines réelles distinctes. Ceci entre en contradiction avec le fait qu'on a $0$ pour \emph{tout} $x\in\R$ dans l'équation ci-dessus. Donc $c$ doit être égal à $0$. Ainsi, notre équation se réduit à : 
+$$
+a + b\,x = 0 
+$$ pour {\it tout $x\in\R$.} Mais l\`a encore, si $b$ était non-nul, cette équation serait vérifiée uniquement en $x=-\dfrac{a}{b}$, ce qui contredit le fait qu'elle est vérifié pour \emph{tout} $x\in\R$. D'o\`u $b$ est nécessairement nul aussi, et il ne reste plus que l'équation $a=0$. Ainsi, on a forcément que $a=b=c=0$, et c'est  la solution triviale, d'où l'indépendance linéaire.\footnote{Comparez cet argument avec les indications dans l'exercice \ref{prob06.4} questions (e) et (f).} \end{myexample}
+
+\begin{myexample} La famille $\{ 4+4x+x^2, 1+x, x^2\}$ est LD dans $\PP_2$ puisque
+$$
+1(4+4x+x^2) + (-4)(1+x) + (-1)x^2 = 0
+$$
+est une relation de dépendance non triviale.  On a d'ailleurs que $4+4x+x^2 \in \spn\{ 1+x, x^2\}$.
+\end{myexample}
+
+\begin{myexample} La famille $\{ 1, \sin x, \cos x\}$ est LI dans $\F(\R)$. En effet, supposons que pour tout $x\in\R$
+$$
+a\, 1 + b\,\sin(x) + c\,\cos(x) = 0.
+$$
+Alors, en appliquant cette égalité à certaines valeurs de $x$, par exemple $0,\, \pi/2$ et $\pi$, on obtient :
+\begin{itemize}
+\item en $x=0$ :\quad $a+c = 0$;
+\item en $x=\pi/2$ :\quad $a+b = 0$;
+\item en $x=\pi$ :\quad $a-c = 0$.
+\end{itemize}
+et (avec un peu de travail) on peut en déduire que nécessairement $a=b=c=0$, la solution triviale. \end{myexample}
+
+
+\begin{myexample} La famille $\{1, \sin^2 x, \cos^2 x\}$ est LD.  Pourquoi ?  Puisque la relation
+$$
+(-1)\, 1 + 1\, \sin^2 x + 1\, \cos^2 x = 0, \quad \textrm{pour tout $x\in \R$},
+$$
+est une relation de dépendance non triviale (les coefficients sont non-nuls).  Notez d'ailleurs que $\cos^2 x \in \spn\{1,\sin^2 x\}$.
+\end{myexample}
+
+\section{Faits (théorèmes) sur l'indépendance et la dépendance linéaires}
+Voyons combien de faits généraux nous pouvons démontrer sur les ensembles LI et et les ensembles LD. 
+Soit donc $V$ un espace vectoriel.
+
+
+\begin{fac} \#1 : Si $\vv \in V$, alors la famille $\{ \vv \}$ est linéairement indépendante si et seulement si $\vv \neq \zero$.  \end{fac}
+
+\begin{proof} Si $\vv \neq \zero$, alors l'équation $k\vv = \zero$ n'admet que la solution triviale $k=0$ (LI).
+Si au contraire $\vv = \zero$, alors on a, par exemple, $3\vv = \zero$ et donc $k=3$ est une solution non triviale (LD). \end{proof}
+
+
+\begin{fac} \#2 : \label{fact 2}
+Si la famille $\{\vv_1, \dots, \vv_m\}$ est LD, alors tout ensemble contenant
+$\{\vv_1, \dots, \vv_m\}$ l'est aussi.\end{fac}
+
+Conséquence : on ne peut pas \og rendre \fg\ LI un ensemble LD en lui ajoutant des vecteurs supplémentaires.
+Par exemple, dans $\R^3$, \'etant donn\'e deux vecteurs colinéaires,  ajouter un troisième vecteur dans la liste des g\'en\'erateurs donnerait au mieux un ensemble de vecteurs coplanaires, et au pire un ensemble de vecteurs colinéaires.
+
+\begin{proof} Si $\{\vv_1, \dots, \vv_m\}$ est LD, alors on a une relation de dépendance non-triviale de la forme
+$$
+a_1\vv_1 + \cdots + a_m \vv_m = \zero,\, 
+$$ 
+avec $a_i \neq 0$ pour au moins un $i$.  Considérons maintenant un plus grand ensemble de générateurs $\{ \vv_1, \ldots, \vv_m, \uu_1, \dots, \uu_k\}$.  
+Alors l'équation
+$$
+ a_1\vv_1 + \cdots + a_m \vv_m + 0\uu_{1} + \cdots + 0\uu_k = \zero
+$$
+est une relation de d\'ependance non triviale.  Cela signifie donc que le grand ensemble est aussi LD. \end{proof}
+
+\begin{fac}\#3 : Si un ensemble $\{ \vv_1, \cdots, \vv_m\}$ est LI, alors tout sous-ensemble de celui-ci est également LI.\end{fac}
+
+\begin{myexample} Si trois vecteurs ne sont pas coplanaires, alors aucune paire d'entre eux n'est
+colinéaire.
+\end{myexample}
+
+\begin{proof} Le Fait \#3 est équivalent au Fait \#2.  
+En effet, le Fait \#2 dit que tout ensemble qui contient un sous-ensemble LD est aussi LD.
+Donc, un ensemble LI ne peut pas contenir de sous-ensemble LD.
+\end{proof}
+
+\begin{fac} \#4 : $\{ \zero\}$ est LD.\end{fac}
+
+\begin{proof}
+	On a la relation non-triviale $42\cdot \zero = \zero$.
+\end{proof}
+
+\begin{fac}\#5 : Tout ensemble contenant le vecteur nul est LD.\end{fac}
+
+\begin{proof} Utilisez les Faits \#4 et \#2. \end{proof}
+
+\standout{NOTE : cela signifie que les sous-espaces vectoriels sont LD !  Et ceci n'est pas grave.  
+En général, on veut simplement savoir si
+un \emph{ensemble de gén\'erateur} est LD ou LI.}
+
+\begin{fac} \#6 : Un ensemble avec deux vecteurs $\{\uu,\vv\}$ est LD si et seulement si un des vecteurs est un multiple scalaire de l'autre.\end{fac}
+
+\begin{proof} Si $a\,\uu + b\,\vv = \zero$ est une relation de dépendance non-triviale, alors on a 
+$a\neq 0$ ou bien $b\neq 0$, ce qui donne respectivement $\uu = -\frac{b}{a} \vv$ 
+ou bien $\vv =-\frac{a}{b} \uu$. Dans les deux cas, on a bien que l'un des vecteurs est un multiple scalaire de l'autre.
+(Notez qu'on ne peut pas avoir que les deux scalaires $a$ et $b$ sont nuls en même temps car sinon la relation $a\,\uu + b\,\vv = \zero$ serait triviale.)
+Inversement, si $\uu= c\, \vv$ (ou $\vv=c\,\uu$) pour un certain $c\in \R$, alors $\uu-c\,\vv=0$ (ou $-c\,\uu+\vv=0$) est une relation de dépendance non-triviale. D'où l'équivalence.
+ \end{proof}
+
+\begin{fac} \#7 : Il est possible qu'un ensemble avec trois vecteurs (ou plus !) soit LD \emph{même si} aucun de ses vecteurs n'est un multiple scalaire d'un autre vecteur de l'ensemble.\end{fac}
+
+\begin{proof} Par exemple, l'ensemble $\{(1,0), (0,1), (1,1)\}$ est LD car les vecteurs sont coplanaires, et pourtant les vecteurs sont deux \`a deux non-colinéaires. \end{proof}
+
+
+\begin{fac} \#8 : (Voir le Théorème \ref{depspan} du chapitre suivant.)   
+Un ensemble $\{\vv_1, \dots, \vv_m\}$ est LD si et seulement si il existe au moins
+un vecteur $\vv_k \in \{\vv_1, \dots, \vv_m\}$ qui est dans l'enveloppe lin\'eaire engendr\'ee par $\{\vv_1, \dots, \vv_{k-1}, \vv_{k+1}, \dots,\vv_m\}$.\end{fac}
+
+\begin{myexample} En utilisant l'exemple pr\'ec\'edent : $(1,1) \in \spn\{(1,0), (0,1)\}$.\end{myexample}
+
+\standout{Attention :  Le Fait \#8 \emph{ne veut pas dire} que \emph{tout} vecteur est une
+combinaison linéaire des autres.  Par exemple, 
+$\{ (1,1), (2,2), (1,3)\}$ est LD car $(2,2) \in \spn\{(1,1),(1,3)\}$,  et pourtant $(1,3) \notin \spn\{(1,1),(2,2)\}$.}
+
+\begin{proof} Supposons que l'ensemble $\{\vv_1, \cdots, \vv_m\}$ soit LD.  Par définition, il existe
+une relation de dépendance non-triviale
+$$
+a_1\vv_1 + \cdots + a_m\vv_m = \zero
+$$
+telle que $a_i \neq 0$ pour au moins un $i$.  Sans perte de généralité, disons que $a_1 \neq 0$ (sinon nous pourrions au besoin 
+ré-indexer les vecteurs pour que ce soit le cas).  Nous pouvons alors isoler
+$\vv_1$:
+$$
+\vv_1 = -\frac{a_2}{a_1}\vv_2 - \cdots - \frac{a_m}{a_1}\vv_m
+$$
+ce qui dit simplement que $\vv_1 \in \spn\{ \vv_2, \cdots, \vv_m\}$.  CQFD.
+
+R\'eciproquement, supposons que $\vv_m \in \spn\{ \vv_1, \cdots, \vv_{m-1}\}$.
+Alors $\vv_m = b_1\vv_1 + \cdots + b_{n-1}\vv_{m-1}$ pour certains scalaires $b_i$.  On a donc
+$$
+b_1\vv_1 + \cdots + b_{n-1}\vv_{m-1} + (-1)\vv_m = \zero.
+$$ 
+Finallement, comme le coefficient de $\vv_n$ est $-1\neq 0$, on a une relation de dépendance \stress{non-triviale} (on ne se pré-occupe même pas du fait que
+les $b_i$ soient tous nuls ou non). D'o\`u l'ensemble $\{\vv_1, \cdots, \vv_m\}$ est LD.
+\end{proof}
+
+Dans le prochain chapitre, nous mettrons en oeuvre ces idées en parrall\`ele avec les ensembles g\'en\'erateurs.
+
+
+
+
+

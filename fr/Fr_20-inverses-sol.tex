@@ -1,0 +1,60 @@
+
+
+\begin{sol}{prob18.1} Pour chacune des matrices suivantes, si elle est inversible trouvez son inverse, sinon justifiez qu'elle n'est pas inversible.
+\medskip
+
+(b) $A=\bmatrix1&1&0\\
+0&-1&-2\\
+0&2&3\endbmatrix$.
+
+\soln  $A^{-1}=\bmatrix 1 & -3 & -2 \\0 & 3 & 2 \\0 & -2 & -1 \endbmatrix$.
+\medskip
+
+(d) $B=\bmatrix  1&x\\ -x&1\endbmatrix$.
+\medskip
+
+\soln  $B^{-1}=\bmatrix\frac{1}{x^2+1} & -\frac{x}{x^2+1} \\\frac{x}{x^2+1} & \frac{1}{x^2+1} \endbmatrix$.
+
+ 
+\end{sol}
+
+\bigskip
+\begin{sol}{prob18.2}  Pour chacun des énoncés suivants, indiquez s'il est (toujours) vrai ou s'il est (possiblement) faux.   
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item Si vous dites que l'\'enonc\'e est faux, donnez un contre-exemple.   
+\item Si vous dites que l'\'enonc\'e est vrai, donnez une explication claire, en citant un théorème ou en donnant une {\it preuve valide dans tous les cas}. 
+\end{enumerate}
+
+
+\medskip
+(b)    Si $A^2=0$ pour une matrice $A$ de taille $n\times n$, alors $A$ n'est pas inversible.
+
+\soln Vrai! Supposons au contraire que $A$ soit inversible, d'inverse $A^{-1}$. En multipliant les deux côtés de l'équation $A^2=0$ par la matrice $A^{-2}$, on obtient l'équation $I_n=0$, qui est évidemment absurde. Donc $A$ n'est pas inversible.
+\medskip
+ 
+
+(d)  Si $A$ est inversible, alors la MER de $A$ admet une ligne nulle.
+
+\soln Faux. Par exemple, la matrice $I_2 =\scriptsize\bmatrix 1&0\\0&1\endbmatrix$ est inversible et elle est sous forme MER, mais elle n'a pas de ligne de zéros. (Plus généralement, on sait qu'une matrice $A$  de taille $n \times n$ est inversible ssi sa MER est $I_n$, laquelle n'a pas de ligne de zéros, donc l'énoncé est toujours faux.)
+\medskip
+ 
+
+
+(f) Si $ A $ est une matrice non-inversible $ n\times n$, alors $A\xx=\bb$ est incompatible pour tout $\bb \in \R^n$.
+
+\soln Faux! Par exemple, pour la matrice $A=\scriptsize\bmatrix 1&0\\0&0
+\endbmatrix$ et le vecteur $\bb=\scriptsize\bmatrix 1\\0
+\endbmatrix$, on a que $A$ n'est pas inversible et que cependant $A\xx=\bb$ est compatible. En fait, cette équation admet même une  infinité de solutions, \`a savoir $\xx=\scriptsize\bmatrix 1\\s
+\endbmatrix$ pour $s\in \R$.
+\medskip
+ 
+
+(h) Si $A$ est une matrice $ n\times n$  satisfaisant $A^{3}-3A^{2}+I_{n}=0$, alors $A$ est inversible et on a  $A^{-1}=3A-A^{2}$.
+
+\soln Vrai! R\'e-\'ecrivez l'\'equation $A^{3}-3A^{2}+I_{n}=0$ en $3A^{2}-A^3=I_{n}$ puis factorisez par $A$ le côté gauche pour avoir $$A(3A-A^2)=I_{n}\,.$$  
+Cette derni\`ere \'equation montre que $A$ est inversible et que $A^{-1}=3A-A^{2}$.
+\medskip
+
+\end{sol}
+

@@ -1,0 +1,217 @@
+
+
+ \centerline{\bf  {Matrix Multiplication}} 
+
+
+\begin{sol}{prob14.1}
+
+
+(b) Write the matrix product $\bmatrix 1&
+2\\ 3&6\endbmatrix \bmatrix a\\ b\endbmatrix$ as a linear combination of the columns of $A=\bmatrix 1&
+2\\ 3&6\endbmatrix$.
+
+\soln $\bmatrix 1&
+2\\ 3&6\endbmatrix \bmatrix a\\ b\endbmatrix = a \bmatrix 1\\ 3\endbmatrix + b \bmatrix 2\\ 6\endbmatrix $.
+
+\medskip
+
+
+(d) Find the matrix product $\bmatrix a \\ b \endbmatrix \bmatrix c&d \endbmatrix$.
+
+\soln $\bmatrix a \\ b \endbmatrix \bmatrix c&d \endbmatrix= \bmatrix ac&ad\\ bc&bd\endbmatrix$
+\medskip 
+%
+
+
+(f) If $A=\bmatrix c_1&c_2 &c_3\endbmatrix$ is an $m\times 3$ matrix written in block column form, and $x=\bmatrix 2\\1\\ 4\endbmatrix$ is a column vector in $\R^3$, express $Ax$ as a linear combination of $c_1, c_2$ and $c_3$.
+
+\soln  
+$Ax =2c_1 + c_2 + 4c_3$.
+
+\medskip 
+%
+
+(h) Show that if $A=
+\bmatrix 0&1\\ 0&0\endbmatrix$, then $A^2=\bmatrix0&0\cr 0&0\endbmatrix$. 
+
+\soln This is a straighforward computation.
+\medskip 
+ 
+
+(j) If $C$ is a $m\times 4$ matrix and $D  =\bmatrix 1&0&1\\0&1&1\\ 1&0&0\\0&0&0 \endbmatrix $, express the columns of $CD$ in terms of the columns of $C$.
+
+\soln Write $C=\bmatrix c_1&c_2 &c_3& c_4\endbmatrix$ in block column form. Then $$CD=\bmatrix c_1&c_2 &c_3& c_4\endbmatrix \bmatrix 1&0&1\\0&1&1\\ 1&0&0\\0&0&0 \endbmatrix=\bmatrix c_1+c_3&c_2 &c_1+c_2\endbmatrix $$
+\medskip
+%
+
+(l)  Find  all $ (a,\ b,\ c)$ so that $\bmatrix 1&
+2\\ 3&6\endbmatrix \bmatrix a&b\\ c&a\endbmatrix=\bmatrix0&0\cr 0&0\endbmatrix
+ $.\\
+
+
+\soln Since  $\bmatrix 1&
+2\\ 3&6\endbmatrix \bmatrix a&b\\ c&a\endbmatrix= \bmatrix a+2c&
+b+2a\\ 3a+6c&3b+6a\endbmatrix$, this is the zero matrix for $(a,b,c)$ which are solutions to
+
+$$\begin{matrix}  
+a& & &+&2c&=&0\\
+2a & +&b& &    &=&0\\
+3a& & &+&6c&=&0\\ 
+6a & +&3b& &    &=&0 \end{matrix}. $$ The general solution to this system is $(a,b,c)=(-2s, 4s, s); \; s\in \R$. 
+\end{sol}
+
+\begin{sol}{prob14.3} State whether each of the following is (always) true,
+or is (possibly) false.  In this question, $A$ and $B$ are matrices for which the indicated products exist.
+   \smallskip    
+ 
+$\bullet$ If you say the statement may be false, you must give an explicit example. 
+\smallskip   
+$\bullet$ If you say the statement is true, you must give a clear explanation -   by quoting a theorem presented in class, or by giving a {\it proof valid for every  case}. 
+
+\medskip
+
+(b) $C(A+B)=CA+CB$
+
+\soln This is true: it a property of matrix multiplication we saw in class. See me if you're interested in the proof.
+\medskip
+%
+
+(d) $AB=BA$
+
+\soln This is not always true. For example, here's an example we saw in class:
+
+$$\bmatrix 0&1\\ 0&0\endbmatrix\bmatrix 0&0\\ 1&0\endbmatrix=\bmatrix 1&0\\ 0&0\endbmatrix\not=\bmatrix 0&0\\ 0&1\endbmatrix=\bmatrix 0&0\\ 1&0\endbmatrix\bmatrix 0&1\\ 0&0\endbmatrix$$
+\medskip
+%
+
+(f)  If $A^2=0$ for a square matrix $A$, then $A=0$.
+
+\soln This is false. Look at the solution to\ref{prob14.1}.(h).
+\medskip
+
+ 
+\end{sol}
+
+
+\centerline{\bf  {Applications to Linear Systems}}
+
+\begin{sol}{prob14.5} Write the matrix equation which is equivalent to each of  following linear systems.
+\medskip
+
+(b) $$\begin{matrix} x&&&&&+&w&=&1\\
+x&&&+&z&+&w&=&0\\
+x&+&y&+&z&&&=&-3\\
+x&+&y&&&-&2w&=&2 \end{matrix} $$
+
+\soln $\bmatrix 
+1 & 0 & 0 & 1 \\
+ 1 & 0 & 1 & 1 \\
+ 1 & 1 & 1 & 0 \\
+ 1 & 1 & 0 & -2 \endbmatrix  \bmatrix x\\y\\ z\\w\endbmatrix = \bmatrix 1\\0\\ -3\\4\endbmatrix  $
+\medskip
+
+ 
+
+\end{sol}
+
+\begin{sol}{prob14.6}  Write the matrix equation  of the linear system corresponding to each of the augmented matrices given below.
+\medskip
+
+(b) $ \bmatrix 1 & 0 & -1 &|&0 \\
+ 0 & 1 & 2 &|&0\\
+ 0 & 0 & 0&|&1 \\
+ 0 & 0 & 0 &|&0\endbmatrix$
+
+\soln $ \bmatrix 
+1 & 0 & -1\\
+0 & 1 & 2\\
+0 & 0 & 0\\
+0 & 0 & 0 \endbmatrix \bmatrix x\\y\\ z\endbmatrix=
+\bmatrix 0\\0\\ 1\\0\endbmatrix$
+\medskip
+%
+
+(d) $\bmatrix  
+1 & 2 & 0 & 3 & 0 &|& 7 \\
+0 & 0 & 1 & 0 & 0 &|& 1 \\
+0 & 0 & 0 & 0 & 1 &|& 2 \endbmatrix$
+
+\soln  $\bmatrix  
+1 & 2 & 0 & 3 & 0   \\
+0 & 0 & 1 & 0 & 0  \\
+0 & 0 & 0 & 0 & 1  \endbmatrix
+\bmatrix x\\y\\ z\\w\endbmatrix =\bmatrix 7\\1\\ 2\endbmatrix $
+
+\medskip
+
+\end{sol}
+
+
+
+\begin{sol}{prob14.7} State whether each of the following is (always) true,
+or is (possibly) false.    
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item If you say the statement may be false, you    must give an explicit example.   
+\item If you say the statement is true, you must give a clear explanation -   by quoting a theorem presented in class, or by giving a {\it proof valid for every  case}. 
+\end{enumerate}
+\medskip
+
+(b) If $[A\,|\,b\,]$ is the augmented matrix of a linear system, then $\rank A<\rank  [A\,|\,b\,]$ is possible.
+
+\soln This is true. For example, $\bmatrix  0 & 1 &|& 0 \\
+ 0 & 0 &|& 1 \endbmatrix$.
+\medskip
+%
+
+
+(d) If $[A\,|\,b\,]$ is the augmented matrix of a linear system, and $\rank A=\rank  [A\,|\,b\,]$, then the system  is consistent. 
+
+\soln This is true, as we learned in class. Indeed $Ax=b$ is consistent iff $\rank A=\rank  [A\,|\,b\,]$.
+ 
+%
+\medskip
+
+(f) If $A$ is an $m \times n$ matrix and $Ax=0$ has a unique solution for $x\in \R^n$, then the columns of $A$ are linearly independent.
+
+\soln This is true, as we learned in class: write $A= \bmatrix c_1&c_2&\cdots &c_n\endbmatrix$ in block column form and $x= \bmatrix x_1\\x_2\\ \vdots\\x_n\endbmatrix$. Then $Ax= x_1 c_1 + x_2 c_2 +\cdots +x_nc_n$, so $Ax=0$ has the unique solution $x=0$ means that $x_1 c_1 + x_2 c_2 +\cdots +x_nc_n=0$ implies $x_1=x_2=\cdots=x_n=0$, so $ \set{c_1, c_2, \dots, c_n }$ is linearly independent.
+%
+\medskip
+
+(h) If $A$ is an $m \times n$ matrix and $Ax=0$ has infinitely many solutions for $x\in \R^n$, then the columns of $A$ are linearly dependent.
+
+\soln This is true: see the solution to part (f). If $A= \bmatrix c_1&c_2&\cdots &c_n\endbmatrix$ in block column form and $x= \bmatrix x_1\\x_2\\ \vdots\\x_n\endbmatrix$, then if $Ax= x_1 c_1 + x_2 c_2 +\cdots +x_nc_n=0$ has more than one solution, the columns of $A$ are indeed dependent.
+%
+\medskip
+
+(j) If $A$ is a $6 \times 5$ matrix and $\rank A=5$, then $Ax=0$ implies $x=0$ for $x\in \R^5$.
+
+\soln This is true, since there will be a leading one in every column of the RRE form of $A$, implying that there are no parameters in the general solution to $Ax=0$, so $x=0$ is the only solution. (Or: $\dim \ker A= \#\text{ columns of $A$ } -\rank A=5-5=0$, so $\ker A=\set{0}$, i.e., $Ax=0$ implies $x=0$.
+\medskip
+%
+
+(l) If $A$ is a $5 \times 6$ matrix and $\rank A=5$, then $Ax=b$ is consistent for every $b \in \R^5$.
+
+\soln This is true, since  for every $b \in \R^5$,  $\rank  [A\,|\,b\,]=5$: the rank of the $5 \times 7$ matrix $[A\,|\,b\,]$ cannot be smaller than $\rank A$ (5), and cannot be larger than the minimum of the number of rows (5!) and the number of columns (7). And, of course we know that $Ax=b$ is consistent iff $\rank A=\rank  [A\,|\,b\,]$.
+\medskip
+%
+
+(n) If $A$ is a $3 \times 2$ matrix and $\rank A=1$, then $Ax=0$ implies $x=0$ for $x\in \R^2$.
+
+\soln This is false. For example $\rank \bmatrix 1 & 0  \\
+ 0 & 0 \\0 & 0 \endbmatrix=1
+ $, but $Ax=0$ has infinitely many solutions with 1 parameter.
+\medskip
+%
+
+(p) The rows of a $19 \times 24$ matrix are
+always linearly dependent.
+
+\soln This is false. For example, let $A= \bmatrix I_{19}&0\endbmatrix$, where the $0$ that appears is a $19 \times 25$ zero matrix. The rows of this matrix are indeed independent, as they are the first 19 vectors in the standard basis of $\R^{25}$.
+\medskip
+
+
+
+
+\end{sol}
+

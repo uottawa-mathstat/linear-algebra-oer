@@ -1,0 +1,450 @@
+\chapter{Algorithmes pour trouver $\im(A)$ et $\row(A)$}\label{chapter:Fr_18-basiscolnew}
+
+Nous cherchons ici à résoudre les trois probl\`emes suivants concernant la recherche d'une base pour un sous-espace de $\R^n$. Pour arriver à une solutions pour chacun de ces problèmes, l'algorithme de Gauss-Jordan s'imposera à un moment ou à un autre.
+
+\begin{enumerate}[(1)]\label{FindingBases} 
+\item Étant donné un ensemble g\'en\'erateur $\set{\ww_1, \dots ,\ww_m}$ d'un sous-espace $W$, trouvez une base {\it quelconque} de $W$.
+\medskip
+\item Étant donné un ensemble g\'en\'erateur $\set{\ww_1, \dots ,\ww_m}$ d'un sous-espace $W$, extrayez une base de $W$ qui {\it est un sous-ensemble de} $\set{\ww_1, \dots ,\ww_m}$; c'est-à-dire que la base ne doit contenir que des vecteurs de l'ensemble $\set{\ww_1, \dots ,\ww_m}$.
+\medskip
+\item Étant donné un ensemble linéairement indépendant $\set{\uu_1, \dots ,\uu_k}$ dans $\R^n$, {\it étendez-le en une base de $\R^n$}; c'est-à-dire trouvez des vecteurs $\uu_{k+1}, \dots, \uu_n$ tels que $\set{\uu_1, \dots ,\uu_k,\uu_{k+1}, \dots, \uu_n }$ soit une base de $\R^n$.
+\end{enumerate}
+
+Les idées clés des solutions à ces questions seront de trouver des bases pour les espaces des lignes et des colonnes d'une matrice. Commençons par l'espace des lignes, car il est assez simple.
+
+\section{Algorithme : trouver une base pour l'espace des lignes}
+
+Lorsque nous appliquons des opérations élémentaires sur une matrice par rapport aux lignes, nous savons que les nouvelles lignes sont des combinaisons linéaires des pr\'ec\'edentes lignes. Faisons le chemin inverse pour obtenir un résultat intéressant. Dans le Chapitre \ref{chapter:Fr_13-solvingsystems}, nous avons mentionné que chaque opération élémentaire sur les lignes peut être inversée en une autre opération élémentaire aussi sur les lignes. Cela signifie donc que les lignes de la matrice pr\'ec\'edente sont également combinaisons linéaires des lignes de la nouvelle matrice. Ceci a une conséquence très importante :
+
+
+
+\begin{proposition}[L'espace des lignes est invariant par op\'erations sur les lignes]\index{l'espace des lignes est invariant par op\'erations sur les lignes}\label{rowspaceInvariance}
+Si une matrice $A$ est équivalente par rapport aux lignes à une matrice $B$, alors $\row(A) = \row(B)$.
+En d'autres termes : l'enveloppe lin\'eaire engendr\'ee par les lignes de $A$ et celle engendrée par les lignes de $B$ donnent le même sous-espace 
+de $\R^n$.
+\end{proposition}
+
+\begin{proof}
+Rappelez-vous que deux matrices $A$ et $B$ sont \og équivalentes par rapport aux lignes\ \fg\ ssi vous pouvez passer de $A$ à
+$B$ par une séquence d'opérations élémentaires sur les lignes, lesquelles sont :
+\begin{enumerate}[(1)]
+\item remplacer une ligne par la somme d'elle-même avec un multiple d'une \emph{autre} lignes;
+\item échanger deux lignes;
+\item multiplier une ligne par un scalaire non-nul.
+\end{enumerate}
+
+Remplacez maintenant le mot \og ligne\ \fg\ par \og vecteur ligne\ \fg\ dans ces trois op\'erations élémentaires. Il est alors clair que les points (2) et (3) n'affectent pas l'enveloppe lin\'eaire engendr\'ee par les vecteurs dans les lignes concernés. Pour voir que (1) ne change pas non plus l'enveloppe lin\'eaire, il suffit de montrer que
+$$\spn\{\uu,\vv\} = \spn\{ \uu, c\uu + \vv\}
+$$
+pour deux vecteurs quelconques $\uu$ et $\vv$ et un scalaire quelconque $c$  (cf. Exercice \ref{prob06.4}).
+Puisqu'aucune des opérations \'el\'ementaires ne modifie l'enveloppe lin\'eaire engendr\'ee par les vecteurs dans les lignes, les espaces des lignes de $A$ et $B$ sont alors les mêmes.
+\end{proof}
+
+Qu'est-ce que cette proposition a de si spécial ?  Si $A$ est une matrice quelconque et que $\tilde A$ est sa MER, alors par la proposition ci-dessus, les espaces des lignes sont égaux : $\row(A)=\row(\tilde A)$. Donc, une base de $\row(\tilde A)$ sera également une base de $\row(A)$, et comme une MER a beaucoup de zéros, il est plus facile de trouver une base pour $\row(\tilde A)$ que pour $\row(A)$ !
+
+\begin{myprob}\label{rowspace1}  Trouvez une base pour $\row(A)$, où $A$ est la matrice
+$$
+A = \mat{
+1&2&2&3\\2&-2&-8&4\\1&1&0&1\\0&2&4&1}\,.
+$$
+
+\begin{mysol} 
+Par définition, 
+$$
+\row(A) = \sp{(1,2,2,3),(2,-2,-8,4),(1,1,0,1),(0,2,4,1)}\,.
+$$
+Encore une fois, on sait que ces quatre vecteurs sont générateurs de $\row(A)$, mais on ne sait pas si cet ensemble est linéairement indépendant ou non.
+
+Appliquons la Proposition \ref{rowspaceInvariance}. 
+
+On réduit $A$ par rapport aux lignes en la MER suivante:
+$$
+\tilde A=\mat{1 & 0 & -2 & 0\\ 0 & 1 & 2 & 0\\ 0 & 0 & 0 & 1\\ 0 & 0 & 0 & 0}\,.
+$$
+La proposition dit que $\row(A) = \row(\tilde A)$.  Ici nous pouvons voir clairement que $\row(\tilde A)$ peut \^etre engendr\'e par les trois lignes non-nulles de $\tilde A$ --- nous pouvons ignorer la ligne nulle. Donc on a
+$$
+\row(\tilde A) = \spn\{ (1,0,-2,0), (0,1,2,0), (0,0,0,1)\}\,.
+$$
+En fait, on a encore mieux; étant solutions de base de $\ker(A)$, ces
+vecteurs sont bien linéairement indépendants à cause des positions des pivots.  
+
+Conclusion : Les lignes non-nulles de $\tilde A$ forment une base de $\row(A)$.
+
+C'est une base tr\`es spéciale car elle a beaucoup de zéros. Il est facile de voir
+que, par exemple, $(3,2,-2,5)$ est dans $\row(A)$ et que $(1,1,1,1)$ ne l'est pas, à cause des \og uns\ \fg\  et des \og zéros\ \fg.  (Essayez !)
+\end{mysol}\end{myprob}
+
+\standout{Après avoir trouvé une base pour l'espace des lignes, on peut se poser la question suivante: est-ce qu'on peut en déduire une base pour l'espace des colonnes ? Malheureusement non... il suffit de regarder les espaces des colonnes de $A$ et de $\tilde A$. Ils ne sont pas identiques car, par exemple, le vecteur
+$
+c_2=\scriptsize \mat{
+ 2 \\ -2 \\ 1 \\ 2 }
+$ (la deuxième colonne de $A$) est certes dans $\im(A)$, mais il n'appartient pas \`a $\im(\tilde A)$, puisque la quatrième composante de {\it tout vecteur} de $\im(\tilde A)$ doit être $0$ (ce qui n'est pas le cas de $c_2$).
+}
+
+Avant d'aller loin, notez bien le résultat sur l'espace des lignes suivant:
+
+\begin{theorem}[Base de $\row(A)$ : L'algorithme de l'espace des lignes]\index{base pour $\row(A)$}\label{basisRowA}
+Les lignes non-nulles de toute ME ou MER de $A$ forment une base pour $\row(A)$. En particulier, on a $\dim \row(A)=\rank (A)$.
+\end{theorem}
+
+Si vous prenez la MER, vous obtenez une \og base standard\ \fg\  pour le sous-espace $\row(A)$.
+
+\standout{N.B.: Il faut prendre les lignes d'une ME ou MER de $A$ {\it mais 
+pas} directement les lignes de $A$.}
+
+\begin{myexample}
+Soit la matrice $A = \scriptsize\mat{1&1\\2&2\\0&1}$ dont la MER est $\tilde A=\scriptsize\mat{1&0\\0&1\\0&0}$.
+Les deux premières lignes de $\tilde A$ forment une base pour $\row(\tilde A)=\row(A)$. Notez que 
+ni les deux premières lignes de $A$  ni les lignes non nulles
+de $A$ forment une base de $\row(A)$.  La raison pour cela est qu'il faut retracer les échanges de lignes effectu\'es lorsqu'on va de $A$ \`a $\tilde{A}$ et vice-versa...
+\end{myexample}
+
+Ceci résout notre premi\`ere question de la page \pageref{FindingBases}. Étant donné un ensemble g\'en\'erateur d'un sous-espace $W$, écrivez les vecteurs comme {\it lignes} d'une matrice $A$ et vous aurez $W=\row(A)$. Puis appliquez l'algorithme des espaces des lignes pour obtenir une base de $\row(A)=W$.
+
+\begin{myexample}
+Trouvez une base quelconque pour $$
+W = \sp{(1,2,2,3),(2,-2,-8,4),(1,1,0,1),(0,2,4,1)}\,.
+$$
+
+Soit  $A$ la matrice pour laquelle $W=\row(A)$ et appliquons l'algorithme de l'espace des lignes pour avoir une base de $\row(A)$, qui sera bien sûr une base de $W$. C'est en fait ce que nous avions fait dans le premier exercice, à la page \pageref{rowspace1}.
+Nous avions obtenu que 
+$$\set{(1,0,-2,0), (0,1,2,0), (0,0,0,1)}$$ est une base de $W$. 
+
+{\bf N.B.} Aucun de ces vecteurs n'est dans notre ensemble g\'en\'erateur du d\'ebut. Donc cela ne nous aide pas à résoudre la question (2) page  \pageref{FindingBases}. Nous aurons besoin d'un autre outil pour cela, voir plus loin.
+\end{myexample}
+
+L'algorithme de l'espace des lignes aide également à résoudre la question (3) page \pageref{FindingBases}: \'etant donné un ensemble linéairement indépendant $\set{\uu_1,\dots, \uu_k }$ dans $\R^n$, on veut l'étendre en une base de $\R^n$; c'est-à-dire, on veut trouver des vecteurs $\uu_{k+1}, \dots, \uu_n$ tels que $\set{\uu_1, \dots ,\uu_k, \uu_{k+1}, \dots, \uu_n }$ soit une base de $\R^n$. Nous procédons comme suit. Définissons une matrice $A$ de taille $n \times n$ dont les $k$ premières {\it lignes} sont $\uu_1,\dots, \uu_k $ et les $n-k$ dernières lignes sont des vecteurs inconnus qu'on écrit avec des symboles et qu'on appelle $\uu_{k+1}, \dots, \uu_n $:
+$$A=\mat{~&~&\uu_1&~&~\\ &&\vdots \\ &&\uu_k \\&&\uu_{k+1} \\ &&\vdots \\ &&\uu_n}\,.$$ 
+Nous savons que les lignes de $A$ forment une base de $\R^n$ dès lors que $\rank A=n$. Nous réduisons par rapport aux lignes la partie de $A$ que l'on connaît (\textit{i.e.} les lignes 1 à $k$), et nous identifions les colonnes pivots. Pour compl\'etez la famille linéairement indépendante en une base, nous choisissons ensuite les vecteurs $\uu_{k+1}, \dots, \uu_n$ parmi ceux de la base standard de $\R^n$ qui assurent qu'il y a exactement un pivot dans chaque colonne. Voyons comment faire cela dans deux exemples :
+
+\begin{myexample} Étendons l'ensemble linéairement indépendant $\set{(0,1,1)}$ en une base de $\R^3$. 
+
+Puisque $\dim \R^3=3$, nous aurons besoin de deux vecteurs supplémentaires pour avoir une base de $\R^3$. Posons $A=\scriptsize\mat{0&1&1\\&\uu_2&\\&\uu_3&}=\mat{0&\pivot&1\\&\uu_2&\\&\uu_3&}$. Puisque nous avons un pivot dans la \emph{deuxi\`eme} colonne, nous choisissons les vecteurs $\uu_2=(1,0,0)$ et $\uu_3=(0,0,1)$ qui ont un $1$ ailleurs que dans la deuxième colonne. Ainsi, on obtient
+$$A=\mat{0&1&1\\1&0&0\\0&0&1&}\sim \mat{\pivot&0&0\\0&\pivot&1\\0&0&\pivot&}\,. $$ Il est clair qu'avec ces choix on a $\rank A=3$ et que donc $\dim \row(A)=3$. En conclusion, l'ensemble $\set{(0,1,1),(1,0,0),(0,0,1) }$ est une base de $\row(A)=\R^3$ qui \'etend $\set{(0,1,1)}$.
+\end{myexample}
+
+Consid\'erons maintenant un exemple dans $\R^4$.
+
+\begin{myexample}
+
+Étendre $\set{(1,2,3,4), (2,4,7,8)}$ en une base de $\R^4$.
+
+
+On pose  $A=\scriptsize\mat{1&2&3&4\\2&4&7&8\\ &&\hspace{-0.4cm}\uu_3 \\ && \hspace{-0.4cm}\uu_4}$ et on réduit $A$ par rapport aux lignes jusqu'\`a avoir une ME dans les deux premières lignes:
+$$A=\mat{1&2&3&4\\2&4&7&8\\ &&\hspace{-0.4cm}\uu_3 \\ && \hspace{-0.4cm}\uu_4&&}
+\begin{matrix} -2L_1+L_2\to L_2\\ \sim\end{matrix} \mat{\pivot&2&3&4\\0&0&\pivot&0\\ &&\hspace{-0.4cm}\uu_3  \\ && \hspace{-0.4cm}\uu_4 }\,. $$
+Les pivots sont donc dans la premi\`ere et la troisi\`eme colonnes. Donc, si l'on prend $\uu_3=(0,1,0,0)$ et $\uu_4=(0,0,0,1)$ qui n'ont des $1$ ni dans la première ni dans la troisième colonne, alors
+$$A =\mat{1&2&3&4\\2&4&7&8\\ 0&1&0&0\\ 0&0&0&1} \sim \mat{\pivot&2&3&4\\0&0&\pivot&0\\ 0&1&0&0  \\  0&0&0&1 }\begin{matrix}  L_2\leftrightarrow L_3\\ \sim\end{matrix} \mat{\pivot&2&3&4\\0&\pivot&0&0 \\ 0&0&\pivot&0  \\  0&0&0&\pivot }\,. $$ Il est maintenant clair que $\rank A=4$ et donc nous arrivons bien à une base qui r\'epond \`a la question : 
+$$ \set{(1,2,3,4), (2,4,7,8), (0,1,0,0),(0,0,0,1)}\,.$$
+\end{myexample}
+
+Il ne nous reste plus qu'à aborder la question (2). Pour cela, nous avons besoin d'un nouvel outil, lequel nous allons développer à partir de r\'esultats que nous avons déjà \'etablis.
+
+\section{Algorithme : trouver une base pour l'espace des colonnes}
+
+Nous avons vu que la réduction par rapport aux lignes affecte l'espace des colonnes d'une matrice. Si  $A$ se réduit par rapport aux lignes en une matrice $\tilde A$,
+alors généralement\footnote{Nous verrons plus tard que c'est faux pour les matrices carrées {\it inversibles} : elles vérifient toujours $\im(A) = \im(\tilde A)$. Voir le Chapitre \ref{chapter:Fr_20-inverses}.} $\im(A) \neq \im(\tilde A)$.\footnote{Par contre, les espaces $\im(A)$ et $\im(\tilde A)$ {\it auront} toujours la même dimension, quelle que soit la matrice $A$.} 
+
+Pour trouver une base pour l'espace des colonnes $\im(A)$, une première méthode serait de simplement trouver une base de l'espace des lignes $\row(A^T)$. Cette méthode nous donne une base sans difficulté. Mais étudiant une autre technique ci-dessous. Nous obtiendrons une base très spéciale : chacun des vecteurs de cette base seront des vecteurs colonnes de $A$!
+
+En voici l'idée : étant donnée une matrice $A=\mat{\cc_1& \cdots & \cc_n}$ écrite sous forme de blocs de colonnes, nous allons essayer de rassembler de gauche à droite le plus grand nombre de ces colonnes qui sont linéairement indépendantes en écartant vers la droite celles qui ne le sont pas. Comme vous le verrez, nous serons en mesure de décider quelles colonnes conserver et lesquelles écarter en regardant simplement la MER de $A$ !
+
+Commençons par un exemple. Avant de le faire, rappelons deux faits importants qui vont s'avérer extrêmement utiles :
+
+\begin{enumerate} 
+\item Section \ref{EnlargingLI}, page~\pageref{EnlargingLI}: si $\set{\vv_1, \dots \vv_k}$ est lin\'eairement ind\'ependant, alors $\vv_{k+1} \notin \sp{\vv_1, \dots \vv_k}$ si et seulement si $\set{\vv_1, \dots \vv_k, \vv_{k+1}}$ est encore lin\'eairement ind\'ependant; 
+\medskip
+\item Section \ref{consistency}, page~\pageref{consistency}: si $\mat{\vv_1& \dots &\vv_k&|& \vv}$ est la matrice augmentée d'un système linéaire (écrite sous forme  de blocs de colonnes), alors $\vv\in \sp{\vv_1, \dots \vv_k}$ si et seulement si $$\rank\mat{\vv_1& \dots &\vv_k&|& \vv}=\rank \mat{\vv_1& \dots &\vv_k}\,.$$
+\end{enumerate}
+
+\begin{myprob} \label{colspaceexample} Trouvez une base de $\im(A)$, où 
+$$A = \mat{
+1&2&2&3\\2&-2&-8&4\\1&1&0&1\\0&2&4&1}\,.
+$$
+Nous allons essayer de rassembler de gauche à droite le plus grand nombre de colonnes qui sont linéairement indépendantes, en écartant vers la droite celles qui ne le sont pas.
+
+Écrivons $A= \mat{\cc_1&\cc_2&\cc_3&\cc_4}$, écrite en blocs de colonnes. Il est clair que comme $\cc_1\not=\zero$, l'ensemble $\set{\cc_1}$ est linéairement indépendant. Mais engendre-t-il $\im(A)$ ? Essayons de voir si $\cc_2\in \sp{\cc_1}$. Par argument de colinéarité, on voit rapidement que ce n'est pas le cas, mais regardons cela d'une autre manière qui s'avérera utile plus tard :
+nous savons que $\cc_2$ appartient à $\sp{\cc_1}$ ssi le système linéaire dont la matrice augmentée suivante est compatible
+$$ \mat{\cc_1&|&\cc_2}=
+\mat{
+1&|&2\\
+2&|&-2\\
+1&|&1\\
+0&|&2}\,,$$
+si et seulement si $\rank\mat{\cc_1&|&\cc_2}=\rank\mat{\cc_1}$. Lorsque nous réduisons par rapport aux lignes, on obtient les deux premières colonnes de $\tilde A$ :
+
+$$\mat{
+1&|&2\\
+2&|&-2\\
+1&|&1\\
+0&|&2}  \sim \mat{1 &|&0\\ 0 &|& \pivot\\ 0 &|& 0 \\ 0 &|& 0 }\,.$$
+La présence du \underbar{deuxi\`eme pivot dans la deuxi\`eme colonne de $\tilde A$} empêche ce système d'être compatible ($\rank\mat{\cc_1&|&\cc_2}>\rank\mat{\cc_1}$). Donc, $$\cc_2\notin \sp{\cc_1},$$ et alors $\set{\cc_1, \cc_2}$ est linéairement indépendant. Donc l'espace $\sp{\cc_1, \cc_2}$ est strictement plus grand que $\sp{\cc_1}$, et nous gardons $\cc_1$ et $\cc_2$ sur la gauche.
+
+V\'erifions ensuite si $\set{\cc_1, \cc_2}$ engendre $\im(A)$. Si c'est le cas, alors $\cc_3 \in \sp{\cc_1, \cc_2}$. Nous savons que c'est vrai si et seulement si
+$\mat{\cc_1&\cc_2&|&\cc_3} $ est la matrice augmentée d'un système compatible, si et seulement si $\rank\mat{\cc_1&\cc_2&|&\cc_3}=\rank\mat{\cc_1&\cc_2}$. Mais
+$$ \mat{\cc_1&\cc_2&|&\cc_3}=\mat{
+1&2&|&2\\2&-2&|&-8\\1&1&|&0\\0&2&|&4}\sim\mat{1 & 0 &|& -2 \\ 0 & 1 &|& 2 \\ 0 & 0 &|& 0 \\ 0 & 0 &|& 0 }$$ 
+est la matrice augmentée d'un système compatible. Donc  $\rank\mat{\cc_1&\cc_2&|&\cc_3}=\rank\mat{\cc_1&\cc_2}$ cette fois. En fait, il n'y a pas de nouveau pivot dans la troisi\`eme colonne de $\tilde A$, et donc {\it on a bien } l'appartenance $$\cc_3 \in \sp{\cc_1, \cc_2}. $$ 
+D'où $\sp{\cc_1, \cc_2}=\sp{\cc_1, \cc_2, \cc_3}$ et donc \underbar{nous ne garderons pas $\cc_3$}, on le laisse à droite, car $\set{\cc_1, \cc_2, \cc_3}$ engendre le même espace que $\set{\cc_1, \cc_2}$ mais que $\set{\cc_1, \cc_2, \cc_3}$ {\it n'est pas} lin\'eairement indépendant.
+
+Il ne nous reste plus qu'à voir si $\cc_4\in \sp{\cc_1, \cc_2}$ ou non. Puisque $\sp{\cc_1, \cc_2}=\sp{\cc_1, \cc_2, \cc_3}$, cela revient au même de répondre à la question : \og est-ce que $\cc_4\in \sp{\cc_1, \cc_2, \cc_3}$ ?\ \fg\ \footnote{On peut se demander : \og Pourquoi faire cela ?\ \fg\ ou bien \og Pourquoi ré-utiliser $\cc_3$ au final ... ?\ \fg. La r\'eponse est : parce qu'alors nous pouvons lire la réponse directement à partir de $\tilde A$, on va donc plus vite.} La réponse est positive si et seulement si le système linéaire correspondant à $\mat{\cc_1&\cc_2&\cc_3&|&\cc_4}$ est compatible, si et seulement si $\rank\mat{\cc_1&\cc_2&\cc_3&|&\cc_4} =\rank\mat{\cc_1, \cc_2, \cc_3}$. Mais, on a que
+
+$$\mat{\cc_1&\cc_2&\cc_3&|&\cc_4}= \mat{
+1&2&2&|&3\\2&-2&-8&|&4\\1&1&0&|&1\\0&2&4&|&1}\sim\mat{1 & 0 & -2 &|& 0\\ 0 & 1 & 2 &|& 0\\ 0 & 0 & 0 &|& \pivot\\ 0 & 0 & 0 &|& 0}$$
+ est la matrice augmentée d'un système {\it incompatible} à cause de la troisième équation $0=1$. Donc $\rank\mat{\cc_1&\cc_2&\cc_3&|&\cc_4}>\rank\mat{\cc_1, \cc_2, \cc_3}$ et :  $$\cc_4\notin \sp{\cc_1, \cc_2}\,.$$
+
+Conclusion: nous avons \'etabli que $\set{\cc_1, \cc_2, \cc_4}$ est lin\'eairement indépendant et que $\sp{\cc_1, \cc_2, \cc_4}=\sp{\cc_1, \cc_2, \cc_3, \cc_4}=\im(A)$. Nous avons donc terminé : l'ensemble $\set{\cc_1, \cc_2, \cc_4}$ est une base de $\im(A)$ !
+\end{myprob}
+
+
+
+\standout{Regardez bien cet exemple : nous n'avons en fait gardé que les colonnes de $A$ qui deviennent des colonnes pivots (les colonnes 1, 2 et 4).} 
+Cet algorithme fonctionne toujours, en gardant à l'esprit que les colonnes pivots ne changent pas de position lorsque nous passons de la ME à la MER. Résumons ceci dans le théorème suivant :
+
+
+\begin{theorem}[Base de $\im(A)$ : l'algorithme pour l'espace des colonnes]\index{base pour $\im(A)$}\index{rank et $\dim(\im(A))$}\label{basisColA}
+Soit $A$ une matrice $m\times n$.  Alors, l'ensemble des colonnes de $A$ qui deviennent des colonne-pivots dans une ME forment une base de $\im(A)$. Par conséquent $\dim \big(\im(A)\big)=\rank A$.
+\end{theorem}
+
+
+\begin{proof}
+\'Ecrivons $A = [\uu_1 \; \uu_2 \cdots \uu_n]$ écrite sous forme de blocs de colonnes. Pour choisir un
+sous-ensemble des colonnes de $A$ qui constitue une base pour $\im(A)$, nous
+procédons comme suit :
+
+\begin{enumerate}[(a)]
+\item D'abord, considérez l'ensemble $\{ \uu_1\}$.  Si ce vecteur est nul, alors rejetez-le car il ne pourra jamais faire partie d'une base et essayer avec le vecteur suivant.  Sinon, gardez-le.
+\item Ensuite, considérez l'ensemble $\{ \uu_1, \uu_2\}$.  Si  le vecteur $\uu_2$ appartient à $\spn\{\uu_1\}$,
+alors l'ensemble $\{\uu_1, \uu_2\}$ est LD et $\spn\{\uu_1,\uu_2\}$ est \'egal \`a
+$\spn\{\uu_1\}$. Dans ce cas, éliminez $\uu_2$ et essayez avec le vecteur suivant.  Sinon, gardez-le.
+\item Puis considérez $\{ \uu_1, \uu_2, \uu_3\}$.   Si le vecteur $\uu_3$ appartient à $\spn\{ \uu_1, \uu_2\}$, alors comme au point pr\'ec\'edent rejetez-le et passez au vecteur suivant. Sinon, gardez-le.
+\item Continuez ce processus ainsi de suite, en décidant à chaque étape s'il faut conserver le
+vecteur ou le rejeter, jusqu'à la derni\`ere colonne de $A$.
+\end{enumerate}
+\`A la fin de ce processus, il ne vous restera que des vecteurs LI qui engendrent l'espace des colonnes de $A$.
+Pourquoi ?  On a vérifié l'indépendance linéaire à chaque étape et on a seulement
+supprimé les vecteurs qui étaient combinaisons linéaires de ceux qu'on a gardés. Donc l'enveloppe lin\'eaire qu'ils engendrent n'a pas changé.
+
+Enfin, comment pouvons-nous déterminez plus rapidement quels vecteurs conserver et lesquels éliminer ?
+Supposons que nous voulions déterminer si $\uu_2$ est dans $\spn\{\uu_1\}$.  Nous
+le faisons en réduisant par rapport aux lignes la matrice augmentée $[\uu_1 | \uu_2]$.
+Mais en fait, on peut remarquer qu'il ne s'agit que des deux premières colonnes de $A$. Donc, il suffit de regarder les deux premières colonnes de la MER de $A$, nous n'avons pas besoin de 
+réduire à nouveau cette matrice.  
+Si la deuxième colonne est une colonne pivot, alors le système est incompatible, et nous en déduisons  que  $\uu_2 \notin \spn\{\uu_1\}$.
+Dans le cas contraire, il n'y a pas de pivot dans la deuxi\`eme colonne, le système est compatible.
+Ceci signifie que $\uu_2 \in \spn\{\uu_1\}$ et doit être rejeté.
+
+Cela fonctionne en fait à chaque étape: si vous voulez déterminer si $\uu_k \in \spn\{\uu_1, \cdots, \uu_{k-1}\}$, calculez simplement la MER de la matrice augment\'ee suivante:
+$$
+\left[ \uu_1 \; \uu_2 \; \cdots \; \uu_{k-1} \;|\; \uu_k \right]\,.
+$$
+Comme précédemment, il ne s'agit que des $k$ premières colonnes de $A$, donc nous en connaissons déjà la 
+MER grâce à la MER de $A$ (ce sont les $k$ premières colonnes de la MER de $A$).  Si le système est 
+compatible (c'est-à-dire quand il n'y a PAS de pivot dans la $k$-ème colonne), alors nous rejetons $\uu_k$.
+Sinon, si le système est incompatible (c'est-à-dire lorsqu'il y a un pivot dans la $k$-ème colonne), alors on garde $\uu_k$.
+
+Conclusion : nous allons rejeter (éliminer, écarter) exactement les $\uu_i$ pour lesquels il n'y a pas de pivot dans la $i$-\`eme colonne de la MER de $A$.  En d'autres termes, les colonnes que nous conservons sont exactement les colonne-pivots.
+\end{proof}
+
+\begin{corollary}
+Pour toute matrice $A$ :
+$$
+\dim \row(A) = \dim \im(A) = \dim \im(A^T) = \rank(A^T) = \dim \row(A^T), 
+$$ et toutes ces valeurs sont égales à $ \rank(A)$.
+\end{corollary}
+
+\begin{proof}
+Rappelez-vous que le rang de $A$ est \'egal au nombre de pivots dans la MER de $A$ 
+et que $\row(A) = \im(A^T)$. Pour conclure, utilisez les Théorèmes \ref{basisRowA} et \ref{basisColA}.
+\end{proof}
+
+C'est un fait étonnant pour un cours de première année d'algèbre linéaire (pensez-y !!). Quelle que soit la taille de la matrice $A$, le nombre maximal de lignes lin\'eairement indépendantes (\textit{i.e.} $\dim \row(A)$) est {\it exactement égal} au nombre maximal de colonnes lin\'eairement indépendantes (\textit{i.e.} $\dim \im(A)$) ! Ce n'est pas du tout évident, mais c'est vrai  !\!!
+
+\begin{myexample} Soit la matrice  
+$$
+A = \mat{2&1&9&3&7\\3&-1&11&1&2\\1&1&5&1&4}
+$$
+dont la MER est donn\'ee par
+$$
+\tilde A = \mat{\pivot&0&4&0&1\\0&\pivot&1&0&2\\0&0&0&\pivot&1}\,.
+$$
+Alors, on prend les vecteurs 1, 2 et 4 pour obtenir une base de $\im(A)$:
+$$
+\left\{ \mat{2\\3\\-1}, \mat{1\\-1\\1}, \mat{3\\1\\1} \right\}\,.
+$$
+(Ceci implique d'ailleurs que $\im(A)=\R^3$!)
+\end{myexample}
+
+
+\standout{AVERTISSEMENT : Les colonnes pivots de la MER $\tilde A$ ne forment généralement pas une base pour $\im(A)$. Vous \underbar{devez revenir à la matrice originale $A$} et prendre les colonnes de $A$.}
+
+\begin{myexample}
+Si $A = \scriptsize\mat{1&1&1\\2&2&2\\1&1&1}$, alors la MER de $A$ est  $\tilde A = \scriptsize\mat{\pivot&1&1\\0&0&0\\0&0&0}$.  Clairement, le premier vecteur $(1,2,1)$ donne une base de $\im(A)$, tandis que la première colonne de $\tilde A$, 
+$(1,0,0)$, ne donne pas du tout une base de $\im(A)$. En fait, $(1,0,0)$ n'appartient même pas \`a $\im(A)$... (Par contre, l'ensemble $\{ (1,0,0)\}$ est une base pour $\im(\tilde A)$!)
+\end{myexample}
+
+  
+
+
+Nous pouvons maintenant résoudre la question (2) de la page \pageref{FindingBases}. Étant donné un ensemble g\'en\'erateur d'un sous-espace $U$ dont on souhaite extraire une base, on construit une matrice $A$ avec les vecteur-colonnes placés côte-à-côte, de sorte que $U=\im(A)$. Ensuite, on utilise l'algorithme pour l'espace des colonnes pour trouver une base de $\im(A)=U$, et cette base est bien constituée de certaines des colonnes de $A$, ce qui nous donne bien le résultat voulu.
+
+\begin{myprob}
+Soit $U=\sp{(1, 2, 1, 0), (2, -2, 1, 2), (2, -8, 0, 4), (3, 4, 1, 1)}$. Trouvez une base de $U$ parmi les vecteurs g\'en\'erateurs donnés.
+
+\begin{mysol} Construisons une matrice $A$ dont les {\it colonnes} sont les vecteurs donnés :
+$$A=\mat{
+1&2&2&3\\2&-2&-8&4\\1&1&0&1\\0&2&4&1}$$
+Nous savons (voir les exemples pages~\pageref{rowspace1} et~\pageref{colspaceexample}) qu'alors la MER associée est :
+$$\tilde A= \mat{\pivot & 0 & -2 & 0\\ 0 & \pivot & 2 & 0\\ 0 & 0 & 0 & \pivot\\ 0 & 0 & 0 & 0}\,.$$ Les pivots sont dans la premi\`ere, la deuxi\`eme et la quatri\`eme colonnes, donc une base pour $\im(A)=U$ est formée des vecteurs 1, 2 et 4 :
+$$\set{(1, 2, 1, 0), (2, -2, 1, 2),  (3, 4, 1, 1)}\,.$$
+\end{mysol}
+\end{myprob}
+
+\section{Résumé : deux méthodes pour obtenir une base}
+
+Nous avons donc deux m\'ethodes pour obtenir une base à partir d'un ensemble g\'en\'erateur.
+Concrètement, si un sous-espace $W$ s'écrit $W = \spn\{\vv_1, \vv_2, \cdots, \vv_k\}$, alors nous avons le choix entre les deux méthode suivantes pour trouver une base de $W$:
+\begin{enumerate}
+
+\item Écrivez les vecteurs $\vv_i$ comme les lignes d'une matrice 
+$$B = \mat{~&~&\vv_1&~&~ \\ &&\vv_2 \\ &&\ldots \\ &&\vv_k }\,,$$
+ce qui amène à l'égalité $W = \row(B)$.  Réduisez ensuite la matrice $B$ par rapport aux lignes pour obtenir sa MER. Enfin, gardez précisément les lignes non-nulles de la MER : ces vecteurs lignes forment alors une base de $W$. (Mais notez que la base ainsi obtenue N'EST PAS un sous-ensemble de $\{\vv_1, \dots, \vv_k\}$.)
+\item Écrivez les vecteurs comme les colonnes d'une matrice 
+$$A= \Bigg[\vv_1 \; \vv_2 \; \cdots \; \vv_k\Bigg]\,,$$ 
+ce qui amène à l'égalité $W = \im(A)$.  Réduisez ensuite $A$ par rapport aux lignes et gardez les vecteurs $\vv_i$ qui ont le même index $i$ que les colonne-pivots de la MER. Ces vecteurs $\vv_i$ que vous avez gardés forment alors une base de $W$. (Notez que cette méthode nous donne une base qui EST un sous-ensemble de $\{\vv_1, \dots, \vv_k\}$.)
+
+
+\end{enumerate}
+
+Utilisez la première méthode si vous voulez une base (quelconque) de $W$ avec laquelle il est facile de travailler.
+Utilisez la seconde méthode si les vecteurs que vous avez en main sont spéciaux pour vous et que vous voulez simplement en extraire une base.  
+
+L'intérêt : à chaque fois que vous avez un ensemble g\'en\'erateur, vous pouvez appliquer l'une de ces
+méthodes et vous obtenez une base assez rapidement.  Et en fait, ces raisonnements peuvent même être appliqués à n'importe quel type d'espace vectoriel, tant que la dimension est finie. Par exemple, si vos vecteurs sont des polynômes plus petit qu'un certain degré , écrivez-les en coordonnées relatives par rapport à une base \og standard\ \fg, puis appliquez l'une de ces méthodes. De même si vos vecteurs sont par exemple des matrices
+ou des fonctions.\\
+
+\begin{remark}\label{NullperpRow}
+
+Avant de passer \`a d'autres sujets, faisons une dernière observation concernant le noyau $\ker(A)$ d'une matrice $A$ et son espace des lignes $\row(A)$. 
+Le Théorème du rang (cf. Corollaire~\ref{corollary:ranknull}) nous disait que $\dim \ker(A)  + \rank(A) = n$, et maintenant nous en avons une interprétation géométrique :
+$$
+\dim \ker(A)  + \dim \row(A) = n\,,
+$$
+avec de plus le fait que $\ker(A)$ et $\row(A)$ sont deux espaces vectoriels orthogonaux (\textit{i.e.} le produit scalaire de n'importe quel vecteur de l'un avec n'importe quel vecteur de l'autre donne $0$).
+
+En effet, \'ecrivons $A=\scriptsize\bmatrix ~&\rr_1&~\\&\vdots \\&\rr_m\endbmatrix $ sous forme de blocs de lignes. Alors
+\begin{align*} \vv\in \ker A &\iff  A\vv=0\\
+&\iff \bmatrix ~&~&\rr_1&~&~\\&&\vdots \\&&\rr_m\endbmatrix  \vv=0\\
+&\iff \bmatrix \rr_1\cdot \vv\\\vdots \\\rr_m\cdot \vv\endbmatrix = \bmatrix 0\\\vdots \\0\endbmatrix 
+\end{align*}
+
+Autrement dit, $\vv \in \ker(A)$ si et seulement si $\vv$ est orthogonal à chaque ligne $\rr_i$ de $A$. Donc $\vv$ sera orthogonal à toutes les combinaisons linéaires des lignes de $A$, d'o\`u $\vv \in \ker(A)$ si et seulement si $\vv$ est orthogonal à chaque élément de $\row(A)$ ! D'où le résultat. Nous reviendrons sur cette idée dans le Chapitre~\ref{chapter:Fr_23-orthogcomp}.\\
+\end{remark}
+
+Pour conclure ce chapitre, nous présentons un dernier exemple qui utiliser l'algorithme de l'espace des colonnes :
+
+
+
+\begin{myprob} Trouvez une base de $\im(A)$, o\`u 
+$$A = \mat{
+1&2&2&3\\2&-2&-8&4\\1&1&0&1\\0&2&4&1}\,.
+$$
+ 
+\begin{mysol} Par d\'efinition, on a 
+$$
+\im(A) = \spn\left\{ \mat{1\\2\\1\\0}, \mat{2\\-2\\1\\2}, \mat{2\\-8\\0\\4},
+\mat{3\\4\\1\\1} \right\}\,.
+$$
+Le problème est le suivant : on ne sait pas si cet ensemble est linéairement indépendant ou non.
+
+Appliquons la deuxième technique, celle avec l'algorithme de l'espace des colonnes. On réduit $A$ par rapport aux lignes et on obtient la MER suivante :
+$$
+\mat{1 & 0 & -2 & 0\\ 0 & 1 & 2 & 0\\ 0 & 0 & 0 & 1\\ 0 & 0 & 0 & 0}\,.
+$$
+
+Par le Théorème~\ref{thm:uniqesol} page~\pageref{section:uniqesol}, le fait que l'équation $A\xx=\zero$ n'ait pas un unique solution 
+implique que les colonnes ne sont pas linéairement indépendantes et donc ne forment pas une
+base de $\im(A)$.  Mais notre méthode nous fournit encore plus d'informations que ceci : nous connaissons {\it toutes}
+les relations de dépendance possibles sur l'ensemble des colonnes !
+
+En effet,  on a premièrement que le noyau s'écrit :
+\begin{align*}
+\ker(A) &= \{ \xx = (a_1, a_2,a_3,a_4) \mid A\xx = \zero\}\\
+ &= \{ (a_1, a_2, a_3, a_4) \mid a_1\cc_1 + a_2\cc_2 + a_3\cc_3+a_4\cc_4 = \zero \}\,,
+\end{align*}
+où les $\cc_i$ sont les colonnes de $A$. 
+L'expression de la MER nous donne ensuite que :
+$$
+\ker(A) = \set{ (2r,-2r,r,0)\st r\in \R}\,,
+$$
+car la troisième variable est une variables libre.
+En d'autres termes, LES SEULES équations de dépendance sur les colonnes $\{\cc_1, \cc_2, \cc_3, \cc_4\}$ sont de la forme
+\begin{equation} \label{eq: dernier exemple chap 16}
+(2r)\,\cc_1 + (-2r)\,\cc_2 + r\,\cc_3+0\,\cc_4 = \zero.
+\end{equation}
+En particulier, si on prend $r=1$ et qu'on isole $\cc_3$, on obtient :
+$$
+\cc_3 = -2\cc_1 + 2\cc_2\,.
+$$
+$\Bigg($Faites le calcul pour vérifier que  $\scriptsize\mat{2\\-8\\0\\4} =-2 \mat{1\\2\\1\\0} +2\mat{2\\-2\\1\\2}$.$\Bigg)$ Ceci implique que $\cc_3 \in \spn\{\cc_1, \cc_2\}$.
+
+Avec les mêmes arguments que nous avons vus plus tôt, cela signifie que $\im(A)$ est engendré par les trois autres vecteurs :
+$$
+\im(A) = \spn\{ \cc_1, \cc_2, \cc_4\}\,.
+$$
+Mais ces trois vecteurs sont-il linéairement indépendants ?  OUI !  Et il y a deux façons de le voir :
+\begin{enumerate}
+\item Nous connaissons LES SEULES relations de dépendance qui peuvent exister entre les quatre vecteurs $\cc_1, \cc_2,\cc_3, \cc_4$, elles sont décrites en \eqref{eq: dernier exemple chap 16}.  Maintenant, si les
+trois vecteurs $\cc_1, \cc_2, \cc_4$ étaient LD, alors on pourrait trouver
+une relation non-triviale entre eux :
+$$
+b_1 \,\cc_1 + b_2\,\cc_2 + 0\, \cc_3+ b_4 \,\cc_4 = \zero\,,
+$$
+pour certains $b_1, b_2, b_4$ non tous nuls.
+(On a ajouté $0\,\cc_3$, ce qui ne change pas l'équation puisque ça fait $0$...)
+Cette équation est nécessairement de la forme \eqref{eq: dernier exemple chap 16}. Mais alors $b_1=b_2=0$ et $b_4=0$, et donc on a la contradiction que la relation est triviale (puisque tous les coefficients sont nuls!). D'où les trois vecteurs $\cc_1, \cc_2, \cc_4$ sont LI.
+\item Alternativement, pour vérifier que les vecteurs $\cc_1, \cc_2, \cc_4$ sont LI, on peut les voir comme les colonnes d'une matrice $A'$ qu'on réduit par rapport aux lignes. La matrice $A'$ a donc trois colonnes, mais en fait c'est comme si on utilisait la matrice $A$ et qu'on ne se préoccupait pas de la troisième colonne. Or, on connait déjà la MER de $A$, elle a des pivots dans les colonnes $1$, $2$ et $4$. De plus, la présence ou non de la troisième colonne dans $A$ n'a pas d'impact sur les colonne-pivots. Donc, dans la MER de $A'$, toutes les colonnes contiennent un pivot. D'où l'indépendance linéaire des vecteurs $\cc_1, \cc_2, \cc_4$ !
+\end{enumerate}
+
+Nous avons donc trouvé une base de $\im(A)$ :
+$$
+\left\{ \mat{1\\2\\1\\0}, \mat{2\\-2\\1\\2}, \mat{3\\4\\1\\1} \right\}\,.
+$$
+\end{mysol}\end{myprob}
+
+\begin{theorem}[Base de $\im(A)$ -- BIS]\index{base pour $\im(A)$}
+Soit $A$ une matrice de taille $m\times n$.  Alors une base de $\im(A)$ est donnée par les colonnes de $A$ qui deviennent des colonne-pivots dans une ME ou dans la MER de $A$.
+\end{theorem}
+
+\begin{proof} [Idée de la preuve]
+L'idée est que l'exemple précédent se généralise à un nombre quelconque de variables libres.  
+
+Soit la matrice $A$ dont les colonnes sont $\vv_1,\vv_2, \cdots, \vv_n$.
+Toute solution non-triviale de
+$$
+a_1 \vv_1 + \cdots + a_n \vv_n = \zero
+$$
+est donnée par un vecteur non-nul $(a_1, \cdots, a_n)\in \ker(A)$.  En particulier,
+chaque solution de base donne une relation de dépendance entre ces vecteurs.
+Rappelons que, dans chaque solution de base, toutes les entrées non-nulles proviennent de la relation de dépendance (sauf la dernière entrée : elle est égale à $1$, elle correspond à une variable libre).
+
+Cela signifie que la relation de dépendance non-triviale a une colonne
+correspondante à une variable libre dont le coefficient est 1. Donc nous
+pouvons l'exprimer en fonction des autres colonnes apparaissant dans cette solution de base.  
+
+En d'autres termes, chaque solution de base nous permet d'exprimer un vecteur 
+(correspondant à une variable libre) en fonction des vecteurs qui correspondent aux variables de base. Ainsi, chaque vecteur qui 
+correspond à une variable libre appartient \`a l'enveloppe linéaire engendr\'ee par ceux 
+correspondant aux variables de base. En particulier, cela signifie que les vecteurs
+correspondant aux variables libres peuvent être éliminés de la liste.
+
+Enfin, nous notons que, parmi les vecteurs restants, on ne peut pas avoir de relation de dépendance non-triviale puisque toute relation de dépendance non-triviale
+impliquerait que l'une des variables est libre.
+Les vecteurs restants sont donc linéairement indépendants, et comme ils engendrent aussi $\im(A)$, ils en forment alors une base. Le tour est joué !
+\end{proof}
+
+
+
+
+
+

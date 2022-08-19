@@ -1,0 +1,167 @@
+
+\begin{sol}{prob06.1} Justify your answers to the following:
+\medskip
+
+(b) Is the vector $(1,2)$ a linear combination of $(1,1)$ and $(2,2)$? 
+
+\soln No, it isn't: suppose $(1,2)=a(1,1)+b(2,2)$. Then $a+2b=1$ and $a+2b=2$, which is impossible. 
+\medskip
+
+(d) Is the vector $(1,2,2,3)$ a linear combination of $(1,0,1,2)$ and $(0,0,1,1)$?
+
+\soln No, since any linear combination of $(1,0,1,2)$ and $(0,0,1,1)$ will have $0$ as its second component, and the second component of $(1,2,2,3)$ is $2 \not=0$.
+\medskip
+%
+
+(f) Is the matrix $C=\bmatrix 1&2\\2&3\endbmatrix $ a linear combination of $A=\bmatrix 1&0\\1&2\endbmatrix$ and $B= \bmatrix 0&1\\0&1\endbmatrix $?
+
+\soln No: If $C=k A +lB$ for $k,l \in \R$, then comparing the $(1,1)$ and the $(2,1)$--entries of both sides, we obtain $k=1$ and $k=2$, which is impossible. 
+\medskip
+%
+
+(h) Is the polynomial $1+x^2$ a linear combination of $1+x-x^2$ and $x$?  
+
+\soln No: if $1+x^2 =a(1+x-x^2)+bx$, then $(a+1)x^2-(a+b)x +1-a=0$  for all $x\in \R$. But a non-zero quadratic equation has at most two roots, so    $a+1=0$. Then, $-(a+b)x +1-a=0$  for all $x\in \R$. But a non-zero linear equation has at most one roots, so $a+b=0$. Then we're left with $1-a=0$, which is impossible if $a+1=0$.  
+\medskip
+
+(j) Is the function $\sin x$ a linear combination of the constant function $1$ and $\cos x$?
+
+\soln No: Suppose there were scalars $a,b \in \R$ such that $\sin x =a1+b\cos x$, for all $x\in \R$. For $x=0$ we obtain the equation $a+b=0$, and for $x=\pi$, we obtain the equation $a-b=0$, implying that $a=b=0$. But then $\sin x =0$, for all $x\in \R$, which is nonsense, as $\sin(\frac{\pi}2)=1\not=0$.
+\medskip
+
+(l) If $u$, $v$ and $w$ are any vectors in  a vector space $V$, is $u-v$ a linear combination of $u$, $v$ and $w$?
+
+\soln Yes, indeed: $u-v =(1) u -(1) v + (0) w$
+\medskip
+
+\end{sol}
+
+\begin{sol}{prob06.2}  Justify your answers to the following:
+\medskip
+
+(b) Is  `$(3,4) \in\spn\{(1,2)\} $' true? (Note that this is the same as the previous part, written using mathematical notation.)
+
+\soln No: if $(3,4) \in\spn\{(1,2)\} $, then $(3,4)=a (1,2)$ for some $a\in \R$, which implies $a=3$ and $a=2$, which is nonsense.
+\medskip
+
+(d) How many vectors belong to $\spn\{(1,2)\}$?
+
+\soln There are infinitely many vectors in $\spn\{(1,2)\}= \set{a(1,2)\st a\in \R}$, since if $a\not= a'$ are distinct real numbers, then $a(1,2)\not=a'(1,2)$.
+
+\medskip
+
+(f) Is  $\set{(1,2)}$ a subset of  $\spn\{(1,2)\}$?
+
+\soln Indeed it is: since  $(1,2)$ is clearly a multiple of $(1,2)$, $(1,2) \in \spn\{(1,2)\} =\set{a(1,2)\st a\in \R}$.
+\medskip
+
+(h)  Suppose $S$ is a subset of a vector space $V$.  If $S= \text{span}\, S$,  explain why $S$ must be a subspace of $V$.
+
+\soln Since the span of any set of vectors is a subspace, and $S= \text{span}\, S$, $S$ is a subspace.  
+\medskip
+%
+
+
+
+
+\end{sol}
+
+\begin{sol}{prob06.3} Give \underbar{two} distinct {\it finite} spanning sets for each of the following subspaces. (Note that there will be infinitely many correct answers; I've just given one example.)
+\medskip
+
+
+
+(b)  $\set{(x, y) \in \R^2\st 3x - y=0 }$.
+
+\soln Since $$\set{(x, y) \in \R^2\st 3x - y=0 }=\set{(x, 3x)\st x\in \R}=\set{x(1,3)\st x\in \R}=\set{a(2,6)\st a\in \R},$$ Both $\set{(1,3)}$ and $\set{(2,6)}$ are spanning sets for $\set{(x, y) \in \R^2\st 3x - y=0 }$.
+
+\medskip
+(d)  $U=\set{(x, y, z, w) \in \R^4\st x-y+z-w=0 }$.
+
+\soln We saw in Q.1(k) that $$\set{(x, y, z, w) \in \R^4\st x-y+z-w=0 }=\spn\{(1,1,0,0),(-1, 0,1,0),(1,0,0,1) \}$$
+
+So $\set{(1,1,0,0),(-1, 0,1,0),(1,0,0,1) }$ is one spanning set for $U$. If we simply multiply these spanning vectors by non-zero scalars, we still obtain a spanning set. So, for example, $\set{(2,2,0,0),(-3, 0,3,0),(4,0,0,4) }$ is another spanning set for $U$.
+
+  \medskip
+
+(f)  $X=\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\;a=d=0\quad \&\quad b=-c  \Bigg\}$.
+  
+\soln We saw in Q.4(b) that $X=\text{span}\Bigg\{ \bmatrix 0&-1\\ 1&0\endbmatrix\Bigg\}$, so $\Bigg\{ \bmatrix 0&-1\\ 1&0\endbmatrix\Bigg\}$ is one spanning set for $X$. Thus $\Bigg\{ \bmatrix 0&-2\\ 2&0\endbmatrix\Bigg\}$ is another. \medskip
+%
+
+(h)  $V=\Bigg\{  \bmatrix a&0\\ 0&b\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\;  a, b \in \R\Bigg\}$. 
+
+\soln $V=\Bigg\{a\bmatrix 1&0\\ 0&0\endbmatrix+ b\bmatrix 0&0\\ 0&1\endbmatrix \Bigg|\;  a, b \in \R\Bigg\}$, so $\Bigg\{\bmatrix 1&0\\ 0&0\endbmatrix, \bmatrix 0&0\\ 0&1\endbmatrix \Bigg\}$ is one spanning set for $V$. Then, $\Bigg\{\bmatrix 2&0\\ 0&0\endbmatrix, \bmatrix 0&0\\ 0&3\endbmatrix \Bigg\}$ is another spanning set for $V$.
+
+ \medskip
+(j)  $U=\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; a+b+c+d=0\Bigg\}$.   
+
+\soln
+
+Since $$U=\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; a=-b-c-d\Bigg\}=\Bigg\{  \bmatrix -b-c-d&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; b,c,d\in \R\Bigg\},$$ then $U=\Bigg\{b \bmatrix -1 &1\\ 0&0\endbmatrix+c \bmatrix -1&0\\ 1&0\endbmatrix+ d\bmatrix -1&0\\ 0&1\endbmatrix \;\Bigg|\; b,c,d\in \R\Bigg\}=\text{span}\Bigg\{ \bmatrix -1 &1\\ 0&0\endbmatrix,\bmatrix -1&0\\ 1&0\endbmatrix,  \bmatrix -1&0\\ 0&1\endbmatrix \Bigg\}$, and so $\Bigg\{ \bmatrix -1 &1\\ 0&0\endbmatrix,\bmatrix -1&0\\ 1&0\endbmatrix,  \bmatrix -1&0\\ 0&1\endbmatrix \Bigg\}$ is one spanning set for $U$. Clearly, $\Bigg\{ \bmatrix -2 &2\\ 0&0\endbmatrix,\bmatrix -1&0\\ 1&0\endbmatrix,  \bmatrix -2&0\\ 0&2\endbmatrix \Bigg\}$ is another, distinct one --- even though they do have one matrix in common, as sets they are different. Remember: two sets are the same iff they contain exactly the same elements.
+   \medskip
+
+(l) $ \mathcal P_n=\set{p\st p \text{ is a polynomial function with} \deg(p)\le n} $.
+
+\soln $ \mathcal P_n=\set{a_0 + a_1 x +\cdots a_n x^n \st a_0, a_1, \dots, a_n \in \R}=\spn\{1, x, \dots, x^n\}$, so $\set{1, x, \dots, x^n}$ is one spanning set for $ \mathcal P_n$. Clearly, $\set{2, x, \dots, x^n}$ is a different spanning set.\medskip 
+%
+
+(n)  $ Y=\set{p \in \mathcal P_3 \st  p(2)=p(3)=0}$. 
+
+\soln By the Factor theorem, $$Y=\set{(x-2)(x-3)q(x)\st \deg q \le 1}=\set{(x-2)(x-3)(a+bx)\st a,b \in \R},$$so $Y=\set{a(x-2)(x-3) + b x(x-2)(x-3)\st a,b \in \R }=\spn\{(x-2)(x-3), x(x-2)(x-3)\}$. Hence, $\set{(x-2)(x-3), x(x-2)(x-3)}$ is one spanning set for $Y$.  Then, $\set{2(x-2)(x-3), x(x-2)(x-3)}$ is a different spanning set for $Y$.
+\medskip
+%
+
+
+(p) $W= \spn\{\sin x, \cos x\}$.
+
+\soln This one's easy! We are explicitly given one spanning set in the definition of $W$, namely $\set{\sin x, \cos x}$. So  $\set{\sin x, 2\cos x}$ is a different spanning set for $W$.   \medskip
+
+(r)  $ Z=\spn\{1, \sin^2 x, \cos^2 x\}$.   
+
+\soln   Again, we are given one: $\set{1, \sin^2 x, \cos^2 x}$. Another, smaller spanning set for $Z$ is $\set{1, \sin^2 x}$, since $\cos^2 x =1-\sin^2 x$. (Anything in $Z$ is of the form $a+ b\sin^2x + c \cos^2x$ for some $a,b,c \in \R$. But $a+ b\sin^2x + c \cos^2x=  a+ b\sin^2x + c (1-\sin^2 x)= (a+c) + (b-c)\sin^2x$, so everything in $Z$ is in fact a linear combination  of $1$ and $\sin^2x$.)\medskip
+%
+\end{sol}
+
+
+\begin{sol}{prob06.4} Justify your answers to the following:
+\medskip
+
+(b) Suppose $u$ and $v$ belong to a vector space $V$. Show carefully that $\spn\{u,v\}=\spn\{u-v, u+v\}$. That is , you must show two things:
+\begin{enumerate}[(i)]
+\item If $w\in \spn\{u,v\}$, then $w \in \spn\{u-v, u+v\}$, and
+\item If $w\in \spn\{u-v, u+v\}$,  then $w\in \spn\{u,v\} $.
+
+
+\soln (i) If $w\in \spn\{u,v\}$, then $w=au+bv$ for some scalars $a,b$. But $$au+bv=\dfrac{(a-b)}2 (u-v) +\dfrac{(a+b)}2 (u+v),$$ so $w \in \spn\{u-v, u+v\}$. 
+
+(ii) If $w\in \spn\{u-v, u+v\}$, then   $w=a(u-v)+b(u+v)$ for some scalars $a,b$. But $$a(u-v)+b(u+v)=(a+b)u + (b-a)v \in \spn\{u,v\},$$ so $w\in \spn\{u,v\}$.
+
+\end{enumerate}
+\medskip
+%
+
+(d) Suppose $\spn\{v,w\}=\spn\{u,v,w\}$. Show carefully that $u \in \spn\{v,w\}$. 
+
+\soln Since $\spn\{u,v,w\}=\spn\{v,w\}$, and $u=1\, u +0\,v +0\, w\in \spn\{u,v,w\}$, then $u \in \spn\{v,w\}$.
+\medskip
+
+(f)  Show that $x^{n+1} \notin \mathcal P_n$. \footnote{\it  Hint: Generalize the idea in the previous hint, recalling that every non-zero polynomial of degree $n+1$ has at most $n+1$ distinct roots.}
+
+\soln Suppose $x^{n+1} \in \mathcal P_n$. So, $x^{n+1}=a_0 + a_1 x + \cdots + a_nx^n$ for some scalars $a_0, \dots, a_n$. Rewriting this, we see that
+
+$$ a_0 + a_1 x + \cdots + a_nx^n - x^{n+1}=0$$ for {\it every real number $x$!} But a non-zero polynomial of degree $n+1$ (which is what we have here) has at most $n+1$ distinct roots, that is, $ a_0 + a_1 x + \cdots + a_nx^n - x^{n+1}=0$ for at most $n+1$ different real numbers $x$.  But there are more than $n+1$ real numbers, so matter how big $n$ may be. Hence we have a contradiction, and so our original assumption $x^{n+1} \in \mathcal P_n$ must be false. So indeed, $x^{n+1} \notin \mathcal P_n$.
+\medskip
+
+(h) Assume for the moment (we'll prove it later) that if $W$ is a subspace of $V$, and $V$ has a finite spanning set, then so does $W$. 
+  
+Use this fact and the previous part to prove that $\F(\R)$ does not have a finite spanning set.
+ 
+\soln If $\F(\R)$ has a finite spanning set, and $\mathcal P$ is a subspace of $\F(\R)$  by the assumption,  $\mathcal P$ would have a finite spanning set. But the previous part states that this is impossible, so indeed $\F(\R)$ cannot have a finite spanning set.
+\medskip 
+%
+
+
+
+\end{sol}
+

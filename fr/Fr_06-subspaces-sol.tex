@@ -1,0 +1,136 @@
+
+\bigskip
+\begin{sol}{prob05.1}   Pour chacun des sous-ensembles suivants, déterminez si c'est un sous-espace de l'espace vectoriel indiqué. (Supposez que l'espace vectoriel possède les opérations standard, sauf indication contraire.)
+
+
+\medskip
+
+(b)  $\set{(x, x-3) \in \R^2\st x\in \R}$; $\R^2$. 
+
+\soln Comme il ne contient pas $\zero=(0,0)$, il {\it ne peut pas être} un sous-espace de $\R^2$.
+\medskip
+
+
+(e)  $\set{(x, y) \in \R^2\st x -3y=0 }$ dans $\R^2$.
+
+\soln C'est la droite de $\R^2$ passant par l'origine; c'est donc bien un {\it sous-espace} de $\R^2$. 
+Une autre preuve est la suivante. On a $\set{(x, y) \in \R^2\st x -3y=0 }=\set{(3y, y) \st y\in \R }=\set{y(3,1)\st y\in \R}=\sp{(3,1)}$; c'est donc bien un {\it sous-espace} de $\R^2$. \medskip
+
+
+(g)  $\set{(x, y) \in \R^2\st xy \ge 0 }$ dans $\R^2$.
+
+\soln On a vu dans les exercices précédents que cet ensemble n'est pas fermé pour l'addition et donc il ne peut pas être un sous-espace de $\R^2$.\medskip
+
+
+(i)   $\set{(x, y, z) \in \R^3\st x+2y+z=1 }$ dans $\R^3$.
+
+\soln Cet ensemble ne contient pas $\zero = (0,0,0)$ et donc  {\it ne peut pas être} un sous-espace de $\R^2$.\medskip 
+
+ 
+
+(k) $W=\set{(x, y, z, w) \in \R^4\st x-y+z-w=0 }$  dans $\R^4$. 
+
+\soln On a 
+\begin{align*}
+W&=\set{(x, y, z, w) \in \R^4\st x=y-z+w}\\
+&=\set{(y-z+w, y,z,w,)\st y,z,w\in \R}\\
+&=\set{y(1,1,0,0)+z(-1, 0,1,0)+w(1,0,0,1)\st y,z,w\in \R}\\
+&=\sp{(1,1,0,0),(-1, 0,1,0),(1,0,0,1) }
+\end{align*}
+et donc {\it c'est} un sous-espace de $\R^4$.  \medskip
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob05.2}   Pour chacun des sous-ensembles suivants, déterminez si c'est un sous-espace de $\F(\R)=\set{f \st f : \R \to \R}$ munis ses opérations vectorielles standards. (Ici, vous devrez utiliser le test du sous-espace, sauf peut \^etre pour la derni\`ere question.)  
+ 
+ \medskip
+
+
+(b) $\set{f \in \F(\R) \st f(2)=1 }$. 
+
+\soln Cet ensemble ne contient pas la fonction nulle $\zero$, il ne peut donc pas être un sous-espace de $\F(\R)$. \medskip
+ 
+
+(d)   $\set{f \in \F(\R) \st \text{ for all } x\in \R,   \, f(x)\le 0}$. 
+
+\soln On a vu dans les exercices précédents que cet ensemble n'est pas fermé pour la multiplication par scalaire, donc il ne peut pas être un sous-espace de $\F(\R)$.\medskip 
+
+(f)   $O=\set{f \in \F(\R) \st \text{ For all } x\in \R,   \, f(-x)= -f(x)}$.  
+
+\soln Référez-vous aux solutions des exercices du chapitre précédent : questions 3(f), 4(f) et 8(a). Combinez ces réponses et vous verrez que le test du sous-espace est v\'erifié. Donc $O$ est bien un sous-espace de $\F(\R)$.\medskip 
+
+
+
+
+
+(h) $\PP=\set{p \in \F(\R)   \st p \text{ est polyn\^ome en la variable } x}$
+
+ \soln Puisque la fonction nulle est également une fonction polynomiale, on a bien $\zero \in \PP$. Noter que la somme de deux fonctions polynomiales quelconques est à nouveau une fonction polynomiale, ce qui montre que $\PP$ est fermé pour l'addition. Enfin, il est également clair qu'un multiple scalaire d'une fonction polynomiale est à nouveau une fonction polynomiale et donc $\PP$ est fermé par multiplication scalaire. Par conséquent, par le test du sous-espace, $\PP$ est bien un sous-espace de $\F(\R)$. 
+
+(On aurait pu aussi noter que $\PP$ s'écrit $\PP=\sp{x^n \st n=0, 1,2, \dots}$ et qu'il s'agit donc d'un sous-espace de $\F(\R)$. On ne parlera pas souvent de l'enveloppe lin\'eaire engendr\'ee par un ensemble infini $K$ de vecteurs, mais la définition de $\text{Vect}\,K$ est la même: c'est l'ensemble de toutes les combinaisons linéaires en un nombre (fini) de vecteurs de $K$.)\medskip 
+
+ 
+
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob05.3} Déterminez si les sous-ensembles suivants sont des sous-espaces de $$\PP =\set{p \in \F(\R) \st p \text{ est une fonction polynomiale en la variable } x},$$ munis de ses opérations vectorielles standards. (Dans certaines questions, vous pourrez utiliser le fait que tout ce qui est de la forme $\sp{\vv_1, \dots, \vv_n}$ est un sous-espace).
+ 
+\medskip
+ 
+
+(b) $\set{p \in \PP   \st \deg(p)
+\le 2 }$. 
+
+\soln $\set{p \in \PP   \st \deg(p)
+\le 2 }= \set{a +bx +cx^2   \st a,b,c\in \R}=\sp{1, x, x^2}$, c'est donc bien un sous-espace de $\PP$.\medskip 
+ 
+
+ 
+
+(d)  $ \set{p \in \PP_2 \st  p(1)=0}$. 
+
+\soln Comme $p(1)=0$, alors  $x-1$ divise $p$.   Par division euclidienne, on peut alors r\'e\'ecrire cet ensemble comme $ \set{p \in \PP_2 \st  p(1)=0}=\set{(x-1)q(x)\st \deg q \le 1}=\set{(x-1)(a+bx) \st a,b \in \R}=\set{a(x-1)+ bx(x-1) \st a,b \in \R}=\sp{x-1, x(x-1)}$. Donc c'est bien un sous-espace de $\PP$. \medskip
+
+
+
+
+(f) $G=\set{p \in \PP_3 \st  p(2)\,p(3)=0}$. 
+
+\soln Cet ensemble n'est pas fermé pour l'addition. Par exemple, $(x-2)$ et $(x-3)$ appartiennent tous deux à $G$, mais leur somme, $r(x)=2x-5$, n'y appartient pas car $r(2)r(3)=(-1)(1)=-1\not=0$. Par conséquent, $G$ est {\it n'est pas} un sous-espace de $\PP$.\medskip
+
+
+(h) $ \set{p \in \PP_2 \st  p(1)+p(-1)=0}$. 
+
+\soln   $ \set{p \in \PP_2 \st  p(1)+p(-1)=0}=\set{a+bx +cx^2  \st  a,b,c \in \R \text{ et } a+b+c+a-b+c=0}=\set{a+bx +cx^2  \st  a,b,c \in \R \text{ et } a+c=0}=\set{a +bx -ax^2  \st  a, c \in \R}=\sp{1- x^2, x}$, donc cet ensemble est un sous-espace de $\PP$.\medskip
+
+
+ 
+\end{sol}
+
+\bigskip
+\begin{sol}{prob05.4} Déterminez si les sous-ensembles suivants sont des sous-espaces de $\M_{2 \,2}(\R)$ munis des opérations standards. (Si vous avez lu les chapitres suivants, dans certaines questions, vous serez capables d'utiliser le fait que tout ensemble qui est de la forme $\sp{\vv_1, \dots, \vv_n}$ est un sous-espace).
+\medskip
+
+
+
+
+(b)  $X=\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\;a=d=0\quad \&\quad b=-c  \Bigg\}$. 
+
+\soln $X=\left\{  \scriptsize\bmatrix 0&-c\\ c&0\endbmatrix \in \M_{2 \,2}(\R) \;\Big|\;c\in \R \right\}=\sp{\scriptsize\bmatrix 0&-1\\ 1&0\endbmatrix}$ et alors $X$ est un sous-espace de $\M_{2 \,2}(\R)$.\medskip
+
+
+(d)  $\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; bc=1\Bigg\}$. 
+
+\soln Cet ensemble ne contient pas la matrice nulle  $\zero=\scriptsize\bmatrix 0&0\\ 0&0\endbmatrix$ et donc {\it ne peut pas être} un sous-espace de $\M_{2 \,2}(\R)$.   \medskip
+
+
+ (f)  $Z=\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; ad-bc=0\Bigg\}$. 
+
+\soln Cet ensemble n'est pas ferm\'e pour l'addition. Par exemple les matrices  $A=\scriptsize\bmatrix 1&0\\ 0&0\endbmatrix$ et $B=\scriptsize\bmatrix 0&0\\ 0&1\endbmatrix$ appartiennent \`a $Z$, mais $A+B=\scriptsize\bmatrix 1&0\\ 0&1\endbmatrix$ ne l'est pas. D'o\`u $Z$ {\it n'est pas} un sous-espace de $\M_{2 \,2}(\R)$.   \medskip
+
+
+\end{sol}
+

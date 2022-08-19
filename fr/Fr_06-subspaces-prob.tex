@@ -1,0 +1,136 @@
+
+  
+ \begin{prob} \label{prob05.1} Pour chacun des sous-ensembles suivants, déterminez si c'est un sous-espace de l'espace vectoriel indiqué. Sauf indication contraire, supposez que l'espace vectoriel est muni des opérations standards. 
+
+Rappelez-vous que certains raccourcis sont utiles et rapides : nous avons vu que (1) toute droite ou tout plan passant par l'origine dans $\R^n$ est un sous-espace. Dans le prochain chapitre, nous verrons (2) le Théorème \ref{span}  qui \'enonce que toute «~enveloppe lin\'eaire~»  est un sous-espace, c'est-à-dire que si $W=\sp{\vv_1, \dots, \vv_k}$ pour certains vecteurs $\vv_1, \dots, \vv_k $ d'un espace vectoriel $V$, alors $W$ est un sous-espace de $V$. En fait, une fois qu'on aura vu le Théorème \ref{span}, on n'utilisera même plus le test du sous-espace, il ne sera là qu'en dernier recours !
+
+\medskip
+\begin{enumerate}[a)]
+\item  $\set{(2x, x) \in \R^2\st x\in \R}$ dans $\R^2$.\medskip
+% yes
+\item\sov~$\set{(x, x-3) \in \R^2\st x\in \R}$ dans $\R^2$.
+\medskip
+%no
+\item $\set{(x, y) \in \R^2\st xy=0}$ dans $\R^2$.
+\medskip
+%no
+ 
+\item  $\set{(x, x+2) \in \R^2\st x\in \R}$ dans  $\R^2$. \medskip
+% no
+
+\item\sov~ $\set{(x, y) \in \R^2\st x -3y=0 }$ dans   $\R^2$. \medskip
+
+\item $\set{(x, y) \in \R^2\st x -3y=1 }$ dans   $\R^2$.\medskip
+
+\item\sov~ $\set{(x, y) \in \R^2\st xy \ge 0 }$ dans     $\R^2$.\medskip
+ 
+\item  $\set{(x, y, z) \in \R^3\st x+2y+z=0 }$ dans    $\R^3$.\medskip \medskip
+
+\item\sov~ $\set{(x, y, z) \in \R^3\st x+2y+z=1 }$ dans   $\R^3$.\medskip 
+
+\item $\set{(x, y,z) \in \R^3\st xyz=0}$ dans $\R^3$.
+\medskip
+%no
+
+\item\sov~ $\set{(x, y, z, w) \in \R^4\st x-y+z-w=0 }$ dans $\R^4$.  \medskip
+
+\item  $\set{(x, y, z, w) \in \R^4\st xy=zw }$ dans $\R^4$.  \medskip
+
+\item$^\ast$  $\set{(x, x+2) \in \R^2\st x\in \R}$ dans $\R^2$ muni des \underbar{\it op\'erations non-standards suivantes:} 
+
+Addition: $(x,y) \tilde+ (x',y')=(x+x', y+y -2)$.\\ 
+Multiplication par scalaire: pour $k\in \R$, $k\circledast (x,y)=(kx, ky-2k+2)$.     \medskip
+
+\item$^\ast$  $\set{(x, y, z) \in \R^3\st x+2y+z=1 }$ dans $\R^3$ muni des \underbar{\it op\'erations non-standards suivantes:} 
+
+Addition: $(x,y,z) \tilde+ (x',y',z')=(x+x', y+y',z+z'-1).$\\ 
+Multiplication par scalaire: pour $k\in \R$, $k\circledast (x,y,z)=(kx, ky, kz-k+1)$. \medskip 
+
+\end{enumerate}
+\end{prob} \begin{prob} \label{prob05.2}  Pour chacun des sous-ensembles suivants, déterminez si c'est un sous-espace de $\F(\R)=\set{f \st f : \R \to \R}$ muni de ses opérations standards. (Ici, vous devrez utiliser le test du sous-espace sauf peut \^etre pour la derni\`ere partie.).  
+ 
+\begin{enumerate}[a)]\medskip
+\item  $\set{f \in \F(\R) \st f(2)=0 }$. \medskip \medskip
+
+\item\sov~ $\set{f \in \F(\R) \st f(2)=1 }$.\medskip \medskip
+ 
+
+\item  $\set{f \in \F(\R) \st f(1)=2 }$.\medskip \medskip
+
+\item\sov~ $\set{f \in \F(\R) \st \text{ for all } x\in \R,   \, f(x)\le 0}$.\medskip 
+
+\item  $\set{f \in \F(\R) \st \text{ for all } x\in \R,   \, f(-x)= f(x)}$.\medskip 
+
+\item\sov~ $\set{f \in \F(\R) \st \text{ for all } x\in \R,   \, f(-x)= -f(x)}$.\medskip 
+
+
+
+
+
+\item $\set{f \in \F(\R)   \st \text{$f$ est d\'erivable deux fois et pour tout } x\in \R,   \, f''(x)+ f(x)=0}$.\medskip 
+
+ \item\sov~$\PP=\set{p \in \F(\R)   \st p \text{ est un polyn\^ome en une variable } x}$. \medskip 
+
+\end{enumerate}
+
+
+\end{prob} \begin{prob} \label{prob05.3} Déterminez si les sous-ensembles suivants sont des sous-espaces de $$\PP =\set{p \in \F(\R) \st p \text{ est une fonction polynomiale en la variable } x}$$ muni de ses opérations standards. (Dans certaines questions, vous pouvez utiliser le fait que tout ensemble qui est de la forme $\sp{\vv_1, \dots, \vv_n}$ est forcément un sous-espace).
+ 
+\medskip
+\begin{enumerate}[a)]
+
+\item $\set{p \in \PP   \st \deg(p)=2 }$.\footnote{Rappelez-vous que le {\it degré} d'un polynôme $p(x)=a_n x^n +\cdots +a_1 x +a_0$ est le plus grand $k$ tel que le coefficient $a_k$ est non-nul: $\deg(p)=\max\set{k\st a_k\not=0}$.}   \medskip 
+ 
+
+\item\sov~$\set{p \in \PP   \st \deg(p)
+\le 2 }$.  \medskip 
+ 
+
+\item $\PP_n= \set{p \in \PP   \st  \deg(p)\le n}$.  \medskip 
+  
+ 
+
+\item\sov~ $ \set{p \in \PP_2 \st  p(1)=0}$.  \medskip
+
+
+\item  $ \set{p \in \PP_2 \st  p(1)=2}$.  \medskip
+
+
+\item\sov~ $ \set{p \in \PP_3 \st  p(2)\,p(3)=0}$.  \medskip
+
+
+\item  $ \set{p \in \PP_3 \st  p(2)=p(3)=0}$.  \medskip
+
+
+\item\sov~ $ \set{p \in \PP_2 \st  p(1)+p(-1)=0}$.      \medskip
+
+
+\end{enumerate}
+ 
+\end{prob} \begin{prob} \label{prob05.4} Déterminez si les sous-ensembles suivants sont des sous-espaces de $\M_{2 \,2}(\R)$ muni de ses opérations standards. (Si vous avez déjà lu les chapitres suivants, vous serez capable dans certaines question d'utiliser le fait que tout ensemble qui est de la forme $\sp{\vv_1, \dots, \vv_n}$ est forcément un sous-espace.)
+\begin{enumerate}[a)]\medskip
+
+
+\item  $\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; b=c\Bigg\}$.\medskip \medskip
+
+
+\item\sov~ $\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\;a=d=0\quad \&\quad b=-c  \Bigg\}$.\medskip \medskip
+
+
+\item  $\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; a+d=0\Bigg\}$. \medskip
+
+\item\sov~ $\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; bc=1\Bigg\}$.      \medskip
+
+\item  $\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; ad=0\Bigg\}$.      \medskip
+
+\item  $\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; ad-bc=0\Bigg\}$. \medskip
+
+
+
+
+
+
+
+\end{enumerate}
+
+\end{prob}

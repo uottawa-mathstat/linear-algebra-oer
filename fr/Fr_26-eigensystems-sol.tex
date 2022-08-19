@@ -1,0 +1,155 @@
+
+\begin{sol}{prob22.1} Trouvez les valeurs propres réelles des matrices suivantes. 
+\medskip
+
+(b)  $\bmatrix 
+1&1&1\\1&1&-1\\1&1&2 \endbmatrix $.
+
+\soln 
+
+\begin{equation*}
+\begin{split}
+  \det \bmatrix 
+1-\lam&1&1\\1&1-\lam&-1\\1&1&2-\lam \endbmatrix &= \det \bmatrix 
+1-\lam&1&1\\2-\lam&2-\lam&0\\1&1&2-\lam \endbmatrix \quad (L_1+L_2\to L_2) \\
+  &=(2-\lam)\det \bmatrix 
+1-\lam&1&1\\1&1&0\\1&1&2-\lam \endbmatrix \quad (\text{Facteur de  }(2-\lam) \text{ in } L_2)\\
+  &=(2-\lam)\det \bmatrix 
+1-\lam&1&1\\1&1&0\\0&0&2-\lam \endbmatrix \quad (-L_2+L_3\to L_3)\\
+  &=(2-\lam)^2 \det \bmatrix 
+1-\lam&1\\1&1\endbmatrix \quad (\text{d\'eveloppement de Laplace selon }L_3)\\
+  &= -\lam(2-\lam)^2\\
+\end{split}\end{equation*}
+Les valeurs propres sont donc $0$ et $2$. (La valeur propre $2$ a une multiplicité algébrique de 2.)
+
+\medskip
+
+(d) $\bmatrix 
+1&0&1\\0&1&0\\1&1&1 \endbmatrix $.
+
+\soln 
+\begin{equation*}
+\begin{split}
+ \det  \bmatrix 
+1-\lam&1&1\\0&1-\lam&0\\1&1&1-\lam \endbmatrix   &= (1-\lam)\det  \bmatrix 
+1-\lam&1\\1&1-\lam \endbmatrix\quad (\text{d\'eveloppement de Laplace selon }L_3)\\
+  &=(1-\lam)\{(1-\lam)^2-1\} \\
+  &=(1-\lam)\lam(2-\lam)
+\end{split}\end{equation*}
+Donc les valeurs propres sont $0$, $1$ et $2$, et chacune a multiplicité algébrique $1$.
+\medskip
+
+
+(f) $\bmatrix 
+2&1&0\\0&2&1\\0&0&2 \endbmatrix $.
+
+\soln Comme cette matrice est une matrice triangulaire supérieure, ses valeurs propres sont les entrées de la diagonale (principale). Par conséquent, sa seule valeur propre est $2$, avec une multiplicité algébrique $3$.
+\medskip
+
+(h) $\bmatrix 
+2&1&0\\0&2&0\\0&0&2 \endbmatrix$.
+
+\soln Comme cette matrice est une matrice triangulaire supérieure, ses valeurs propres sont les entrées de la diagonale (principale). Par conséquent, sa seule valeur propre est $2$, avec une multiplicité algébrique $3$.
+\medskip
+
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob22.2}
+Pour chacune des matrices de l'exercice précédent, trouvez une base pour chaque espace propre.
+
+\soln 
+
+\begin{enumerate}[]
+\item[(b)] On a vu que les valeurs propres de $A=\bmatrix 
+1&1&1\\1&1&-1\\1&1&2 \endbmatrix $ sont $0$ et $2$.  On a :
+
+\begin{align*}E_0&=\ker(A-0I_3)\\
+&=\ker A\\
+&=\ker\bmatrix 
+1&1&1\\1&1&-1\\1&1&2 \endbmatrix =\ker \bmatrix 
+ 1 & 1 & 0 \\
+ 0 & 0 & 1 \\
+ 0 & 0 & 0 \endbmatrix\\
+& =\set{(-s,s,0)\st s\in \R}\\
+&=\sp{(-1,1,0)}\,, \end{align*}
+ donc $\set{(-1,1,0)} $ est une base de $E_0$, et :
+\begin{align*}
+E_2&=\ker(A-2I_3)\\
+& =\ker\bmatrix 
+-1&1&1\\1&-1&-1\\1&1&0 \endbmatrix \\
+&=\ker \bmatrix 
+ 1 & 0 & -\frac{1}{2} \\
+ 0 & 1 & \frac{1}{2} \\
+ 0 & 0 & 0 \endbmatrix \\
+&=\set{(\frac{s}2,-\frac{s}2,s)\st s\in \R}\\
+&=\sp{(1,-1,2)}\,,\end{align*}
+donc $\set{(1,-1,2)} $ est une base de $E_2$.
+
+\medskip
+\item[(d)] On a vu que les valeurs propres de $\bmatrix 
+1&0&1\\0&1&0\\1&1&1 \endbmatrix $ sont $0$, $1$ et $2$. On a:
+
+\begin{align*}
+E_0&=\ker(A-0I_3)\\
+&=\ker A=\ker\bmatrix 
+1&0&1\\0&1&0\\1&1&1 \endbmatrix\\
+& =\ker \bmatrix 
+ 1 & 0 & 1 \\
+ 0 & 1 & 0 \\
+ 0 & 0 & 0 \endbmatrix \\
+&=\set{(-s,0,s)\st s\in \R}\\
+&=\sp{(-1,0,1)}\, \end{align*} 
+donc $\set{(-1,0,1)} $ est une base de $E_0$; et :
+\begin{align*}
+E_1&=\ker(A-I_3)\\ 
+&=\ker\bmatrix 
+0&0&1\\0&0&0\\1&1&0 \endbmatrix \\
+&=\ker \bmatrix 
+ 1 & 1 & 0 \\
+ 0 & 0 & 1 \\
+ 0 & 0 & 0 \endbmatrix \\
+&=\set{(-s,s,0)\st s\in \R}\\
+&=\sp{(-1,1,0)}\,,\end{align*} 
+donc $\set{(-1,1,0)} $ est une base de $E_1$; et :
+\begin{align*}
+	E_2&=\ker(A-2I_3) \\
+	&=\ker\bmatrix
+-1&0&1\\0&-1&0\\1&1&-1 \endbmatrix  \\
+&=\ker \bmatrix 
+ 1 & 0 & -1 \\
+ 0 & 1 & 0 \\
+ 0 & 0 & 0  \endbmatrix \\
+ &=\set{(s,0,s)\st s\in \R}\\
+ &=\sp{(1,0,1)}\,,
+ \end{align*}
+donc $\set{(1,0,1)} $ est une base de $E_2$.
+\medskip
+
+\item[(f)]  On a vu que la seule valeur propre de $A=\bmatrix 
+2&1&0\\0&2&1\\0&0&2 \endbmatrix $ est $2$. On a:
+\begin{align*}
+	E_2&=\ker(A-2I_3)\\
+	&=\ker\bmatrix 
+0&1&0\\0&0&1\\0&0&0\endbmatrix    \\
+	&=\set{(s,0,0)\st s\in \R}\\
+	& =\sp{(1,0,0)}\,,
+\end{align*}
+donc $\set{(1,0,0)} $ est une base de $E_2$.
+\medskip
+\item (h)  On a vu que la seule valeur propres de $A=\bmatrix 
+2&1&0\\0&2&0\\0&0&2 \endbmatrix $ est $2$. On a:
+\begin{align*}
+	E_2 &= \ker(A-2I_3)\\
+	&=\ker\bmatrix 
+0&1&0\\0&0&0\\0&0&0\endbmatrix    \\
+	& =\set{(s,0,t)\st s\in \R}\\
+	& =\sp{(1,0,0), (0,0,1)}\,,
+\end{align*} 
+donc $\set{1,0,0), (0,0,1)} $ est une base de $E_2$.
+\medskip
+\end{enumerate}
+
+\end{sol}
+

@@ -1,0 +1,482 @@
+\chapter{L'inverse d'une matrice}
+\label{chapter:Fr_20-inverses}
+ 
+
+Dans ce chapitre, on suppose que $A$ est une matrice carrée $n \times n$.
+
+
+\section{Produit matriciel: d\'efinition de l'inverse}
+
+ 
+
+ 
+Nous avons vu précédemment qu'il y a un avantage à regarder 
+une équation $$A\xx=\bb$$ de diverses façons différentes.  En regardant les entrées, cette équation devient un système linéaire; en regardant les vecteurs colonnes, l'équation devient une
+équation vectorielle.  Mais que diriez-vous de considérer cette équation simplement
+comme une expression algébrique, c'est-à-dire faire comme si on avait une équation avec des nombres réels :
+$$
+ax=b\, ?
+$$
+L'avantage d'une équation scalaire comme celle-ci (avec $a,x,b\in \R$),
+c'est que si $a\neq 0$ alors on peut diviser par $a$ et on en déduit la valeur de $x$ : $$x = b/a\,.$$  De manière similaire, peut-on également \og \ diviser\ \fg\ par
+une matrice $A$ pour en déduire $\xx$ dans la première équation ?\\
+
+L'obstacle majeur ici est: il est déjà assez difficile de multiplier
+deux matrices, donc comment peut-on \og d\'efaire\ \fg\ cette opération ? 
+
+Pour cela, reformulons un peu les choses : l'expression $x = b/a$ peut se ré-écrire en $x = a^{-1}b$ ;
+c'est-à-dire multiplier $b$ par l'inverse de $a$, au lieu de diviser $b$ par $a$. C'est l'idée clé pour «~diviser~» le vecteur $\bb$ par une matrice $A$ : on multiplie plutôt $\bb$ par l'inverse $A^{-1}$ de la matrice $A$.  Donc maintenant, notre objectif
+est juste de comprendre ce qu'est \og $A^{-1}$\ \fg. Pour les nombres réels, l'inverse $a^{-1}$ est défini par la relation $a^{-1}\times a = a\times a^{-1} = 1$, donc de même, cherchons la matrice (ou les matrices ?) $A^{-1}$ telle que :
+$$
+A^{-1}\, A = A\, A^{-1} = I_n\,,
+$$
+où le $1$ des nombres réels a été remplacé par la matrice identité. Dans ce chapitre, nous allons essayer de voir comment trouver l'expression de $A^{-1}$.
+
+(Rappelez-vous que $I_n$ est la matrice identité $n\times n$, la matrice carrée
+avec $1$s sur la diagonale et $0$s partout ailleurs.  La propriété clé
+de la matrice d'identité est qu'elle agit exactement comme l'\'el\'ement neutre 
+de multiplication matricielle : $BI_n = B$ et $I_nB = B$.)
+
+\begin{definition}
+Une matrice $A$ de taille $n \times n$ est dite \defn{inversible} s'il existe une matrice $B$ aussi de taille $n \times n$ telle que
+$$
+A\,B = B\,A = I_n\,.
+$$
+Dans ce cas, la matrice $B$ est appell\'ee l'\defn{inverse} de $A$ et on \'ecrit $B = A^{-1}$. Notez que l'inverse $A^{-1}$ de $A$ est unique !
+\end{definition}
+
+\begin{myexample}  Consid\'erons le cas $A=I_n$.  Alors $I_n^{-1} = I_n$ car $I_n I_n = I_n$.
+(Ceci est analogue \`a  $1^{-1} = 1$ dans $\R$!) \end{myexample}
+
+\begin{myexample} Soient $A = \mat{1 & 1 \\ 2& 3}$ et $B = \mat{3 & -1\\ -2 & 1}$.
+Alors on a
+$$
+AB = \mat{1 & 1 \\ 2& 3}\mat{3 & -1\\ -2 & 1} = \mat{1&0\\0&1} = I_2
+$$
+et
+$$
+BA = \mat{3 & -1\\ -2 & 1} \mat{1 & 1 \\ 2& 3} = I_2
+$$
+ce qui d\'emontre que $B = A^{-1}$ et aussi que $A = B^{-1}$.  (Par analogie avec $\R$:  si $b=1/a$, alors $a=1/b$ aussi dans $\R$.) \end{myexample}
+
+\section{Inverse d'une matrice $2\times 2$}\label{section:inverse2by2}
+
+\begin{lemma}[Inverse d'une matrice $2\times 2$]\label{inverse2by2}\index{inverse de matrices $2\times 2$}
+Soit $A = \scriptsize\mat{a & b \\ c& d}$ une matrice $2\times 2$ à coefficients réels.  Alors, la matrice $A$ est inversible si et seulement si $ad-bc \neq 0$, et dans ce cas on a :
+$$
+A^{-1} = \frac{1}{ad-bc} \mat{d & -b \\ -c & a}\,.
+$$
+(Si par contre $ad-bc=0$, alors $A$ n'est pas inversible.)
+\end{lemma}
+
+\begin{proof}[Idée de la preuve]
+D'une part, supposons que $ad-bc \neq 0$. Alors la matrice $B=\frac{1}{ad-bc} \scriptsize\mat{d & -b \\ -c & a}$ est bien définie (on n'a pas de division par $0$), et on a bien les égalités $AB = BA = I_2$ (vérifiez-le !). Donc $A$ est inversible, d'inverse $A^{-1} = B$.
+
+D'autre part, supposons que $ad-bc=0$. Dans ce cas, il faut montrer que $A$ n'est pas inversible, mais ceci demande un peu plus de travail... Néanmoins, si vous comprenez bien l'exemple suivant, vous serez en mesure d'en écrire la preuve.
+
+(Remarque : la formule $A^{-1}=\frac{1}{ad-bc} \scriptsize\mat{d & -b \\ -c & a}$ peut aussi se déduire du Théorème de Cayley-Hamilton, qui disait que $A^2 - {\rm Tr}(A)\,A + \det(A)\,I=0$.)
+\end{proof}
+
+
+\begin{myexample} \label{ex: matrice carree non-inversible} La matrice $A = \scriptsize\mat{1 & 1\\ 1 & 1}$ n'est pas inversible. 
+Nous pouvons le montrer de plusieurs façons.  (Certainement $ad-bc = 1-1=0$, donc
+le lemme dit que $A$ n'est pas inversible, mais voyons d'autres méthodes.)
+\begin{enumerate}
+\item M\'ethode 1 (directe):  Supposons que $B = \scriptsize\mat{a&b\\c&d}$ soit l'inverse de $A$.  Alors
+$$
+\mat{1 & 1\\ 1 & 1}\mat{a & b\\c&d} = \mat{a+c & b+d \\ a+c & b+d}\,,
+$$
+laquelle ne peut jamais être égal à la matrice identité $I_2=\scriptsize\mat{1 & 0\\ 0 & 1}$ pour tout choix de $a,\, b,\,c,\, d\in\R$.  Donc, l'inverse ne peut pas exister.
+\item Méthode 2 (indirecte): Soit $\xx = (1,-1)$.  Alors
+$$
+A\xx = \mat{1 & 1 \\ 1 & 1} \mat{1\\-1} = \mat{0\\0} = \zero.
+$$
+Donc si par l'absurde on suppose que $A^{-1}$ existe, alors
+nous pourrions multiplier l'équation $A\xx = \zero$
+par $A^{-1}$ à gauche pour obtenir :
+$$
+A^{-1} A \xx = A^{-1} \zero.
+$$
+Mais, le côté gauche se simplifie en $I_2 \xx=\xx$, alors que le côté droit se simplifie en $\zero$.  Cela veut dire que $\xx=\zero$, ce qui est FAUX puisque $\xx = (1, -1)$.  Donc notre hypothèse (disant que $A^{-1}$ existe) doit être fausse, et nous en déduisons donc que $A$ n'est pas inversible.
+\end{enumerate}
+ \end{myexample}
+
+Cet exemple nous donne un premier aperçu du lien entre les matrices inversibles et les matrices merveilleuses qui font que le système admet une unique solution :
+ on a que si $A$ est inversible, alors l'équation $A \xx = \zero$ admet une solution unique.
+
+
+On en déduit le lemme suivant:
+
+
+\begin{lemma}[Matrice inversible et système linéaire]\index{inverses matricielles et solutions de systèmes linéaires}  \label{lem: Matrice inversible et système lineaire}
+Soit $A$ une matrice inversible $n\times n$.  Alors tout système linéaire $A\xx = \bb$  vérifie les deux propriétés suivantes :
+\begin{enumerate}
+\item il est compatible;
+\item et il admet une solution unique.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Notez que $A(A^{-1}\bb) = (AA^{-1})\bb = I_n \bb = \bb$.
+Donc $\xx = A^{-1}\bb$ est une solution \`a ce système et ainsi il est compatible.
+
+Si $\yy$ est une autre solution (c'est-à-dire $A \yy = \bb$), alors
+multiplions à gauche par $A^{-1}$ pour avoir
+$$
+A^{-1}A\yy = A^{-1}\bb\,.
+$$
+Mais $A^{-1}A = I_n$, donc $\yy = A^{-1}\bb$. C'est la même solution que ci-dessus, donc cette solution est forcément unique, ce qui montre bien le résultat voulu.
+\end{proof}
+
+Par conséquent, une matrice inverse $A$ satisfait TOUTES LES PROPRIÉTÉS équivalentes du 
+Théorème \ref{thm:inv_charact}, puisque le lemme ci-dessus nous dit qu'une matrice inversible $A$ satisfait la 3e propriété du théorème.
+
+Cependant, rappelez-vous que tout ceci est basé sur le fait que $A$ est inversible, et malheureusement toutes les matrices carrées sont pas forcément inversibles... Voir Exemple \ref{ex: matrice carree non-inversible} ci-dessus.
+
+
+\section{Propriétés algébriques de l'inverse d'une matrice}
+
+\begin{proposition}[Propriétés de l'inverse]\index{propriétés de l'inverse d'une matrice} 
+
+Soit $k \neq 0$ un scalaire et soit $p$ un entier naturel. Si $A$ et $C$ sont deux matrices inversibles $n \times n$,
+alors les matrices $A^{-1}$, $A^p$, $A^T$, $k\,A$,  $A\,C$ sont également inversibles. Plus précisément, on a :
+\begin{enumerate}[(1)]
+\item  $(A^{-1})^{-1} = A$;
+\item $(A^p)^{-1} = (A^{-1})^p$;
+\item  $(A^T)^{-1} = (A^{-1})^T$;
+\item   $(k\,A)^{-1} = \frac{1}{k} A^{-1}$;
+\item  $(A\,C)^{-1} = C^{-1}A^{-1}$ \quad (notez que L'ORDRE est INVERSÉ quand on inverse un produit !).
+\end{enumerate}
+De plus, si un produit $B\,D$ est inversible, alors les deux matrices $B$ et $D$ sont aussi inversibles.
+\end{proposition}
+
+\begin{proof}[Preuve Partielle]
+Rappelez-vous que, pour montrer qu'une matrice est inversible, une méthode consiste à directement trouver son
+inverse.  Ici dans l'énoncé, les expressions des inverses sont déjà données, donc il est facile de vérifier que ce sont bien des inverses : il suffit de multiplier la matrice avec celle qu'on pense être sont inverse et de vérifier qu'on obtient bien la matrice identité $I_n$.  
+Par exemple :
+\begin{itemize}
+	\item[(3)] On sait que $(A^T) (A^{-1})^T = (A^{-1}A)^T$ par les propriétés de la transpos\'ee (cf. chapitres précédents), ce qui est égal à $I_n^T$ (puisque $A$ est inversible), ce qui correspond à $I_n$. Même argument pour montrer que $(A^{-1})^T (A^T) =I_n$.  D'où $A^T$
+est bien inversible et son inverse est bien la transposée de l'inverse de $A$.
+	\item[(5)] Notez que $(AC) (C^{-1}A^{-1}) = A (CC^{-1}) A^{-1} = AI_nA^{-1} = AA^{-1} = I_n$ ; nous avons donc la formule correcte pour l'inverse de $AC$.  (Vous voyez pourquoi nous avons dû inverser l'ordre: car on a généralement $(AC) (A^{-1}C^{-1})\neq I_n$... Trouvez un exemple !)
+\end{itemize}
+Pour l'affirmation bonus, il suffit de voir que $B^{-1} = D(BD)^{-1}$ et $D^{-1} = (BD)^{-1} B$.
+\end{proof}
+
+\begin{myprob} Simplifiez  $(A^T B)^{-1}A^T$.
+
+\begin{mysol} On a $(A^T B)^{-1}A^T = (B^{-1} (A^T)^{-1}) A^T = B^{-1} ((A^T)^{-1}) A^T) =B^{-1}$\,.
+\end{mysol}\end{myprob}
+\medskip
+
+\begin{myprob} Simplifiez $(A+B)^{-1}$.
+
+\begin{mysol}  Cela ne peut pas être simplifié... (C'est pareil avec les nombres réels : l'expression $\frac{1}{a+b}$ ne peut pas être simplifiée de manière générale... Par exemple $(2+3)^{-1} \neq \frac12 + \frac13$.)  \\
+Remarque: même si $A$ et $B$ sont inversibles, on ne sait même pas si $A+B$ est inversible. Par exemple, si $A = -B$, alors $A+B$ est la matrice nulle, qui est clairement non-inversible... 
+\end{mysol}\end{myprob}
+
+
+ 
+
+
+\section{Trouver l'inverse : cas général}
+
+Nous avons vu la dernière fois que si $A = \scriptsize\mat{a&b\\c&d}$, alors $A$ est 
+inversible si et seulement si $\det(A) = ad-bc \neq 0$, 
+auquel cas
+$$
+A^{-1} = \frac{1}{\det(A)}\mat{d & -b\\-c&a}.
+$$
+(Et si $A$ est une matrice $1 \times 1$, alors $A$ est juste un nombre réel
+comme $A = [a]$, et donc $A^{-1} = \big[\frac{1}{a}\big]$ dès lors que $a \neq 0$.)
+
+Il existe des formules pour les inverses de matrices $n \times n$,  
+mais elles ne sont pas très efficaces (comme nous le verrons plus tard), et elle ne sont pas très belles...
+Au lieu de chercher une formule générale, voyons si nous pouvons déjà calculer $A^{-1}$ avec les propriétés que nous avons déjà énoncées.\\
+
+
+Rappelez-vous que pour trouver l'inverse de $A$, s'il existe, nous voulons résoudre l'équation matricielle
+$$
+A B = I_n
+$$
+pour une matrice inconnue $B$ (qui sera notée $A^{-1}$ si $A$ est inversible).
+\'Ecrivez $B$ et $I_n$ par blocs de vecteur-colonnes :
+$B = [\vv_1 \; \vv_2 \; \cdots \; \vv_n]$ et
+$I_n = [\ee_1 \; \ee_2 \; \cdots \; \ee_n]$.  (Notez que  $\ee_i$ est
+aussi le $i-$\`eme vecteur de la base standard de $\R^n$.)
+Puis multipliez $A$ et $B$ pour avoir:
+$$
+AB = [A\vv_1 \; A\vv_2 \; \cdots \; A\vv_n] = I_n = [\ee_1 \; \ee_2 \; \cdots \; \ee_n]\,,
+$$
+ce qui donne en fait $n$ équations vectorielles à résoudre :
+$$
+A\vv_1 = \ee_1, \quad A\vv_2 = \ee_2, \quad\cdots, \quad A\vv_n = \ee_n\,.
+$$
+Si $A$ est inversible, alors on sait par le Lemme \ref{lem: Matrice inversible et système lineaire}  que chacune de ces équations vectorielles
+est compatible et admet une solution unique, et ces
+solutions nous donneront exactement les colonnes de la matrice inconnue $B$. Ceci achèvera donc la recherche de l'inverse de $A$.\\
+
+Ainsi, pour obtenir l'inverse de $A$, nous devons réduire par rapport aux lignes chacune
+des matrices augmentées suivantes :
+$$
+[A|\ee_1], \quad [A|\ee_2], \quad \cdots,\quad [A|\ee_n]\,.
+$$
+Astuce importante : nous faisons en fait EXACTEMENT LES MÊMES opérations sur les lignes
+pour chacun de ces systèmes linéaires, puisque la matrice coefficients est toujours la même (c'est toujours $A$, on ne change que le vecteur des constantes). 
+Donc en fait, pour aller plus vite, on peut directement calculer la MER de $[A\,|\,\ee_1\; \ee_2\; \cdots\; \ee_n]$, c'est-à-dire la MER de $[A\,|\,I_n]$.
+
+De plus, puisque chacun des $n$ systèmes donne une solution unique, les MER sont de la forme :
+$$
+[I_n|\vv_1],\quad [I_n|\vv_2],\quad \cdots,\quad [I_n|\vv_n]\,.
+$$
+Donc la MER de $[A\,|\,\ee_1\; \ee_2\; \cdots\; \ee_n]$ sera de la forme $[I_n \,|\,\vv_1\, \vv_2\, \dots\, \vv_n]$, c'est-à-dire de la forme $[I_n\,|\,A^{-1}]$. On a donc trouvé une technique pour calculer $A^{-1}$: il suffit de calculer la MER de $[A\,|\,I_n]$ et de ne garder que la matrice qui est après le symbol «~$|$~» de séparation !
+
+\begin{myprob}  Utilisez cette m\'ethode pour trouver l'inverse de la matrice suivante.
+$$
+A = \mat{1 & 1 & 2\\ 1 & 2 & 5\\ 2 & 2 & 5}\,.
+$$
+
+\begin{mysol}  Nous essayons donc de résoudre $AB = I_3$ pour $B$.  Posant $B = [ \vv_1\; \vv_2 \; \vv_3]$.  Alors
+$$
+AB = [A\vv_1 \; A\vv_2\; A\vv_3]\,.
+$$
+Nous voulons que ce produit soit égal à 
+$$
+I_3 = [\ee_1 \; \ee_2\; \ee_3]\,.
+$$
+Pour résoudre les trois systèmes linéaires $A\vv_i = \ee_i$ en une seule fois, nous
+mettons en place une matrice augmentée (par les 3 vecteurs $\ee_i$) :
+$$
+[A \vert \ee_1 \; \ee_2\; \ee_3] = 
+\mat{
+1 & 1 & 2 &|& 1 & 0 & 0\\ 
+1 & 2 & 5 &|& 0 & 1 & 0\\ 
+2 & 2 & 5 &|& 0 & 0 & 1}
+$$
+qu'on r\'eduit par rapport aux lignes jusqu'à avoir une MER :
+$$
+[A|I_3] \sim 
+\mat{
+1 & 1 & 2 &|& 1 & 0 & 0\\ 
+0 & 1 & 3 &|& -1 & 1 & 0\\ 
+0 & 0 & 1 &|& -2 & 0 & 1}
+$$
+$$
+\sim \mat{
+1 & 1 & 0 &|& 5 & 0 & -2\\ 
+0 & 1 & 0 &|& 5 & 1 & -3\\ 
+0 & 0 & 1 &|& -2 & 0 & 1}
+\sim
+\mat{
+1 & 0 & 0 &|& 0 & -1 & 1\\ 
+0 & 1 & 0 &|& 5 & 1 & -3\\ 
+0 & 0 & 1 &|& -2 & 0 & 1}
+$$
+Merveilleux !  La matrice coefficients $A$ se réduit en la matrice identité $I_3$, ce qui 
+signifie que chaque système linéaire est compatible et admet une solution unique. De plus,
+la solution de chaque système est donnée par la colonne correspondante dans la partie augmentée de la matrice, c'est-à-dire :
+$$
+\vv_1 = \mat{0\\5\\-2}, \quad \vv_2=\mat{-1\\1\\0}, \quad \vv_3=\mat{1\\-3\\1}.
+$$
+Comme c'est le premier exemple, vérifions le résultat : si l'on note
+$$
+B = \mat{0 & -1 & 1\\ 
+ 5 & 1 & -3\\ 
+ -2 & 0 & 1}
+$$
+alors 
+$$
+AB =  \mat{1 & 1 & 2\\ 1 & 2 & 5\\ 2 & 2 & 5}\mat{0 & -1 & 1\\ 
+ 5 & 1 & -3\\ 
+ -2 & 0 & 1} = \mat{1 & 0 & 0\\0&1&0\\ 0 & 0 &1} = I_3
+$$
+et
+$$
+BA = \mat{0 & -1 & 1\\ 
+ 5 & 1 & -3\\ 
+ -2 & 0 & 1}\mat{1 & 1 & 2\\ 1 & 2 & 5\\ 2 & 2 & 5}
+= \mat{1 & 0 & 0\\0&1&0\\ 0 & 0 &1}\, = I_3.
+$$
+Donc OUI !  La matrice $B$ est bien l'inverse de $A$.
+D'où :
+$$
+A^{-1} =  \mat{0 & -1 & 1\\ 
+ 5 & 1 & -3\\ 
+ -2 & 0 & 1}\,.
+$$
+\end{mysol}\end{myprob}
+
+
+De plus, cette méthode a le bon goût de vous dire quand $A$ est n'est pas inversible !  
+En effet, si $A$ est une matrice $n\times n$ et qu'on voit qu'elle ne se réduit pas par rapport aux lignes en la matrice identité $I_n$, alors nécessairement $\rank(A) < n$, donc l'équation $A \xx = \bb$ n'admet pas de solution unique et on en déduit que $A$ ne peut pas être inversible par le Lemme \ref{lem: Matrice inversible et système lineaire}.\\
+
+Par contre, si $A$ se réduit par rapport aux lignes en $I_n$, alors cette méthode donne
+une matrice $B$ telle que $AB = I_n$.  MAIS ATTENDEZ !  Comment savons-nous que
+cette matrice $B$ satisfait également $BA = I_n$ ?
+
+
+\begin{lemma}[Les inverses unilatéraux sont des inverses bilatéraux]\index{les inverses unilatéraux sont des inverses bilatéraux}
+Si $A$ et $B$ sont deux matrices $n \times n$ telles que $AB = I_n$, alors on a aussi
+$BA = I_n$.
+\end{lemma}
+
+\begin{proof}
+Premi\`erement, montrons que $\rank(B) = n$.  Pour cela consid\'erons le syst\`eme $B\xx=\zero$.
+On a
+\begin{align*}
+A(B\xx) &= A\zero = \zero\\
+(AB)\xx &= I_n\xx = \xx\,.
+\end{align*}
+Ces deux lignes sont égales, donc $\xx=\zero$. On en déduit que
+$\ker(B) = \{\zero\}$ et ainsi $\rank(B) = n$.
+
+Cela signifie que nous pouvons appliquer notre algorithme ci-dessus à $B$ : $[B | I_n] \sim \cdots \sim [I_n | C]$, où $C$ est une matrice telle que $BC = I_n$.
+
+Nous avons donc
+\begin{align*}
+A(BC) &= AI_n = A\\
+(AB)C &= I_nC = C\,.
+\end{align*}
+Ces deux lignes sont égales, donc $A=C$. Il suit alors que $BA = BC = I_n$ comme voulu.
+\end{proof}
+
+Nous avons donc prouvé le théorème suivant :
+
+\begin{theorem}[Trouver l'inverse d'une matrice]\index{trouver les inverses des matrices}
+Soit $A$ une matrice $n \times n$.  Si $\rank(A) = n$,
+alors $A$ est inversible et son inverse $A^{-1}$ peut être calculé par l'algorithme ci-dessus, c'est-à-dire en réduisant par rapport aux lignes la matrice augmentée suivante :
+$$
+[A | I_n] \sim \cdots \sim [I_n | A^{-1}]\,.
+$$
+Par contre, si $\rank(A) < n$, alors $A$ \stress{n'est pas inversible}.
+\end{theorem}
+
+\newpage
+\section{Exemples}
+
+\begin{myprob} Trouvez l'inverse $A^{-1}$, s'il existe, de la matrice $A$ suivante :
+$$
+A = \mat{1 & 2 & 3 \\ 0 & 0 & 1\\ 0 & 0 & 4} \,.
+$$
+
+\begin{mysol} Nous voyons directement que le rang de $A$ n'est pas 3 : il ne peut pas y avoir
+de pivot dans la deuxième colonne.  Par conséquent, la matrice $A$ n'est pas inversible.
+\end{mysol}\end{myprob}
+
+\begin{myprob} Trouvez l'inverse $A^{-1}$, s'il existe, de la matrice $A$ suivante :
+$$
+A = \mat{1 & 2 & 3 \\ 0 & 1 & 1\\ 0 & 0 & 1}\,.
+$$
+
+\begin{mysol} Cette matrice est déjà sous forme d'une ME et nous pouvons voir que $\rank(A) = 3$.
+Nous poursuivons donc avec notre algorithme. On a
+$$
+[A|I_3] = \mat{1 & 2 & 3 &|&1&0&0\\ 0 & 1 & 1&|& 0&1&0\\ 0 & 0 & 1&|&0 & 0 & 1}
+\sim
+\mat{
+1 & 0 & 0 &|& 1 & -2 & -3\\ 
+0 & 1 & 0 &|& 0 & 1 & -1\\ 
+0 & 0 & 1 &|& 0 & 0 & 1}\,
+$$
+donc $A^{-1} = \scriptsize\mat{1 & -2 & -3\\ 
+ 0 & 1 & -1\\ 
+ 0 & 0 & 1}$. \end{mysol}\end{myprob}
+
+\begin{myprob} Trouvez l'inverse $A^{-1}$, s'il existe, de la matrice $A$ suivante :
+$$
+A = \mat{2 & 2 & 0 \\ 1 & 1 & 2\\ 1 & -1 & 3}\,.
+$$
+
+\begin{mysol}  Nous ne pouvons pas voir directement la valeur de $\rank(A)$, donc nous procédons simplement
+à l'algorithme de réduction par rapport aux lignes.  (Si à un moment donné nous constatons que le rang ne peut pas \^etre $n$ (le nombre de lignes ou de colonnes de $A$), alors
+nous nous arrêtons et nous annonçons de suite que la matrice n'est pas inversible.) On a
+$$
+[A|I_3] = \mat{
+2 & 2 & 0 &|& 1 & 0 & 0\\ 
+1 & 1 & 2 &|& 0 & 1 & 0\\ 
+1 & -1 & 3&|& 0 & 0 & 1}
+$$
+$$
+\sim \mat{
+1 & 1 & 2 &|& 0 & 1 & 0\\ 
+2 & 2 & 0 &|& 1 & 0 & 0\\ 
+1 & -1 & 3&|& 0 & 0 & 1}
+\sim
+\mat{
+1 & 1 & 2 &|& 0 & 1 & 0\\ 
+0 & 0 & -4 &|& 1 & -2 & 0\\ 
+0 & -2 & 1&|& 0 & -1 & 1}
+$$
+$$
+\sim \mat{
+1 & 1 & 2 &|& 0 & 1 & 0\\ 
+0 & -2 & 1&|& 0 & -1 & 1\\
+0 & 0 & -4 &|& 1 & -2 & 0}
+\sim \mat{
+1 & 0 & \frac52 &|& 0 & \frac12 & \frac12\\ 
+0 & 1 & -\frac12 &|& 0 & \frac12 & -\frac12\\
+0 & 0 & 1 &|& -\frac14 & \frac12 & 0}
+$$
+$$
+\sim \mat{
+1 & 0 & 0 &|& \frac58 & -\frac34 & \frac12\\ 
+0 & 1 & 0 &|& -\frac18 & \frac34 & -\frac12\\
+0 & 0 & 1 &|& -\frac14 & \frac12 & 0}\,.
+$$
+Donc $A$ est inversible, d'inverse :
+$$
+A^{-1} = \mat{
+  \frac58 & -\frac34 & \frac12\\ 
+ -\frac18 & \frac34 & -\frac12\\
+ -\frac14 & \frac12 & 0} = 
+\frac18\mat{
+5 & -6 & 4\\ 
+-1 & 6 & -4\\ 
+-2 & 4 & 0}\,.
+$$
+\end{mysol}\end{myprob}
+
+\section{Résumé : une autre condition pour notre grand théorème}
+
+Nous savons déjà qu'une matrice $A$ de taille $n\times n$ est inversible si et seulement si $\rank(A)=n$.
+Aussi, notre algorithme montre que la r\'eciproque est vraie.  Donc 
+notre grand Théorème \ref{thm:inv_charact} devient encore meilleur :
+
+\begin{theorem}[Caract\'eristiques des matrices inversibles]\index{grand théorème}
+Soit $A$ une matrice $n \times n$.  Alors les affirmations suivantes
+sont toutes équivalentes (c'est-à-dire qu'elles sont soit toutes vraies pour $A$, soit toutes
+fausses pour $A$) :
+\begin{enumerate}
+\item $\rank(A) = n$;
+\item $A\xx=\zero$ n'admet que la solution triviale $\xx=\zero$;
+\item $A\xx = \bb$ est compatible pour tout $\bb \in \R^n$;
+\item tout syst\`eme lin\'eaire $A\xx=\bb$ admet une solution unique;
+\item la MER de $A$ est $I_n$;
+\item $\ker(A) = \{\zero\}$;
+\item $\im(A) = \R^n$;
+\item $\row(A) = \R^n$;
+\item $\rank(A^T) = n$;
+\item les colonnes de $A$ sont linéairement indépendantes;
+\item les lignes de $A$ sont linéairement indépendantes;
+\item les colonnes de $A$ engendrent $\R^n$;
+\item les lignes de $A$ engendrent $\R^n$;
+\item les colonnes de $A$ forment une base de $\R^n$;
+\item les lignes de $A$ forment une base de $\R^n$;
+\item $A$ est inversible;
+\item $A^T$ est inversible.
+\end{enumerate}
+\end{theorem}
+
+\begin{myexample} Par exemple, chaque énoncé du théorème est vrai pour la matrice
+$$
+A = \mat{2 & 2 & 0 \\ 1 & 1 & 2\\ 1 & -1 & 3}
+$$
+car nous venons de voir qu'elle est inversible.
+\end{myexample}
+
+\begin{myexample} Chaque énoncé du théorème est faux pour la matrice
+$$
+A = \mat{1 & 2 & 3\\ 4 & 5 & 6\\ 7 & 8 & 9}\,.
+$$
+V\'erifiez-le!
+\end{myexample}
+

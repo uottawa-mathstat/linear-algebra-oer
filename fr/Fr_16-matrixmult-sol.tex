@@ -1,0 +1,231 @@
+
+
+\centerline{\bf  {Multiplication matricielle}} 
+
+
+\begin{sol}{prob14.1}
+
+
+(b) Écrivez le résultat du produit $\scriptsize\bmatrix 1&
+2\\ 3&6\endbmatrix \bmatrix a\\ b\endbmatrix$ comme une combination lin\'eaire des colonnes de $A=\scriptsize\bmatrix 1&
+2\\ 3&6\endbmatrix$.
+
+\soln $\bmatrix 1&
+2\\ 3&6\endbmatrix \bmatrix a\\ b\endbmatrix = a \bmatrix 1\\ 3\endbmatrix + b \bmatrix 2\\ 6\endbmatrix $.
+
+\medskip
+
+
+(d) Calculez le produit matriciel $\bmatrix a \\ b \endbmatrix \bmatrix c&d \endbmatrix$.
+
+\soln $\bmatrix a \\ b \endbmatrix \bmatrix c&d \endbmatrix= \bmatrix ac&ad\\ bc&bd\endbmatrix$.
+\medskip 
+ 
+
+
+(f) Soit $A=\bmatrix \cc_1&\cc_2 &\cc_3\endbmatrix$ une matrice $m\times 3$ donn\'ee en écriture par blocs colonnes, et $\xx=\scriptsize\bmatrix 2\\1\\ 4\endbmatrix$ un  vecteur de $\R^3$. Exprimez $A\xx$ comme une combination lin\'eaire de $\cc_1, \cc_2$ et $\cc_3$.
+\medskip
+
+\soln  
+$A\xx =2\cc_1 + \cc_2 + 4\cc_3$.
+
+\medskip 
+ 
+
+(h) Montrez que si $A=
+\bmatrix 0&1\\ 0&0\endbmatrix$, alors $A^2=\bmatrix0&0\cr 0&0\endbmatrix$. 
+
+\soln C'est simple! Calculez $A\,A$.
+\medskip 
+ 
+
+(j) Soit $C$ une matrice $m\times 4$ et $D  =\scriptsize\bmatrix 1&0&1\\0&1&1\\ 1&0&0\\0&0&0 \endbmatrix $. Exprimer les colonnes du produit $CD$ en fonction des colonnes de $C$.
+
+\soln Posons $C=\bmatrix \cc_1&\cc_2 &\cc_3& \cc_4\endbmatrix$, o\`u les $\cc_i$ sont les colonnes de $C$ (pour $i=1,\cdots,4$). Alors $$CD=\bmatrix \cc_1&\cc_2 &\cc_3& \cc_4\endbmatrix \bmatrix 1&0&1\\0&1&1\\ 1&0&0\\0&0&0 \endbmatrix=\bmatrix \cc_1+\cc_3&\cc_2 &\cc_1+\cc_2\endbmatrix $$
+\medskip
+ 
+
+(l) Trouvez toutes les valeurs $ (a,\ b,\ c)$ telle que $\scriptsize\bmatrix 1&
+2\\ 3&6\endbmatrix \bmatrix a&b\\ c&a\endbmatrix=\bmatrix0&0\cr 0&0\endbmatrix
+ $.
+\medskip
+
+
+\soln Comme  $\scriptsize\bmatrix 1&
+2\\ 3&6\endbmatrix \bmatrix a&b\\ c&a\endbmatrix= \bmatrix a+2c&
+b+2a\\ 3a+6c&3b+6a\endbmatrix$, ceci est la matrice nulle ssi $a,b,c$ sont solutions du système
+
+$$\begin{matrix}  
+a& & &+&2c&=&0\\
+2a & +&b& &    &=&0\\
+3a& & &+&6c&=&0\\ 
+6a & +&3b& &    &=&\,\,0\,. \end{matrix} $$ 
+La solution g\'en\'erale de ce syst\`eme est $(a,b,c)=(-2s, 4s, s), \; s\in \R$.
+\end{sol}
+
+
+\bigskip
+\begin{sol}{prob14.3} Pour chacun des énoncés suivants, indiquez s'il est (toujours) vrai
+ou s'il est (possiblement) faux.     Dans cet exercice, les matrices $A$, $B$ et $C$ sont de tailles adéquates de telle manière à ce que les produits et sommes à calculer soient bien définis.
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item Si vous dites que l'\'enonc\'e peut être faux, donnez un contre-exemple.   
+\item Si vous dites que l'\'enonc\'e est vrai, donnez une explication claire - en citant un théorème ou en donnant une {\it preuve valide dans tous les cas}. 
+\end{enumerate}
+\medskip
+
+(b) $C(A+B)=CA+CB$.
+
+\soln Vrai! C'est une propriété de la multiplication matricielle que nous avons vue.
+\medskip
+ 
+
+(d) $AB=BA$.
+
+\soln Faux, car par exemple
+
+$$\bmatrix 0&1\\ 0&0\endbmatrix\bmatrix 0&0\\ 1&0\endbmatrix=\bmatrix 1&0\\ 0&0\endbmatrix\not=\bmatrix 0&0\\ 0&1\endbmatrix=\bmatrix 0&0\\ 1&0\endbmatrix\bmatrix 0&1\\ 0&0\endbmatrix\,.$$
+\medskip
+ 
+
+(f)   Si $A^2=0$ pour une matrice carr\'ee $A$, alors $A=0$.
+
+\soln Faux. Voir la solution de la question \ref{prob14.1}.(h).
+\medskip
+
+ 
+\end{sol}
+
+
+\bigskip
+\centerline{\bf  {Applications aux systèmes linéaires}} 
+\begin{sol}{prob14.5}
+\'Ecrivez l'équation matricielle équivalente à chacun des systèmes linéaires suivants.
+\medskip
+
+(b) $$\begin{matrix} x&&&&&+&w&=&1\\
+x&&&+&z&+&w&=&0\\
+x&+&y&+&z&&&=&-3\\
+x&+&y&&&-&2w&=&2\,. \end{matrix} $$
+
+\soln $\bmatrix 
+1 & 0 & 0 & 1 \\
+ 1 & 0 & 1 & 1 \\
+ 1 & 1 & 1 & 0 \\
+ 1 & 1 & 0 & -2 \endbmatrix  \bmatrix x\\y\\ z\\w\endbmatrix = \bmatrix 1\\0\\ -3\\4\endbmatrix  $\,.
+\medskip
+
+ 
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob14.6}  Écrivez l'équation matricielle du système linéaire correspondant à chacune des matrices augmentées suivantes.
+\medskip
+
+(b) $ \bmatrix 1 & 0 & -1 &|&0 \\
+ 0 & 1 & 2 &|&0\\
+ 0 & 0 & 0&|&1 \\
+ 0 & 0 & 0 &|&0\endbmatrix$.
+
+\soln $ \bmatrix 
+1 & 0 & -1\\
+0 & 1 & 2\\
+0 & 0 & 0\\
+0 & 0 & 0 \endbmatrix \bmatrix x\\y\\ z\endbmatrix=
+\bmatrix 0\\0\\ 1\\0\endbmatrix$.
+\medskip
+ 
+
+(d) $\bmatrix  
+1 & 2 & 0 & 3 & 0 &|& 7 \\
+0 & 0 & 1 & 0 & 0 &|& 1 \\
+0 & 0 & 0 & 0 & 1 &|& 2 \endbmatrix$.
+
+\soln  $\bmatrix  
+1 & 2 & 0 & 3 & 0   \\
+0 & 0 & 1 & 0 & 0  \\
+0 & 0 & 0 & 0 & 1  \endbmatrix
+\bmatrix x\\y\\ z\\w\endbmatrix =\bmatrix 7\\1\\ 2\endbmatrix $.
+
+\medskip
+
+\end{sol}
+
+
+\bigskip
+\begin{sol}{prob14.7} Pour chacun des énoncés suivants, indiquez s'il est (toujours) vrai ou s'il est (possiblement) faux.     Les matrices dans cet exercice sont supposées être carrées.  
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item Si vous dites que l'\'enonc\'e peut être faux, donnez un contre-exemple.   
+\item Si vous dites que l'\'enonc\'e est vrai, donnez une explication claire - en citant un théorème ou en donnant une {\it preuve valide dans tous les cas}. 
+\end{enumerate}
+\medskip
+
+(b) Si $[A\,|\,\bb\,]$ est la matrice augmentée d'un système linéaire, alors on peut avoir $\rank (A)<\rank( [A\,|\,\bb\,])$.
+\medskip
+
+\soln Vrai. Dans ce cas le syst\'eme est incompatible. C'est le cas par exemple du syst\`eme $\scriptsize\bmatrix  0 & 1 &|& 0 \\
+ 0 & 0 &|& 1 \endbmatrix$.
+\medskip
+ 
+
+
+(d)  Si $[A\,|\,\bb\,]$ est la matrice augmentée d'un système linéaire et que  $\rank(A)=\rank ([A\,|\,\bb\,])$, alors le système est compatible. 
+ \medskip
+
+\soln Vrai. En effet, l'équation $A\xx=\bb$ est compatible si et seulement si $\rank (A)=\rank  [A\,|\,\bb\,]$.
+ 
+ 
+\medskip
+
+(f) Si $A$ est une matrice $m \times n$ telle que l'équation $A\xx=\zero$ admette une solution unique $\xx\in \R^n$, alors les colonnes de $A$ sont linéairement indépendantes.
+\medskip
+
+\soln Vrai. \'Ecrivez $A= \bmatrix \cc_1&\cc_2&\cdots &\cc_n\endbmatrix$ sous forme de blocs en colonne, et soit $\xx= \scriptsize\bmatrix x_1\\x_2\\ \vdots\\x_n\endbmatrix$. Alors $A\xx= x_1 \cc_1 + x_2 \cc_2 +\cdots +x_n\cc_n$. 
+Or, par hypothèse l'équation $A\xx=\zero$ admet une unique solution, $\xx=\zero$, donc l'égalité $x_1 \cc_1 + x_2 \cc_2 +\cdots +x_n\cc_n=\zero$ implique la solution triviale $x_1=x_2=\cdots=x_n=0$. Ainsi donc, l'ensemble $ \set{\cc_1, \cc_2, \dots, \cc_n }$ est linéairement indépendant.
+ 
+\medskip
+
+(h)  Si $A$ est une matrice $m \times n$ telle que l'équation $A\xx=\zero$ admette une infinité de solutions $\xx\in \R^n$, alors les colonnes de $A$ sont linéairement dépendantes.
+ 
+\medskip
+
+\soln Vrai. Voir la solution de la question (f). Si $A= \bmatrix \cc_1&\cc_2&\cdots &\cc_n\endbmatrix$ sous forme de blocs en colonne et que $\xx= \scriptsize\bmatrix x_1\\x_2\\ \vdots\\x_n\endbmatrix$, alors dire que $A\xx= x_1 \cc_1 + x_2 \cc_2 +\cdots +x_n\cc_n=0$ admet strictement plus qu'une solution entraine que les colonnes de $A$ sont lin\'eairement d\'ependantes.
+ 
+\medskip
+
+(j) Si $A$ est une matrice $6 \times 5$ telle que $\rank(A)=5$, alors $A\xx=\zero$ implique $\xx=\zero\in \R^5$.
+\medskip
+
+\soln Vrai, puisqu'il y aura un pivot dans chaque colonne de la MER de $A$, ce qui implique qu'il n'y a pas de paramètres dans la solution générale de l'équation $A\xx=\zero$. Donc $\xx=\zero$ est la seule solution possible. (On peut aussi raisonner comme suit: $\dim \ker A= \#\text{ colonnes de $A$ } -\rank (A)=5-5=0$ est \'equivalent \`a dire $\ker A=\set{\zero}$; c'est-\`a-dire, $A\xx=\zero$ implique que $\xx=\zero$.)
+\medskip
+ 
+
+(l) Si $A$ est une matrice $5 \times 6$ telle que $\rank(A)=5$, alors l'équation $A\xx=\bb$ est compatible pour chaque $\bb\in \R^5$.
+\medskip
+
+\soln Vrai, puisque pour chaque $b \in \R^5$, $\rank ([A\,|\,\bb\,])=5$. (Rappel: $A\xx=\bb$ est compatible ssi $\rank (A)=\rank ([A\,|\,\bb\,])$.) En fait, le rang de la matrice $[A\,|\,\bb\,]$ de de taille $5 \times 7$ ne peut pas être plus petit que $\rank (A)$ (qui est 5) et ne peut pas être plus grand que le minimum du nombre de lignes (5) et du nombre de colonnes (7). 
+\medskip
+ 
+
+(n) Si $A$ est une matrice $3 \times 2$ telle que $\rank(A)=1$, alors $A\xx=\zero$ implique $\xx=\zero\in \R^2$.
+\medskip
+
+\soln Faux. Par exemple, on a  $\rank \scriptsize\bmatrix 1 & 0  \\
+ 0 & 0 \\0 & 0 \endbmatrix=1
+ $, mais $A\xx=\zero$ admet une infinit\'e de solutions (car il y a une variable libre).
+\medskip
+ 
+
+(p) Les lignes d'une matrice de $19 \times 24$ sont toujours linéairement dépendantes.
+\medskip
+
+\soln Faux. Par exemple, posons $A= \bmatrix I_{19}&0\endbmatrix$, où la matrice nulle $0$ dans la d\'ecomposition en blocs est de taille $19 \times 25$. Les lignes de cette matrice sont en effet lin\'eairement indépendantes, puisqu'il s'agit des 19 premiers vecteurs de la base standard de $\R^{25}$.
+\medskip
+
+
+
+
+\end{sol}
+

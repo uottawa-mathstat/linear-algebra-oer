@@ -1,0 +1,302 @@
+\chapter{ Th\'eor\`emes sur la dimension}
+\label{chapter:Fr_11-dimensiontheorems}
+
+Dans le chapitre précédent, nous avons vu une \stress{inégalité intéressante} :
+
+\standout{ Taille de tout ensemble LI de $V$ \; $\leq$ 
+\; Taille de tout ensemble qui engendre $V$\,.} 
+
+De cet énoncé découlaient les propriétés et définitions suivantes : 
+\begin{itemize}
+	\item  \stress{Tous les ensembles linéairement indépendants qui engendrent}  $V$
+sont appelés \emph{bases} de $V$ et ils ont tous le même nombre de vecteurs. Ce nombre constant $n$ de vecteurs dans
+les bases est appelé la \stress{dimension} de $V$ et est noté $\dim(V)$.
+	\item Nous avons trouvé des bases pour un grand nombre d'\emph{espaces vectoriels} typiques, et nous avons également cherché des bases pour des \emph{sous-espaces vectoriels}.\\
+\end{itemize} 
+
+
+
+
+
+
+À partir de la définition de dimension, nous pouvons maintenant améliorer l'inégalité ci-dessus pour obtenir une \red{inégalité importante} :
+
+\standout{Taille de tout ensemble LI dans $V$ \; $\leq\,\dim V\,\leq\,$  
+ Taille de tout ensemble g\'en\'erateur de $V$\,.} 
+
+
+\section{Tout sous-espace d'un espace de dimension finie admet une base finie}
+
+Dans les chapitres précédents, nous avons montré les r\'esultats suivants :
+\begin{itemize}
+\item Si $\{\vv_1, \cdots, \vv_m\}$ est un sous-ensemble LI de $V$, alors il existe
+des vecteurs $\vv_{m+1}, \cdots, \vv_n$ dans $V$ tels que $\{\vv_1, \cdots, \vv_m, \vv_{m+1}, \cdots, \vv_n\}$ est une base pour $V$; \stress{c'est-à-dire que tout sous-ensemble linéairement indépendant de $V$ peut être étendu en une base de $V$.}
+\item Réciproquement, nous avons vu que si $S = \{\vv_1, \cdots, \vv_l\}$ est un ensemble gén\'erateur de $V$, alors il existe un sous-ensemble de $S$ qui est une base de $V$. Autrement dit, \stress{tout ensemble gén\'erateur peut être réduit en une base de $V$.}
+\end{itemize}
+
+\begin{remark}
+Dans un espace vectoriel de dimension \stress{infinie}, le processus d'ajout de vecteurs à votre ensemble LI pourrait ne jamais s'arrêter, puisqu'il pourrait arriver que vous
+ne puissiez pas engendrer cet espace par un nombre fini de vecteurs.  D'où notre
+restriction aux espaces vectoriels de dimensions \stress{finie}.  \end{remark}
+
+En théorie, cela signifie qu'on peut toujours trouver une base pour
+n'importe quel sous-espace $W$ de dimension finie : soit vous commencez avec un ensemble g\'en\'erateur (par exemple $W$ lui-même) qu'on réduit en une base, soit
+vous d\'ebutez par un ensemble de vecteurs non-nuls quelconques LI (par exemple $\{\ww\}$ avec $\ww\neq\zero$) qu'on \'etend en une base.  
+
+Mais en pratique, ce n'est pas si facile : cette méthode requiert des calculs intensifs...  (Nous y reviendrons
+bientôt !)
+
+
+
+\section{Un raccourci pour vérifier si un ensemble est une base}
+
+\begin{theorem}[Raccourci pour savoir si un ensemble est une base]\index{raccourci pour décider si un ensemble est une base}\label{Raccourci_bases}
+Soit $V$ un espace vectoriel de dimension finie $\dim(V) = n < \infty$.
+On a :
+\begin{enumerate}
+\item Tout ensemble LI $\{\vv_1, \cdots, \vv_n\}$ avec précisément $ n $ vecteurs de $V$ est une base de $V$ \stress{(c'est-à-dire, qu'il engendre aussi $V$ !);}
+\item Tout ensemble g\'en\'erateur $\{\vv_1, \cdots, \vv_n\}$ de $V$ constitué d'exactement $n $ vecteurs est une base de $V$ \stress{(c'est-à-dire, qu'il est aussi LI !);}
+\end{enumerate}
+\end{theorem}
+
+Ce théorème est très important ! Il indique que si vous connaissez déjà la dimension de $V$, vous disposez alors d'un raccourci pour trouver une base: il suffit de trouver un ensemble LI \emph{ou} un ensemble gén\'erateur avec le nombre EXACT de vecteurs. 
+
+\begin{proof}
+\begin{enumerate}
+\item Supposons que $\{\vv_1, \cdots, \vv_n\} \subseteq V$ soit LI avec exactement $n$ vecteurs distincts, et supposons 
+par l'absurde que $\{\vv_1, \cdots, \vv_n\}$ n'engendre pas $V$.
+Nous pouvons alors trouver un vecteur $\vv \in V$ tel que $\{\vv, \vv_1, \cdots, \vv_n\}$ soit LI (voir Th\'eor\`eme \ref{EnlargingLI}).
+C'est un ensemble LI avec $n+1$ vecteurs de $V$, et on obtient l'inégalité $\dim(V)=n < n+1$ qui contredit notre \red{inégalité importante} du début du chapitre...  Donc la supposition par l'absurde est fausse,
+notre ensemble engendre bien $V$ et il est donc une base.
+
+\item Supposons maintenant que $\spn\{\vv_1, \cdots, \vv_n\} = V$ mais que
+ $\{\vv_1, \cdots, \vv_n\}$ n'est \emph{pas} LI.  Ne pas être LI signifie être LD, donc on peut enlever au moins un vecteur sans affecter l'enveloppe lin\'eaire :
+il existe un sous-ensemble $S \subset \{\vv_1, \cdots, \vv_n\}$ avec au plus $n-1$ vecteurs tel que $\spn(S) = \spn\{\vv_1, \cdots, \vv_n\}=V$.  Mais alors l'inégalité $\dim(V)=n > n-1$ qui contredit notre \red{inégalité importante} du début du chapitre...  D'o\`u l'ensemble $\{\vv_1, \cdots, \vv_n\}$ est nécessairement LI et  c'est donc une base de $V$.
+\end{enumerate}
+\end{proof}
+
+\begin{myprob} Montrez que $\{(2,2,2), (7,1,-11)\}$ forme une base de $U = \{(x,y,z) | 2x-3y+z = 0\}$.  
+
+\begin{mysol}  Nous voyons que $U$ est un plan passant par l'origine, donc c'est un espace vectoriel de dimension $2$.  On peut facilement vérifier que les deux vecteurs donnés appartiennent bien \`a $U$ en les substituant dans l'\'equation du plan :
+$$
+2(2) -3(2) + 2 = 0 \qquad \text{et} \qquad 2(7)-3(1)+(-11) = 0.
+$$
+De plus, puisqu'il y a exactement deux vecteurs et qu'ils ne sont pas des multiples scalaires 
+l'un de l'autre, ils sont linéairement indépendants.  Au final :
+\begin{itemize}
+\item nous avons exactement deux vecteurs;
+\item ils appartiennent \`a un espace de dimension $2$;
+\item ils sont linéairement indépendants.
+\end{itemize}
+Donc, d'après le Théorème \ref{Raccourci_bases}, l'ensemble $\{(2,2,2), (7,1,-11)\}$ est une bien base de $U$.
+\end{mysol}\end{myprob}
+
+\begin{myprob} Étendre $\{(2,2,2), (7,1,-11)\}$ en une base pour $\R^3$.
+
+\begin{mysol} Nous savons que $\dim(\R^3) = 3$, et nous remarquons rapidement que ces deux vecteurs appartiennent bien à $\R^3$. Étant donné que l'ensemble $\{(2,2,2), (7,1,-11)\}$ est LI, 
+il suffit de trouver un vecteur $\vv\notin \sp{(2,2,2), (7,1,-11)}=U$, et on aura que $\{\vv, (2,2,2), (7,1,-11)\}$ sera LI et qu'ainsi que ce nouvel ensemble sera une base de $\R^3$ par le Théorème \ref{Raccourci_bases}.
+
+On cherche donc un vecteur $\vv=(x,y,z)$ qui ne satisfait pas la condition définissant $U$, par exemple $\vv = (1,0,0)$, et on obtient que $\{(1,0,0), (2,2,2), (7,1,-11)\}$ est une base de $\R^3$.
+\end{mysol}\end{myprob}
+
+\standout{Attention : on peut utiliser ce «~raccourci~»  \emph{uniquement} lorsque l'on connaît la dimension de $V$.}
+
+D'o\`u la question: comment faire pour connaître la dimension d'un espace vectoriel?
+
+
+\section{Dimension des sous-espaces de $V$}
+
+\begin{theorem} [Dimensions d'un sous-espace] \label{dimsubspaces}
+ Supposons que $\dim(V) = n$ et soit 
+$W$ un sous-espace de $V$.  Alors :
+\begin{enumerate}
+\item $0 \leq \dim(W) \leq \dim(V)$;
+\item $\dim(W) = \dim(V)$ si et seulement si $W=V$;
+\item $\dim(W)=0$ si et seulement si $W = \{\zero\}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}
+\item Prenez une base de $W$. Le nombre de vecteurs dans cette base est donc précisément $\dim(W)$ (qui est donc $\geq 0$ !), et ils sont bien sûr LI par définition. Donc par notre \red{inégalité importante}, on a $\dim(W) \leq \dim(V)$, ce qui conclut la preuve de ce point.
+
+\item Supposons que $\dim(W) = \dim(V)=n$.  Par hypothèse, on sait que $W\subseteq V$. Si par l'absurde on avait $W\neq V$,
+alors il existerait un vecteur $\vv \in V$ tel que $\vv \notin W$.
+Mais alors, en notant $\{\vv_1,\cdots,\vv_n\}$ une base de $W$, 
+l'ensemble $\{\vv, \vv_1,\cdots,\vv_n\}$ serait LI dans $V$
+avec exactement $n+1$ vecteurs, ce qui contredit l'\red{inégalité importante} pour $V$...
+On conclut alors que $W=V$. Réciproquement, si $W=V$, on a naturellement que leur dimension sont égales.
+
+\item Si $\dim (W)=0$ et que par l'absurde $W$ contenait un vecteur non-nul $\vv$, alors $\{\vv\}$ serait LI et par l'\red{inégalité importante} nous aurions une contradiction : $0 = \dim (W) \ge 1$... Ainsi $\dim (W)=0 \implies W=\set{\zero}$. Réciproquement, si $W=\set{\zero}$, alors nous avons par convention que $\dim(W)=0$.\footnote{Il existe deux autres façons de définir la dimension d'un espace vectoriel : (a) la considérer comme la taille du plus grand ensemble linéairement indépendant, ou (b) la taille du plus petit ensemble gén\'erateur. Non seulement ces définitions sont équivalentes à notre définition de dimension pour les valeurs $\geq1$, mais elles ont aussi le bon goût de bien se généraliser à la valeur $0$ : par exemple pour la définition (a), il est clair que le plus grand sous-ensemble de $\{\zero\}$ qui est LI est l'ensemble vide $\emptyset$, lequel est bien sûr constitué de $0$ vecteur. D'où $\dim\{\zero\}=0$. On peut aussi concilier cela avec la définition (b) si nous sommes tous d'accord sur le fait que l'enveloppe lin\'eaire engendr\'e par l'ensemble vide est $\set{\zero}$... Si cela vous semble trop bizarre, restez sur la définition (a) !}
+\end{enumerate}
+\end{proof}
+
+Ce théorème a d'importantes conséquences !
+
+\begin{myexample} En utilisant la partie (1) du théorème, on a que tout sous-espace de $\R^3$ a dimension $0$ ou $1$ ou $2$ ou $3$.  
+Cela correspond respectivement \`a: l'espace nul (partie (3) du théorème),
+les droites, les plans, $\R^3$ tout entier (partie (2) du théorème). \end{myexample}
+
+\begin{myexample} Le sous-espace de $\M_{2\times 2}(\R)$ qui a dimension $4$ est
+ $\M_{2\times 2}(\R)$ lui-même.   \end{myexample}
+
+\begin{myexample}
+Le seul sous-espace bi-dimensionnel de $U = \{(x,y,z) | 2x-3y+z = 0\}$ est $U$ lui-même.  \end{myexample}
+
+Ces deux derniers exemples illustrent une idée importante :
+
+\standout{Si $U$ est un sous-espace de $V$ tel que $\dim(U) = m$,
+alors pour tout sous-espace $W$ de $V$ tel que $W\subseteq U$, on a que $W$ est un sous-espace de $U$
+et qu'il a donc une dimension $\leq m$.}
+
+Autrement dit, nous n'avons pas besoin d'appliquer le théorème uniquement à nos « grands » espaces vectoriels $V$, mais aussi \`a nos sous-espaces.
+
+\section{Avantages de la dimension des sous-espaces}
+
+Au début de ce livre, nous avons parlé des droites et des plans
+dans $\R^2$ et $\R^3$ et nous nous sommes demandés quelles seraient leurs généralisations à
+$\R^n$.
+
+Nous avons proposé le concept général d'espace vectoriel, dont les sous-espaces
+de $\R^n$ en sont un exemple, et nous en avons déduit que les droites et les plans passant par
+l'origine sont des sous-espaces de $\R^2$ et $\R^3$. Aussi, en plus de l'espace nul $\{\zero\}$ et de l'espace tout entier, ces espaces sont \emph{les seuls} sous-espaces 
+de $\R^2$ et $\R^3$.
+
+Nous sommes donc d'accord sur le fait que les « sous-espaces » fournissent l'équivalent des « droites » et des « plans » en dimensions sup\'erieures
+ (du moins, les droites et plans qui passent par l'origine).
+
+\`A ce stade, nous savons qu'en dimension finie tout sous-espace admet une base et qu'en particulier, si $S$
+est une base de $U$, alors $U$ s'écrit $U = \spn(S)$.  En d'autres termes, nous pouvons
+décrire chaque sous-espace en utilisant des équations paramétriques qui peuvent être vues comme des «~analogues en dimensions sup\'erieures~» des
+équations paramétriques que nous avons l'habitude de manipuler pour une droite ou pour un plan.
+
+De plus, nous avons vu comment mesurer la «~taille~» d'un sous-espace (à savoir, par sa \stress{dimension}), et nous pouvons ainsi classifier tous les sous-espaces possibles
+d'un espace vectoriel en utilisant leur dimension. Par exemple:
+\begin{itemize}
+	\item dans $\R^n$, il existe des sous-espaces de dimension $0$, $1$, ... jusqu'à $n$ compris;
+	\item dans $\PP_n$, il existe des sous-espaces de dimension $0$, $1$, ... jusqu'à $n+1$ compris;
+	\item dans $M_{m\times n}(\R)$, il existe des sous-espaces de dimension $0$, $1$, ... jusqu'à $m\,n$ compris.\\
+\end{itemize}
+
+Ainsi, la première étape pour passer de la géométrie aux dimensions supérieures est déjà \'etablie. Passons aux autres étapes.
+
+\section{Avantages des bases d'un sous-espace : partie I}
+
+Alors, à quoi sert une base concrètement ?  Dans le chapitre précédent, nous avons \'evoqu\'e une 
+application très importante, à savoir qu'on a l'intuition que tout
+plan passant par l'origine dans $\R^3$ peut \^etre «~identifi\'e~» avec $\R^2$ : ils ont la même apparence et géométriquement ils correspondent au même type d'objet. Mais pour avoir une explication algébrique, c'est tout un défi !
+
+\begin{myprob} Considérons le plan $U = \{ (x,y,z) | x-4y+z = 0\}$ dans $\R^3$.
+Montrez que $$\{(2/3,1/3,2/3), (1/\sqrt{2},0,-1/\sqrt{2})\}$$ est
+une base de $U$ et que ces deux vecteurs sont
+orthogonaux et de norme 1.  (Nous appellerons une telle base
+une \stress{base orthonormale}, cf. Chapitre ~\ref{chapter:Fr_22-orthogproj}).   
+
+\begin{mysol}  Comme précédemment, il est facile de vérifier que ces deux
+vecteurs appartiennent \`a $U$ et sont LI, donc comme $\dim(U)=2$, ceci qui implique qu'ils forment une base de $U$. Ensuite, on calcule leur produit scalaire, on voit qu'il donne $0$ et on en déduit qu'ils sont donc orthogonaux.  Enfin, on calcule leur
+norme et on voit qu'elles sont bien égales à $1$. D'où le résultat.
+
+(Rappelons que $\Vert (x,y,z) \Vert = \sqrt{x^2+y^2+z^2}$.)\end{mysol}\end{myprob}
+
+
+Une base \emph{orthonormale} est un peu spéciale car elle a des propriétés en commun la base standard de $\R^n$.  Donc on peut voir une base orthonormale un peu «~comme~» une base standard de $U$.
+
+En guise d'application, supposons que l'image d'un chat dessinée dans le plan $\R^2$,
+et disons que le coin inférieur gauche est à l'origine et que le coin supérieur droit a pour coordonnées $(640,480)$, de sorte que
+que chaque paire de coordonnées corresponde à un pixel.
+On peut alors projeter notre image sur le plan $U$ en envoyant le point $(a,b)$ de $\R^2$ sur le point suivant de $U$ :
+$$
+  a\mat{2/3\\1/3\\2/3} + b\mat{1/\sqrt{2}\\0\\-1/\sqrt{2}}\,.
+$$
+Si vous voulez changer la couleur d'un pixel sur la nouvelle image dans $U$, donnez la nouvelle couleur
+du pixel de coordonnées $(a,b)$ puis coloriez le point correspondant
+$(x,y,z)$ de $\R^3$ décrit par la relation ci-dessus.
+\qed
+
+Mais cela soulève davantage de questions: comment obtient-on une telle 
+base standard pour $U$ ?  Est-ce possible de l'obtenir dans tous les espaces espaces vectoriels, même lorsqu'on n'est pas dans le cas de $\R^n$? Et
+qu'en est-il des dimensions supérieures ?  Nous verrons une partie des réponses plus loin dans ce livre.
+
+\section{Avantage des bases d'un sous-espace: partie II}
+
+Nous allons voir une application encore plus merveilleuse des bases. Mais tout d'abord, nous avons besoin d'une définition.
+
+\begin{definition} Une {\it base ordonnée} $\set{\vv_1,\cdots, \vv_n}$ est l'ensemble $\set{\vv_1,\cdots, \vv_n}$ avec l'ordre pr\'ecisé des vecteurs.
+
+\end{definition}
+\begin{myexample} La base ordonnée $\set{(1,0), (0,1)}$ de $\R^2$ n'est pas la même que la base ordonnée. $\set{ (0,1), (1,0)}$\footnote{Même si, {\it en tant qu'ensembles}, $\set{(1,0), (0,1)}= \set{ (0,1), (1,0)}$, puisque les deux côtés ont exactement les mêmes vecteurs en eux. } L'ordre des vecteurs compte dans cette définition!
+\end{myexample}
+
+\begin{theorem}[Coordonnées]\index{coordonn\'ees}
+Soit $\mathcal B = \{\vv_1,\cdots, \vv_n\}$ une base {\it ordonnée} d'un espace vectoriel $V$.  Alors, pour tout vecteur $\vv \in V$, il existe des scalaires  \emph{uniques} $x_1, \cdots, x_n \in \R$ tels que 
+$$
+\vv = x_1\vv_1 + \cdots + x_n\vv_n.
+$$
+Le $n$-uplet $(x_1,x_2, \ldots, x_n)$ est appelé \defn{coordonnées de
+$\vv$ dans la base ordonnée $\mathcal B$}.
+\end{theorem}
+
+\begin{proof}
+Ce n'est pas difficile à prouver!  
+\begin{itemize}
+	\item Existence : puisque $\mathcal B$ engendre $V$, vous pouvez 
+écrire tout vecteur de $V$ comme une combinaison linéaire des vecteurs de $\mathcal B$. 
+	\item Unicité : supposons qu'on a deux expressions de ce type, disons $\vv = x_1\vv_1 + \cdots + x_n\vv_n$ et $\vv = y_1\vv_1 + \cdots + y_n\vv_n$, et prouvons qu'elles sont en fait identiques.
+Prenons la diff\'erence entre ces deux expressions pour avoir $\vv-\vv = \zero$ :
+$$
+(x_1-y_1)\vv_1 + \cdots + (x_n-y_n)\vv_n = \zero\,.
+$$
+Mais $\mathcal B$ est LI, donc cette relation est triviale et chacun des coefficients doit être nul, ce qui
+donne $x_i = y_i$ pour tout $i$.  D'o\`u l'unicité.
+\end{itemize}
+\end{proof}
+
+Nous pouvons utiliser ce théorème pour \emph{identifier} des espaces vectoriels de dimension $m$ à $\R^m$, 
+tout comme nous avions identifié l'espace vectoriel bi-dimensionnel $U$ avec $\R^2$.
+
+L'idée est que nous avons la correspondance suivante :
+
+\begin{center}
+\begin{tabular}{ccc}
+$V$ &$\leftarrow \kern-.1em\rightarrow$ &$\R^n$ \\ 
+$\vv = x_1\vv_1 + \cdots + x_n\vv_n$ & $\leftarrow \kern-.1em\rightarrow$ & $(x_1,x_2, \ldots, x_n)$ \,.
+\end{tabular}
+\end{center}
+
+\begin{example}
+En choisissant la base ordonnée $B=\Big\{{\scriptsize\bmatrix 1&0\\0&0\endbmatrix, \bmatrix 0&1\\0&0\endbmatrix,\bmatrix 0&0\\1&0\endbmatrix,\bmatrix 0&0\\0&1\endbmatrix }\Big\}$ (la base dite «~standard ordonnée~») de $\M_{22}(\R)$, 
+nous avons la correspondance suivante :
+
+\begin{center}
+\begin{tabular}{ccc}
+$\M_{22}(\R)$  &$\leftarrow \kern-.1em\rightarrow$&  $\R^4$ \\ 
+$\mat{a&b\\c&d}$&$\leftarrow \kern-.1em\rightarrow$ & $(a,b,c,d)$\,.
+\end{tabular}
+\end{center}
+\end{example}
+
+\begin{example}
+En choisissant $B = \left\{\mat{1&0\\0 & -1}, \mat{0&1\\0&0}, \mat{0&0\\1&0}\right\}$ comme base ordonnée pour $\sl_2$, nous avons la correspondance suivante :
+
+\begin{center}
+\begin{tabular}{ccc}
+$\sl_2 $ &$\leftarrow \kern-.1em\rightarrow$& $\R^3$ \\ 
+$\mat{a&b\\c&-a}$&$\leftarrow \kern-.1em\rightarrow$ & $(a,b,c)$\,.
+\end{tabular}
+\end{center}
+\end{example}
+
+\begin{example}
+En choisissant la base standard ordonnée $\set{1, x, x^2}$ pour $\PP_2$, nous avons la correspondance suivante :
+
+\begin{center}
+\begin{tabular}{ccc}
+$\PP_2$ &$\leftarrow \kern-.1em\rightarrow$& $\R^3$ \\ 
+$a+bx+cx^2$&$\leftarrow \kern-.1em\rightarrow$ & $(a,b,c)$\,.
+\end{tabular}
+\end{center}
+\end{example}
+
+\standout{Attention : notez que l'ordre des vecteurs dans les bases ordonnées est important !  Si nous avions plutôt choisi $B = \{ x^2,x,1\}$ comme base ordonnée pour $\PP_2$, nous aurions obtenu les coordonnées $(c,b,a)$ au lieu de $(a,b,c)$ dans $\R^3$, ce qui pourrait prêter à confusion...  D'où l'importance de toujours garder l'ordre à l'esprit!}
+
+

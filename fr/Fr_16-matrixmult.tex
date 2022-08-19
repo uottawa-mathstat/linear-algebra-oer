@@ -1,0 +1,445 @@
+\chapter{Multiplication matricielle}
+\label{chapter:Fr_16-matrixmult}
+  
+
+Nous avons vu comment utiliser les matrices pour résoudre des systèmes linéaires.  Nous avons également vu deux fa\c{c}ons complètement différentes d'interpr\'eter une matrice augmentée: on peut la voir d'une part comme représentant les coefficients
+d'un système linéaire, ou d'autre part comme représentant des vecteurs de $\R^m$.  Pour établir réellement
+le lien entre ces deux points, nous devons 
+introduire la notion de \emph{multiplication matricielle}. On aura alors un outil puissant pour répondre aux questions que nous avons soulevées à propos 
+des espaces vectoriels dans la première partie de ce livre.
+
+La multiplication matricielle apparaît en effet comme un outil-clé non seulement dans les systèmes linéaires, mais aussi dans un grand nombre d'applications très concrètes.  Les matrices se pr\'esentent de fa\c{c}on très naturelle dans les domaines suivants :
+\begin{itemize}
+\item en probabilité, avec les matrices de transition des cha\^ines de Markov; 
+\item en économie, dans le cadre du modèle d'entrée-sortie de Leontief;
+\item en géométrie;
+\item en théorie quantique;
+\item en équations différentielles linéaires;
+\item en algèbre linéaire, dans les espaces vectoriels, pour tracer des combinaisons linéaires.
+\end{itemize}
+La raison principale pour laquelle les matrices sont si polyvalentes est qu'il existe de nombreuses
+façons de les interpr\'eter :
+\begin{itemize}
+\item comme un tableau de nombres;
+\item comme une collection de vecteurs écrits en lignes;
+\item comme une collection de vecteurs écrits en colonnes;
+\item comme des \og\ nombres généralisés\ \fg\ qu'on peut aussi additionner et multiplier !
+\end{itemize}
+
+\section{Comment multiplier des matrices?}
+
+La multiplication matricielle est une généralisation de la multiplication habituelle des nombres; l'idée étant de multiplier selon \og plusieurs entr\'ees\ \fg\ en même temps.
+
+\begin{myexample}
+Imaginez que vous déteniez une compagnie et que vous deviez payer chaque employé. Pour connaître les dépenses que vous faîtes chaque semaine pour payer le salaire de vos employés, vous calculez d'abord le salaire hebdomadaire de chaque employé :
+$$
+(\textrm{dollars/heure}) \times (\textrm{heures/semaine}) = \textrm{dollars/semaine},
+$$
+puis vous faites la somme des salaires hebdomadaires de tous les employés.
+
+Supposons que vous ayez maintenant davantage d'informations à consid\'erer :
+\begin{itemize} 
+\item Des salaires différents selon les postes. Les lignes correspondent aux différents postes (caissier et magasinier), les colonnes correspondent aux noms des employ\'es (Alice, Bob et Charlie), et les entrées
+représentent le salaire horaire de chaque employé à son poste :
+$$
+W = \mat{ 12 & 10 & 14 \\ 8 & 8 & 10}\,.
+$$
+\item Des horaires différentes aux différents postes selon les employés.  Les lignes correspondent aux employés (Alice, Bob et Charlie), les colonnes correspondent à la semaine travaill\'ee (semaine 1 et semaine 2), et les entrées sont le nombre d'heures travaillées par chaque employé chaque semaine:
+$$
+H = \mat{10 & 0 \\ 10 & 10 \\ 5 & 10}\,.
+$$
+\end{itemize}
+Vous pouvez alors calculer l'argent total que vous avez dépensé pour tous vos employés chaque semaine, en fonction de leurs postes.  Dans la matrice du résultat final, les lignes sont les différents postes (caissier, magasinier), les colonnes sont les différentes semaines (semaine 1, semaine 2), et les entrées sont le coût total pour chaque emploi chaque semaine :
+\begin{align*}
+C = WH & =  \mat{ 12 & 10 & 14 \\ 8 & 8 & 10} \mat{10 & 0 \\ 10 & 10 \\ 5 & 10} \\
+&= \mat{12\times 10+10\times 10+14\times 5  &  12\times0+10\times 10+14\times 10\\
+8\times 10 + 8 \times 10 + 10\times 5 & 8 \times 0 + 8 \times 10 + 10 \times 10}
+\\
+&= \mat{290 & 240\\
+210 & 180} \,.
+\end{align*}
+Par exemple, on déduire de ce résultat que 290 \$ ont été dépensés la semaine 1  pour les postes de caissiers, et que 240 \$ ont été
+dépensés durant la semaine 2 pour les postes de caissiers.   
+
+Remarques :
+\begin{itemize}
+\item Nous avons organisé les choses de sorte que les lignes de la réponse correspondent
+aux lignes de la première matrice, les colonnes de la réponse correspondent
+aux colonnes de la seconde matrice et la variable par rapport \`a laquelle nous avons additionné (ici, les employés) correspondait, dans le même ordre, à la fois aux colonnes de la première matrice et aux lignes de la deuxi\`eme.
+\item Pour calculer l'entrée $(i,j)$, notez que nous avons en fait calculé le \stress{produit scalaire} de la $i$-\`eme ligne de la première matrice avec la $j$-\`eme colonne de la deuxième matrice.
+\end{itemize}
+\end{myexample}
+
+Cet exemple permet d'illustrer la raison pour laquelle la multiplication matricielle est définie d'une manière qui peut sembler assez étrange au premier abord :
+
+\begin{definition}
+Soient $A$ une matrice $m \times n$ et $B$ une matrice $n \times p$.
+Le \defn{produit (matriciel)} $AB$ est la matrice $m\times p$ dont l'entrée $(i,j)$
+est le \stress{produit scalaire} de la $i$-ème ligne de $A$ avec la $j$-ème colonne de $B$.
+
+Autrement dit, si $A$ et $B$ s'écrivent $A = [a_{ij}]$ et $B = [b_{ij}]$, alors $AB$ s'écrit $AB = [\cc_{ij}]$
+pour les $\cc_{ij}$ suivants : 
+$$
+\cc_{ij} = \sum_{k=1}^n a_{ik}b_{kj} = [a_{i1} \; a_{i2} \; \cdots \; a_{in}]\mat{b_{1j}\\b_{2j}\\ \vdots \\ b_{nj}}\,.
+$$
+
+En particulier, «~$AB$~» n'a de sens que si le nombre de colonnes de $A$ est égal au nombre de lignes de $B$.
+\end{definition}
+
+\begin{myexample}
+$$
+\mat{1 & 2 & 3\\ 4 & 5 & 6} \mat{x\\y\\z} = \mat{x+2y+3z\\ 4x+5y+6z}
+= x\mat{1\\4} + y\mat{2\\5} + z\mat{3\\6}\,.
+$$
+C'est-à-dire que ce type de produit matriciel peut être considéré pour repr\'esenter d'une fa\c{c}on courte un
+système linéaire \stress{ou} une expression d'une combinaison linéaire.
+\end{myexample}
+
+\begin{myexample}
+$$
+\mat{1 & 2 & 3}\mat{a & b \\ c & d \\ e & f} = \mat{a+2c+3e & b+2d+3f} = 
+1\mat{a & b} + 2\mat{c&d} + 3\mat{e&f}\,.
+$$
+Donc de cette façon, ce produit matriciel donne une combinaison linéaire des lignes de la matrice.
+\end{myexample}
+
+
+\section{Quelques propriétés étranges de la multiplication matricielle}
+
+Tout d'abord, notez quelque chose d'inhabituel :
+
+\begin{myexample} Soit $A = \mat{1 & 2 \\ 3& 4}$ et $B = \mat{1 & 2 & 3\\ 4&5&6}$.
+Alors comme $A$ est de taille $2\times 2$ et $B$ est de taille $2\times 3$, le
+produit est de taille $2\times 3$ et est égal à
+$$
+AB = \mat{1 & 2 \\ 3& 4}\mat{1 & 2 & 3\\ 4&5&6} = \mat{9 & 12 & 15\\ 19 & 26 & 33}
+$$
+mais $BA$ \stress{n'est pas définie}, car le nombre de colonnes de $B$
+n'est pas le même que le nombre de lignes de $A$.
+\end{myexample}
+
+\standout{Parfois vous pouvez calculer $AB$ mais pas $BA$ !}
+
+Encore pire :
+
+\begin{myexample}
+Soient $A = \mat{1 & 2 \\ 3& 4}$ et $B = \mat{0&1\\1&0}$.
+Alors
+$$
+AB = \mat{1 & 2 \\ 3& 4}\mat{0&1\\1&0}=\mat{2&1\\ 4&3}
+$$
+mais 
+$$
+BA = \mat{0&1\\1&0}\mat{1 & 2 \\ 3& 4}=\mat{3&4\\1&2}\,.
+$$
+Donc $AB\neq BA$.
+\end{myexample}
+
+\standout{Même lorsque vous ÊTES capable de calculer à la fois $AB$ et $BA$, il peut arriver (cela arrive souvent) que $AB \neq BA$ !  }
+
+En d'autres termes : on dit que le produit matriciel est \emph{non-commutatif}.
+
+
+\begin{myexample}
+Soient $A =\scriptsize \mat{1 \\2 \\3}$ et $B =\scriptsize \mat{4\\5\\6}$ deux matrices à $1$ colonne
+(aussi appelées vecteurs).  Rappelez-vous de la définition de la transpos\'ee \ref{transpose} d'une matrice, qui permet d'échanger
+lignes et les colonnes.  Alors :
+\begin{itemize}
+\item la matrice $AB$ n'est pas définie;
+\item la matrice $BA$ n'est pas définie;
+\item $A^T \; B = \scriptsize\mat{1&2&3}\mat{4\\5\\6} = \mat{32} = 32$  \footnote{Nous identifions toujours une matrice $1\times 1$, $\mat{a}$, avec sa seule entrée, $a$ (c'est un scalaire).}, qui est en fait le produit scalaire des deux vecteurs;
+\item $B^T \; A = \scriptsize\mat{4&5&6}\mat{1 \\2 \\3} = 32$ s'interpr\`ete de même (ce qui est bien, 
+puisque nous savions déjà que le produit scalaire ne dépend pas de l'ordre des vecteurs);
+\item $AB^T = \scriptsize\mat{1 \\2 \\3}\mat{4&5&6} = \mat{4 & 5 & 6\\ 8 & 10 & 12\\ 12 & 15 & 18}$ n'a absolument rien à voir avec le produit scalaire !  Nous l'appelons le \stress{produit tensoriel}.
+\end{itemize}
+\end{myexample}
+
+
+Il y a davantage de propri\'et\'es étranges qui émanent de la multiplication matricielle :
+
+\begin{myexample}\label{prod-is-0}
+Soient $C = \mat{1 & -1\\-1&1}$ et $D = \mat{1 & 2\\ 1& 2}$.  Alors :
+$$
+CD =  \mat{1 & -1\\-1&1} \mat{1 & 2\\ 1& 2} = \mat{0&0\\0&0}\,.
+$$
+Donc $CD = 0$, la matrice nulle, et pourtant aucune des matrices $C$ et $D$ n'est la matrice nulle.
+\end{myexample}
+
+\standout{Parfois, même si on $A\neq0$ ET $B\neq0$, on a quand même le produit qui est nul : $AB=0$.}
+
+\begin{myexample}
+Soient $A = \mat{4 & -1\\ 1 & 1}$, $B = \mat{1 & 0 \\ 7 & -1}$ et $C = \mat{1 & 2\\ 3 & 6}$.  Alors
+$$
+AC = \mat{4 & -1\\ 1 & 1}\mat{1 & 2\\ 3 & 6} = \mat{1&2\\ 4&8}
+$$
+et
+$$
+BC = \mat{1 & 0 \\ 7 & -1}\mat{1 & 2\\ 3 & 6} = \mat{1 & 2\\ 4& 8}\,.
+$$
+Donc  $AC = BC$ mais $A \neq B$!  \end{myexample}
+
+\standout{Il se peut que $AC=BC$ avec $C \neq 0$ sans que $A = B$.  En d'autres termes, on ne peut pas «~diviser par $C$~» dans certains cas même si $C \neq 0$.}
+
+
+\section{Quelques bonnes propriétés de la multiplication matricielle}
+
+Notez d'abord que la transpos\'ee des matrices satisfait les propri\'et\'es suivantes:
+\begin{itemize}
+\item $(A+B)^T = A^T + B^T$;
+\item $(kA)^T = kA^T$ pour tout scalaire $k\in\R$;
+\item $(A^T)^T = A$.\\
+\end{itemize}
+Pour la suite, définissons une matrice un peu spéciale, appelée la \defn{matrice identité} :
+$$
+I_2 = \mat{1&0\\0&1}, \quad I_3 = \mat{1&0&0\\0&1&0\\0&0&1}, \quad
+I_4 = \mat{1&0&0&0\\0&1&0&0\\0&0&1&0\\0&0&0&1}\,,
+$$
+et ainsi de suite pour définir $I_n$ pour tout $n\geq1$. Ce sont toujours des matrices carrées.
+Rappelons aussi la définition de la matrice nulle :
+$$
+0_{2\times 2} = \mat{0&0\\0&0}, \quad 0_{2\times3}= \mat{0&0&0\\0&0&0},
+\quad 0_{3\times 2} = \mat{0&0\\0&0\\0&0}\,.
+$$
+Notez que la matrice nulle peut désigner une matrice rectangulaire.
+Listons quelques propriétés du produit matriciel.  
+
+\begin{theorem}[Propriétés du produit matriciel]\index{propri\'et\'es du produit matriciel}
+Soient $A,B$ et $C$ des matrices, et soit $k$ un scalaire.  Alors, tant que ces op\'eration sont d\'efinies (c'est-à-dire tant que les matrices ont des tailles adéquates), on a toujours :
+\begin{enumerate}
+\item $(AB)C = A(BC) \quad$ (associativit\'e);
+\item $A(B+C) = AB + AC \quad$(distributivit\'e \`a droite);
+\item $(B+C)A = BA + CA \quad$(distributivit\'e \`a gauche);
+\item $k(AB) = (kA)B = A(kB)$;
+\item $(AB)^T = B^TA^T$  (notez que l'ordre a \'et\'e INVERS\'E !);
+\item $A\,I_n = A$ et $I_nB = B$;
+\item Si $A$ est de taille $m\times n$, alors $A0_{n\times p} = 0_{m\times p}$ et
+$0_{q\times m}A = 0_{q\times n}$.  
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(1) : Écrivez $A = [a_{ij}]$, $B = [b_{ij}]$ et $C = [\cc_{ij}]$.  Supposons que
+$A$ soit de taille $m\times n$, $B$ soit de taille $n \times p$ et $C$ soit de taille $p \times q$.
+Alors l'entrée $(i,j)$ de $(AB)C$ est
+$$
+\sum_{l=1}^p(\sum_{k=1}^n a_{ik}b_{kl})\cc_{lj}
+$$
+et l'entrée $(i,j)$ de $A(BC)$ est
+$$
+\sum_{k=1}^n a_{ik}(\sum_{l=1}^pb_{kl}\cc_{lj});
+$$ 
+ces deux sommes sont égales, d'où l'égalité des matrices. 
+
+(2)-(4) : Exercice.
+
+(5) : Notons d'abord que le changement d'ordre était nécessaire : si $A$ est de taille $m\times n$ et $B$ est de taille $n\times p$, alors $AB$ est toujours bien défini mais $A^TB^T$ ne l'est pas toujours.
+Maintenant, l'entrée $(i,j)$ de $AB$ est le produit scalaire de la $i$-ème ligne de $A$ 
+avec la $j$-ème colonne de $B$. C'est donc l'entrée $(j,i)$ de $(AB)^T$.
+D'une autre part, l'entrée $(i,j)$ de $B^TA^T$ est le produit scalaire de la $j$-ème ligne de
+$B^T$ (qui est la $j$-ème colonne de $B$) avec la $i$-ème colonne de $A^T$ 
+(qui est la $i$-ème ligne de $A$).  Puisque l'ordre des vecteurs dans le 
+\stress{produit scalaire} n'a pas d'importance, il s'ensuit que ces entrées $(i,j)$ sont égales et que donc ces matrices sont égales.
+
+(6)-(7):  Exercice.
+\end{proof}
+
+\begin{myexample} On considère $A = \mat{a & b & c\\ d&e&f}$. Alors :
+$$
+A\, I_3 = \mat{a & b & c\\ d&e&f}\mat{1&0&0\\0&1&0\\0&0&1} = \mat{a & b & c\\ d&e&f}
+$$
+et
+$$
+I_2\,A = \mat{1&0\\0&1}\mat{a & b & c\\ d&e&f}=\mat{a & b & c\\ d&e&f}\,.
+$$
+Donc la taille de la matrice identité, qui repr\'esente l'\'el\'ement neutre du produit matriciel, dépend de la taille de $A$ \stress{et} du côté duquel vous effectuez la multiplication.
+\end{myexample}
+
+
+Ces propriétés nous permettent d'effectuer de nombreuses manipulations algébriques qui sont similaires à celles que nous faisons avec les nombres réels.
+
+\begin{myprob}
+Simplifiez l'expression $(A+B)(C+D)$.
+
+\begin{mysol}
+On a $(A+B)(C+D) = (A+B)C + (A+B)D$ par distributivité à droite, puis c'est égal à $AC + BC + AD + BD$ par distributivité à gauche.
+\end{mysol}\end{myprob}
+
+Il faut cependant faire attention!
+
+\begin{myprob} Simplifiez l'expression $(A+B)(A-B)$.
+
+\begin{mysol} On d\'eveloppe pour avoir $A^2 + BA - AB - B^2$.  Ce n'est PAS $A^2-B^2$ puisque
+il est fort probable que $AB \neq BA$. Ici, nous avons adopté les notations suivantes :$A^2=A\, A$ et $B^2=B\,B$.
+\end{mysol}\end{myprob}
+
+\begin{myprob} Simplifiez l'expression $AC = BC$, si possible.
+
+\begin{mysol} Il n'y a rien à simplifier! On pourrait réécrire ceci comme $AC-BC = 0$ ou bien $(A-B)C = 0$, mais nous ne pouvons pas conclure que $A=B$ ou que $C=0$, puisque nous avons déjà vu que deux matrices non-nulles peuvent donner la matrice nulle si on les multiplie (voir Exemple \ref{prod-is-0}).
+\end{mysol}\end{myprob}
+
+\standout{ATTENTION : ces opérations vous permettent d'effectuer la plupart des opérations algébriques simples, mais elles ne vous permettent pas de simplifier des matrices (de manière multiplicative) ni de diviser par une matrice. Pour pouvoir diviser par une matrice, r\'ef\'erez-vous à l'\stress{inverse matriciel} défini dans le Chapitre \ref{chapter:Fr_20-inverses}.}
+
+
+\section{Choses étonnantes sur la multiplication matricielle}
+
+La multiplication matricielle a également des aspects étonnants.  Ce qui suit est une application du théorème de Cayley-Hamilton,
+par exemple.
+
+  
+Considérons une matrice $A$ de taille $2\times 2$ (une telle 
+matrice est d'ailleurs dite \defn{matrice carrée} car elle a autant de lignes que de colonnes). Donc on peut définir $A^2=AA$ et  $A^3 = AAA$ etc. (Notez que si $A$ n'était pas carrée, alors $A^2$ ne serait même pas définie).
+Ainsi, par exemple, si 
+$$
+A = \mat{1 & 2 \\ 2&0}\,,
+$$
+alors 
+$$A^2 =  \mat{1 & 2 \\ 2&0} \mat{1 & 2 \\ 2&0} = \mat{5&2\\2&4}
+$$
+et
+$$
+A^3 = \mat{1 & 2 \\ 2&0}\mat{5&2\\2&4} = \mat{9&10\\10&4}\,.
+$$
+Rappelons maintenant que $\tr(A)$, la trace de $A$, est la somme des entrées de la diagonale de $A$.  Donc dans notre exemple $\tr(A) = 1$.  On d\'efinit le d\'eterminant d'une matrice $C=\scriptsize\mat{a&b\\c&d}$, not\'e $\det(C)$, par $ad-bc$ qui est un scalaire. Dans notre exemple, on a  $\det(A)=-4$.  Le \defn{polynôme caractéristique}
+ de $A$ est d\'efini par
+$$
+x^2 - \tr(A)x + \det(A).
+$$
+À quoi sert ce polynôme caractéristique ? En fait, si l'on remplace $x$ par $A$ (et que l'on place la matrice d'identité $I_2$ derrière le scalaire $\det(A)$ pour que l'addition ait un sens), nous obtenons :
+$$
+A^2 - \tr(A) \,A + \det(A)\, I_2 = \mat{5&2\\2&4} -  \mat{1 & 2 \\ 2&0} - 4\mat{1&0\\0&1} = \mat{0&0\\0&0} = 0_{2\times 2}\,.
+$$
+ 
+Cela se produit toujours pour n'importe quelle matrice $A$ de taille $2 \times 2$, et il existe une généralisation n'importe quelle matrice carrée de n'importe quelle taille (attention, encore une fois, il faut que la matrice soit carrée). Voir la Définition \ref{charpoly} du  polynôme caractéristique d'une matrice carrée de taille quelconque.\\
+
+
+
+Il existe également la \defn{multiplication par blocs}, laquelle peut parfois simplifier vos calculs en vous permettant de traiter des
+sous-matrices comme s'ils étaient des nombres.
+
+\begin{myexample}
+Soit la matrice
+$$
+A = \mat{1 & 0 & 0 & 0 & 0\\
+0 & 1 & 0 & 0 & 0\\
+0 & 0&  1 & 0 & 0\\
+0 & 0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0 & 0}\,.
+$$
+Décomposez-la  en «~blocs~» en posant
+$$
+B = \mat{1 & 0 & 0 \\ 0 & 1 & 0\\ 0 & 0 & 1}=I_3\,,
+\quad C = \mat{0 & 1 \\ 0 & 0}\,,
+$$
+et en écrivant $A$ sous la forme suivante :
+$$
+A = \mat{B&0\\0&C}\,.
+$$
+C'est une écriture par blocs de la matrice $A$. Les deux $0$ dans cette écriture sont des matrices de tailles respectives $3\times 2$ (pour celle en position $(1,2)$) et $2\times 3$ (pour celle en position $(2, 1)$) .
+
+\medskip
+
+Alors $A^2 = \scriptsize\mat{B&0\\0&C}\mat{B&0\\0&C}=\mat{B^2&0\\0&C^2}$, et plus généralement :
+$$
+A^{k} = \mat{B^{k} & 0 \\ 0& C^{k}}
+$$
+pour n'importe quel $k$. C'est intéressant car, par exemple pour $k=100$ : 
+$$
+B^{100} = I_3^{100} = I_3\,,
+$$
+ et comme $C^2=0$, on a :
+$$
+C^{100} = 0\,.
+$$
+Ceci nous amène rapidement à la conclusion que $A^{100} = \mat{B&0\\0&0}$.
+\end{myexample}
+
+
+
+\section{Retour aux systèmes linéaires}
+Penser en termes de «~blocs~» nous aide à passer facilement d'un point de vue à l'autre d'un système linéaire. 
+Par exemple, les trois manières suivantes d'écrire les équations sont toutes équivalentes :
+\begin{itemize}
+\item le système linéaire :
+\begin{align*}
+x+2y+3z &= 4\\
+x-y+z &=2\\
+ y-3z&=0\,;
+\end{align*}
+\item l'\'equation $Ax = b$, o\`u 
+$$
+A = \mat{1 & 2 & 3\\ 1 & -1 & 1\\ 0 & 1 & -3}, \hspace{0.15cm}\xx = \mat{x\\y\\z}\ \text{et }\, \bb=\mat{4\\2\\0},
+$$
+c'est-\`a-dire l'équation
+$$
+\mat{1 & 2 & 3\\ 1 & -1 & 1\\ 0 & 1 & -3}\mat{x\\y\\z}=\mat{4\\2\\0}\,;
+$$
+\item l'\'equation vectorielle :
+$$
+x\mat{1\\1\\0} + y\mat{2\\-1\\1} + z\mat{3\\1\\-3}  =\mat{4\\2\\0}\,.
+$$
+\end{itemize}
+Tous ces problèmes peuvent être résolus en réduisant la matrice augmentée suivante par rapport aux lignes :
+$$
+[A|\bb] =  \mat{1 & 2 & 3&|& 4\\ 1 & -1 & 1&|&2\\ 0 & 1 & -3&|&0}.\\
+$$
+
+En termes de multiplication par blocs, nous pouvons interpr\'eter cela en 
+écrivant
+$$
+A = \mat{\cc_1 & \cc_2 & \cc_3},
+$$
+où $\cc_i$ est la $i$-ème colonne de $A$, et ensuite en multipliant
+$$
+A\xx= \mat{\cc_1 & \cc_2 & \cc_3}\mat{x\\y\\z} = x\,\cc_1 + y\,\cc_2 + z\,\cc_3\,.
+$$
+Ceci est vrai pour toute matrice $A$ : si $A = [\cc_1 \;\cc_2 \; \cdots \cc_n]$
+alors $A\,\xx = x_1\cc_1 + x_2\cc_2 + \cdots + x_n\cc_n$, o\`u $\xx=\scriptsize\mat{x_1\\x_2\\ \vdots \\ x_n}$, donc $A\,\xx$ est en effet simplement
+une combinaison linéaire des colonnes de $A$.
+
+\begin{fac} $A\,\xx$ est une combinaison linéaire des colonnes de $A$ (dont les 
+coefficients sont donnés par les entr\'ees du vecteur $\xx$).\end{fac}
+
+Cela nous donne une nouvelle perspective sur nos critères de résolution des systèmes linéaires !
+
+
+\begin{fac} L'équation $A\,\xx=\bb$ est compatible si et seulement si $\bb$ est une combinaison linéaire
+des colonnes de $A$.\end{fac}
+
+\begin{fac} L'équation $A\,\xx=\zero$ admet une unique solution si et seulement si les colonnes de $A$ sont
+linéairement indépendantes.\end{fac}
+
+On prouve ces faits en passant par les différentes interprétations
+du produit matriciel.  Par exemple, si le système correspondant à $A\,\xx=\bb$ 
+est compatible, alors cela signifie qu'il y a un vecteur $\xx$ pour lequel la combinaison linéaire correspondante 
+des colonnes de $A$ donne $\bb$, ce qui revient à dire simplement que
+$\bb$ est dans l'enveloppe lin\'eaire engendr\'ee par les colonnes de $A$.  
+
+\begin{definition}
+Supposons que $A$ soit une matrice $m\times n$, qu'on écrit $A = [\cc_1\; \cc_2 \ldots \cc_n]$ avec
+colonnes $\cc_i$.  
+On définit $\im(A)=\col(A) = \spn\{\cc_1,\cc_2, \ldots, \cc_n\}$.  C'est un sous-espace de $\R^m$,
+appelé l'\defn{image} ou l'\defn{espace des colonnes} de la matrice $A$.
+\end{definition}
+
+
+\begin{fac} On a $\im(A) = \R^m$ si et seulement si les colonnes de $A$ engendrent $\R^m$ tout entier, 
+si et seulement si $A\,\xx=\bb$ est compatible pour tout $\bb\in \R^m$, si et seulement
+si il n'y a pas de ligne nulle dans le MER de $A$.\end{fac}
+
+Toutes ces affirmations découlent des définitions, sauf la dernière partie de l'équivalence qui n'est pas tout à fait évidente, bien qu'une des deux implications soit facile. \footnote{\label{nzrinrref}L'implication facile : s'il n'y a pas de ligne nulle dans la MER de $A$, alors $A\,\xx=\bb$ est bien sûr compatible pour tout $\bb\in \R^m$.
+Pour prouver la r\'eciproque, prouvons que si la dernière ligne dans la MER $\tilde A$ de $A$ est nulle, alors il existe un $\bb\in \R^n$ tel que l'équation $A\,\xx=\bb$ soit incompatible. On suppose donc que la dernière ligne de $\tilde A$ est nulle. Considérons un vecteur $\tilde \bb \in \R^m$ avec un $1$ en dernier coefficient. Le système $[ \tilde A | \tilde \bb]$ est alors incompatible puisque la dernière équation est $0=1$. Maintenant, il suffit d'appliquer dans le sens inverse les opérations élémentaires qui ont transformé $A$ à $\tilde A$, et on applique ces opérations inversées sur la matrice augmentée $[ \tilde A | \tilde \bb]$. Nous obtenons alors un système $[ A | \bb]$, pour un certain vecteur $\bb$, qui est incompatible ; c'est-à-dire que vous aurez trouvé un vecteur $\bb\in \R^n$ pour lequel l'équation $A\,\xx=\bb$ incompatible. }
+
+\begin{fac} Les colonnes de $A$ sont linéairement indépendantes si et seulement si
+l'équation $A\,\xx=\zero$ admet une solution unique, si et seulement si chaque colonne d'une ME de $A$ contient un pivot, si et seulement si $\rank(A)$ est égal au nombre de colonnes de $A$.\end{fac}
+
+Là encore, il ne s'agit que d'une simple preuve en utilisant les r\'esultats et d\'efinitions correspondantes.
+
+Enfin, nous retrouvons un r\'esultat que nous avons prouvé de manière plus générale auparavant :
+
+\begin{fac} Si $A$ est une matrice $n\times n$, alors les colonnes de $A$ forment
+une base de $\R^n$ si et seulement si elles sont linéairement indépendantes, si
+et seulement si $\rank(A)=n$, si et seulement si $\im(A)=\R^n$, si et seulement
+si les colonnes de $A$ engendrent $\R^n$, si et seulement si aucune ME de $A$ n'a de ligne nulle ! \end{fac}
+
+
+

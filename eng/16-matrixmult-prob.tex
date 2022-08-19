@@ -1,0 +1,235 @@
+\section*{Problems}
+\addcontentsline{toc}{section}{Problems}
+
+\medskip {\bf Remarks:} 
+\begin{enumerate}
+\item A question with an asterisk `$ ^\ast$' (or two) indicates a bonus-level question.
+ \item You must justify all your responses.  
+\end{enumerate}
+\bigskip
+
+\centerline{\bf  {Matrix Multiplication}} 
+ \begin{prob} \label{prob14.1}
+\begin{enumerate}[a)]
+\item Find the matrix product $\bmatrix 1&
+2\\ 3&6\endbmatrix \bmatrix a&b\\ c&d\endbmatrix$.
+\medskip
+%
+\item\sov Write the matrix product $\bmatrix 1&
+2\\ 3&6\endbmatrix \bmatrix a\\ b\endbmatrix$ as a linear combination of the columns of $A=\bmatrix 1&
+2\\ 3&6\endbmatrix$.
+\medskip
+%
+\item Write the matrix product $\bmatrix 1&
+2\endbmatrix \bmatrix a&b\\ c&d\endbmatrix$ as a linear combination of the rows of $B=\bmatrix a&b\\ c&d\endbmatrix$.
+\medskip
+%
+\item\sov  Find the matrix product $\bmatrix a \\ b \endbmatrix \bmatrix c&d \endbmatrix$.
+\medskip
+%
+
+\item Find the matrix product $\bmatrix c&d \endbmatrix \bmatrix a \\ b \endbmatrix $.
+\medskip
+%
+\item\sov  If $A=\bmatrix c_1&c_2 &c_3\endbmatrix$ is an $m\times 3$ matrix written in block column form, and $x=\bmatrix 2\\1\\ 4\endbmatrix$ is a column vector in $\R^3$, express $Ax$ as a linear combination of $c_1, c_2$ and $c_3$. 
+\medskip
+%
+\item Show that $
+\bmatrix 1&2\\ 3&6\endbmatrix \bmatrix 2&-4\\ -1&2\endbmatrix=\bmatrix0&0\cr 0&0\endbmatrix$.
+\medskip
+%
+\item\sov  Show that if $A=
+\bmatrix 0&1\\ 0&0\endbmatrix$, then $A^2=\bmatrix0&0\cr 0&0\endbmatrix$. 
+\medskip
+%
+\item Show that if $A=
+\bmatrix 0&1\\ 0&0\endbmatrix$, and $B=\bmatrix 0&0\\ 1&0\endbmatrix$ then $AB \not= BA$. 
+\medskip
+%
+\item\sov  If $C$ is a $m\times 4$ matrix and $D  =\bmatrix 1&0&1\\0&1&1\\ 1&0&0\\0&0&0 \endbmatrix $, express the columns of $CD$ in terms of the columns of $C$.
+\medskip
+%
+\item If $A=\bmatrix 1&0&1\\0&1&1\\ 1&0&0\\0&0&0 \endbmatrix  $ and $B$ is a $3\times n$ matrix   , express the rows of $AB$ in terms of the rows of $B$
+\medskip
+%
+\item\sov   Find  all $ (a,\ b,\ c)$ so that $\bmatrix 1&
+2\\ 3&6\endbmatrix \bmatrix a&b\\ c&a\endbmatrix=\bmatrix0&0\cr 0&0\endbmatrix
+ $.
+\medskip
+%
+\item Compute $ \bmatrix  1&0&0&-3\\ 0&1&3&0\\ 0&0&1&0
+\\ 0&0&0&1
+\endbmatrix^{2015}$
+\medskip
+%
+\end{enumerate}
+ \end{prob}
+\begin{prob}
+\label{prob14.2}
+Show the formula $A^2 - \tr(A)A + \det(A)I = 0$ holds for any $2\times 2$ matrix $A$.
+\end{prob}
+
+\begin{prob} \label{prob14.3} State whether each of the following is (always) true,
+or is (possibly) false.     In this question, $A$ and $B$ are matrices for which the indicated products exist.
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item If you say the statement may be false, you must give an explicit example.   
+\item If you say the statement is true, you must give a clear explanation -   by quoting a theorem presented in class, or by giving a {\it proof valid for every  case}. 
+\end{enumerate}
+\medskip
+\begin{enumerate}[a)]
+\item  $(A+B)^2= A^2 + 2 AB + B^2$
+\medskip
+%
+\item\sov $C(A+B)=CA+CB$
+\medskip
+%
+\item $(A+B)I_6=A+B$
+\medskip
+%
+\item\sov $AB=BA$
+\medskip
+%
+\item $(AB)C=A(BC)$
+\medskip
+%
+\item\sov  If $A^2=0$ for a square matrix $A$, then $A=0$.
+\medskip
+%
+\end{enumerate}
+ 
+\end{prob} \begin{prob} \label{prob14.4}$^\ast$ Suppose $A$ is a {\it symmetric} $n \times n$ matrix, i.e., $A=A^t$. Show that if $v$ and $w$ are any vectors in $\R^n$, then $(Av)\cdot w= v \cdot (Aw)$.\end{prob}\footnote{ Hint: Remember that if we write vectors as columns, then the dot product $x\cdot y$ is the same as the matrix product $x^t y$. Write the dot products as matrix products and expand.}
+
+\bigskip
+
+\centerline{\bf  {Applications to Linear Systems}} 
+ \begin{prob} \label{prob14.5} Write the matrix equation which is equivalent to each of the following linear systems.
+\medskip
+\begin{enumerate}[a)]
+\item 
+$$\begin{matrix} 
+x&+&y&+&z&=&0\\
+-9x&-&2y&+&5z&=&0\\
+-x&+&y&+&3z&=&0\\
+-7x&-&2y&+&3z&=&0 \end{matrix} $$
+\medskip
+%
+
+\item\sov $$\begin{matrix} x&&&&&+&w&=&1\\
+x&&&+&z&+&w&=&0\\
+x&+&y&+&z&&&=&-3\\
+x&+&y&&&-&2w&=&2 \end{matrix} $$
+\medskip
+% 
+\item 
+$$\begin{matrix} &&&-&2x_{3}&&&+&7x_{5}&=12\\
+2x_{1}&+&4x_{2}&-&10x_{3}&+&6x_{4}&+&12x_{5}&=28\\
+2x_{1}&+&4x_{2}&-&5x_{3}&+&6x_{4}&-&5x_{5}&=-1\end{matrix}$$
+\medskip
+%
+\end{enumerate}
+ 
+
+\end{prob} \begin{prob} \label{prob14.6}  Write the matrix equation of the linear system corresponding to each of the augmented matrices given below.
+\medskip
+\begin{enumerate}[a)]
+
+\item $\bmatrix  0 & 1 &|& 0 \\
+ 0 & 0 &|& 0 \endbmatrix$
+\medskip
+%
+\item\sov $ \bmatrix 1 & 0 & -1 &|&0 \\
+ 0 & 1 & 2 &|&0\\
+ 0 & 0 & 0&|&1 \\
+ 0 & 0 & 0 &|&0\endbmatrix$
+\medskip
+%
+\item $\bmatrix  1 & 0 & 0 & 3 &|& 3 \\
+ 0 & 1 & 0 & 2 &|& -5 \\
+ 0 & 0 & 1 & 1 &|& -1 \\
+ 0 & 0 & 0 & 0 &|& 0\endbmatrix$
+\medskip
+%
+\item\sov $\bmatrix  1 & 2 & 0 & 3 & 0 &|& 7 \\
+ 0 & 0 & 1 & 0 & 0 &|& 1 \\
+ 0 & 0 & 0 & 0 & 1 &|& 2 \endbmatrix$
+\medskip
+%
+
+\item $ \bmatrix 
+1& 0& 0& -1& 0&|& 10\\  
+0& 1& 0& 1&1&|& 1\\ 
+0& 0& 1& 1& 1&|& 4\\ 
+0& 0& 0& 0& 0&|& 0\endbmatrix$
+\medskip
+%
+\end{enumerate}
+
+\end{prob} 
+
+ \begin{prob} \label{prob14.7} State whether each of the following is (always) true,
+or is (possibly) false.     The matrices are assumed to be square.  
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item If you say the statement may be false, you must give an explicit example.   
+\item If you say the statement is true, you must give a clear explanation -   by quoting a theorem presented in class, or by giving a {\it proof valid for every  case}. 
+\end{enumerate}
+\medskip
+\begin{enumerate}[a)]
+\item If $[A\,|\,\bb\,]$ is the augmented matrix of a linear system, then $\rank A > \rank  [A\,|\,\bb\,]$ is possible.
+\medskip
+%
+\item\sov  If $[A\,|\,\bb\,]$ is the augmented matrix of a linear system, then $\rank A<\rank  [A\,|\,\bb\,]$ is possible.
+\medskip
+%
+
+\item If $[A\,|\,\bb\,]$ is the augmented matrix of a linear system, and $\rank A=\rank  [A\,|\,\bb\,]$, then the system  is inconsistent.\medskip %(inconsistent or consitent???)
+
+%
+\item\sov  If $[A\,|\,\bb\,]$ is the augmented matrix of a linear system, and $\rank A=\rank  [A\,|\,\bb\,]$, then the system  is consistent. 
+ 
+%
+\medskip
+\item If $[A\,|\,\bb\,]$ is the augmented matrix of a linear system, and $\rank A=\rank  [A\,|\,\bb\,]$, then the vector $\bb$ is a linear combination of the columns of $A$. 
+\medskip
+%
+\item\sov  If $A$ is an $m \times n$ matrix and $A\xx=\zero$ has a unique solution for $\xx\in \R^n$, then the columns of $A$ are linearly independent.
+%
+%\medskip
+\item If $A$ is an $m \times n$ matrix and $A\xx=\zero$ has a unique solution for $\xx\in \R^n$, then the rows of $A$ are linearly independent.
+%
+\item\sov  If $A$ is an $m \times n$ matrix and $A\xx=\zero$ has infinitely many solutions for $\xx\in \R^n$, then the columns of $A$ are linearly dependent.
+%
+\medskip
+\item If $A$ is an $m \times n$ matrix and $A\xx=\zero$ has infinitely many solutions for $\xx\in \R^n$, then the rows of $A$ are linearly dependent.
+%
+\medskip
+\item\sov  If $A$ is a $6 \times 5$ matrix and $\rank A=5$, then $A\xx=\zero$ implies $\xx=\zero$ for $\xx\in \R^5$
+\medskip
+%
+\item If $A$ is a $6 \times 5$ matrix and $\rank A=5$, then $A\xx=\bb$ is consistent for every $\bb \in \R^6$.
+\medskip
+%
+\item\sov  If $A$ is a $5 \times 6$ matrix and $\rank A=5$, then $A\xx=\bb$ is consistent for every $\bb \in \R^5$.
+\medskip
+%
+\item If $A$ is a $5 \times 6$ matrix and $\rank A=5$, then $A\xx=\zero$ implies $\xx=\zero$ for $\xx\in \R^6$.
+\medskip
+%
+\item\sov  If $A$ is a $3 \times 2$ matrix and $\rank A=1$, then $A\xx=\zero$ implies $\xx=\zero$ for $\xx\in \R^2$.
+\medskip
+%
+\item The columns of a $19\times 24$ matrix are
+always linearly dependent.
+\medskip
+%
+\item\sov  The rows of a $19 \times 24$ matrix are
+always linearly dependent.
+\medskip
+%
+\end{enumerate}
+
+
+
+\end{prob}
+

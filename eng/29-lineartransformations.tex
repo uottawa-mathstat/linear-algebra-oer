@@ -1,0 +1,364 @@
+\chapter{Linear transformations}
+\label{chapter:24LT}
+
+
+Last time, we considered the geometric interpretation of ``multiplication
+by $A$'':  it is a transformation of $\R^n$.   It's a special
+kind of transformation:  it takes squares to parallelograms (as opposed
+to anything else your imagination could provide!).
+
+The key properties that made this work:
+\begin{itemize}
+\item $A\zero = \zero$
+\item $A(\uu + \vv) = A\uu + A\vv$ for any $\uu,\vv \in \R^n$
+\item $A(r\uu) = r(A\uu)$, for any $\uu\in\R^n$, $r\in\R$
+\end{itemize}
+These properties imply that the four points
+of a parallelogram with vertices 
+$$
+\zero,\quad \uu,\quad \vv, \quad\uu+\vv
+$$
+ are
+sent to the four points 
+$$
+\zero,\quad A\uu, \quad A\vv, \quad A\uu + A\vv
+$$
+(which again define the corners of a parallelogram, although it could
+be degenerate (a line segment) if $A\uu$ and $A\vv$ are linearly
+dependent); and moreover
+that the straight line $r\uu$ is sent onto the straight line
+$r(A\uu)$ (and similarly for the line through $\vv$).
+
+
+\begin{definition}
+Let $U$ and $V$ be vector spaces.  A \defn{linear transformation} $T$
+is a map from $U$ to $V$ satisfying 
+\begin{enumerate}
+\item for all $\uu,\vv\in U$, $T(\uu+\vv) = T(\uu)+T(\vv)$
+\item for all $\uu \in U$, $r\in\R$, $T(r\uu) = rT(\uu)$
+\end{enumerate}
+\end{definition}
+
+We use the word \stress{transformation} here, and \stress{map};
+we could use \stress{function} but that's often reserved for
+a map whose range is the real numbers.  Whatever the terminology,
+the point is that $T$ is a black box or formula or rule which
+accepts a vector of $U$ as input, and produces a (uniquely determined) 
+vector in $V$
+as output; and furthermore we stipulate that it takes sums to sums
+and scalar multiples to scalar multiples.  
+
+So:  multiplication by a square matrix $A$ is a linear transformation.
+
+We must now ask ourselves:  what other kinds of linear transformations
+do we know?
+
+
+
+\section{Examples of linear transformations}
+
+\begin{myexample} \label{ex:multmatlintrans} Let $A$ be an $m\times n$ matrix.  Define the map
+$$T \colon \R^n \to \R^m
+$$
+by $T_A(\uu) = A\uu$.  We claim that $T_A$ is a linear tranformation.
+
+To prove this, we need to verify that:
+\begin{enumerate}
+\item for any $\uu,\vv \in \R^n$, $T_A(\uu+\vv) = T_A(\uu) +T_A(\vv)$:
+$$
+T_A(\uu+\vv) = A(\uu + \vv) = A\uu + A\vv =  T_A(\uu) +T_A(\vv)
+$$
+as required.
+\item for any $\uu \in \R^n$, $r\in \R$, $T_A(r\uu) = rT_A(\uu)$:
+$$
+T_A(r\uu) = A(r\uu) = r(A\uu) = rT_A(\uu)
+$$
+as required.
+\end{enumerate}
+So this is a linear transformation, for any $m,n$ and $A$.
+\end{myexample}
+
+\begin{myexample} Consider the projection onto the plane $W$ given by
+$$
+W = \{ (x,y,z) \mid x-z = 0\}
+$$
+Let's first find a formula for this projection.  The easy way
+is to note that $W^\perp = \spn\{(1,0,-1)\}$ so for $\uu = (u_1,u_2,u_3)\in \R^3$, we have
+$$
+\proj_{W^\perp}(\uu) = \frac{\uu \cdot (1,0,-1)}{(1,0,-1)\cdot (1,0,-1)} \mat{1\\0\\-1}
+= \frac{u_1-u_3}{2}\mat{1\\0\\-1}
+$$
+and therefore
+$$
+\proj_W(\uu) = \uu - \proj_{W^\perp}(\uu) =\mat{u_1\\u_2\\u_3} - \frac{u_1-u_3}{2}\mat{1\\0\\-1} = \frac12\mat{u_1+u_3\\ 2u_2 \\ u_1+u_3}.
+$$
+
+Now is this a linear transformation?  We verify the two properties of
+linearity (with $T = \proj_W$):
+\begin{enumerate}
+\item Is $\proj_W(\uu + \vv) = \proj_W(\uu) + \proj_W(\vv)$?  Let $\uu = (u_1, u_2, u_3)$ and $\vv = (v_1, v_2, v_3)$; then
+\begin{align*}
+\proj_W(\uu + \vv) &= \proj_U(u_1+v_1,u_2+v_2,u_3+v_3) \\
+&= \frac12\mat{ (u_1+v_1) + (u_3+v_3)\\ 2(u_2+v_2)\\  (u_1+v_1) + (u_3+v_3)}\\
+&= \frac12\left( \mat{u_1+u_3\\2u_2\\u_1+u_3} + \mat{v_1+v_3\\2v_2\\v_1+v_3}\right) \\
+&= \frac12\mat{u_1+u_3\\2u_2\\u_1+u_3} + \frac12\mat{v_1+v_3\\2v_2\\v_1+v_3}\\
+&= \proj_W(\uu) + \proj_W(\vv)
+\end{align*}
+as required
+\item Is $\proj_W(r\uu) = r\proj_W(\uu)$?  Let $r\in \R$ and $\uu$ as above,
+then
+\begin{align*}
+\proj_W(r\uu) &= \proj_W(ru_1,ru_3,ru_3)\\
+&= \frac12\mat{ru_1+ru_3\\ 2ru_2 \\ ru_1+ru_3}\\
+&= r\left(\frac12\mat{u_1+u_3\\ 2u_2 \\ u_1+u_3}\right)\\
+&= r\proj_W(\uu)
+\end{align*}
+\end{enumerate}
+Since both axioms are satisfied, this is a linear transformation.
+\end{myexample}
+
+\begin{myexample} Show that the map $T \colon \R^2 \to \R^2$ given by
+$T(x,y) = (x+1, xy)$
+is not a linear transformation.
+
+It suffices to show that there exists even one pair of vectors $\uu,\vv$
+for which $T(\uu+\vv) \neq T(\uu)+T(\vv)$; OR to show that there is
+even one vector and one scalar for which $T(r\uu) \neq rT(\uu)$.
+Let's show that in fact these axioms fail for almost all vectors
+and scalars!
+
+\begin{enumerate}
+\item Note that $$T(\uu + \vv) = T(u_1+v_1,u_2+v_2) = (u_1+v_1+1, (u_1+v_1)(u_2+v_2))$$ whereas
+$$
+T(\uu) + T(\vv) = (u_1+1,u_1u_2) + (v_1+1, v_1v_2) = (u_1+v_1+2, u_1u_2+v_1v_2)
+$$
+but the first components can NEVER be equal (and the second components are only equal if the ``cross terms'' are zero).
+
+So, for example, $T(1,0)=(2,0)$, $T(0,1)=(1,0)$ and $$T(1,1)=(2,1) \not=(2,0)+(1,0)=T(1,0) +T(0,1).$$
+
+We could stop now: we've found an example that shows $T$ is not linear. But let's show that $T$ doesn't satisfy the second condition either.
+\item Note that 
+$$
+T(r\uu) = T(ru_1,ru_2) = (ru_1+1, (ru_1)(ru_2)) = (ru_1+1, r^2u_1u_2)
+$$
+whereas
+$$
+rT(\uu) = r(u_1+1,u_1u_2) = (ru_1+r, ru_1u_2)
+$$
+but the first component is equal only when $r=1$ and the second only when
+either $r=1$ or $r=0$ or $u_1u_2=0$. 
+
+So, for example, $T(1,1)=(2,1)$, but $$T(2(1,1))=T(2,2)=(3, 4)\not= 2(2,1)=2\, T(1,1).$$
+\end{enumerate}
+So this map is defintely not linear.
+\end{myexample}
+
+
+\section{Constructing and describing linear transformations}
+
+Checking the linearity of a map is eerily similar to the subspace test.  Is it the same thing?  NO: the
+subspace test is for sets, but linear transformations are maps
+between vector spaces (or subspaces).
+
+The phrase ``linear transformation'' comes about in part because
+the second property implies that the image under $T$ of a line
+through the origin is again a line through the origin (or just $\set{0}$).
+
+In particular, taking $r=0$, we deduce that for any linear
+transformation, $T(\zero) = \zero$.
+
+But the two properties imply much more:  they say that linear
+combinations are sent to linear combinations, in the following
+sense.
+
+\begin{theorem}[Determination of Linear Transformations on a Basis]\label{Thm:LTbasis} \index{determination of a linear transformation on a basis}~
+\begin{enumerate}
+\item Suppose $T \colon U \to V$ is a linear transformation and
+$\{ \uu_1, \cdots, \uu_n\}$ is a basis for~$U$.  Then $T$
+is completely determined by the vectors $T(\uu_1)$, $\cdots$,
+$T(\uu_n)$.
+\item Suppose  $\{ \uu_1, \cdots, \uu_n\}$ is a basis for $U$
+and $\{ \vv_1, \cdots, \vv_n\}$ are ANY $n$ vectors in $V$ (even
+possibly dependent or $\zero)$.  Then there is a unique linear
+transformation~$T$ which satisfies $T(\uu_i)=\vv_i$ for all $i$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}
+\item What we mean by ``completely determined'' is:  we can
+determine $T(\uu)$, without having a formula for $T$, IF we
+know the vectors $T(\uu_1)$, $\cdots$,
+$T(\uu_n)$.  Namely, let $\uu \in U$ be arbitrary.  Since
+$\{ \uu_1, \cdots, \uu_n\}$ is a basis for $U$, we can
+write
+$$\uu = a_1\uu_1+\cdots+a_n\uu_n.$$
+Then
+$$
+T(\uu) = T(a_1\uu_1+\cdots+a_n\uu_n) = a_1T(\uu_1) + \cdots + a_nT(\uu_n),
+$$
+as we wanted to show.
+\item We need to give a rule for a map $T$ which sends $\uu_i$ to $\vv_i$.
+We use the idea above:  for any $\uu \in U$, write $\uu = a_1\uu_1+\cdots+a_n\uu_n$.  Then define
+$$
+T(\uu) = a_1\vv_1 + \cdots + a_n\vv_n.
+$$
+This gives a function from $U$ to $V$ and you can check that it
+is linear (try it!).
+\end{enumerate}
+\end{proof}
+
+This theorem is very powerful.  Much in the same way that proving
+the existence of a basis of any vector space simplified things
+by showing that every $n$-dimensional vector space is really
+just $\R^n$ in disguise, this theorem implies that every
+linear transformation is just matrix multiplication in disguise!
+
+\begin{theorem}[The standard matrix of a linear transformation]\index{standard matrix of a linear transformation}\label{thm:standt_mat}
+
+Let $T \colon \R^n \to \R^m$ be a linear transformation.  Then
+there is an $m\times n$ matrix $A$ such that
+$$
+T(\xx) = A\xx
+$$
+for all $\xx \in \R^n$.  More precisely, if $\{\ee_1, \cdots, \ee_n\}$
+is the standard basis for $\R^n$, then the matrix $A$ is
+given by:
+$$
+A = \left[ T(\ee_1) \;  T(\ee_2)\; \cdots \;   T(\ee_n)\right].
+$$
+The matrix $A$ is called the \defn{standard matrix} of $\,T$.
+ \end{theorem}
+
+
+
+\begin{myexample}
+Consider the projection $T = \proj_W$ onto the plane $W = \{(x,y,z)\mid x-z=0\}$; we saw earlier that $T(u_1, u_2,u_3) = \frac12(u_1+u_3,2u_2,u_1+u_3)$.
+
+Construct the matrix as in the theorem:  $T(1,0,0) = (\frac12,0,\frac12)$, $T(0,1,0) = (0,1,0)$, $T(0,0,1) = (\frac12,0,\frac12)$, so
+$$
+A = \mat{\frac12 & 0 & \frac12\\ 0 & 1 & 0\\ \frac12 & 0 & \frac12}
+$$
+and we see directly that
+$$
+A\uu =  \mat{\frac12 & 0 & \frac12\\ 0 & 1 & 0\\ \frac12 & 0 & \frac12}\mat{u_1\\u_2\\u_3} = \frac12\mat{u_1+u_3\\2u_2\\u_1+u_3} = T(\uu)
+$$
+as required.
+
+ 
+\end{myexample}
+
+\begin{proof}
+To see why it works, recall that if you have a vector
+$$\uu = \mat{u_1 \\ u_2 \\ \vdots \\ u_n}
+$$
+then in fact 
+$$
+\uu = u_1\ee_1 + \cdots + u_n\ee_n.
+$$
+Thus $T(\uu)$, by Theorem~\ref{Thm:LTbasis}, %the theorem \emph{Determination of Linear Transformations on a Basis}, 
+is 
+$$
+T(\uu) = u_1 T(\ee_1) + \cdots + u_nT(\ee_n).
+$$
+But taking linear combinations is just matrix multiplication,
+so we have
+$$
+T(\uu) = \left[ T(\ee_1) \;  T(\ee_2)\; \cdots \;   T(\ee_n)\right]
+\mat{u_1 \\ u_2 \\ \vdots \\ u_n} = A\uu.
+$$
+\end{proof}
+
+
+\section{Kernels and images}
+
+This new interpretation of the projection map as a linear transformation
+gives us more geometric ideas about what the operation of projection
+really does.  For instance, the projection map annihilates (sends to
+$\zero$) any vector of $U^\perp$.  But it completely covers $U$
+in the sense that ever point of $U$ is the image of some element under
+$T$.
+
+To state this more clearly, we need some definitions.
+
+\begin{definition}
+Let $T \colon U \to V$ be a linear transformation.  Then
+\begin{itemize}
+\item the \defn{kernel} of $T$, denoted $\ker(T)$, is the
+set of all elements of $U$ which are sent to $\zero$ by $T$,
+that is,
+$$
+\ker(T) = \{ \uu \in U \mid T(\uu) = \zero\}
+$$
+\item the \defn{image} of $T$, denoted $\im(T)$, is the set of all
+elements of $V$ which are equal to $T(\uu)$ for some $\uu \in U$,
+that is,
+$$
+\im(T) = \{ \vv \in V \mid \vv = T(\uu) \; \textrm{for some $\uu\in U$.}\}
+$$
+\end{itemize}
+\end{definition}
+
+Now both $\ker(T)$ and $\im(T)$ are subsets of vector spaces, and
+the natural first question is: are they subspaces?  Answer:  YES,
+and they're even familiar ones!
+
+\begin{theorem}[Kernels and Images of the Standard Matrix]\index{kernel vs nullspace}\index{image vs nullspace}
+Let $T \colon \R^n \to \R^m$ be a linear transformation with
+standard matrix $A$.  Then
+$$
+\ker(T) = \Null(A) \qquad \textrm{and} \qquad \im(T) = \col(A).
+$$
+\end{theorem}
+
+The first equality is clear once you recall that $T(\uu) = A\uu$;
+and for the second, one should go back and look up the original
+definition of $\col(A) = \im(A)$.
+
+\section{A return to the rank-nullity theorem}
+
+Note that the rank-nullity theorem\footnote{Some like to call this theorem {\it the conservation of dimension}: since the dimension of the subspace sent to $0$ ($\dim \ker T$) plus the dimension of the image of $T$ (``what's left''),  is the same the dimension you began with: $n=\dim U$. ``Total dimension is preserved."} can be restated, for
+a linear transformation $T \colon U \to V$, as 
+$$
+\dim(\ker(T)) + \dim(\im(T)) = n
+$$
+where $n = \dim(U)$.  We interpret this as giving an
+accounting of what $T$ does to the vectors in $U$.
+If $T$ sends $U$ onto a subspace of $V$ of dimension
+equal to $U$, then the kernel must be $\{\zero\}$.  On the
+other hand, if the dimension of the image is smaller than $\dim U$, then
+those `missing' dimensions had to go somewhere;
+in fact, they ended up in the kernel of $T$, as the equation above suggests. 
+
+For example. the projection onto the plane $W$ we saw
+earlier has kernel equal to the 1-dimensional $W^\perp$
+and image is all of (2-dimensional) $W$:  and $2+1=3 = \dim(\R^3)$.
+
+
+Conversely, knowing that we can think about $T$ as a matrix
+multiplication means that we know that a basis for $\im(T)$
+is any basis for $\col(A)$ (and this is something that we
+find easy to answer).
+
+\section{A remark about the projection matrix}
+When we calculated the projection onto a subspace before, one of our methods was:
+\begin{itemize}
+\item Create a matrix $B$ such that $\col(B) = W$
+\item Solve $(B^TB)\xx = B^T\bb$.
+\item $\proj_W(\bb) = B\xx$
+\end{itemize}
+Putting this all together:  Suppose $B$ has linearly independent
+columns, so that $B^TB$ is invertible.  (This was a homework
+exercise.)
+Then
+$$
+\proj_W(\bb) = B(B^TB)^{-1}B^T\bb
+$$
+so the projection is given by multiplication by the matrix
+$$
+ B(B^TB)^{-1}B^T.
+$$
+Therefore, this must be the standard matrix of $T$!  You can
+try this out for the example above.
+
+

@@ -1,0 +1,336 @@
+\newpage
+\section*{Exercices}
+\addcontentsline{toc}{section}{Exercices}
+
+Dans les exercices suivants, indiquez si l'énoncé est {\emph{VRAI}} ou {\emph{FAUX}}. 
+\begin{itemize}
+\item S'il est VRAI, donnez une explication (une preuve) qui montre pourquoi ceci est vrai en toute généralité. Il faut que le raisonnement fonctionne pour \stress{tous} les vecteurs, pas uniquement pour certains.  
+\item S'il est FAUX, donnez un contre-exemple précis qui montre que ça ne peut pas être vrai. 
+\end{itemize}
+
+
+\begin{prob} \label{prob04.1} Déterminez si les
+ensembles suivants sont \stress{fermés} pour la loi d'addition $+$ indiquée. En d'autres termes, prendre deux éléments $\uu$ et $\vv$ de l'ensemble, les additionner et vérifier si $\uu+\vv$ appartient aussi à l'ensemble.
+
+\begin{enumerate}
+\item
+  $\set{(x, x+2) \in \R^2\st x\in \R}$, avec l'addition standard de $\R^2$.
+\item\sov~
+  $\set{(x, y) \in \R^2\st x -3y=0 }$, avec l'addition standard de   $\R^2$.
+\item
+  $\set{(x, y) \in \R^2\st x -3y=1 }$, avec l'addition standard de
+  $\R^2$.
+\item\sov~
+  $\set{(x, y) \in \R^2\st xy \ge 0 }$, avec l'addition standard de $\R^2$.
+\item
+  $\set{(x, y, z) \in \R^3\st x+2y+z=0 }$, avec l'addition standard de  $\R^3$.
+\item\sov~
+  $\set{(x, y, z) \in \R^3\st x+2y+z=1 }$, avec l'addition standard de $\R^3$.
+\item
+  $\set{(x, y, z, w) \in \R^4\st x-y+z-w=0 }$, avec l'addition standard de $\R^4$.
+\item\sov~
+  $\set{(x, x+2) \in \R^2\st x\in \R}$, avec {\emph{une addition non-standard}}:
+  $(x,y) \tilde+ (x',y')=(x+x', y+y'-2)$.
+\item
+  $\set{(x, y, z) \in \R^3\st x+2y+z=1 }$, avec {\emph{une addition non standard}}:
+  $(x,y,z) \tilde+ (x',y',z')=(x+x', y+y', z+z'-1)$.
+\end{enumerate}
+\end{prob}
+
+\begin{prob} \label{prob04.2} Déterminez si les
+ensembles suivants sont fermés pour la loi de multiplication par scalaire indiquée.
+
+\begin{enumerate}
+\item
+  $\set{(x, x+2) \in \R^2\st x\in \R}$, avec la multiplication par scalaire standard de $\R^2$.
+\item\sov~
+  $\set{(x, y) \in \R^2\st x -3y=0 }$, avec la multiplication par scalaire standard de $\R^2$.
+\item
+  $\set{(x, y) \in \R^2\st x -3y=1 }$, avec la multiplication par scalaire standard de $\R^2$.
+\item\sov~
+  $\set{(x, y) \in \R^2\st xy \ge 0 }$, avec  la multiplication par scalaire standard de $\R^2$.
+\item
+  $\set{(x, y, z) \in \R^3\st x+2y+z=0 }$, avec la multiplication par scalaire standard de  $\R^3$.
+\item\sov~
+  $\set{(x, y, z) \in \R^3\st x+2y+z=1 }$, avec la multiplication par scalaire standard de $\R^3$.
+\item
+  $\set{(x, y, z, w) \in \R^4\st x-y+z-w=0 }$, avec la multiplication par scalaire standard de  $\R^4$.
+\item\sov~
+  $\set{(x, x+2) \in \R^2\st x\in \R}$, avec {\emph{une multiplication par scalaire non-standard : pour $k\in \R$}},
+  \[k\circledast (x,y)=(kx,\, ky-2k+2).\]
+\item
+  $\set{(x, y, z) \in \R^3\st x+2y+z=1 }$, avec {\emph{une multiplication par scalaire non-standard : pour $k\in \R$}},
+  \[k\circledast (x,y,z)=(kx, \,ky,\, kz-k+1).\]
+\end{enumerate}
+\end{prob}
+
+\begin{prob} \label{prob04.3}  Déterminez si les
+sous-ensembles suivants de $\F(\R)=\set{f \st f: \R \to \R}$ sont
+fermés pout l'addition standard de fonctions dans $\F(\R)$.
+(Rappelez-vous que $\F(\R)$ est l'espace de toutes les fonctions à
+valeurs réelles en une variable réelle; c'est-à-dire toutes les fonctions
+avec domaine exactement $\R$ et dont les valeurs sont dans $\R$).
+
+\begin{enumerate}
+\item
+  $\set{f \in \F(\R) \st f(2)=0 }$.
+\item\sov~
+  $\set{f \in \F(\R) \st f(2)=1 }$.
+\item
+  $\set{f \in \F(\R) \st f(1)=2 }$.
+\item\sov~
+  $\set{f \in \F(\R) \st \text{ pour tout } x\in \R,   \, f(x)\le 0}$.
+\item
+  $\set{f \in \F(\R) \st \text{ pour tout } x\in \R,   \, f(-x)= f(x)}$.
+\item\sov~
+  $\set{f \in \F(\R) \st \text{ pour tout } x\in \R,   \, f(-x)= -f(x)}$.
+\item
+  $\set{f \in \F(\R)   \st \text{$f$ est dérivable deux fois et satisfait, pour tout } x\in \R,   \, f''(x)+ f(x)=0}$.
+\end{enumerate}
+\end{prob}
+
+\begin{prob} \label{prob04.4} Déterminez si les
+ensembles suivants sont fermés pour la multiplication par scalaire standard 
+ des fonctions de $\F(\R)$.
+
+\begin{enumerate}
+\item
+  $\set{f \in \F(\R) \st f(2)=0 }$.
+\item\sov~
+  $\set{f \in \F(\R) \st f(2)=1 }$.
+\item
+  $\set{f \in \F(\R) \st f(1)=2 }$.
+\item\sov~
+  $\set{f \in \F(\R) \st \text{ pour tout } x\in \R,   \, f(x)\le 0}$.
+\item
+  $\set{f \in \F(\R) \st \text{ pour tout } x\in \R,   \, f(-x)= f(x)}$.
+\item\sov~
+  $\set{f \in \F(\R) \st \text{ pour tout } x\in \R,   \, f(-x)= -f(x)}$.
+\item
+  $\set{f \in \F(\R)   \st \text{$f$ est dérivable deux fois et satisfait, pour tout  } x\in \R,   \, f''(x)+ f(x)=0}$.
+\end{enumerate}
+\end{prob}
+
+\begin{prob} \label{prob04.5} Déterminez si les
+ensembles suivants sont fermés sous l'opération standard d'addition de
+matrices de $\M_{2 \,2}(\R)$.
+
+\begin{enumerate}
+\item
+  $\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; b=c\Bigg\}$.
+\item\sov~
+  $\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; a+d=0\Bigg\}$.
+\item
+  $\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; ad-bc=0\Bigg\}$.
+\item\sov~
+  $\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; ad=0\Bigg\}$.
+\item
+  $\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; bc=1\Bigg\}$.
+\end{enumerate}
+\end{prob}
+
+\begin{prob} \label{prob04.6} Déterminez si les
+ensembles suivants sont fermés pour la multiplication par scalaire standard
+des matrices de $\M_{2 \,2}(\R)$.
+
+\begin{enumerate}
+\item
+  $\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; b=c\Bigg\}$.
+\item\sov~
+  $\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; a+d=0\Bigg\}$.
+\item
+  $\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; ad-bc=0\Bigg\}$.
+\item\sov~
+  $\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; ad=0\Bigg\}$.
+\item
+  $\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; bc=1\Bigg\}$.
+\end{enumerate}
+\end{prob}
+
+\begin{prob} \label{prob04.7} On considère les sous-ensembles
+suivants de $\R^n$, et on les munit de certaines lois d'addition et de
+multiplication par scalaire réel (dites {\emph{\text{«} opérations vectorielles \text{»}} }) comme indiquées ci-dessous. À chaque fois, vérifiez
+s'il existe un vecteur nul $\zero$ dans le sous-ensemble. Sinon, justifiez votre réponse.
+
+(Remarque: dans les deux dernières questions, comme les opérations
+vectorielles ne sont pas standards, le vecteur nul ne
+sera probablement pas celui auquel vous êtes habitués...)
+
+\begin{enumerate}
+\item
+  $\set{(x, x+2) \in \R^2\st x\in \R}$, avec les opérations vectorielles
+  standards de $\R^2$.
+\item\sov~
+  $\set{(x, y) \in \R^2\st x -3y=0 }$, avec les opérations vectorielles
+  standards de $\R^2$.
+\item
+  $\set{(x, y) \in \R^2\st x -3y=1 }$, avec les opérations vectorielles
+  standards de $\R^2$.
+\item\sov~
+  $\set{(x, y) \in \R^2\st xy \ge 0 }$, avec les opérations vectorielles
+  standards de $\R^2$.
+\item
+  $\set{(x, y, z) \in \R^3\st x+2y+z=0 }$, avec les opérations vectorielles
+  standards de $\R^3$.
+\item\sov~
+  $\set{(x, y, z) \in \R^3\st x+2y+z=1 }$, avec les opérations vectorielles
+  standards de $\R^3$.
+\item
+  $\set{(x, y, z, w) \in \R^4\st x-y+z-w=0 }$, avec les opérations vectorielles
+  standards de $\R^4$.
+\item\sov~
+  $\set{(x, x+2) \in \R^2\st x\in \R}$; Addition:
+  $(x,y) \tilde+ (x',y')=(x+x', y+y' -2)$. Multiplication par scalaire: pour $k\in \R$: $k\circledast (x,y)=(kx, ky-2k+2)$.
+\item
+  $\set{(x, y, z) \in \R^3\st x+2y+z=1 }$; Addition:
+  $(x,y) \tilde+ (x',y')=(x+x', y+y',z+z'-1)$. Multiplication par scalaire: pour $k\in \R$:
+  $k\circledast (x,y,z)=(kx, ky, kz-k+1)$.
+\end{enumerate}
+\end{prob}
+
+\begin{prob} \label{prob04.8} Justifiez clairement vos
+réponses aux questions suivantes:
+
+\begin{enumerate}
+\item\sov~
+  Pour chacun des
+  sous-ensembles de l'exercice \ref{prob04.3}, déterminez si la fonction nulle $\zero$ de $\F(\R)$ y appartient.
+\item
+  Pour chacun des sous-ensembles de l'exercice \ref{prob04.5}, déterminez si la matrice nulle $\zero$ de $\M_{2 \,2}(\R)$ y appartient.
+\end{enumerate}
+\end{prob}
+
+\begin{prob} \label{prob04.9}  On considère les sous-ensembles
+suivants de $\R^n$, et on les munit de certaines lois d'addition et de
+multiplication par scalaire réel (dites {\emph{\text{«} opérations vectorielles \text{»}} }) comme indiquées ci-dessous. Dans chaque cas, si
+possible, vérifiez si l'opposé de tout vecteur du sous-ensemble appartient à aussi ce dernier.
+
+Encore une fois, comme les opérations vectorielles ne sont pas standards, l'opposé d'un vecteur ne sera probablement pas
+celui auquel on pourrait s'attendre...
+
+\begin{enumerate}
+\item
+  $\set{(x, x+2) \in \R^2\st x\in \R}$; Addition:
+  $(x,y) \tilde+ (x',y')=(x+x', y+y'-2)$. Multiplication par scalaire: pour $k\in \R$: $k\circledast (x,y)=(kx, ky-2k+2)$.
+\item
+  $\set{(x, y, z) \in \R^3\st x+2y+z=1 }$; Addition:
+  \[(x,y) \tilde+ (x',y')=(x+x', y+y',z+z'-1).\] Multiplication par scalaire: pour $k\in \R$:
+  $k\circledast (x,y,z)=(kx, ky, kz-k+1)$.
+\end{enumerate}
+\end{prob}
+
+\begin{prob} \label{prob04.10} Justifiez clairement vos
+réponses aux questions suivantes:
+
+\begin{enumerate}
+\item\sov~
+  Déterminez si les sous-ensembles de l'exercice \ref{prob04.1} (étant données les
+  opérations des exercices \ref{prob04.1} et \ref{prob04.2}, ligne par ligne) sont des espaces vectoriels.
+\item
+  Déterminez si les sous-ensembles de $\F(\R)$ de l'exercice \ref{prob04.3},
+  munis des opérations vectorielles standards de $\F(\R)$, sont des
+  espaces vectoriels.
+\item
+  Déterminez si les sous-ensembles de $\M_{2 \,2}(\R)$ de l'exercice \ref{prob04.5}, munis des opérations vectorielles standards de $\M_{2 \,2}(\R)$,
+  sont des espaces vectoriels.
+\end{enumerate}
+\end{prob}
+
+\begin{prob} \label{prob04.11} Justifiez clairement vos
+réponses aux questions suivantes:
+
+\begin{enumerate}
+\item\sov~
+  Déterminez si les sous-ensembles de $\F(\R)$ des l'exercice \ref{prob04.3} sont
+  des espaces vectoriels.
+\item
+  Pour chacun des
+  sous-ensembles de l'exercice \ref{prob04.3}, déterminez si la fonction nulle $\zero$ de $\F(\R)$ y appartient.
+\item
+  Pour chacun des sous-ensembles de l'exercice \ref{prob04.5}, déterminez si la matrice nulle $\zero$ de $\M_{2 \,2}(\R)$ y appartient.
+\end{enumerate}
+\end{prob}
+
+\begin{prob} \label{prob04.12} Justifiez clairement vos
+réponses aux points suivants:
+
+\begin{enumerate}
+\item
+ Soit $V=\R^2$ muni des lois suivantes.\\ 
+Addition:
+  \[(x,y) \tilde+ (x',y')=(x+x', y+y'-2).\] 
+Multiplication
+  par scalaire, pour $k\in \R$, \[k\circledast (x,y)=(kx, ky-2k+2).\]
+  Vérifiez que $\R^2$, avec ces nouvelles lois, est bien un
+  espace vectoriel.
+\item
+  Soit $V=\R^3$ muni des lois suivantes. Addition:
+  \[(x,y,z) \tilde+ (x',y',z')=(x+x', y+y', +y,z+z'-1).\] Multiplication
+   par scalaire: pour $k\in \R$,
+  \[k\circledast (x,y,z)=(kx, ky, kz-k+1).\] Vérifiez que $\R^3$, avec
+  ces nouvelles opérations, est un espace vectoriel.
+
+  Notez que, dans ces cas, les axiomes d'arithmétique (5) à (10) ne sont pas vérifiés automatiquement, il faut les vérifier à la main, car
+  les opérations ne sont pas standards... Par exemple, le critère de distributivité
+   $k\circledast (u \tilde+ v)  = k\circledast u \tilde+ k\circledast v$ ne d\'ecoulent pas de fa\c{c}on {\emph{évidente}} de l'opération usuelle !
+\end{enumerate}
+\end{prob}
+
+\begin{prob} \label{prob04.13}  Soit
+$\E=\set{\text{«}\  ax+by+ cz=d \ \text{»}\st a,b,c, d\in\R}$ l'ensemble des équations
+linéaires à coefficients réels en les variables $x$, $y$ et $z$.
+On munit $\E$ des opérations habituelles sur les équations (telles que vues dans l'exemple \ref{exemple : l espace des equation lineaires}), qu'on note ici \text{«~}$\dsum$\text{~»} pour l'addition et \text{«~}$\circledast$\text{~»} pour la
+multiplication par scalaire. On rappelle qu'elles sont définies comme
+suit:
+
+\[\text{«}\ ax+by+ cz=d\ \text{»} \dsum \text{«}\  ex+fy+gz=h \ \text{»} =\text{«}\  (a+e)x + (b+f)y + (c+g)z=d+h \ \text{»}\] et
+\[\forall   k\in \R,\quad    k\circledast\text{«}\  ax+by+ cz=d \ \text{»} = \text{«}\   ka\, x+ kb \,y+ kc \,z = k\,d \ \text{»}.\]
+
+Prouvez que $\E$ est un espace vectoriel.
+\end{prob}
+
+\begin{prob} \label{prob04.14} (Pour les
+mathématiciens curieux)\label{exVS}
+
+\begin{enumerate}
+\item
+  Parmi les axiomes définissant un espace vectoriel $V$, il n'y a pas le fait
+  que $0 \,\vv ={\bold 0}$ pour tous les vecteurs $\vv\in V$. (Ici, le
+  zéro du côté gauche de l'équation est
+  le {\emph{scalaire}} zéro, tandis que le zéro du côté droit dénote le {\emph{vecteur nul}}.)
+
+  Pourtant, il est en effet vrai dans tout espace vectoriel que
+  $0\, \vv ={\bold 0}$ quel que soit le vecteur $\vv\in V$.
+
+  Prouvez-le en utilisant quelques-uns des axiomes d'un espace
+  vectoriel.
+\item
+  Dans un espace vectoriel $V$, l'énoncé «~$(-1) \vv =-\vv$ pour tout vecteur $\vv\in V$~» n'est pas non plus un axiome, où
+  le \text{«}~$(-1) \vv$~\text{»} désigne la multiplication de $\vv$ par le scalaire $-1$, et
+  le \text{«} $-\, \vv$ \text{»} désigne le vecteur opposé au vecteur
+  $\vv$ (dont l'existence est garantie par l'un des axiomes).
+
+  Pourtant, il est en effet vrai dans chaque espace vectoriel que
+  $(-1) \vv =-\vv$ quel que soit le vecteur $\vv\in V$.
+
+  Prouvez-le en utilisant quelques-uns des axiomes d'un espace
+  vectoriel. Vous pouvez utiliser le résultat de la question 1.
+\item
+  Soit $\emptyset=\set{}$ l'ensemble vide. Peut-on trouver des lois vectorielles de telles manière à ce que l'ensemble vide soit un espace vectoriel?
+\item
+  Enfin, voici un autre espace vectoriel intéressant : soit $V$  l'ensemble des {\emph{séries entières}}. Une série entière est une expression de la forme
+  \[\sum_{n=0}^\infty a_nx^n = a_0 + a_1x+ a_2x^2 + \cdots\] où les
+  coefficients $a_n$ sont des nombres réels. 
+On définit l'addition par la formule
+  \[\sum_{n=0}^\infty a_nx^n + \sum_{n=0}^\infty b_n x^n =  \sum_{n=0}^\infty (a_n+b_n) x^n\]
+  et la multiplication par scalaire, pour $c\in\R$
+  \[c  \sum_{n=0}^\infty a_n x^n =  \sum_{n=0}^\infty ca_n x^n.\]
+  Montrez qu'il s'agit d'un espace vectoriel. \footnote{Notez que ce ne sont pas des fonctions définies sur $\R$ en général, car la plupart du
+    temps, si vous remplacez $x$ par une valeur non nulle, la somme n'a aucun sens (terme technique: \text{«}~la série diverge~\text{»}). Les séries qui sont \text{«}~convergentes~\text{»}  sont celles pour lesquelles
+    on peut trouver un sens pour certaines valeurs de $x$; elles incluent les séries entières de $e^x$, $\cos(x)$ ou encore $\sin(x)$, fonctions que nous avons déjà
+  vues dans notre premier chapitre. Les \text{«}~séries~\text{»} sont des
+    outils extrêmement utiles dans le calcul différentiel et intégrale. Si vous avez de la chance, vous en apprendrez
+    davantage sur le sujet dans certains cours de Calcul !}
+\end{enumerate}
+\end{prob}
+

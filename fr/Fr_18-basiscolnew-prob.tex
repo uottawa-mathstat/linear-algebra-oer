@@ -1,0 +1,111 @@
+
+\section*{Exercices}
+\addcontentsline{toc}{section}{Exercices}
+
+
+\medskip {\bf Remarques:} 
+\begin{enumerate}
+\item Une question avec un astérisque $ ^\ast$ (ou deux) indique une question de niveau bonus.
+ \item Vous devez justifier toutes vos réponses.  
+\end{enumerate}
+\bigskip
+
+
+ \begin{prob} \label{prob16.1} Trouvez une base pour l'espace des lignes et l'espace des colonnes de chacune des matrices suivantes. De plus, vérifiez que $\dim(\im(A)) = \dim(\row(A))$ dans chaque cas.
+\medskip
+\begin{enumerate}[a)]
+\item $\bmatrix 1&1&0&7\cr 0&0&1&5\cr 0&1&1&9 \endbmatrix $.
+\medskip 
+ 
+\item\sov
+$\bmatrix 1&0&1&2\cr 0&1&1&2\endbmatrix $.
+\medskip
+ 
+\item $\bmatrix 1&2&3\\1&0&1\\ 0&3&3 \endbmatrix $.
+\medskip
+ 
+\item\sov~$\bmatrix 1&2&-1&-1\\2&4&-1&3\\ -3&-6&1&-7\endbmatrix$.
+\medskip
+ 
+\item $\bmatrix 1& 1& 1& 1\\ 0& 1& 2& 0\\ 1& 1& 2& 0\\ 1& 1& 0& 2 \endbmatrix$. \medskip
+ 
+\item\sov~$\bmatrix 1 & -1 & 1 & 0 \\
+ 0 & 1 & 1 & 1 \\
+ 1 & 2 & 4 & 3 \\
+ 1 & 0 & 2 & 1\endbmatrix$.\medskip
+ 
+\item $\bmatrix 1&0&1&3\\ 1&2&-1&-1\\ 0&1&-2&5\endbmatrix $.\medskip
+ 
+\end{enumerate}
+
+\end{prob} \begin{prob} \label{prob16.2}  Trouvez une base du type souhaité pour les sous-espaces suivants. (Vous pouvez utiliser vos résultats obtenus à l'exercice précédent lorsque cela est utile).
+\medskip
+\begin{enumerate}[(a)]
+ 
+\item $U=\sp{(1,1,0), (2,0,3), (3,1,3)}$; la base doit \^etre un sous-ensemble de l'ensemble g\'en\'erateur donn\'e.
+ 
+ 
+\medskip
+\item\sov~$W=\sp{(1,2,-1,-1),(2,4,-1,3),(-3,-6,1,-7)}$; une base quelconque.
+\medskip
+ 
+\item $X=\sp{(1,0,1,1),(1,1,1,1),(1,2,2,0),(1,0,0,2) }$; la base doit \^etre un sous-ensemble de l'ensemble g\'en\'erateur donn\'e.
+\medskip
+  
+\item\sov~$Y=\sp{(1,0,1,1), (-1,1,2,0), (1,1,4,2), (0,1,3,1)}$; la base doit \^etre un sous-ensemble de l'ensemble g\'en\'erateur donn\'e.
+\medskip
+ 
+\item $V=\sp{(1,0,1,3),(1,2,-1,-1),( 0,1,-2,5)}$; une base quelconque.
+\medskip
+ 
+\end{enumerate}
+
+\end{prob} \begin{prob} \label{prob16.3} Étendez chacune des bases que vous avez obtenues dans l'Exercice \ref{prob16.2} en une base de $\R^n$, où $n=3$ pour la question (a), et où $n=4$ pour les autres questions. (Les solutions sont données pour les questions (b) \sov et (d) \sov.)
+
+\end{prob} \begin{prob} \label{prob16.4} Pour chacun des énoncés suivants, indiquez s'il est (toujours) vrai
+ou (possiblement) faux.   
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item Si vous dites que l'\'enonc\'e est faux, donnez un contre-exemple.   
+\item Si vous dites que l'\'enonc\'e est vrai, donnez une explication claire, en citant un théorème ou en donnant une {\it preuve valide dans tous les cas}. 
+\end{enumerate}
+
+\begin{enumerate}[a)]
+\medskip
+\item Pour toute matrice $A$, on a $\dim \row A + \dim \ker A= \dim \im A$\,.
+\medskip
+ 
+
+\item\sov~Il existe des matrices $A$ telles que $\dim \row A+ \dim \ker A= \dim \im A$\,.
+\medskip
+ 
+\item Pour toute matrice $A$, on a $\dim \row A+ \dim \ker A= m$, o\`u $m$ est le nombre de lignes de $A$.
+\medskip
+ 
+\item\sov~Pour toute matrice $A$, on a $\dim \row A+ \dim \ker A= n$, o\`u $n$ est le nombre de colonnes de $A$.
+\medskip
+ 
+\item Pour toute matrice $A$ de taille $m\times n$, on a $\dim \set{A\xx\st \xx\in \R^n} + \dim\set{\xx \in \R^n \st A\xx=0}= \rank A$.
+\medskip
+ 
+\item\sov~Pour toute matrice $A$ de taille $m\times n$, on a  $\dim \set{A\xx\st \xx\in \R^n} + \dim\set{\xx \in \R^n \st A\xx=0}= m$.
+\medskip
+ 
+
+\item Pour toute matrice $A$ de taille $m\times n$, on a  $\dim \set{A\xx\st \xx\in \R^n} + \dim\set{\xx \in \R^n \st A\xx=0}= n$.
+\medskip
+ 
+\item\sov~Pour toute matrice $A$ de taille $m\times n$, le produit scalaire de n'importe quel vecteur de $\ker A$ avec n'importe quelle ligne de $A$ est nul.
+\medskip
+ 
+\item$^\ast$ Si $A$ et $B$ sont deux matrices telles que le produit $AB$ est bien défini, alors $\dim \row(AB) \le \dim \row(B)$. 
+\medskip
+ 
+\item$^\ast$ Si $A$ et $B$ sont deux matrices telles que le produit $AB$ est bien défini, alors $\dim \im(AB) \le \dim \im(A)$.
+\medskip
+ 
+\item$^\ast$ Si $A$ et $B$ sont deux matrices telles que le produit $AB$ est bien défini, alors $\rank AB \le \rank A$ et $\rank AB \le \rank B$.
+ 
+\end{enumerate}
+\end{prob}
+

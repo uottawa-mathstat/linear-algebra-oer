@@ -1,0 +1,121 @@
+
+\begin{sol}{prob09.1} Give \underbar{two} distinct bases for each of the following subspaces, and hence give the dimension of each subspace.
+\medskip
+
+(b)  $L=\set{(x, y) \in \R^2\st 3x - y=0 }$
+
+\soln We saw in Q.7 (b) of the exercises ``VSubspacesSpan" that $L=\spn\{(1,3)\}=\spn\{(2,6)\}$. Since $\set{(1,3)}$ and $\set{(2,6)}$ are linearly independent ($\set{v}$ is independent iff $v \not=0$), both are bases for $L$. Hence $\dim L=1$.\medskip
+%
+
+
+ 
+
+(d)  $K=\set{(x, y, z, w) \in \R^4\st x-y+z-w=0 }$ 
+
+\soln  We saw in Q. 6.3(d)  that
+$\set{(1,1,0,0),(-1, 0,1,0),(1,0,0,1) }$  and $\set{(2,2,0,0),(-3, 0,3,0),(4,0,0,4) }$ are spanning sets for $K$. 
+
+We claim both are also linearly independent: Suppose $a(1,1,0,0)+b(-1, 0,1,0)+c(1,0,0,1)=(0,0,0,0)$. Equating the second component of each side yields $a=0$; equating the third component of each side yields $b=0$, and equating  the fourth component of each side yields $c=0$. Hence $a=b=c=0$, and so $\set{(1,1,0,0),(-1, 0,1,0),(1,0,0,1) }$ is independent.
+
+ An identical argument shows that $\set{(2,2,0,0),(-3, 0,3,0),(4,0,0,4) }$ is independent. Hence both $\set{(1,1,0,0),(-1, 0,1,0),(1,0,0,1) }$ and $\set{(1,1,0,0),(-1, 0,1,0),(1,0,0,1) }$ are bases for $K$. Hence $\dim K=3$.
+
+\medskip
+%
+(f)  $S=\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; a+d=0\Bigg\}$. 
+
+\soln
+Note first that $$P=\Bigg\{  \bmatrix a&b\\ c&-a\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; a,b,c\in \R\Bigg\}=\text{span}\Bigg\{ \bmatrix 1&0\\ 0&-1\endbmatrix,\bmatrix 0&1\\ 0&0\endbmatrix,\bmatrix 0&0\\ 1&0\endbmatrix \Bigg\}.$$ So $\mathcal B=\Bigg\{ \bmatrix 1&0\\ 0&-1\endbmatrix,\bmatrix 0&1\\ 0&0\endbmatrix,\bmatrix 0&0\\ 1&0\endbmatrix \Bigg\}$ spans $S$.
+
+Now suppose $a \bmatrix 1&0\\ 0&-1\endbmatrix+ b \bmatrix 0&1\\ 0&0\endbmatrix +c\bmatrix 0&0\\ 1&0\endbmatrix =\bmatrix 0&0\\ 0&0\endbmatrix$. Then $\bmatrix a&b\\ c&-a\endbmatrix=\bmatrix 0&0\\ 0&0\endbmatrix$, this implies $a=b=c=0$. Hence $\mathcal B$ is also linearly independent, and hence is a basis of $S$. Another basis is given by  $\Bigg\{ \bmatrix 2&0\\ 0&-2\endbmatrix,\bmatrix 0&1\\ 0&0\endbmatrix,\bmatrix 0&0\\ 1&0\endbmatrix \Bigg\}$. Hence $\dim S=3$.
+\medskip
+%
+
+(h)  $X=\Bigg\{  \bmatrix 0&-b\\ -b&0\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; b \in \R\Bigg\}$.
+
+\soln   We saw before that $X=\text{span}\Bigg\{ \bmatrix 0&-1\\ 1&0\endbmatrix\Bigg\}=text{span}\Bigg\{ \bmatrix 0&-2\\ 2&0\endbmatrix\Bigg\}$. Since each of these spanning sets contains a single non-zero matrix, each is also linearly independent. Hence both $\Bigg\{ \bmatrix 0&-1\\ 1&0\endbmatrix\Bigg\}$ and $\Bigg\{ \bmatrix 0&-2\\ 2&0\endbmatrix\Bigg\}$ are bases for $S$, and so either shows that $\dim S=1$. \medskip
+%
+
+
+(j)  $\mathcal P_n$.  
+
+\soln We saw in previous exercsies that $ \mathcal P_n=\spn\{1,x,\dots , x^n\} $, so $\mathcal B=\set{1,x,\dots , x^n}$ spans $\mathcal P_n$. Suppose $a_0 + a_1 x +\cdots a_n x^n =0$ for all $x\in \R$. Since a non-zero polynomial can only have finitely many roots, this shows that $a_0=a_1=\cdots=a_n=0$, and so  $\mathcal B$ is independent and hence is a basis for $\mathcal P_n$. It is clear that $\set{2,x,\dots , x^n}$ is another basis for $\mathcal P_n$. Either basis shows that  $\dim \mathcal P_n=n+1$. \medskip
+%
+
+(l)  $Y= \set{p \in \mathcal P_3 \st  p(2)=p(3)=0}$. 
+
+\soln We saw in previous solutions that $$\mathcal B= \set{(x-2)(x-3), x(x-2)(x-3)}$$ spans $Y$. We can now appeal to solutions to one of the exercises on linear independence to conclude that $\mathcal B$ is linearly independent. Or, we could show it directly: Suppose, for some scalars $a,b$, that  $a(x-2)(x-3)+b x(x-2)(x-3)=0$ for all $x\in \R$. Setting $x=0$ yields $a=0$, and then setting $x=1$ yields $b=0$. So $a=b=0$, and $\mathcal B$ is linearly independent and is hence a basis for $Y$. So $\dim Y=2$. A different basis is clearly given by  $\set{2(x-2)(x-3), x(x-2)(x-3)}$. \medskip
+%
+
+
+(n)  $ W=\spn\{\sin x, \cos x\}$.   
+
+\soln We are given the spanning set $\mathcal B=\set{\sin x, \cos x}$ for $W$. We saw in class that $\mathcal B$ is independent, and hence is a basis of $W$. Thus $\dim W=2$.   \medskip
+
+(p)  $X=\spn\{1, \sin^2 x, \cos^2 x\}$.   
+
+\soln Since $1=\sin^2 x+ \cos^2 x $ for all $x\in \R$, $1\in sp{\sin^2 x, \cos^2 x}$, and so $X=\spn\{\sin^2 x, \cos^2 x\}$. We claim $\mathcal B=\set{\sin^2 x, \cos^2 x}$ is independent: Suppose there are scalars $a,b$ such that $a\sin^2 x + b \cos^2 x=0$ for all $x\in \R$. Setting $x=0$ yields $b=0$, and setting $x=\frac{\pi}{2}$ implies $a=0$. Hence $a=b=0$, and so   $\mathcal B$ is independent, and is thus a basis of $X$. So $\dim X=2$. Another basis is clearly given by $\set{2\sin^2 x, \cos^2 x}$.  \medskip
+%
+
+
+\end{sol}
+
+\begin{sol}{prob09.2} Determine whether   the following  sets are bases of the indicated vector spaces.  
+  \medskip
+
+(b) $\set{(1,2), (-2,-4)} $; ($\R^2$).
+\soln This is not a basis of $\R^2$ since $\set{(1,2), (-2,-4)} $ is dependent --- the second vector is a multiple of the first.\medskip
+% no
+
+
+(d) $\set{(1,2), (3,4), (0,0)} $; ($\R^2$).
+
+\soln This set is dependent because it contains the zero vector, and so it is not a basis of $\R^2$.\medskip
+% no
+
+
+(f) $\set{(1,2,3), (4,8,7)}$; ($\R^3$).
+
+\soln We know that $\dim R^3=3$ and so every basis must contain 3 vectors. So this is not a basis of $\R^3$.\medskip
+%
+
+
+(h) $\set{(1,0,1,0), (0,1,0,1)}$; ($\R^4$).
+
+\soln We know that $\dim R^4=4$ and so every basis must contain 4 vectors. So this is not a basis of $\R^4$.
+
+\medskip
+%
+
+
+(j)  $\Big\{\bmatrix 1&0\\1&2\endbmatrix, \bmatrix 0&1\\0&1\endbmatrix , \bmatrix 1&-2\\1&0\endbmatrix \Big\}$; ($\M_{2 \,2}$)
+
+\soln We know that $\dim  \M_{2 \,2} =4$ and so every basis must contain 4 vectors. So this is not a basis of $\M_{2 \,2}$.
+
+
+\medskip
+
+(m)  $\set{1, 1+x, x^2}$; ($\mathcal P_2$). 
+
+\soln Since we know that $\dim \mathcal P_2=3$, and we do have 3 polynomials here, it suffices to check just one of the conditions for a basis. Let's check that $\set{1, 1+x, x^2}$ spans $\mathcal P_2$: Simply note that for any $a,b,c,\in \R$, $a+bx +cx^2= (a-b)\, 1 + b(1+x) +c x^2$. This shows that $\mathcal P_2=\spn\{1, 1+x, x^2\}$, and by previous comments, that $\set{1, 1+x, x^2}$ is a basis for $\mathcal P_2$.
+\medskip 
+ 
+(o) $\set{1, \sin x, 2 \cos x}$; ($\F(\R)$).
+
+\soln We saw in class (and previous solutions) that  $\F(\R)$ does not have a finite spanning set, so $\set{1, \sin x, 2 \cos x}$ cannot be a basis for $\F(\R)$. 
+
+But let's do this directly. If we can find a single function in $\F(\R)$ that is not in $\spn\{1, \sin x, 2 \cos x\}$, we're done. 
+
+We claim that the function $\sin x \, \cos x \notin \spn\{1, \sin x, 2 \cos x\}$. Suppose the contrary, i.e., that there are scalars $a,b,c$ such that 
+
+$$ \sin x \, \cos x= a\,1 + b \sin x + 2c\, \cos x, \quad \text{ for all } x\in \R$$Setting $x=0$ yields the equation $0=a+2c$; setting $x=\frac{\pi}{2}$ gives $0=a+b$ and setting $x=  \pi $ yields $0=a-2c$. The first and third of these equations together imply $a=c=0$, and then the second implies $b=0$. But then we have the identity $ \sin x \, \cos x =0$ for all $x\in \R$, which is nonsense because the left hand side is $\frac12\not=0$ when $x=\frac{\pi}4$.
+
+
+
+
+
+
+
+
+
+\end{sol}
+

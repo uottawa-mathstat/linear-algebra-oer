@@ -1,0 +1,154 @@
+
+\begin{sol}{prob23.1} For each of the matrices $A$  in the previous question, if possible find and invertible matrix $P$ and a diagonal matrix $D$ such that $P^{-1}AP =D$. If this is not possible, explain why. 
+
+\soln
+\begin{enumerate}[]
+\item (b) Since $\dim E_0 +\dim E_2=1+1=2<3$, this matrix is not diagonalizable --- there is no basis of $\R^3$ consisting of eigenvectors of $A$: there are at most 2 linearly independent eigenvectors of $A$.
+\medskip
+\item (d) This $3 \times 3$ matrix, having 3 distinct eigenvalues, will be diag'ble. Indeed, if $v_0=(-1,0,1)$, $v_1=(-1,1,0)$ and $v_2=(1,0,1)$ are written as columns, set $$P=\bmatrix v_0&v_1& v_2\endbmatrix = \bmatrix 
+-1&-1&1\\
+0&1&0\\
+1&0&1\endbmatrix $$ and $$D= \bmatrix 
+0&0&0\\
+0&1&0\\
+0&0&2\endbmatrix,$$ then $P$ will be invertible (you can check this directly, or simply note that $\dim E_0+\dim E_1 +\dim E_2 =1+1+1=3$, which guarantees $P$'s invertibility) and $P^{-1}AP =D$. \medskip
+\item (f) Since there is only one eigenvalue ($2$) and $\dim E_2=1<3$,  this matrix is not diagonalizable --- there is no basis of $\R^3$ consisting of eigenvectors of $A$: there is at most one linearly independent eigenvector of $A$!
+\medskip
+\item (h) Since there is only one eigenvalue ($2$) and $\dim E_2=2<3$,  this matrix is not diagonalizable --- there is no basis of $\R^3$ consisting of eigenvectors of $A$: there are at most two linearly independent eigenvectors of $A$.
+\medskip
+
+
+\end{enumerate}
+
+
+
+\end{sol}
+
+\begin{sol}{prob23.2} State whether each of the following is (always) true,
+or is (possibly) false.     
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item If you say the statement may be false, you must give an explicit example.   
+\item If you say the statement is true, you must give a clear explanation -   by quoting a theorem presented in class, or by giving a {\it proof valid for every  case}. 
+\end{enumerate}
+
+\begin{enumerate}[]
+
+
+\item (b) The matrix $A=\bmatrix 0&-1\\1&0\endbmatrix$ has no real eigenvalues.
+
+\soln This is true: $\det(A-\lam I_2) =\lam^2 +1$, so $\det(A-\lam I_2)=0$ has no real solutions. 
+\medskip
+%
+
+
+\item (d) If $0$ is an eigenvalue of  $n \times n$ matrix  $A$, then $A$ is
+not invertible.
+
+\soln This is true: $0$ is an eigenvalue of $A$ iff $\det(A-0I_n)=\det A=0$. Hence, $A$ is
+not invertible.
+\medskip
+%
+ 
+\item (f) Every invertible matrix is diagonalizable.
+
+\soln This is false. See example (f) or (h) from the previous question, or, check for yourself that $\bmatrix 1&1\\0&1\endbmatrix$, which has $1$ as its only eigenvalue, is not  diagonalizable.
+\medskip
+ 
+\item (h) If an $n \times n$ matrix has $n$ distinct eigenvalues, then the matrix is diagonalizable.
+
+\soln This is true, as we saw in class: for every distinct eigenvalue, we obtain an eigenvector, and we know that eigenvectors corresponding to distinct eigenvalues are linearly independent. Hence there are $n$ linearly independent eigenvectors, which will of course be a basis for $\R^n$, as $\dim \R^n=n$.
+\medskip
+%
+
+
+\item (j)\footnote{ Hint: Use the fact that we know $\det(A-\lam I_n)=(-1^n)(\lam-\lam_1)(\lam-\lam_2)\dots(\lam-\lam_n) $.} If an  $n \times n$ matrix  $A$ has eigenvalues $\lam_1, \dots ,\lam_n$, then $\det A=\lam_1 \dots\lam_n $.
+
+\soln Use the hint and substitute $\lam=0$ into the equation.
+\medskip
+
+
+\end{enumerate}
+\end{sol}
+\begin{sol}{prob23.3} Let $A=\bmatrix
+0&1&1\\ 1&0&1\\ 1&1&0 \endbmatrix$. 
+
+\begin{enumerate}[a)]
+
+\item Compute $\det(A-\lam I_3)$ and hence show that the eigenvalues of
+$A$ are $2$ and $-1$.
+
+\soln  We have
+$$
+A-\lambda I = \begin{bmatrix}
+-\lambda &1&1\\ 1&-\lambda &1\\ 1&1&-\lambda \end{bmatrix}.
+$$
+To find the determinant, we could do a cofactor expansion and then expand, or we can apply some row operations first, keeping track of any changes to the value of the determinant.  (In doing so, we avoid dividing by $\lambda$ since we don't know if it is zero.)
+$$
+\begin{bmatrix}
+-\lambda &1&1\\ 
+1&-\lambda &1\\ 
+1&1&-\lambda \end{bmatrix} \begin{matrix} \lambda R2+R1 \to R1\\ \sim \\ -R2+R3 \to R3\end{matrix}
+\begin{bmatrix}
+0 &1-\lambda^2&1+\lambda\\ 
+1&-\lambda &1\\ 
+0&1+\lambda&-\lambda-1 \end{bmatrix} 
+$$
+So we compute (keeping an eye on common factors, to simplify our factoring work):
+\begin{align*}
+\det( A-\lambda I)&= \left\vert \begin{matrix}
+0 &1-\lambda^2&1+\lambda\\ 
+1&-\lambda &1\\ 
+0&1+\lambda&-\lambda-1 \end{matrix}\right| = -1\left|\begin{matrix}1-\lambda^2 & 1+\lambda \\ 1 + \lambda & -\lambda - 1\end{matrix}\right|\\
+&= -((1-\lambda^2)(-\lambda - 1) - (1+\lambda)(1+\lambda)) = (1-\lambda^2)(1+\lambda) + (1+\lambda)^2\\
+&= (1+\lambda)^2( 1-\lambda+1) \\
+&= (1+\lambda)^2(2-\lambda)
+\end{align*}
+It follows that the eigenvalues are $2$ (with algebraic multiplicity $1$) and $-1$ (with algebraic multiplicity $2$).
+\item Find a basis of $E_2 =\set{x\in \R^3 \st Ax= 2x}$.
+
+\soln \begin{align*}
+E_2 &= \ker(A-2I) = \ker\begin{bmatrix} -2 & 1 & 1\\ 1 & -2 & 1\\ 1 & 1 & -2 \end{bmatrix}\\ 
+&= \ker \begin{bmatrix} 1&-2&1\\0&-3&3\\0&3&-3\end{bmatrix} =
+\ker \begin{bmatrix} 1&0&-1\\0&1&-1\\0&0&0\end{bmatrix}\\
+&= \{ (s,s,s) \mid s\in \mathbb{R}\} = \spn\{ (1,1,1) \}.
+\end{align*}
+\item Find a basis of $E_{-1} =\set{x\in \R^3 \st Ax=-x}$. 
+
+ \soln
+ \begin{align*}
+E_{-1} &= \ker(A-(-1)I) = \ker(A+I) = \ker\begin{bmatrix} 1 & 1 & 1\\ 1 & 1 & 1\\ 1 & 1 & 1 \end{bmatrix}\\ 
+&= \ker \begin{bmatrix} 1&1&1\\0&0&0\\0&0&0\end{bmatrix} \\
+&= \{ (-s-t,s,t) \mid s,t\in \mathbb{R}\} = \spn\{ (-1,1,0),(-1,0,1) \}.
+\end{align*}
+
+\item Find an invertible  matrix 
+$P$ such that $P^{-1}AP=D$ is diagonal,  and give this diagonal matrix $D$. Explain why
+your choice of $P$ is invertible.
+
+\soln We can take
+$$ 
+P=\begin{bmatrix} 1 &-1 & -1 \\ 1 & 1 & 0\\ 1 & 0 & 1\end{bmatrix}
+\quad \text{and} \quad 
+D = \begin{bmatrix} 2 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & -1 \end{bmatrix}.
+$$
+Since the columns of $P$ are eigenvectors, column multiplication shows $AP=PD$.  Since eigenvectors from different eigenspaces are linearly independent, and $\dim(E_2)+\dim(E_{-1})=3$, the columns of $P$ form a basis for $\mathbb{R}^3$ and so $P$ is invertible.  Thus $P^{-1}AP=D$.
+
+\item Find an invertible  matrix 
+$Q \not=P$ such that $Q^{-1}AQ=\tilde D$ is also diagonal,  and give this diagonal matrix $\tilde D$.
+
+\soln We may replace $P$ with any matrix such that the columns are linearly independent eigenvectors of $A$ (such as nonzero scalar multiples of the columns of $P$).  For a more interesting example, you can verify that
+$$
+Q=\begin{bmatrix} 
+-2 & 1 & 0 \\ 
+1 & 1 & 1\\ 
+1 & 1 & - 1\end{bmatrix}
+\quad \text{and} \quad 
+\tilde D = \begin{bmatrix} -1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & -1 \end{bmatrix}
+$$
+is another valid answer.
+
+\end{enumerate}
+  
+
+\end{sol}

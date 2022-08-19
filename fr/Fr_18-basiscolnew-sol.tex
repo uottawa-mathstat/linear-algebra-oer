@@ -1,0 +1,118 @@
+
+\begin{sol}{prob16.1}~Trouvez une base pour l'espace des lignes et l'espace des colonnes de chacune des matrices suivantes. De plus, vérifiez que $\dim(\im(A)) = \dim(\row(A))$ dans chaque cas.
+\medskip
+
+(b) 
+$A=\bmatrix 1&0&1&2\cr 0&1&1&2\endbmatrix $.
+
+\soln La réduction par rapport aux lignes en MER r\'epond aux besoins de la question. Notez que puisque $A$ est déjà sous forme MER, l'algorithme pour l'espace des lignes donne $\set{(1,0,1,2),(0,1,1,2)}$ comme base pour $\row A$ et celui pour l'espace des colonnes donne $ \set{(1,0),(0,1)}$ comme base pour $\im A$. D'où ces deux espaces sont de dimension $2$ tous les deux.
+\medskip 
+
+(d) $A=\bmatrix 1&2&-1&-1\\2&4&-1&3\\ -3&-6&1&-7\endbmatrix$.
+
+\soln On r\'eduit $A$ en une MER pour avoir $$A\sim \bmatrix 1 & 2 & 0 & 4 \\
+ 0 & 0 & 1 & 5 \\
+ 0 & 0 & 0 & 0 \endbmatrix\,.$$ 
+ L'algorithme pour l'espace des lignes donne $\set{(1,2,0,4),(0,0,1,5)}$ comme base pour $\row A$ et celui pour l'espace des colonnes donne  $ \set{(1,2,-3),(-1,-1,1)}$ comme base pour $\im A$.  D'où ces deux espaces sont de dimension $2$ tous les deux.
+\medskip
+
+(f) $A=\bmatrix 1 & -1 & 1 & 0 \\
+ 0 & 1 & 1 & 1 \\
+ 1 & 2 & 4 & 3 \\
+ 1 & 0 & 2 & 1\endbmatrix$.
+
+\soln On r\'eduit $A$ en une MER pour avoir 
+$$A\sim \bmatrix 1 & 0 & 2 & 1 \\
+ 0 & 1 & 1 & 1 \\
+ 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0  \endbmatrix\,.$$ 
+ L'algorithme pour l'espace des lignes donne  $\set{(1,0,2,1),(0,1,1,1)}$ comme base $\row A$ et celui pour l'espace des colonnes donne  $ \set{(1,0,1,1),(-1,1,2,0)}$ comme base pour $\im  A$. D'où ces deux espaces sont de dimension $2$ tous les deux.\medskip
+
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob16.2}  Trouvez une base du type souhaité pour les sous-espaces suivants. (Vous pouvez utiliser vos résultats obtenus à l'exercice précédent lorsque cela est utile).
+\medskip
+
+(b) $W=\sp{(1,2,-1,-1),(2,4,-1,3),(-3,-6,1,-7)}$; une base quelconque.
+
+\soln On constate que $W= \row A$ pour la matrice $A$ de la question (b) de l'exercice précédent. On peut donc prendre la base de $\row A$ que nous avions trouvée, à savoir $\set{(1,2,04),(0,0,1,5)}$.
+\medskip
+
+(d) $Y=\sp{(1,0,1,1), (-1,1,2,0), (1,1,4,2), (0,1,3,1)}$; la base doit \^etre un sous-ensemble de l'ensemble g\'en\'erateur donn\'e.
+
+\soln On constate que $Y= \im A$ pour la matrice $A$ de la question (f) de l'exercice précédent. Nous pouvons donc utiliser la base de $\im A$ que nous avions trouvée, à savoir $ \set{(1,0,1,1),(-1,1,2,0)}$.
+
+
+
+\medskip 
+\end{sol}
+
+\bigskip
+\begin{sol}{prob16.3} Étendez chacune des bases que vous avez obtenues dans l'Exercice \ref{prob16.2} en une base de $\R^n$, où $n=3$ pour la question (a), et où $n=4$ pour les autres questions. 
+
+\medskip
+(b) On doit \'etendre $\set{(1,0,1,2),(0,1,1,2)}$ en une base de $\R^4$. \smallskip
+
+On pose $A=\scriptsize\mat{\pivot&0&1&2\\0&\pivot&1&2\\ &&\hspace{-0.5cm}\uu_3 \\ && \hspace{-0.5cm}\uu_4}$. On peut voir que les deux pivots sont dans les colonnes 1 et 2. Donc si l'on prend $\uu_3=(0,0,1,0)$ et $\uu_4=(0,0,0,1)$, on a
+$$A =\mat{\pivot&0&1&2\\0&\pivot&1&2\\ 0&0&\pivot&0\\ 0&0&0&\pivot}\,,$$ 
+et il est clair que $\rank A=4$. D'o\`u, voici une base de $\R^4$ qui \'etend l'ensemble de départ :
+$$ \set{(1,0,1,2),(0,1,1,2), (0,0,1,0),(0,0,0,1)}\,.$$
+\medskip
+
+(d) On doit \'etendre $ \set{(1,0,1,1),(-1,1,2,0)}$ en une base de $\R^4$.\smallskip
+
+On pose $A=\scriptsize\mat{1&0&1&1\\-1&1&2&0\\ &&\hspace{-0.5cm}\uu_3 \\ && \hspace{-0.5cm}\uu_4}$ et on cherche la MER de $A$ :
+
+$$\mat{1&0&1&1\\-1&1&2&0\\ &&\hspace{-0.5cm}\uu_3 \\ && \hspace{-0.5cm}\uu_4} \sim \mat{
+\pivot&0&1&1\\
+0&\pivot&3&1\\ &&\hspace{-0.6cm}\uu_3 \\ && \hspace{-0.6cm}\uu_4}\,. $$ On peut voir que les deux pivots sont dans les colonnes 1 et 2. Donc si l'on prend  $\uu_3=(0,0,1,0)$ et $\uu_4=(0,0,0,1)$, on a 
+
+$$A =\mat{1&0&1&1\\-1&1&2&0\\ 0&0&1&0\\ 0&0&0&1}\sim \mat{
+\pivot&0&1&1\\
+0&\pivot&3&1\\ 0&0&\pivot&0 \\ 0&0&0&\pivot}\,, $$
+et on voit clairement que $\rank A=4$.  D'o\`u, voici une base de $\R^4$ qui \'etend l'ensemble de départ :
+$$  \set{(1,0,1,1),(-1,1,2,0), (0,0,1,0),(0,0,0,1)}\,.$$
+\medskip
+\end{sol}
+
+\bigskip
+\begin{sol}{prob16.4} Pour chacun des énoncés suivants, indiquez s'il est (toujours) vrai
+ou (possiblement) faux.   
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item Si vous dites que l'\'enonc\'e est faux, donnez un contre-exemple.   
+\item Si vous dites que l'\'enonc\'e est vrai, donnez une explication claire, en citant un théorème ou en donnant une {\it preuve valide dans tous les cas}. 
+\end{enumerate}
+\medskip
+(b)  Il existe des matrices $A$ telles que $\dim \row A+ \dim \ker A= \dim \im A$\,.
+
+\soln Puisque nous avons toujours $\dim \row A=\dim \im A$, l'équation ci-dessus est vraie si et seulement si $\dim \ker A=0$. Il existe de telles matrices, donc l'énoncé est vrai. Par exemple, l'énoncé est vrai pour toute matrice inversible, comme la matrice identité $I_2=\scriptsize\bmatrix 1&0\\0&1\endbmatrix$, où $\dim \row A=\dim \row A=2$ et $\dim \ker A=0$.
+\medskip
+ 
+
+(d)  Pour toute matrice $A$, on a $\dim \row A+ \dim \ker A= n$, o\`u $n$ est le nombre de colonnes de $A$.
+
+\soln C'est toujours vrai, nous l'avons d'ailleurs appelé la \ \og\ l'invariance de la dimension\ \fg (c'est le Théorème du rang). Nous savons que $\dim \ker A$ est le nombre de paramètres dans la solution générale de $A\xx=\zero$, qui est aussi le nombre de colonnes non-pivots de $A$, qui est bien sûr le nombre de colonnes soustrait à son rang. Notez également que $\rank A=\dim \row A$. Donc $\dim \ker A = n-\dim \row A$, ce qui est équivalent à l'équation donnée dans l'énoncé.
+\medskip
+
+(f) Pour toute matrice $A$ de taille $m\times n$, on a  $\dim \set{A\xx\st \xx\in \R^n} + \dim\set{\xx \in \R^n \st A\xx=0}= m$.
+
+\soln Nous savons en fait que $\dim \set{A\xx\st \xx\in \R^n} + \dim \set{x \in \R^n \st A\xx=\zero}= n$ pour toute matrice $A$ de taille $m\times n$. Donc l'équation de l'énoncé est vraie si et seulement $n=m$. Ainsi, l'énoncé ci-dessus est faux dès lors que $m\neq n$. 
+
+Par exemple, supposons que $A=\bmatrix 1&0 \endbmatrix$ (où $m=1$ et $n=2$). Alors
+$\dim \set{A\xx\st \xx\in \R^n}=\dim \im A= \rank A=1$ et $\dim \set{x \in \R^n \st A\xx=\zero}=\dim \ker A=1$. Donc l'équation dans l'énoncé devient $1+1=1$ et on l'on voit tout de suite qu'elle est bien sûr fausse. D'où le résultat.
+\medskip
+ 
+
+
+(h)  Pour toute matrice $A$ de taille $m\times n$, le produit scalaire de n'importe quel vecteur de $\ker A$ avec n'importe quelle ligne de $A$ est nul.
+
+\soln Ceci est vrai! C'est une conséquence facile de la multiplication par blocs et de la définition du noyau de $A$. En effet, si $\xx\in \R^n$ est un vecteur tel que $\xx\in \ker A$, alors par définition $A\xx=\zero$. \'Ecrivez ensuite $A$ sous la forme de blocs de lignes $A=\scriptsize\bmatrix \rr_1\\\vdots\\ \rr_m\endbmatrix$, de sorte que le vecteur ligne $\rr_i$ soit la $i$-{ème} ligne de $A$. Alors 
+$$A\xx= \bmatrix \rr_1\\\vdots\\ \rr_m\endbmatrix x=\bmatrix \rr_1\cdot \xx \\ \vdots\\ \rr_m\cdot \xx\endbmatrix= \bmatrix 0\\\vdots\\ 0\endbmatrix\,.$$ 
+De cette équation, on peut voir que $\rr_i \cdot \xx =0$ pour tout $i$, $1\le i\le m$, d'où le résultat voulu.
+
+
+\end{sol}
+

@@ -1,0 +1,130 @@
+
+\begin{sol}{prob05.1} Determine whether each of the following is a subspace of the indicated vector space. Assume the vector space has the standard operations unless otherwise indicated. 
+
+
+\medskip
+
+(b)  $\set{(x, x-3) \in \R^2\st x\in \R}$; $\R^2$. 
+
+\soln Since this set does not contain $(0,0)$, it is {\it not} a subspace of $\R^2$.
+\medskip
+
+
+(e)  $\set{(x, y) \in \R^2\st x -3y=0 }$;   $\R^2$. 
+
+\soln This is a line through the origin in $\R^2$ and hence {\it is} a subspace of $\R^2$. Alternatively,$\set{(x, y) \in \R^2\st x -3y=0 }=\set{(3y, y) \st y\in \R }=\set{y(3,1)\st y\in \R}=\spn\{(3,1)\}$ and hence {\it is} a subspace of $\R^2$.\medskip
+%
+
+(g)  $\set{(x, y) \in \R^2\st xy \ge 0 }$; $\R^2$. 
+
+\soln We saw in previous exercises that this set is not closed under addition, and hence is {\it not} a subspace of $\R^2$.\medskip
+%
+
+(i)   $\set{(x, y, z) \in \R^3\st x+2y+z=1 }$;    $\R^3$. 
+
+\soln This set does not contain $(0,0,0)$, and hence is {\it not} a subspace of $\R^2$.\medskip 
+%
+ 
+
+(k) $W=\set{(x, y, z, w) \in \R^4\st x-y+z-w=0 }$ ; $\R^4$. 
+
+\soln 
+\begin{align*}
+W&=\set{(x, y, z, w) \in \R^4\st x=y-z+w}\\
+&=\set{(y-z+w, y,z,w,)\st y,z,w\in \R}\\
+&=\set{y(1,1,0,0)+z(-1, 0,1,0)+w(1,0,0,1)\st y,z,w\in \R}\\
+&=\spn\{(1,1,0,0),(-1, 0,1,0),(1,0,0,1) \}
+\end{align*}
+and hence {\it is} a subspace of $\R^4$.  \medskip
+
+\end{sol}
+
+\begin{sol}{prob05.2}   Determine whether each of the following is a subspace of  $$\F(\R)=\set{f \st f: \R \to~\R},$$ with its standard operations. (Here, you'll need to use the subspace test, except perhaps in the last part.)  
+ 
+ \medskip
+
+
+(b) $\set{f \in \F(\R) \st f(2)=1 }$. 
+
+\soln This does not contain the zero function and hence is not a subspace of $\F(\R)$. \medskip
+% 
+
+(d)   $\set{f \in \F(\R) \st \text{ for all } x\in \R,   \, f(x)\le 0}$. 
+
+\soln We saw in previous exercises that this set is not closed under multiplication by scalars, and so is not a subspace of $\F(\R)$.\medskip 
+
+(f)   $O=\set{f \in \F(\R) \st \text{ For all } x\in \R,   \, f(-x)= -f(x)}$.  
+
+\soln Refer to solutions for exercises in the previous chapter: Q. 3(f), Q.4(f) and Q.8(a): put them together and you'll see the subspace test is carried out successfully. Hence  $O$ is indeed a subspace of $\F(\R)$.\medskip 
+%
+
+
+
+
+(h) $\PP=\set{p \in \F(\R)   \st p \text{ is a polynomial function in the variable } x}$
+
+ \soln Since the zero function is also a polynomial function, ${\bf 0} \in \PP$. Noting that the sum of any two polynomial functions is again a polynomial function shows $\PP$ is closed under addition. Finally, it's also clear that a scalar multiple of a polynomial function is again a polynomial function, so $\PP$ is closed under multiplication by scalars. Hence, by the subspace test, $\PP$ is a subspace of $\F(\R)$. 
+
+(Alternatively, note that $\PP=\spn\{x^n \st n=0, 1,2, \dots\}$ and so is a subspace of $\F(\R)$. We won't often talk about the span of an infinite set of vectors (say) $K$, but the  definition of $\text{span}\,K$ is the same: collect all (finite) linear combinations of vectors from $K$.)\medskip 
+%
+ 
+
+
+\end{sol}
+
+\begin{sol}{prob05.3} Determine whether   the following are subspaces of $$\PP =\set{p \in \F(\R)   \st p \text{ is a polynomial function in the variable } x},$$ with its standard operations. (In some parts, you'll be able to use the fact that everything of the form $\spn\{v_1, \dots, v_n\}$  is a subspace.)
+ 
+\medskip
+ 
+
+(b) $\set{p \in \PP   \st \deg(p)
+\le 2 }$. 
+
+\soln $\set{p \in \PP   \st \deg(p)
+\le 2 }= \set{a +bx +cx^2   \st a,b,c\in \R}=\spn\{1, x, x^2\}$  and hence this is a subspace of $\PP$.\medskip 
+% 
+
+ 
+ 
+
+(d)  $ \set{p \in \PP_2 \st  p(1)=0}$. 
+
+\soln By the Factor theorem, $ \set{p \in \PP_2 \st  p(1)=0}=\set{(x-1)q(x)\st \deg q \le 1}=\set{(x-1)(a+bx) \st a,b \in \R}=\set{a(x-1)+ bx(x-1) \st a,b \in \R}=\spn\{x-1, x(x-1)\}$ and hence is  a subspace of $\PP$. \medskip
+%
+
+
+
+(f) $G=\set{p \in \PP_3 \st  p(2)\,p(3)=0}$. 
+
+\soln This is not closed under addition: for example $(x-2)$ and $x-3$ both belong to $G$ but their sum, $r(x)=2x-5$, does not, as $r(2)r(3)=(-1)(1)=-1\not=0$. Hence $G$ is {\it not}  a subspace of $\PP$.\medskip
+%
+
+(h) $ \set{p \in \PP_2 \st  p(1)+p(-1)=0}$. 
+
+\soln   $ \set{p \in \PP_2 \st  p(1)+p(-1)=0}=\set{a+bx +cx^2  \st  a,b,c \in \R \text{ and } a+b+c+a-b+c=0}=\set{a+bx +cx^2  \st  a,b,c \in \R \text{ and } a+c=0}=\set{a +bx -ax^2  \st  a, c \in \R}=\spn\{1- x^2, x\}$ and hence this is   a subspace of $\PP$.\medskip
+%
+
+ 
+\end{sol}\begin{sol}{prob05.4} Determine whether   the following are subspaces of $\M_{2 \,2}(\R)$, with its standard operations. (In some parts, you'll be able to us the fact that everything of the form $\spn\{v_1, \dots, v_n\}$  is a subspace.)
+
+\medskip
+
+
+
+
+(b)  $X=\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\;a=d=0\quad \&\quad b=-c  \Bigg\}$. 
+
+\soln $X=\Bigg\{  \bmatrix 0&-c\\ c&0\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\;c\in \R \Bigg\}=\text{span}\Bigg\{ \bmatrix 0&-1\\ 1&0\endbmatrix\Bigg\}$, and hence $X$ is a subspace of $\M_{2 \,2}(\R)$.\medskip
+%
+
+(d)  $\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; bc=1\Bigg\}$. 
+
+\soln This set does not contain the zero matrix  $\bmatrix 0&0\\ 0&0\endbmatrix$ and hence is {\it not} a subspace of $\M_{2 \,2}(\R)$.   \medskip
+%
+ (f)  $Z=\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; ad-bc=0\Bigg\}$. 
+
+\soln This set is not closed under addition: for example both $A=\bmatrix 1&0\\ 0&0\endbmatrix$ and $B=\bmatrix 0&0\\ 0&1\endbmatrix$ belong to $Z$, but $A+B=\bmatrix 1&0\\ 0&1\endbmatrix$ does not. Hence $Z$ is {\it not} a subspace of $\M_{2 \,2}(\R)$.   \medskip
+%
+
+\end{sol}
+

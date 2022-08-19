@@ -1,0 +1,136 @@
+
+\begin{sol}{prob09.1}~Donnez \underbar{deux} bases diff\'erentes pour chacun des sous-espaces suivants. En d\'eduire leur dimension.
+
+\medskip
+(b)  $L=\set{(x, y) \in \R^2\st 3x - y=0 }$.
+
+\soln On a vu dans le Chapitre \ref{chapter:Fr_07-independence} que $L=\sp{(1,3)}=\sp{(2,6)}$. Puisque $\set{(1,3)}$ et $\set{(2,6)}$ sont chacun linéairement indépendants ($\set{\vv}$ est toujours indépendant dès lors que $\vv \not=\zero$), les deux ensembles sont donc des bases pour $L$. Par conséquent, on a $\dim L=1$.\medskip
+
+
+
+ 
+
+(d)  $K=\set{(x, y, z, w) \in \R^4\st x-y+z-w=0 }$.
+
+\soln  On a vu dans à la question 6.3(d)  que chacun deux ensembles suivants engendre $K$ :
+$$\set{(1,1,0,0),(-1, 0,1,0),(1,0,0,1) }\quad\quad\text{et}\quad\quad\set{(2,2,0,0),(-3, 0,3,0),(4,0,0,4) }\,.$$
+Montrons que ces deux ensembles sont également linéairement indépendants, et on en déduira qu'ils forment des bases de $K$. Supposons que $a(1,1,0,0)+b(-1, 0,1,0)+c(1,0,0,1)=(0,0,0,0)$ pour certains scalaires $a,b,c$. 
+Si l'on identifie la deuxième composante de chaque vecteur des deux côtés de l'égalité, on obtient $a=0$; puis, on comparant la troisième composante des deux côtés, on obtient $b=0$; et finalement, on égalisant la quatrième composante des deux côtés, on trouve $c=0$. Par conséquent, on a la solution triviale $a=b=c=0$ et donc $\set{(1,1,0,0),(-1, 0,1,0),(1,0,0,1) }$ est LI.
+
+Le m\^eme argument montre que $\set{(2,2,0,0),(-3, 0,3,0),(4,0,0,4) }$ est aussi LI. Donc, les deux $\set{(1,1,0,0),(-1, 0,1,0),(1,0,0,1) }$ et $\set{(1,1,0,0),(-1, 0,1,0),(1,0,0,1) }$ sont deux bases pour $K$ et on a $\dim K=3$.
+
+\medskip
+
+(f)  $S=\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; a+d=0\Bigg\}$. 
+
+\soln
+Notons d'abord que $$P=\Bigg\{  \bmatrix a&b\\ c&-a\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; a,b,c\in \R\Bigg\}=\text{span}\Bigg\{ \bmatrix 1&0\\ 0&-1\endbmatrix,\bmatrix 0&1\\ 0&0\endbmatrix,\bmatrix 0&0\\ 1&0\endbmatrix \Bigg\}.$$ 
+Donc $\mathcal B=\scriptsize\Bigg\{ \bmatrix 1&0\\ 0&-1\endbmatrix,\bmatrix 0&1\\ 0&0\endbmatrix,\bmatrix 0&0\\ 1&0\endbmatrix \Bigg\}$ engendre $S$.
+
+Pour montrer que cet ensemble est LI, supposons que 
+$$a \bmatrix 1&0\\ 0&-1\endbmatrix+ b \bmatrix 0&1\\ 0&0\endbmatrix +c\bmatrix 0&0\\ 1&0\endbmatrix =\bmatrix 0&0\\ 0&0\endbmatrix\,.$$
+De l'égalité $\scriptsize\bmatrix a&b\\ c&-a\endbmatrix=\bmatrix 0&0\\ 0&0\endbmatrix$ 
+on déduit la relation triviale $a=b=c=0$. Ainsi $\mathcal B$ est LI et donc forme une base de $S$. Une autre base est alors  $\scriptsize\Bigg\{ \bmatrix 2&0\\ 0&-2\endbmatrix,\bmatrix 0&1\\ 0&0\endbmatrix,\bmatrix 0&0\\ 1&0\endbmatrix \Bigg\}$. Enfin, on a $\dim S=3$.
+\medskip
+
+
+(h)  $X=\Bigg\{  \bmatrix 0&-b\\ -b&0\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; b \in \R\Bigg\}$.
+
+\soln   On a vu précédemment que $X=\text{Vect}\scriptsize\Bigg\{ \bmatrix 0&-1\\ 1&0\endbmatrix\Bigg\}=\normalsize\text{Vect}\scriptsize\Bigg\{ \bmatrix 0&-2\ 2&0\endbmatrix\Bigg\}$.  Puisque chacun de ces ensembles contient une seule matrice non-nulle, il sont également linéairement indépendants. Par conséquent, les ensembles $\scriptsize\Bigg\{ \bmatrix 0&-1\\ 1&0\endbmatrix\Bigg\}$ et $\scriptsize\Bigg\{ \bmatrix 0&-2\ 2&0\endbmatrix\Bigg\}$ sont des bases pour $S$ et en particulier $\dim S=1$. \medskip
+
+
+
+(j) $\PP_n$.  
+
+\soln Nous avons vu dans les exercices précédents que $ \PP_n=\sp{1,x,\dots , x^n} $. Donc $\mathcal B=\set{1,x,\dots , x^n}$ engendre $\PP_n$. Pour voir que $\mathcal B$ est aussi LI, supposons que $a_0 + a_1 x +\cdots a_n x^n =0$ pour tout $x\in \R$. Mais un polynôme non-nul ne peut avoir qu'un nombre fini de racines, ce qui montre que $a_0=a_1=\cdots=a_n=0$. Ainsi $\mathcal B$ est LI et donc est une base de $\PP_n$. Il est clair que $\set{2,x,\cdots , x^n}$ est une autre base pour $\PP_n$. On d\'eduit alors que $\dim \PP_n=n+1$. \medskip
+
+
+(l)  $Y= \set{p \in \PP_3 \st  p(2)=p(3)=0}$. 
+
+\soln On a vu précédemment que l'ensemble
+$$\mathcal B= \set{(x-2)(x-3), x(x-2)(x-3)}$$ 
+engendre $Y$. 
+Pour conclure que $\mathcal B$ une base il suffit de montrer que $\mathcal B$ est linéairement indépendant. Supposons que pour certains scalaires $a,b$ on ait 
+$a(x-2)(x-3)+b x(x-2)(x-3)=0$ pour tout $x\in \R$. 
+En particulier, en $x=0$, on obtient $a=0$, et en $x=1$, on obtient $b=0$. Donc on a nécéssairement la solution triviale $a=b=0$, ce qui montre que $\mathcal B$ est linéairement indépendant et est donc une base de $Y$. En particulier, on a $\dim Y=2$. Une base différente peut \^etre donnée par $\set{2(x-2)(x-3), \,x(x-2)(x-3)}$. \medskip
+
+
+
+(n)  $ W=\sp{\sin x, \cos x}$.   
+
+\soln L'ensemble $\mathcal B=\set{\sin x, \cos x}$ engendre $W$ par d\'efinition. Nous avons vu aussi que $\mathcal B$ est LI et est donc une base de $W$. Et par la même occasion, on obtient $\dim W=2$.   \medskip
+
+(p) $X=\sp{1, \sin^2 x, \cos^2 x}$.   
+
+\soln Puisque $1=\sin^2 x+ \cos^2 x $ pour tout $x\in \R$, on a que la fonction constante égale à $1$ appartient à $\sp{\sin^2 x, \cos^2 x}$, donc $X$ peut se simplifier en :
+$$X=\sp{\sin^2 x, \cos^2 x}\,.$$ 
+Montrons maintenant que $\mathcal B=\set{\sin^2 x, \cos^2 x}$ est LI. Supposons qu'il existe des scalaires $a,b$ tels que $a\sin^2 x + b \cos^2 x=0$ pour tout $x\in \R$. 
+En particulier, en $x=0$, on obtient $b=0$; et en $x=\frac{\pi}{2}$ on a $a=0$; soit la solution triviale $a=b=0$. Donc $\mathcal B$ est indépendant et est alors une base de $X$. On en d\'eduit que $\dim X=2$. Une autre base peut \^etre donnée par $\set{2\sin^2 x, \cos^2 x}$.  \medskip
+
+
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob09.2} Déterminez si les ensembles suivants sont des bases des espaces vectoriels indiqués.   
+  \medskip
+
+(b) $\set{(1,2), (-2,-4)} $; ($\R^2$).
+
+\soln Ce n'est pas une base de $\R^2$ car $\set{(1,2), (-2,-4)} $ est LD (le deuxième vecteur est un multiple scalaire du premier).\medskip
+% no
+
+
+(d) $\set{(1,2), (3,4), (0,0)} $; ($\R^2$).
+
+\soln Cet ensemble est LD car il contient le vecteur nul $(0,0)$. Donc ce n'est pas une base de $\R^2$.\medskip
+% no
+
+
+(f) $\set{(1,2,3), (4,8,7)}$; ($\R^3$).
+
+\soln Nous savons que $\dim R^3=3$, donc toute base doit contenir précisément $3$ vecteurs. Cet ensemble n'est donc pas une base de $\R^3$.\medskip
+
+
+
+(h) $\set{(1,0,1,0), (0,1,0,1)}$; ($\R^4$).
+
+\soln Nous savons que $\dim R^4=4$, donc toute base doit contenir exactement 4 vecteurs. Cet ensemble n'est donc pas une base de  $\R^4$.
+
+\medskip
+
+
+
+(j)  $\Big\{\bmatrix 1&0\\1&2\endbmatrix, \bmatrix 0&1\\0&1\endbmatrix , \bmatrix 1&-2\\1&0\endbmatrix \Big\}$; ($\M_{2 \,2}(\R)$)
+
+\soln Nous savons que $\dim \M_{2 \,2}(\R) =4$, donc toute base doit contenir exactement 4 vecteurs. Cet ensemble n'est donc pas une base de $\M_{2 \,2}(\R)$.
+
+
+\medskip
+
+(m) $\set{1, 1+x, x^2}$ ; ($\PP_2$). 
+
+\soln Comme $\dim \PP_2=3$ et que nous avons 3 polynômes, il suffit de vérifier que cet ensemble est LI ou que cet ensemble est générateur. Vérifions la seconde. Pour tous $a,b,c,\in \R$, on a l'égalité $a+bx +cx^2= (a-b)\, 1 + b(1+x) +c x^2$. Ceci montre que $\PP_2\subseteq\sp{1,\, 1+x, \,x^2}$ et par conséquent que $\set{1,\, 1+x, \,x^2}$ est une base de $\PP_2$.
+\medskip 
+ 
+(o) $\set{1, \sin x, 2 \cos x}$; ($\F(\R)$).
+
+\soln Nous avons vu que $\F(\R)$ est de dimension infinie et donc $\set{1, \sin x, 2 \cos x}$ ne peut pas être une base de $\F(\R)$. 
+
+Pour avoir une autre preuve, montrons-le directement. Si nous pouvons trouver une seule fonction de $\F(\R)$ qui n'est pas dans $\sp{1, \sin x, 2 \cos x}$, alors le tour est joué. 
+
+Nous affirmons que le produit $\sin x \, \cos x \notin \sp{1,\, \sin x,\, 2 \cos x}$. Par l'absurde, supposons le contraire, c'est-à-dire qu'il existe des scalaires $a,b,c$ tels que 
+$$ \sin x \, \cos x= a\,1 + b \sin x + 2c\, \cos x, \quad \text{ pour tout } x\in \R\,.$$
+En $x=0$, on obtient l'équation $0=a+2c$; en $x=\frac{\pi}{2}$, on obtient $0=a+b$; et en  $x= \pi $, on obtient $0=a-2c$. La première et la troisième équations impliquent que $a=c=0$, ce qui implique avec la deuxième équation que $b=0$. D'où la seule possibilité est la solution triviale $a=b=c=0$, et on obtient la contradiction que $ \sin x \, \cos x =0$ pour tout $x\in \R$ (prendre $x=\frac{\pi}4$ pour voir la contradiction). 
+
+D'o\`u $\sin x \, \cos x \notin \sp{1, \sin x, 2 \cos x}$, ce qui conclut la preuve.
+
+
+
+
+
+
+
+
+\end{sol}
+

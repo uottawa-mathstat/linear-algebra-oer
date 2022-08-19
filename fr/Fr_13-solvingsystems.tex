@@ -1,0 +1,384 @@
+\chapter{Résolution de systèmes linéaires}
+
+\label{chapter:Fr_13-solvingsystems}
+
+Nous avons crois\'e différents types de systèmes linéaires dans divers contextes au travers ce livre.  
+Ils se sont présent\'es dans les problèmes sous les formes suivantes :   
+\begin{itemize}
+	\item trouver l'intersection de deux plans dans $\R^3$;
+	\item exprimer un vecteur comme une combinaison linéaire d'autres vecteurs;
+	\item vérifier si un ensemble de vecteurs est linéairement indépendant.
+\end{itemize}
+Plus concrètement, les systèmes linéaires apparaissent également dans des contextes allant de l'équilibrage
+d'équations chimiques \`a la modélisation de systèmes physiques,  entre autres.  En fait, les systèmes linéaires que nous avons étudiés dans ce manuel ont tendance à être
+assez petits, mais en pratique il y a des modèles physiques qui
+font intervenir des milliers de variables et des milliers d'équations --- 
+des systèmes qui seraient DIFFICILES voire IMPOSSIBLES à résoudre s'ils n'avaient pas la particularit\'e d'\^etre LINÉAIRES. L'algèbre linéaire donne
+des outils incroyablement puissants pour résoudre les systèmes linéaires.
+
+Dans ce qui suit, nous voulons (1) déterminer une bonne méthode pour
+résoudre des systèmes linéaires, (2) établir la notation de matrices augmentées que nous utiliserons dans la réduction de matrices, et (3)
+commencer à comprendre le processus de réduction de matrices.
+
+\section{Systèmes linéaires}
+
+Par \defn{système linéaire}, nous entendons un ensemble de $m$ équations linéaires en  
+$n$ variables, que nous voulons résoudre simultanément.  Par «~simultanément~» nous entendons
+qu'une \defn{solution} est un $n$-uplet qui satisfait TOUTES les équations.
+
+\begin{myexample}
+\begin{equation} \label{E11:1}
+\begin{matrix}
+x_1 & + & 2x_2 &&     & + & x_4 & = & 1\\
+    &   &      && x_3 & - & x_4 & = & -1
+\end{matrix} 
+\end{equation}
+est un système linéaire avec $m=2$ équations et $n=4$ \emph{variables} (ou \emph{inconnues}).  Nous remarquons également la présence de \emph{coefficients} du \emph{côté gauche} (CG), et de \emph{termes constants} du \emph{côté droit} (CD).
+
+On peut voir que le vecteur $(1,0,0,0)$ n'est pas solution à ce système linéaire parce qu'il
+ne satisfait pas la deuxi\`eme équation.
+
+Cependant $(0,0,0,1)$ est solution car il
+satisfait les DEUX équations.
+\end{myexample}
+
+
+\begin{definition}
+La \defn{solution générale} d'un système linéaire est l'ensemble de \emph{toutes} les
+solutions possibles.
+\end{definition}
+
+\begin{myexample} Montrons que
+$$
+S = \{ (1-2s-t, s, t-1, t) \mid s,t\in \R\}
+$$
+est la solution générale du système linéaire \eqref{E11:1}.
+Pour montrer cela, nous vérifions deux choses :
+\begin{enumerate}[(1)]
+	\item Le vecteur $(1-2s-t, s, t-1, t)$ est bien solution de \eqref{E11:1}
+pour tous $s,t\in\R$ :
+\begin{align*}
+(1-2s-t) + 2(s) + t &= 1 \qquad \hspace{0.3cm}\checkmark \\
+t-1 - (t) &= -1 \qquad \checkmark
+\end{align*}
+	\item Vérifions que TOUTES les solutions de \eqref{E11:1} sont dans $S$.  Pour cela utilisons la 
+première équation pour écrire
+$$
+x_1 = 1-2x_2-x_4
+$$
+et la seconde équation pour écrire
+$$
+x_3 = -1+x_4\,.
+$$
+Ainsi, $(x_1,x_2,x_3,x_4)$ est une solution de \eqref{E11:1} si et seulement si
+$$
+\mat{x_1\\x_2\\x_3\\x_4} = \mat{1-2x_2-x_4\\x_2\\ -1+x_4\\ x_4}.
+$$
+En changeant respectivement les noms de $x_2$ en $s$ et de $x_4$ en $t$, on reconnaît que toutes les solutions sont bien dans
+ l'ensemble $S$ défini ci-dessus.
+ \end{enumerate}
+Nous dirons que $s,t$ sont les \emph{paramètres} de la solution générale.
+Notez que, puisque l'ensemble solution $S$ est paramétré, on a que chaque valeur de $s\in \R$ donne une solution différente et donc le système \eqref{E11:1} 
+admet une \stress{infinit\'e} de solutions.\footnote{La même remarque est vraie pour $t\in\R$. Il existe donc une famille « doublement infinie » de solutions. Nous avons déjà clarifi\'e cette notion de « doublement infini » dans un contexte similaire lorsque nous avons parlé de « dimension »  dans le Chapitre \ref{chapter:Fr_10-basisdimension}. Notez toutefois que l'ensemble des solutions ici n'est PAS UN SOUS-ESPACE (car il ne contient pas $\zero$), donc nous ne pouvons \emph{pas} parler de sa dimension (dans ce livre du moins)... }  
+\end{myexample}
+
+
+Examinons d'autres exemples afin d'avoir une idée plus claire sur  d'une part les caractéristiques d'une solution générale, et sur d'autre part ce qui rend un système «~facile~» à résoudre.
+
+\begin{myexample} Considérons le système suivant :
+\begin{align*}
+x_1+2x_2 + 3x_3 &= 4\,;\\ 
+x_2+x_3 &= 5\,;\\
+x_3&=1\,.
+\end{align*}
+Il s'agit d'un système $3\times 3$ (c'est-à-dire un système de $3$ équations à $3$ variables).
+L'ensemble solution correspond à l'intersection de 3 plans de $\R^3$.  Ce système
+a une \emph{solution unique}, \`a savoir  le vecteur $(-7,4,1)$ (vérifiez-le en
+substituant du bas vers le haut).
+\end{myexample}
+
+\begin{myexample}Le système 
+\begin{align*}
+x +y &= 1\\
+2x+2y &= 1
+\end{align*}
+est un système $2\times 2$ et il n'admet \emph{aucune solution}.  La solution générale est l'ensemble vide : $S = \emptyset$.
+\end{myexample}
+
+\begin{definition}\ 
+\begin{itemize}
+\item Un système linéaire qui n'admet AUCUNE SOLUTION est dit \defn{incompatible}.
+\item Un système linéaire qui admet AU MOINS UNE solution est dit \defn{compatible}.
+\end{itemize}
+\end{definition}
+
+Parfois, il est facile de voir qu'un système est compatible.  Par exemple, lorsque tous les termes constants (ceux du côté droit) sont tous nuls
+\begin{align*}
+x_1 + x_2 - x_3 &= 0\\
+2x_1 - x_2 + x_3 &= 0\,,
+\end{align*}
+il est clair que $(0,0,0)$ est solution et que donc le système est compatible.
+
+
+\begin{definition}\ 
+\begin{itemize}
+\item Un système linéaire dans lequel tous les termes constants (du côté droit) sont nuls est dit \defn{homogène}.
+\item Un système linéaire dont au moins un des termes constants est non-nul est dit \defn{non-homogène}.
+\end{itemize}
+\end{definition}
+
+\standout{Les systèmes linéaires homogènes sont TOUJOURS compatibles, puisque 
+$\zero = (0, 0, \cdots, 0)$ est toujours solution ; on l'appelle la \defn{solution triviale}.}
+
+Les systèmes homogènes sont donc ceux avec uniquement des zéros du c\^ot\'e des constantes. Qu'en est-il lorsque tous les coefficients (du c\^ot\'e gauche) sont nuls ?
+
+\begin{definition}
+Une équation linéaire dans laquelle tous les \emph{coefficients} sont nuls est dite
+\emph{dégénérée}\index{degeneree@dégénérée}, c'est-à-dire qu'elle se présente comme suit
+$$
+0x_1 + 0x_2 + \cdots + 0x_n = b
+$$
+pour un certain $b\in \R$.  Remarquez que si $b\neq 0$, alors cette équation n'a aucune solution !  Par contre, si $b=0$, alors cette équation admet $\R^n$ tout entier comme  solution générale.
+\end{definition}
+
+\standout{Tout système linéaire contenant une équation dégénérée non-triviale est incompatible.}
+
+Le théorème suivant nous annonce que les trois exemples précédents illustrent les seuls types de solutions générales possibles !
+
+
+\begin{theorem}[Types de solutions générales]\index{solution générale de systèmes linéaires}
+Tout système linéaire à coefficients réels (ou complexes) possède
+\begin{enumerate}
+\item soit aucune solution;
+\item soit une solution unique;
+\item soit une infinit\'e de solutions.
+\end{enumerate}
+\end{theorem}
+
+Donc on ne peut pas avoir exactement deux solutions par exemple. Pour voir à quel point cela est remarquable, observez que ce est hautement FAUX pour les systèmes NON-LIN\'EAIRES. Par exemples, l'\'equation 
+$x^2=64$ a exactement deux solutions, et l'équation $(x-2)(x-1)(x+1)(x-2)=0$ a exactement 4 solutions...
+
+
+\section{Résolution de systèmes linéaires}
+
+L'idée de notre méthode de résolution des systèmes linéaires se fait en trois temps : (1) nous partons d'un
+ système linéaire dont la solution est a priori «~difficile à trouver~»; puis (2) nous appliquons
+un algorithme (appelé \emph{m\'ethode d'élimination de Gauss-Jordan}\index{methode d'elimination de Gauss-Jordan@m\'ethode d'élimination de Gauss-Jordan} ou \emph{méthode du pivot (de Gauss-Jordan)}\index{methode du pivot (de Gauss-Jordan)@méthode du pivot (de Gauss-Jordan)})
+qui transforme le système linéaire en un nouveau, plus simple, ayant \stress{exactement la même solution générale}; et enfin (3) nous résolvons ce  système plus simple.
+
+L'avantage de cette méthode, c'est qu'elle est très pratique : on ne se mélange pas les pinceaux entre les équations, on n'intervertie pas les variables, on ne fait pas d'erreur en recopiant les équation (ou du moins, on fait moins d'erreurs...~;)~).
+
+Commençons donc par un exemple de résolution d'un système de manière très méthodique. 
+\begin{myexample}
+Résolvez le système linéaire
+\begin{align*}
+x + y + 2z &= 3\\
+x - y + z &= 2 \\
+  y-z &=1\,.
+\end{align*}
+Par soucis de simplicit\'e, nous noterons «~Eq($i$)~» la $i$-ème équation du système. Par exemple, la premi\`ere \'equation sera ind\'ex\'ee Eq(1), la deuxi\`eme Eq(2), et ainsi de suite. Ceci permet de faire aisément des opérations sur les équations.
+Par exemple, rempla\c{c}ons Eq(2) par Eq(2) $+ (-1)\times$ Eq(1) pour éliminer la variable $x$ de Eq(2), et recopions à nouveaux les deux autres équations pour en garder une trace:
+\begin{align*}
+ x + y + 2z &= 3\\
+ - 2y - z &= -1\\
+  y-z &=1\,.
+\end{align*}
+Ensuite, attaquons-nous aux variables $y$ et $z$.  Nous n'allons plus utiliser Eq(1) pour le moment car elle fait intervenir la variable $x$, donc on l'utilisera seulement pour connaître la valeur de $x$. Nous allons seulement utiliser Eq(2) et Eq(3) pour connaître $y$ et $z$. Échangeons Eq(2) et Eq(3) (tout en recopiant à nouveau Eq(1)) :
+\begin{align*}
+ x + y + 2z &= 3\\
+  y-z &=1\\
+- 2y - z &= -1\,, 
+\end{align*}
+puis remplaçons Eq(3) par Eq(3)$+2\times$ Eq(2) pour avoir:
+\begin{align*}
+  x + y + 2z &= 3\\
+  y-z &=1\\
+  -3 z &= 1\,.
+\end{align*}
+Enfin, multipliez Eq(3) par $-\frac13$ pour obtenir:
+\begin{align*}
+  x + y + 2z &= 3\\
+  y-z &=1\\
+  z &= -1/3 \,.
+\end{align*}
+Merveilleux !  À ce stade, nous pouvons voir que $z=-1/3$, et nous pouvons alors substituer $z$ dans Eq(2) pour obtenir $y=2/3$. Finalement, en substituant les valeurs de $y$ et $z$ dans Eq(1), nous déduisons que $x = 3$. (Vérifiez que c'est bien une solution !) D'où la solution générale est $S=\{(3,\,2/3,\, -1/3)\}$.
+\end{myexample}
+
+Une premi\`ere question de réflexion est : quelles opérations avons-nous effectuées ? Les voici :
+\begin{itemize}
+\item remplacer une ligne (une \'equation) par la somme d'elle-même avec un multiple scalaire d'une \emph{autre} ligne;
+\item échanger deux lignes;
+\item multiplier une ligne par un scalaire non nul.\\
+\end{itemize}
+
+Chacune de ces étapes peut être faite dans le sens inverse, ce qui garantit que d'une étape à une autre nous avons un système équivalent au précédent, et donc
+nous ne changeons pas la solution générale.  (En revanche, si on s'autorisait à  multiplier une ligne par le scalaire $0$,
+on aurait alors un processus irréversible : cela reviendrait en fait à supprimer
+une équation, ce qui affecterait bien s\^ur la solution générale... C'est pourquoi on n'autorise pas cette opération sur les équations.)
+
+\standout{Les trois opérations ci-dessus s'appellent \defn{opérations élémentaires sur les lignes}. Ce sont les SEULES opérations que vous pouvez effectuer sur un système linéaire sans affecter la solution générale. Les SEULES ! Lorsqu'elles sont bien maniées, ces op\'erations nous permettent de transformer le système en un système plus simple.}
+
+Deuxième question de réflexion:  avons-nous vraiment besoin de noter toutes ces variables à chaque fois et de noter tous les signes «~$+$~» et «~$=$~» ? Car ça alourdie vraiment la notation...
+
+En fait, NON, nous pouvons utiliser une notation plus efficace : remplaçons le système linéaire ci-dessus par ce qu'on appelle sa \defn{matrice augmentée} :
+$$
+\mat{1 & 1 & 2 & | & 3\\
+1 & -1 & 1 & | & 2\\
+0 & 1 & -1 & | & 1}\,.
+$$
+Nous avons juste noté le même système, mais sans noter le nom des variables et sans noter les signes «~$+$~» et «~$=$~». Les barres verticales «~$|$~» remplacent les symboles «~$=$~».
+La partie de gauche (les trois premières colonnes) forment ce qu'on appelle la \defn{matrice coefficients}: elle
+est constituée de tous les coefficients du système original.
+S'il y a $m$ équations et $n$ inconnues, alors la matrice coefficients est de taille $m\times n$.  Chaque colonne de la matrice coefficients correspond à une variable du système linéaire (dans ce cas, nous avons $x$, $y$ ou $z$ dans cet ordre---l'ordre est important).
+Après la colonne avec les barres verticales, nous avons une dernière colonne, c'est la \defn{colonne des termes constants} du système.
+
+Effectuons maintenant les opérations élémentaires sur les lignes comme précédemment, mais cette fois-ci avec la notation de la matrice augmentée.
+
+$$
+\mat{1 & 1 & 2 & | & 3\\
+1 & -1 & 1 & | & 2\\
+0 & 1 & -1 & | & 1} 
+\mt{\sim\\ -L_1+L_2 \to L_2\\}
+\mat{1 & 1 & 2 & | & 3\\
+0 & -2 & -1 & | & -1\\
+0 & 1 & -1 & | & 1}
+\mt{\sim\\ L_2 \leftrightarrow L_3}
+\mat{1 & 1 & 2 & | & 3\\
+0 & 1 & -1 & | & 1\\
+0 & -2 & -1 & | & -1}
+$$
+$$
+\mt{\\ \sim\\ 2L_2 + L_3 \to L_3}
+\mat{1 & 1 & 2 & | & 3\\
+0 & 1 & -1 & | & 1\\
+0 & 0 & -3 & | & 1}
+\mt{\\ \sim\\ -\frac13 L_3 \to L_3}
+\mat{1 & 1 & 2 & | & 3\\
+0 & 1 & -1 & | & 1\\
+0 & 0 & 1 & | & -1/3}\,.
+$$
+
+Remarques :
+\begin{itemize}
+\item À chaque étape, la matrice augmentée qu'on obtient correspond pr\'ecisement au système linéaire qu'on obtenait à chaque étape dans le calcul avec l'ancienne notation.
+\item La dernière matrice augmentée correspond à la dernière étape de notre
+processus. De celle-ci nous avons identifié que nous pouvions résoudre
+notre système linéaire pour avoir une solution unique.  Notez que cette matrice a une  « forme » un peu spéciale, nous l'appellerons \emph{matrice \'echelonn\'ee} (ME), elle sera bien utile plus tard.
+\item Nous utilisons le symbole «~$\sim$~» plutôt que «~$=$~» car les matrices
+ne sont clairement pas égales...  Le symbole «~$\sim$~» signifie «~équivalent~»  (ou plus précisément : «~équivalent par rapport aux lignes~»), pour dire que les deux systèmes linéaires correspondant à ces matrices ont la même solution générale.
+\item Il est utile d'écrire quelque part les opérations élémentaires que l'on utilise notamment pour se relire et pour corriger plus facilement ses erreurs (lorsqu'il y en a !). 
+\end{itemize}
+\qed
+
+
+Cependant il nous reste quelques questions auxquelles nous n'avons pas encore répondues :
+\begin{itemize}
+\item Nous avons vu que certains systèmes n'ont aucune solution, ou parfois ils en ont une infinité ; quel est donc le lien avec la ME ? Peut-on toujours obtenir la
+ME d'un système ?  
+\item Y a-t-il une technique efficace pour résoudre un problème en utilisant les op\'erations sur les lignes ?
+\item Comment peut-on lire la solution générale à partir de la ME?  
+\item Existe-t-il d'autres raccourcis ?
+\end{itemize}
+
+\section{Formes échelonn\'ees, forme échelonn\'ee réduite}
+
+ 
+
+\begin{definition}
+Une matrice (augmentée ou non) est en dite sous \defn{forme échelonn\'ee} ou  \defn{matrice \'echelonn\'ee (ME)} si les trois conditions suivantes sont vérifiées :
+\begin{description}
+\item[(1)] Toutes les lignes nulles (avec que des $0$) se trouvent en bas.
+\item[(2)] La première entrée non-nulle de chaque ligne (appelé \emph{\'el\'ement de t\^ete}\index{element de tete@\'el\'ement de t\^ete} ou \defn{pivot}) est égale à $1$.
+\item[(3)] Chaque pivot se trouve à droite comparé au pivot de la ligne au-dessus.
+\end{description}
+Si, en plus, la matrice satisfait la quatrième condition :
+\begin{description}
+\item[(4)] Chaque pivot est la seule entrée non-nulle de sa colonne,
+\end{description}
+alors la matrice est dite \defn{sous forme échelonn\'ee réduite} ou \emph{matrice \'echelonn\'ee r\'eduite (MER)}\index{matrice echelonnee reduite (MER)@matrice \'echelonn\'ee r\'eduite (MER)}.\\
+La colonne qui contient un pivot est dite une \defn{colonne pivot}.
+\end{definition}
+
+\begin{myexample} La matrice
+$$
+\mat{1 & 2 & 3 & 4 & 5 &| & 5\\
+0 & 0 & 1 & 1 & 2 & | & 0
+}
+$$
+est une ME parce qu'elle satisfait (1)-(3).  Elle n'est pas une MER parce que l'entrée
+au-dessus du pivot de la deuxième ligne est un $3\neq 0$ et donc la condition (4) n'est pas satisfaite.
+\end{myexample}
+
+\begin{myexample} La matrice
+$$
+\mat{1 & 2 & | & 3\\
+0 & 1 & | & 8 \\
+0 & 0 & | & 0 \\
+0 & 0 & | & 0}
+$$
+est également une ME et pas une MER. \end{myexample}
+
+L'avantage de connaître la ME, c'est que nous serons toujours en mesure de savoir si le système est compatible ou non, et de savoir s'il a une solution unique ou s'il a une infinité de solutions. Mais l'avantage de la MER est encore plus intéressant : elle permet  d'obtenir l'expression précise de la solution g\'en\'erale !
+
+
+
+\begin{myexample} \label{ex:uniquesol} Après avoir effectué des op\'erations sur les lignes d'une matrice, supposons que nous arrivions à la MER suivante :
+$$
+\mat{1 & 0 & 0 &|& a\\
+0 & 1 & 0 & | & b\\
+0 & 0 & 1 & | & c}\,.
+$$
+Cette matrice augmentée correspond au système linéaire suivant :
+\begin{align*}
+  x &= a\\
+  y &=b\\
+  z &= c \,.
+\end{align*}  
+On obtient alors directement que la solution est unique :
+$$
+S = \big\{ (a,\, b,\, c) \big\}.
+$$
+\end{myexample}
+
+\begin{myexample}\label{ex:inconsis}  Après avoir effectué des op\'erations sur les lignes d'une matrice, supposons que nous arrivions à la ME suivante :
+$$
+\mat{1 & a & 0 & b & | & d\\
+0 & 0 & 1 & e &|& f\\
+0 & 0 & 0 & 0 &|& g
+}\,.
+$$
+Il y a alors deux cas possibles :  
+\begin{itemize}
+	\item si $g \neq 0$, alors la dernière ligne correspond à une équation dégénérée et donc le système
+est incompatible;
+	\item si $g = 0$, alors cette matrice est une MER. Pour obtenir la solution générale, on d\'etermine les \emph{variables libres}, variables qui ne correspondent pas aux colonnes pivots, qu'on prend comme param\`etres. Ici, il s'agit de $x_2 = s$ et $x_4 = t$. Puis on exprime les autres variables (dites \defn{variables de base}) en fonction des param\`etres $s$ et $t$ pour avoir la solution :
+$$
+x_1 = -as-bt+d, \qquad x_2 = s, \qquad x_3 = f-et, \qquad x_4 = t.
+$$
+On conclut alors que notre solution générale est :
+$$
+\{ ( -a\,s-b\,t+d,\, s,\, f-e\,t,\, t) \mid s,t\in\R\}\,,
+$$
+et elle contient d'ailleurs une infinité de solutions.
+\end{itemize}
+\end{myexample}
+
+\standout{ Les lignes nulles apparaissent parfois sans qu'on ne s'en rende compte, lorsque 
+une ou plusieurs équations sont redondantes.
+Par contre, notez que le fait d'avoir une infinité de solutions
+est lié au fait d'avoir des variables libres et non aux lignes nulles !}
+
+\begin{myexample} \label{ex:infsol}  Supposons que nous ayons la MER suivante :
+$$
+\mat{1 & a & 0 & 0 & | & c\\
+0 & 0 & 1 & 0 & | & d\\
+0 & 0 & 0 & 1 & | & e}\,.
+$$
+Alors nous n'avons qu'une seule variable libre: $x_2 = s$. Donc notre
+solution est
+$$
+\{ (c-a\,s,\, s,\, d,\, e) \mid s\in\R\}\,.
+$$
+\end{myexample}
+
+

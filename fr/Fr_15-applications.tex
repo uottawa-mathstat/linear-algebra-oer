@@ -1,0 +1,313 @@
+\chapter{Systèmes linéaires: applications}\label{chapter:Fr_15-applications}
+
+\section{Rang d'une matrice : son importance}
+
+Dans le chapitre précédent, nous avons défini le rang d'une matrice comme suit :
+
+\begin{definition}  Le \emph{rang} d'une matrice $A$, noté $\rnk(A)$, est le nombre pivots dans une ME / la MER de $A$.
+\end{definition}
+
+\begin{remark}
+	Si $A\sim B$, alors $\rnk(A) = \rnk(B)$ puisque $A$ et $B$ se ramènent à la même MER.
+\end{remark}
+
+\begin{myexample} Comme  $\scriptsize\mat{1 & 4 & 1 \\ 2 & 3 & 0} \sim \mat{1 & 4 & 1 \\ 0 & -5 & -2} \sim \mat{1 & 4  & 1\\ 0 & 1  & \frac25}$ et qu'on voit que la dernière matrice est de rang $2$, on a que \emph{chacune} de ces matrices est de rang $2$. \end{myexample}
+
+\standout{ Les opérations élémentaires sur les lignes n'affectent pas le rang. Donc utiliser l'algorithme de Gauss-Jordan ne modifie pas le rang, c'est donc un très bon outil pour d\'eterminer le rang.}
+
+\begin{myexample} La matrice $\mat{1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1}$ est de rang $3$.\end{myexample}
+
+\begin{remark}
+Notez que le rang d'une matrice ne peut jamais dépasser le nombre de lignes ni le nombre de colonnes de la matrice, puisque c'est impossible d'avoir plus d'un pivot par ligne / colonne.
+\end{remark}
+
+\medskip
+Nous avons également mentionné la dernière fois en bas de page que nous pouvions voir si un système est
+compatible ou non directement en comparant le rang de $A$ avec celui de $[A|\bb]$. Plus pr\'ecisement,
+supposons avoir réduit $A$ en une MER.  Alors, soit nous avons un système compatible:
+$$
+\mat{ * & \cdots & * &|& *\\
+0 & \cdots & 0 &|& 0\\
+\vdots & \cdots & \vdots&|& \vdots\\
+0 & \cdots & 0 &|& 0}
+$$
+(où la partie supérieure avec des étoiles $*$
+représente des lignes commençant avec un $1$ dans la matrice coefficients), soit nous avons un système incompatible :
+$$
+\mat{ * & \cdots & * &|& *\\
+0 & \cdots & 0 &|& a_1\\
+\vdots & \cdots & \vdots&|& \vdots\\
+0 & \cdots & 0 &|& a_k\\
+0 & \cdots & 0 &|& 0\\
+\vdots & \cdots & \vdots&|& \vdots\\
+0 & \cdots & 0 &|& 0}\,,
+$$ 
+où les réels $a_i$ sont non-nuls: $a_i\not=0$.
+Nous pouvons voir la différence en comparant
+le rang de la matrice coefficients et celui de la matrice augmentée :
+dans le premier cas, on a $\rnk(A) = \rnk([A|\bb])$ puisque tous les pivots sont dans la  matrice coefficients et aucun dans la colonne des constantes.
+En revanche, dans le deuxi\`eme cas, on a $\rnk([A|\bb])=\rnk(A) +1$ puisque l'entrée non-nulle $1$ dans la dernière colonne est un pivot de la matrice augmentée mais pas de la matrice coefficients $A$.
+(Notez que les valeurs de $\rnk(A)$ et de $\rnk([A|\bb])$ diffèrent au plus de $1$ !)
+
+\standout{En conclusion, on a toujours les inégalités suivantes : 
+$$\rnk(A) \leq \rnk([A|\bb]) \leq \rnk(A)+1\,, $$
+... et l'égalité $\rnk([A|\bb])=\rnk(A)$ vous indique que votre système est compatible !}
+
+\begin{myexample} Dans un système linéaire homogène, vous ne pouvez jamais obtenir une entrée non-nulle
+dans la colonne des constantes (car il n'y a que des zéros), donc $\rnk(A) = \rnk([A|\zero])$ et le
+système est forcément compatible ! Mais bon, en fait on le savait déjà...\end{myexample}
+
+\medskip
+En résumé : en notant $[A|\bb]$ la matrice augmentée d'un système linéaire, on a :
+\begin{itemize}
+\item le système est incompatible si et seulement si $\rnk(A) < \rnk([A|\bb])$;
+\item le système admet une solution unique si et seulement si $\rnk(A)=\rnk([A|\bb])$
+{\bf et} $\rnk(A) = $ nombre de colonnes dans $A$;
+\item le système a une infinité de solutions si et seulement si $\rnk(A)=\rnk([A|\bb])$ {\bf et}  $\rnk(A) < $ nombre de colonnes dans $A$.
+\end{itemize}
+
+
+\section{Application I : gérer le flux de voitures dans les réseaux routiers}
+
+Considérons dans cette section une première application des systèmes linéaires et de
+notre méthode d'élimination de Gauss-Jordan : la gestion du flux dans les réseaux, par exemple dans les r\'eseaux routiers.  
+L'idée est que vous pouvez modéliser le flux interne d'un réseau en décrivant seulement
+ses entrées et ses sorties et en décrivant comment le trafic évolue entre les deux.  
+Il ne faut pas s'attendre à une solution unique ou même à un nombre fini de solutions (en théorie bien sûr) car il peut y avoir des boucles - voir l'Exercice \ref{prob13.3} par exemple.
+
+\begin{myprob} Le diagramme de la figure ci-dessous représente un réseau routier o\`u le trafic se fait à sens unique.
+
+Analysez ce syst\`eme pour r\'epondre aux questions suivantes:
+\begin{enumerate}[(a)]
+\item Quel est le flux maximal le long  de la route $\overline{AB}$?
+\item Si la route $\overline{DA}$ est ferm\'ee à cause de travaux, est-ce que ceci causera une congestion de r\'eseau?
+\item Qu'en est-il si cette fois-ci c'est la route $\overline{BC}$ qui est ferm\'ee à cause de travaux?
+\end{enumerate}
+
+\vspace{-2cm}
+\begin{center}
+\setlength{\unitlength}{1 true in}
+\parbox[t][4in][b]{4in}{
+\begin{picture}(4,4)
+\put(0,1){\line(1,0){4}}
+\put(0,3){\line(1,0){4}}
+\put(1,1){\line(0,1){2}}
+\put(3,0){\line(0,1){3}}
+\put(0.5,1.1){\text{$\rightarrow$}}
+\put(2,1.1){\text{$\rightarrow$}}
+\put(3.5,1.1){\text{$\rightarrow$}}
+\put(0.5,3.1){\text{$\rightarrow$}}
+\put(2,3.1){\text{$\rightarrow$}}
+\put(3.5,3.1){\text{$\rightarrow$}}
+\put(1.1,2){\text{$\uparrow$}}
+\put(3.1,2){\text{$\downarrow$}}
+\put(2.9,0.5){\text{$\downarrow$}}
+
+\put(0.5,0.8){300}
+\put(.95,3.1){A}
+\put(0.5,2.8){300}
+\put(2.95,3.1){B}
+\put(2.85,1.1){C}
+\put(0.85,1.1){D}
+\put(2,2.8){$x_1$}
+\put(3.5,0.8){200}
+\put(2,0.8){$x_4$}
+\put(3.5,2.8){100}
+\put(3.1,0.2){300}
+\put(0.8,2){$x_2$}
+\put(2.8,2){$x_3$}
+
+
+\end{picture}}
+
+
+\end{center}
+
+\begin{mysol}\mbox{}
+Le flux total entrant est de $300+300 =600 $ (voitures par heure, par exemple), et
+le flux total sortant est de $100 + 200 + 300 = 600 $.  Bien ! Prenons cela
+comme hypothèse pour toutes les intersections aussi : flux entrant = flux sortant  (c'est ce qui s'appelle la première loi de Kirchhoff), qui dit grosso modo que les voitures n'ont pas d'accident dans les virages et qu'il n'y a pas non plus de concessionnaire de voiture.
+
+On a utilisé les variables $x_1$, $x_2$, $x_3$, $x_4$ pour désigner le flux qu'on ne connait pas encore. Les flèches nous donnent le sens de circulation entre les intersections. 
+Avec notre hypoth\`ese, établissons des équations qui décrivent le flux à chaque intersection 
+(en commençant par le nord-ouest et en travaillant dans le sens des aiguilles d'une montre) :
+
+
+\begin{alignat*}{3}
+\text{\bf Intersection}\quad &&&\quad \text{\bf Flux entrant}\quad&&=\quad\text{\bf Flux sortant}\\
+A\qquad \quad&&&\quad300+x_2 &&=\quad x_1\\
+B\qquad \quad &&&\quad x_1 &&=\quad x_3+100\\
+C\qquad \quad &&&\quad x_3+x_4 &&=\quad 200 + 300\\
+D\qquad \quad &&&\quad300 &&=\quad x_2+x_4
+\end{alignat*}
+
+
+
+Hé ! Il s'agit du système linéaire ! Le voici :
+
+\begin{align*}
+x_1-x_2 &= 300\\
+x_1-x_3 &= 100\\
+x_3+x_4 &= 500\\
+x_2+x_4 &= 300,
+\end{align*}
+
+dont la  matrice augment\'ee est
+$$
+\mat{
+1 & -1 & 0 & 0 & |& 300\\
+1 & 0 & -1 & 0 & |& 100\\
+0 & 0 & 1 & 1  &|& 500\\
+0 & 1 & 0 & 1  &|& 300}\,. 
+$$ 
+La MER de celle-ci est
+$$
+\mat{
+1 & 0 & 0 & 1 & |& 600\\
+0 & 1 & 0 & 1 & |& 300\\
+0 & 0 & 1 & 1  &|& 500\\
+0 & 0 & 0 & 0  &|& 0}
+$$
+de laquelle on lit la solution 
+$$
+\mat{x_1\\x_2\\x_3\\x_4} = \mat{600-s\\300-s\\500-s\\s}\,,
+$$
+o\`u $s\in \R$.
+
+
+Maintenant qu'on la solution de ce syst\`eme, r\'epondons aux aux questions ci-dessus.
+\begin{enumerate}[(a)] 
+\item Notez avant que, puisque la circulation se fait à sens unique, chaque flux est positif : $x_i\ge 0$ pour $1\le i\le 4$. Lorsque vous utilisez ces contraintes, vous constatez que $0\le s\le 300$. Ainsi, par exemple, le flux maximal le long de la route $\overline{AB}$ est de $x_1=600$ voitures par heure (en prenant $s=0$ dans la solution ci-dessus).
+
+\item Si la route $\overline{DA}$ est fermée, alors $x_2=0$ ce qui impliquerait que $s=300$. Nous déduisons alors que  
+$(x_1,x_2,x_3,x_4) = (300,0,200,300)$, ce qui est admissible comme solution bien que les voitures n'ont alors qu'un seul choix pour traverser ce r\'easeau.
+
+\item Si $\overline{BC}$ est fermée, alors on a $x_3=0$ et donc $s=500$. 
+Ceci donne alors la solution $(x_1,x_2,x_3,x_4) = (100,-200,0,500)$. On obtient un flux négatif $x_2 = -200$ le long de $\overline{DA}$, on a donc une congestion dans la trafic... Il faudrait en fait alors
+autoriser la circulation dans les deux sens de la route $\overline{DA}$ pour une meilleur gestion du trafic !
+\end{enumerate}
+En r\'esum\'e, après avoir établi quelques contraintes sur les paramètres de la solution générale (ici, le flux positif implique que $0\leq s\leq 300$), nous avons élaboré différents scénarios en vue d'une meilleur gestion de flux, sans avoir à résoudre le système à nouveau !
+\end{mysol}\end{myprob}
+
+\section{Application II : tester des scénarios}
+
+\begin{myprob} Trouver toutes les valeurs de $k\in\R$ pour lesquelles le système linéaire suivant
+(a) n'a  pas de solution; (b) a une solution unique;
+(c) a une infinité de solutions.
+\begin{align*}
+kx + y + z &=1\\
+x +ky + z &= 1\\
+x+y+kz &= 1.
+\end{align*}
+
+\begin{mysol}  Ceci est un système linéaire en les trois variables $x,y,z$. (Attention ! Il 
+{\it n'est pas lin\'eaire} en les quatre variables $k,x,y,z$, seulement en les trois variables $x,y,z$.  On va donc voir une méthode pour aborder un type particulier
+de système non-linéaire avec de l'algèbre linéaire.)
+
+Utilisons la réduction de ligne.  La matrice augmentée est
+$$
+\mat{k & 1 & 1 &|& 1\\
+1&k&1&|&1\\
+1&1&k&|&1}\,.
+$$
+Il faut faire attention ici !  On ne peut pas diviser par $k$, car on ne sait pas si $k$ est \'egal \`a $0$ ou non.  Donc soit on fait une disjonction de
+cas (cas 1: $k=0$, cas 2:  $k\neq0$), soit on utilise une 
+ligne différente pour avoir un pivot. Faisons la deuxième méthode :
+$$
+\mt{L_1 \leftrightarrow L_2}
+\mat{1&k&1&|&1\\
+k & 1 & 1 &|& 1\\
+1&1&k&|&1}
+\mt{\sim \\ -kL_1+L_2\to L_2 \\ -L_1+L_3 \to L_3}
+\mat{
+1&k&1&|&1\\
+0 & 1-k^2 & 1-k &|& 1-k\\
+0&1-k&k-1&|&0}\,.
+$$
+Maintenant nous n'avons pas le choix : le param\`etre $k$ apparaît dans les entrées des deux derni\`eres lignes parmi lesquelles nous devons choisir notre pivot.
+
+\begin{description}
+	\item[Cas 1.]  $k = 1$.  La matrice devient alors
+$$
+\mat{
+1&1&1&|&1\\
+0 & 0 & 0 &|& 0\\
+0&0&0&|&0}\,,
+$$
+qui est une MER et a une infinité de solutions.  Donc lorsque $k=1$, on est dans le cas (c).
+	\item[Cas 2.] $k \neq 1$.  Cela veut dire que $k-1 \neq 0$ et donc on peut diviser par $k-1$ :
+$$
+\mt{\sim\\\frac{1}{1-k} L_2\to L_2 \\ \frac{1}{1-k}L_3\to L_3}
+\mat{
+1&k&1&|&1\\
+0 & 1+k & 1 &|& 1\\
+0&1&-1&|&0}
+\mt{\sim\\L_2 \leftrightarrow L_3}
+\mat{
+1&k&1&|&1\\
+0&1&-1&|&0\\
+0 & 1+k & 1 &|& 1}\,,
+$$
+et on continue de réduire la matrice: 
+$$
+\mt{\sim \\ -(1+k)L_2+L_3\to L_3}
+\mat{
+1&k&1&|&1\\
+0&1&-1&|&0\\
+0 & 0 & 2+k &|& 1}\,.
+$$
+Pour la troisième colonne : si $k = -2$, alors on ne peut pas obtenir un pivot dans celle-ci et le système est incompatible.  
+
+Par contre, si $k\neq 2$, alors on peut diviser $L_3$ par $2+k$ pour obtenir un pivot dans la troisième colonne.
+On en déduit alors que l'on a une solution unique dans ce cas là.
+\end{description}
+Conclusion : si $k=1$, alors il y a une infinité de solutions (c);  si $k=-2$, alors il n'y a pas de solution (a);
+et si $k \neq 1$ et $k \neq -2$, alors il existe une solution unique (b).
+\end{mysol}\end{myprob}
+
+Remarquez qu'on obtient une solution unique «~la plupart du temps~» --- ceci
+confirme l'idée que si vous prenez trois plans arbitraires dans
+$\R^3$, alors la plupart du temps ils se croisent en un seul point.
+
+\section{Application III : résoudre des équations vectorielles}
+
+\begin{myprob} Est-ce que l'ensemble $\{(1,2,3), (4,5,6), (7,8,9)\}$ engendre $\R^3$?
+
+\begin{mysol} 
+Nous devons en fait répondre à la question suivante : étant donné un vecteur arbitraire
+$(x,y,z)\in\R^3$, existe-t-il des scalaires $a_1,\, a_2,\, a_3\in\R$ tels que
+$$
+a_1 \mat{1\\2\\3} + a_2\mat{4\\5\\6} + a_3 \mat{7\\8\\9} = \mat{x\\y\\z}?
+$$
+En comparant les composantes des vecteurs des deux c\^ot\'es on obtient le syst\`eme lin\'eaire suivant:
+\begin{align*}
+a_1 +4a_2 + 7a_3 &= x\\
+2a_1+5a_2+ 8a_3 &=y\\
+3a_1+6a_2 +9a_3 &= z
+\end{align*}
+dont la matrice augment\'ee est
+$$
+\mat{1 & 4 & 7 &|& x\\
+2 & 5 & 8 &|& y\\
+3 & 6 & 9 &|& z}\,.
+$$
+(Observez que les colonnes de cette matrice correspondent aux vecteurs dans
+l'\'equation vectorielle !)
+
+Nous \'echelonnons la matrice augment\'ee de ce système linéaire pour avoir  :
+$$
+\mat{1 & 4 & 7 &|& x\\
+0 & 1 & 2 &|& -(y-2x)/3\\
+0 & 0 & 0 &|& x-2y+z
+}\,.
+$$
+Donc, le système linéaire est compatible si et seulement si $x-2y+z=0$.
+Mais cela signifie que l'enveloppe lin\'eaire engendr\'ee par ces trois vecteurs n'est qu'un plan de $\R^3$, pas $\R^3$ tout entier... (Cool, au moins cette méthode nous a donné l'équation de ce plan !)\\
+En conclusion, l'ensemble $\{(1,2,3), (4,5,6), (7,8,9)\}$ n'engendre pas $\R^3$, car l'\'equation n'a pas de solution pour certains $(x,y,z)$.
+\end{mysol}\end{myprob}
+
+Remarquez également qu'en posant $(x,y,z)=(0,0,0)$ dans l'exemple précédent, l'équation de dépendance a une infinit\'e de solutions, et donc que ces trois vecteurs sont linéairement dépendants.
+
+
+
+

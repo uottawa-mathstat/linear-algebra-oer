@@ -1,0 +1,428 @@
+\chapter{Solving systems of linear equations}
+
+\label{chapter:11solvingsystems}
+
+We have seen many different kinds of linear systems showing up
+in different contexts in our course.  They arise in problems like:  
+finding 
+intersections of planes in $\R^3$;
+solving for a vector as a linear combination of other vectors; or
+checking if a set of vectors is linearly independent.  But
+they also occur in a million other contexts, from balancing
+chemical equations to modelling physical systems.  And while
+the linear systems we've been looking at in this course tend
+to be fairly small, in practice there are physical models that
+include thousands of variables and thousands of equations --- 
+systems that would be IMPOSSIBLE to solve were it not for the
+fantastic fact that they are linear.  Linear algebra gives
+incredibly powerful tools for solving linear systems.
+
+Here, we want to (a) decide what the goal of a good method for
+solving linear systems should be, (b) establish the notation
+of augmented matrices which we use in row reduction and (c)
+start to learn the process of row reduction.
+
+\section{Linear systems}
+
+By a \defn{linear system}, we mean a collection of, say, $m$ linear equations in,
+say, 
+$n$ variables, that we want to solve simultaneously.  By ``simultaneously'', we
+mean: a
+\defn{solution} to a linear system is an assignment of values to
+each of the variables which makes ALL of the equations hold.
+
+\begin{myexample}
+\begin{equation} \label{E11:1}
+\begin{matrix}
+x_1 & + & 2x_2 &&     & + & x_4 & = & 1\\
+    &   &      && x_3 & - & x_4 & = & -1
+\end{matrix} 
+\end{equation}
+is a linear system with $m=2$ equations and $n=4$ \emph{unknowns} (or \emph{variables}).  We identify also the \emph{coefficients} of the system, and the
+\emph{right hand side (RHS)}, or \emph{constant terms}.
+
+Then $(1,0,0,0)$ is NOT a solution to this linear system, because it
+doesn't satisfy the second equation.
+
+And $(0,0,0,1)$ IS a solution to this linear system, because it
+satisfies BOTH equations.
+\end{myexample}
+
+
+\begin{definition}
+The \defn{general solution} to a linear system is the set of \emph{all}
+solutions.
+\end{definition}
+
+\begin{myexample} We claim that 
+$$
+S = \{ (1-2s-t, s, t-1, t) \mid s,t\in \R\}
+$$
+is the general solution to the linear system \eqref{E11:1}.
+
+To show this, we check two things:
+
+I:  Check that $(1-2s-t, s, t-1, t)$ is a solution to  \eqref{E11:1} for
+every $s,t\in\R$:
+\begin{align*}
+(1-2s-t) + 2(s) + t &= 1 \qquad \checkmark \\
+t-1 - (t) &= -1 \qquad \checkmark
+\end{align*}
+
+II: Check that EVERY solution to \eqref{E11:1} is in $S$:  Well, use the 
+first equation to write
+$$
+x_1 = 1-2x_2-x_4
+$$
+and the second equation to 
+write
+$$
+x_3 = -1+x_4.
+$$
+Thus, $(x_1,x_2,x_3,x_4)$ is a solution to \eqref{E11:1} if and only if
+$$
+(x_1,x_2,x_3,x_4) = (1-2x_2-x_4,x_2, -1+x_4, x_4).
+$$
+Changing the names of $x_2$ to $s$ and $x_4$ to $t$, we recognize that
+this is exactly the set $S$ above.
+
+We say that $s,t$ are the \emph{parameters} of the general solution.
+Note that since the solution set $S$ has parameters, the system  \eqref{E11:1} 
+has \stress{infinitely many} solutions, since every different value of $s\in \R$ gives a different solution.\footnote{The same holds for $t$, of course. So there is a `doubly-infinite' family of solutions. We have been more precise about this `doubly-infinite' business in a similar context before when we spoke of `dimension' in Chapter \ref{Chapter:09dimension}. But beware: the set of solutions here is {\it not} a subspace and so we can't---in this course---speak of its dimension. }  
+\end{myexample}
+
+
+Let's look at some other examples, to get a sense of (a) what the possible
+kinds of general solutions are, and (b) what makes a system ``easy'' to solve.
+
+\begin{myexample}
+\begin{align*}
+x_1+2x_2 + 3x_3 &= 4\\ 
+x_2+x_3 &= 5\\
+x_3&=1
+\end{align*}
+This is a $3\times 3$ system (meaning, $3$ equations and $3$ unknowns);
+it could correspond to the intersection of 3 planes.  This system
+has a \emph{unique solution}:  $(-7,4,1)$ (as you can check by
+back-substitution).
+\end{myexample}
+
+\begin{myexample}
+\begin{align*}
+x +y &= 1\\
+2x+2y &= 1
+\end{align*}
+is a $2\times 2$ system with \emph{no solutions} at all.  We could say
+the general solution is the empty set $S = \emptyset$.
+\end{myexample}
+
+\begin{definition}
+\begin{itemize}
+\item A linear system that has NO SOLUTIONS is called \defn{inconsistent}.
+\item A linear system that has AT LEAST ONE solution is called \defn{consistent}.
+\end{itemize}
+\end{definition}
+
+Sometimes, it's easy to see that a system is consistent.  For example, consider
+\begin{align*}
+x_1 + x_2 - x_3 &= 0\\
+2x_1 - x_2 + x_3 &= 0.
+\end{align*}
+It's clear that $(0,0,0)$ is a solution, because all the constant terms are zero.
+
+
+\begin{definition}
+\begin{itemize}
+\item A linear system in which all the constants on the right hand side are
+zeros is called \defn{homogeneous}.
+\item A linear system in which at least one of the constants on the right hand
+side is nonzero is called \defn{inhomogeneous}.
+\end{itemize}
+\end{definition}
+
+\standout{Homogeneous linear systems are ALWAYS consistent, since 
+$\zero = (0, 0, \cdots, 0)$ is always a solution (called the \defn{trivial solution}).}
+
+So homogeneous systems have all zeros on the RHS; what about when
+there are all zeros on the LHS?
+
+\begin{definition}
+A linear equation in which all the \emph{coefficients} are zero is called
+\defn{degenerate}, that is, it looks like
+$$
+0x_1 + 0x_2 + \cdots + 0x_n = b
+$$
+for some $b\in \R$.  Note that if $b\neq 0$, then this equation has 
+no solution!  (If $b=0$, this equation has every vector in $\R^n$ as a solution.)
+\end{definition}
+
+\standout{Any linear system containing a degenerate inhomogeneous equation is inconsistent.}
+
+Now the amazing thing is:  the three examples above list all possible types
+of behaviours of the solution set.
+
+\begin{theorem}[Types of general solutions]\index{general solutions to linear systems}
+Any linear system with real (or complex) coefficients has either
+\begin{enumerate}
+\item a unique solution
+\item no solution, or
+\item infinitely many solutions.
+\end{enumerate}
+\end{theorem}
+
+To see how remarkable that is, consider how very NOT TRUE it is for NON-LINEAR systems:
+$x^2=64$ has exactly two solutions; $(x-2)(x-1)(x+1)(x-2)=0$ has exactly 4 solutions.
+
+
+\section{Solving Linear Systems}
+
+The idea of our method for solving linear systems is:  we start with
+a linear system, whose solution is ``hard to see''; then we apply
+an algorithm (called \defn{row reduction} or \defn{Gaussian elimination} or
+\defn{Gauss-Jordan elimination})
+to change the linear system into a new one which has \stress{exactly the
+same general solution}, but where that solution set is  really ``easy to see.''
+
+Also, we want a practical solution:  an algorithm where you're less
+likely to lose or forget an equation, or where you mis-write some
+variables, or make mistakes in recopying things.  
+
+So let's begin with an example of solving a system very methodically,
+being careful about not losing equations:
+
+\begin{myexample}
+Solve the linear system
+\begin{align*}
+x + y + 2z &= 3\\
+x - y + z &= 2\\
+  y-z &=1
+\end{align*}
+Let's add $(-1)\times$ Eq(1) to Eq(2), to eliminate the $x$; 
+but we'll recopy the other two equations to keep track:
+\begin{align*}
+ x + y + 2z &= 3\\
+ - 2y - z &= -1\\
+  y-z &=1
+\end{align*}
+Next, we tackle the $y$ variable.  I can't use the first
+equation to solve for $y$, because that's the only equation
+with an $x$ in it.  So in fact, let me swap the second
+and third equations:
+\begin{align*}
+ x + y + 2z &= 3\\
+  y-z &=1\\
+- 2y - z &= -1 
+\end{align*}
+and now add $2\times$ Eq(2) to Eq(3):
+\begin{align*}
+  x + y + 2z &= 3\\
+  y-z &=1\\
+  -3 z &= 1 
+\end{align*}
+Finally, multiply Eq(3) by $-\frac13$:
+\begin{align*}
+  x + y + 2z &= 3\\
+  y-z &=1\\
+  z &= -1/3 
+\end{align*}
+Wonderful!  At this point, I can see that $z=-1/3$, and
+I know that I can plug this into Eq(2) to deduce that $y=2/3$,
+and then plug both into Eq(1) to deduce that $x = 3$.
+(Check that this is a solution!)
+\end{myexample}
+
+First reality check:  what operations did we perform?
+\begin{itemize}
+\item Add a multiple of one row to \emph{another} row.
+\item Interchange two rows.
+\item Multiply a row by a nonzero scalar.
+\end{itemize}
+Each of these steps can be reversed, and that ensures
+that we are not changing the general solution.  (In
+contrast, if we ever multiplied a row/equation by zero,
+that's an irreversible process, and it amounts to deleting
+one of the equations, which we agree would change your
+general solution.)
+
+\standout{These are called \defn{elementary row operations} and they are exactly the three operations you can do to a linear system without changing the general solution.  (What you're doing instead is turning the system itself into a simpler system.)}
+
+Second reality check:  Did we really need all those variables and $=$ signs?
+
+Let's replace the linear system above with its \defn{augmented matrix}:
+$$
+\mat{1 & 1 & 2 & | & 3\\
+1 & -1 & 1 & | & 2\\
+0 & 1 & -1 & | & 1}
+$$
+So the part on the left is called the \defn{coefficient matrix} and
+consists of all the coefficients of the original linear system.
+If there were $m$ equations and $n$ unknowns then the coefficient
+matrix is of size $m\times n$.  Each column of the coefficient matrix
+corresponds to one variable of the linear system (in this case, $x$,
+$y$ or $z$).
+
+The line represents the
+equals sign, and helps to separate the last column.  The last column  contains all the constant
+terms from all the equations in the system.
+
+Now let's perform the elementary row operations as before, but this
+time to the augmented matrix:
+$$
+\mat{1 & 1 & 2 & | & 3\\
+1 & -1 & 1 & | & 2\\
+0 & 1 & -1 & | & 1} 
+\mt{\sim\\ -R_1+R_2 \to R_2\\}
+\mat{1 & 1 & 2 & | & 3\\
+0 & -2 & -1 & | & -1\\
+0 & 1 & -1 & | & 1}
+\mt{\sim\\ R_2 \leftrightarrow R_3}
+\mat{1 & 1 & 2 & | & 3\\
+0 & 1 & -1 & | & 1\\
+0 & -2 & -1 & | & -1}
+$$
+$$
+\mt{\\ \sim\\ 2R_2 + R_3 \to R_3}
+\mat{1 & 1 & 2 & | & 3\\
+0 & 1 & -1 & | & 1\\
+0 & 0 & -3 & | & 1}
+\mt{\\ \sim\\ -\frac13 R_3 \to R_3}
+\mat{1 & 1 & 2 & | & 3\\
+0 & 1 & -1 & | & 1\\
+0 & 0 & 1 & | & -1/3}
+$$
+Notice:
+\begin{itemize}
+\item At each step, the augmented matrix here corresponded exactly
+to the modified linear system we had created before.
+\item This last matrix corresponds to the last step of our
+calculation, at the moment that we realized we could solve
+our linear system for a unique solution.  And this last
+matrix has a special ``shape'' which we will call the REF (row
+echelon form), below.
+\item We write $\sim$ rather than $=$ because the matrices
+are definitely not EQUAL to each other.  Rather, we use the
+symbol $\sim$ for ``equivalent''  (later: `` row equivalent'') --- meaning, the two 
+linear systems corresponding to these matrices have the same
+general solution.
+\item It's helpful to write down the operation next to the
+row you will modify, particularly if you need to ``debug'' 
+a calculation.
+\end{itemize}
+\qed
+
+
+Now, we still have some questions to answer:
+\begin{itemize}
+\item Not every system will end up with a unique solution (as we saw);
+what is REF in general?  How do I know what I'm aiming for when I
+solve using row reduction?
+\item How do I read my solution off from REF?  
+\item Are there any more shortcuts?
+\end{itemize}
+
+\section[REF and RREF]{Row Echelon Form (REF) and Reduced Row Echelon Form (RREF)}
+
+ 
+
+\begin{definition}
+A matrix (augmented or not) is in \defn{row echelon form} or \defn{REF} if
+\begin{description}
+\item[(1)] All zero rows are at the bottom.
+\item[(2)] The first nonzero entry in each row is a $1$ (called a \defn{leading one} or a \defn{pivot}).
+\item[(3)] Each leading 1 is to the right of the leading 1s in the rows above.
+\end{description}
+If, in addition, the matrix satisfies
+\begin{description}
+\item[(4)] Each leading 1 is the only nonzero entry in its column
+\end{description}
+then the matrix is said to be in \defn{reduced row echelon form} or \defn{RREF}.
+\end{definition}
+
+\begin{myexample} The matrix
+$$
+\mat{1 & 2 & 3 & 4 & 5 &| & 5\\
+0 & 0 & 1 & 1 & 2 & | & 0
+}
+$$
+is in REF because it satisfies (1)-(3).  It is not in RREF because the
+entry above the leading 1 in the second row is a 3 instead of a zero.
+\end{myexample}
+
+\begin{myexample} The matrix
+$$
+\mat{1 & 2 & | & 3\\
+0 & 1 & | & 8 \\
+0 & 0 & | & 0 \\
+0 & 0 & | & 0}
+$$
+is also in REF but not RREF. \end{myexample}
+
+Basically:  from the REF we'll always be able to tell if the system is inconsistent, or has a unique solution, or has infinitely many solutions.  From the RREF
+we will be able to just read off the solution directly.
+
+
+
+\begin{myexample} \label{ex:uniquesol} Suppose you have row reduced and obtain the following RREF:
+$$
+\mat{1 & 0 & 0 &|& a\\
+0 & 1 & 0 & | & b\\
+0 & 0 & 1 & | & c}
+$$
+Then the linear system corresponding to this augmented matrix is
+$x=a$, $y=b$ and $z=c$.  In other words, the solution to this
+linear system is unique and is given by
+$$
+\mat{x\\y\\z} = \mat{a\\b\\c}
+$$
+\end{myexample}
+
+\begin{myexample} \label{ex:inconsis} Suppose you have row reduced and you got to the following
+REF:
+$$
+\mat{1 & a & 0 & b & | & d\\
+0 & 0 & 1 & e &|& f\\
+0 & 0 & 0 & 0 &|& g
+}
+$$
+Then there are two cases:  
+
+If $g \neq 0$, then the last
+row corresponds to a degenerate equation, and so the system
+is inconsistent.
+
+If $g = 0$, then this system is in RREF, and to get the general
+solution, we set the \emph{non-leading variables}, that is, 
+the variables corresponding to columns of the coefficient
+matrix which don't have a leading 1, equal to parameters.
+Here, set $x_2 = s$ and $x_4 = t$; then we deduce (by writing
+out the equations corresponding to this matrix):
+$$
+x_1 = -as-bt+d, \quad x_2 = s, \quad x_3 = f-et, \quad x_4 = t
+$$
+So our general solution is
+$$
+\{ ( -as-bt+d, s, f-et, t) \mid s,t\in\R\}.
+$$
+\end{myexample}
+
+\standout{
+Rows of zeros are completely accidental; they happen whenever 
+you started off with one or more completely redundant equations.
+In particular, please note that having infinitely many solutions
+is related to having non-leading variables, not to having rows of zeros.
+}
+
+\begin{myexample} \label{ex:infsol} Suppose our RREF is
+$$
+\mat{1 & a & 0 & 0 & | & c\\
+0 & 0 & 1 & 0 & | & d\\
+0 & 0 & 0 & 1 & | & e}
+$$
+Then we have only one nonleading variable: $x_2 = s$, so our
+solution is
+$$
+\{ (c-as, s, d,e) \mid s\in\R\}
+$$
+\end{myexample}
+
+

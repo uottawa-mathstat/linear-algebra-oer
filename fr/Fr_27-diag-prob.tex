@@ -1,0 +1,136 @@
+\section*{Exercices}
+\addcontentsline{toc}{section}{Exercices}
+
+
+\medskip {\bf Remarques:} 
+\begin{enumerate}
+\item Une question marquée d'un astérisque $ ^\ast$ (ou deux) indique une question de niveau bonus.
+ \item Vous devez justifier toutes vos réponses.
+\end{enumerate}
+\bigskip
+
+
+\begin{prob} \label{prob23.1} 
+\begin{enumerate}[a)]
+\item Pour chacune des matrices $A$ de l'Exercice \ref{prob22.1}, si possible, trouvez une matrice inversible $P$ et une matrice diagonale $D$ telles que $P^{-1}AP =D$. Si ce n'est pas possible, expliquer pourquoi. (Les solutions aux questions b), d), f) et h) sont disponibles à la fin de l'ouvrage). 
+
+\item Utilisez le fait que la matrice $A=\scriptsize\bmatrix 
+1&0&1\\0&1&0\\1&1&1 \endbmatrix $ est diagonalisable pour calculer $A^{10^{1000}}$ avant que le soleil ne devienne une géante \'etoile rouge et n'engloutisse (éventuellement) la Terre... \footnote{Selon les estimations, vous avez donc entre 5 et 6 milliards d'années, mais cela ne devrait pas vous prendre plus de 5 minutes !\!!} 
+
+\end{enumerate}
+
+ 
+
+\end{prob} \begin{prob} \label{prob23.2}  Pour chacun des énoncés suivants, indiquez s'il est (toujours) vrai ou s'il est (possiblement) faux.    
+\begin{enumerate}[$\bullet$]
+\item Si vous dites que l'\'enonc\'e peut être faux, donnez un contre-exemple.   
+\item Si vous dites que l'\'enonc\'e est vrai, donnez une explication claire - en citant un théorème ou en donnant une {\it preuve valide dans tous les cas}. 
+\end{enumerate}
+\smallskip
+
+\begin{enumerate}[a)]
+\item Si $\lambda=3$ est valeur propre d'une matrice $A$ de taille $n \times n$, alors il devrait exister un vecteur non-nul $\vv \in \R^n$ tel que $A\vv=3\vv$.
+\medskip
+ 
+\item\sov~La matrice $\bmatrix 0&-1\\1&0\endbmatrix$ n'admet pas de valeurs propres r\'eelles.
+\medskip
+ 
+\item La matrice $\bmatrix -1&1\\0&-1\endbmatrix$ est
+diagonalisable.
+\medskip
+ 
+\item\sov~Si $0$ est valeur propre d'une matrice $A$ de taille $n \times n$, alors $A$ n'est pas inversible.
+\medskip
+ 
+\item Si une matrice $A$ de taille $n \times n$ n'est
+pas inversible, alors $0$ est une valeur propre de $A$.
+\medskip
+ 
+\item\sov~Toute matrice inversible est diagonalisable.
+\medskip
+ 
+\item Toute matrice diagonalisable est inversible.
+\medskip
+ 
+\item\sov~Si une matrice de taille $n \times n$ admet $n$ valeurs propres distinctes, alors cette matrice est diagonalisable. 
+\medskip
+ 
+\item Si une matrice de taille $n \times n$ est diagonalisable, alors elle admet nécessairement $n$ valeurs propres distinctes. 
+\medskip
+ 
+\item\sov\footnote{ Indication : utilisez le fait que nous savons que $\det(A-\lam I_n)=(-1)^n(\lam-\lam_1)(\lam-\lam_2)\dots(\lam-\lam_n) $.} Si une matrice  $A$ de taille $n \times n$ admet des valeurs propres $\lam_1, \dots ,\lam_n$, alors $$\det (A)=\lam_1 \dots\lam_n\,.$$
+ 
+\item$^{\ast}$\footnote{ Indication : puisque $A$ est symétrique, rappelez-vous que $A\vv\cdot \ww=\vv\cdot A\ww$ (voir l'Exercice \ref{prob14.4}). Simplifiez maintenant les deux côtés en utilisant le fait que $\vv$ et $\ww$ sont des vecteurs propres et regardez ce que vous obtenez.} Si $\vv$ et $\ww$ sont des vecteurs propres d'une matrice symétrique $A$ (c'est-à-dire une matrice $A$ qui vérifie $A=A^T$) et que $\vv$ et $\ww$ correspondent à des valeurs propres différentes, alors $$\vv \cdot \ww=0\,.$$  
+\medskip
+\end{enumerate}
+\end{prob} 
+\begin{prob} \label{prob23.3}\sov~Soit la matrice $A=\bmatrix
+0&1&1\\ 1&0&1\\ 1&1&0 \endbmatrix$. 
+
+\begin{enumerate}[a)]
+
+\item Calculez $\det(A-\lam I_3)$ et montrez que les valeurs propres de
+$A$ sont $\lambda = 2$ et $\lambda = -1$.
+
+\item\sov~ Trouvez une base de $E_2 =\set{x\in \R^3 \st Ax= 2x}$.
+\item\sov~ Trouvez une base de $E_{-1} =\set{x\in \R^3 \st Ax=-x}$. 
+ 
+\item\sov~ Trouvez une matrice inversible 
+$P$ telle que $P^{-1}AP=D$ soit diagonale, et donnez l'expression de cette matrice diagonale $D$. Expliquez pourquoi
+la matrice $P$ que vous avez choisie est inversible.
+\item\sov~ Trouvez une autre matrice inversible
+$Q \not=P$ telle que $Q^{-1}AQ=\tilde D$ soit aussi diagonale, et donnez aussi l'expression de cette matrice diagonale $\tilde D$.
+\end{enumerate}
+  
+
+
+\end{prob} 
+\begin{prob} \label{prob23.4} $^{\ast}$\footnote{Cet exercice est une version simplifiée des équations du mouvement, en Mécanique, de deux masses reliées par un ressort. Cherchez sur internet le terme \og mode normal\ \fg\ pour voir un exemple. } Considérons le système d'équations différentielles suivant du second ordre en les deux fonctions $f$ et $g$ :
+
+$$\begin{matrix} 
+\ddot f=-2 f +g\,,  \\
+\ddot g=f-2g\,.\\
+ \end{matrix} $$
+ (Ici, les notations $\ddot f$ et $\ddot g$ signifient respectivement $\frac{d^2 f}{dt^2}$ et $\frac{d^2 g}{dt^2}$.)
+Ce système peut également être écrit sous forme matricielle comme suit: 
+$$\bmatrix \ddot f \,\\ \ddot g
+ \endbmatrix =\bmatrix -2 & 1 \\
+ 1 & -2 \endbmatrix \bmatrix  f \,\\   g
+ \endbmatrix\,.$$ 
+
+\begin{enumerate}[a)]
+	\item Soit $A=\scriptsize\bmatrix -2 & 1 \\
+ 1 & -2 \endbmatrix $. Diagonaliser $A$ pour écrire $A=PDP^{-1}$, pour une certaine matrice inversible $P$ et une certaine matrice diagonale $D=\scriptsize\bmatrix \lam_1 & 0 \\
+ 0 & \lam_2 \endbmatrix $. 
+ 	\item Définissez maintenant deux nouvelles fonctions $h$ et $k$ par:
+	$$\bmatrix h \,\\ k
+ \endbmatrix = P^{-1} \bmatrix  f \,\\   g
+ \endbmatrix\,.$$ 
+ Montrez les équivalences de systèmes suivantes :
+ $$\bmatrix \ddot f \,\\ \ddot g
+ \endbmatrix =\bmatrix -2 & 1 \\
+ 1 & -2 \endbmatrix \bmatrix  f \,\\   g
+ \endbmatrix
+        \quad\Longleftrightarrow\quad
+ \bmatrix \ddot h\,\\ \ddot k
+ \endbmatrix =\bmatrix \lam_1 & 0 \\
+ 0 & \lam_2 \endbmatrix\bmatrix  h \,\\   k
+ \endbmatrix
+       \quad\Longleftrightarrow\quad
+ \begin{matrix} 
+\ddot h=\lam_1 \,h  \\
+\ddot k=\lam_2 \,k\,.\\
+ \end{matrix} $$ 
+
+  	\item Vous constaterez que $\lam_1$ et $\lam_2$ sont tous deux négatifs, et donc les solutions de ces deux équations différentielles (linéaires) du second ordre sont les suivantes : 
+	$$h(t)=a \sin( \sqrt{|\lam_1|}\,t) + b \cos( \sqrt{|\lam_1|}\,t)\,,$$ 
+	$$k(t)=c \sin( \sqrt{|\lam_2|}\,t) + c \cos( \sqrt{|\lam_2}|\,t)\,,$$ 
+	o\`u $a,b,c,d$ sont des constantes réelles.
+  Utilisez ceci pour trouver $f$ et $g$, puis trouver les valeurs des constantes $a,b,c, d$ en fonction de ce que l'on appelle les {\it \og conditions initiales\ \fg\ $f(0), \dot f(0), g(0), \dot g(0)$}.
+
+\end{enumerate}
+ 
+
+
+\end{prob}
+

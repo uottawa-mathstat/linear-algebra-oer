@@ -1,0 +1,57 @@
+
+
+\begin{sol}{prob18.1} Find the inverse of each of the following matrices, or give reasons if it not invertible.
+\medskip
+
+(b) $A=\bmatrix1&1&0\\
+0&-1&-2\\
+0&2&3\endbmatrix$
+\soln  $A^{-1}=\bmatrix 1 & -3 & -2 \\0 & 3 & 2 \\0 & -2 & -1 \endbmatrix$
+\medskip
+
+(d) $B=\bmatrix  1&x\\ -x&1\endbmatrix$
+\medskip
+\soln  $B^{-1}=\bmatrix\frac{1}{x^2+1} & -\frac{x}{x^2+1} \\\frac{x}{x^2+1} & \frac{1}{x^2+1} \endbmatrix$
+
+ 
+\end{sol}
+
+\begin{sol}{prob18.2} State whether each of the following is (always) true,
+or is (possibly) false.   The matrices are assumed to be square.   
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item If you say the statement may be false, you    must give an explicit example.   
+\item If you say the statement is true, you must give a clear explanation -   by quoting a theorem presented in class, or by giving a {\it proof valid for every  case}. 
+\end{enumerate}
+
+
+
+(b)  If $A^2=0$ for a square matrix $A$, then $A$ is not invertible.
+
+\soln This is true. Suppose on the contrary that $A$ were invertible with inverse $A^{-1}$. Multiplying both sides of the equation $A^2=0$ by $A^{-2}$, say on the left, yields $I_n=0$, which is nonsense. So $A$ is not invertible..
+\medskip
+%
+
+(d) If $A$ is invertible then the RRE form of $A$ has a row of zeros.
+
+\soln This is {\it always} false, but here's an example: $\bmatrix 1&0\\0&1\endbmatrix$ is invertible and is in RRE form, but has no row of zeros. (We know that an $n \times n$ matrix $A$ is invertible iff its RRE form is $I_n$, which has no row of zeros.)
+\medskip
+%
+
+
+(f) If $ A $ is a non-invertible $ n\times n$  matrix then $Ax=b$ is inconsistent for every $b \in \R^n$.
+
+\soln This is false. For example,  let $A=\bmatrix 1&0\\0&0
+\endbmatrix$ and $b=\bmatrix 1\\0
+\endbmatrix$. Then $A$ is not invertible, but $Ax=b$ is consistent, and indeed has infintely many solutions of the form $x=\bmatrix 1\\s
+\endbmatrix$, for any $s\in \R$.
+\medskip
+%
+
+(h) If an $ n\times n$  matrix $A$ satisfies $A^{3}-3A^{2}+I_{n}=0$, then $A$ is invertible and  $A^{-1}=3A-A^{2}$. 
+
+\soln This is true: rewrite $A^{3}-3A^{2}+I_{n}=0$ as $3A^{2}-A^3=I_{n}$ and then factor to obtain $A(3A-A^2)=I_{n}$.  Now you see that $A^{-1}=3A-A^{2}$.
+\medskip
+
+\end{sol}
+

@@ -1,0 +1,186 @@
+\section*{Problems}
+\addcontentsline{toc}{section}{Problems}
+
+
+
+
+\begin{prob} \label{prob13.1} 
+
+ 
+
+\begin{enumerate}[a)]
+
+\item Find the rank of each matrix in Problem \ref{prob12.1}.
+\medskip
+%
+\item\sov Find the ranks of the coefficient matrices and the ranks of the augmented matrices corresponding to the linear systems in Problem \ref{prob12.2}.
+
+\medskip 
+%
+
+\end{enumerate}
+\end{prob} \begin{prob} \label{prob13.2} Suppose $a,c\in \R$ and consider the following linear system
+in the variables
+$x,y$ and $z$: 
+$$\begin{matrix}  x&+&y &+&az&=&2\\
+2x&+&y&+&2a z  &=&3\\ 
+3x&+&y &+&3az&=&c \end{matrix}. $$
+
+Note that the general solution of this system may depend on the
+values of $a$ and $c$.
+Let $[\,A\,|\, b\,]$ denote  the
+augmented matrix of the
+system above.
+
+\begin{enumerate}[a)]
+\item  For 
+\underbar{all} values of
+$a$ and $c$, find\smallskip
+\begin{enumerate}[(i)]
+\item 
+$\rank A$
+\smallskip
+\item  $\rank[\,A\,|\, b\,]$  
+\end{enumerate}
+
+\item\sov  Find \underbar{all} values of
+$a$ and $c$ so that
+this system has \smallskip
+\begin{enumerate}[(i)]
+ 
+\item a unique solution,\smallskip
+\item  infinitely many
+solutions,  or \smallskip
+\item  
+no solutions. 
+\end{enumerate}
+
+\medskip
+\item In case b (ii) above,
+give the general solution, and its complete geometric description. 
+\end{enumerate}
+\end{prob} \begin{prob} \label{prob13.7} Consider the network of streets with
+intersections A, B, C and D below.   The arrows
+indicate the direction of traffic flow along the
+one-way streets, and the numbers refer to the exact
+number of cars observed to enter or leave  A  B,C
+and D during one minute.  Each $x_i$
+denotes the unknown number of cars which passed
+along the indicated streets during the same period.
+ $$\xymatrix@=5pt{&&&&&&&&\\&&&&&&&&\\&&&&B\ar[uu]_{10}\ar[rrdd]^{x_4}&&&&\\&&&&&&&&\\
+{}\ar[rr]^{11}&&A\ar[rrrr]^{x_5}\ar[rrdd]_{x_2}\ar[rruu]^{x_1}&&&&C\ar[rr]^4
+&&\\&&&&&&&&\\&&&&D\ar[rruu]_{x_3}&&&&\\&&&&&&&&\\&&&&\ar[uu]^3&&&&\\}
+$$
+\begin{enumerate}[a)]
+\item  Write down the linear system which describes the the traffic flow, {\bf
+together with all the constraints} on the variables $x_i$, $i=1,\dots,5$. (Do not
+perform any operations on your equations: this is done for you in (b).)\smallskip
+
+\item The reduced row-echelon form of the augmented matrix from part (a) is 
+$$ \bmatrix 
+1& 0& 0& -1& 0&|& 10\\  
+0& 1& 0& 1&1&|& 1\\ 
+0& 0& 1& 1& 1&|& 4\\ 
+0& 0& 0& 0& 0&|& 0\endbmatrix$$ Give the general solution. (Ignore the constraints at
+this point.)\smallskip
+
+\item  If  AC were closed due to roadwork, find all possible traffic flows, 
+ \underbar{using your results from (b).} 
+
+\end{enumerate}
+
+\end{prob} \begin{prob} \label{prob13.3} Consider the network of streets with
+intersections A, B, C, D and E below.   The arrows
+indicate the direction of traffic flow along the
+{\bf one-way streets}, and the numbers refer to the
+{\bf exact} number  of cars observed to enter or
+leave  A, B, C, D and E during one minute.  Each
+$x_i$ denotes the unknown number of cars which
+passed along the indicated streets during the 
+same period.
+$$\xymatrix@=5pt{
+&&&&&&&&&&&&\\ 
+&&&&&&&&&&&&\\
+&&&&&&&&&&&&\\
+&&&&&&&&B\ar[rrdd]^{x_4}\ar[uuu]_{50}&&&&\\ 
+&&&&&&&&&&&&\\
+&&&&&&A\ar[lll]^{60}\ar[rruu]^{x_5}&&&&C\ar[lddd]_{x_3}\ar[llll]_{x_6}&&&&\ar[llll]^{70}\\
+&&&&&&&&&&&&\\
+&&&&&&&&&&&&\\
+&&&&&&&E\ar[luuu]^{x_1}&&D\ar[ll]_{x_2}\ar[dddr]^{60}&&\\  
+&&&&&&&&&&&&\\ 
+&&&&&&&&&&&&\\
+&&&&&&\ar[uuur]^{100}&&&&&&&&\\} 
+$$
+\smallskip     
+\begin{enumerate}[a)]
+\item Write down a system of linear equations which describes the the traffic
+flow, {  together with all the constraints} on the variables $x_i$,
+$i=1,\dots,6$. 
+
+\smallskip
+
+    
+\item\sov  The reduced row-echelon form of the augmented matrix of the system in
+part (a) is 
+$$ \bmatrix 
+  1 & 0 & 0 & 0 & -1 & 1 &|& 60 \\
+ 0 & 1 & 0 & 0 & -1 & 1 &|& -40 \\
+ 0 & 0 & 1 & 0 & -1 & 1 &|& 20 \\
+ 0 & 0 & 0 & 1 & -1 & 0 &|&  -50 \\
+ 0 & 0 & 0 & 0 & 0 & 0 &|& 0
+\endbmatrix$$ Give the general
+solution. (Ignore the constraints from (a) at this
+point.)
+\smallskip
+ 
+
+\item If   $ \overline{ED}$ were closed due to roadwork, find
+the minimum flow along  $\overline{AC}$, {\bf using your results from (b).} 
+ %
+\end{enumerate}
+
+\end{prob} \begin{prob} \label{prob13.4}   State whether each of the following is (always) true,
+or is (possibly) false.    
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item If you say the statement may be false, you   must give an explicit example.  
+\item If you say the statement is true, you must give a clear explanation -   by quoting a theorem presented in class, or by giving a {\it proof valid for every  case}. 
+\end{enumerate}
+\medskip
+\begin{enumerate}[a)]
+\item Every non-homogeneous system of 3 equations in 2 unknowns is inconsistent.
+\medskip
+%
+\item\sov Every non-homogeneous system of 3 equations in 2 unknowns is consistent.
+
+\medskip
+%
+\item Every non-homogeneous system of 2 equations in 3 unknowns has infinitely many solutions.
+\medskip
+%
+\item\sov Every  system of 2 equations in 2 unknowns has a unique solution.
+\medskip
+%
+\item If there is a row of zeroes in the augmented matrix of a linear system, the system will have infinitely many solutions.
+\medskip
+%
+\item\sov If there is a column of zeroes in the coefficient matrix of a consistent linear system, the system will have infinitely many solutions.
+\medskip
+%
+\item If a consistent linear system has infinitely many solutions, there must be a row of zeroes in the reduced augmented matrix (i.e. when the augmented matrix  has been reduced so that the coefficient matrix is in RREF.)
+\medskip
+%
+\item\sov If a consistent linear system has infinitely many solutions, there must be a column of zeroes in the reduced coefficient matrix (i.e. when the augmented matrix has been reduced so that the coefficient matrix is in RREF.)
+\medskip
+%
+\item If the augmented matrix of a homogeneous linear system of 3 equations in 5 unknowns has rank 2, there are 4 parameters in the general solution.
+\medskip
+%
+\item\sov If a homogeneous linear system has a unique solution, it must have the same number of equations as unknowns.
+\medskip
+%
+\end{enumerate}
+
+\end{prob}
+

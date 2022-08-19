@@ -1,0 +1,326 @@
+\chapter{Applications of Solving Linear Systems}\label{chapter:13applications}
+
+\section{The rank of a matrix, and its importance}
+
+In the last chapter, we defined the rank of a matrix.
+
+\begin{definition}  The \emph{rank} of a matrix $A$, denoted $\rnk(A)$, is the number of leading ones (`pivots') in any REF of $A$.
+\end{definition}
+
+\begin{myexample} Since  $\mat{1 & 4 & 1 \\ 2 & 3 & 0} \sim \mat{1 & 4 & 1 \\ 0 & -5 & -2} \sim \mat{1 & 4  & 1\\ 0 & 1  & \frac25}$, \emph{each} of these matrices has rank $2$. \end{myexample}
+
+\standout{The rank doesn't change when one does elementary row operations; if you're using the Gaussian algorithm, it just
+becomes easier to see.}
+
+\begin{myexample} The matrix $\mat{1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1}$ has rank $3$.\end{myexample}
+
+Note that the rank of a matrix can never exceed the number of rows or 
+columns of the matrix, since each leading 1 lies in a different
+row and column from all the others.
+
+We also mentioned last time that you could see whether a system is
+consistent or inconsistent from the rank of $A$ versus the rank of $[A|\bb]$.  Namely,
+suppose you reduce the coefficient matrix $A$ in $[A|\bb]$ to RREF.  Then either you get 
+$$
+\mat{ * & \cdots & * &|& *\\
+0 & \cdots & 0 &|& 0\\
+\vdots & \cdots & \vdots&|& \vdots\\
+0 & \cdots & 0 &|& 0}
+$$
+(where the top ($*$)
+part means rows with leading ones in the coefficient matrix part)
+(a consistent system) or you get
+$$
+\mat{ * & \cdots & * &|& *\\
+0 & \cdots & 0 &|& a_1\\
+\vdots & \cdots & \vdots&|& \vdots\\
+0 & \cdots & 0 &|& a_k\\
+0 & \cdots & 0 &|& 0\\
+\vdots & \cdots & \vdots&|& \vdots\\
+0 & \cdots & 0 &|& 0}
+$$ where $a_i\not=0$
+(which tells you you have an inconsistent system).   You can spot the difference by comparing
+the ranks of the coefficient matrix and of the augmented matrix:
+in the first case, $\rnk(A) = \rnk([A|\bb])$ since all the leading 1s
+occured in the coefficient matrix part, and none in the augmented column.
+In the second case, $\rnk([A|\bb])=\rnk(A) +1$, since the non-zero entry $a_1$ in the last  column will lead to a (single) new
+ leading 1.
+
+
+\standout{So: $$\rnk(A) \leq \rnk([A|\bb]) \leq \rnk(A)+1$$}
+
+... and where the equality holds tells you whether or not your system is consistent.
+
+\begin{myexample} In a homogeneous linear system, you can never get a nonzero
+entry in the augmented column (it's all zeros) so certainly you can
+never have a leading 1 there.  Thus $\rnk(A) = \rnk([A|0])$, and the
+system is consistent.  (We knew that already.)\end{myexample}
+
+
+In summary:  suppose $[A|\bb]$ is the augmented matrix of a linear system.
+Then:
+\begin{itemize}
+\item The system is inconsistent if and only if $\rnk(A) < \rnk([A|\bb])$.
+\item The system has a unique solution if and only if $\rnk(A)=\rnk([A|\bb])$
+{\bf and} $\rnk(A) = $\# columns of $A$.
+\item The system has infinitely many solutions   if and only if $\rnk(A)=\rnk([A|\bb])$
+{\bf and}  $\rnk(A) < $\# columns of $A$.
+\end{itemize}
+
+
+\section{Application I:  Solving network and traffic flow problems}
+
+Let's consider several different applications of linear systems and
+our Gaussian elimination method.  The first is a common application of
+linear systems to solving traffic flow/network problems.  The idea
+is that you can model the internal flow of a network just by understanding
+its inputs and outputs and how traffic is restricted in between.  
+You don't expect a unique solution or even finitely many (in theory, of course) because there may be loops --  see problem \ref{prob13.3}, for example.
+
+\begin{myprob} The diagram in the figure below represents a network of one-way
+streets.  The numbers on the figure represent the flow of traffic (in cars per hour) along each street, and the intersections are labeled $A$, $B$, $C$ and $D$.  The arrows indicate the direction of the flow of traffic.  The variables $x_1, x_2, x_3, x_4$ represent the (unknown) level of traffic on certain streets.
+
+Analyse this system to answer the following questions:
+\begin{enumerate}[(a)]
+\item What is the maximum flow along $AB$?
+\item If $DA$ is blocked for roadwork, will there be a traffic jam?
+\item What if $BC$ is blocked for roadwork?
+\end{enumerate}
+
+\begin{mysol}\mbox{}
+
+%\begin{figure}[ht]
+\begin{center}
+\setlength{\unitlength}{1 true in}
+\parbox[t][4in][b]{4in}{
+\begin{picture}(4,4)
+\put(0,1){\line(1,0){4}}
+\put(0,3){\line(1,0){4}}
+\put(1,1){\line(0,1){2}}
+\put(3,0){\line(0,1){3}}
+\put(0.5,1.1){\text{$\rightarrow$}}
+\put(2,1.1){\text{$\rightarrow$}}
+\put(3.5,1.1){\text{$\rightarrow$}}
+\put(0.5,3.1){\text{$\rightarrow$}}
+\put(2,3.1){\text{$\rightarrow$}}
+\put(3.5,3.1){\text{$\rightarrow$}}
+\put(1.1,2){\text{$\uparrow$}}
+\put(3.1,2){\text{$\downarrow$}}
+\put(2.9,0.5){\text{$\downarrow$}}
+
+\put(0.5,0.8){300}
+\put(.95,3.1){A}
+\put(0.5,2.8){300}
+\put(2.95,3.1){B}
+\put(2.85,1.1){C}
+\put(0.85,1.1){D}
+\put(2,2.8){$x_1$}
+\put(3.5,0.8){200}
+\put(2,0.8){$x_4$}
+\put(3.5,2.8){100}
+\put(3.1,0.2){300}
+\put(0.8,2){$x_2$}
+\put(2.8,2){$x_3$}
+
+%\multiput(0,1.95)(.25,0){17}{\line(0,1){.1}} 
+%\multiput(1.95,0)(0,.25){17}{\line(1,0){.1}} 
+%\put(0,0.5){\line(2,1){2}}
+%\put(2,0){\line(-1,1){1.8}}
+\end{picture}}\end{center}
+
+%\caption{Traffic flow diagram}\label{Fig:traffic1}
+%\end{figure}
+
+
+The total flow in is $600$ (cars per hour, say) while
+the total flow out is $600$.  Good; let us take that
+as our hypothesis for all the intersections as well:
+flow in  = flow out  (Kirchhoff's first law).
+
+We have labeled with $x_1$, $x_2$, $x_3$, $x_4$ 
+the street segments on which we don't know the flow
+of traffic.  So let us set up the flows by writing
+down the equation for each intersection (starting
+at the northwest and working clockwise):
+\begin{alignat*}{2}
+\text{\bf Intersection}\quad& \text{\bf Flow in}\quad&&=\quad\text{\bf Flow out}\\
+A\qquad \quad&300+x_2 &&=\quad x_1\\
+B\qquad \quad &x_1 &&=\quad x_3+100\\
+C\qquad \quad &x_3+x_4 &&=\quad 200 + 300\\
+D\qquad \quad &300 &&=\quad x_2+x_4.
+\end{alignat*}
+This is the linear system
+\begin{align*}
+x_1-x_2 &= 300\\
+x_1-x_3 &= 100\\
+x_3+x_4 &= 500\\
+x_2+x_4 &= 300
+\end{align*}
+with augmented matrix
+$$
+\mat{
+1 & -1 & 0 & 0 & |& 300\\
+1 & 0 & -1 & 0 & |& 100\\
+0 & 0 & 1 & 1  &|& 500\\
+0 & 1 & 0 & 1  &|& 300}
+$$ 
+This reduces to
+$$
+\mat{
+1 & 0 & 0 & 1 & |& 600\\
+0 & 1 & 0 & 1 & |& 300\\
+0 & 0 & 1 & 1  &|& 500\\
+0 & 0 & 0 & 0  &|& 0}
+$$
+So our solution is
+$$
+\mat{x_1\\x_2\\x_3\\x_4} = \mat{600-s\\300-s\\500-s\\s}
+$$
+for any $s\in \R$.
+
+Now that we have found a solution to our linear system, let us consider the questions we wanted to answer.
+\begin{enumerate}[(a)] 
+\item Note that since the streets are one-way, each $x_i\ge 0$, for $1\le i\le 4$. When you implement these constraints, you find that $0\le s\le 300$. So for example, the maximum flow along $AB$ is 300 cars per hour (when the flow along $DA$ is zero). 
+\item If $DA$ is blocked for roadwork, then we are setting $x_2=0$. This means $s=300$; we see that the solution is
+$(x_1,x_2,x_3,x_4) = (300,0,200,300)$, which is fine.  There are no parameters, meaning that cars now have no choices about how to navigate the network, but they make it.
+\item If $BC$ is blocked for roadwork, however, then $x_3=0$.  This means $s=500$,
+which gives $(x_1,x_2,x_3,x_4) = (100,-200,0,500)$ --- meaning we would have
+to allow two-way traffic on the street $DA$ to accommodate the traffic.
+\end{enumerate}
+In summary:  we applied the general solution to the model to first establish some additional constraints on our parameters (here, positive flow) and then used this constrained general solution to easily work out
+various scenarios in traffic flow (without having to solve the
+system all over again!).
+\end{mysol}\end{myprob}
+
+\section{Application II: testing scenarios}
+
+\begin{myprob} Find all values of $k$ for which the following
+linear system has (a) no solution, (b) a unique solution, and
+(c) infinitely many solutions.
+\begin{align*}
+kx + y + z &=1\\
+x +ky + z &= 1\\
+x+y+kz &= 1.
+\end{align*}
+
+\begin{mysol}  This is a linear system in the variables $x,y,z$.  (It is
+{\it not  linear in} $k,x,y,z$.  So this is one way to tackle a special
+kind of nonlinear system with linear algebra.)
+
+Let's use row reduction.  The augmented matrix is
+$$
+\mat{k & 1 & 1 &|& 1\\
+1&k&1&|&1\\
+1&1&k&|&1}
+$$
+Now be careful!  We can't divide by $k$, because we don't
+know if it's zero or not.  So either we split into two
+cases right now ($k=0$ and $k\neq0$) or else we use a 
+different row to give us our leading 1.  
+$$
+\mt{R_1 \leftrightarrow R_2}
+\mat{1&k&1&|&1\\
+k & 1 & 1 &|& 1\\
+1&1&k&|&1}
+\mt{\sim \\ -kR_1+R_2\to R_2 \\ -R_1+R_3 \to R_3}
+\mat{
+1&k&1&|&1\\
+0 & 1-k^2 & 1-k &|& 1-k\\
+0&1-k&k-1&|&0}
+$$
+Now we have no choice:  there are variables in both entries from
+which we need to choose our leading 1.  
+
+Case 1:  $k = 1$.  Then our matrix is
+$$
+\mat{
+1&1&1&|&1\\
+0 & 0 & 0 &|& 0\\
+0&0&0&|&0}
+$$
+which is in RREF and has infinitely many solutions.  So (c) includes
+the case $k=1$.
+
+Case 2:  $k \neq 1$.  That means $k-1 \neq 0$ so we can divide by it:
+$$
+\mt{ \frac{1}{1-k} R_2\to R_2 \\ \frac{1}{1-k}R_3\to R_3}
+\mat{
+1&k&1&|&1\\
+0 & 1+k & 1 &|& 1\\
+0&1&-1&|&0}
+\mt{R_2 \leftrightarrow R_3}
+\mat{
+1&k&1&|&1\\
+0&1&-1&|&0\\
+0 & 1+k & 1 &|& 1}
+$$
+And now continue row reducing:
+$$
+\mt{\sim \\ -(1+k)R_2+R_3\to R_3}
+\mat{
+1&k&1&|&1\\
+0&1&-1&|&0\\
+0 & 0 & 2+k &|& 1}
+$$
+For the third column:  if $k = -2$, then we cannot get a leading
+1 in the third column; in fact, if $k=-2$ then the system is 
+inconsistent.  
+
+Otherwise, we can divide $R_3$ by $2+k$ to get a leading 1 in
+the third column; and then we deduce that we have a unique solution.
+
+Conclusion:  if $k=1$, infinitely many solutions.  If $k=-2$, there is no
+solution.  If $k \neq 1$ and $k \neq -2$ then there is a unique
+solution.
+\end{mysol}\end{myprob}
+
+Notice how you get a unique solution ``most of the time'' --- this
+coincides with the idea that if you take three random planes in
+$\R^3$ then most of the time they should intersect in a single point.
+
+\section{Application III:  solving vector equations}
+
+\begin{myprob} Does the set $\{(1,2,3), (4,5,6), (7,8,9)\}$ span $\R^3$?
+
+\begin{mysol} We need to answer the question:  given an arbitrary vector
+$(x,y,z)\in\R^3$, do there exist scalars $a_1, a_2, a_3$ such
+that
+$$
+a_1 \mat{1\\2\\3} + a_2\mat{4\\5\\6} + a_3 \mat{7\\8\\9} = \mat{x\\y\\z}?
+$$
+When you equate components on each side, we obtain
+\begin{align*}
+a_1 +4a_2 + 7a_3 &= x\\
+2a_1+5a_2+ 8a_3 &=y\\
+3a_1+6a_2 +9a_3 &= z
+\end{align*}
+which corresponds to the augmented matrix
+$$
+\mat{1 & 4 & 7 &|& x\\
+2 & 5 & 8 &|& y\\
+3 & 6 & 9 &|& z}
+$$
+Notice how the columns of this matrix correspond to the vectors in
+our linear system!
+
+We row reduce this linear system, and get
+$$
+\mat{1 & 4 & 7 &|& x\\
+0 & 1 & 2 &|& -(y-2x)/3\\
+0 & 0 & 0 &|& x-2y+z
+}
+$$
+So:  the linear system is consistent if and only if $x-2y+z=0$.
+But this says that the span of the given three vectors is only
+a plane in $\R^3$ and not all of $\R^3$ (and this method even
+gave us the equation of that plane!).
+\end{mysol}\end{myprob}
+
+Notice also that by setting $(x,y,z)=(0,0,0)$ in the preceding
+example, you could deduce that the dependence equation has
+infinitely many solutions, and thus that these three
+vectors are linearly dependent.
+
+
+
+

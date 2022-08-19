@@ -1,0 +1,494 @@
+\chapter{%Finding bases for subspaces of $\R^n$: t
+The row and column space algorithms}\label{chapter:16basiscol}
+
+Here we aim to solve the following three problems about finding bases for subspaces of $\R^n$. The solutions to each will involve the Gaussian algorithm at some stage.
+
+\begin{enumerate}\label{FindingBases}
+\item Given a spanning set $\set{\ww_1, \dots ,\ww_m}$ for a subspace $W$, find {\it any} basis for $W$.
+\medskip
+\item Given a spanning set $\set{\ww_1, \dots ,\ww_m}$ for a subspace $W$, find a basis for $W$ which {\it is a subset of} $\set{\ww_1, \dots ,\ww_m}$, i.e., the basis should only contain vectors from $\set{\ww_1, \dots ,\ww_m}$.
+\medskip
+\item Given a linearly independent set $\set{\uu_1, \dots ,\uu_k}$ in $\R^n$, {\it extend it to a basis of $\R^n$}, i.e., find vectors $\uu_{k+1}, \dots, \uu_n$ such that $\set{\uu_1, \dots ,\uu_k,\uu_{k+1}, \dots, \uu_n }$ is a basis of $\R^n$.
+\end{enumerate}
+
+The key ideas in the solutions to these problems will be to find bases for the row and column space of a matrix. Let's start with the row space, as it's pretty straightforward.
+
+\section[The row space algorithm]{Finding a basis for the row space: the row space algorithm}
+
+When we row reduce a matrix, you may have noticed that the new rows are linear combinations  of the old ones. In Chapter \ref{chapter:11solvingsystems} we mentioned  that each elementary row operation can be reversed, and indeed by an elementary row operation of the same kind. So this means that the old rows are linear combinations of the new rows as well. This has a very beautiful and useful consequence:
+
+
+
+\begin{proposition}[The row space is invariant under row equivalence]\index{row space is invariant under row equivalence}\label{rowspaceInvariance}
+If $A$ is row equivalent to $B$ then $\row(A) = \row(B)$.
+That is, the spans of their rows are exactly the same subspace
+of $\R^n$.
+\end{proposition}
+
+\begin{proof}
+Remember that ``row equivalent'' means that you can get from $A$ to
+$B$ by a sequence of elementary row operations.
+The three elementary row operations are:
+\begin{enumerate}
+\item Add a multiple of one row to another.
+\item Multiply a row by a nonzero scalar.
+\item Interchange two rows.
+\end{enumerate}
+Replace the word ``row'' with ``row vector''; it is clear that
+(2) and (3) do not change the span of the row vectors involved.
+To see that (1) doesn't change the span amounts to showing that
+$$\spn\{\uu,\vv\} = \spn\{ \uu, c\uu + \vv\}
+$$
+for any two vectors $\uu$ and $\vv$ and a scalar $c$.  (Compare this with Problem \ref{prob06.4}).
+Since none of the individual operations change the span of the
+row vectors, the row spaces of $A$ and $B$ are the same.
+\end{proof}
+
+What's so great about this? Well, for one thing a matrix in RREF has lots of zeros about, so it might be easier to spot a  basis.  Let $A$ be any matrix  and $\tilde A$ its RREF. Given that $\row(A)=\row(\tilde A)$, a basis for $\row(\tilde A)$ will also be a basis for $\row(A)$!
+
+\begin{myprob}\label{rowspace1} Find a basis for $\row(A)$, where $A$ is the matrix
+$$
+A = \mat{
+1&2&2&3\\2&-2&-8&4\\1&1&0&1\\0&2&4&1}
+$$
+
+\begin{mysol} 
+By definition, 
+$$
+\row(A) = \spn\{(1,2,2,3),(2,-2,-8,4),(1,1,0,1),(0,2,4,1)\}
+$$
+But again, we don't know if this spanning set is linearly
+independent or not.   
+
+Let's apply  Proposition \ref{rowspaceInvariance}. 
+
+We row reduce $A$ to RREF and get:
+$$
+\tilde A=\mat{1 & 0 & -2 & 0\\ 0 & 1 & 2 & 0\\ 0 & 0 & 0 & 1\\ 0 & 0 & 0 & 0}
+$$
+The proposition says that $\row(A) = \row(\tilde A)$.  Well, $\row(\tilde A)$ is
+spanned by the rows of $\tilde A$ --- but it's perfectly obvious we
+can ignore the zero row, so we have
+$$
+\row(\tilde A) = \spn\{ (1,0,-2,0), (0,1,2,0), (0,0,0,1)\}
+$$
+Even better:  just like the basic solutions to $\Null(A)$, these
+vectors are obviously linearly independent because of the positions
+of the leading ones.  
+
+Conclusion :  The nonzero rows of $\tilde A$ form a basis
+for $\row(A)$.
+
+And what a fantastic basis!  Lots of zeros!  It's easy to see
+that, for example, $(3,2,-2,5)$ is in the $\row(A)$
+and that $(1,1,1,1)$ is not, because of the nice ones and zeros.  (Try it!)
+\end{mysol}\end{myprob}
+
+Having found a basis for the row space here, let's take a look: did this help with finding a basis for the column space? Unfortunately, not: look at the column spaces of $A$ and $\tilde A$. They are not the same at all: for example, the vector
+$
+c_2= \mat{
+ 2 \\ -2 \\ 1 \\ 2 }
+$ (the second column of $A$) is certainly in $\col(A)$, but it isn't in $\col(\tilde A)$, since ---take a look--- the fourth component of {\it every vector} in $\col(\tilde A)$ will have to be $0$. And that's simply not the case for $c_2$.
+
+\standout{If $A\sim \tilde{A}$ then $\row(A)=\row(\tilde{A})$ but $\col(A) \neq \col(\tilde{A})$ in general!}
+
+
+Let's record our result for the row space:
+
+\begin{theorem}[Basis for $\row(A)$: The row space algorithm]\index{basis for $\row(A)$}\label{basisRowA}
+The nonzero rows in any REF of $A$ form a basis for $\row(A)$, and so $\dim \row(A)=\rank A$.
+\end{theorem}
+
+If you take the RREF, you get a ``standard basis'' for your subspace $\row(A)$.
+
+\standout{You have to take the rows of an REF of $A$,
+not the rows of $A$.}
+
+\begin{myexample}
+Let $A = \mat{1&1\\2&2\\ 0&1}$; its RREF is $\tilde A=\mat{1&0\\0&1\\0&0}$.
+The first two rows of $\tilde A$ give a basis for $\row(\tilde A)=\row(A)$.  But
+the first two rows of $A$ do not.  And the nonzero rows of $A$
+also do not.  (check).  The problem with going back to $A$ is
+that you would need to keep track of row interchanges.
+\end{myexample}
+
+This solves our first problem on page \pageref{FindingBases}! Given a spanning set for a subspace $W$, assemble a matrix $A$ with the vectors as the {\it rows} of $A$, so that $W=\row(A)$. Now apply the row space algorithm to obtain a basis for $\row(A)=W$.
+
+\begin{myexample}
+Find any basis for $$
+W = \spn\{(1,2,2,3),(2,-2,-8,4),(1,1,0,1),(0,2,4,1)\}
+$$
+
+Well, let's just assemble a matrix $A$ for which $W=\row(A)$, apply the row space algorithm and get a basis for $\row(A)$, which will of course be a basis for $W$. This was done in Problem~\ref{rowspace1}.
+So
+$$\set{(1,0,-2,0), (0,1,2,0), (0,0,0,1)}$$ is a basis for $W$. 
+
+{\bf N.B.} Note that none of these vectors is in our original spanning set, so this doesn't help with the second problem on page \pageref{FindingBases}. We'll need another tool for that.
+\end{myexample}
+
+The row space algorithm also helps us solve the third problem on page \pageref{FindingBases}: Given a linearly independent set $\set{\uu_1,\dots, \uu_k }$ in $\R^n$,  to extend it to a basis of $\R^n$, i.e., find vectors $\uu_{k+1}, \dots, \uu_n$ such that $\set{\uu_1, \dots ,\uu_k, \uu_{k+1}, \dots, \uu_n }$ is a basis of $\R^n$, we proceed as follows: Assemble an $n \times n$ matrix $A$ whose first $k$ {\it rows} are $\uu_1,\dots, \uu_k $, and leave the $n-k$ unknown vectors as symbols i.e. $A=\mat{\uu_1\\ \vdots \\\uu_k \\\uu_{k+1} \\\vdots \\\uu_n}$. We know that the rows of $A$ will be a basis of $\R^n$ iff $\rank A=n$. So we row reduce just the part of $A$ we know: rows 1 to $k$, and see which columns the leading ones are in. We then choose  vectors $\uu_{k+1}, \dots, \uu_n$ from the standard basis of $\R^n$ to make sure there's a leading one in every column. Let's see this in two examples:
+
+\begin{myexample} Extend the linearly independent set $\set {(0,1,1)}$ to a basis of $\R^3$. Since $\dim \R^3=3$, we'll need two more vectors.
+
+Set $A=\mat{0&1&1\\&\uu_2&\\&\uu_3&}=\mat{0&\pivot&1\\&\uu_2&\\&\uu_3&}$. Since we have one leading one in the second column, if we set $\uu_2=(1,0,0)$ and $\uu_3=(0,0,1)$, then
+$$A=\mat{0&1&1\\1&0&0\\0&0&1&}\sim \mat{\pivot&0&0\\0&\pivot&1\\0&0&\pivot&}. $$ Then it is clear that with these choices, $\rank A=3$, so $\dim \row(A)=3$, and a basis for $\row(A)=\R^3$ will be $\set{(0,1,1),(1,0,0),(0,0,1) }$.
+
+\end{myexample}
+
+Let's try an example in $\R^4$.
+
+\begin{myexample}
+
+Extend $\set{(1,2,3,4), (2,4,7,8)}$ to a basis of $\R^4$.
+
+
+So we set $A=\mat{1&2&3&4\\2&4&7&8\\ &&\uu_3 \\ && \uu_4}$. Now row reduce as much as we can:
+$$A=\mat{1&2&3&4\\2&4&7&8\\ &&\uu_3 \\ && \uu_4&&}
+\begin{matrix} -2R_1+R_2\to R_2\\ \sim\end{matrix} \mat{\pivot&2&3&4\\0&0&\pivot&0\\ &&\uu_3  \\ && \uu_4 } $$
+
+So we can see two leading ones -- in columns 1 and 3, so if we set $\uu_3=(0,1,0,0)$ and $\uu_4=(0,0,0,1)$, then
+$$A =\mat{1&2&3&4\\2&4&7&8\\ 0&1&0&0\\ 0&0&0&1} \sim \mat{\pivot&2&3&4\\0&0&\pivot&0\\ 0&1&0&0  \\  0&0&0&1 }\begin{matrix}  R_2\leftrightarrow R_3\\ \sim\end{matrix} \mat{\pivot&2&3&4\\0&\pivot&0&0 \\ 0&0&\pivot&0  \\  0&0&0&\pivot } $$ It is now clear that $\rank A=4$, so the desired extension is 
+
+$$ \set{(1,2,3,4), (2,4,7,8), (0,1,0,0),(0,0,0,1)}$$
+\end{myexample}
+
+Finally, let's tackle the second problem on page \pageref{FindingBases}. For this we'll need a new tool -- which we can fashion out of things we already know.
+
+\section[The column space algorithm]{Finding a basis for the column space: the column space algorithm}
+
+We  noted before that row reduction really messes up the column space of a matrix:  if $A$ row reduces to $\tilde A$,
+then it's generally\footnote{We'll see later that they are the same for {\it invertible} square matrices. See Chapter \ref{chapter:18inverses}.} the case that $\col(A) \neq \col(\tilde A)$.\footnote{Although it will turn out that they {\it will}  have the same
+dimension for all matrices.} 
+
+We could always find a basis for $\col(A)$ by finding a basis  for $\row(A^t)$, but here's another way that obtains a very special kind of basis: one that is a subset of the columns!
+
+Here's the idea: given a matrix $A=\mat{\cc_1& \cdots & \cc_n}$ in block column form, we'll try to collect, from left to right, the greatest number of  those columns that are linearly independent, discarding any that are not. As you will see, we will be able to decide which columns to keep and which to discard simply by looking at the RREF of $A$!
+
+Let's start with an example. Before we do, we recall two important facts that will turn out to be extremely useful:
+\begin{enumerate} [(1)]
+\item Theorem~\ref{EnlargingLI}: If $\set{\vv_1, \dots \vv_k}$ is linearly in dependent, then $\vv_{k+1} \notin \spn\{\vv_1, \dots \vv_k\}$ iff $\set{\vv_1, \dots \vv_k, \vv_{k+1}}$ is still linearly independent; and 
+\medskip
+\item From the beginning of Section~\ref{consistency}: If $\mat{\vv_1& \dots &\vv_k&|& \vv}$ is the augmented matrix of a linear system (in block column form), then $\vv\in \spn\{\vv_1, \dots \vv_k\}$ iff $$\rank\mat{\vv_1& \dots &\vv_k&|& \vv}=\rank \mat{\vv_1& \dots &\vv_k}.$$
+\end{enumerate}
+
+\begin{myprob} \label{colspaceexample}Find a basis for $\col(A)$, where 
+$$A = \mat{
+1&2&2&3\\2&-2&-8&4\\1&1&0&1\\0&2&4&1}
+$$
+\begin{mysol}
+We'll try to collect, from left to right, the greatest number of  those columns that are linearly independent, discarding any that are not.
+
+Write $A= \mat{\cc_1&\cc_2&\cc_3&\cc_4}$ in block column form. Now it's clear that as $\cc_1\not=0$, the set $\set{\cc_1}$ is linearly independent. But will it span $\col(A)$? Well, let's see if $\cc_2\in \spn\{\cc_1\}$. It's obvious that it isn't, but let's look at this  in another way  that will turn out to be helpful:
+We know that $\cc_2\in \spn\{\cc_1\}$ iff the linear system with augmented matrix 
+$$ \mat{\cc_1&|&\cc_2}=
+\mat{
+1&|&2\\
+2&|&-2\\
+1&|&1\\
+0&|&2}$$ is consistent, iff $\rank\mat{\cc_1&|&\cc_2}=\rank\mat{\cc_1}$. When we row reduce this, it reduces to the first two columns of $\tilde A$, of course:
+$$\mat{
+1&|&2\\
+2&|&-2\\
+1&|&1\\
+0&|&2}  \sim \mat{1 &|&0\\ 0 &|& \pivot\\ 0 &|& 0 \\ 0 &|& 0 }$$The presence of the \underbar{second leading one in column 2 of $\tilde A$} prevents this system from being consistent. That is, $\rank\mat{\cc_1&|&\cc_2}>\rank\mat{\cc_1}$. So,  $$\cc_2\notin \spn\{\cc_1\},$$ and hence  $\set{\cc_1, \cc_2}$ is linearly independent: $\spn\{\cc_1, \cc_2\}$ is genuinely larger than  $\spn\{\cc_1\}$. So we keep $\cc_1$ and $\cc_2$.
+
+Ok, so let's see if $\set{\cc_1, \cc_2}$ spans $\col(A)$. Well if it does, then $\cc_3 \in \spn\{\cc_1, \cc_2\}$. We know that this is true iff 
+$\mat{\cc_1&\cc_2&|&\cc_3} $ is the augmented matrix of a consistent system iff $\rank\mat{\cc_1&\cc_2&|&\cc_3}=\rank\mat{\cc_1&\cc_2}$. Now
+$$ \mat{\cc_1&\cc_2&|&\cc_3}=\mat{
+1&2&|&2\\2&-2&|&-8\\1&1&|&0\\0&2&|&4}\sim\mat{1 & 0 &|& -2 \\ 0 & 1 &|& 2 \\ 0 & 0 &|& 0 \\ 0 & 0 &|& 0 } $$ This {\it is} the augmented matrix of a consistent system: $\rank\mat{\cc_1&\cc_2&|&\cc_3}=\rank\mat{\cc_1&\cc_2}$ this time ---no new leading one in column three of $\tilde A$ --- so it {\it is true} that $$\cc_3 \in \spn\{\cc_1, \cc_2\}.$$ Hence $\spn\{\cc_1, \cc_2\}=\spn\{\cc_1, \cc_2, \cc_3\}$, so \underbar{we won't keep $\cc_3$}, as  $\set{\cc_1, \cc_2, \cc_3}$ has the same span as $\set{\cc_1, \cc_2}$ but $\set{\cc_1, \cc_2, \cc_3}$ is {\it not} independent.
+
+So now we ask: is $\cc_4\in \spn\{\cc_1, \cc_2\}$? Since $\spn\{\cc_1, \cc_2\}=\spn\{\cc_1, \cc_2, \cc_3\}$, this is the same question as: ``is $\cc_4\in \spn\{\cc_1, \cc_2, \cc_3\}$?"\footnote{You may ask: ``Why do this?" -- ``why put $\cc_3$ back in?" Because we can read the answer directly from $\tilde A$. Read on.} It will be iff the linear system corresponding to $\mat{\cc_1&\cc_2&\cc_3&|&\cc_4}$ is consistent iff $\rank\mat{\cc_1&\cc_2&\cc_3&|&\cc_4} =\rank\mat{\cc_1, \cc_2, \cc_3}$. Well,
+$$\mat{\cc_1&\cc_2&\cc_3&|&\cc_4}= \mat{
+1&2&2&|&3\\2&-2&-8&|&4\\1&1&0&|&1\\0&2&4&|&1}\sim\mat{1 & 0 & -2 &|& 0\\ 0 & 1 & 2 &|& 0\\ 0 & 0 & 0 &|& \pivot\\ 0 & 0 & 0 &|& 0}.$$ This is the augmented matrix of an {\it inconsistent} system: $\rank\mat{\cc_1&\cc_2&\cc_3&|&\cc_4}>\rank\mat{\cc_1, \cc_2, \cc_3}$ because of the \underbar{third leading one in column 4 of $\tilde A$}. So indeed, $$\cc_4\notin \spn\{\cc_1, \cc_2\}.$$
+So we know that $\set{\cc_1, \cc_2, \cc_4}$ is independent, and that $\spn\{\cc_1, \cc_2, \cc_4\}=\spn\{\cc_1, \cc_2, \cc_3, \cc_4\}=\col(A)$. So we're done! $\set{\cc_1, \cc_2, \cc_4}$ is a basis for $\col(A)$.
+\end{mysol}\end{myprob}
+
+
+
+\standout{Look carefully at this example: we kept only those \underbar{columns of $A$} where there {\it were leading ones in $\tilde A$}.} This always works. Keeping in mind that the columns where the leading ones sit don't change when we go from REF to RREF, we can state the theorem as:
+
+
+\begin{theorem}[Basis for $\col(A)$: the column space algorithm]\index{basis for $\col(A)$}\index{rank and $\dim(\col(A))$}\label{basisColA}
+Let $A$ be an $m\times n$ matrix.  Then a basis for $\col(A)$ consists of
+those columns of $A$ which give rise to leading ones in an REF of $A$. Hence $\dim \col(A)=\rank A$.
+\end{theorem}
+
+
+\begin{proof}
+Suppose $A = [\uu_1 \; \uu_2 \cdots \uu_n]$ is written in block column form.  To choose a
+subset of the columns of $A$ which are a basis for $A$, we
+proceed as follows.
+
+\begin{itemize}
+\item Start with $\{ \uu_1\}$.  If it's zero, then throw it away;
+it can't be part of a basis.  Otherwise, keep it.
+\item Next consider $\{ \uu_1, \uu_2\}$.  If $\uu_2 \in \spn\{\uu_1\}$,
+then the set $\{ \uu_1, \uu_2\}$ is LD and $\spn\{\uu_1,\uu_2\}$ is
+just $\spn\{\uu_1\}$ --- so discard $\uu_2$.  Otherwise, keep it.
+\item Next consider $\{ \uu_1, \uu_2, \uu_3\}$.  If $\uu_3 \in \spn\{ \uu_1, \uu_2\}$, then as above it is redundant and we throw it away; otherwise keep it.
+\item Continue in this way, deciding at each step whether to keep the
+vector or throw it out, until you've covered all the vectors.
+\end{itemize}
+Now: what we're left with will be linearly independent and will span the column space.
+Why?  We checked linear independence at each step; and we only
+removed vectors which were linear combinations of ones we kept,
+so the span didn't change.
+
+Finally: how do you decide which to keep and which to discard?
+Say we want to decide if $\uu_2$ is in $\spn\{\uu_1\}$.  We
+do this by row reducing the augmented matrix $[\uu_1 | \uu_2]$.
+But these are just the first two columns of $A$; so we don't actually have to
+row reduce again --- just look at the first two columns of 
+the RREF of $A$.  If the second column has a leading 1, then the
+system is inconsistent, and so we deduce NO, $\uu_2 \notin \spn\{\uu_1\}$.
+Otherwise, there is no leading 1, so the system is consistent, which
+means YES $\uu_2 \in \spn\{\uu_1\}$ and should be thrown out.
+
+This works at every step:  we want to decide if $\uu_k \in \spn\{ \uu_1, \cdots, \uu_{k-1}\}$, so consider the RREF of the matrix
+$$
+\left[ \uu_1 \; \uu_2 \; \cdots \; \uu_{k-1} \;|\; \uu_k \right]
+$$
+But since this is just the first $k$ columns of $A$, we already know its
+RREF (the first $k$ columns of the RREF of $A$).  The system is 
+consistent (meaning: we should throw out $\uu_k$) exactly when the rank
+of the coefficient matrix equals the rank of the augmented matrix;
+in other words, exactly when there is NO leading 1 in the $k$th column.
+The system is inconsistent (meaning: we should keep $\uu_k$) exactly
+when the rank of the coefficient matrix is smaller than the rank of
+the augmented matrix, which happens exactly when there IS a leading
+1 in the $k$th column.
+
+We conclude:  we will throw out (eliminate, discard) $\uu_i$ exactly
+if there is NO LEADING 1 in column $i$ of the RREF of $A$.  In other
+words:  the vectors we keep are the ones which give rise to leading
+ones.
+\end{proof}
+\begin{corollary}
+For any matrix $A$ with transpose matrix $A^T$:
+$$
+\dim \row(A)  = \dim \col(A)  = \dim \col(A^T)  = \rnk(A^T) = \dim \row(A^T), 
+$$ and all are equal to $ \rank(A)$.
+\end{corollary}
+
+\begin{proof}
+Remember: the rank is the number of leading ones in the RREF of $A$,
+and $\row(A) = \col(A^T)$.  Now use Theorems \ref{basisRowA}  and \ref{basisColA} and
+you have it!
+\end{proof}
+
+This is {\bf amazing fact number one} for first year linear algebra: just think about it. No matter  what size the matrix, the maximum number of independent rows --- $\dim \row(A)$ --- is {\it exactly the same as} the maximum number of independent columns --- $\dim \col(A)$! This is not obvious at all ... but it is true.
+
+\begin{myexample} Given that the matrix 
+$$
+A = \mat{2&1&9&3&7\\3&-1&11&1&2\\1&1&5&1&4}
+$$
+has RREF
+$$
+\tilde A = \mat{\pivot&0&4&0&1\\0&\pivot&1&0&2\\0&0&0&\pivot&1}
+$$
+we deduce that a basis for $\col(A)$\footnote{This means that $\col(A)=\R^3$! } is
+$$
+\left\{ \mat{2\\3\\-1}, \mat{1\\-1\\1}, \mat{3\\1\\1} \right\}.
+$$
+
+
+\end{myexample}
+
+
+\standout{WARNING:  The leading columns of the RREF of $A$ usually 
+do NOT form a basis for $\col(A)$ -- \underbar{you have to go back to the original
+matrix $A$.}}
+
+\begin{myexample}
+If $A = \mat{1&1&1\\2&2&2\\1&1&1}$ then the RREF of $A$ is $\tilde A = \mat{\pivot&1&1\\0&0&0\\0&0&0}$.  Clearly\footnote{If you prefer to write this vector as a column vector, feel free to do so.} $\{ (1,2,1)\}$ is a basis for $\col(A)$, whereas the first column of $\tilde A$, 
+$(1,0,0)$, is not even {\it in} $\col(A)$.  (But $\{ (1,0,0)\}$ is a basis
+for $\col(\tilde A)$.)
+\end{myexample}
+
+  
+
+
+We can now solve our second problem from the beginning of the chapter. Given a spanning set for a subspace $U$ from which we wish to extract a basis, assemble a matrix $A$ with the given vectors as {\it columns}, so $U=\col(A)$, and then use the column space algorithm to find a basis of $\col(A)=U$: it will consist of some of the columns of $A$, and so it will indeed consist of some of the given spanning vectors.
+
+\begin{myprob}
+Let $U=\spn\{(1, 2, 1, 0), (2, -2, 1, 2), (2, -8, 0, 4), (3, 4, 1, 1)\}$. Find a basis for $U$ which is a subset of the given spanning set.
+
+\begin{mysol} Let's assemble a matrix $A$ whose {\it columns} are the given vectors. So 
+$$A=\mat{
+1&2&2&3\\2&-2&-8&4\\1&1&0&1\\0&2&4&1}.$$
+We know from Problem~\ref{rowspace1} that the RREF of $A$ is
+$$\tilde A= \mat{\pivot & 0 & -2 & 0\\ 0 & \pivot & 2 & 0\\ 0 & 0 & 0 & \pivot\\ 0 & 0 & 0 & 0}.$$ The leading ones occur in columns 1, 2 and 4, so a basis for $\col(A)=U$ is 
+$$\set{(1, 2, 1, 0), (2, -2, 1, 2),  (3, 4, 1, 1)}.$$
+\end{mysol}
+\end{myprob}
+
+\section{Summary:  two methods to obtain a basis}
+
+So we have two distinct ways to get a basis from a spanning set.
+Say $W = \spn\{\vv_1, \vv_2, \cdots, \vv_k\}$.  Then either:
+\begin{enumerate}
+
+\item Write the vectors as the rows of a matrix $B = \mat{\vv_1 \\ \vv_2 \\ \ldots \\ \vv_k }$.  So $W = \row(B)$.  Row reduce, and 
+take the   nonzero rows of the RREF for your basis.
+\item Write the vectors as the columns of a matrix $A= [\vv_1 \; \vv_2 \; \cdots \; \vv_k]$.  So $W = \col(A)$.  Row reduce, and
+take the column vectors  in $A$ which give rise to leading ones in the RREF.
+
+
+\end{enumerate}
+
+Use the first
+if you want a nice basis for $W$ that's easy to work with.
+Use the second if the vectors you have in hand are special to you
+and you just want to throw out the redundant ones.  
+
+The point:  this works even if the subspace of which you're trying
+to get a basis didn't start off its life as the column space or row space
+of a matrix.  Anytime you have a spanning set, you can apply this
+method.  (And if your vectors are things like polynomials or matrices
+or functions:  write them in coordinates relative to a `standard'
+basis, then apply these methods.)
+\begin{remark}\label{NullperpRow}
+
+Before we leave this for now, let's make a final observation regarding the nullspace of a matrix $A$ and its rowspace. It's a kind of `geometric interpretation' of the rank-nullity theorem, Corollary~\ref{corollary:ranknull}:
+$$
+\dim \Null(A)  + \rank(A) = n
+$$
+
+We can now write this as 
+$$
+\dim \Null(A)  + \dim \row(A) = n
+$$
+
+Write $A=\bmatrix \rr_1\\\vdots \\ \rr_m\endbmatrix $ in block row form. Then
+\begin{align*} \vv\in \Null A &\iff  A\vv=0\\
+&\iff \bmatrix \rr_1\\\vdots \\ \rr_m\endbmatrix  \vv=0\\
+&\iff \bmatrix \rr_1\cdot \vv\\\vdots \\ \rr_m\cdot \vv\endbmatrix = \bmatrix 0\\\vdots \\0\endbmatrix 
+\end{align*}
+
+That is, $\vv \in \Null(A)$ iff $\vv$ is orthogonal to each and every row of $A$. So $\vv$ will be orthogonal to any and all linear combinations of rows of $A$, and so indeed $\vv \in \Null(A)$ iff $\vv$ is orthogonal to each and every element  of $\row(A)$! We'll come back to this idea in chapter~\ref{chapter:20OrthogComp}.
+\end{remark}
+
+To end the chapter, we now present another way to see that the column space algorithm works.
+
+
+
+\begin{myprob} Find a basis for $\col(A)$, where 
+$$A = \mat{
+1&2&2&3\\2&-2&-8&4\\1&1&0&1\\0&2&4&1}
+$$
+ 
+\begin{mysol} By definition, 
+$$
+\col(A) = \spn\left\{ \mat{1\\2\\1\\0}, \mat{2\\-2\\1\\2}, \mat{2\\-8\\0\\4},
+\mat{3\\4\\1\\1} \right\}
+$$
+The point of this problem is:  we don't know if this spanning set is linearly
+independent or not.   
+
+But we just saw that to check for linear independence, we need to 
+row reduce $A$.  So let's do that;  we get that the RREF of $A$ is
+$$
+\mat{1 & 0 & -2 & 0\\ 0 & 1 & 2 & 0\\ 0 & 0 & 0 & 1\\ 0 & 0 & 0 & 0}.
+$$
+By Theorem~\ref{thm:uniquesol}, the fact that $A\xx=0$ does not have a unique solution 
+implies that columns are not linearly independent, and do not form  a
+basis for $\col(A)$.  But we have even more information than that:  we know {\it all}
+the possible dependence relations on the set of columns!
+
+Let's reason this out.  First:
+\begin{align*}
+\Null(A) &= \{ \xx = (a_1, a_2,a_3,a_4) \mid A\xx = \zero\}\\
+ &= \{ (a_1, a_2, a_3, a_4) \mid a_1\cc_1 + a_2\cc_2 + a_3\cc_3+a_4\cc_4 = \zero \}
+\end{align*}
+Now given the above RREF, we know that
+$$
+\Null(A) = \set{ (2r,-2r,r,0)\st r\in \R}
+$$
+In other words, ALL solutions to the dependence equation on the columns
+of $A = [\cc_1 \; \cc_2 \; \cc_3 \; \cc_4]$ have the form
+$$
+(2r)\cc_1 + (-2r)\cc_2 + r\cc_3+0\cc_4 = \zero.
+$$
+In particular, set $r=1$ and solve for $\cc_3$ to get
+$$
+\cc_3 = -2\cc_1 + 2\cc_2
+$$
+which implies that $\cc_3 \in \spn\{\cc_1, \cc_2\}$.
+(Check!  $-2 \mat{1\\2\\1\\0} +2\mat{2\\-2\\1\\2} = \mat{2\\-8\\0\\4}$ -- yes!)
+
+By what we talked about earlier in the course, this means:
+$$
+\col(A) = \spn\{ \cc_1, \cc_2, \cc_4\}
+$$
+Are these linearly independent?  Yes!  Two ways to see this:
+\begin{enumerate}
+\item We know ALL dependence relations on these 4 vectors.  If these
+3 remaining vectors were linearly dependent, we could find a
+nontrivial equation like
+$$
+b_1 \cc_1 + b_2\cc_2 + b_4 \cc_4 = \zero
+$$
+but then $(b_1, b_2, 0, b_4)$ would lie in $\Null(A)$, and the only
+vector in $\Null(A)$ with third component 0 is the zero vector.  Hence
+no nontrivial relation exists.
+\item Alternately:  imagine checking that these are linearly independent.  You put
+them as the columns of a matrix and row reduce.  But all we're doing
+is covering up column 3 of the matrix $A$ as we row reduce, and all
+the steps would be the same --- because the elements in a non-leading
+column {\it are never involved in   steps that change the matrix during  row reduction}.  That
+means row reducing the matrix with just these 3 columns gives exactly
+the same answer as row reducing $A$ and just crossing out or ignoring
+column 3 at every step.  The result:  each of these 3 columns gave
+a leading 1, and thus they are linearly independent.
+\end{enumerate}
+
+So we have found a basis for $\col(A)$:
+$$
+\left\{ \mat{1\\2\\1\\0}, \mat{2\\-2\\1\\2}, \mat{3\\4\\1\\1} \right\}
+$$
+\end{mysol}\end{myprob}
+
+\begin{theorem}[Basis for $\col(A)$- a reprise]\index{basis for $\col(A)$}
+Let $A$ be an $m\times n$ matrix.  Then a basis for $\col(A)$ consists of
+those columns of $A$ which give rise to leading ones in an REF of $A$.
+\end{theorem}
+
+\begin{proof}[Idea of proof]
+One has to see that the example generalizes to any number of 
+non-leading variables.  
+
+Let the columns of $A$ be $\vv_1,\vv_2, \cdots, \vv_n$.
+Any nontrivial solution to
+$$
+a_1 \vv_1 + \cdots + a_n \vv_n = \zero
+$$
+is given by a vector $(a_1, \cdots, a_n)\in \Null(A)$.  In particular,
+each basic solution gives one dependence relation on these
+vectors.  Now recall that in each basic solution, all but the
+last nonzero entry comes from the equation for a leading variable,
+and the last nonzero entry is a 1 and corresponds to a non-leading
+variable.
+
+That means:  the nontrivial dependence relation has a column vector
+corresponding to a non-leading variable with coefficient 1, so we
+can solve for it in terms of the other column vectors occuring in
+this basic solution.  
+
+In other words: each basic solution lets us solve for one vector 
+(corresponding to a non-leading variable) in terms of vectors which
+correspond to leading variables.  Hence every vector which 
+corresponds to a non-leading variable is in the span of those
+corresponding to leading variables, which means the vectors
+corresponding to non-leading variables can be discarded.
+
+Finally, we note that the remaining vectors cannot have any
+nontrivial dependence relation on them, since every nontrivial
+dependence relation involves one of the non-leading variables.
+So they are linearly independent and span $\col(A)$, so form a basis.
+\end{proof}
+
+
+
+
+
+

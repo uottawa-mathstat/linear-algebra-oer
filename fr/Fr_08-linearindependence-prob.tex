@@ -1,0 +1,135 @@
+\section*{Exercices}
+\addcontentsline{toc}{section}{Exercices}
+
+\medskip {\bf Remarques :} 
+\begin{enumerate}
+\item Les questions avec un astérisque $ ^\ast$ (ou deux) sont bonus. À ne pas confondre avec les étoiles ${}^\star$ qui signifient qu'on peut trouver un corriger de la question à la fin de l'ouvrage.
+ \item Vous devez justifier toutes vos réponses.
+\end{enumerate}
+\bigskip
+
+
+\begin{prob} \label{prob07.1} Lesquels des ensembles suivants sont linéairement indépendants dans l'espace vectoriel indiqué ? (Si vous dites qu'ils le sont, vous devez le prouver en utilisant la définition. Si vous dites qu'ils ne le sont pas, vous devez donner une relation de dépendance linéaire non-triviale qui justifie votre réponse. Par exemple, si vous voulez montrer que la famille $\set{\vv_1, \vv_2, \vv_3}$ est linéairement dépendante, vous devez donner une relation comme  $\vv_1-2 \vv_2 +\vv_3=0$ ou $\vv_1=2 \vv_2 -\vv_3$.)
+\medskip
+\begin{enumerate}[a)]
+\item $\set{(1,1), (1, 2)}$ dans $\R^2$.
+\medskip
+ 
+\item\sov~$\set{(1,1), (2, 2)}$ dans $\R^2$.
+\medskip
+ 
+
+
+\item $\set{(0,0), (1, 1)}$ dans $\R^2$.
+\medskip
+ 
+\item\sov~$\set{(1,1), (1, 2), (1,0)}$ dans $\R^2$.
+
+\medskip
+ 
+\item $\set{(1,1,1), (1,0,3)}$ dans $\R^3$.
+\medskip
+ 
+\item\sov~$\set{(1,1,1), (1,0,3), (0,0,0)}$ dans $\R^3$.
+
+\medskip
+ 
+\item $\set{(1,1,1), (1,2,3), (2,3,4)}$ dans $\R^3$.
+\medskip
+ 
+ 
+\item\sov~$\set{(1,1,1), (1,0,3), (0,3,4)}$ dans $\R^3$.
+
+
+\medskip 
+ 
+\item $\set{(1,0,0), (0,1,0), (0,0,1), (1,2,3)}$ dans $\R^3$.
+\medskip
+ 
+\item\sov~$\set{(0,-3), (3, 0)}$ dans $\R^2$.
+
+
+\medskip
+ 
+
+\item$^\ast$ \footnote{Vous serez peut-être surpris par la réponse correcte à cette question... Consultez le professeur pour plus de détails.}  $\set{(0,-3), (3, 0)}$ dans $V=\R^2$ muni des \underbar{\it opérations non-standards}  suivantes.
+ $$\text{Addition : }\qquad(x,y) \tilde+ (x',y')=(x+x', y+y +3).$$ 
+$$\text{Multiplication par scalaire $k\in \R$ : }\qquad k \odot (x,y)=(kx, ky+3k-3).$$    
+ 
+\item\sov~$\set{(1,0,0), (2,0,-2)}$ dans $\R^3$. 
+
+\medskip
+ 
+\item$^\ast$\footnote{Vous ne serez sans doute pas très surpris par la réponse à cette question si vous avez déjà répondu correctement à la question (k)... Consultez le professeur pour plus de détails.}  $\set{(1,0,0), (2,0,-2)}$ dans $V=\R^3$ muni des \underbar{\it opérations non-standards} suivantes
+ $$\text{Addition : }\qquad (x,y,z) \tilde+ (x',y',z')=(x+x', y+y,z+z'-2).$$ 
+$$\text{Multiplication par scalaire $k\in \R$ : }\qquad k\odot (x,y,z)=(kx, ky, kz-2k+2)\,.$$\medskip 
+
+\end{enumerate}
+
+\end{prob} \begin{prob} \label{prob07.2} Lesquels des ensembles suivants sont linéairement indépendants dans $\M_{2 \,2}(\R)$ ? (Si vous dites qu'ils le sont, vous devez le prouver en utilisant la définition. Si vous dites qu'ils ne le sont pas, vous devez donner une relation de dépendance linéaire non-triviale qui justifie votre réponse. Par exemple, si vous voulez montrer que $\set{A_1, A_2, A_3}$ est LD, donnez une relation de la forme  $A_1-2 A_2 +A_3=0$ ou $A_1=2 A_2 -A_3$.)
+\medskip
+\begin{enumerate}[a)]
+
+\item  $\Big\{\bmatrix 1&0\\1&2\endbmatrix, \bmatrix 0&1\\0&1\endbmatrix \Big\}$.   \medskip
+ 
+
+\item\sov~ $\Big\{\bmatrix 1&0\\1&2\endbmatrix, \bmatrix 0&1\\0&1\endbmatrix , \bmatrix 1&-2\\-1&0\endbmatrix \Big\}$.   \medskip
+ 
+
+\item  $\Big\{\bmatrix 1&0\\0&-1\endbmatrix, \bmatrix 0&1\\0&0\endbmatrix,\bmatrix 0&0\\1&0\endbmatrix\Big\}$.  \medskip
+ 
+ \item\sov~ $\Big\{\bmatrix 1&0\\0&0\endbmatrix, \bmatrix 0&1\\0&0\endbmatrix,\bmatrix 0&0\\1&0\endbmatrix,\bmatrix 0&0\\0&1\endbmatrix \Big\}$.  \medskip
+ 
+
+\end{enumerate}
+
+\end{prob} \begin{prob} \label{prob07.3}  Lesquels des ensembles suivants sont linéairement indépendants dans $\F(\R)$ ? (Si vous dites qu'ils le sont, vous devez le prouver en utilisant la définition. Si vous dites qu'ils ne le sont pas, vous devez donner une relation de dépendance linéaire non-triviale qui justifie votre réponse. Par exemple, si vous voulez montrer que $\set{f_1, f_2, f_3}$ est LD, donnez une relation de la forme $f_1-2 f_2 +f_3=0$ ou $f_1=2 f_2 -f_3$.)
+\medskip
+\begin{enumerate}[a)]
+\item  $\set{1, 1-x, 1-2x}$ dans  $\PP_2$ . \medskip
+ 
+\item\sov~ $\set{1, 1+x, x^2}$ dans  $\PP_2$ . \medskip 
+ 
+\item  $\set{ \sin x,  \cos x}$ dans $\F(\R)$ . \medskip  
+ 
+\item\sov~ $\set{1, \sin x, 2 \cos x}$ dans  $\F(\R)$ . \medskip  
+ 
+\item  $\set{2, 2\sin^2 x,  3\cos^2 x}$ dans $\F(\R)$. \medskip  
+ 
+\item\sov~ $\set{\cos 2x, \sin^2 x,  \cos^2 x}$ dans  $\F(\R)$. \medskip  
+ 
+\item  $\set{\cos 2x, 1,  \sin^2 x}$ dans  $\F(\R)$. \medskip  
+ 
+\item\sov~ $\set{\sin 2x, \sin x \cos x }$ dans  $\F(\R)$. \medskip  
+ 
+\item  $\set{\sin(x+1), \sin x, \cos x }$ dans  $\F(\R)$. \medskip  
+ 
+\end{enumerate}
+\end{prob} \begin{prob} \label{prob07.4} Justifiez clairement vos r\'eponses aux questions suivantes.\medskip 
+
+\begin{enumerate}[a)]
+\item Dans un espace vectoriel $V$, on se donne un sous-ensemble $\set{\vv_1, \vv_2 , \vv_3}\subset V$ linéairement indépendant.  Montrez soigneusement que $\set{\vv_2 , \vv_3}$ est également linéairement indépendant.\medskip
+
+\item\sov~Dans un espace vectoriel $V$, on se donne un sous-ensemble $\set{\vv_1, \dots , \vv_k}\subset V$ linéairement indépendant. Montrez soigneusement que le sous-ensemble $ \set{\vv_2, \dots , \vv_k}$ est aussi linéairement indépendant.\medskip
+ 
+
+\item Dans un espace vectoriel $V$, on se donne un sous-ensemble $\set{\vv_1, \dots , \vv_k}\subset V$ linéairement indépendant. Soit $S \subseteq \set{\vv_1, \dots , \vv_k}$ un ensemble. Montrez soigneusement que $S$ est également linéairement indépendant.\medskip
+\item\sov~Donnez un exemple de sous-ensemble linéairement indépendant $\set{\vv_1, \vv_2}$ de $\R^3$ et d'un vecteur $\vv\in \R^3$ tel que l'ensemble $\set{\vv, \vv_1, \vv_2}$ soit linéairement {\it dépendant}.
+ 
+\medskip
+ 
+
+\item Donnez un exemple de sous-ensemble linéairement indépendant $\set{A, B}$ de $\M_{2 \,2}(\R)$ et d'une matrice $C\in \M_{2 \,2}(\R)$ telle que  l'ensemble $\set{A,B,C}$ soit linéairement {\it dépendant}.\medskip
+ 
+
+\item\sov~Donnez un exemple de sous-ensemble linéairement indépendant $\set{p, q}$ de $\PP_2$ et d'un polynôme $r\in \PP_2$ tel que l'ensemble $\set{p, q, r}$ soit linéairement {\it dépendant}.\medskip
+
+\item Donnez un exemple de sous-ensemble linéairement indépendant $\set{f, g}$ de $\F(\R)$ et d'une fonction $h\in \F(\R)$ telle que l'ensemble $\set{f,g,h}$ soit linéairement {\it dépendant}. \medskip
+ 
+
+
+\end{enumerate}
+
+\end{prob} \begin{prob} \label{prob07.6} Donnez un exemple de trois vecteurs $\uu,\vv,\ww \in \R^3$ tels que aucun des vecteurs n'est un multiple scalaire d'un autre, mais tels que $\set{\uu,\vv,\ww}$ soit quand même linéairement dépendant. Est-ce possible si l'on se donnait seulement deux vecteurs au début ?
+
+\end{prob}

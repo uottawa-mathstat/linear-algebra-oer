@@ -1,0 +1,418 @@
+\chapter{Vector spaces associated to Matrices}
+\label{chapter:15homog}
+
+
+Last time, we established that the matrix equation $A\xx = \bb$
+could be equally viewed as a system of linear equations as an expression
+of $\bb$ as a linear combination of the columns of $A$.  This allows
+us to translate and relate concrete facts about systems of linear equations to the
+abstract world of vector spaces.
+
+Here we introduce and discuss three very useful vector spaces associated to any matrix. 
+
+
+
+\section{Column space, row space and nullspace}
+
+Let $A$ be an $m \times n$ matrix.
+
+\begin{definition}
+The \defn{column space} of $A$ (also called the \defn{image} of $A$, in which case it is denoted $\im(A)$) is
+$$
+\col(A) = \spn\{ \cc_1, \cc_2, \cdots, \cc_n\}
+$$
+where $\{ \cc_1, \cc_2, \cdots, \cc_n\}$ are the columns
+of $A$, viewed as vectors in $\R^m$.  
+\end{definition}
+
+Recall that if $\xx\in \R^n$, then $A\xx$ is a linear combination of the columns of $A$. So we may write
+$$
+\col(A) = \set{A\xx\st \xx\in \R^n}
+$$
+Since $\col(A)$ is given as the span of some vectors in $\R^m$, it
+is a subspace of $\R^m$.
+
+Although for most applications, column vectors are the key, there is
+no reason we couldn't also consider row vectors.
+
+\begin{definition}
+The \defn{row space} of $A$ is
+$$
+\row(A) = \spn\{ \rr_1, \rr_2, \cdots, \rr_m\}
+$$
+where $\{ \rr_1, \rr_2, \cdots, \rr_m\}$ are the rows of $A$
+(typically transposed to make them into $n\times 1$ matrices), 
+viewed as vectors in $\R^n$.  
+\end{definition}
+
+Again, $\row(A)$ is a subspace, but this time of $\R^n$.
+
+Looking at matrices in a completely different way --- that is, as the coefficient matrix of a linear system --- yields an equally 
+important subspace.
+
+\begin{definition}
+The \defn{nullspace} of $A$ (also known as the \defn{kernel} of $A$, and in that case denoted $\ker(A)$) is
+$$
+\Null(A) = \{ \xx \in \R^n \mid A\xx = \zero\};
+$$
+that is, the nullspace is  the general solution to the homogeneous linear system given by $A\xx = \zero$.
+\end{definition}
+
+\begin{lemma}
+$\Null(A)$ is a subspace of $\R^n$.
+\end{lemma}
+
+\begin{proof}
+First note that $A$ is the coefficient matrix of the linear system, and it
+has size $m \times n$.  Thus the linear system has $m$ equations and $n$
+variables, meaning that the solution consists of vectors with $n$ components.
+Hence $\Null(A) \subset \R^n$.  
+
+We now need to verify that $\Null(A)$ is a subspace of $\R^n$, and we use
+the subspace test.
+
+\begin{enumerate}
+\item First:  is $\zero \in \Null(A)$?  Well, a vector $\xx$ is in $\Null(A)$ if and only if $A\xx=\zero$.  Thus since $A\zero = \zero$, we deduce that $\zero \in \Null(A)$.
+\item Is $\Null(A)$ closed under vector addition?  Well, let $\xx$ and $\yy$ be two elements of $\Null(A)$.  That means $A\xx = \zero$ and 
+$A\yy = \zero$.  We need to decide if their sum $\xx+\yy$ lies in
+$\Null(A)$, meaning, we need to compute $A(\xx+\yy)$.
+
+Now by distributivity of the matrix product, $A(\xx+\yy) = A\xx+A\yy$, and each of these is $\zero$ by the above.  So we deduce
+$$
+A(\xx+\yy) = A\xx+A\yy = \zero+\zero=\zero,
+$$
+and so $\Null(A)$ is closed under addition.
+
+\item Is $\Null(A)$ closed under scalar multiplication?  Let $\xx\in \Null(A)$; 
+this means $A\xx = \zero$.  Let $k$ be any scalar.  Is $k\xx \in \Null(A)$?  That is, is it true that $A(k\xx) = \zero$?  We compute, using
+the axioms of matrix multiplication:
+$$
+A(k\xx) = k(A\xx) = k(\zero) = \zero
+$$
+so indeed, $A(k\xx) = \zero$ and thus $\Null(A)$ is closed under scalar multiplication.
+\end{enumerate}
+Since $\Null(A)$ passes the subspace test, it is a subspace (of $\R^n$).
+\end{proof}
+
+There is a fourth vector space we could naturally associate to $A$:  the nullspace of $A^T$.
+But it has no name of its own; we'll use it when we talk about orthogonal complements of subspaces, later on.
+
+\standout{Please note that these vector spaces are generally distinct from one another!}
+
+So we have some interesting vector spaces: our next step is to determine 
+their dimension.  We begin with $\Null(A)$ and will return to $\col(A)$ in 
+a few chapters.
+
+\section{Finding a basis for $\Null(A)$}  \mbox{}
+
+\begin{myprob} Find a basis for $\Null(A)$, where $A = \mat{
+1 & 2 & 3 &-3\\ 
+0 & 1 & 1 &-2\\ 
+1 & 0 & 1 & 1}$.
+
+\begin{mysol} Since $\Null(A)$ is the general solution to the linear system $A\xx=\zero$, our first step is to solve that linear system.  So we write down the augmented matrix and row reduce to RREF:
+\begin{align*}
+\mat{1 & 2 & 3&-3&|&0\\ 0 & 1 & 1&-2&|&0\\ 1 & 0 & 1&1&|&0}
+&\mt{\sim \\ \\ -R_1+R_3 \to R_3}
+\mat{
+1 & 2 & 3&-3&|&0\\ 
+0 & 1 & 1&-2&|&0\\ 
+0 & -2 & -2&4&|&0}\\
+&\mt{2R_2+R_3 \to R_3 \\ \sim\\ -2R_2+R_1\to R_1 \\ }
+\mat{
+1 & 0 & 1&1&|&0\\ 
+0 & 1 & 1&-2&|&0\\ 
+0 & 0 & 0&0&|&0}
+\end{align*}
+which is in RREF.
+
+The general solution comes by setting the nonleading variables equal to 
+a parameter ($x_3 = r$, $x_4=t$) and solving for the leading variables in terms of
+the nonleading variables (so $x_1 = -x_3-x_4 = -r-t$ and $x_2 = -x_3+2x_4 = -r+2t$).
+Written in vector form (since we're interested in
+vectors) this is
+\begin{align*}
+\Null(A) &= \left\{ \mat{-r-t\\-r+2t\\r\\t} \mid r,t\in \R\right\}\\
+&=  \left\{ r\mat{-1\\-1\\1\\0}+t\mat{-1\\2\\0\\1} \mid r,t\in \R\right\}
+= \spn\left\{ \mat{-1\\-1\\1\\0}, \mat{-1\\2\\0\\1} \right\}
+\end{align*}
+Since these vectors span $\Null(A)$, and since the set
+$$
+\left\{ \mat{-1\\-1\\1\\0}, \mat{-1\\2\\0\\1} \right\}
+$$
+is linearly independent (just look at the two entries in these  vectors -- the ones corresponding to 
+our nonleading variables!), we deduce
+that this is a basis for $\Null(A)$.
+\end{mysol}\end{myprob}
+
+The vectors in the spanning set that we obtain by writing down the solution from the
+RREF form has a special name:  they are the \defn{basic solutions}.  This name certainly suggests they ought to form a basis.
+
+\begin{theorem}[Basic solutions form a basis for $\Null(A)$]\index{basic solutions form a basis for $\Null(A)$} \label{kernelbasis}
+
+The spanning set of $\Null(A)$ obtained from the RREF   of $[A|0]$ (in other words, the set of basic solutions of $A\xx=\zero$) is a basis
+for $\Null(A)$.
+\end{theorem}
+
+\begin{proof}
+By definition, this is a spanning set, so it only remains to prove linear independence.  Let $\{\vv_1, \cdots, \vv_k\}$ be the set of basic solutions.  
+By construction, the number of basic solutions $k$ equals the number of parameters in the general solution, and this equals the number of non-leading variables.  
+Now note that for each non-leading variable $x_{n_i}$, 
+there is a unique vector $\vv_i$ which has a nonzero entry in row $n_i$. 
+(This is by construction, since row $n_i$ corresponds in our general
+solution to the equation $x_{n_i} = r_i$, a parameter; in particular
+only one parameter and thus only one basic solution contributes to
+this variable.)
+
+Suppose that $\vv_i$ is the basic vector corresponding to setting the parameter for $x_{j_i}$ equal to 1 and the rest equal to zero.
+
+Consider now the dependence equation
+$$
+r_1 \vv_1 + r_2 \vv_2 + \cdots + r_k \vv_k = \zero
+$$
+By what we said above, for each $i = 1,2 \cdots, k$, 
+the $n_i$th row on the LHS has value $r_i$, which
+must equal the $n_i$th element on the RHS, which is zero.  So we
+deduce that $r_1=r_2 = \cdots = r_k = 0$.  Thus the set of basic
+solutions is linearly independent, and hence a basis.
+\end{proof}
+
+\begin{corollary}[Rank-Nullity Theorem]\index{rank-nullity theorem}\label{corollary:ranknull}
+
+The dimension of the nullspace of $A$ is equal to the number of nonleading
+variables of $A$.  That is,
+$$
+\dim \Null(A)  + \rank(A) = n
+$$
+where $n$ is the number of columns of $A$.
+\end{corollary}
+
+\begin{proof}
+The dimension of a space is the number of vectors in a basis for that
+space, so $\dim\Null(A)$ is  equal to the number of nonleading
+variables of $A$.  Recall that the rank of $A$ equals
+the number of leading variables, and $n$ is the number of variables in
+total; so the number of nonleading variables equals $n-\rnk(A)$.
+\end{proof}
+
+
+\section{What all this tells us about solutions to inhomogeneous systems}
+
+\begin{myprob} Solve $A\xx = \bb$, where
+$$
+A = \mat{
+1 & 2 & 3 &-3\\ 
+0 & 1 & 1 &-2\\ 
+1 & 0 & 1 & 1} \quad \textrm{and} \quad \bb = \mat{10 \\ 3\\ 4}
+$$
+
+\begin{mysol} We row reduce the resulting augmented matrix:
+$$
+\mat{
+1 & 2 & 3 &-3&|&10\\ 
+0 & 1 & 1 &-2&|&3\\ 
+1 & 0 & 1 & 1&|&4}
+\mt{\sim\\ \\ -R_1+R_3 \to R_3}
+\mat{
+1 & 2 & 3 &-3&|&10\\ 
+0 & 1 & 1 &-2&|&3\\ 
+0 & -2 & -2 & 4&|&-6}
+$$
+$$
+\mt{2R_2+R_3 \to R_3\\ \sim \\ -2R_2+R_1 \to R_1}
+\mat{
+1 & 0 & 1 &1&|&4\\ 
+0 & 1 & 1 &-2&|&3\\ 
+0 & 0 & 0 & 0&|&0}
+$$
+which is in RREF.  \stress{Note that we used the SAME operations as before, when we solved the corresponding homogeneous system!}
+
+So our general solution is
+$$
+\left\{ \mat{4-r-t\\3-r+2t\\r\\t} \mid r,t\in\R\right\}
+= \left\{ \mat{4\\3\\0\\0}+r\mat{-1\\-1\\1\\0} +t\mat{-1\\2\\0\\1} \mid r,t\in\R\right\}
+$$
+\end{mysol}\end{myprob}
+
+The thing to notice is that the general solution to the inhomogeneous  equation is given by adding a particular solution of the inhomogeneous system to the general solution of the homogeneous system.  Geometrically, this means we take the subspace $\Null(A)$ and translate it away from the origin to produce the solution set to the inhomogeneous system.  (And the vector by which we translate it is just a (any) particular solution to the system.)
+
+
+We can state this as a theorem.
+
+\begin{theorem}[Inhomogeneous systems and nullspace]\index{inhomogeneous systems and nullspace}  
+
+Suppose that $A\xx=\bb$ is a consistent 
+linear system.
+\begin{enumerate}
+\item If $\xx=\vv$ is a solution to the system $A\xx = \bb$, and $\xx = \uu$ is any solution to the associated homogeneous system $A\xx = \zero$,
+then $\vv + \uu$ is a solution to $A\xx = \bb$.
+\item If $\vv$ and $\ww$ are two solutions to the system $A\xx = \bb$, then $\xx = \vv-\ww$ is a solution to the homogeneous system $A\xx = \zero$.
+\end{enumerate}
+These two statements together ensure that the general solution to the 
+inhomogeneous system is given exactly by $\vv$ plus the solutions to the
+homogeneous system.
+\end{theorem}
+
+\begin{proof}
+
+(1) We have $A\vv = \bb$ and $A\uu = \zero$ so $A(\vv+\uu) = A\vv + A\uu = \bb + \zero = \bb$.
+
+(2) We have $A\vv = \bb$ and $A\ww = \bb$ so $A(\vv - \ww) = A\vv - A\ww = \bb - \bb = \zero$
+
+\end{proof}
+
+The value of the theorem is in giving us a picture of the solution set of
+an inhomogeneous system --- in particular, if a homogeneous system has a unique solution, so does any consistent inhomogeneous system with the same coefficient matrix; and if a homogeneous system has infinitely many solutions, indexed by $k$ basic solutions, then any consistent inhomogeneous system with the same coefficient matrix will also have $k$ parameters in its solution.
+
+ But unless you happen to stumble across a particular 
+solution (by guessing, or advance knowledge) of your inhomogeneous system,
+this theorem doesn't help you solve the system.  In particular, if $\bb \notin \col(A)$,
+there won't be a solution at all, and knowing the nullspace is of no help
+whatsoever.
+
+\section{Summary of facts relating to consistency of a linear system}\label{consistency}
+Let $A$ be an $m\times n$ matrix.
+
+A linear system $A\xx = \bb$ is consistent if and only if:
+\begin{itemize}
+
+\item $\bb$ is a linear combination of the columns of $A$, iff
+\item $\bb \in \col(A)$ iff
+\item $\rank [ A\, |\,\bb\,]=\rank A$.
+\end{itemize}
+
+\begin{theorem}\index{consistentalways}Let $A$ be an $m\times n$ matrix and $\xx\in \R^n$.  The following statements are equivalent for a system with matrix equation $A\xx=\bb$:
+
+\begin{enumerate}[(1)]
+\item The equation $A\xx = \bb$  is be consistent \stress{for all choices of $\bb \in \R^m$};
+\item $\rnk(A) = m$; 
+\item There are no zero rows in the RREF of $A$; 
+
+
+\item Every $\bb \in \R^m$ is a linear combination of the columns of $A$;  
+\item $\col(A) = \R^m$;  
+\item $\dim(\col(A)) = m$.  
+ 
+\end{enumerate}
+\end{theorem}
+
+\begin{proof} There are several ways to do this. We will prove  (1) $\implies$ (2) $\implies$  (3)$\implies$    (4)  $\implies$ (5)$\iff$ (6) and (5)$\implies$ (1). This will achieve a proof of the equivalence of the statements (1) -- (6).
+
+
+(1) $\implies$ (2): Suppose $A\xx=\bb$ is consistent for all $b\in \R^m$, but that $\rank A <m$. So the last row   in the RREF $\tilde A$ of $A$ must be zero. 
+
+Choose a $\tilde{\bb} \in \R^n$ with a $1$ as its last entry   -- so the system $[\tilde A | \tilde{\bb}]$ is inconsistent. Now reverse the row operations that took $A$ to $\tilde A$ -- do them on $[ \tilde A | \tilde{\bb}]$ -- and we obtain a system $[   A |   b]$ that we know is inconsistent; that is, we've  found a $\bb\in \R^n$ with $A\xx=\bb$ inconsistent. This is a contradiction, so    $\rank A =m$.
+
+ 
+
+(2) $\implies$ (3): As $A$ is an $m \times n$ matrix, this is obvious.
+
+(3) $\implies$ (4): If there are no zero rows in the RREF of $A$, $A \xx=\bb$ is consistent for every $\bb \in \R^m$, and so every $\bb \in \R^m$ is a linear combination of the columns of
+$A$.
+
+
+ (4) $\implies$ (5): If every $\bb \in \R^m$ is a linear combination of the columns of
+$A$ then the columns of $A$ span all of $\R^m$, so $\col(A) = \R^m$
+(Of course we always have $\col(A) \subset \R^m$ --- it's the equality
+here that is interesting.)
+
+(5) $\iff \,$(6):  We know that a subspace of $\R^m$ has dimension $m$ iff it's the whole
+space.
+
+(5) $\implies$ (1):  Since every $\bb \in \R^m$ is in $\col(A)$, every $\bb \in \R^m$is a linear combination of the columns of $A$, and so $A\xx=\bb$  is consistent for every $\bb \in \R^m$.
+\end{proof}
+
+ 
+
+
+\section[Summary of facts relating to the number of solutions]{Summary of facts relating to the number of solutions of a consistent linear system}
+\label{section:uniqesol}
+\begin{theorem}\label{thm:uniquesol}\index{unique solution}
+Let $A$ be an $m\times n$ matrix, and $\bb\in \R^n$.
+The following statements are equivalent for a consistent system with matrix equation $A\xx=\bb$: 
+\begin{enumerate}[(1)]
+
+\item The system $A\xx = \bb$ has a unique solution; 
+\item Every variable is a leading variable; 
+\item There is a leading 1 in every column of the RREF of $A$; 
+
+\item The associated homogeneous sysytem $A\xx = \zero$ has a unique solution;  \item The columns of $A$ are linearly independent; 
+\item $\Null(A) = \{\zero\}$; 
+\item $\dim(\Null(A)) = 0$; 
+\item $\rank(A)= n$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+(1) $\implies$ (2): If the solution is unique, there cannot be any parameters and so  every variable is a leading variable.
+
+(2) $\implies$ (3): Leading variables are the variables with a leading 1 in their column in an RREF of $A$, so this is clear.
+
+(3) $\implies$ (4): If there's a leading one in very column of the RREF of $A$, there are no parameters in the general solution to $A\xx = \zero$, so the solution is unique.
+
+
+(4) $\implies$ (5): The linear system $A\xx = \zero$ is the same as the vector equation
+$$
+x_1 \cc_1 + x_2\cc_2+ \cdots + x_n\cc_n = \zero,
+$$
+where the $\cc_i$ are the columns of $A$. 
+This vector equation has a unique solution if and only if the vectors $\{ \cc_1,\cc_2, \ldots, \cc_n\}$ are linearly independent.
+
+(5) $\implies$ (6): $\Null(A)$ is the general solution to $A\xx = \zero$, so this consists of the unique solution which is the trivial solution.
+
+(6) $\implies$ (7): Recall again our theorem about the dimensions of
+subspaces; $\Null(A)$ is the zero subspace if and only if its dimension is
+zero.
+
+(7) $\implies$ (8): This is a direct consequence of the Rank-Nullity Theorem, theorem \ref{corollary:ranknull}
+
+
+(8) $\implies$ (1): If $\rnk A=n$, then there are no parameters in the general solution to $A \xx=\bb$, so the solution is unique.
+\end{proof}
+
+\section{Application}
+\label{section:subspacedescription}
+
+
+We've seen subspaces of $\R^n$ defined in two kinds of ways: 
+
+\begin{enumerate}
+\item It is given as the nullspace of some matrix $A$, \emph{i.e.} $W=\Null(A)$ or
+\item It is given as the span of some vectors, \emph{i.e.} $W=\spn\{\vv_1, \dots, \vv_m\}$
+\end{enumerate}
+ We already know how to convert a description of type (1) into type (2): simply find a basis of $\Null(A)$. But how can we convert a description of type (2) into type (1)? 
+Hang on -- why would we want to? 
+
+Well, suppose we're given some vectors $ \uu_1,\dots,\uu_k $ and we're asked ``Are the vectors $\uu_1,\dots,\uu_k$ in $W$?" If we have a description of $W$ in form (1), all we need to do is compute $A\uu_1, \dots, A\uu_k$ and see if we get zero in each case. That's pretty easy. If, on the other hand, we only know $W$ in the second form, we'd have to {\it solve the $k$ linear systems $\mat{\vv_1&\cdots&  \vv_m &|& \uu_j}$ for $1\le j\le k$!} That's  more effort --- especially if $m>1$.
+
+
+
+
+Let's look at a couple of examples first.
+
+\begin{myexample}
+Let $W=\spn\{(1,1,2)\}$. Let's find a matrix $A$ such that $W=\Null A$.
+
+Well, $(x,y,z)\in W$ iff the system with augmented matrix
+$$\mat{1&|&x\\1&|&y\\2&|&z}$$ is consistent. But we know this system is equivalent (after row reduction) to the system whose augmented matrix is 
+$$\mat{1&|&x\\0&|&y-x\\0&|&z-2x}$$Now we know that this system is consistent iff $x-y=0$ and $2x-z=0$. So
+
+$$W=\set{(x,y,z) \in \R^3 \st x-y=0\text{ and }2x-z=0 }$$ Thus if $A=\mat{1&-1&0\\2&0&-1}$, then $\Null A= W$.
+\end{myexample}
+
+That was a pretty simple example, and it wouldn't have been difficult to decide if a vector is a multiple of $(1,1,2)$. Nevertheless, we did end up expressing the line $W$ as the intersection of two planes! 
+
+Let's try an example that's a bit more interesting. 
+
+\begin{myexample}
+Define a subspace $W$ of $\R^4$ by $$W=\spn\{ (1,0,0,1),\, (1,1,1,0),\, (2,1,-1,1)\}$$
+
+We'll proceed as before: make $W$ the column space of a matrix, \emph{i.e.}
+$$W=\col \mat{1&1&2\\0&1&1\\0&1&-1\\1&0&1}.$$ So $(x,y,z,w)\in W$ iff the system with augmented matrix 
+$$\mat{1&1&2&|&x\\0&1&1&|&y\\0&1&-1&|&z\\1&0&1&|&w}$$is consistent. So we row reduce (and we don't need to go  all the way) and find that this system is equivalent to 
+$$\mat{1&1&2&|&x\\0&1&1&|&y\\0&0&-2&|&z-y\\0&0&0&|&-x+y+w}.$$
+Now we can see that this is consistent iff $x-y-w=0$, \emph{i.e.} $$W=\set{(x,y,z,w)\st x-y-w=0 }.$$ So
+$W=\Null\mat{1&-1&0&-1}$. Figuring out if a vector is in $W$ is now a piece of cake --- just one equation to check!
+
+\end{myexample}
+
+

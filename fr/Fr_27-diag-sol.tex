@@ -1,0 +1,174 @@
+
+\begin{sol}{prob23.1} Pour chacune des matrices $A$ de l'Exercice \ref{prob22.1}, si possible, trouvez une matrice inversible $P$ et une matrice diagonale $D$ telles que $P^{-1}AP =D$. Si ce n'est pas possible, expliquer pourquoi.
+
+\soln
+\begin{enumerate}[]
+\medskip
+\item[(b) ]Comme $\dim E_0 +\dim E_2=1+1=2<3$, cette matrice n'est pas diagonalisable --- en effet, il n'existe pas de base de $\R^3$ constituée de vecteurs propres de $A$ : on peut trouver au mieux $2$ vecteurs propres de $A$ qui sont LI, mais on n'en n'aura pas un 3e qui fera que l'ensemble est encore LI. 
+\medskip
+
+\item[(d)] Cette matrice $ 3\times 3$, ayant 3 valeurs propres distinctes, sera diagonalisable. En effet, si l'on considère les vecteurs propres $\vv_0=(-1,0,1)$, $\vv_1=(-1,1,0)$ and $\vv_2=(1,0,1)$, alors, on peut prendre $$P=\bmatrix \vv_0&\vv_1& \vv_2\endbmatrix = \bmatrix 
+-1&-1&1\\
+0&1&0\\
+1&0&1\endbmatrix $$ et $$D= \bmatrix 
+0&0&0\\
+0&1&0\\
+0&0&2\endbmatrix.$$ 
+Dans ce cas, la matrice $P$ est inversible (vous pouvez le vérifier directement, ou simplement voir que $\dim E_0+\dim E_1 +\dim E_2 =1+1+1=3$, ce qui garantit l'inversibilité de $P$) et on a bien que $P^{-1}AP =D$. \medskip
+
+\item[(f)] Puisqu'il n'y a qu'une seule valeur propre (c'est $2$) et que $\dim E_2=1<3$, cette matrice n'est pas diagonalisable --- il n'existe pas de base de $\R^3$ constituée de vecteurs propres de $A$ : il existe au mieux $1$ vecteur propre linéairement indépendant de $A$. 
+\medskip
+
+\item[(h)] Puisqu'il n'y a qu'une seule valeur propre (c'est $2$) et que $\dim E_2=2<3$,  cette matrice n'est pas diagonalisable --- il n'existe pas de base de $\R^3$ constituée de vecteurs propres de $A$ : il existe au mieux $2$ vecteurs propres linéairement indépendants de $A$. 
+\medskip
+
+
+\end{enumerate}
+
+
+\bigskip
+\end{sol}
+
+\begin{sol}{prob23.2}   Pour chacun des énoncés suivants, indiquez s'il est (toujours) vrai ou s'il est (possiblement) faux.    
+\begin{enumerate}[$\bullet$]
+\item Si vous dites que l'\'enonc\'e peut être faux, donnez un contre-exemple.   
+\item Si vous dites que l'\'enonc\'e est vrai, donnez une explication claire - en citant un théorème ou en donnant une {\it preuve valide dans tous les cas}. 
+\end{enumerate}
+
+\begin{enumerate}[]
+
+\medskip
+\item[(b)] La matrice $\bmatrix 0&-1\\1&0\endbmatrix$ n'admet pas de valeurs propres r\'eelles.
+
+\soln Vrai. Comme $\det(A-\lam I_2) =\lam^2 +1$, on a que le polynôme $\det(A-\lam I_2)=0$ n'admet aucune racine r\'eelle. 
+\medskip
+ 
+
+
+\item[(d)] Si $0$ est valeur propre d'une matrice $A$ de taille $n \times n$, alors $A$ n'est pas inversible.
+
+\soln Vrai. On a que $0$ est valeur propre de $A$ si et seulement si $\det(A-0I_n)=\det A=0$. Donc $A$ n'est pas
+inversible.
+\medskip
+ 
+ 
+\item[(f)] Toute matrice inversible est diagonalisable.
+
+\soln Faux. R\'ef\'erez-vous à l'exemple (f) ou (h) de la question précédente, ou vérifiez par vous-même que la matrice $\scriptsize\bmatrix 1&1\\ 0&1\endbmatrix$, qui a $1$ comme seule valeur propre, est bien inversible mais PAS diagonalisable.
+\medskip
+ 
+\item[(h)] Si une matrice de taille $n \times n$ admet $n$ valeurs propres distinctes, alors cette matrice est diagonalisable. 
+
+\soln Vrai. Comme nous l'avons vu: pour chaque valeur propre distincte, on obtient un vecteur propre, et nous savons que les vecteurs propres correspondant à des valeurs propres distinctes sont linéairement indépendants. Il y a donc $n$ vecteurs propres linéairement indépendants, qui formeront donc bien sûr une base de $\R^n$ (car $\dim \R^n=n$).
+\medskip
+ 
+
+
+\item[(j)]\footnote{ Indication : puisque $A$ est symétrique, rappelez-vous que $A\vv\cdot \ww=\vv\cdot A\ww$ (voir l'Exercice \ref{prob14.4}). Simplifiez maintenant les deux côtés en utilisant le fait que $\vv$ et $\ww$ sont des vecteurs propres et regardez ce que vous obtenez.} Si $\vv$ et $\ww$ sont des vecteurs propres d'une matrice symétrique $A$ (c'est-à-dire une matrice $A$ qui vérifie $A=A^T$) et que $\vv$ et $\ww$ correspondent à des valeurs propres différentes, alors $$\vv \cdot \ww=0\,.$$  
+
+\soln Utilisez l'indication et substituez $\lam=0$ dans l'équation.
+\medskip
+
+
+\end{enumerate}
+\end{sol}
+
+\bigskip
+\begin{sol}{prob23.3}~Soit la matrice $A=\bmatrix
+0&1&1\\ 1&0&1\\ 1&1&0 \endbmatrix$. 
+
+\begin{enumerate}[a)]
+\medskip
+\item Calculez $\det(A-\lam I_3)$ et montrez que les valeurs propres de
+$A$ sont $2$ et $-1$.
+
+\soln  On a
+$$
+A-\lambda I_3 = \begin{bmatrix}
+-\lambda &1&1\\ 1&-\lambda &1\\ 1&1&-\lambda \end{bmatrix}.
+$$
+Pour calculer le déterminant, nous pourrions utiliser la m\'ethode des cofacteurs, mais  nous pouvons aussi d'abord appliquer quelques opérations sur les lignes, en gardant trace de tout changement de la valeur du déterminant. Nous allons faire cette dernière méthode pour éviter de diviser par $\lambda$ (nous ne savons pas encore si $\lambda=0$ ou non...).
+$$
+\begin{bmatrix}
+-\lambda &1&1\\ 
+1&-\lambda &1\\ 
+1&1&-\lambda \end{bmatrix} \begin{matrix} \lambda L_2+L_1 \to L_1\\ \sim \\ -L_2+L_3 \to L_3\end{matrix}
+\begin{bmatrix}
+0 &1-\lambda^2&1+\lambda\\ 
+1&-\lambda &1\\ 
+0&1+\lambda&-\lambda-1 \end{bmatrix} \,.
+$$
+En gardant un œil sur les facteurs communs (pour simplifier notre travail de factorisation), nous avons donc :
+\begin{align*}
+\det( A-\lambda I)&= \left\vert \begin{matrix}
+0 &1-\lambda^2&1+\lambda\\ 
+1&-\lambda &1\\ 
+0&1+\lambda&-\lambda-1 \end{matrix}\right| \\
+&= -1\left|\begin{matrix}1-\lambda^2 & 1+\lambda \\ 1 + \lambda & -\lambda - 1\end{matrix}\right|\\
+&= -((1-\lambda^2)(-\lambda - 1) - (1+\lambda)(1+\lambda)) \\
+& = (1-\lambda^2)(1+\lambda) + (1+\lambda)^2\\
+&= (1+\lambda)^2( 1-\lambda+1) \\
+&= (1+\lambda)^2(2-\lambda)\,.
+\end{align*}
+Il s'ensuit que les valeurs propres sont $2$ (avec une multiplicité algébrique $1$) et $-1$ (avec une multiplicité algébrique $2$).
+
+\medskip
+\item Trouvez une base de $E_2 =\set{x\in \R^3 \st Ax= 2x}$.
+
+\soln On a :
+\begin{align*} 
+E_2 &= \ker(A-2I_3) = \ker\begin{bmatrix} -2 & 1 & 1\\ 1 & -2 & 1\\ 1 & 1 & -2 \end{bmatrix}\\ 
+&= \ker \begin{bmatrix} 1&-2&1\\0&-3&3\\0&3&-3\end{bmatrix} =
+\ker \begin{bmatrix} 1&0&-1\\0&1&-1\\0&0&0\end{bmatrix}\\
+&= \{ (s,s,s) \mid s\in \mathbb{R}\} = \spn\{ (1,1,1) \}\,,
+\end{align*}
+donc $\{(1,\,1,\,1)\}$ est une base de $E_2$.
+
+\medskip
+\item Trouvez une base pour $E_{-1} =\set{x\in \R^3 \st Ax=-x}$. 
+ 
+ \soln On a:
+ \begin{align*}
+E_{-1} &= \ker(A-(-1)I_3) \\
+&= \ker(A+I_3) \\
+&= \ker\begin{bmatrix} 1 & 1 & 1\\ 1 & 1 & 1\\ 1 & 1 & 1 \end{bmatrix}\\ 
+&= \ker \begin{bmatrix} 1&1&1\\0&0&0\\0&0&0\end{bmatrix} \\
+&= \{ (-s-t,s,t) \mid s,t\in \mathbb{R}\} \\
+&= \spn\{ (-1,1,0),(-1,0,1) \}\,
+\end{align*}
+donc $\{ (-1,1,0),(-1,0,1) \}$ est une base de $E_2$ (puisque cet ensemble est LI et générateur).
+
+\medskip
+\item Trouvez une matrice inversible 
+$P$ telle que $P^{-1}AP=D$ soit diagonale, et donnez l'expression de cette matrice diagonale $D$. Expliquez pourquoi
+la matrice $P$ que vous avez choisie est inversible.
+
+\soln On peut prendre
+$$ 
+P=\begin{bmatrix} 1 &-1 & -1 \\ 1 & 1 & 0\\ 1 & 0 & 1\end{bmatrix}
+\quad \text{et} \quad 
+D = \begin{bmatrix} 2 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & -1 \end{bmatrix}.
+$$
+Puisque les colonnes de $P$ sont des vecteurs propres, on a $AP=PD$.  Aussi, puisque les vecteurs propres de différents espaces propres sont linéairement indépendants et que $\dim(E_2)+\dim(E_{-1})=3$, on a donc que les colonnes de $P$ forment une base pour $\mathbb{R}^3$ et que $P$ est inversible.  Ainsi on a $P^{-1}AP=D$.
+
+\medskip
+\item Trouvez une autre matrice inversible
+$Q \not=P$ telle que $Q^{-1}AQ=\tilde D$ soit aussi diagonale, et donnez aussi l'expression de cette matrice diagonale $\tilde D$.
+
+\soln
+Nous pouvons remplacer $P$ par toute matrice telle que les colonnes sont des vecteurs propres linéairement indépendants de $A$ (comme, par exemple, des multiples scalaires non-nuls des colonnes de $P$).  Pour un exemple plus intéressant, on peut vérifier que
+$$
+Q=\begin{bmatrix} 
+-2 & 1 & 0 \\ 
+1 & 1 & 1\\ 
+1 & 1 & - 1\end{bmatrix}
+\quad \text{et} \quad 
+\tilde D = \begin{bmatrix} -1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & -1 \end{bmatrix}
+$$
+est une autre r\'eponse valide (entre autres).
+
+\end{enumerate}
+
+
+
+\end{sol}

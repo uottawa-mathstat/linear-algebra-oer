@@ -1,0 +1,354 @@
+\chapter{Determinants}
+\label{chapter:21Det}
+We are about to change gears, and rather dramatically at that.  
+Our goal: to uncover the basis for $\R^n$ --- when it exists --- 
+that is best or ideally adapted to multiplication by a given $n\times n$ matrix.
+This is called a basis of \defn{eigenvectors} (of the matrix),
+from the German prefix ``eigen'' meaning ``my own". Eigen-something   means ``my own something", so  eigenvectors of a matrix are the vectors that are special for that matrix. We will see that multiplication of an eigenvector of a matrix  by that matrix gives\footnote{Except in one case: when the {\it eigenvalue} is zero. See section \ref{section:eigen}.} another eigenvector in the same direction.
+
+To get there, though, we first need to master the calculation of
+the determinant of a square matrix --- and see why it's such an
+interesting number to calculate.\footnote{There is a formula which generalizes the formula we saw in \ref{inverse2by2}  for a $2\times2$ matrix. For the moment, search for `Invertible matrix' and `Adjugate matrix'  for the inverse of an invertible $n \times n$ square matrix you might see in a later course that uses the matrix of cofactors (where
+the \defn{cofactors} are the terms $(-1)^{i+j} \det(A_{ij})$ that
+appeared in our formulae for the determinant).  As such, it's 
+really inefficient for large matrices unless they are quite \defn{sparse}
+(meaning: have lots of zeros). 
+
+There's also a formula called {\it Cramer's rule},  for the solution to $A\xx=\bb$ when $A$ is invertible, and that was historically how mathematicians solved systems of
+linear equations. In practice one uses Gaussian elimination for any problem involving systems larger that $3 \times 3$, but even for $3 \times 3$ systems,  using  Cramer's rule involves computing {\it four} $3 \times 3$ determinants. You'll see later in this chapter why that's best avoided! 
+
+It's interesting that determinants were discovered long 
+before row reduction (in the western world) and determinants were the main route
+to results in linear algebra until around 1900. }
+
+
+\section{The determinant of a square matrix}
+
+Let $A$ be an $n\times n$ matrix.  
+
+When $n=1$, $\det[a] = a$.
+
+When $n=2$, we have previously
+discussed the determinant; recall that
+$$
+\det\left( \mat{a&b\\c&d} \right) = ad-bc
+$$
+and it's important for two things:
+\begin{itemize}
+\item  algebraically:  it's the denominator in the formula for the 
+inverse of $\mat{a&b\\c&d}$ --- in fact $A$ is invertible if and only
+if $\det(A) \neq 0$; and
+\item  geometrically: its absolute value is the
+area of the parallelogram with sides defined by the vectors
+which are the rows of $A$.
+\end{itemize}
+
+When $n=3$, we use the same type of formula as for the cross product:
+\begin{align*}
+\det\mat{a&b&c\\d&e&f\\g&h&i} &= a\det\mat{e&f\\h&i} - b\det\mat{d&f\\g&i} + c\det\mat{d&e\\g&h}\\
+&= a(ei-fh) - b(di-fg) +c(dh-eg)
+\end{align*}
+Note that the end result is again simply  a number, a scalar.  The above
+formula is called the \defn{Laplace or cofactor expansion along the first row}.
+Its importance includes:
+\begin{itemize}
+\item in Algebra:  we'll soon show that $\det(A) \neq 0$ if and only if $A$
+is invertible (and, although we won't do it this term, there does exist
+a formula for the inverse of a matrix with denominator $\det(A)$); and
+\item in Geometry:  recall the scalar triple product of vectors $\uu \cdot (\vv \times \ww)$, whose absolute value is the volume of the parallelipiped with sides defined by $\uu, \vv, \ww$.  Note that $\det(A)$ equals
+the scalar triple product of the row vectors of $A$.
+\end{itemize}
+
+For $n\geq 4$, the formula is recursive, meaning, you need to calculate 
+determinants of smaller matrices, which in turn are calculated in terms
+of even smaller matrices, until finally the matrices are $2\times 2$
+and we can write down the answer.
+
+\begin{definition}
+Let $A = (a_{ij})$ (meaning:  the $(i,j)$ entry of $A$ is denoted $a_{ij}$).
+Then
+$$
+\det A = a_{11}\det(A_{11}) - a_{12}\det(A_{12}) + \cdots + (-1)^{1+n}a_{1n}\det(A_{1n})
+$$
+where $A_{ij}$ is the $(n-1)\times(n-1)$ matrix obtained from $A$ by deleting 
+row $i$ and column $j$.
+\end{definition}
+
+\begin{myexample}
+Let's calculate $\det(A)$ where
+$$
+A= \mat{
+2 & 3 & 4 & 5 \\ 
+1 & 0 & 0 & 1\\ 
+0 & 1 & 0 & 1\\ 
+0 & 0 & 1 & 0}.
+$$
+Well, the formula says this is
+$$
+\det A = 2\det\mat{0&0&1\\ 1&0&1\\ 0&1&0} - 3\det\mat{1&0&1\\0&0&1\\0&1&0} +
+4\det\mat{1&0&1\\ 0&1&1\\ 0&0&0} - 5\det\mat{1&0&0\\0&1&0\\0&0&1}.
+$$
+Now to calculate each of the smaller ones, we use the formula again (although
+to save time and effort, let's not write down the subdeterminants when
+we're just going to multiply the term by 0):
+$$
+\det\mat{0&0&1\\ 1&0&1\\ 0&1&0} = 0 (\cdot) - 0(\cdot) + 1\det\mat{1&0\\0&1} = 1(1-0) = 1
+$$
+$$
+\det\mat{1&0&1\\0&0&1\\0&1&0} = 1\det\mat{0&1\\1&0} - 0 (\cdot) + 1\det\mat{0&0\\0&1} = 1(0-1) + 1(0-0) = -1
+$$
+$$
+\det\mat{1&0&1\\ 0&1&1\\ 0&0&0} = 1\det\mat{1&1\\0&0} -0 (\cdot) + 1\det\mat{0&1\\0&0} = 0
+$$
+$$
+\det\mat{1&0&0\\0&1&0\\0&0&1} = 1\det\mat{1&0\\0&1} - 0 + 0 = 1
+$$
+so our final answer is
+$$
+\det(A) = 2(1)-3(-1) + 4(0) - 5(1) = 0
+$$
+which is rather interesting.  Do notice that the matrix $A$ is
+not invertible: equivalently, $A$ has linearly dependent rows ($R_1=2R_2+3R_3+4R_4$); has
+linearly dependent columns ($C_4=C_1+C_2+C_3$); has nontrivial nullspace; has rank less
+than $4$, \emph{etc.}).
+\end{myexample}
+
+Now, this formula is all well and good, but utterly torturous.  
+To calculate the determinant of a $3\times 3$ matrix there are $6=3!$ products of 3 terms, so $2\times 3!$ products
+(just counting the hard part, multiplying).  For a $4\times 4$
+matrix, it's $3 \times 4\times 6   = 3\times 4!=72$ products that you have to add together.
+So for a $10\times 10$ matrix, there are
+$$
+9\times 10! = 32,659,200  
+$$
+terms.  For a $100 \times 100$ matrix, you're looking at around $9\times 10^{159}$
+terms.  Have fun seeing how long this would take to calculate if
+you used the current\footnote{As of (about) 2020: see See {\color{blue}\url{https://en.wikipedia.org/wiki/Fugaku_(supercomputer)}}} fastest computer (Fugaku 415-PFLOPS), which can
+do an absolutely astonishing $415.5\times 10^{15}$ calculations per second.
+(Hint: there are only about $\pi \times 10^{7}$ seconds in a year....)
+
+Luckily (and remarkably) there are some wonderful shortcuts.
+
+\section{First shortcut: expansion along ANY column or row}
+
+\begin{theorem}[Cofactor expansion along any row or column]\index{calculating the determinant by cofactor expansion along any row or column}
+Let $A = (a_{ij})$.  Then the determinant can be  calculated via the \defn{cofactor expansion
+along row $i$}, for any $i$:
+$$
+\det(A) = (-1)^{i+1}a_{i1}\det(A_{i1}) + (-1)^{i+2}a_{i2}\det(A_{i2}) + \cdots + (-1)^{i+n}a_{in}\det(A_{in})
+$$
+and similarly, the determinant equals the \defn{cofactor expansion along column $j$}, for any $j$:
+$$
+\det(A) = (-1)^{1+j}a_{1j}\det(A_{1j}) + (-1)^{2+j}a_{2j}\det(A_{2j}) + \cdots + (-1)^{n+j}a_{nj}\det(A_{nj}).
+$$
+\end{theorem}
+
+\standout{Tip:  the signs you need to use (that is, the factors $(-1)^{i+j}$ in
+the cofactor expansion) are given by:
+$$
+\mat{
++ & - & + & - & + & \cdots \\
+- & + & - & + & - & \cdots \\
++ & - & + & - & + & \cdots \\
+- & + & - & + & - & \cdots\\
+\vdots & \vdots & \vdots & \vdots & \vdots & \ddots}
+$$}
+
+
+\begin{myexample} Calculate
+$$\det\mat{2 & 3 & 4\\ 1 & 0 & 3\\ 2 &0 & 4}$$
+We could do this on the first row:
+$$
+\det(A)=2\det\mat{0&3\\0&4} - 3\det\mat{1&3\\2&4}+4\det\mat{1&0\\2&0}
+= 2(0) - 3(4-6) +4(0) = 6
+$$
+or, how about we pick the row or column with the most zeros?  Like
+column 2:
+$$
+\det(A) = -3\det\mat{1&3\\2&4} + 0 - 0 = 6
+$$
+which is certainly faster.
+\end{myexample}
+
+\standout{Moral: choose the row or column with the most zeros to do your cofactor expansion.}
+
+This theorem gives us a couple of immediate consequences:
+
+\begin{proposition}[Quick properties of the determinant]
+Let $A$ be an $n\times n$ matrix.
+\begin{enumerate}[(1)]
+\item If $A$ has a row or column of zeros, then $\det(A) = 0$.
+\item $\det(A) = \det(A^T)$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(1) Do the cofactor expansion along that row or column; all the terms are zero.
+
+(2) Doing the expansion along row $1$ of $A$ is the same calculation
+as doing the expansion along column $1$ of $A^T$, and by the 
+theorem you get the same answer. 
+\end{proof}
+
+
+\begin{myexample}
+Calculate 
+$$
+\det \mat{
+2 & 2 & 4 & 7 & 6\\
+0 & -3 & 7 & 1 & 3\\
+0 & 0 & 1 & 12 & -8\\
+0 & 0 & 0 & -2 & 21\\
+0 & 0 & 0 & 0  & 3}.
+$$
+This is easy if you do cofactor expansion on the first column:
+\begin{align*}
+\det A &= 2 \det\mat{-3 & 7 & 1 & 3\\ 0 & 1 & 12 & -8 \\ 0 & 0 & -2 & 21\\ 0 & 0 & 0 & 3} \\
+&= 2 (-3) \det\mat{1 & 12 & -8\\ 0 & -2 & 21\\ 0 & 0 & 3}\\
+&= 2(-3)(1) \det\mat{-2 & 21 \\ 0 & 3}\\
+&= 2(-3)(1)(-2)(3)
+\end{align*}
+which is simply the product of the diagonal entries!
+\end{myexample}
+
+\begin{proposition}[Determinant of triangular matrices]
+The determinant of a triangular matrix is  the product of
+the diagonal entries.
+\end{proposition}
+
+Hmm... notice that every matrix in RREF is triangular, so this
+proposition applies.  Thinking about the possibilities, we
+conclude:  if $A$ is in RREF then either
+\begin{itemize}
+\item $A$ has rank $n$ and the determinant is one;
+\item $A$ has rank less than $n$ and the determinant is zero.
+\end{itemize}
+Very nice.  Except:  does this dash our hopes of being
+able to calculate the determinant using row reduction?
+
+\section{Second Shortcut:  Using row reduction to calculate the determinant}
+
+It turns out you \stress{can} use row reduction, as long as you
+keep track of your steps.  The miracle is that our favourite,
+most useful, row reduction step doesn't change the determinant at all!
+
+\begin{theorem}[Effect of row reduction on the determinant]\index{effect of row reduction on the determinant}
+Let $A$ be an $n\times n$ matrix and suppose you do an elementary
+row operation and the answer is the matrix $B$.  Then:
+\begin{enumerate}[(1)]
+\item If the row operation was \emph{interchange two rows}
+then $\det(B) = -\det(A)$.
+\item If the row operation was \emph{multiply a row by $r$}
+then $\det(B) = r\det(A)$.
+\item If the row operation was \emph{add a multiple of one row to 
+another} then $\det(B) = \det(A)$.
+\end{enumerate}
+\end{theorem}
+\begin{remark} The theorem above remains true if `row' is replaced by `column'. 
+\end{remark}
+\begin{myprob}
+Calculate $\det(A)$
+where
+$$
+A = \mat{2 & 1 & 3 & 5 \\ 1 & 2 & 3 & 1\\ 0 & 1 & 2 & 3\\ 0 & 3 & 1 & 4}.
+$$
+
+\begin{mysol}
+Let's row reduce $A$ and keep track of our operations:
+$$
+\mat{
+2 & 1 & 3 & 5 \\ 
+1 & 2 & 3 & 1\\ 
+0 & 1 & 2 & 3\\ 
+0 & 3 & 1 & 4}
+\mt{R_1 \leftrightarrow R_2 \\ \sim}
+\mat{
+1 & 2 & 3 & 1\\ 
+2 & 1 & 3 & 5 \\ 
+0 & 1 & 2 & 3\\ 
+0 & 3 & 1 & 4}
+\mt{ -2R_1+R_2 \\ \sim \\ -3R_3+R_4}
+\mat{
+1 & 2 & 3 & 1\\ 
+0 & -3 & -3 & 3 \\ 
+0 & 1 & 2 & 3\\ 
+0 & 0 & -5 & -5}
+$$
+$$
+\mt{R_2\leftrightarrow R_3\\ \sim \\ -\frac13R_3\\ -\frac15 R_4}
+\mat{ 
+1 & 2 & 3 & 1\\ 
+0 & 1 & 2 & 3\\ 
+0 & 1 & 1 & -1 \\
+0 & 0 & 1 & 1}
+\mt{-R_2+R_3\\ \sim}
+\mat{ 
+1 & 2 & 3 & 1\\ 
+0 & 1 & 2 & 3\\ 
+0 & 0 & -1 & -4 \\
+0 & 0 & 1 & 1}
+\mt{\sim \\ R_3+R_4}
+\mat{
+1 & 2 & 3 & 1\\ 
+0 & 1 & 2 & 3\\ 
+0 & 0 & -1 & -4 \\
+0 & 0 & 0 & -3}=R.
+$$
+OK:  now let's see what our operations did.
+The last matrix $R$ has determinant $3$ (by multiplying the
+diagonal entries).  The only operations that changed
+this value are row interchanges (each at a cost of $-1$) and
+scaling rows (each at a cost of the factor you multiplied by). 
+So:
+$$
+\det(R) = (-1)(-\frac13)(-\frac15)(-1)\det(A)
+$$
+which gives
+$$
+\det(A) = 15\det(R) = 45.
+$$
+You can check this by cofactor expansion.
+\end{mysol}\end{myprob}
+
+\standout{Point: if you've row reduced and kept track of
+your operations, then the determinant can be computed with no extra work.}
+
+\section{Properties of determinants}
+
+\begin{theorem}[Properties of the determinant]\index{properties of the determinant}
+Let $A$ and $B$ be $n\times n$ matrices.  Then
+\begin{enumerate}[(1)]
+\item $\det(rA) = r^n\det(A)$;
+\item $\det(AB) = \det(A)\det(B)$;
+\item $\det(A) = 0$ if and only if $A$ is not invertible;
+\item if $A$ is invertible then $\det(A^{-1}) = \frac{1}{\det(A)}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(1) Multiplying the whole matrix by $r$ means multiplying each of
+the $n$ rows of $A$ by $r$; and each of these costs a factor of $r$.
+(Geometrically:  the $n$-dimensional volume of a box goes up by a
+factor of $r^n$ if you scale every edge by a factor of $r$.)
+
+(2) This takes some effort to prove, but isn't beyond us at all\footnote{ For a reference, see Brescther, \emph{`Linear Algebra with  Applications.'}  }.
+
+(3) We've just seen that row reducing can change the value of 
+the determinant by a \stress{nonzero} factor.  So $\det(A) = 0$
+if and only if $\det(R) = 0$, where $R$ is the RREF of $A$.
+And as we've remarked previously: $\det(R)=0$ if and only if the rank of $A$ is less than $n$, which happens if and only if $A$ is not invertible. 
+
+(4) If $A$ is invertible then $AA^{-1} = I$ so by part (2), we have
+$\det(A) \det(A^{-1}) = \det(I) = 1$.
+\end{proof} 
+
+%\begin{remark}
+%The Vandermonde determinant %shows up in the craziest %places.  Notice,
+%for example, that that matrix %is the same one that we use %for least-squares best-fitting %polynomials to a set of data.
+%\end{remark} 
+
+
+
+
+
+

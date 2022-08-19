@@ -1,0 +1,238 @@
+\begin{sol}{prob03.1}  Résolvez les problèmes suivants en utilisant le produit vectoriel et/ou le produit scalaire.
+  
+ \medskip
+(b) Trouvez tous les vecteurs de $\R^3$ qui sont orthogonaux à la fois à $(-1, 1, 5)$ et à $(2, 1, 2)$. 
+
+\soln Ces vecteurs sont parallèles au produit vectoriel de ces deux vecteurs, lequel est égal à $(-3, 12, -3)$. La solution est donc $\{(t,\ -4t,\ t)|\ t\in \R\}$. (Pour rendre le résultat plus beau, on a divisé le vecteur normal par $-3$, ce qui donne un autre vecteur normal.)
+ 
+\medskip
+
+ 
+
+(d) Si $\uu=(-4,\ 2,\ 7),\ \vv=(2,\ 1,\ 2)$ et 
+$\ww=(1,\ 2,\ 3)$, trouvez $\uu\cdot (\vv\times \ww)$. \medskip
+
+\soln On a $(-4,\ 2,\ 7)\cdot (2,\ 1,\ 2)\times (1,\ 2,\ 3)= (-4,\ 2,\ 7)\cdot (-1, -4, 3)=17$.
+% 17
+ \end{sol}
+ \medskip
+ 
+\bigskip
+\begin{sol}{prob03.2}  Résoudre les exercices suivants en utilisant le(s) produit(s) approprié(s).
+
+\medskip
+(b) Trouvez l'aire du triangle dont les sommets sont $A=(-1,\ 5,\
+0)$, $B=(1,\ 0,\ 4)$ et $C=(1,\ 4,\ 0)$. 
+
+\soln Formule pour trouver l'aire du triangle $ABC$: c'est la moitié du produit vectoriel $\times$ des vecteurs $B-A$ et $C-A$. C'est donc $\frac12\|(4, 8, 8)\|=6$.  
+%6
+
+\medskip
+(d) Trouvez le volume du parallélépipède formé par $\uu=(1,\ 1,\ 0),\ \vv=(1,\ 0,\ -1)$ et $\ww=(1,\ 1,\ 1)$.
+
+\soln Il s'agit simplement de la valeur absolue de $\uu \cdot \vv \times \ww$. C'est donc $1$.
+% 1
+\medskip
+
+
+\end{sol} 
+
+\bigskip
+\begin{sol}{prob03.3}  Résoudre les exercices suivants. 
+
+\medskip
+(a) Trouvez le point d'intersection du plan dont l'équation cartésienne est $2x+2y-z=5$ 
+avec la droite d'équations paramétriques $x=4-t,\ y=13-6t,\ z=-7+4t$.  \medskip
+
+\soln Substituez $x=4-t,\ y=13-6t$ et $ z=-7+4t$ dans $2x+2y-z=5$ puis résolvez pour $t$. Une fois $t$ trouv\'e, substituez-le dans $x=4-t,\ y=13-6t$ et $ z=-7+4t$ pour obtenir $(2,\ 1,\ 1)$.\medskip
+%$(2,\ 1,\ 1)$
+
+\medskip
+
+(b) Si $\mathcal L$ est la droite passant par $(1,\ 1,\ 0)$ et $(2,\
+3,\ 1)$, trouvez le point d'intersection entre $\mathcal L$ et le plan d'équation cartésienne $x+y-z=1$. 
+
+\soln On trouve les équations paramétriques de $\mathcal L$, puis on procède comme dans (a) pour obtenir $(1/2,0,\ -1/2)$.
+
+
+\medskip\medskip
+
+(d) D\'eterminez si les plans d'équations cartésiennes $2x-3y+4z=6$ et $4x-
+6y+8z=11$ se croisent ou non.
+
+\soln Non, pour les deux raisons suivantes : leurs vecteurs normaux sont parallèles et donc ces plans sont aussi parallèles; ils sont disjoints car leurs équations ne sont pas des multiples l'une de l'autre.
+
+\medskip\medskip
+
+
+(f) Trouvez la droite définie par l'intersection entre les plans d'équations cartésiennes $5x+7y-4z=8$ et $x-y=-8$.
+
+\soln Le vecteur directeur de cette droite est perpendiculaire aux deux vecteurs normaux et peut donc être obtenu par le produit vectoriel de ces derniers. On a  alors le vecteur normal $(-4, -4, -12)$. (Nous choisirons plutôt $(1,1,3)$). Il ne nous reste plus qu'à trouver un point sur cette droite. Pour ce faire, il suffit de substituer $x= y-8$ dans $x+11y-4z=40$ et de simplifier pour obtenir $3y-z=12$. On prend $z=0$ pour avoir le point $(-4,\ 4,\ 0)$. La droite en question est donc $\set{(-4,\ 4,\ 0)+ t (1,\ 1,\ 3),\st t\in \R}$.\medskip
+%$(-4,\ 4,\ 0)+ t (1,\ 1,\ 3),\, t\in \R$
+
+ 
+
+\end{sol} 
+
+\bigskip
+\begin{sol}{prob03.4}  Résoudre les exercices suivants.  \medskip
+
+
+
+(b) Trouvez la distance entre le point $Q=(-2,\ 5,\ 9)$ et le plan d'équation cartésienne
+$6x+2y-3z=-8$.
+
+\soln Choisissez un point quelconque $P$ du plan, disons $P=(0,-4,0)$. La distance entre $Q$ et le plan est la longueur de la projection de $QP$ sur le vecteur normal au plan $(6,2,-3)$. On obtient donc $\Big|\dfrac{(Q-P)\cdot(6,2,-3)}{\|(6,2,-3)\|}\Big|=3.$ \medskip
+
+\medskip
+
+
+(d) Trouvez la distance entre le point $P=(8,\ 6,\ 11)$ et la droite passant par les points $Q=(0,\ 1,\ 3)$ et $R=(3,\ 5,\ 4)$. 
+
+
+\soln (Dessinez une image)  C'est la plus petite longueur parmi les deux vecteurs $(Q-P)\pm \proj_{R-Q}(Q-P)$. On peut aussi résoudre l'\'equation $0=(R-Q)\cdot(P-(Q+ s (R-Q))$ d'inconnue $s$, puis trouver le point $S=Q+ s (R-Q)$ sur la droite la plus proche de $P$ et enfin calculer $\|P-S \|$. Dans les deux cas, la réponse est $7$. \medskip
+% 7
+
+
+
+
+
+\end{sol} 
+
+\bigskip
+\begin{sol}{prob03.5}   Trouvez les \'equations paramétriques {\it et} la forme vectorielle des droites suivantes :
+\medskip
+
+
+(b) La droite passant par $(-5,\ 0,\ 1)$ et parallèle aux deux plans d'équations cartésiennes $2x-4y+z=0$ et $x-3y-2z=1$. 
+\medskip
+
+\soln Cette droite sera perpendiculaire aux deux vecteurs normaux et donc parallèle à leur produit vectoriel. Par conséquent, les \'equations paramétriques sont $x=-5+11t,\, y=5t,\, z=1-2t$, avec $t\in \R$, et la forme paramétrique vectorielle est $(-5,\ 0,\ 1) + t(11,5,-2)$.\medskip
+
+\end{sol} 
+
+\bigskip
+\begin{sol}{prob03.6} Trouvez une équation cartésienne pour chacun des plans suivants :
+
+\medskip
+
+(b) Le plan parallèle au vecteur $(1, 1, -2)$ et contenant les points $P=(1, 5, 18)$ et $Q=(4, 2, -6)$. 
+
+\soln C'est le plan passant par $P$ et de vecteur normal parallèle au produit vectoriel de $(1, 1, -2)$ avec $P-Q$. Un calcul simple permet d'obtenir l'équation $5x - 3y + z = 8$ (après division par 6).
+\medskip
+
+ 
+
+(d) Le plan contenant les deux droites 
+$\set{(t-1,6-t,-4+3t)\st t \in \R}$ et 
+ $ \set{(-3 -4t, 6+ 2t, 7+5t)\st t \in \R}$.  \medskip  
+
+\soln Choisissons un point sur l'une des deux droites, disons $P=(-1,6,-4)$. On cherche donc le plan passant par $P$ et dont le vecteur normal est parallèle au produit vectoriel des vecteurs directeurs des deux droites. Un calcul simple permet d'obtenir l'équation $11x + 17y + 2z = 83$.
+
+
+ 
+\medskip
+(f) Le plan contenant le point $P=(1, -1, 2)$ et la droite  $\set{(4, -1 + 2t,2 + t)\st t \in \R}$. \medskip
+
+\soln Choisissons un point sur la droite, disons $Q=(4,-1,2)$. On cherche donc le plan passant par $P$ et dont le vecteur normal est parallèle au produit vectoriel entre $P-Q$ et le vecteur directeur $(0,2,1)$ de la droite. On obtient (après division par $\pm3$) l'équation $y - 2z =- 5$.\medskip
+
+
+ 
+
+(h)  Le plan passant par le point $P=(1,\ -7,\ 8)$ et perpendiculaire à la droite $\set{(2+2t,7-4t,-3+t\st\in \R}.$ \smallskip   
+
+\soln C'est le plan passant par $P$ et dont le vecteur normal est parallèle à un vecteur directeur de la droite. On obtient l'équation $2x-4y+z=38$.\medskip  
+
+\end{sol}
+
+
+\bigskip
+ \begin{sol}{prob03.7} Trouvez la forme vectorielle pour les plans dont les équations cartésiennes sont les suivantes:  
+(c'est-à-dire, trouvez un point $a \in H$ et deux vecteurs non-nuls non-parallèles $\uu, \vv \in \R^3$ qui sont parallèles au plan $H$. En cons\'equence $H=\set{a+ s \uu + t \vv\st s,t \in \R}$.)\medskip
+
+(b) $x - y - 2z = 4$. 
+
+\soln Prenons $a=(4,0,0) \in H$. Pour $\uu$ et $\vv$, il suffit de choisir deux vecteurs (non-nuls, non-parallèles) perpendiculaires au vecteur normal $(1,-1,-2)$. Donc $\uu= (1,1,0)$ et $\vv=(2,0,1)$ feront l'affaire. Alors $H=\set{(4,0,0)+ s (1,1,0) + t (2,0,1)\st s,t \in \R}$. (Il y a bien sûr une infinité de réponses correctes.)\medskip
+
+
+\end{sol} 
+
+\bigskip
+\begin{sol}{prob03.8} Soient $\uu, \vv$ et $\ww$ des vecteurs quelconques de $\R^3$.  Déterminez lesquels des \'enonc\'es suivants pourrait être faux et donnez un exemple pour justifier chacune de vos réponses.
+ \medskip
+
+(1) $\uu\cdot \vv=\vv\cdot \uu$. 
+
+\soln Ceci est toujours vrai.
+
+\medskip
+
+(2) $\uu\times \vv=\vv\times \uu$. 
+
+\soln Puisque $\uu\times \vv=- \vv\times \uu$ est toujours valide, ceci n'est vrai que si $\uu$ et $\vv$ sont parallèles ou si l'un des deux est nul. Pour obtenir un contre-exemple, prenons $\uu=(1,0,0)$ et $\vv=(0,1,0)$. Alors $\uu\times \vv=(0,0,1)\not=(0,0,-1)=\vv \times \uu$
+
+\medskip
+
+(3) $\uu\cdot(\vv+\ww)=\vv\cdot \uu+\ww\cdot \uu$. 
+
+\soln Ceci est toujours vrai. 
+
+\medskip
+
+(4) $(\uu+2\vv)\times \vv=\uu\times \vv$.
+
+ \soln Ceci est toujours vrai, puisque $\vv\times \vv=\zero$ est toujours valable.
+
+\medskip
+
+(5) $(\uu\times \vv)\times \ww=\uu\times(\vv\times \ww)$. 
+
+\soln C'est presque toujours faux. En effet, d'après la dernière question de cette série d'exercices, elle est vraie seulement si $(\uu \cdot \ww)\vv- (\uu\cdot \vv) \ww = (\ww\cdot \uu) \vv- (\ww\cdot \vv) \uu \iff (\uu\cdot \vv) \ww = (\ww\cdot \vv) \uu$. Pour un contre-exemple, prenons $\uu=(1,0,0)=\vv$ et $\ww=(0,1,0)$. Alors $(\uu\times \vv)\times \ww=(0,0,0) \not=(0,-1,0)=\uu\times(\vv\times \ww)$.
+\medskip
+% 2 \& 5
+
+\end{sol}
+
+\bigskip
+ \begin{sol}{prob03.9}  Soient $\uu , \vv $ et $\ww $ des vecteurs de $\R^3$.  Lesquels des \'enonc\'es suivants sont (toujours) vrais ? Justifiez vos réponses quand c'est VRAI et donnez un contre-exemple quand c'est FAUX.
+\medskip
+
+(i) $(\uu\times \vv)\cdot \vv=0$. 
+
+\soln Ceci est toujours vrai, car c'est une propriété du produit vectoriel qui est facile à v\'erifier.
+ 
+\medskip
+
+(ii) $(\vv\times \uu)\cdot \vv=-1$. 
+
+\soln C'est toujours faux, car le côté gauche est toujours nul. Pour un contre-exemple, prenez simplement $\uu=\vv=\zero$.
+ 
+\medskip
+
+(iii) $(\uu\times \vv)\cdot \ww$ est le volume du parallélépipède formé par $\uu$, $\vv$ et $\ww$. 
+
+
+\soln  Pas toujours vrai. Les volumes étant toujours positifs, ceci n'est vrai que si $(\uu\times \vv)\cdot \ww= |(\uu\times \vv)\cdot \ww|$. Donc si $\uu=(1,0,0), \vv=(0,1,0)$ et $\ww=(0,0,-1)$, alors $(\uu\times \vv)\cdot \ww=-1$ ce qui ne peut pas être le volume du cube unitaire...
+ 
+\medskip
+
+(iv) $||\uu\times \vv||=||\uu||\,||\vv||\,\cos\theta,$ où $\theta$ est l'angle entre $\uu$ et $\vv$. 
+
+
+\soln Ceci n'est vrai que si $\cos\theta=\sin \theta$, car il est toujours vrai que $||\uu\times \vv||=||\uu||\,||\vv||\,\sin\theta$, où $\theta$ est l'angle entre $\uu$ et $\vv$. On prend donc $\uu=(1,0,0)$ et $\vv=(0,1,0)$ pour un contre-exemple.
+
+\medskip 
+
+(v) $|\uu\cdot \vv|=|\uu||\,||\vv||\,\cos\theta$, 
+où $\theta$ est l'angle entre $\uu$ et $\vv$. 
+
+\soln Ceci est toujours vrai.
+ 
+\end{sol} 
+
+
+
+
+
+
+

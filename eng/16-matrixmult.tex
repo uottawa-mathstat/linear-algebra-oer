@@ -1,0 +1,492 @@
+\chapter{Matrix Multiplication}
+\label{chapter:14matrixmult}
+  
+
+We have seen how to use matrices to solve linear systems.  We have
+also seen essentially two completely different views of an augmented
+matrix:  in the first, the columns represented the coefficients
+of the variables of a linear system; in the second (our last application)
+the columns corresponded to vectors in $\R^m$.  To really establish
+the link between these two points of view (which will in turn
+yield powerful tools to answer the questions we raised about
+vector spaces in the first part of this course), we need to 
+introduce the notion of matrix multiplication.    
+
+That said, matrix multiplication shows up as a key tool in a 
+number of other very concrete applications: not just in linear systems.  You see them showing up:
+\begin{itemize}
+\item in probability, as transition matrices of Markov processes;
+\item in economics, as part of the Leontief input/output model;
+\item in geometry
+\item in quantum theory
+\item for solving linear systems
+\item for vector spaces, for keeping track of linear combinations
+\end{itemize}
+A large part of why they are so versatile is that there are many
+different ways of thinking of a matrix:
+\begin{itemize}
+\item as a table of numbers
+\item as a collection of row vectors
+\item as a collection of column vectors
+\item as ``generalized numbers'': things you can add and multiply!
+\end{itemize}
+
+\section{How to multiply matrices}
+
+Matrix multiplication is a generalization of the usual multiplication
+of numbers; the idea being to multiply across many variables at the
+same time.  
+
+\begin{myexample}
+To calculate your weekly expenditures on salaries, you
+calculate, for each employee,
+$$
+(\textrm{dollars/hour}) \times (\textrm{hours/week}) = \textrm{dollars/week}
+$$
+and then add up over all employees.
+
+Suppose now you have much more information to keep track of:
+\begin{itemize} 
+\item The hourly wages of several employees at different jobs.  Rows correspond to cashier and stockroom; columns correspond to  Ali, Bob and Cho; entries
+represent the hourly wage of that person in that job:
+$$
+W = \mat{ 12 & 10 & 14 \\ 8 & 8 & 10}
+$$
+\item The hours worked each week.  Rows correspond to Ali, Bob and Cho; columns
+correspond to Week 1 and Week 2; entries are hours worked by that person that week:
+$$
+H = \mat{10 & 0 \\ 10 & 10 \\ 5 & 10}
+$$
+\end{itemize}
+Then we could calculate total salary spent at each job each week.  Rows are jobs (cashier, stockroom), columns are weeks (Week 1, Week 2) and entries are total cost for that job that week:
+\begin{align*}
+C = WH & =  \mat{ 12 & 10 & 14 \\ 8 & 8 & 10} \mat{10 & 0 \\ 10 & 10 \\ 5 & 10} \\
+&= \mat{12\times 10+10\times 10+14\times 5  &  12\times0+10\times 10+14\times 10\\
+8\times 10 + 8 \times 10 + 10\times 5 & 8 \times 0 + 8 \times 10 + 10 \times 10}
+\\
+&= \mat{290 & 240\\
+210 & 180} 
+\end{align*}
+This says that \$290 were spend on cashiers in Week 1, and \$240 were
+spent on cashiers in Week 2, for example.   
+
+Remarks:
+\begin{itemize}
+\item We organized things so that the rows of the answer correspond
+to the rows of the first matrix; the columns of the answer correspond
+to the columns of the second matrix; and the variable over which we
+summed (here, the employees) corresponded to both the columns of 
+the first and the rows of the second, in the same order.
+\item Note that we calculated the entry in row $i$ and column $j$ of 
+the product by taking the \stress{dot product} of row $i$ of the
+first matrix and column $j$ of the second matrix.
+\end{itemize}
+\end{myexample}
+
+This example helps to illustrate why we choose to define matrix
+multiplication in a way that at first seems quite strange.
+
+\begin{definition}
+If $A$ is an $m \times n$ matrix and $B$ is an $n \times p$ matrix,
+then their \defn{product} $AB$ is the $m\times p$ matrix whose $(i,j)$
+entry is the \stress{dot product} of the $i$th row of $A$ with
+the $j$th column of $B$.
+
+So, if $A = [a_{ij}]$, and $B = [b_{ij}]$ then $AB = [c_{ij}]$
+where 
+$$
+c_{ij} = \sum_{k=1}^n a_{ik}b_{kj} = [a_{i1} \; a_{i2} \; \cdots \; a_{in}]\mat{b_{1j}\\b_{2j}\\ \vdots \\ b_{nj}}
+$$
+
+In particular, ``$AB$'' only makes sense if the number of columns of $A$ 
+equals the number of rows of $B$.
+\end{definition}
+
+\begin{myexample}
+$$
+\mat{1 & 2 & 3\\ 4 & 5 & 6} \mat{x\\y\\z} = \mat{x+2y+3z\\ 4x+5y+6z}
+= x\mat{1\\4} + y\mat{2\\5} + z\mat{3\\6}
+$$
+That is, this kind of matrix product can be thought of as a shorthand for a
+linear system \stress{or} as an expression of a linear combination.
+\end{myexample}
+
+\begin{myexample}
+$$
+\mat{1 & 2 & 3}\mat{a & b \\ c & d \\ e & f} = \mat{a+2c+3e & b+2d+3f} = 
+1\mat{a & b} + 2\mat{c&d} + 3\mat{e&f}
+$$
+So in this way, this matrix product gives a linear combination of the
+rows of the matrix.
+\end{myexample}
+
+
+\section{Some strange properties of matrix multiplication}
+
+First, note something odd:
+
+\begin{myexample} Let $A = \mat{1 & 2 \\ 3& 4}$ and $B = \mat{1 & 2 & 3\\ 4&5&6}$.
+Then $A$ is of size $2\times 2$, $B$ is of size $2\times 3$, so the
+product is of size $2\times 3$ and equals
+$$
+AB = \mat{1 & 2 \\ 3& 4}\mat{1 & 2 & 3\\ 4&5&6} = \mat{9 & 12 & 15\\ 19 & 26 & 33}
+$$
+but $BA$ is \stress{not defined}, because the number of columns of $B$
+is not the same as the number of rows of $A$.
+\end{myexample}
+
+\standout{SO  sometimes you can calculate $AB$ but $BA$ is \defn{not defined}!}
+
+Even worse:
+
+\begin{myexample}
+Let $A = \mat{1 & 2 \\ 3& 4}$ and $B = \mat{0&1\\1&0}$.
+Then
+$$
+AB = \mat{1 & 2 \\ 3& 4}\mat{0&1\\1&0}=\mat{2&1\\ 4&3}
+$$
+but 
+$$
+BA = \mat{0&1\\1&0}\mat{1 & 2 \\ 3& 4}=\mat{3&4\\1&2}
+$$
+Note that $AB\neq BA$.
+\end{myexample}
+
+\standout{SO even when you ARE allowed to calculate both $AB$
+and $BA$, it can happen (it usually happens) that $AB \neq BA$!  }
+
+In other words: the product is not commutative.
+
+
+\begin{myexample}
+Let $A = \mat{1 \\2 \\3}$ and $B = \mat{4\\5\\6}$ be two column matrices
+(or call them vectors).  Remember the transpose operation (definition \ref{transpose}), which swaps
+rows and columns.  Then 
+\begin{itemize}
+\item $AB$ is not defined.
+\item $BA$ is not defined.
+\item $A^T \; B = \mat{1&2&3}\mat{4\\5\\6} = \mat{32} = 32$\footnote{We always identify the $1\times 1$ matrix $\mat{a}$ with its single (scalar) entry $a$.}, which is just the dot product of the
+two vectors.
+\item $B^T \; A = \mat{4&5&6}\mat{1 \\2 \\3} = 32$ is the same (Which is good, 
+since we already knew that the
+dot product doesn't depend on the order of the matrices.)
+\item $AB^T = \mat{1 \\2 \\3}\mat{4&5&6} = \mat{4 & 5 & 6\\ 8 & 10 & 12\\ 12 & 15 & 18}$ is not at all anything to do with the dot product!  We call it the \defn{tensor product}.
+\end{itemize}
+\end{myexample}
+
+
+There are even stranger things about matrix multiplication!
+
+\begin{myexample}
+Let $C = \mat{1 & -1\\-1&1}$ and $D = \mat{1 & 2\\ 1& 2}$.  Then
+$$
+CD =  \mat{1 & -1\\-1&1} \mat{1 & 2\\ 1& 2} = \mat{0&0\\0&0}
+$$
+So $CD = 0$ but neither $C$ nor $D$ was the zero matrix.
+\end{myexample}
+
+\standout{It can happen that $AB=0$ but neither $A$ nor $B$ is zero.}
+
+\begin{myexample}
+Let $A = \mat{4 & -1\\ 1 & 1}$, $B = \mat{1 & 0 \\ 7 & -1}$ and $C = \mat{1 & 2\\ 3 & 6}$.  Then
+$$
+AC = \mat{4 & -1\\ 1 & 1}\mat{1 & 2\\ 3 & 6} = \mat{1&2\\ 4&8}
+$$
+and
+$$
+BC = \mat{1 & 0 \\ 7 & -1}\mat{1 & 2\\ 3 & 6} = \mat{1 & 2\\ 4& 8}
+$$
+That is:  $AC = BC$ but $A \neq B$!  \end{myexample}
+
+\standout{It can happen that $AC=BC$ but $C\neq 0$ and $A \neq B$.  In other words, we can't cancel out $C$, even if $C \neq 0$.}
+
+
+\section{Some good properties of matrix multiplication}
+
+First note that the transpose operation on matrices satisfies
+\begin{itemize}
+\item $(A+B)^T = A^T + B^T$
+\item $(kA)^T = kA^T$ for a scalar $k$
+\item $(A^T)^T = A$
+\end{itemize}
+We also define a special matrix, called the \defn{identity matrix} (although
+there's actually one for every $n$):
+$$
+I_2 = \mat{1&0\\0&1}, \quad I_3 = \mat{1&0&0\\0&1&0\\0&0&1}, \quad
+I_4 = \mat{1&0&0&0\\0&1&0&0\\0&0&1&0\\0&0&0&1}
+$$
+And we still have the \defn{zero matrix} (one for each possible size):
+$$
+0_{2\times 2} = \mat{0&0\\0&0}, \quad 0_{2\times3}= \mat{0&0&0\\0&0&0},
+\quad 0_{3\times 2} = \mat{0&0\\0&0\\0&0}
+$$
+Let's list some properties of the matrix product.  
+
+\begin{theorem}[Properties of the matrix product]\index{properties of the matrix product}
+Let $A,B$ and $C$ be matrices and let $k$ be a scalar.  Then, whenever
+defined, we have
+\begin{enumerate}
+\item $(AB)C = A(BC) \quad$ (Associativity)
+\item $A(B+C) = AB + AC \quad$(Distributivity on the right)
+\item $(B+C)A = BA + CA \quad$(Distributivity on the left)
+\item $k(AB) = (kA)B = A(kB)$
+\item $(AB)^T = B^TA^T$  (NOTE the reversal of order!)
+\item $AI = A$ and $IB = B$.
+\item If $A$ is $m\times n$, then $A0_{n\times p} = 0_{m\times p}$ and
+$0_{q\times m}A = 0_{q\times n}$.  
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(1) Write $A = [a_{ij}]$, $B = [b_{ij}]$, and $C = [c_{ij}]$.  Suppose
+$A$ is $m\times n$, $B$ is $n \times p$ and $C$ is of size $p \times q$.
+Then the $ij$th entry of $(AB)C$ is
+$$
+\sum_{l=1}^p(\sum_{k=1}^n a_{ik}b_{kl})c_{lj}
+$$
+whereas the $ij$th entry of $A(BC)$ is
+$$
+\sum_{k=1}^n a_{ik}(\sum_{l=1}^pb_{kl}c_{lj})
+$$
+and these two sums are equal. 
+
+(2)-(4): exercise.
+
+(5) Note first that the change of order was necessary:  if $A$ is $m\times n$
+and $B$ is $n\times p$, then $AB$ is defined but $A^TB^T$ probably isn't.
+Now the $ij$th entry of $AB$ is the dot product of the $i$th row of $A$
+with the $j$th column of $B$; so this is the $ji$th entry of $(AB)^T$.
+Now the $ji$th entry of $B^TA^T$ is the dot product of the $j$th row of
+$B^T$ (which is the $j$th column of $B$) with the $i$th column of $A^T$
+(which is the $i$th row of $A$).  Since the order of vectors in a 
+\stress{dot product} doesn't matter, it follows that these are equal.
+
+(6)-(7) exercise.
+\end{proof}
+
+\begin{myexample}
+$$
+\mat{a & b & c\\ d&e&f}\mat{1&0&0\\0&1&0\\0&0&1} = \mat{a & b & c\\ d&e&f}
+$$
+and
+$$
+\mat{1&0\\0&1}\mat{a & b & c\\ d&e&f}=\mat{a & b & c\\ d&e&f}
+$$
+So the size of the identity matrix you need to play the role of
+$1$ in a matrix product depends on the size of $A$ \stress{and} the
+side you are multiplying on.
+\end{myexample}
+
+
+These properties let us do lots of algebraic manipulations with
+matrices which are very similar to what we do with real numbers.
+
+\begin{myprob}
+Simplify the expression $(A+B)(C+D)$.
+
+\begin{mysol}
+We have $(A+B)(C+D) = (A+B)C + (A+B)D$ by distributivity on the right;
+and then this equals $AC + BC + AD + BD$ by distributivity on the left.
+\end{mysol}\end{myprob}
+
+But we have to be careful!
+
+\begin{myprob} Simplify $(A+B)(A-B)$.
+
+\begin{mysol} This becomes $A^2 + BA - AB - B^2$.  It is NOT $A^2-B^2$ since
+it is very likely that $AB \neq BA$.
+\end{mysol}\end{myprob}
+
+\begin{myprob} Simplify $AC = BC$.
+
+\begin{mysol} There's nothing to simplify; we could write this as $AC-BC = 0$ or
+$(A-B)C = 0$, but we cannot conclude that $A=B$ or $C=0$, since we've
+seen already that we can get the zero matrix as the product of two
+nonzero matrices.
+\end{mysol}\end{myprob}
+
+\standout{BEWARE:  these operations let you do most simple
+algebraic operations, but they DON'T let you CANCEL (multiplicatively) or DIVIDE. Look ahead to matrix inversion in chapter \ref{chapter:18inverses} to solve this problem.}
+
+
+\section{Some really amazing things about matrix multiplication}
+
+There are some really amazing things about matrix multiplication as
+well.  The following is an application of the Cayley-Hamilton Theorem,
+for example.
+
+  
+Suppose $A$ is a $2\times 2$ matrix; such a 
+matrix is called square and has the property that you can define $A^2=AA$
+and $A^3 = AAA$ etc. (If $A$ is not square, $A^2$ is not defined.)
+So for example if 
+$$
+A = \mat{1 & 2 \\ 2&0}
+$$
+then 
+$$A^2 =  \mat{1 & 2 \\ 2&0} \mat{1 & 2 \\ 2&0} = \mat{5&2\\2&4}
+$$
+and
+$$
+A^3 = \mat{1 & 2 \\ 2&0}\mat{5&2\\2&4} = \mat{9&10\\10&4}
+$$
+etc.  
+Now recall $\tr(A)$ was the trace of $A$, which is the sum of
+the diagonal entries.  So here, $\tr(A) = 1$.  Also $\det(A)$
+is $ad-bc$, which here equals $-4$.  The \defn{characteristic
+polynomial of $A$} is
+$$
+x^2 - \tr(A)x + \det(A).
+$$
+If we plug in $A$ for $x$ (and put in an identity matrix at the end
+so that everything becomes a matrix), we get
+$$
+\mat{5&2\\2&4} -  \mat{1 & 2 \\ 2&0} - 4\mat{1&0\\0&1} = \mat{0&0\\0&0}
+$$
+ 
+This always happens for $2 \times 2$ matrices, and there's a generalization for all square matrices. See definition \ref{charpoly} for the characteristic
+polynomial of an general square matrix.
+
+
+
+There is also \defn{block multiplication} which can
+sometimes simplify your calculations by letting you treat 
+submatrices as numbers.
+
+\begin{myexample}
+Suppose 
+$$
+A = \mat{1 & 0 & 0 & 0 & 0\\
+0 & 1 & 0 & 0 & 0\\
+0 & 0&  1 & 0 & 0\\
+0 & 0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0 & 0}
+$$
+Break this up this into ``blocks'' by setting
+$$
+B = \mat{1 & 0 & 0 \\ 0 & 1 & 0\\ 0 & 0 & 1}
+\quad C = \mat{0 & 1 \\ 0 & 0}
+$$
+and then thinking of $A$ as
+$$
+A = \mat{B&0\\0&C}
+$$
+where the zero matrix in the $(1,2)$ position is $3\times 2$, and that in the $(2,1)$ position is a $2\times 3$.
+\medskip
+
+Then $A^2 = \mat{B&0\\0&C}\mat{B&0\\0&C}=\mat{B^2&0\\0&C^2}$.
+In fact,
+$$
+A^{100} = \mat{B^{100} & 0 \\ 0& C^{100}}
+$$
+which is nice, because 
+$$
+B^{100} = I_3^{100} = I_3
+$$
+since $I_3$ is just the identity matrix; and 
+$$
+C^2 = 0
+$$
+so $C^{100} = 0$ as well.
+So in fact $A^{100} = \mat{B&0\\0&0}$.
+\end{myexample}
+
+
+
+\section{Back to linear systems}
+Thinking in terms of blocks --which in the following are just columns -- helps us switch between different points 
+of view of linear systems.
+
+The following equations are all equivalent:
+\begin{itemize}
+\item The linear system:
+\begin{align*}
+x+2y+3z &= 4\\
+x-y+z &=2\\
+ y-3z&=0
+\end{align*}
+\item The matrix equation $A\xx = \bb$ where 
+$$
+A = \mat{1 & 2 & 3\\ 1 & -1 & 1\\ 0 & 1 & -3}, \xx = \mat{x\\y\\z}, \bb=\mat{4\\2\\0}
+$$
+that is,
+$$
+\mat{1 & 2 & 3\\ 1 & -1 & 1\\ 0 & 1 & -3}\mat{x\\y\\z}=\mat{4\\2\\0}
+$$
+\item The vector equation 
+$$
+x\mat{1\\1\\0} + y\mat{2\\-1\\1} + z\mat{3\\1\\-3}  =\mat{4\\2\\0}
+$$
+\end{itemize}
+Furthermore, all of these can be solved by row reducing the augmented
+matrix 
+$$
+[A|\bb] =  \mat{1 & 2 & 3&|& 4\\ 1 & -1 & 1&|&2\\ 0 & 1 & -3&|&0}.
+$$
+
+In terms of block multiplication, we can understand this by 
+writing
+$$
+A = \mat{c_1 & c_2 & c_3}
+$$
+where $c_i$ is the $i$th column of $A$, and then
+multiplying
+$$
+A\xx= \mat{\cc_1 & \cc_2 & \cc_3}\mat{x\\y\\z} = x\cc_1 + y\cc_2 + z\cc_3
+$$
+(where we can switch the order because $x,y,z$ are just scalars).
+This is true for any size of matrix $A$: if $A = [\cc_1 \;\cc_2 \; \cdots \cc_n]$
+then $Ax = x_1\cc_1 + x_2\cc_2 + \cdots + x_n\cc_n$, which is indeed
+a linear combination of the columns of $A$.
+
+\begin{fac} $A\xx$ is a linear combination of the columns of $A$ (with 
+coefficients given by the column vector $\xx$).\end{fac}
+
+This gives us a new perspective on our criteria for solving linear
+systems!
+
+\begin{fac} $A\xx=\bb$ is consistent if and only if $\bb$ is a linear combination of
+the columns of $A$.\end{fac}
+
+\begin{fac} $A\xx=\zero$ has a unique solution if and only if the columns of $A$ are
+linearly independent.\end{fac}
+
+One proves these facts by going between the various interpretations
+of the matrix product.  For instance, if the system corresponding to $A\xx=\bb$ 
+is consistent,
+then this means there is an $\xx$ for which the corresponding linear 
+combination of columns of $A$ yields $\bb$, which is simply saying that
+$\bb$ is in the span of the columns of $A$.  
+
+\begin{definition}
+Suppose $A = [\cc_1\; \cc_2 \ldots \cc_n]$ is an $m\times n$ matrix with
+columns $\cc_i$.  
+Set $\col(A) = \spn\{\cc_1,\cc_2, \ldots, \cc_n\}$.  This is a subspace of $\R^m$,
+called the \defn{column space of $A$}.
+\end{definition}
+
+
+\begin{fac}$\col(A) = \R^m$ if and only if the columns of $A$ span $\R^m$, 
+if and only if $A\xx=\bb$ is consistent for all $\bb\in \R^m$, if and only
+if there is no zero row in the RREF of $A$.\end{fac}
+
+These things all follow from the definitions, although the last part of the equivalence is not entirely obvious, though one direction is easy.\footnote{\label{nzrinrref}Suppose that there are no zero rows in $\tilde A$, the RREF of $A$. Then $A\xx=\bb$ will of course be consistent for all $\bb\in \R^m$.
+To prove the converse, we prove that if the the last row in the RREF $\tilde A$ of $A$ is zero, then there is a $\bb\in \R^m$ with $A\xx=\bb$ inconsistent: so suppose last row in the RREF $\tilde A$ of $A$ is zero. Construct a $\tilde{\bb} \in \R^n$ with a $1$ in that row -- so the system $[ \tilde A | \tilde{\bb}]$ is inconsistent. Now reverse the row operations that took $A$ to $\tilde A$ -- do them on $[ \tilde A | \tilde{\bb}]$ and you'll obtain a system $[   A |   \bb]$ that is inconsistent; that is, you'll have found a $\bb\in \R^n$ with $A\xx=\bb$ inconsistent. }
+
+\begin{fac} The columns of $A$ are linearly independent if and only if
+$A\xx=\zero$ has a unique solution, if and only if there is a leading one
+in every column of an REF of $A$, if and only if $\rnk(A)$ equals
+the number of columns of $A$.\end{fac}
+
+This again is just putting everything together.
+
+Finally, we deduce something we proved in greater generality before:
+
+\begin{fac} If $A$ is an $n\times n$ matrix, then the columns of $A$ form
+a basis for $\R^n$ if and only if they are linearly independent, if
+and only if $\rnk(A)=n$, if and only if $\col(A)=\R^n$, if and only
+if the columns of $A$ span $\R^n$ if and only if no REF of $A$ has
+a zero row.\end{fac}
+
+
+

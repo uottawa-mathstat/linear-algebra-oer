@@ -1,0 +1,176 @@
+\chapter{Ind\'ependance lin\'eaire, ensembles g\'en\'erateurs}
+
+\label{chapter:Fr_08-independence_span}
+
+Dans le chapitre pr\'ec\'edent nous avons défini les notions d'indépendance et de dépendance linéaires. 
+Un ensemble de vecteurs $\{ \vv_1, \vv_2, \cdots, \vv_m\}$ 
+est \stress{linéairement indépendant} (LI) ssi la \emph{seule}
+solution de l'équation de dépendance
+$$
+a_1\vv_1+\cdots +a_m\vv_m = \zero
+$$
+est la solution triviale $a_1=0$, $\cdots$, $a_m=0$.  Inversement, 
+cet ensemble de vecteurs est \stress{linéairement dépendant}  (LD)
+s'il \emph{existe} une solution non-triviale à l'\'equation 
+$$
+a_1\vv_1+\cdots +a_m\vv_m = \zero, 
+$$
+c'est-à-dire que $a_i\neq0$ pour au moins l'un des indices $i$. Si tel est le cas, une telle équation (avec certains coefficients non nuls)
+est appelée une \defn{relation de dépendance} sur cet ensemble.
+
+\section{Résultats importants sur l'indépendance et la dépendance linéaires}
+
+Dans le chapitre précédent, nous avons remarqué de nombreux r\'esultats utiles sur les ensembles LI et sur les ensembles LD :
+\begin{enumerate}
+\item Un ensemble $\{ \vv\}$ constitué d'un seul vecteur est LI si et seulement si $\vv \neq \zero$.
+\item Si un ensemble $S$ est LD, alors tout ensemble contenant $S$ est également LD.
+\item Si un ensemble $S$ est LI, alors tout sous-ensemble non-vide de $S$ est également LI.
+\item $\{\zero\}$ est LD.
+\item Tout ensemble contenant le vecteur nul est LD. 
+\item Un ensemble en deux vecteurs est LD si et seulement si l'un des vecteurs
+est un multiple scalaire de l'autre.
+\item Il est possible qu'un ensemble avec trois vecteurs ou plus soit LD \emph{même si} aucun des vecteurs n'est multiple scalaire des autres.
+\end{enumerate}
+
+Plus important, nous avons conclu le dernier chapitre avec l'affirmation suivante :
+
+\begin{theorem}[Relation entre dépendance linéaire et ensembles g\'en\'erateurs]\index{relation entre dépendance linéaire et ensembles g\'en\'erateurs}\label{depspan} 
+Un ensemble $\{\vv_1, \cdots, \vv_m\}$ est LD si et seulement si au moins
+l'un des vecteurs $\vv_k$ est combinaison lin\'eaire des autres.
+\end{theorem}
+
+\standout{Attention :  Ce théorème ne signifie pas que chaque vecteur est une combinaison linéaire des autres.
+Par exemple 
+$\{(1,1), (2,2), (1,3)\}$ est LD car $(2,2) \in \spn\{(1,1),(1,3)\}$, \emph{mais} $(1,3) \notin \spn\{(1,1),(2,2)\}$.}
+
+\begin{proof}
+Nous devons montrer les deux sens de l'\'equivalence \og si et seulement si \fg.
+
+Tout d'abord, supposons que $\{\vv_1, \cdots, \vv_m\}$ soit LD.  Alors il existe
+une relation de dépendance non-triviale
+$$
+a_1\vv_1 + \cdots + a_m\vv_m = \zero
+$$
+avec $a_i \neq 0$ pour au moins l'un des indices $i$. Sans perte de généralité, disons que $a_1 \neq 0$ (sinon on peut toujours
+r\'e-indexer les vecteurs pour que ce soit bien le cas).  Isolons $\vv_1$ comme suit:
+$$
+\vv_1 = \frac{-a_2}{a_1}\vv_2 + \cdots + \frac{-a_m}{a_1}\vv_m
+$$
+ce qui nous dit que $\vv_1 \in \spn\{ \vv_2, \cdots, \vv_m\}$.   D'où la première implication.
+
+R\'eciproquement, supposons que $\vv_n \in \spn\{ \vv_1, \cdots, \vv_{n-1}\}$.
+Alors on a $\vv_n = b_1\vv_1 + \cdots + b_{n-1}\vv_{n-1}$ pour certains coefficients $b_1,\dots, b_{n-1}$, et donc
+$$
+b_1\vv_1 + \cdots + b_{n-1}\vv_{n-1} + (-1)\vv_n = \zero
+$$ 
+est une relation de dépendance non-triviale car au moins un des coefficients est non-nul: celui devant $\vv_n$ est $-1$.  Par conséquent,  cet ensemble est donc LD, ce qui montre l'autre implication. CQFD.
+\end{proof}
+
+
+\section[R\'eduction d'ensembles LD]{Conséquence : tout ensemble LD peut être réduit}
+
+Voici comment nous allons résoudre le problème mentionné dans les chapitres précédents !  
+
+\begin{myexample} Soient $W = \spn\{ (1,0,0), (0,1,0), (1,1,0)\}$ et $W' = \spn\{ (1,0,0), (0,1,0)\}$. D'une part, on a évidement que $W'\subseteq W$. D'autre part, puisque 
+$(1,1,0) = (1,0,0)+(0,1,0)$ appartient à $W'$ 
+et qu'évidemment $(1,0,0)$ et $(0,1,0)$ appartiennent aussi à $W'$,
+il s'ensuit d'après le Th\'eor\`eme \ref{span}
+que nécessairement $W\subseteq W'$.
+De la double inclusion nous déduisons l'égalité
+$$
+W = W' = \spn\{(1,0,0), (0,1,0)\}.
+$$
+Ainsi, nous avons donc réussi à écrire $W$ avec un vecteur générateur en moins !
+\end{myexample}
+
+Cet exemple illustre le théorème général suivant :
+\pagebreak
+
+\begin{theorem}[R\'eduction de l'ensembles des g\'en\'erateurs]\index{r\'eduction d'ensembles g\'en\'erateurs}
+ Supposons que\\ $W= \spn\{ \vv_1, \cdots, \vv_m\}$ dans un espace vectoriel $V$.\hfill\break
+Si $\vv_1 \in \spn\{\vv_2, \cdots, \vv_m\}$, alors
+$$
+W = \spn\{ \vv_2, \cdots, \vv_m\}.
+$$
+\end{theorem}
+\begin{proof} Il est clair que $\spn\{ \vv_2, \cdots, \vv_m\} \subseteq W$. 
+
+Réciproquement, supposons maintenant que  $ \vv_1$ soit de la forme $\vv_1=b_2 \vv_2 +\cdots +b_m\vv_m$ pour certains coefficients $b_i$. Alors, pour tout élément $\ww=a_1\vv_1 +\cdots +a_m\vv_m$ de $W$, on a $$\ww =(a_1b_2 +a_2)\vv_2 +\cdots + (a_1b_m +a_m)\vv_m \in \spn\{ \vv_2, \cdots, \vv_m\}\,, $$
+ce qui montre l'inclusion $
+W \subseteq \spn\{ \vv_2, \cdots, \vv_m\}
+$. D'o\`u l'égalité par double inclusion.
+\end{proof}
+
+En reprenant les notations du théorème ci-dessus, notez que la condition $\vv_1 \in \spn\{\vv_2, \cdots, \vv_m\}$ est équivalente au fait que $\{\vv_1,\vv_2, \cdots, \vv_m\}$ est LD (cf. Théorème \ref{depspan}).
+ 
+\standout{ En d'autres termes :  On peut R\'EDUIRE la taille de n'importe quel ensemble g\'en\'erateur dès lors qu'il est LIN\'EAIREMENT D\'EPENDANT.}
+
+De plus, si après avoir enlevé $\vv_1$ on a que $\{ \vv_2, \cdots, \vv_m\}$ est encore LD, alors un des  vecteurs est forcément combinaison lin\'eaire des autres, disons $\vv_2 \in \spn\{\vv_3, \cdots, \vv_m\}$. 
+Alors, avec la même idée que ci-dessus, on peut réduire $W$ à 
+$$W=\spn\{\vv_1, \cdots, \vv_m\}=\spn\{\vv_2, \cdots, \vv_m\}=\spn\{\vv_3, \cdots, \vv_m\}\,.$$
+On peut continuer ce processus jusqu'à ce qu'il ne nous reste qu'un ensemble de vecteurs \emph{lin\'eairement 
+indépendants} de générateurs de $W$.
+
+\section[\'Extension d'ensembles LI]{Une autre conséquence : agrandir la taille des ensembles linéairement indépendants}
+
+On a suffisamment d\'eveloppé les idées maintenant pour comprendre que si l'on veut un ensemble linéairement indépendant, on ne peut prendre autant de vecteurs que l'on veut car sinon l'ensemble devient linéairement indépendant. (Mais combien de vecteurs
+pouvons-nous prendre dans l'ensemble générateur pour qu'il soit LI ?   Nous y reviendrons plus tard avec les notions de \stress{base} et de \stress{dimension}).
+Pour l'instant, nous avons le r\'esultat suivant:
+
+\begin{theorem}[Agrandissement d'ensembles linéairement indépendants]\index{agrandissement d'ensembles linéairement indépendants}  \label{EnlargingLI}%%% je dirais plutot Lemme d'ind\'ependance lin\'eaire
+Supposons que $\{\vv_1, \cdots, \vv_m\}$ soit un sous-ensemble LI d'un sous-espace $W$.
+Pour tout $\vv \in W$, on a
+$$
+\{\vv, \vv_1, \cdots, \vv_m\} \; \textrm{est LI}\quad \Longleftrightarrow\quad  
+\vv \notin \spn\{\vv_1, \cdots, \vv_m\}.
+$$
+\end{theorem}
+
+\begin{proof}
+Ceci ressemble beaucoup à notre Théorème \ref{depspan} (comparez par vous-mêmes !).
+C'est pourquoi la preuve est très similaire.
+
+Supposons que le nouveau grand ensemble $\{\vv, \vv_1, \cdots, \vv_m\}$ soit LI.  Alors par le théorème précédent,
+AUCUN vecteur de $\{\vv, \vv_1, \cdots, \vv_m\}$ ne peut être une combinaison linéaire des autres.  En particulier, $\vv$ ne peut pas être une
+combinaison linéaire du restant des vecteurs, ce qui veut simplement dire que
+$\vv \notin \spn\{\vv_1, \cdots, \vv_m\}$.  D'où la première implication.
+
+Inversement, supposons que $\vv \notin \spn\{\vv_1, \cdots, \vv_m\}$ et montrons que $\{\vv, \vv_1, \cdots, \vv_m\}$ est LI.
+Considérons l'équation de dépendance suivante :
+$$
+a_0\vv + a_1\vv_1 + \cdots + a_m\vv_m = \zero.
+$$
+Nous voulons montrer qu'il n'existe pas de solution non-triviale.
+Notez que si $a_0$ était $\neq 0$, alors, comme dans la preuve précédente, on pourrait exprimer $\vv$ en fonction des autres vecteurs en divisant par $a_0$, ce qui contredirait
+notre hypothèse. Donc nécessairement $a_0 = 0$, et l'équation devient simplement :
+$$
+a_1\vv_1 + \cdots + a_m\vv_m = \zero.
+$$
+Mais par hypothèse du théorème, l'ensemble $\{\vv_1, \cdots,\vv_m\}$ est LI,  donc tous ces coefficients $a_i$ doivent être nuls. D'où l'autre implication est vraie, et on obtient l'équivalence voulue.
+\end{proof}
+
+\standout{ En d'autres termes :  tant que notre ensemble générateur N'ENGENDRE PAS tout l'espace vectoriel et qu'il est LIN\'EAIREMENT IND\'EPENDANT, on peut AUGMENTER sa taille et il restera linéairement indépendant !}
+
+\section{Exemples} 
+Dans cette section, nous verrons des exemples de méthodes pour appliquer le Théorème \ref{EnlargingLI}.
+
+\begin{myexample} L'ensemble $\{ x^2, 1+2x\} \subset \PP_3$ est LI et $x^3 \notin \sp{ x^2, 1+2x}$ (voir les indications données pour les problèmes \ref{prob06.4} questions (e) et (f), ou l'Exemple \ref{imp} à la page \pageref{imp}). 
+On en déduit par le Théorème \ref{EnlargingLI} que  $\{ x^3, x^2, 1+2x \}$ est aussi LI. \end{myexample}
+
+\begin{myexample} L'ensemble générateur $\left\{ \mat{0 & 1 \\ 0 & 0}, \mat{1 & 0 \\ 0 & 0} \right\}$ est LI (puisque qu'il est contenu dans un ensemble plus grand qui est LI d'après le chapitre pr\'ec\'edent). On peut aussi voir que 
+$$
+\mat{0 & 0 \\ 1 & 0} \notin \spn\left\{ \mat{0 & 1 \\ 0 & 0}, \mat{1 & 0 \\ 0 & 0} \right\}
+$$
+puisque $\mat{0 & 0 \\ 1 & 0} = \mat{a & b\\0 & 0}$ n'a pas de solutions.
+On en déduit par le Théorème \ref{EnlargingLI} que
+$$
+\left\{ \mat{0 & 1 \\ 0 & 0}, \mat{1 & 0 \\ 0 & 0}, \mat{0 & 0 \\ 1 & 0} \right\}
+$$
+est aussi LI. \end{myexample}
+
+Remarque : il peut être difficile de trouver un vecteur $\vv$ qui n'est pas dans l'enveloppe lin\'eaire engendr\'ee par votre ensemble LI !  Dans le prochain chapitre, nous allons approfondir les r\'eflexions à ce sujet.
+
+\newpage
+
+
+

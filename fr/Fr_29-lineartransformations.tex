@@ -1,0 +1,340 @@
+\chapter{Transformations linéaires}
+\label{chapter:Fr_29-lineartransformations}
+
+
+La dernière fois, nous avons vu l'interprétation géométrique de la \og multiplication
+par $A$\ \fg: c'est une transformation de $\R^n$ dans $\R^m$ (si $A$ est une matrice de taille $m\times n$), et elle est un peu spéciale : elle transforme des carrés en parallélogrammes (contrairement 
+à tout ce que votre imagination pourrait produire!).
+
+Les propriétés clés qui font que cela fonctionne sont:
+\begin{itemize}
+\item $A\zero = \zero$;
+\item $A(\uu + \vv) = A\uu + A\vv$ pour tout $\uu,\vv \in \R^n$;
+\item $A(r\uu) = r(A\uu)$ pour tout $\uu\in\R^n$, $r\in\R$.
+\end{itemize}
+Ces propriétés impliquent que les quatre sommets suivants 
+d'un parallélogramme :
+$$
+\zero, \uu, \vv, \uu+\vv
+$$
+ sont
+envoyés aux quatre points suivants :
+$$
+\zero, A\uu, A\vv, A\uu + A\vv\,,
+$$
+lesquels définissent encore une fois les sommets d'un parallélogramme (bien que ce parallélogramme puisse \^etre
+dégénéré (\textit{i.e.} être aplati sur un segment) dans des cas défavorables, dès lors que $A\uu$ et $A\vv$ sont linéairement dépendants). Notez qu'une droite est envoyée sur une droite :
+la droite $\{r\uu\,|\,r\in\R\}$ est envoyée sur la droite
+$\{r(A\uu) \,|\, r\in\R\}$ (il se peut néanmoins que ce soit seulement un point et pas une droite si $A\uu=\zero$). Etc...
+
+
+\begin{definition}
+Soient $U$ et $V$ des espaces vectoriels.  Une \defn{transformation linéaire} $T$
+est une transformation de $U$ en $V$ satisfaisant 
+\begin{enumerate}[(1)]
+\item pour tout $\uu,\vv\in U$, $T(\uu+\vv) = T(\uu)+T(\vv)$;
+\item et pour tout $\uu \in U$, $r\in\R$, $T(r\uu) = rT(\uu)$.
+\end{enumerate}
+\end{definition}
+
+Nous utilisons ici le terme \stress{transformation} ;
+nous aurions pu aussi utiliser le terme \stress{fonction}, mais ce mot est souvent plutôt réservé aux applications dont l'image est $\R$. Enfin bref, quoi qu'il en soit, quelle que soit la terminologie utilisée,
+l'essentiel est de comprendre que $T$ est une boîte noire, c'est une formule ou une règle qui
+prend un vecteur $\uu\in U$ en entrée et qui produit un vecteur $\vv\in V$
+en sortie, et ce vecteur $\vv$ est totalement déterminé par $T$ (ce vecteur n'est pas aléatoirement choisi). Dans la définition, pour que la transformation soit \emph{linéaire}, nous précisons en plus que nous voulons que $T$ transforme les sommes en sommes, et les multiples scalaires en... multiples scalaires ! Pas si surprenant non ? En d'autres termes, nous voulons simplement qu'une transformation linéaire \emph{préserve la linéarité} !
+
+En particulier : la multiplication par une matrice carrée $A$ est bien une transformation linéaire, puisqu'elle satisfait tous les points de cette définitions.\\
+
+Nous devons maintenant nous demander : quels autres types de transformations linéaires
+connaissons-nous déjà ?
+
+
+
+\section{Exemples de transformations linéaires}
+
+\begin{myexample}\label{ex:multmatlintrans}
+ Soit $A$ une matrice de $m\times n$.  On définit la transformation
+$$T_A \colon \R^n \to \R^m
+$$
+par $T_A(\uu) = A\uu$.  Vérifions que $T_A$ est bien une transformation linéaire.
+\begin{enumerate}
+\item Pour tout $\uu,\vv \in \R^n$, nous avons bien $T_A(\uu+\vv) = T_A(\uu) +T_A(\vv)$ puisque :
+$$
+T_A(\uu+\vv) = A(\uu + \vv) = A\uu + A\vv =  T_A(\uu) +T_A(\vv)\,.
+$$
+\item Pour tout $\uu \in \R^n$, $r\in \R$, nous avons également $T_A(r\uu) = rT_A(\uu)$ puisque :
+$$
+T_A(r\uu) = A(r\uu) = r(A\uu) = rT_A(\uu)\,.
+$$
+\end{enumerate}
+Il s'agit donc bien d'une transformation linéaire, pour n'importe quelle matrice $A$ à coefficients réels de n'importe quelle taille $m\times n$.
+\end{myexample}
+
+\begin{myexample} Considérons la projection sur le plan $W$ défini par
+$$
+W = \{ (x,y,z) \mid x-z = 0\}\,.
+$$
+Est-ce que $\proj_W$ est une transformation linéaire ? Trouvons d'abord une formule pour cette projection.  Le moyen le plus simple
+est sans doute de remarquer que l'orthogonal de $W$ est $W^\perp = \spn\{(1,0,-1)\}$. Donc pour $\uu = (u_1,u_2,u_3)\in \R^3$, on a
+$$
+\proj_{W^\perp}(\uu) = \frac{\uu \cdot (1,0,-1)}{(1,0,-1)\cdot (1,0,-1)} \mat{1\\0\\-1}
+= \frac{u_1-u_3}{2}\mat{1\\0\\-1}
+$$
+et alors
+$$
+\proj_W(\uu) = \uu - \proj_{W^\perp}(\uu) =\mat{u_1\\u_2\\u_3} - \frac{u_1-u_3}{2}\mat{1\\0\\-1} = \frac12\mat{u_1+u_3\\ 2u_2 \\ u_1+u_3}.
+$$
+
+Est-ce donc une transformation linéaire?  Vérifions les deux propriétés de
+linéarité (avec $T = \proj_W$).
+\begin{enumerate}
+\item Est-ce que $\proj_W(\uu + \vv) = \proj_W(\uu) + \proj_W(\vv)$? Soient $\uu = (u_1, u_2, u_3)$ et $\vv = (v_1, v_2, v_3)$. Alors
+\begin{align*}
+\proj_W(\uu + \vv) &= \proj_U(u_1+v_1,u_2+v_2,u_3+v_3) \\
+&= \frac12\mat{ (u_1+v_1) + (u_3+v_3)\\ 2(u_2+v_2)\\  (u_1+v_1) + (u_3+v_3)}\\
+&= \frac12\left( \mat{u_1+u_3\\2u_2\\u_1+u_3} + \mat{v_1+v_3\\2v_2\\v_1+v_3}\right) \\
+&= \frac12\mat{u_1+u_3\\2u_2\\u_1+u_3} + \frac12\mat{v_1+v_3\\2v_2\\v_1+v_3}\\
+&= \proj_W(\uu) + \proj_W(\vv)
+\end{align*}
+comme requis.
+\item Est-ce que $\proj_W(r\uu) = r\proj_W(\uu)$?  Soient $r\in \R$ et $\uu\in\R^n$.
+Alors
+\begin{align*}
+\proj_W(r\uu) &= \proj_W(ru_1,ru_3,ru_3)\\
+&= \frac12\mat{ru_1+ru_3\\ 2ru_2 \\ ru_1+ru_3}\\
+&= r\left(\frac12\mat{u_1+u_3\\ 2u_2 \\ u_1+u_3}\right)\\
+&= r\proj_W(\uu)
+\end{align*}
+comme requis également.
+\end{enumerate}
+Donc les deux axiomes sont satisfaits et il s'agit bien d'une transformation linéaire !
+\end{myexample}
+
+\begin{myexample} Montrons que la transformation $T \colon \R^2 \to \R^2$ d\'efinie par
+$$T(x,y) = (x+1, xy)$$ n'est PAS une transformation linéaire.
+
+Il suffit de montrer qu'il existe une paire de vecteurs $\uu,\, \vv$ 
+pour lesquels $T(\uu+\vv) \neq T(\uu)+T(\vv)$ ; OU de montrer qu'il existe
+un vecteur $\uu$ et un scalaire $r$ pour lesquels $T(r\uu) \neq rT(\uu)$.
+Montrons en fait un résultat plus fort dans ce cas-ci : ces deux axiomes échouent pour presque tous les vecteurs
+et tous les scalaires !\!!
+
+\begin{enumerate}
+\item D'une part : $$T(\uu + \vv) = T(u_1+v_1,u_2+v_2) = (u_1+v_1+1, (u_1+v_1)(u_2+v_2))\,,$$
+d'autre part :
+$$
+T(\uu) + T(\vv) = (u_1+1,u_1u_2) + (v_1+1, v_1v_2) = (u_1+v_1+2, u_1u_2+v_1v_2)\,.
+$$
+Mais les premières composantes $u_1+v_1+1$ et $u_1+v_1+2$ ne peuvent JAMAIS être égales... Donc on ne peut JAMAIS avoir $T(\uu+\vv) = T(\uu)+T(\vv)$. (D'ailleurs les secondes composantes ci-dessus ne sont égales que si les \og termes croisés\ \fg\ sont nuls.)
+
+Par exemple, on a $T(1,0)=(2,0)$, $T(0,1)=(1,0)$ et $$T(1,1)=(2,1) \not=(2,0)+(1,0)=T(1,0) +T(0,1).$$
+
+Nous pourrions nous arrêter là : nous avons trouvé un exemple qui montre que $T$ n'est pas linéaire. Mais montrons que $T$ ne satisfait pas non plus la deuxième condition.
+\item D'un côté on a :
+$$
+T(r\uu) = T(ru_1,ru_2) = (ru_1+1, (ru_1)(ru_2)) = (ru_1+1, r^2u_1u_2)\,,
+$$
+mais d'un autre côté on a :
+$$
+rT(\uu) = r(u_1+1,u_1u_2) = (ru_1+r, ru_1u_2)\,.
+$$
+L\`a encore, la première composante est égale \`a la seconde seulement quand $r=1$, $r=0$ ou $u_1u_2=0$. 
+
+Donc, par exemple, en prenant $\uu =(1,1)$ et $r=2$, on a : 
+$$T(2(1,1))=T(2,2)=(3, 4)\not= 2(2,1)=2\, T(1,1)\,,$$
+Donc le deuxième critère n'est pas non plus vérifié.
+\end{enumerate}
+Cette transformation n'est donc clairement pas linéaire.
+\end{myexample}
+
+
+\section{Construction et description d'une transformation linéaire}
+
+Pour vérifier qu'une transformation est linéarité, on fait des étapes étrangement similaires au test du sous-espace.  Est-ce la même chose ?  NON : le
+test du sous-espace concerne les ensembles, tandis que les transformations linéaires sont des applications
+entre des espaces vectoriels (ou des sous-espaces).
+
+Le terme \og transformation linéaire\ \fg\ vient (en partie) du fait que
+l'image par $T$ d'une droite passant par l'origine est de nouveau une droite passant par l'origine (ou simplement le singleton $\set{\zero}$).
+
+De plus, en prenant $r=0$, la deuxième propriété de la définition nous dit que toute transformation linéaire vérifie l'égalité:
+$$T(\zero) = \zero\,.$$
+
+Mais en fait, les deux propriétés de la définition impliquent bien plus de choses : elles disent que les combinaisons linéaires sont envoyées sur des combinaisons linéaires, au sens suivant :
+
+\begin{theorem}[Une transformation linéaire est déterminée par son image d'une base]\label{Thm:LTbasis} \index{determination des transformations lineaires a partir d'une base@détermination des transformations linéaires \`a partir d'une base}
+~
+\begin{enumerate}
+\item Soit $T \colon U \to V$ une transformation linéaire et soit
+$\{ \uu_1, \cdots, \uu_n\}$ une base de $U$.  Alors $T$
+est complètement et uniquement déterminée par son image de la base : 
+$$T(\uu_1), \cdots,
+T(\uu_n)\,.$$
+En d'autres termes, si l'on connait seulement les $n$ valeurs de $T$ aux vecteurs de la base $\{ \uu_1, \cdots, \uu_n\}$, alors on connait toutes les valeurs de $T$ partout dans $U$ (donc pas seulement dans la base) ; il n'y qu'une seule transformation linéaire qui vérifie cela.
+\item Soit $\{ \uu_1, \cdots, \uu_n\}$ une base de $U$
+et soit $\{ \vv_1, \cdots, \vv_n\}$ un  {\it ensemble quelconque} de $n$ vecteurs de $V$ (ils ne forment pas forcément une base de $V$, ils peuvent même
+éventuellement être lin\'eairement dépendants ou même tous nuls par exemple si l'on veut !).  Alors il existe une \emph{unique} transformation 
+linéaire $T$ qui satisfait $$T(\uu_i)=\vv_i$$ pour tout $i$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}
+\item Ce que nous voulons dire par \og complètement et uniquement déterminée\ \fg, c'est que nous pouvons
+connaître la valeur de $T(\uu)$ pour n'importe quel $\uu$ de $U$ sans pour autant connaître une formule pour $T$, seulement en fixant les vecteurs $T(\uu_1),\cdots,T(\uu_n)$. C'est fort ! Montrons le résultat. Soit $\uu \in U$ un vecteur arbitraire.  Puisque
+$\{ \uu_1, \cdots, \uu_n\}$ est une base pour $U$, nous pouvons
+écrire
+$$\uu = a_1\uu_1+\cdots+a_n\uu_n$$
+pour certains scalaires $a_1,\dots,a_n\in\R$.
+Alors, en utilisant les deux propriétés d'une transformation linéaire, on en déduit l'expression de $T(\uu)$ :
+$$
+T(\uu) = T(a_1\uu_1+\cdots+a_n\uu_n) = a_1T(\uu_1) + \cdots + a_nT(\uu_n)\,.
+$$
+D'où $T$ est complètement et uniquement déterminée par ces $n$ vecteurs de $V$.
+\item Pour montrer l'existence, nous devons trouver la formule d'une transformation $T$ qui envoie $\uu_i$ à $\vv_i$.
+Utilisons l'idée ci-dessus : pour tout $\uu \in U$, \'ecrivons $\uu = a_1\uu_1+\cdots+a_n\uu_n$.  On d\'efinit alors la transformation $T$ par
+$$
+T(\uu) = a_1\vv_1 + \cdots + a_n\vv_n\,,
+$$
+et on obtient bien une transformation de $U$ à $V$ et on vérifie qu'elle est bien linéaire (essayez-le !). En ce qui concerne l'unicité, elle découle du point précédent.
+\end{enumerate}
+\end{proof}
+
+Ce théorème est très fort !\!!  Faisons une analogie avec de que nous avons vu dans les chapitres précédents : on sait que prouver
+l'existence d'une base pour tout espace vectoriel de dimension finie est très important, ça simplifie les choses
+et ça nous permet de voir tout espace vectoriel de dimension $n$ un peu comme $\R^n$. De même ici, le théorème nous dit que toute
+transformation linéaire n'est en fait qu'une multiplication matricielle, pour une matrice bien choisie, dès lors que les espaces vectoriels sont de dimension finie ! Wow, impressionnant n'est-ce pas ?\!!
+
+\begin{theorem}[La matrice standard d'une transformation linéaire]\index{matrice standard d'une transformation linéaire}\label{thm:standt_mat}
+Soit $T \colon \R^n \to \R^m$ une transformation linéaire.  Alors
+il existe une matrice $A$ de taille $m\times n$ telle que
+$$
+T(\xx) = A\xx
+$$
+pour tout $\xx \in \R^n$.  Plus précisément, si $\{\ee_1, \cdots, \ee_n\}$
+est la base standard de $\R^n$, alors on sait même que l'expression de la matrice $A$ est
+(en écriture par blocs de colonnes) :
+$$
+A = \left[ T(\ee_1) \;  T(\ee_2)\; \cdots \;   T(\ee_n)\right].
+$$
+Cette matrice $A$ ainsi définie est appelée la \defn{matrice standard} de $T$.
+ \end{theorem}
+
+\begin{myexample}
+Comme précédemment, considérons la projection $T = \proj_W$ sur le plan $W = \{(x,y,z)\mid x-z=0\}$. Nous avons vu que $T(u_1, u_2,u_3) = \frac12(u_1+u_3,\,2u_2,\,u_1+u_3)$.
+
+On construit la matrice comme dans le théorème : on calcule ses colonnes  $T(1,0,0) = (\frac12,0,\frac12)$, $T(0,1,0) = (0,1,0)$, $T(0,0,1) = (\frac12,0,\frac12)$, ce qui donne :
+$$
+A = \mat{\frac12 & 0 & \frac12\\ 0 & 1 & 0\\ \frac12 & 0 & \frac12}\,.
+$$
+On vérifie facilement qu'on a bien l'égalité voulue entre $A$ et $T$ :
+$$
+A\uu =  \mat{\frac12 & 0 & \frac12\\ 0 & 1 & 0\\ \frac12 & 0 & \frac12}\mat{u_1\\u_2\\u_3} = \frac12\mat{u_1+u_3\\2u_2\\u_1+u_3} = T(\uu)\,.
+$$
+\end{myexample}
+
+\begin{proof}
+Pour voir pourquoi ce théorème fonctionne, rappelez-vous que si vous avez un vecteur
+$$\uu = \mat{u_1 \\ u_2 \\ \vdots \\ u_n},
+$$
+alors ce vecteur s'écrit aussi en fait comme suit:  
+$$
+\uu = u_1\ee_1 + \cdots + u_n\ee_n.
+$$
+Donc $T(\uu)$, par le Th\'eor\`eme~\ref{Thm:LTbasis}, 
+est uniquement et complètement déterminée par la relation
+$$
+T(\uu) = u_1 T(\ee_1) + \cdots + u_nT(\ee_n).
+$$
+Or, prendre un combinaison linéaire revient à faire une multiplication matricielle. Donc en fait, nous avons:
+$$
+T(\uu) = \left[ T(\ee_1) \;  T(\ee_2)\; \cdots \;   T(\ee_n)\right]
+\mat{u_1 \\ u_2 \\ \vdots \\ u_n} = A\uu\,.
+$$
+D'où le résultat !
+\end{proof}
+
+
+\section{Noyau et image d'une transformation linéaire}
+
+Cette nouvelle interprétation de la projection comme une transformation linéaire
+nous donne des idées plus géométriques sur ce que l'opération de projection
+fait réellement.  Par exemple, la projection sur $W$ annule (\textit{i.e.} elle renvoie
+$\zero$ pour) tout vecteur de $W^\perp$.  Par contre, elle «~couvre complètement $W$~»
+avec son image, dans le sens où chaque vecteur de $W$ est l'image d'au moins un élément de $\R^n$ par la projection.
+
+Pour rendre cela plus clair, nous avons besoin de quelques définitions.
+
+\begin{definition}
+Soit $T \colon U \to V$ une transformation linéaire.  Alors
+\begin{itemize}
+\item Le \defn{noyau} de $T$, noté $\ker(T)$, est l'ensemble de tous les vecteurs de $U$ dont l'image par $T$ est $\zero$;
+c'est-à-dire,
+$$
+\ker(T) = \{ \uu \in U \mid T(\uu) = \zero\}\,.
+$$
+\item L'\defn{image} de $T$, notée $\im(T)$, est l'ensemble de tous les
+vecteurs de $V$ qui sont égaux à $T(\uu)$ pour un certain $\uu \in U$;
+c'est-à-dire,
+$$
+\im(T) = \{ \vv \in V \mid \vv = T(\uu) \; \textrm{pour un certain $\uu\in U$}\}\,.
+$$
+\end{itemize}
+\end{definition}
+
+Notez que $\ker(T)$ et $\im(T)$ sont tous deux des \emph{sous-ensembles} d'espaces vectoriels. Donc
+un première question naturelle est : sont-ils des \emph{sous-espaces} ?  Réponse :  OUI,
+et ce sont même des sous-espaces qu'on connait déjà !
+
+\begin{theorem}[Noyau et image de la matrice standard]\index{noyau de $A$  vs noyau de $T$}\index{image vs noyau de $A$}
+Soit $T \colon \R^n \to \R^m$ une transformation linéaire, et soit $A$ sa 
+matrice standard.  Alors
+$$
+\ker(T) = \ker(A) \qquad \textrm{et} \qquad \im(T) = \im(A)\,.
+$$
+\end{theorem}
+
+La première égalité est claire une fois que l'on se rappelle que $T(\uu) = A\uu$ ;
+et pour la seconde, il faut retourner en arrière et chercher la définition originale de
+$\im(A)$, mais ce n'est pas très dur non plus.
+
+\section{Le Théorème du rang revisit\'e}
+
+Notez que le théorème du rang\footnote{Certains aiment appeler ce théorème le {\it Théorème de la conservation de la dimension}, puisque la dimension du sous-espace envoyé à $\zero$ (le noyau) ajoutée à la dimension de l'image de $T$ (ce qui reste), est la même que la dimension de l'espace de départ ($n=\dim U$). Donc, \og la dimension totale est conservée\ \fg\ en ce sens.} peut \^etre reformul\'e, pour
+une transformation linéaire $T \colon U \to V$, comme suit :
+$$
+\dim(\ker(T)) + \dim(\im(T)) = n,
+$$
+où $n = \dim(U)$. Ainsi, aucune information sur $T$ ne se perd.
+Si par exemple $T$ envoie $U$ sur un sous-espace de $V$ de dimension
+égale à $U$, alors le noyau doit être égal à $\{\zero\}$.
+Par contre, si la dimension de l'image $\dim(\im(T))$ est strictement inférieure à la dimension de l'espace de départ $\dim (U)$, alors les dimensions manquantes sont allées autre part : on les retrouve dans le noyau de $T$. \\
+
+Par exemple, revenons à la projection sur le plan $W$ que nous avons vu
+plus tôt. Elle a un noyau de dimension 1, donn\'e par le sous-espace $W^\perp$,
+et une image de dimension $2$, c'est tout le plan $W$. On a bien le Théorème du rang qui est vérifié dans ce cas: 
+$$2+1=3 = \dim(\R^3)\,.$$
+
+
+Réciproquement, comme on peut penser à $T$ comme à une matrice, une base de $\im(T)$ sera alors également une base de l'espace des colonne $\col(A)$, et vis-versa une base de $\col(A)$ sera alors également une base de $\im(T)$.
+
+\section{Remarques sur la matrice projection}
+Dans les chapitres précédents, lorsque nous avons calculé la projection sur le sous-espace $W$, une de nos méthodes était :
+\begin{enumerate}[(1)]
+\item créez une matrice $B$ telle que $\im(B) = W$;
+\item r\'esoudre le système $(B^TB)\xx = B^T\bb$; 
+\item et enfin en déduire que $\proj_W(\bb) = B\xx$.
+\end{enumerate}
+Résumons ceci différemment :  supposons que $B$ ait des colonnes linéairement indépendantes. Alors $B^TB$ est inversible.  (Ceci était un exercice.)
+Alors on a
+$$
+\proj_W(\bb) = B(B^TB)^{-1}B^T\bb
+$$
+et donc la projection est donnée par la multiplication par la matrice
+$$
+ B(B^TB)^{-1}B^T.
+$$
+Par conséquent, on en déduit que cette derni\`ere matrice est nécessairement la \emph{matrice standard} de $T$!  Vous pouvez
+v\'erifier cela pour l'exemple que nous avions vu.
+
+

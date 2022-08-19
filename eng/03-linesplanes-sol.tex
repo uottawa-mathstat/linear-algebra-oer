@@ -1,0 +1,194 @@
+\begin{sol}{prob03.1}  Solve the following problems using the cross and/or dot products.\medskip
+  
+ 
+(b) Find all vectors in $\R^3$ which are orthogonal to both  $(-1, 1, 5)$ and $(2, 1, 2)$.  \medskip
+
+\soln Such vectors will be parallel to the cross product of these two vectors, which is found to be $(-3, 12, -3)$. Hence $\{(t,\ -4t,\ t)|\ t\in \R\}$ is the solution.
+ 
+\medskip
+
+ 
+
+(d) If $u=(-4,\ 2,\ 7),\ v=(2,\ 1,\ 2)$ and 
+$w=(1,\ 2,\ 3)$, find $u\cdot (v\times w)$. \medskip
+
+\soln This is $(-4,\ 2,\ 7)\cdot (2,\ 1,\ 2)\times (1,\ 2,\ 3)= (-4,\ 2,\ 7)\cdot (-1, -4, 3)=17$.
+% 17
+ \end{sol}
+ 
+\begin{sol}{prob03.2}  Solve the following problems using the appropriate products.\medskip
+
+
+(b) Find the area of the triangle with vertices $A=(-1,\ 5,\
+0)$, $B=(1,\ 0,\ 4)$ and $C=(1,\ 4,\ 0)$ 
+
+\soln This will be $\dfrac12$ the length of the cross product of the two vectors $B-A$ and $C-A$, and so is  $\dfrac12\|(4, 8, 8)\|=6$.  
+%6
+
+\medskip
+(d) Find the volume of the parallelepiped  determined by $u=(1,\ 1,\ 0),\ v=(1,\ 0,\ -1)$ and $w=(1,\ 1,\ 1)$.
+
+\soln This is simply the absolute value of $u \cdot v \times w$ and so is $1$.
+% 1
+
+
+\end{sol} \begin{sol}{prob03.3}  Solve the following problems. \medskip
+
+(a) Find the point of intersection of the plane with Cartesian equation $2x+2y-z=5$,
+and the line with parametric equations $x=4-t,\ y=13-6t,\ z=-7+4t$.  
+
+\soln Once we substitute $x=4-t,\ y=13-6t$ and $ z=-7+4t$ into $2x+2y-z=5$, we can solve for $t$, which we then substitute backinto $x=4-t,\ y=13-6t$ and $ z=-7+4t$ to obtain $(2,\ 1,\ 1)$.\medskip
+%$(2,\ 1,\ 1)$
+
+\medskip
+
+(b) If $L$ is the line passing through $(1,\ 1,\ 0)$ and $(2,\
+3,\ 1)$, find  the point of intersection of $L$ with the plane with Cartesian equation $x+y-z=1$. 
+
+\soln We find the (scalar) parametric equations for the $L$, and then proceed as in part (a) to obtain $(1/2,0,\ -1/2)$
+
+
+\medskip
+
+(d) Do the planes with Cartesian equations $2x-3y+4z=6$ and $4x-
+6y+8z=11$ intersect? 
+
+\soln No, their normals are parallel, so the planes are, but their equations are not multiples of the other.\medskip
+
+\medskip
+
+
+(f) Find the line of intersection of the planes with Cartesian equations $x+11y-4z=40$ and $x -y=-8$. 
+
+\soln A direction vector for this line will be perpendicular to both normal vectors, and so can be obtained as the cross product of these normals, namely $(-4, -4, -12)$. (We will choose $(1,1,3)$ instead.) Now all we need to do is find one point on this line. This is done by substituting $x= y-8$ into $x+11y-4z=40$, and simplifying to obtain $3y-z=12$. Now set $z=0$, to obtain the point $(-4,\ 4,\ 0)$. Hence the line is $\set{(-4,\ 4,\ 0)+ t (1,\ 1,\ 3),\st  t\in \R}$\medskip
+%$(-4,\ 4,\ 0)+ t (1,\ 1,\ 3),\, t\in \R$
+
+ 
+
+\end{sol} 
+\begin{sol}{prob03.4}  Solve the following problems. \medskip
+
+
+
+(b)  Find the distance from the point $Q=(-2,\ 5,\ 9)$ to the plane with Cartesian equation
+$6x+2y-3z=-8$ 
+
+\soln Choose any point $P$ on the plane - say $P=(0,-4,0)$. The the distance between $Q$ and the plane is the length of the projection of $QP$ in the direction of the normal $(6,2,-3)$. This length is $\Big|\dfrac{(Q-P)\cdot(6,2,-3)}{\|(6,2,-3)\|}\Big|=3.$ \medskip
+
+\medskip
+
+
+(d)  Find the distance from the point $P=(8,\ 6,\ 11)$ to the
+line containing the points $Q=(0,\ 1,\ 3)$ and $R=(3,\ 5,\ 4)$. 
+
+\soln Draw a picture: this will be the smaller of the lengths of the vectors $(Q-P)\pm \proj_{R-Q}(Q-P)$. Alternatively, we could solve for $s$ in $0=(R-Q)\cdot(P-(Q+ s (R-Q))$ to find the point $S=Q+ s (R-Q)$ on the line closest to $P$, and then compute $\|P-S \|$. In either case, the answer is $7$. \medskip
+% 7
+
+
+
+
+
+\end{sol} 
+
+
+\begin{sol}{prob03.5}  Find the scalar {\it and} vector parametric forms for  the following lines:
+\medskip
+
+
+(b)  The line containing $(-5,\ 0,\ 1)$ and which is parallel to the two planes with Cartesian equations $2x-4y+z=0$ and  $x-3y-2z=1$. 
+
+\soln This line will be perpendicular to both normals, and so parallel to the cross product of the normals. Hence the scalar parametric form is $x=-5+11t,\, y=5t,\, z=1-2t,\, t\in \R$, and the vector parametric form is $(-5,\ 0,\ 1) + t(11,5,-2)$.\medskip
+
+\end{sol} 
+\begin{sol}{prob03.6}  Find a Cartesian equation for each of the following planes:
+
+\medskip
+
+(b)   The plane parallel to the vector $(1, 1, -2)$  and containing  the points $P=(1, 5, 18)$ and $Q=(4, 2, -6)$  
+$5x - 3y + z = 8$. 
+
+\soln This will be the plane through $P$ with normal parallel to the cross product of $(1, 1, -2)$ and $P-Q$. An easy computation then yields the equation $5x - 3y + z = 8$ (after dividing by 6).
+\medskip
+
+ 
+
+(d)  The plane containing the   two lines 
+$ \set{(t-1,6-t,-4+3t)\st t \in \R}$ and  $ \set{(-3 -4t, 6+ 2t,  7+5t)\st \in \R} $     
+
+\soln Pick a point on either line, say $P=(-1,6,-4)$. Then this will be the plane through $P$ with normal parallel to the cross product of the direction vectors of each line. An easy computation then yields the equation $11x + 17y + 2z = 83$.
+\medskip 
+
+ 
+
+(f) The plane containing the point $P=(1, -1, 2)$  and the line $\set{(4, -1 + 2t,2 + t)\st t \in \R}$.\soln Pick a  point on the line, say $Q=(4,-1,2)$. This will be the plane through $P$ with normal parallel to the cross product of $P-Q$ and a direction vector for the line (say) $(0,2,1)$. One obtains (after division by $\pm3$) the equation $y - 2z =- 5$.\medskip
+% 
+
+ 
+
+(h) The plane containing the point $P=(1,\ -7,\ 8)$ which is perpendicular to the line $\set{(2+2t,7-4t,-3+t\st  t\in \R}.$ \soln This will be the plane through $P$ with normal paralle to a direction vector for the line. One obtains the equation $2x-4y+z=38$.\medskip  
+%$2x-4y+z=38$ 
+
+\end{sol}
+
+ \begin{sol}{prob03.7} Find a vector parametric form  for  the planes with Cartesian equations given as follows. (i.e. find some $a \in H$ and two non-zero, non-parallel vectors $u, v \in \R^3$, parallel to the plane $H$. Then  $H=\set{a+ s u + t v\st s,t \in \R}$.)\medskip
+
+(b)  $x - y - 2z = 4$. 
+
+\soln Take $a=(4,0,0) \in H$. To pick $u$ and $v$, simply choose two (non-zero, non-parallel) vectors perpendicular to a normal vector $(1,-1,-2)$. So  $u= (1,1,0)$  and $v=(2,0,1)$ will do. Then $H=\set{(4,0,0)+ s (1,1,0) + t (2,0,1)\st s,t \in \R}$. (There are of course infinitely many correct answers.)\medskip
+
+
+\end{sol} 
+
+\begin{sol}{prob03.8}  Let $u, v$ and $w$ be any vectors in $\R^3$.  Which  of the following statements could be false, and give an example to illustrate each of your answers.
+ \medskip
+
+(1)  $u\cdot v=v\cdot u$. \soln This is always true.
+
+\medskip
+
+(2)  $u\times v=v\times u$. \soln Since $u\times v=- v\times u$ always holds, this is only true if $u$ and $v$ are parallel or either is zero. So for a counterexample, take $u=(1,0,0)$ and $v=(0,1,0)$. Then $u\times v=(0,0,1)\not=(0,0,-1)=v \times u$
+
+\medskip
+
+(3)  $u\cdot(v+w)=v\cdot u+w\cdot u$. \soln This is always true. 
+
+\medskip
+
+(4)  $(u+2v)\times v=u\times v$. \soln This is always true, since $v\times v=0$ always holds.
+
+\medskip
+
+(5)  $(u\times v)\times w=u\times(v\times w)$. \soln This is almost always false. Indeed by the last question in this set of exercises, it is true only if $(u \cdot w)v- (u\cdot v) w = (w\cdot u) v- (w\cdot v) u \iff (u\cdot v) w = (w\cdot v) u$. So for a counterexample, take $u=(1,0,0)=v$ and $w=(0,1,0)$. Then $(u\times v)\times w=(0,0,0) \not=(0,-1,0)=u\times(v\times w)$.
+
+% 2 \& 5
+
+\end{sol}
+
+
+ \begin{sol}{prob03.9}  Let $u , v $ and $w $ be vectors in $\R^3$.  Which of the following 
+statements are (always) true? Explain your answers, including  giving examples to illustrate statements which could be false. 
+\medskip
+
+(i)  $(u\times v)\cdot v=0$. \soln This is always true: it is a property of the cross product which is easliy checked.
+ 
+\medskip
+
+(ii)  $(v\times u)\cdot v=-1$ \soln This is always false, and the left hand side is always zero. So take $u=v=0$.
+ 
+\medskip
+
+(iii)  $(u\times v)\cdot w$ is the volume of the of the parallelepiped  determined by $u$, $v$ and $w$. \soln Volumes are always positive, so this is only true if $(u\times v)\cdot w= |(u\times v)\cdot w|$; so if $u=(1,0,0), v=(0,1,0)$ and $w=(0,0,-1)$, $(u\times v)\cdot w=-1$, which is not the volume of the unit cube.  
+ 
+\medskip
+
+(iv)  $||u\times v||=||u||\,||v||\,\cos\theta$
+where $\theta$ is the angle between $u$ and $v$. \soln This is only true if $\cos\theta=\sin \theta$, since it is always true that $||u\times v||=||u||\,||v||\,\sin\theta$, where $\theta$ is the angle between $u$ and $v$. So take $u=(1,0,0)$ and $v=(0,1,0)$ for a counterexample.
+
+\medskip 
+
+(v)  $|u\cdot v|=||u||\,||v||\,\cos\theta$
+where $\theta$ is the angle between $u$ and $v$. \soln This is always true.
+ 
+\end{sol} 
+
+

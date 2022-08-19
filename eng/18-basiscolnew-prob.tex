@@ -1,0 +1,114 @@
+
+\section*{Problems}
+\addcontentsline{toc}{section}{Problems}
+
+
+%\centerline{ \bf  Exercises: Subspaces associated to matrices; Row and Column space algorithms}
+\medskip {\bf Remarks:} 
+\begin{enumerate}
+\item A question with an asterisk `$ ^\ast$' (or two) indicates a bonus-level question.
+ \item You must justify all your responses.
+\end{enumerate}
+\bigskip
+
+%\centerline{\bf \underbar{}} 
+
+ \begin{prob} \label{prob16.1} Find   a basis for the row space and column space for each of the matrices below, and check that $\dim \row A= \dim \col A$ in each case.
+\medskip
+\begin{enumerate}[a)]
+\item $\bmatrix 1&1&0&7\cr 0&0&1&5\cr 0&1&1&9 \endbmatrix $
+\medskip 
+%
+\item\sov
+$\bmatrix 1&0&1&2\cr 0&1&1&2\endbmatrix $ 
+\medskip
+%
+\item $\bmatrix 1&2&3\\1&0&1\\ 0&3&3 \endbmatrix $
+\medskip
+%
+\item\sov $\bmatrix 1&2&-1&-1\\2&4&-1&3\\ -3&-6&1&-7\endbmatrix$
+\medskip
+%
+\item $\bmatrix 1& 1& 1& 1\\ 0& 1& 2& 0\\ 1& 1& 2& 0\\ 1& 1& 0& 2 \endbmatrix$ \medskip
+%
+\item\sov $\bmatrix 1 & -1 & 1 & 0 \\
+ 0 & 1 & 1 & 1 \\
+ 1 & 2 & 4 & 3 \\
+ 1 & 0 & 2 & 1\endbmatrix$\medskip
+%
+\item $\bmatrix 1&0&1&3\\ 1&2&-1&-1\\ 0&1&-2&5\endbmatrix $\medskip
+%
+\end{enumerate}
+
+\end{prob} \begin{prob} \label{prob16.2}  Find a basis of the desired type for the given subspace in each case. (Use your work from the previous question where useful.)
+\medskip
+\begin{enumerate}[a)]
+ 
+\item $U=\spn\{(1,1,0), (2,0,3), (3,1,3)\}$: the basis must be a subset of $\set{(1,1,0), (2,0,3), (3,1,3)}$.
+ 
+%
+\medskip
+\item\sov $W=\spn\{(1,2,-1,-1),(2,4,-1,3),(-3,-6,1,-7)\}$: any basis suffices.
+\medskip
+%
+\item $X=\spn\{(1,0,1,1),(1,1,1,1),(1,2,2,0),(1,0,0,2) \}$: the basis must be a subset of the given spanning set.
+\medskip
+% 
+\item\sov $Y=\spn\{(1,0,1,1), (-1,1,2,0), (1,1,4,2), (0,1,3,1)\}$: the basis must be a subset of the given spanning set.
+\medskip
+%
+\item $V=\spn\{(1,0,1,3),(1,2,-1,-1),( 0,1,-2,5)\}$: any basis suffices.
+\medskip
+%
+\end{enumerate}
+
+\end{prob} \begin{prob} \label{prob16.3} Extend each of the bases you obtained in Problem~\ref{prob16.2} to a basis of $\R^n$, where the vectors are from $n=3$ for part (a) and $n=4$ for each of the other parts. ( Solutions are given for parts (b) \sov and (d) \sov.)
+
+\end{prob} \begin{prob} \label{prob16.4} State whether each of the following is (always) true,
+or is (possibly) false.     
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item If you say the statement may be false, you    must give an explicit example.   
+\item If you say the statement is true, you must give a clear explanation -   by quoting a theorem presented in class, or by giving a {\it proof valid for every  case}. 
+\end{enumerate}
+
+\begin{enumerate}[a)]
+\medskip
+\item For all matrices $A$, $\dim \row(A) + \dim \ker(A)= \dim \col(A)$.
+\medskip
+%
+
+\item\sov For some matrices $A$, $\dim \row(A)+ \dim \ker(A)=
+ \dim \col(A)$
+\medskip
+%
+\item For all matrices $A$, $\dim \row(A)+ \dim \ker(A)= m$, where $m$ is the number of rows of $A$.
+\medskip
+%
+\item\sov For all matrices $A$, $\dim \row(A)+ \dim \ker(A)= n$, where $n$ is the number of columns of $A$.
+\medskip
+%
+\item For all $m\times n$ matrices $A$, $\dim \set{A\xx\st \xx\in \R^n} + \dim\set{\xx \in \R^n \st A\xx=\zero}= \rank A$.
+\medskip
+%
+\item\sov For all $m\times n$ matrices $A$, $\dim \set{A\xx\st \xx\in \R^n} + \dim\set{\xx \in \R^n \st A\xx=0}= m$.
+\medskip
+%
+
+\item For all $m\times n$ matrices $A$, $\dim \set{A\xx\st \xx\in \R^n} + \dim\set{\xx \in \R^n \st A\xx=\zero}= n$.
+\medskip
+%
+\item\sov For all $m\times n$ matrices $A$, the dot product of every vector in $\ker(A)$ with any of the rows of $A$ is zero.
+\medskip
+%
+\item$^\ast$ If $A$ and $B$ are two matrices such that $AB$ is defined, then $\dim \row(AB) \leq \dim \row(B)$. 
+\medskip
+%
+\item$^\ast$ If $A$ and $B$ are two matrices such that $AB$ is defined, then $\dim \col(AB) \leq \dim \col(A)$.
+\medskip
+%
+\item$^\ast$ If $A$ and $B$ are two matrices such that $AB$ is defined, then $\rank(AB) \leq \rank A$, and $\rank(AB) \leq \rank B$. 
+%
+\end{enumerate}
+\end{prob}
+

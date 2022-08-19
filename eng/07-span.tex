@@ -1,0 +1,442 @@
+\chapter{The Span of Vectors in a Vector Space} \label{Chapter:06span}
+
+ 
+Our goal here is to render finite the infinite!  All\footnote{but one - $\set{\zero}$}   subspaces are infinite sets of vectors.  We have a couple
+of different ways of describing subspaces, for example:
+\begin{enumerate}
+\item $W = \{ \textrm{things} \st \textrm{conditions on things} \}$
+like $$W = \{ (x,y,z) \in \R^3\st x -2y+ z=0\}.$$
+\item $U = \{ \textrm{things with parameters} \st \textrm{parameters are real}\}$,
+like $$S = \{ \mat{a & b\\ b & d} \st a,b,d \in \R\}.$$
+\end{enumerate}
+Each of (1) and (2) has it own advantages, but here, we'll see
+that you can completely identify a subspace given in the form
+of (2) by just giving a \emph{finite} list of vectors.   
+
+This idea is crucial when it comes time to apply this in the real
+world:  when you need to communicate a subspace (such as an error-correcting
+code), it is WAY easier
+to just send $n$ vectors and then say: ``take their span'', rather
+than to try to digitally communicate an infinite set defined by
+equations and/or parameters.
+
+As an added bonus:  we'll prove another shortcut to testing if
+something is a vector space (and this one is fantastically easy).
+
+\section{Converting sets of form (1) to form (2)}
+
+\begin{myexample} Consider $W = \{ (x,y,z) \st x -2y+ z=0\}$, of the first kind.
+Then
+\begin{align*}
+W &= \{ (x,y,z) \st x -2y+ z=0\}\\
+&= \{ (x,y,z) \st x = 2y-z \}\\
+&= \{ (2y-z,y,z) \st y,z \in \R\}
+\end{align*}
+which is of the second kind.  \end{myexample}
+
+The idea is just:  the ``condition'' can always be rephrased as
+one or more equations; solve the equations in terms of one or
+more variables.  (This is something we'll come back to in Chapter  ~\ref{chapter:11solvingsystems}.)
+
+\section[Describing infinite sets with a finite number of vectors]{Describing (infinite) sets of the form (2) with a finite
+number of vectors}
+
+\begin{myexample} With $W$ as above:
+\begin{align*}
+W &= \{ (2y-z,y,z) \st y,z \in \R\}\\
+&= \{ (2y, y,0) + (-z,0, z) \st y,z\in\R\}\\
+&= \{ y(2,1,0) + z(-1, 0,1) \st y,z\in \R\}
+\end{align*}
+This shows that $W$ is the \emph{set of all linear combinations of $(2,1,0)$
+and $(-1,0,1)$.}  We give it a special name and notation:
+$$
+W = \spn\{ (2,1,0), (-1,0,1)\}
+$$
+which we read out loud as ``$W$ is the span of  $(2,1,0)$
+and $(-1,0,1)$'',  or alternatively ``$W$ is the span of  (the set) $\set{(2,1,0),(-1,0,1)}$''.\end{myexample}
+
+\begin{myexample} Here's another:
+\begin{align*}
+S &= \left\{  \mat{a & b\\ b & d} \Big|\, a,b,d \in \R\right\}\\
+&=  \left\{ a\mat{1&0\\0&0} + b\mat{0&1\\1&0} + d\mat{0&0\\0&1}
+ \Big|\, a,b,d \in \R\right\}\\
+&= \spn\left\{ \mat{1&0\\0&0},\mat{0&1\\1&0},\mat{0&0\\0&1}\right\}.
+\end{align*}
+\end{myexample}
+
+\section{The definition of span}
+Let $\vv_1$, $\vv_2, \cdots, \vv_m$ be vectors in a vector
+space $V$.
+\begin{definition}
+ \begin{enumerate} 
+\item If $a_1, a_2, \cdots, a_m$ are scalars, then the
+vector
+$$
+a_1\vv_1 + a_2\vv_2 + \cdots + a_m \vv_m
+$$
+is called a \defn{linear combination} of $\vv_1, \ldots, \vv_m$.
+\item The set of \emph{all} linear combinations of $\vv_1, \ldots, \vv_m$
+is called the \defn{span of $\vv_1, \ldots, \vv_m$}.  We have
+$$
+\spn\{\vv_1, \ldots, \vv_m\} = \{ a_1\vv_1 + a_2\vv_2 + \cdots + a_m \vv_m \st a_1, \cdots, a_m \in \R\}.
+$$
+In this case, $\{ \vv_1, \ldots, \vv_m\}$ is called the \defn{spanning set}
+for $\spn\{\vv_1, \ldots, \vv_m\}$; or we say that $\{ \vv_1, \ldots, \vv_m\}$
+\defn{spans} $\spn\{\vv_1, \ldots, \vv_m\}$.
+\item A vector space (or subspace) $W$ is \stress{spanned by $\vv_1, \ldots, \vv_m \in W$} if $W = \spn\{\vv_1, \ldots, \vv_m\}$.  Then we say $\{  \vv_1, \ldots, \vv_m\}$ \stress{spans} $W$.
+\end{enumerate}
+\end{definition}
+
+\begin{myexample} Above, we had $W = \spn\{ (2,1,0), (-1,0,1)\}$.  Call these
+two vectors $\vv_1$ and $\vv_2$; then $W$ is spanned by $\vv_1$ and $\vv_2$;
+or $\{ \vv_1,\vv_2\}$ spans $W$. \end{myexample}
+
+\begin{myexample} We also found that $S$ was the span of three matrices; call them
+$M_1$, $M_2$ and $M_3$.  So $S$ is spanned by $M_1, M_2$ and $M_3$; or
+the set $\{M_1, M_2, M_3\}$ spans $S$.
+\end{myexample}
+
+\begin{myexample} A line in $\R^n$ through the origin has the form $L = \{ t\vv \st t\in \R\}$
+So in fact $L = \spn\{ \vv\}$; $L$ is the subspace spanned by the vector
+$\vv$.
+\end{myexample}
+
+\begin{myexample} The vector $(1,2)\in \R^2$ spans the line in direction $(1,2)$.
+The vector $(1,2)$ is an element of $\R^2$ but it \emph{does not
+span all of $\R^2$} because, for example, the vector $(1,3)$ can't
+be obtained from $(1,2)$ using vector operations (linear combinations).
+\end{myexample}
+
+\standout{Caution: If a set of vectors lies in $\R^n$, that
+doesn't mean they span $\R^n$.  The subspace they span is the (usually
+smaller) subspace of all vectors obtainable as linear combinations 
+from your finite set.}
+
+\section{The BIG THEOREM about spans}
+
+\begin{theorem}[Spanned sets are subspaces]\label{span}\index{spanned sets are subspaces} 
+Let $V$ be a vector space. \hfill \\ If $\{ \vv_1, \ldots, \vv_m\} \subset V$, define $U = \spn\{ \vv_1, \ldots, \vv_m\} $.
+Then \begin{enumerate}
+\item $U  $ is \emph{always} a subspace 
+of $V$.
+\item If $W$ is \emph{any} subspace of $V$ which contains all the
+vectors $\vv_1, \ldots, \vv_m$, then in fact $U \subseteq W$ (that is,
+$W$ must also contain every vector in their span).  So $U$ is 
+the \emph{smallest} subspace that contains $\vv_1, \ldots, \vv_m$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+To prove (1), we apply the subspace test.
+\begin{enumerate}
+\item We have $\zero = 0 \vv_1 + \cdots + 0\vv_m \in U$
+\item If $\uu = a_1\vv_1 + \cdots + a_m\vv_m$ and $\ww = b_1\vv_1 + \cdots + b_m\vv_m$, then $\uu + \ww = (a_1+b_1)\vv_1 + \cdots + (a_m+b_m)\vv_m$; and since
+this is a linear combination of $\vv_1, \cdots, \vv_m$, it is again in $U$.
+So $U$ is closed under addition.
+\item If $\uu \in U$ is as above, and $k \in \R$, then 
+$k\uu = (ka_1)\vv_1 + \cdots + (ka_m)\vv_m$, which is again in $U$.  So
+$U$ is closed under scalar multiplication.
+\end{enumerate}
+Thus $U$ is a subspace of $V$.
+
+The proof of (2) is a straightfoward\footnote{If you don't think so, please see the professor!} exercise using the closure properties of subspaces.
+\end{proof}
+
+\begin{myexample} 
+\begin{align*}W &= \{(x,y,x-y) \st x,y\in \R\}\\ &= \set{x\, (1,0,1)+ y\, (0,1,-1)\st x,y \in \R}\\&=\spn\{ (1,0,1),(0,1,-1)\}
+\end{align*}
+Therefore, $W$ is a subspace of $\R^3$. \end{myexample}
+ 
+\standout{If you notice that your set is the \emph{span} of some vectors, 
+then (by this theorem) you automatically know that it is a vector space.  You don't even have to use the subspace test! Theorem \ref{span} guarantees this. (Theorems are great for this kind of time-saving.)} 
+
+\section{Applying Theorem~\ref{span} to identify more subspaces}
+
+Let's see how this theorem can help us.
+
+\begin{myprob} Let $V = F(\R)$ and let $f(x) = \cos(x)$, $g(x) = \sin(x)$.
+Set $W = \spn\{f,g\}$.  This is a subspace of $F(\R)$, by the theorem.
+
+Let's ask ourselves two questions:
+
+(a) Is $\sin(x+1) \in W$?  
+
+(b) Is the constant function $h(x) = 1$ in $W$?
+
+\begin{mysol} For (a), we   recall some nice trig identities for sums of
+angles:
+$$
+\sin(x+1) = \sin(x) \cos(1) + \sin(1) \cos(x) = \sin(1) f(x) + \cos(1) g(x).
+$$
+Since $\sin(1)$ and $\cos(1)$ are just numbers, this is just a linear
+combination of $f$ and $g$. So YES, $\sin(x+1)\in W$.
+
+For (b), we might have no inkling of what to do.  The best way to proceed is to get some
+clues:  plug in a few values of $x$, and see what happens.  That is,
+{\it suppose} $h(x) = a f(x) + b\, g(x)$ for some scalars $a$ and $b$.  Then we'd have:
+\begin{align*}
+\text{For }x = 0&:  h(0) = af(0) + b\,g(0) \Rightarrow 1 = a\\
+\text{For }x=\pi/2 &: 1 = a(0) + b(1) \Rightarrow 1=b
+\end{align*}
+Excellent so far!  So IF it is true that $h(x) = a f(x) + b\, g(x)$ THEN 
+necessarily we must have $a=1$ and $b=1$, so that
+$h(x) = \cos(x) + \sin(x)$.  
+But wait a minute -- if you plug in $x=\pi$, the left hand side
+is $1$, but the right hand side is $-1$.  So this isn't
+true; it's nonsense, a contradiction. Something went wrong. The substitutions are fine, so it must be that our supposition,  our {\it hypothesis} (that $h$
+is a linear combination of $f$ and $g$) must be false.  We can then be sure, as we are that $1\not=-1$, that $h$ is not in $W$.
+\end{mysol}\end{myprob}
+
+\begin{myexample} The set $W = \{ a(1,0,1) + b(2,1,1) \st a,b \geq 0\}$ is NOT
+a subspace\footnote{Why not?}.  It is also NOT the span of the vectors $(1,0,1)$ and
+$(2,1,1)$, because the span is the set of \emph{all} linear combinations
+(not just some).  Moral: the parameters have to be allowed to take
+on all real numbers.
+\end{myexample}
+
+
+For the next example, we need a definition.
+
+
+\begin{definition}
+Given an $n \times n$ (``square'') matrix $A$, define the \defn{trace of $A$}
+to be the sum of the elements on its main diagonal, denoted $\tr(A)$. Then
+$\tr(A) \in \R$.  
+For example,
+$$
+\tr\mat{a & b\\ c& d} = a + d.
+$$
+\end{definition}
+
+\begin{myprob} Show that the set $\mathfrak{sl}_2 = \{ A \in M_{22}(\R) \st \tr(A) = 0\}$
+is a subspace of $M_{22}(\R)$.  (This is in fact an example of a \emph{Lie algebra} \footnote{``Lie" is pronounced ``lee", named after Sophus Lie, a Norwegian mathematician. Lie Algberas, and Lie Groups  --- they're great stuff. No, really --- Sophus Lie's  idea of `continous symmetry', now called Lie Groups was a huge boost to mathematics and the `Lie Algebra' idea is a way of rendering the infinite to the finite, just as we have done with the idea of a spanning set for a subpace. See the wiki page for Sophus Lie. 
+
+
+There's a funny but apocryphal story about a reseacher who was studying Lie Algebras, and  who applied  for, and received, public funding---after proper peer review and also quite proper government review. Also quite properly, a member of Canada's Parliament at the time read part of the proposal. The Honourable Member then asked in the House of Commons  why Canada should support research into `lying'. The meaning of  `Lie' Algebras was afterwards explained to him. }  
+
+\begin{mysol} Using the formula in the definition above, we can rewrite this
+set as
+$$
+\mathfrak{sl}_2 = \left\{ \mat{a & b \\ c & -a} \st a,b,c\in \R\right\}.
+$$
+so 
+$$
+\mathfrak{sl}_2 = \spn\left\{ \mat{1&0\\0&-1}, \mat{0&1\\0&0}, \mat{0&0\\1&0}\right\}.
+$$
+Since $\mathfrak{sl}_2$ is the span of some vectors, it is a subspace.
+\end{mysol}\end{myprob}
+
+
+\begin{myexample} Consider the set of $2\times 2$ \emph{diagonal matrices}, that
+is
+$$
+D_2 = \left\{ \mat{a & 0 \\ 0 & d} \st a,d\in\R \right\}.
+$$
+Since
+$$
+D_2 = \left\{ a\mat{1 & 0 \\ 0 & 0} +d\mat{0 & 0 \\ 0 & 1}  \st a,d\in\R \right\}= \spn\left\{\mat{1 & 0 \\ 0 & 0},\mat{0 & 0 \\ 0 & 1} \right\}
+$$
+we deduce that $D_2$ is a subspace of $M_{22}(\R)$.
+\end{myexample}
+
+
+
+
+\section{So what are all the subspaces of $\R^n$?}
+
+We can answer this geometrically for $n=1,2,3$; and this certainly gives
+us a sense of the answer for all vector spaces.
+
+\subsection{Subspaces of $\R$}
+Well, $\{ \zero\}$ is a subspace of $\R^n$, for any $n$; here,
+$\{0\}$ is a subspace of $\R$.
+
+If $W$ is a subspace of $\R$ which is not the zero subspace, then
+it contains some nonzero element, call it $\xx$.  But then, being
+a subspace, it contains all multiples of $\xx$---and that's all
+of $\R$!
+
+Conclusion:  $\R$ has only two subspaces:  the zero space and the whole thing.
+
+
+\subsection{Subspaces of $\R^2$}
+OK, again we get that $\{ \zero\}$ and $\R^2$ are subspaces of $\R^2$.
+But we also know that lines through the origin are subspaces of $\R^2$.
+
+\begin{theorem}[Subspaces of $\R^2$]\index{subspaces of $\R^2$}\label{subspacesR^2}
+The \emph{only} subspaces of $\R^2$ are
+\begin{itemize}
+\item the zero subspace,
+\item lines through the origin, and
+\item all of $\R^2$.
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+To prove this, start by letting $W$ be an arbitrary subspace of $\R^2$.
+We want to argue that it has no choice but to be one of the above 
+subspaces.
+
+Suppose $W$ is a subspace of $\R^2$.  \\
+If it's not the zero subspace,
+then it contains at least one nonzero vector, call it $\vv$.  \\
+Since $W$ is a subspace, it must contain $\spn\{\vv\}$. (Theorem~\ref{span}, part (2))\\
+Now $\spn\{\vv\}$ is the line through the origin with direction vector $\vv$.\\
+So if $W \neq \spn\{\vv\}$, it must be bigger; it must 
+ contain
+a vector not on that line, call it $\ww$.\\
+Then $\vv$ and $\ww$ are not parallel; they are not \defn{collinear}.\\  
+By (Theorem~\ref{span}, part (2)):  $W$ contains $\spn\{\vv,\ww\}$.\\
+So we are done if we can show that $\spn\{\vv,\ww\} = \R^2$.\\
+
+
+The last step of the proof, as done in class, was entirely geometric.
+Here's an algebraic proof.
+
+Write $\vv = (v_1,v_2)$ and $\ww = (w_1,w_2)$.  Let $(x,y)$
+be some arbitrary element of $\R^2$.  To show that $(x,y) \in \spn\{\vv,\ww\}$,
+we need to show that we can solve the equation
+$$
+\mat{x\\y} = a\mat{v_1\\v_2} + b\mat{w_1\\w_2}
+$$
+for some $a,b \in \R$.  This is the same as solving the linear system for $a$ and $b$:
+\begin{align*}
+av_1+bw_1 &= x\\
+av_2+bw_2 &= y
+\end{align*}
+Since $\vv$ and $\ww$ aren't multiples of each other, the area of the parallelogram they generate  -- $|v_1w_2-v_2w_1|$-- isn't zero. So $v_1w_2-v_2w_1 \not=0$. Then it is easy to
+check that:
+$$
+\mat{x\\y} = \frac{xw_2-yw_1}{v_1w_2-v_2w_1}\vv + \frac{v_1y-v_2x}{v_1w_2-v_2w_1}\ww.
+$$
+That is, these nasty looking fractions are the values of $a$ and $b$ you'd find by
+solving the equation above.
+
+(For example, the first coordinate of the right hand side is
+$$
+\frac{xw_2-yw_1}{v_1w_2-v_2w_1}v_1 + \frac{v_1y-v_2x}{v_1w_2-v_2w_1}w_1 = 
+\frac{(xw_2v_1 - yw_1v_1 + v_1yw_1 - v_2xw_1)}{v_1w_2-v_2w_1} = x
+$$
+which equals the first coordinate of the left hand side.)
+
+\end{proof}
+
+\standout{We learned:  if two nonzero vectors $\vv, \ww \in \R^2$
+are not collinear (not parallel) then $\spn\{\vv,\ww\} = \R^2$!}
+
+\subsection{Subspaces of $\R^3$}
+We know several kinds of subspaces of $\R^3$; but in fact, once again,
+we know them all!
+
+\begin{theorem}[Subspaces of $\R^3$]\index{subspaces of $\R^3$}
+The only subspaces of $\R^3$ are:
+\begin{itemize}
+\item the zero subspace,
+\item lines through the origin,
+\item planes through the origin, and
+\item all of $\R^3$.
+\end{itemize}
+\end{theorem}
+
+This is something we'll be able to prove algebraically later, when
+we have more tools at our disposal.  For now, we can be convinced
+by a geometric argument, along the following lines:
+
+Let $W$ be some arbitrary subspace.  If it's not the zero space,
+then it contains $\spn\{\vv\}$ for some nonzero vector $\vv \in W$.
+If it's not that line, then it contains $\spn\{\vv,\ww\}$ for
+some $\ww\in W$ which is not collinear with $\vv$.  Arguing as
+in $\R^2$, we deduce that this span is a plane through the origin.
+If $W$ is not equal to this plane, then it must contain another
+vector $\uu$ such that $\uu \notin \spn\{\vv,\ww\}$.  With
+the help of another picture, we realize that every vector in
+all of $\R^3$ lies in $\spn\{\vv,\ww,\uu\}$, and so $W = \R^3$.
+
+\section{Final thoughts on spans, and some difficulties}
+
+\begin{myprob} Show that
+\begin{equation}\label{E:spans2}
+\spn\{ (0,1,1),(1,0,1)\} = \spn\{ (1,1,2), (-1,1,0)\}
+\end{equation}
+
+\begin{mysol} Here are two ways of solving this problem. The first one
+only works in $\R^3$, but it's nice and short.  The second one
+works in any vector space.
+
+(1) We saw above that the span of two non-collinear vectors is
+a plane through the origin.  We can get a normal vector to the
+plane using the cross product.  
+
+So:  the plane spanned by $\{ (0,1,1),(1,0,1)\}$ has normal 
+vector $(0,1,1)\times(1,0,1) = (1,1,-1)$; so it is given
+by the normal equation $x+y-z=0$.  The plane spanned by 
+$\{ (1,1,2), (-1,1,0)\}$ has normal vector $ (1,1,2)\times (-1,1,0)=(-2,-2,2)$
+so has equation $-2x-2y+2z=0$.  But these equations describe the same
+plane!  So the two sides of \eqref{E:spans2} are equal.
+
+(2) What if we didn't have some insight into what these subspaces
+were (geometrically speaking)?  Well, we can use our big theorem
+on span.  Namely:
+
+Since 
+$$
+(1,1,2) = 1(0,1,1)+1(1,0,1) \qquad \textrm{and}\qquad 
+(-1,1,0) = 1(0,1,1)-1(1,0,1)
+$$
+we have that $(1,1,2), (-1,1,0) \in \spn\{(0,1,1),(1,0,1)\}$.
+So by the theorem \ref{span}(2), $$\spn\{(1,1,2), (-1,1,0) \} \subseteq \spn\{(0,1,1),(1,0,1)\}.$$
+
+Conversely, since
+$$
+(0,1,1) = \frac12(1,1,2) + \frac12(-1,1,0) \qquad \textrm{and}\qquad 
+(1,0,1) = \frac12(1,1,2) - \frac12(-1,1,0)
+$$
+we have that $(0,1,1),(1,0,1) \in \spn\{(1,1,2), (-1,1,0) \}$, so again by
+Theorem \ref{span}(2), $$\spn\{(0,1,1),(1,0,1)\}\subseteq \spn\{(1,1,2), (-1,1,0) \}.$$
+
+But if you have two sets $W$ and $U$ and you know $W \subseteq U$
+and $U \subseteq W$, then you must have $W = U$.  Hence we know
+the spans are equal.
+\end{mysol}\end{myprob}
+
+
+\standout{A first issue with spans:  it's not easy to tell if
+two subspaces are equal, just based on the spanning sets you're given.}
+
+\begin{myprob} Show that $\spn\{(0,1,1),(1,0,1)\} = \spn\{(0,1,1),(1,0,1),(1,1,2),(-1,1,0)\}$.
+
+\begin{mysol} The short answer:  from the previous problem we know that all the
+vectors on the right hand side lie in the plane $x+y-z=0$, so their
+span can't be any bigger than that (since the span is the SMALLEST
+subspace that contains the given vectors).  And it can't be any
+smaller than the plane, since you can already get every vector
+of that plane via linear combinations of just two of them.  So
+they are equal.
+
+The more complete answer:  use the method (2) above.  Clearly
+$$(0,1,1), (1,0,1) \in \spn\{(0,1,1),(1,0,1),(1,1,2),(-1,1,0)\}$$
+(since they're in the spanning set!), so 
+$$
+\spn\{(0,1,1),(1,0,1)\} \subseteq \spn\{(0,1,1),(1,0,1),(1,1,2),(-1,1,0)\}.
+$$
+On the other hand, using the previous example, we have that every
+one of the 4 vectors on the right hand side lie in the span of
+$(0,1,1)$ and $(1,0,1)$, so we may similarly conclude that
+$$
+\spn\{(0,1,1),(1,0,1),(1,1,2),(-1,1,0)\} \subseteq \spn\{(0,1,1),(1,0,1)\}.
+$$
+Thus, the subspaces are equal. \end{mysol}\end{myprob}
+
+\standout{A second issue:  Having more vectors in a spanning set DOESN'T imply that the subspace they span is any bigger.  You can't judge the size of a subspace by just looking at the spanning set.}
+
+(Or can you?  That's coming up soon.)
+
+
+\section*{Problems}
+\addcontentsline{toc}{section}{Problems}
+%
+% Use the following environment.
+% Don't forget to label each problem;
+% the label is needed for the solutions' environment
+
+

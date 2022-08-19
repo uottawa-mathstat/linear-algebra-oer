@@ -1,0 +1,394 @@
+\chapter{Résolution de systèmes linéaires (suite)}
+\label{chapter:Fr_14-solvingsystems}
+   
+
+Dans le chapitre pr\'ec\'edent nous avons introduit la notion de \emph{matrice augmentée}
+d'un système linéaire ainsi que les trois \emph{opérations élémentaires sur les lignes}
+que nous pouvons effectuer :
+\begin{itemize}
+\item remplacer une ligne par la somme l'elle-même avec un multiple scalaire d'une \emph{autre} ligne;
+\item \'echanger deux lignes;
+\item multiplier une ligne par un scalaire non-nul.
+\end{itemize}
+
+\begin{definition}
+On dit que deux systèmes linéaires sont \emph{équivalents}\index{equivalents@équivalents} s'ils
+ont la même solution générale. 
+\end{definition} 
+
+\begin{theorem}[Systèmes linéaires \'equivalent par rapport aux lignes]\index{syst\`emes lin\'eaires \'equivalents par rapport aux lignes} 
+Si une opération élémentaire sur les lignes est effectuée sur la matrice augmentée d'un système linéaire, alors le système linéaire résultant
+est équivalent à celui de départ.
+\end{theorem}
+
+Par conséquent, nous avons la définition suivante :
+
+\begin{definition}
+On dit que deux matrices $A$ et $B$ sont \emph{équivalentes par rapport aux lignes}\index{equivalentes par rapport aux lignes@équivalentes par rapport aux lignes}, et l'on note $A \sim B$, si la matrice
+$B$ peut être obtenue à partir d'une séquence finie d'opérations élémentaires sur les lignes de $A$.
+\end{definition}
+
+(Cf. l'Exercice \ref{prob12.3} pour voir des propriétés intéressantes de cette relation).
+
+En quoi cela peut-il être utile ?  Ici, nous allons montrer comment \defn{réduire par rapport aux lignes} la matrice augment\'ee de
+N'IMPORTE QUEL système linéaire en une MER. Nous montrerons également comment d\'eduire la solution générale à partir d'une MER.
+
+Rappelez-vous la d\'efinition suivante:\\ 
+Une matrice (augmentée ou non) est en dite \defn{sous forme échelonn\'ee} ou  \defn{matrice \'echelonn\'ee (ME)} si les trois conditions suivantes sont vérifiées :
+\begin{description}
+\item[(1)] Toutes les lignes nulles (avec que des $0$) se trouvent en bas.
+\item[(2)] La première entrée non-nulle de chaque ligne (appelé \emph{\'el\'ement de t\^ete}\index{element de tete@\'el\'ement de t\^ete} ou \defn{pivot}) est égale à $1$.
+\item[(3)] Chaque pivot se trouve à droite comparé au pivot de la ligne au-dessus.
+\end{description}
+Si, en plus, la matrice satisfait la quatrième condition :
+\begin{description}
+\item[(4)] Chaque pivot est la seule entrée non-nulle de sa colonne,
+\end{description}
+alors la matrice est dite \defn{sous forme échelonn\'ee réduite} ou \defn{matrice \'echelonn\'ee r\'eduite (MER)}.
+La colonne qui contient un pivot est dite une \defn{colonne pivot}.
+
+\begin{theorem}[Unicité de la MER]\index{unicité de la MER} 
+Une matrice est équivalente par rapport aux lignes à 
+\emph{une et une seule} MER.  
+\end{theorem}
+
+La position des pivots est aussi unique, mais 
+notez toutefois qu'une matrice peut admettre plusieurs ME différentes : les ME ne sont pas uniques !
+
+\section{Solution g\'en\'erale, MER}
+
+\begin{myexample} Dans l'Exemple~\ref{ex:uniquesol}, nous avions la MER suivante:
+$$
+\mat{1 & 0 & 0 &|& a\\
+0 & 1 & 0 & | & b\\
+0 & 0 & 1 & | & c}\,.
+$$
+Cette matrice augmentée correspond au système linéaire suivant :
+\begin{align*}
+  x &= a\\
+  y &=b\\
+  z &= c \,.
+\end{align*}  
+On obtient alors directement que la solution est unique :
+$$
+S = \big\{ (a,\, b,\, c) \big\}.
+$$
+\end{myexample}
+
+\begin{myexample}  Dans l'Exemple~\ref{ex:inconsis}, en prenant g=1, nous avions la MER suivante:
+$$
+\mat{1 & a & 0 & b & | & d\\
+0 & 0 & 1 & e &|& f\\
+0 & 0 & 0 & 0 &|& 1
+}\,.
+$$
+
+La dernière ligne
+ligne correspond à une équation dégénérée $0=1$, donc le système
+est incompatible et la solution g\'en\'erale est l'ensemble vide: $S=\emptyset$. 
+\end{myexample}
+
+
+\begin{myexample} Dans l'Exemple~\ref{ex:infsol}, nous avions la MER suivante:
+$$
+\mat{1 & a & 0 & 0 & | & c\\
+0 & 0 & 1 & 0 & | & d\\
+0 & 0 & 0 & 1 & | & e}\,.
+$$
+Après résolution, nous n'avions qu'une seule variable libre : $x_2 = s$, et notre
+solution générale était :
+$$
+\left\{  \mat{c\\0\\d\\e}+s\mat{-a\\1\\0\\0} \Bigg|\, s\in\R\right\}\,.
+$$
+\end{myexample}
+
+
+Voici la règle générale pour déduire le \emph{type} de la solution générale à partir de la ME :
+\begin{itemize}
+\item Si votre système contient une équation dégénérée, alors il est incompatible. Autrement dit, si la matrice augmentée contient une ligne telle que
+$$
+\mat{ 0 & 0 & \cdots & 0 &|& b}
+$$
+avec $b\neq 0$, alors STOP !  Le système est incompatible et la solution générale est $S=\emptyset$.
+
+\item Sinon, regardez les colonnes de la matrice coefficients et :  
+\begin{itemize}
+\item si chaque colonne a un pivot, alors il existe une solution unique;
+\item si au moins une colonne n'a pas de pivot, alors vous avez une variable libre et donc une infinité de solutions.\\
+\end{itemize}
+\end{itemize}
+
+La règle générale pour écrire la solution générale d'un système compatible à partir de la MER :
+\begin{itemize}
+\item S'il y a une solution unique, il s'agit du vecteur correspondant \`a la derni\`ere colonne (colonne augmentée, colonne des constantes).
+\item Sinon, identifiez les variables de base et les variables libres, puis :
+\begin{enumerate}
+\item Renommer les variables libres. Utilisez une lettre diff\'ente pour chaque variable libre;
+\item Exprimez les variables de base en fonction des variables libres;
+\item \'Ecrire la solution générale $S$. N'oubliez PAS d'inclure TOUTES vos variables.  (Par exemple : $x_1=2-s$ et $x_3 = 3$ n'est pas une solution générale car vous n'avez pas dit ce que représente $x_2$...)
+\end{enumerate}
+\end{itemize}
+
+\begin{myexample} Supposons que la MER d'un syst\`eme lin\'eaire soit : 
+$$
+\mat{1 & 0 & 0 & 2 & 0 &|& 3\\
+     0 & 0 & 1 & 1 & 0 &|& 4\\
+     0 & 0 & 0 & 0 & 1 &|& 0}\,.
+$$
+Le syst\`eme correspondant est 
+$$
+x_1 + 2x_4 = 3, \quad x_3 + x_4 = 4, \quad x_5=0,
+$$
+et il est compatible. Les variables de base sont $x_1$, $x_3$ et $x_5$
+et les variables libres sont $x_2$ et $x_4$.  On pose 
+$$
+x_2 = s, \qquad x_4 = t
+$$
+et on a donc :
+$$
+\mat{x_1\\x_2\\x_3\\x_4\\x_5} = \mat{3-2x_4\\ x_2 \\ 4-x_4\\ x_4 \\ 0} = \mat{3-2t\\s\\4-t\\t\\0}\,.
+$$
+La solution générale (sous forme vectorielle paramétrique) est donc :
+$$
+S=\left\{ \mat{3\\0\\4\\0\\0}+s\mat{0\\1\\0\\0\\0} + t\mat{-2\\0\\-1\\1\\0} \Bigg|\, s,t\in\R\right\}.
+$$
+\end{myexample}
+
+\section{Réduction d'une matrice en une MER:  algorithme de Gauss-Jordan}
+
+L'algorithme de Gauss-Jordan peut être appliqué à n'importe quelle matrice $C$ et s'arrête en donnant une matrice $\tilde C$ qui est une MER. Il consiste en diverses \'etapes :
+
+
+\begin{description}
+\item[\'Etape 1] Si la matrice $C$ est nulle, on s'arrête et on prendre $\tilde C = C$. Sinon on passe à l'étape 2.
+\item[Étape 2] Localisez la colonne non-nulle la plus à gauche, puis, si n\'ecessaire, \'echanger les lignes jusqu'\`a ce que la premi\`ere ligne ait une entrée non-nulle dans cette colonne. Cette entr\'ee deviendra votre premier pivot après la prochaine \'etape.
+\item [Étape 3] Si la première entr\'ee non-nulle de la première ligne est $a\neq 1$, alors multipliez la premi\`ere ligne par le scalaire non-nul $\frac1a$ afin de la rendre \'egale \`a 1. Cette entrée est votre premier pivot.
+\item [Étape 4] Utilisez les op\'erations \'el\'ementaires sur les lignes pour rendre nulles toutes les entr\'ees non-nulles en-dessous de ce premier pivot.  Autrement dit, si l'on note $a_i$ l'entrée de cette colonne dans la $i-$\`eme ligne, alors effectuez l'op\'eration $-a_i L_1+L_i \to L_i$ pour tout $i$; cette op\'eration annulera le $a_i$.
+\item[Étape 5] Mettez la première ligne en pause, ne l'utilisez plus et ne la modifiez plus jusqu'\`a avoir la ME. Pour cette étape 5, r\'e-appliquez en boucle les \'etapes 1 \`a 4 aux lignes restantes. (S'il n'y a qu'une seule ligne dans la matrice, arrêtez-vous.) Pensez bien à ré-écrire la premi\`ere ligne tout le long de ces \'etapes, bien que vous ne la modifiez plus. 
+\end{description}
+Lorsque ce processus s'arrête après l'étape 5, la matrice que vous avez
+est une ME. 
+Ensuite, pour obtenir la MER, procédez maintenant aux étapes suivantes (bien s\^ur, ces étapes sont à appliquer apr\`es avoir compl\'et\'e les \'etapes 1 \`a 5...) :
+\begin{description}
+\item[Étape 6] Si le pivot {\it le plus à droite} est dans la ligne 1, arrêtez-vous. Sinon, allez \`a l'\'etape suivante.
+\item[Étape 7] Commencez par le pivot le plus à droite -- si tout s'est bien passé aux étapes précédentes, il devrait se trouver dans la dernière ligne non-nulle.  Utilisez-le pour annuler toutes les entrées {\it au-dessus} de lui. Autrement dit, si notre pivot est \`a la $k-$i\`eme ligne et que $a_i\not=0$ est dans la même colonne mais à la $i$-ième ligne (avec $i<k$),
+alors effectuez l'op\'eration $-a_iL_k+L_i \to L_i$, ce qui annulera l'entrée $a_i$. 
+\item[Étape 8] Mettez cette ligne en pause et r\'eappliquer les étapes 6 \`a 7 aux lignes au-dessus d'elle, une \`a la fois, jusqu'à arriver à la première ligne.\\
+\end{description}
+
+
+\begin{myexample} 
+
+Appliquons cet algorithme \`a la matrice suivante:  $$C=
+\mat{0 & 0 & -2 & 2 \\
+ 1 & 1 & 3 & -1 \\
+ 1 & 1 & 2 & 0 \\
+ 1 & 1 & 0 & 2}\,.$$
+
+\begin{description}
+\item[Étape 1] La matrice n'est pas nulle. Donc on continue.
+\item[Étape 2] La colonne non nulle la plus à gauche est la colonne 1. Nous avons besoin d'obtenir une entrée non nulle dans la ligne 1. Pour cela échangeons les lignes 1 et 2 :
+$$\mat{0 & 0 & -2 & 2 \\
+ 1 & 1 & 3 & -1 \\
+ 1 & 1 & 2 & 0 \\
+ 1 & 1 & 0 & 2} 
+\begin{matrix} L_1\leftrightarrow L_2\\ \sim  \end{matrix} 
+\mat{ \pivot & 1 & 3 & -1\\ 
+0 & 0 & -2 & 2 \\
+ 1 & 1 & 2 & 0 \\
+ 1 & 1 & 0 & 2}\,.$$
+\item[Étape 3] Nous n'avons pas besoin de multiplier la première ligne par un scalaire car sa première entr\'ee vaut déjà $1$. C'est donc notre premier pivot !
+\item[Étape 4] Ensuite, nous devons annuler les entr\'ees non-nulles de la colonne de notre pivot. Nous effectuons alors les op\'erations $-L_1+L_3\to L_3$ et $-L_1+L_4\to L_4 $ :
+
+$$\mat{ 1 & 1 & 3 & -1\\ 
+0 & 0 & -2 & 2 \\
+ 1 & 1 & 2 & 0 \\
+ 1 & 1 & 0 & 2}
+\begin{matrix} -L_1+L_3\to L_3 \\ \sim \\-L_1+L_4\to L_4 \end{matrix} 
+\mat{ 
+1 & 1 & 3 & -1\\ 
+0 & 0 & -2 & 2 \\
+0 & 0 & -1 & 1 \\
+0 & 0 & -3 & 3}$$\,.
+
+\item[Étape 5] Nous mettons alors en pause la premi\`ere ligne, et nous ré-appliquons les premières étapes aux lignes suivantes.
+\item[Étape 1] Même sans la première ligne, la matrice n'est pas nulle.
+\item[Étape 2] La colonne non-nulle la plus à gauche est la colonne 3 (rappelez-vous : nous ignorons la ligne 1), et il y a une entrée non-nulle, le $-2$, dans la deuxième ligne (qui est la {\it première} ligne de la matrice restante lorsque nous ignorons la première ligne de la matrice originale). Donc il n'y a rien à faire \`a ce stade et on passe \`a l'\'etape suivante.
+\item[Étape 3] Divisons la ligne 2 par -2 pour obtenir un pivot dans la deuxième ligne.
+$$\mat{1 & 1 & 3 & -1\\ 
+0 & 0 & -2 & 2 \\
+0 & 0 & -1 & 1 \\
+0 & 0 & -3 & 3}
+\begin{matrix} -\frac{1}{2} L_2\to L_2 \\ \sim \end{matrix} 
+\mat{ 
+1 & 1 & 3 & -1\\ 
+0 & 0 & \pivot & -1 \\
+0 & 0 & -1 & 1 \\
+0 & 0 & -3 & 3}\,.$$  
+
+\item[Étape 4] Nous devons annuler les entr\'ees dans la colonne 3 au-dessous de notre nouveau pivot : 
+
+$$\mat{
+1 & 1 & 3 & -1\\ 
+0 & 0 & \pivot & -1 \\
+0 & 0 & -1 & 1 \\
+0 & 0 & -3 & 3}
+\begin{matrix}  L_2+ L_3\to L_3 \\ 3L_2+ L_4\to L_4 \\\sim \end{matrix} 
+\mat{ 
+1 & 1 & 3 & -1\\ 
+0 & 0 & 1 & -1 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0}\,.$$
+\item[Étape 5] Maintenant, mettons en pause les deux premières lignes et re-passons à l'étape 1 pour les lignes suivantes.
+
+\item[Étape 1] Si nous ignorons les deux premières lignes, la matrice résultante est nulle. Nous arrêtons donc le processus ici, nous avons une ME et nous passons directement à l'étape 6.
+
+\item[Étape 6] Le pivot \emph{le plus à droite} est dans la ligne 2. Donc on passe à l'étape 7.
+
+\item[Étape 7] Annulons l'entr\'ee de la premi\`ere ligne au-dessus de ce pivot:  
+
+
+$$\mat{ 
+1 & 1 & 3 & -1\\ 
+0 & 0 & \pivot & -1 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0}
+\begin{matrix}  -3L_2+ L_1\to L_1  \\\sim \end{matrix} 
+\mat{ 
+1 & 1 & 0 & 2\\ 
+0 & 0 & 1 & -1 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0}\,.$$
+
+\item[Étape 8] Mettons en pause la ligne 2 et retournons à l'étape 6.
+\item[Étape 6] Sans tenir compte de la ligne 2, le pivot le plus à droite est dans la ligne 1 ! Donc on s'arrête, et la matrice est maintenant une MER !
+
+\end{description}
+Bien sûr nous ne sommes pas des machines et nous pouvions voir à l'avance à la fin de l'Étape 7 que la matrice était déjà une MER et qu'il n'était donc pas nécessaire d'executer les Étapes 8 et 6. Nous avons fait l'algorithme jusqu'au bout pour illustrer son fonctionnement. 
+\end{myexample}
+
+
+\section{Algorithme de Gauss-Jordan, solution d'un syst\`eme lin\'eaire}
+
+
+Dans cette section nous explorerons comment utiliser l'algorithme de Gauss-Jordan pour résoudre un système linéaire dont la matrice augmentée est $[A|\bb]$ (ici $A$ est la matrice coefficients, et $b$ est le vecteur des constantes). L'idée est la suivante:
+ nous appliquerons l'algorithme de la section précédente sur la matrice augmentée {\it dans le but de r\'eduire seulement la matrice coefficients $A$ en une MER} -- puis on s'arr\^ete.  La matrice augmentée ne sera peut-être pas une MER, mais ce n'est pas grave, ce qu'on veut c'est justement que $A$ soit une MER. Notez que ce processus va changer les entrées de $b$.\\
+
+
+Une fois que la matrice coefficients $A$ est sous la forme d'une MER, la solution générale peut être trouvée très rapidement comme suit :
+\begin{enumerate}
+\item Déterminez si le système est compatible ou non.  S'il est compatible, continuez, sinon arrêtez-vous;
+\item Assignez des paramètres aux variables libres;
+\item Exprimez les variables de base en fonction des paramètres.\\
+\end{enumerate}
+
+Illustrons cela avec un exemple. Rappelez-vous : notre objectif est de r\'eduire la matrice coefficients $A$ en une MER, mais nous appliquons l'algorithme sur  la matrice augmentée toute entière (donc y compris sur $b$). Notez que toutes les décisions de l'algorithme de Gauss-Jordan ne dépendront que du côté de la matrice coefficients. 
+
+\begin{myexample} Nous commençons avec la matrice augmentée suivante : 
+$$
+\mat{0 & 1 & 2 & 3&|& 4\\
+1 & 2 & 3 & 4 &|& 5\\
+2 & 3 & 4 & 5 & |& 6}\,.
+$$
+\begin{description}
+\item[Étape 1]  Ce n'est pas la matrice nulle, donc continuons !
+\item[Étape 2]   C'est la première colonne qui contient le coefficient non-nul le plus à gauche (ça a été le cas aussi dans l'exemple précédent, mais sachez que ce n'est toujours pas le cas !).  
+La première ligne commence par un zéro, nous ne pourrons donc pas le transformer en un pivot. Échangeons donc $L_1$ et $L_2$ par exemple :
+$$\mat{0 & 1 & 2 & 3&|& 4\\
+1 & 2 & 3 & 4 &|& 5\\
+2 & 3 & 4 & 5 & |& 6}
+\mt{L_1 \leftrightarrow L_2 \\ \sim}
+\mat{
+1 & 2 & 3 & 4 &|& 5\\
+0 & 1 & 2 & 3 &|& 4\\
+2 & 3 & 4 & 5 & |& 6}\,.
+$$
+\item[Étape 3] Il y a déjà un pivot. Alors on continue.
+
+\item[Étape 4] Nous devons annuler le $2$ dans $L_3$, en dessous de notre pivot:
+$$\mat{
+\pivot & 2 & 3 & 4 &|& 5\\
+0 & 1 & 2 & 3 &|& 4\\
+2 & 3 & 4 & 5 & |& 6}
+\mt{\\\sim\ \\ -2L_1+L_3\to L_3}
+\mat{
+1 & 2 & 3 & 4 &|& 5\\
+0 & 1 & 2 & 3 &|& 4\\
+0 & -1 & -2 & -3 & |& -4}\,.
+$$
+\item[Étape 5] Nous avons terminé avec la première ligne.
+Retournons donc à l'étape 1 en considérant seulement $L_2$ et $L_3$.
+
+\item[Étape 1]  La matrice formée des lignes $L_2$ et $L_3$ n'est pas la matrice nulle. Donc on continue.
+
+\item[Étape 2] La première colonne non-nulle (en ignorant la ligne 1) est la colonne 2.  L'entrée dans la «~ligne la plus haute~» (qui est $L_2$ cette fois) est non-nulle, donc nous n'avons pas besoin d'échanges de lignes cette fois.
+
+\item[Étape 3]  Le premier coefficient non-nul de la ligne 2 est un $1$, donc c'est d\'ej\`a un pivot.
+
+\item[Étape 4]  On \'elimine le $-1$ de $L_3$ qui est en-dessous de ce pivot:
+$$\mat{
+1 & 2 & 3 & 4 &|& 5\\
+0 & \pivot & 2 & 3 &|& 4\\
+0 & -1 & -2 & -3 & |& -4}
+\mt{\\ \sim \\ L_2+L_3\to L_3}
+\mat{
+1 & 2 & 3 & 4 &|& 5\\
+0 & 1 & 2 & 3 &|& 4\\
+0 & 0 & 0 & 0 & |& 0}\,.
+$$
+\item[Étape 5] Nous avons fini avec la deuxième ligne.  Retournons à l'étape 1, en considérant seulement $L_3$.
+
+\item[Étape 1] C'est la matrice nulle (en ignorant les lignes 1 et 2). Nous passons donc directement à l'étape 6. La matrice coefficient qu'on a obtenu est une ME (et par coïncidence, la matrice augmentée est aussi une ME).
+Nous pouvons déjà voir qu'il y aura une infinité de solutions puisque le système
+est compatible {\it et} que nous avons des variables libres.
+\end{description}
+Pour décrire la solution générale, cherchons la MER :
+\begin{description}
+\item[Étape 6] Le pivot le plus \`a droite n'est pas dans la ligne 1. Donc on continue.
+
+\item[Étape 7] Le pivot le plus à droite est dans la ligne 2 et à la colonne 2.  Annulons donc le $2$ au-dessus de ce pivot :
+$$\mat{
+1 & 2 & 3 & 4 &|& 5\\
+0 & \pivot & 2 & 3 &|& 4\\
+0 & 0 & 0 & 0 & |& 0}
+\mt{-2L_2+L_1\to L_1\\ \sim \\ }
+\mat{
+1 & 0 & -1 & -2 &|& -3\\
+0 & 1 & 2 & 3 &|& 4\\
+0 & 0 & 0 & 0 & |& 0}\,.
+$$
+
+\item[Étape 8] On met en pause la deuxième ligne et on passe à l'étape 6.
+
+\item[Étape 6] Stop ! -- le pivot le {\it plus  à droite} est dans la ligne 1.
+
+\end{description}
+La matrice coefficients $A$ est donc r\'eduite \`a une MER.\footnote{Par coïncidence, la matrice augmentée est aussi une MER. Mais en fait, ce n'est pas si surprenant : cela se produira toujours pour les systèmes compatibles !} Avec un peu d'expérience, vous remarquerez dès l'étape 7 que la matrice obtenue est une MER, sans avoir besoin de faire les étapes 8 et 6 ensuite. \\
+ 
+
+Les variables libres sont $x_3$ et $x_4$. On pose $x_3 = s$ et $x_4 = t$ et alors $x_1 = x_3+2x_4-3 = -3+s+2t$ et
+$x_2 = 4-2x_3-3x_4 = 4-2s-3t$.  La solution générale est donc:
+\begin{align*}
+x_1 &= -3+s+2t\\
+x_2 &= 4-2s-3t\\
+x_3 &= s \\
+x_4 &= t\,,
+\end{align*}
+o\`u $s,t \in \R$.  
+\end{myexample}
+
+
+\section{Concept important : le rang d'une matrice}
+
+Nous avons énoncé le théorème qui dit que la MER d'une matrice \stress{existe} et qu'elle est \stress{unique}. L'existence découle directement de notre algorithme, et même si l'unicité demande un peu plus de d\'eveloppement, elle découle également de notre algorithme. Une fois qu'on sait que la MER est unique, 
+on sait en particulier que le nombre de pivots dans la MER d'une matrice ne dépend pas des choix effectués dans l'algorithme.
+Et ce nombre est en fait très important !
+ 
+\begin{definition}  Le \defn{rang} d'une matrice $A$, noté $\rnk(A)$, est précisément le nombre de pivots dans la MER de $A$, ou de manière équivalente, c'est aussi le nombre de pivots dans n'importe quelle ME de $A$.
+\end{definition}
+
+\emph{Remarque:} Dans l'algorithme de Gauss-Jordan, le passage de la ME \`a la MER ne modifie pas le nombre de pivots ni leur position. C'est pour cela qu'on a ces deux définitions équivalentes.
+
+\begin{myexample} Le rang de $\mat{\pivot & 2  & 3\\ 0 & \pivot  &3}$ est $2$.\end{myexample}
+
+ 

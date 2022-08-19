@@ -1,0 +1,521 @@
+\chapter{Matrix Inverses}
+\label{chapter:18inverses}
+ 
+
+Throughout this chapter, $A$ is assumed to be a square
+$n \times n$ matrix.
+
+
+\section{Matrix multiplication: definition of an inverse}
+
+ 
+
+ 
+We've seen previously that there is profit in looking at 
+an equation like $A\xx=\bb$ in several different
+ways.  By looking at the entries, it becomes a linear
+system; by looking at the column vectors, it becomes a
+vector equation.  But what about looking at it just
+as an algebraic expression, that is, comparing
+$$
+A\xx = \bb \quad \textrm{with}\quad ax=b ?
+$$
+The nice thing about a scalar equation like $ax=b$ ($a,x,b\in \R$)
+is that if $a\neq 0$, then $x = b/a$.  Can we ``divide'' by
+a matrix $A$ to get the same kind of thing?
+
+Hmmm: a major obstacle here:  it is hard enough to multiply by
+matrices; how can you ``undo'' that operation? 
+
+Well, let's rephrase things a bit:  we can think of $x = b/a$ as $x = a^{-1}b$;
+that is, multiply by the inverse, instead of divide.  So now our goal
+is just to find out what ``$A^{-1}$'' is.  That is, we are looking
+for a matrix $A^{-1}$ so that whenever we have
+$$
+A\xx = \bb
+$$
+we can deduce
+$$
+\xx = A^{-1}\bb.
+$$
+For real numbers, the property of the inverse is that $a^{-1} a=1$; so
+that's what we're looking for here.  So our first definition is
+just going to say what we're looking for in an inverse --- but it
+won't tell us how to find it!  We still have to work that part out.
+
+
+Recall that $I_n$ is the $n\times n$ identity matrix; the square matrix
+with $1$s down the diagonal and $0$s everywhere else.  The key property
+of the identity matrix is that it acts just like the number 1 in terms
+of matrix multiplication:  $BI = B$ and $IB = B$.
+
+\begin{definition}
+If $A$ is an $n \times n$ matrix and $B$ is an $n \times n$ matrix such that
+$$
+AB = BA = I
+$$
+then $B$ is called an \defn{inverse} of $A$ and we write $B = A^{-1}$.  In this
+case, $A$ is called \defn{invertible}.
+\end{definition}
+
+\begin{myexample}  Consider $I_n$.  Then $I_n^{-1} = I_n$ since $I_n I_n = I_n$.
+(Good:  $1^{-1} = 1$ in $\R$.) \end{myexample}
+
+\begin{myexample} Let $A = \mat{1 & 1 \\ 2& 3}$ and $B = \mat{3 & -1\\ -2 & 1}$.
+Then 
+$$
+AB = \mat{1 & 1 \\ 2& 3}\mat{3 & -1\\ -2 & 1} = \mat{1&0\\0&1} = I_2
+$$
+and
+$$
+BA = \mat{3 & -1\\ -2 & 1} \mat{1 & 1 \\ 2& 3} = I_2
+$$
+so this proves that $B = A^{-1}$ --- and that $A = B^{-1}$.  (Good:  if $b=1/a$ then $a=1/b$ in $\R$.) \end{myexample}
+
+\section{Finding the inverse of a $2\times 2$ matrix}
+
+\begin{lemma}[Inverse of a $2\times 2$ matrix]\label{inverse2by2}\index{inverse of a $2\times2$ matrix}
+Suppose $A = \mat{a & b \\ c& d}$.  Then if $ad-bc \neq 0$, 
+$$
+A^{-1} = \frac{1}{ad-bc} \mat{d & -b \\ -c & a}.
+$$
+If $ad-bc=0$, then $A$ is not invertible.
+\end{lemma}
+
+\begin{proof}[Idea of proof]
+Write $B$ for this alleged inverse of $A$. 
+By multiplying out, you can see that $AB = BA = I$, so in fact
+yes, $B = A^{-1}$.  
+
+Showing that if $ad-bc=0$ then $A$ is not invertible is more
+work (exercise); you can generalize the following example to
+get the proof.
+
+(You could have found this formula from that surprise equation
+we had a while back (Cayley-Hamilton theorem):  $A^2 - tr(A)A + \det(A)I=0$.)
+\end{proof}
+
+
+\begin{myexample} The matrix $A = \mat{1 & 1\\ 1 & 1}$ is NOT INVERTIBLE.  We
+can show this in a  couple of ways.  (Certainly $ad-bc = 1-1=0$, so
+the lemma says that $A$ should not be invertible.)
+\begin{enumerate}
+\item First way:  directly.  Suppose $B = \mat{a&b\\c&d}$ were an
+inverse of $A$.  Then
+$$
+\mat{1 & 1\\ 1 & 1}\mat{a & b\\c&d} = \mat{a+c & b+d \\ a+c & b+d} \neq \mat{1&0\\0&1}
+$$
+for any choice of $a,b,c,d\in\R$.  So no inverse exists.
+\item Second way:  let $\xx = (1,-1)$.  Then
+$$
+A\xx = \mat{1 & 1 \\ 1 & 1} \mat{1\\-1} = \mat{0\\0} = \zero.
+$$
+Now, suppose to the contrary that $A^{-1}$ were to exist.  Then
+we could multiply the equation $A\xx = \zero$ on the left
+by $A^{-1}$ to get
+$$
+A^{-1} A \xx = A^{-1} \zero.
+$$
+The left side simplifies to $I_2 \xx$, which in turn simplifies to $\xx$;
+ whereas the right side simplifies to $\zero$.  But then that says $\xx=\zero$, which is FALSE.  So our assumption (that $A^{-1}$ existed) must have
+been wrong; we deduce that $A$ is not invertible.
+\end{enumerate}
+ \end{myexample}
+
+This example gives us our first glimpse of the connection with those extra-wonderful
+matrices from before:  If $A$ is invertible, then $A \xx = \zero$ has a unique solution.
+
+
+We have deduced:
+
+
+\begin{lemma}[Inverses and solutions of linear systems]\index{matrix inverses and solutions of linear systems}
+Suppose $A$ is an invertible $n\times n$ matrix.  Then any linear
+system $A\xx = \bb$ 
+\begin{enumerate}[(a)]
+\item is consistent, and
+\item has a unique solution.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Note that $A(A^{-1}\bb) = (AA^{-1})\bb = I_n \bb = \bb$,
+so $\xx = A^{-1}\bb$ is a solution to the system; thus the
+system is consistent.
+
+If $\yy$ is some other solution, meaning $A \yy = \bb$.
+Multiply on the left by $A^{-1}$; this gives
+$$
+A^{-1}A\yy = A^{-1}\bb
+$$
+and again we deduce (from $A^{-1}A = I_n$ this time) that $\yy = A^{-1}\bb$.  So the solution is unique.
+\end{proof}
+
+In particular, this means $A$ satisfies all the criteria of the 
+theorem of last time, because this shows that every linear
+system with coefficient matrix $A$ has a unique solution.
+
+However, do remember that all this is contingent on $A$ being
+invertible; and certainly not all square matrices are invertible.
+
+\section{Algebraic properties of inverses}
+
+\begin{proposition}[Properties of the inverse]\index{properties of matrix inverses} 
+
+If $k \neq 0$ is a scalar, $p$ is an integer and $A$ and $C$ are invertible $n \times n$
+matrices, then so are $A^{-1}$, $A^p$, $A^T$, $kA$, and $AC$. In fact, we have 
+\begin{enumerate}[(1)]
+\item $(A^{-1})^{-1} = A$;
+\item $(A^p)^{-1} = (A^{-1})^p$;
+\item  $(A^T)^{-1} = (A^{-1})^T$;
+\item $(kA)^{-1} = \frac{1}{k} A^{-1}$; and
+\item $(AC)^{-1} = C^{-1}A^{-1}$ --- NOTE ORDER.
+\end{enumerate}
+Furthermore, if $AC$ is invertible, then so are $A$ and $C$.
+\end{proposition}
+
+\begin{proof}[Partial proof]
+Remember that to show a matrix is invertible, you need to find its
+inverse.  Here, we've already given you the inverse, so all that
+you have to do is show that the matrix times the alleged inverse
+equals the identity.  
+
+So for example, $(A^t) (A^{-1})^T = (A^{-1}A)^T$ (by properties of
+products and transposes) and this is $I^T$ (since $A$ is invertible)
+which is $I$.  Same argument for $(A^{-1})^T (A^T) =I$.  So $A^T$
+is invertible and its inverse is the transpose of the inverse of $A$.
+
+Also:  note that $(AC) (C^{-1}A^{-1}) = A (CC^{-1}) A^{-1} = AIA^{-1} = AA^{-1} = I$; so we have the correct formula for the inverse of $AC$.  You see why
+we had to reverse the order to make this work!
+
+For the last statement:  just note that $A^{-1} = C(AC)^{-1}$ (by
+multiplying by $A$) and $C^{-1} = (AC)^{-1} A$.
+\end{proof}
+
+\begin{myprob} Simplify  $(A^T B)^{-1}A^T$.
+
+\begin{mysol} $(A^T B)^{-1}A^T = (B^{-1} (A^T)^{-1}) A^T = B^{-1} ((A^T)^{-1}) A^T) =B^{-1}$
+\end{mysol}\end{myprob}
+
+\begin{myprob} Simplify $(A+B)^{-1}$.
+
+\begin{mysol} TOUGH LUCK.  This can't be simplified, even when $A$ and $B$ are
+numbers.  (Think of $(2+3)^{-1} \neq \frac12 + \frac13$.)  You can't 
+even expect $A+B$ to be invertible; for instance, suppose $A = -B$! \end{mysol}\end{myprob}
+
+
+ 
+
+
+\section{Finding the inverse: general case}
+
+We saw last time that if $A = \mat{a&b\\c&d}$ then $A$ is 
+invertible if and only if $\det(A) = ad-bc \neq 0$, in
+which case
+$$
+A^{-1} = \frac{1}{\det(A)}\mat{d & -b\\-c&a}.
+$$
+(And if $A$ is a $1 \times 1$ matrix, then $A$ is just a real
+number like $A = [a]$, so $A^{-1} = [\frac{1}{a}]$, if $a \neq 0$.)
+
+There exist formulae for $n \times n$ inverses, but they're 
+not very efficient (as we'll eventually see); instead of looking
+for a formula, let's see how what we know about inverses has
+actually given us all we need to be able to calculate them.
+
+
+Remember that to find the inverse of $A$, if it exists, we want to solve
+$$
+A B = I_n
+$$
+for the unknown matrix $B$ (which will be $A^{-1}$, if all goes well).
+
+Write $B$ and $I$ as collections of column vectors:
+$B = [\vv_1 \; \vv_2 \; \cdots \; \vv_n]$ and
+$I_n = [\ee_1 \; \ee_2 \; \cdots \; \ee_n]$.  Note that  $\ee_i$ is
+the $i$th standard basis vector of $\R^n$.
+
+Now multiply:
+$$
+AB = [A\vv_1 \; A\vv_2 \; \cdots \; A\vv_n] = [\ee_1 \; \ee_2 \; \cdots \; \ee_n] = I_n
+$$
+which gives a bunch of matrix equations to solve:
+$$
+A\vv_1 = \ee_1, \; A\vv_2 = \ee_2,\; \cdots, \; A\vv_n = \ee_n.
+$$
+The theorem says that if $A$ is invertible, then each of these
+matrix equations  will
+be consistent and have a unique solution.  And those
+solutions are exactly the columns of $B$!
+
+Great!  To get the inverse of $A$, we have to row reduce each
+of the augmented matrices
+$$
+[A|\ee_1], [A|\ee_2] \cdots , [A|\ee_n];
+$$
+and since each of these will give a unique solution, the RREFs will
+look like
+$$
+[I|\vv_1], [I|\vv_2], \cdots, [I|\vv_n].
+$$
+The final moment of brilliance:  We would do EXACTLY THE SAME row
+operations for each of these linear systems, so why don't we just
+augment $[A|\ee_1 \ee_2 \cdots \ee_n] = [A|I]$?  Then the RREF
+will be $[I|B] = [I|A^{-1}]$.  
+
+\begin{myprob}  Use this method to find the inverse of
+$$
+A = \mat{1 & 1 & 2\\ 1 & 2 & 5\\ 2 & 2 & 5}
+$$
+
+\begin{mysol}  So we're trying to solve $AB = I_3$ for $B$.  Write $B = [ \vv_1\; \vv_2 \; \vv_3]$.  Then
+$$
+AB = [A\vv_1 \; A\vv_2\; A\vv_3]
+$$
+and we want this to be equal to 
+$$
+I_3 = [\ee_1 \; \ee_2\; \ee_3]
+$$
+To solve the three linear systems $A\vv_i = \ee_i$ at once, we
+set up a super-augmented matrix
+$$
+[A \vert \ee_1 \; \ee_2\; \ee_3] = 
+\mat{
+1 & 1 & 2 &|& 1 & 0 & 0\\ 
+1 & 2 & 5 &|& 0 & 1 & 0\\ 
+2 & 2 & 5 &|& 0 & 0 & 1}
+$$
+We will row reduce this and read off the matrix $B$ from the RREF (if
+$A\sim I_3$).
+$$
+[A|I_3] \sim 
+\mat{
+1 & 1 & 2 &|& 1 & 0 & 0\\ 
+0 & 1 & 3 &|& -1 & 1 & 0\\ 
+0 & 0 & 1 &|& -2 & 0 & 1}
+$$
+$$
+\sim \mat{
+1 & 1 & 0 &|& 5 & 0 & -2\\ 
+0 & 1 & 0 &|& 5 & 1 & -3\\ 
+0 & 0 & 1 &|& -2 & 0 & 1}
+\sim
+\mat{
+1 & 0 & 0 &|& 0 & -1 & 1\\ 
+0 & 1 & 0 &|& 5 & 1 & -3\\ 
+0 & 0 & 1 &|& -2 & 0 & 1}
+$$
+Oh, wonderful!  The coefficient matrix reduced to $I_3$, which 
+means that every linear system has a unique solution, and furthermore,
+that solution is now in the corresponding augmented column.  That is
+to say, 
+$$
+\vv_1 = \mat{0\\5\\-2}, \vv_2=\mat{-1\\1\\0}, \vv_3=\mat{1\\-3\\1}.
+$$
+Let's check!  Set 
+$$
+B = \mat{0 & -1 & 1\\ 
+ 5 & 1 & -3\\ 
+ -2 & 0 & 1}
+$$
+and multiply:
+$$
+AB =  \mat{1 & 1 & 2\\ 1 & 2 & 5\\ 2 & 2 & 5}\mat{0 & -1 & 1\\ 
+ 5 & 1 & -3\\ 
+ -2 & 0 & 1} = \mat{1 & 0 & 0\\0&1&0\\ 0 & 0 &1}
+$$
+and
+$$
+BA = \mat{0 & -1 & 1\\ 
+ 5 & 1 & -3\\ 
+ -2 & 0 & 1}\mat{1 & 1 & 2\\ 1 & 2 & 5\\ 2 & 2 & 5}
+= \mat{1 & 0 & 0\\0&1&0\\ 0 & 0 &1}
+$$
+YES!  This is an inverse of $A$ --- and in fact, we've shown it's
+the only inverse of $A$.
+So
+$$
+A^{-1} =  \mat{0 & -1 & 1\\ 
+ 5 & 1 & -3\\ 
+ -2 & 0 & 1}
+$$
+\end{mysol}\end{myprob}
+
+
+Now note that this method tells you exactly when $A$ is invertible!  For suppose 
+$A$ is $n\times n$.
+
+If $A$ does NOT row reduce to the identity matrix in RREF, then $\rnk(A) < n$ and then we know that $A \xx = \bb$ won't have a unique solution, so in particular, $A$ can't be invertible.
+
+On the other hand, if $A$ DOES row reduce to $I_n$, then this method gives
+a matrix $B$ such that $AB = I_n$.  BUT WAIT!  How do we know that
+this matrix also satisfies $BA = I_n$?
+
+\begin{lemma}[One-sided inverses are two-sided inverses]\index{one-sided inverses are two-sided inverses}
+If $A$ and $B$ are $n \times n$ matrices such that  $AB = I_n$, then
+$BA = I_n$.
+\end{lemma}
+
+\begin{proof}
+First let's show that $\rnk(B) = n$.  Namely, suppose $B\xx=\zero$.
+Then 
+\begin{align*}
+A(B\xx) &= A\zero = \zero\\
+(AB)\xx &= I\xx = \xx
+\end{align*}
+but these must be equal, so $\xx=\zero$.  Thus we deduce that
+$\Null(B) = \{\zero\}$ and so $\rnk(B) = n$.
+
+OK, that means we could apply our algorithm to $B$:  $[B | I] \sim \cdots \sim [I | C]$ and get a matrix $C$ such that $BC = I$.
+
+So we have
+\begin{align*}
+A(BC) &= AI = A\\
+(AB)C &= IC = C
+\end{align*}
+and these are equal ($A=C$).  So in fact $BA = I$, as required.
+\end{proof}
+
+We have proven the following theorem.
+
+\begin{theorem}[Finding matrix inverses]\index{finding matrix inverses}
+Suppose $A$ is an $n \times n$ matrix.  If the rank of $A$ is $n$,
+then $A$ is invertible and $A^{-1}$ can be computed by the
+algorithm above, that is, by row reducing
+$$
+[A | I] \sim \cdots \sim [I | A^{-1}].
+$$
+Furthermore, if $\rnk(A) < n$, then $A$ is \stress{not invertible}.
+\end{theorem}
+
+\section{Examples}
+
+\begin{myprob} Find $A^{-1}$, if it exists, where 
+$$
+A = \mat{1 & 2 & 3 \\ 0 & 0 & 1\\ 0 & 0 & 4}
+$$
+
+\begin{mysol} We see directly that $A$ does not have full rank; there can
+be no leading one in the second column.  Hence $A$ is not invertible.
+\end{mysol}\end{myprob}
+
+\begin{myprob} Find $A^{-1}$, if it exists, where 
+$$
+A = \mat{1 & 2 & 3 \\ 0 & 1 & 1\\ 0 & 0 & 1}
+$$
+
+\begin{mysol} This is already in REF and we can see that $\rnk(A) = 3$.
+So we proceed with our algorithm
+$$
+[A|I] = \mat{1 & 2 & 3 &|&1&0&0\\ 0 & 1 & 1&|& 0&1&0\\ 0 & 0 & 1&|&0 & 0 & 1}
+\sim
+\mat{
+1 & 0 & 0 &|& 1 & -2 & -3\\ 
+0 & 1 & 0 &|& 0 & 1 & -1\\ 
+0 & 0 & 1 &|& 0 & 0 & 1}
+$$
+And so $A^{-1} = \mat{1 & -2 & -3\\ 
+ 0 & 1 & -1\\ 
+ 0 & 0 & 1}$
+(CHECK!!). \end{mysol}\end{myprob}
+
+\begin{myprob} Find $A^{-1}$, if it exists, where 
+$$
+A = \mat{2 & 2 & 0 \\ 1 & 1 & 2\\ 1 & -1 & 3}
+$$
+
+\begin{mysol}  We can't tell what $\rnk(A)$ is, off-hand, so we simply proceed
+to the algorithm.  (If at any point we were to see than the rank is too low,
+we would stop and announce that the matrix isn't invertible.)
+$$
+[A|I] = \mat{
+2 & 2 & 0 &|& 1 & 0 & 0\\ 
+1 & 1 & 2 &|& 0 & 1 & 0\\ 
+1 & -1 & 3&|& 0 & 0 & 1}
+$$
+$$
+\sim \mat{
+1 & 1 & 2 &|& 0 & 1 & 0\\ 
+2 & 2 & 0 &|& 1 & 0 & 0\\ 
+1 & -1 & 3&|& 0 & 0 & 1}
+\sim
+\mat{
+1 & 1 & 2 &|& 0 & 1 & 0\\ 
+0 & 0 & -4 &|& 1 & -2 & 0\\ 
+0 & -2 & 1&|& 0 & -1 & 1}
+$$
+$$
+\sim \mat{
+1 & 1 & 2 &|& 0 & 1 & 0\\ 
+0 & -2 & 1&|& 0 & -1 & 1\\
+0 & 0 & -4 &|& 1 & -2 & 0}
+\sim \mat{
+1 & 0 & \frac52 &|& 0 & \frac12 & \frac12\\ 
+0 & 1 & -\frac12 &|& 0 & \frac12 & -\frac12\\
+0 & 0 & 1 &|& -\frac14 & \frac12 & 0}
+$$
+$$
+\sim \mat{
+1 & 0 & 0 &|& \frac58 & -\frac34 & \frac12\\ 
+0 & 1 & 0 &|& -\frac18 & \frac34 & -\frac12\\
+0 & 0 & 1 &|& -\frac14 & \frac12 & 0}
+$$
+So 
+$$
+A^{-1} = \mat{
+  \frac58 & -\frac34 & \frac12\\ 
+ -\frac18 & \frac34 & -\frac12\\
+ -\frac14 & \frac12 & 0} = 
+\frac18\mat{
+5 & -6 & 4\\ 
+-1 & 6 & -4\\ 
+-2 & 4 & 0}
+$$
+(check!)
+\end{mysol}\end{myprob}
+
+\section{Summary:  another condition for our big theorem}
+
+We knew last time that being invertible meant that $A$ had full
+rank; but this method shows the converse is also true.  So 
+our big theorem has become even bigger:
+
+\begin{theorem}[Invertible Matrix Theorem]\index{big theorem}
+Let $A$ be an $n \times n$ matrix.  Then the following statements
+are all equivalent (that is, either all true about $A$ or all
+false about $A$):
+\begin{enumerate}[(1)]
+\item $\rnk(A) = n$.
+\item $A\xx=\zero$ has only the trivial solution.
+\item $A\xx = \bb$ is consistent for all $\bb \in \R^n$.
+\item Every linear system $A\xx=\bb$ has a unique solution.
+\item The RREF of $A$ is $I$.
+\item $\Null(A) = \{0\}$.
+\item $\col(A) = \R^n$.
+\item $\row(A) = \R^n$.
+\item $\rnk(A^T) = n$
+\item The columns of $A$ are linearly independent.
+\item The rows of $A$ are linearly independent.
+\item The columns of $A$ span $\R^n$.
+\item The rows of $A$ span $\R^n$.
+\item The columns of $A$ form a basis for $\R^n$.
+\item The rows of $A$ form a basis for $\R^n$.
+\item $A$ is invertible.
+\item $A^T$ is invertible.
+\end{enumerate}
+\end{theorem}
+
+\begin{myexample} Every statement of the theorem is true for
+$$
+A = \mat{2 & 2 & 0 \\ 1 & 1 & 2\\ 1 & -1 & 3}
+$$
+because we have just seen that it is invertible.
+\end{myexample}
+
+\begin{myexample} Every statement of the theorem is false for
+$$
+A = \mat{1 & 2 & 3\\ 4 & 5 & 6\\ 7 & 8 & 9}
+$$
+(CHECK!).
+\end{myexample}
+

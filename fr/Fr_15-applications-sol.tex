@@ -1,0 +1,163 @@
+
+\begin{sol}{prob13.1} 
+
+ 
+
+(b) Trouvez le rang des matrices coefficients et des matrices augmentées correspondantes aux systèmes linéaires de l'Exercice \ref{prob12.2}.
+
+\soln
+
+ [\ref{prob12.2}(b)] Le rang de la matrice coefficients est 2 et celui de la matrice augmentée est 3. (C'est pourquoi le système linéaire correspondant est incompatible).
+\medskip
+
+[\ref{prob12.2}(d)] Le rang des deux matrices est 3.
+
+\medskip 
+ 
+\end{sol}
+
+\bigskip
+\begin{sol}{prob13.2} Supposez que $a,c\in \R$ et considérez le système linéaire suivant en les variables
+$x,\, y$ et $z$ : 
+$$\begin{matrix}  x&+&y &+&az&=&2\\
+2x&+&y&+&2a z  &=&3\\ 
+3x&+&y &+&3az&=&c\,. \end{matrix} $$
+
+Notez que la solution générale de ce système peut dépendre des
+paramètres $a$ et $c$. \\
+Soit $[\,A\,|\, \bb\,]$ la matrice augmentée de ce système.
+
+\medskip 
+(b)  Trouvez \underbar{toutes} les valeurs de
+$a$ et $c$ pour lesquelles ce syst\`eme: \smallskip
+\begin{enumerate}[(i)]
+ 
+\item admet une solution unique;\smallskip
+\item  admet une infinit\'e de solutions;  \smallskip
+\item  n'admet aucune solution. 
+\end{enumerate}
+\soln  
+
+$$[\,A\,|\, \bb\,] =\bmatrix 1&1&a&|&2\\ 2&1&2a&|&3\\ 3&1&3a&|&c\endbmatrix \sim
+\bmatrix 1&1&a&|&2\\ 0&1&0&|&1\\ 0&0&0&|&c-4\endbmatrix\,. $$
+
+Puisque $\rank A=2<3=\#$ variables, pour {\it toutes} les valeurs de $a$ et $c$, ce système n'admet {\it jamais} une solution unique.
+\smallskip
+
+Pour $c=4$, on a $\rank A=2=\rank[\,A\,|\, \bb\,]$, donc ce système sera compatible et aura une infinité de solutions.
+Notez qu'il y aura exactement $1$ paramètre dans la solution générale (car $\#\text{variables}-\rank A=3-2=1$).
+\smallskip
+
+Pour $c\neq 4$, on a $\rank A=2<3=\rank[\,A\,|\, \bb\,]$, donc ce système sera incompatible.
+\medskip
+
+
+
+\end{sol}
+
+
+\bigskip
+\begin{sol}{prob13.3}  Considérez le réseau routier avec
+intersections A, B, C, D et E ci-dessous.   Les flèches
+indiquent le sens de la circulation le long des routes, la circulation se faisant à sens unique. Les chiffres indiquent le nombre exact de voitures observées entrant ou sortant des intersections A, B, C, D et E pendant une minute.  Chaque
+$x_i$ désigne le nombre inconnu de voitures qui sont passées par les routes correspondantes en une minute.
+$$\xymatrix@=3pt{
+&&&&&&&&&&&&\\ 
+&&&&&&&&&&&&\\
+&&&&&&&&&&&&\\
+&&&&&&&&B\ar[rrdd]^{x_4}\ar[uuu]_{50}&&&&\\ 
+&&&&&&&&&&&&\\
+&&&&&&A\ar[lll]^{60}\ar[rruu]^{x_5}&&&&C\ar[lddd]_{x_3}\ar[llll]_{x_6}&&&&\ar[llll]^{70}\\
+&&&&&&&&&&&&\\
+&&&&&&&&&&&&\\
+&&&&&&&E\ar[luuu]^{x_1}&&D\ar[ll]_{x_2}\ar[dddr]^{60}&&\\  
+&&&&&&&&&&&&\\ 
+&&&&&&&&&&&&\\
+&&&&&&\ar[uuur]^{100}&&&&&&&&\\} 
+$$
+
+(b)~La MER de la matrice augmentée de la question (a) est la suivante: 
+$$ \bmatrix 
+  1 & 0 & 0 & 0 & -1 & 1 &|& 60 \\
+ 0 & 1 & 0 & 0 & -1 & 1 &|& -40 \\
+ 0 & 0 & 1 & 0 & -1 & 1 &|& 20 \\
+ 0 & 0 & 0 & 1 & -1 & 0 &|&  -50 \\
+ 0 & 0 & 0 & 0 & 0 & 0 &|& 0
+\endbmatrix\,.$$ Donnez la solution générale. (Ignorez les contraintes à
+à ce stade.)
+\smallskip
+
+
+\soln La solution g\'en\'erale est: 
+ 
+ 
+\begin{align*} 
+x_1&=60 +s-t&\\
+x_2&=-40 +s-t&\\
+x_3&=20 +s-t& s,t \in \R\\
+x_4&=-50 +s&\\
+x_5&= s &\\
+x_6&=t &
+\end{align*}
+ 
+
+ou bien encore $$\set{(60 +s-t,-40 +s-t,20 +s-t,-50 +s,s,t)\st st,t \in \R}.$$
+
+ 
+
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob13.4}  Pour chacun des énoncés suivants, indiquez s'il est (toujours) vrai
+ou s'il est (possiblement) faux.    
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item Si vous dites que l'affirmation est vraie, vous devez donner une explication claire en r\'ef\'erant \`a un théorème, ou en donnant une {\it preuve valable pour tous les cas}.
+\item Si vous dites que l'affirmation est fausse, vous devez donner un contre-exemple explicite.  
+\end{enumerate}
+\medskip
+
+(b) Tout système non-homogène de 3 équations à 2 inconnues est compatible.
+
+
+\soln Faux, car par exemple, le syst\`eme dont la matrice augment\'ee est 
+$\scriptsize\bmatrix  
+1 & 0 &|& 1 \\
+0 & 1 &|& 0\\
+0 & 0 &|& 1 \endbmatrix$ est incompatible.
+\medskip
+ 
+
+(d) Tout système de 2 équations à 2 inconnues admet une unique solution.
+
+\soln  Faux, car par exemple, le syst\`eme dont la matrice augment\'ee est 
+$\scriptsize\bmatrix  
+1 & 0 &|& 0 \\
+0 & 0 &|& 0\\
+ \endbmatrix$ admet une infinit\'e de solutions, \`a savoir $ \{(0,s) \,|\, s\in \R\}$.
+\medskip
+
+(f) Si la matrice coefficients d'un système linéaire compatible comporte une colonne de zéros, alors le système admet une infinité de solutions.
+
+\soln Ceci est vrai, car la MER de la matrice augmentée aura toujours une colonne de zéros localis\'ee dans la matrice coefficients. Donc (comme on le suppose compatible), il y aura au moins un paramètre dans la solution générale et d'o\`u une infinit\'e de solutions.
+\medskip
+
+(h) Si un système linéaire compatible admet une infinité de solutions, alors il doit y avoir une colonne de zéros dans la MER de la matrice coefficients.
+
+\soln Faux! Pour un contre-exemple, voir question 4 (d).
+\medskip
+ 
+
+(j) Si un système linéaire homogène admet une unique solution, alors ce système comprend le même nombre d'équations que d'inconnues.
+
+\soln Faux, car par exemple, le syst\`eme dont la matrice augment\'ee est  
+$\scriptsize\bmatrix  
+1 & 0 &|& 0 \\
+0 & 1 &|& 0\\
+0 & 0 &|& 0 \endbmatrix$ a une solution unique, la solution triviale $(0,0)$, et pourtant il y a $3$ équations et seulement $2$ inconnues.
+\medskip
+ 
+
+\end{sol}
+

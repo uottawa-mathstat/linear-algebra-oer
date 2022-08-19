@@ -1,0 +1,78 @@
+\begin{sol}{prob08.1} Justifiez vos réponses aux questions suivantes. (Le cadre de travail est un espace vectoriel général $V$.)\medskip
+
+(b) Supposons que $\uu \in \sp{\vv,\ww}$. Montrez soigneusement que $\sp{\vv,\ww}=\sp{\uu,\vv,\ww}$.
+
+\soln On montre, sous l'hypothèse $\uu \in \sp{\vv,\ww}$, les deux inclusions suivantes : 
+$$\sp{\vv,\ww}\subseteq\sp{\uu,\vv,\ww} \quad\quad\text{et}\quad\quad\sp{\uu, \vv,\ww}\subseteq\sp{\vv,\ww}\,.$$
+Tout d'abord, notez qu'il est {\it toujours} vrai que $\sp{\vv,\ww}\subseteq\sp{\uu,\vv,\ww}$, puisque toute combinaison linéaire en $\vv$ et $\ww$, disons $a \vv +b \ww$, $a,b\in \R$, est aussi une combinaison linéaire en $\uu$, $\vv$ et $\ww$. Pour voir cela il suffit d'\'ecrire $a \vv +b \ww = 0\, \uu +a \vv + b \ww$. (Jusqu'ici, nous n'avons pas eu besoin de l'hypothèse $\uu \in \sp{\vv,\ww}$).
+
+Pour montrer l'autre inclusion, nous devons montrer que toute combinaison linéaire en $\uu$, $\vv$ et $\ww$ est également une combinaison linéaire en $\vv$ et $\ww$. Pour cela, nous aurons besoin de l'appartenance $\uu \in \sp{\vv,\ww}$. Supposons avoir une combinaison linéaire quelconque en $\uu$, $\vv$ et $\ww$, disons $a\uu +b\vv +c \ww$ avec $a,b,c \in R$. Puisque $\uu \in \sp{\vv,\ww}$, nous avons également $\uu= d \vv + e \ww$ pour certains scalaires $e, d$. Donc in a  $$a\uu +b\vv +c \ww= a(d \vv + e \ww) + b\vv + c\ww=(b+ad)\vv +(c+ae) \ww,$$ ce qui montre que toute combinaison linéaire simplement en $\uu$, $\vv$ et $\ww$ est également une combinaison linéaire en $\vv$ et $\ww$. Donc $\sp{\uu,\vv,\ww} \subseteq \sp{\vv,\ww}$. CQFD.
+
+(Notez que cette derni\`ere conclusion n'est vraie que si $\uu \in \sp{\vv,\ww}$. Par exemple, si $\uu=(1,0,0)$, $\vv=(0,1,0)$ et $\ww=(0,0,1)$, alors $\R^3=\sp{\uu,\vv,\ww}\not\subset \sp{\vv,\ww}$, car ce dernier est le plan $yz$ et que $\uu$ est parallèle à l'axe des $x$.)
+\medskip
+ 
+
+(d) Supposons que $\sp{\vv,\ww}=\sp{\uu,\vv,\ww}$. Montrer soigneusement que $\set{\uu,\vv,\ww}$ est linéairement dépendant. 
+
+\soln D'apr\`es la question c), on a $\uu \in \sp{\vv,\ww}$. Donc $\uu= a \vv + b \ww$ pour certains scalaires $a, b\in\R$, ce qui est \'equivalent \`a $\uu-a\vv -b\ww=\zero$. On en déduit  que $\set{\uu,\vv,\ww}$ est LD, puisque le coefficient devant $\uu$ dans la relation est $1\not=0$ (quels que soient $a$ et $b$).
+\medskip
+ 
+
+(f) Supposons que $\set{\vv,\ww}$ soit LI et que $\uu \notin \sp{\vv,\ww}$. Montrer soigneusement que $\set{\uu,\vv,\ww}$ est LI.
+
+\soln Supposons que $a \uu + b\vv+ c\ww=\zero$ pour certains scalaires $a,b,c$. Si $a\not=0$, alors on pourrait écrire $\uu= \frac{b}{a} \vv+ \frac{b}{a} \ww$ et donc $\uu \in \sp{\vv,\ww}$ ce qui contredit l'hypothèse  $\uu \notin \sp{\vv,\ww}$. Donc $a$ doit être nul. 
+
+Par conséquent, $a \uu + b\vv+ c\ww=0$ devient  $b\vv+ c\ww=0$. Mais $\set{\vv,\ww}$ est linéairement indépendant, donc la relation doit être trivial et donc $b=c=0$. 
+
+Au final, la relation $a \uu + b\vv+ c\ww=0$ implique (sous l'hypothèse  $\uu \notin \sp{\vv,\ww}$) que $a=b=c=0$. D'o\`u $\set{\uu,\vv,\ww}$ est linéairement indépendant.
+\medskip
+  
+
+(h) Supposons que $\sp{\vv,\ww}\not=\sp{\uu,\vv,\ww}$. Montrez soigneusement que $\uu \notin \sp{\vv,\ww}$.
+
+\soln On utilisera la question (b) ci-dessus pour montrer ceci et on raisonnera par l'absurde.  Supposons que $\uu\in \sp{\vv,\ww}$. D'après la question (b) ci-dessus, on aurait alors $\sp{\vv,\ww}=\sp{\uu,\vv,\ww}$ ce qui contredit l'hypothèse $\sp{\vv,\ww}\not=\sp{\uu,\vv,\ww}$. Donc «~$\uu\in \sp{\vv,\ww}$~» {\it ne peut} être vrai, c'est-à-dire, $\uu\notin \sp{\vv,\ww}$.
+\medskip
+
+\end{sol}
+
+
+\bigskip
+\begin{sol}{prob08.2} Justifiez vos réponses aux questions suivantes : \medskip
+ 
+
+
+(b) Supposons que deux polynômes $p$ et $q$ satisfont $p\not=0$ et $\deg(p) <\deg(q)$. Montrez soigneusement que $\set{p,q}$ est linéairement indépendant.
+
+\soln Notons $n=\deg(p) <\deg(q)=m$ et écrivons $p(x)=a_0+a_1x +\cdots + a_n x^n$ et $q(x)=b_0+b_1x +\cdots + b_m x^m$. Puisque $n=\deg(p) $ et $\deg(q)=m$, nous savons $a_n\not=0$ et $b_m\not= 0$.
+
+Supposons maintenant que $ ap +b q=0$ est le polynôme nul. Alors
+
+$$a(a_0+a_1x +\cdots + a_n x^n) + b(b_0+b_1x +\cdots + b_m x^m)=0 \quad \text{ pour tout } x\in \R \,.$$ 
+Mais on a vu qu'un polynôme non-nul ne peut avoir qu'un nombre fini de racines. Donc le polynôme de l'équation ci-dessus est nécessairement nul. En particulier, le coefficient devant $x^m$ doit être nul. Mais comme $n<m$, ce coefficient est exactement $b \,b_m$, soit $b \,b_m=0$. Puisque $b_m\not= 0$, on en conclut que $b=0$. 
+
+Il nous reste donc l'équation
+
+$$a(a_0+a_1x +\cdots + a_n x^n) =0 \quad \text{ pour tout } x\in \R \,.$$
+
+De m\^eme que précédemment, un polynôme non nul ne peut avoir qu'un nombre fini de racines et donc l'équation pr\'ec\'edente implique c'est le polynôme nul. En particulier, le coefficient devant $x^n$ doit être nul. Donc le produit $a \,a_n$ est nul, ce qui entraine que  $a=0$ car $a_n\not=0$. 
+
+Au final, nous avons donc montré que $ ap +b q=0$ implique $a=b=0$. D'o\`u l'ensemble $\set{p,q}$ est linéairement indépendant.
+
+\medskip
+ 
+
+
+
+(f) $^\ast$ Supposons que $\set{\uu,\vv,\ww}$ est un ensemble de vecteurs dans $\R^3$ tels que $\uu\cdot \vv\times \ww \not=0$. Prouvez soigneusement que $\set{\uu,\vv,\ww}$ est linéairement indépendant.\footnote{ {\it Un argument géométrique impliquant un «~volume~» n'est pas suffisant.} [Indication : rappelez-vous d'abord que l'ensemble $\set{\uu,\vv,\ww}$ est linéairement indépendant ssi aucun des vecteurs n'est une combinaison linéaire des autres. Ensuite, on raisonne par contradiction et on réduit le nombre de cas à vérifier de 3 à 1 en gardant en t\^ete que, pour trois vecteurs quelconques $\vv_1, \vv_2, \vv_3 \in \R^3$, on a $\vv_1\cdot \vv_2\times \vv_3=\vv_3\cdot \vv_1\times \vv_2=\vv_2\cdot \vv_3\times \vv_1$.]} 
+
+\soln On sait que $\set{\uu,\vv,\ww}$ est linéairement indépendant si et seulement si aucun des vecteurs n'est une combinaison linéaire des autres. 
+
+Supposons par l'absurde que $\uu\in \sp{\vv,\ww}$. Donc $\uu= a\vv + b \ww$ pour certains scalaires $a,b \in \R$. On a alors $\uu\cdot \vv\times \ww=(a\vv + b \ww)\cdot \vv\times \ww\not=0$. 
+
+Rappelez-vous que pour trois vecteurs quelconques $\vv_1, \vv_2, \vv_3 \in \R^3$ on a $$\vv_1\cdot \vv_2\times \vv_3=\vv_3\cdot \vv_1\times \vv_2=\vv_2\cdot \vv_3\times \vv_1\,.$$ Donc $\uu\cdot \vv\times \ww=(a\vv + b \ww)\cdot \vv\times \ww =\ww\cdot (a\vv + b \ww)\times \vv=\ww \cdot b\ww \cdot \vv= \vv\cdot \ww \times b\ww=0$. Mais ceci contredit $\uu\cdot \vv\times \ww \not=0$. D'o\`u $\uu\notin \sp{\vv,\ww}$.
+
+Des arguments similaires montrent que $\vv\notin \sp{\uu,\ww}$ et $\ww\notin \sp{\uu,\vv}$. Ainsi on peut conclure que $\set{\uu,\vv,\ww}$ est linéairement indépendant sous l'hypothèse que $\uu\cdot \vv\times \ww \not=0$.
+
+\medskip 
+ 
+\end{sol}

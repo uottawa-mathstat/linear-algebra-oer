@@ -1,0 +1,630 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The Legrand Orange Book
+% LaTeX Template
+% Version 2.4 (26/09/2018)
+%
+% This template was downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Mathias Legrand (legrand.mathias@gmail.com) with modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Compiling this template:
+% This template uses biber for its bibliography and makeindex for its index.
+% When you first open the template, compile it from the command line with the
+% commands below to make sure your LaTeX distribution is configured correctly:
+%
+% 1) pdflatex main
+% 2) makeindex main.idx -s StyleInd.ist
+% 3) biber main
+% 4) pdflatex main x 2
+%
+% After this, when you wish to update the bibliography/index use the appropriate
+% command above and make sure to compile with pdflatex several times
+% afterwards to propagate your changes to the document.
+%
+% This template also uses a number of packages which may need to be
+% updated to the newest versions for the template to compile. It is strongly
+% recommended you update your LaTeX distribution if you have any
+% compilation errors.
+%
+% Important note:
+% Chapter heading images should have a 2:1 width:height ratio,
+% e.g. 920px width and 460px height.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,french]{book} % Default font size
+
+
+%French-specific commands
+%--------------------------------------
+\usepackage{babel}
+\usepackage[autolanguage]{numprint}
+%--------------------------------------
+
+%Hyphenation rules
+%--------------------------------------
+\usepackage{hyphenat}
+%\hyphenation{mathéma-tiques récu-pérer}
+%--------------------------------------
+
+
+\input{fr/Fr_structure.tex} % Insert the commands.tex file which contains the majority of the structure behind the template
+
+%\hypersetup{pdftitle={Title},pdfauthor={Author}} % Uncomment and fill out to include PDF metadata for the author and title of the book
+
+\input{fr/Fr_ourmacros}
+\input{fr/Fr_newmymacroslatexVSF.tex}
+%----------------------------------------------------------------------------------------
+
+
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begingroup
+\thispagestyle{empty} % Suppress headers and footers on the title page
+
+\begin{tikzpicture}[remember picture,overlay,shift=(current page.north west)]
+\begin{scope}[x={(current page.north east)},y={(current page.south west)}]
+\node[inner sep=0pt] (background) at (.5,0.35) {\includegraphics[width=\paperwidth]{img/Planes.jpg}};
+\draw (0.5,0.75) node [fill=ocre!30!white,fill opacity=0.6,text opacity=1,inner sep=1cm]{\Huge\centering\bfseries\sffamily\parbox[c][][t]{\paperwidth}{\centering En avant les espaces vectoriels\\[15pt] % Book title
+{\Large Une introduction \`a  l'alg\`ebre lin\'eaire (Premi\`ere \'edition)}\\[20pt] % Subtitle
+{\small Thierry Giordano, Barry Jessup et Monica Nevins}\\
+{\small Traduit en fran\c{c}ais par Abdelkrim El basraoui}}}; % Author name
+%\draw[thick,red,->,line width=1cm,] (0,0) -- (0.5,0.5) ;
+\end{scope}
+\end{tikzpicture}
+
+%\newpage
+%
+%\begin{tikzpicture}[remember picture,overlay]
+%\node[inner sep=0pt] (background) at (current page.north) {\includegraphics[width=\paperwidth]{img/Planes.jpg}};
+%\draw (current page.south) node [fill=ocre!30!white,fill opacity=0.6,text opacity=1,inner sep=1cm]{\Huge\centering\bfseries\sffamily\parbox[c][][t]{\paperwidth}{\centering Vector Spaces First\\[15pt] % Book title
+%{\Large An Introduction to Linear Algebra (Fourth edition)}\\[20pt] % Subtitle
+%{\small Thierry Giordano, Barry Jessup and Monica Nevins}}}; % Author name
+%\end{tikzpicture}
+%\vfill
+\endgroup
+
+%----------------------------------------------------------------------------------------
+%	COPYRIGHT PAGE
+%----------------------------------------------------------------------------------------
+
+\newpage
+~\vfill
+\thispagestyle{empty}
+
+
+\noindent \textsc{Ce document est disponible \`a:} \href{https://ruor.uottawa.ca/handle/10393/43430?locale=fr}{https://ruor.uottawa.ca/}\\% 
+
+
+\noindent \includegraphics{copyright.jpg}\\ % URL
+
+
+
+\noindent Sauf indication contraire, ce livre est mis à disposition dans le cadre d'une licence Creative Commons de type \href{https://creativecommons.org/licenses/by-nc-sa/4.0/}{Attribution - Pas d’Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0 International (CC BY-NC-SA 4.0)}.  Pour consulter une copie de cette licence, visitez \url{https://creativecommons.org/licenses/by-nc-sa/4.0/}.
+
+Les photos utilisées dans les titres des chapitres sont reproduites avec la permission de l'artiste, Ralph Nevins, \url{ralph.ca}, \href{mailto:ralph@nevins.ca}{ralph@nevins.ca}.
+
+\vspace*{1in}
+
+\noindent \textit{Premi\`ere \'edition fran\c{c}aise, Août 2021}\\
+\textit{Traduction du livre: \og Vector Spaces First: An Introduction to Linear Algebra\ \fg\ (4th Edition), 2021}
+
+
+\smallskip
+Thierry Giordano, email:
+\href{mailto:giordano@uottawa.ca}{giordano@uottawa.ca}
+
+
+
+\smallskip
+Barry Jessup, email:
+\href{mailto:bjessup@uottawa.ca}{bjessup@uottawa.ca}
+
+
+\smallskip
+
+Monica Nevins, email:
+\href{mailto:mnevins@uottawa.ca}{mnevins@uottawa.ca}
+
+\smallskip
+Abdelkrim El basraoui, email:
+\href{mailto:aelbasra@uottawa.ca}{aelbasra@uottawa.ca}
+
+
+%----------------------------------------------------------------------------------------
+%	PREFACE
+%----------------------------------------------------------------------------------------
+
+%\usechapterimagefalse % If you don't want to include a chapter image, use this to toggle images off - it can be enabled later with \usechapterimagetrue
+
+\chapterimage{Ottawa3.jpg}
+% heading image
+
+%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%
+\include{fr/Fr_preface}
+
+%----------------------------------------------------------------------------------------
+%	Acknowledgements
+%----------------------------------------------------------------------------------------
+
+\chapterimage{Delta2.jpg}
+%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%
+\include{fr/Fr_acknow}
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\chapterimage{Rockies.jpg}
+
+\pagestyle{empty} % Disable headers and footers for the following pages
+
+\tableofcontents % Print the table of contents itself
+
+\cleardoublepage % Forces the first chapter to start on an odd page so it's on the right side of the book
+
+\pagestyle{fancy} % Enable headers and footers again
+
+
+%----------------------------------------------------------------------------------------
+%	List of acronyms
+%----------------------------------------------------------------------------------------
+
+\chapterimage{Ottawa4.jpg}
+\include{fr/Fr_acronym}
+
+%%%%----------------------------------------------------------------------------------------
+%%%%	PART I : Algebra and Geometry
+%%%%----------------------------------------------------------------------------------------
+\chapterimage{Ottawa1.jpg} % Table of contents heading image
+%Ottawa1933
+
+\renewcommand{\partintrotext}{L'un des principaux thèmes de l'algèbre linéaire est la généralisation des idées de la géométrie à des dimensions supérieures, en interprétant les idées géométriques de manière algébrique. Réciproquement, on peut aussi voir qu'aborder un problème algébrique avec un point de vue géométrique donne du recule sur les questions algébriques.
+
+\medskip
+
+Nous commençons notre exploration de ces thèmes par l'étude des nombres complexes, puis par une révision de la géométrie vectorielle (dans l'optique d'étendre certaines idées aux dimensions supérieures).}
+
+\part{Alg\`ebre et g\'eom\'etrie}
+
+\input{fr/Fr_01-Complex}
+\input{fr/Fr_01-complex-prob}
+\input{fr/Fr_02-vectors}
+\input{fr/Fr_02-vectors-prob}
+\input{fr/Fr_03-linesplanes}
+\input{fr/Fr_03-linesplanes-prob}
+
+%----------------------------------------------------------------------------------------
+%	PART II : Vector spaces
+%----------------------------------------------------------------------------------------
+
+
+\chapterimage{Montpellier1.jpg}
+
+\renewcommand{\partintrotext}{On a vu que l'algèbre de $\R^2$ et $\R^3$ s'étend facilement à $\R^n$. Alors il est naturel de se demander quels autres types d'objets mathématiques satisfont les mêmes propri\'et\'es algébriques que $\R^n$.   Nous formulerons cette question dans cette
+partie et nous étudierons de nombreux exemples familiers.}
+\part{Espaces vectoriels}
+
+\input{fr/Fr_05-defvectorspaces}
+\input{fr/Fr_05-defvectorspaces-prob}
+\input{fr/Fr_06-subspaces}
+\input{fr/Fr_06-subspaces-prob}
+\input{fr/Fr_07-span}
+\input{fr/Fr_07-span-prob}
+\input{fr/Fr_08-linearindependence}
+\input{fr/Fr_08-linearindependence-prob}
+\input{fr/Fr_09-consequences}
+\input{fr/Fr_09-consequences-prob}
+\input{fr/Fr_10-basisdimension}
+\input{fr/Fr_10-basisdimension-prob}
+\input{fr/Fr_11-dimensiontheorems.tex}
+\input{fr/Fr_11-dimensiontheorems-prob}
+
+%----------------------------------------------------------------------------------------
+%	PART III : Solving linear systems
+%----------------------------------------------------------------------------------------
+
+\chapterimage{France3.jpg}
+
+\renewcommand{\partintrotext}{Nous avons vu comment résoudre un certain nombre de problèmes importants, du moins en théorie. Cependant les calculs nécessaires pour parvenir à la solution --- la résolution de systèmes linéaires --- peuvent \^etre ardus.  Ce dont nous avons besoin, c'est d'un moyen pratique, efficace et syst\'ematique pour résoudre ces systèmes linéaires tout en minimisant le nombre et le coût des calculs \`a effectuer, et pour nous permettre de déduire non seulement l'existence ou non d'une solution, mais aussi leur nombre (\emph{e.g.} nombre de solutions non-triviales).
+
+\medskip
+
+C'est le but et l'objectif de l'algorithme d'élimination de Gauss-Jordan.}
+\part[R\'esolution de syst\`emes lin\'eaires]{Syst\`emes lin\'eaires}
+
+
+\input{fr/Fr_13-solvingsystems}
+\input{fr/Fr_13-solvingsystems-prob}
+\input{fr/Fr_14-solvingsystems}
+\input{fr/Fr_14-solvingsystems-prob}
+\input{fr/Fr_15-applications}
+\input{fr/Fr_15-applications-prob}
+\input{fr/Fr_16-matrixmult}
+\input{fr/Fr_16-matrixmult-prob}
+\input{fr/Fr_17-homogsystems}
+\input{fr/Fr_17-homogsystems-prob}
+\input{fr/Fr_18-basiscolnew}
+\input{fr/Fr_18-basiscolnew-prob}
+\input{fr/Fr_19-wrapupbases}
+\input{fr/Fr_19-wrapupbases-prob}
+\input{fr/Fr_20-inverses}
+\input{fr/Fr_20-inverses-prob}
+
+
+%%----------------------------------------------------------------------------------------
+%%	PART IV: Orthogonality
+%%----------------------------------------------------------------------------------------
+
+\chapterimage{Charleston.jpg}
+%%CharlestonLakesFpano
+
+\renewcommand{\partintrotext}{  Dans cette partie, nous revenons sur certaines idées géométriques que nous n'avons pas abordées depuis la définition des espaces vectoriels abstraits. Nous allons notamment aborder la notion d'orthogonalité. Dans ce cours, nous allons très souvent nous réduire au cas simple du produit scalaire dans $\R^n$, mais en fait tout ce qui est abordé ici peut être appliqué à n'importe quel espace vectoriel, tant qu'il est de dimension finie et qu'il est muni d'un produit scalaire.}
+
+\part{Orthogonalit\'e}
+
+
+\input{fr/Fr_22-orthogproj}
+\input{fr/Fr_22-orthogproj-prob}
+\input{fr/Fr_23-orthogcomp}
+\input{fr/Fr_23-orthogcomp-prob}
+
+
+%%----------------------------------------------------------------------------------------
+%%	PART V: Determinants, Eigen-everything  and Diagonalization
+%%----------------------------------------------------------------------------------------
+
+\chapterimage{Montpellier2.jpg}
+%% MontpellierPark7301
+
+\renewcommand{\partintrotext}{Nous sommes presque prêts à voir l'une des parties les plus utiles de l'algèbre linéaire et dont les applications sont innombrables  : les valeurs propres et les vecteurs propres d'une matrice carrée.  Mais avant cela, nous devons d'abord développer un outil important : le déterminant d'une matrice carrée.}
+
+\part[Déterminant, valeurs et vecteurs propres, diagonalisation]{Déterminant, valeurs propres et vecteurs propres, diagonalisation}
+
+\input{fr/Fr_25-determinants}
+\input{fr/Fr_25-determinants-prob}
+\input{fr/Fr_26-eigensystems}
+\input{fr/Fr_26-eigensystems-prob}
+\input{fr/Fr_27-diag}
+\input{fr/Fr_27-diag-prob}
+
+
+%%----------------------------------------------------------------------------------------
+%%	PART VI: Linear Transformations
+%%----------------------------------------------------------------------------------------
+
+\chapterimage{Pinery.jpg} % Chapter heading image
+%%Pinery20070816.jpg
+
+\renewcommand{\partintrotext}{En mathématiques, quand on étudie un domaine, il est aussi important d'étudier les objets considérés --- les \emph{espaces vectoriels} dans notre cas --- que de comprendre les relations entre ces objets --- les \stress{transformations linéaires} dans notre cas. Ces relations entre les objets doivent être «~compatibles~» avec la structure des objets ; on aura donc quelques contraintes pour définir les transformation linéaires.  Notez que nous avons déjà vu et utilisé plusieurs de transformations linéaires : par exemple la multiplication par une matrice $A$, ou encore la projection sur un sous-espace.}
+
+\part{Transformations linéaires}
+
+
+\input{fr/Fr_29-lineartransformations}
+\input{fr/Fr_29-lineartransformations-prob}
+
+%----------------------------------------------------------------------------------------
+%	PART VII: Solutions
+%----------------------------------------------------------------------------------------
+
+\chapterimage{Ottawa6.jpg}
+\renewcommand{\partintrotext}{Essayez de résoudre chaque exercice avant d'en regarder la solution... Sinon votre raisonnement sera biaisé et vous aurez fort probablement besoin d’un nouvel exercice pour avoir une meilleure compréhension des choses... C'est en forgeant que l'on devient forgeron~!}
+\part{Solutions}
+
+\include{fr/Fr_solutions}
+
+%----------------------------------------------------------------------------------------
+%	References
+%----------------------------------------------------------------------------------------
+
+\chapterimage{Ottawa2.jpg}
+%Ottawa8512
+\chapter*{R\'ef\'erences}
+\addcontentsline{toc}{chapter}{\textcolor{ocre}{R\'ef\'erences}} % Add a references heading to the table of contents
+\input{fr/Fr_ref}
+
+
+%----------------------------------------------------------------------------------------
+%	INDEX
+%----------------------------------------------------------------------------------------
+
+%\chapterimage{Driftwood1.jpg}
+
+
+\cleardoublepage % Make sure the index starts on an odd (right side) page
+\phantomsection
+\setlength{\columnsep}{0.75cm} % Space between the 2 columns of the index
+\addcontentsline{toc}{chapter}{\textcolor{ocre}{Index}} % Add an Index heading to the table of contents
+\printindex % Output the index
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
+
+
+
+
+
+
+
+
+%hereafter is sample code to show off all the features in the style file called structure.tex
+
+\renewcommand{\partintrotext}{This is a variable called partintrotext.}
+\part{Hereafter is text from the style file to show what options we have}
+\chapter{Text Chapter}
+
+\section{Paragraphs of Text}\index{Paragraphs of Text}
+
+\lipsum[1-7] % Dummy text
+
+%------------------------------------------------
+
+\section{Citation}\index{Citation}
+
+This statement requires citation \cite{article_key}; this one is more specific \cite[162]{book_key}.
+
+%------------------------------------------------
+
+\section{Lists}\index{Lists}
+
+Lists are useful to present information in a concise and/or ordered way\footnote{Footnote example...}.
+
+\subsection{Numbered List}\index{Lists!Numbered List}
+
+\begin{enumerate}
+\item The first item
+\item The second item
+\item The third item
+\end{enumerate}
+
+\subsection{Bullet Points}\index{Lists!Bullet Points}
+
+\begin{itemize}
+\item The first item
+\item The second item
+\item The third item
+\end{itemize}
+
+\subsection{Descriptions and Definitions}\index{Lists!Descriptions and Definitions}
+
+\begin{description}
+\item[Name] Description
+\item[Word] Definition
+\item[Comment] Elaboration
+\end{description}
+
+%----------------------------------------------------------------------------------------
+%	CHAPTER 2
+%----------------------------------------------------------------------------------------
+
+\chapter{In-text Elements}
+
+\section{Theorems}\index{Theorems}
+
+This is an example of theorems.
+
+\subsection{Several equations}\index{Theorems!Several Equations}
+This is a theorem consisting of several equations.
+
+\begin{theorem}[Name of the theorem]
+In $E=\mathbb{R}^n$ all norms are equivalent. It has the properties:
+\begin{align}
+& \big| ||\mathbf{x}|| - ||\mathbf{y}|| \big|\leq || \mathbf{x}- \mathbf{y}||\\
+&  ||\sum_{i=1}^n\mathbf{x}_i||\leq \sum_{i=1}^n||\mathbf{x}_i||\quad\text{where $n$ is a finite integer}
+\end{align}
+\end{theorem}
+
+\subsection{Single Line}\index{Theorems!Single Line}
+This is a theorem consisting of just one line.
+
+\begin{theorem}
+A set $\mathcal{D}(G)$ in dense in $L^2(G)$, $|\cdot|_0$.
+\end{theorem}
+
+%------------------------------------------------
+
+\section{Definitions}\index{Definitions}
+
+This is an example of a definition. A definition could be mathematical or it could define a concept.
+
+\begin{definition}[Definition name]
+Given a vector space $E$, a norm on $E$ is an application, denoted $||\cdot||$, $E$ in $\mathbb{R}^+=[0,+\infty[$ such that:
+\begin{align}
+& ||\mathbf{x}||=0\ \Rightarrow\ \mathbf{x}=\mathbf{0}\\
+& ||\lambda \mathbf{x}||=|\lambda|\cdot ||\mathbf{x}||\\
+& ||\mathbf{x}+\mathbf{y}||\leq ||\mathbf{x}||+||\mathbf{y}||
+\end{align}
+\end{definition}
+
+%------------------------------------------------
+
+\section{Notations}\index{Notations}
+
+\begin{notation}
+Given an open subset $G$ of $\mathbb{R}^n$, the set of functions $\varphi$ are:
+\begin{enumerate}
+\item Bounded support $G$;
+\item Infinitely differentiable;
+\end{enumerate}
+a vector space is denoted by $\mathcal{D}(G)$.
+\end{notation}
+
+%------------------------------------------------
+
+\section{Remarks}\index{Remarks}
+
+This is an example of a remark.
+
+\begin{remark}
+The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
+\end{remark}
+
+%------------------------------------------------
+
+\section{Corollaries}\index{Corollaries}
+
+This is an example of a corollary.
+
+\begin{corollary}[Corollary name]
+The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
+\end{corollary}
+
+%------------------------------------------------
+
+\section{Propositions}\index{Propositions}
+
+This is an example of propositions.
+
+\subsection{Several equations}\index{Propositions!Several Equations}
+
+\begin{proposition}[Proposition name]
+It has the properties:
+\begin{align}
+& \big| ||\mathbf{x}|| - ||\mathbf{y}|| \big|\leq || \mathbf{x}- \mathbf{y}||\\
+&  ||\sum_{i=1}^n\mathbf{x}_i||\leq \sum_{i=1}^n||\mathbf{x}_i||\quad\text{where $n$ is a finite integer}
+\end{align}
+\end{proposition}
+
+\subsection{Single Line}\index{Propositions!Single Line}
+
+\begin{proposition}
+Let $f,g\in L^2(G)$; if $\forall \varphi\in\mathcal{D}(G)$, $(f,\varphi)_0=(g,\varphi)_0$ then $f = g$.
+\end{proposition}
+
+%------------------------------------------------
+
+\section{Examples}\index{Examples}
+
+This is an example of examples.
+
+\subsection{Equation and Text}\index{Examples!Equation and Text}
+
+\begin{example}
+Let $G=\{x\in\mathbb{R}^2:|x|<3\}$ and denoted by: $x^0=(1,1)$; consider the function:
+\begin{equation}
+f(x)=\left\{\begin{aligned} & \mathrm{e}^{|x|} & & \text{si $|x-x^0|\leq 1/2$}\\
+& 0 & & \text{si $|x-x^0|> 1/2$}\end{aligned}\right.
+\end{equation}
+The function $f$ has bounded support, we can take $A=\{x\in\mathbb{R}^2:|x-x^0|\leq 1/2+\epsilon\}$ for all $\epsilon\in\intoo{0}{5/2-\sqrt{2}}$.
+\end{example}
+
+\subsection{Paragraph of Text}\index{Examples!Paragraph of Text}
+
+\begin{example}[Example name]
+\lipsum[2]
+\end{example}
+
+%------------------------------------------------
+
+\section{Exercises}\index{Exercises}
+
+This is an example of an exercise.
+
+\begin{exercise}
+This is a good place to ask a question to test learning progress or further cement ideas into students' minds.
+\end{exercise}
+
+%------------------------------------------------
+
+\section{Problems}\index{Problems}
+
+\begin{problem}
+What is the average airspeed velocity of an unladen swallow?
+\end{problem}
+
+%------------------------------------------------
+
+\section{Vocabulary}\index{Vocabulary}
+
+Define a word to improve a students' vocabulary.
+
+\begin{vocabulary}[Word]
+Definition of word.
+\end{vocabulary}
+
+%----------------------------------------------------------------------------------------
+%	PART
+%----------------------------------------------------------------------------------------
+
+\part{Part Two}
+
+%----------------------------------------------------------------------------------------
+%	CHAPTER 3
+%----------------------------------------------------------------------------------------
+
+\chapterimage{Delta3.jpg} % Chapter heading image
+
+\chapter{Presenting Information}
+
+\section{Table}\index{Table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l l l}
+\toprule
+\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
+\midrule
+Treatment 1 & 0.0003262 & 0.562 \\
+Treatment 2 & 0.0015681 & 0.910 \\
+Treatment 3 & 0.0009271 & 0.296 \\
+\bottomrule
+\end{tabular}
+\caption{Table caption}
+\label{tab:example} % Unique label used for referencing the table in-text
+%\addcontentsline{toc}{table}{Table \ref{tab:example}} % Uncomment to add the table to the table of contents
+\end{table}
+
+Referencing Table \ref{tab:example} in-text automatically.
+
+%------------------------------------------------
+
+\section{Figure}\index{Figure}
+
+\begin{figure}[h]
+\centering\includegraphics[scale=0.5]{placeholder.jpg}
+\caption{Figure caption}
+\label{fig:placeholder} % Unique label used for referencing the figure in-text
+%\addcontentsline{toc}{figure}{Figure \ref{fig:placeholder}} % Uncomment to add the figure to the table of contents
+\end{figure}
+
+Referencing Figure \ref{fig:placeholder} in-text automatically.
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\chapter*{Bibliography}
+\addcontentsline{toc}{chapter}{\textcolor{ocre}{Bibliography}} % Add a Bibliography heading to the table of contents
+
+%------------------------------------------------
+
+\section*{Articles}
+\addcontentsline{toc}{section}{Articles}
+\printbibliography[heading=bibempty,type=article]
+
+%------------------------------------------------
+
+\section*{Books}
+\addcontentsline{toc}{section}{Books}
+\printbibliography[heading=bibempty,type=book]

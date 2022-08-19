@@ -1,0 +1,64 @@
+\count58 = 0
+ \countdef\probno=58
+\def\qqq{\advance\probno by 1 {\qq{\the\probno}}}
+
+
+
+% 
+\input xy
+\xyoption{all}
+\def\ex{Exercise }
+\font\realcmr=cmr10
+\overfullrule=0pt
+
+ 
+%FUNCTION NAMES, etc.
+\def\tr{\operatorname{ tr}}
+\def\sup#1{^{\operatorname{#1}}} 
+\def\sub#1{_{\operatorname{#1}}} 
+\def\proj{\operatorname{proj}} 
+\def\im{\operatorname{Im}\,}
+\def\re{\operatorname{Re}\,}
+\def\arg{\operatorname{arg}\,}
+\def\Arg{\operatorname{Arg}\,}
+\def\sp#1{\operatorname{ Vect} \normalsize\{#1\normalsize\}}
+\def\spf#1#2{\operatorname{ Vect}_#1\{#2\}}  
+\def\id{\operatorname{id}}
+\def\sup{\operatorname{sup\,}}
+\def\supp{\operatorname{supp\,}}
+\def\ann{\operatorname{ann\,}}
+\def\col{\operatorname{Col\,}}
+\def\row{\operatorname{Lig\,}}
+\def\inf{\operatorname{inf\,}}
+\def\Hom{\operatorname{Hom\,}}
+\def\End{\operatorname{End\,}}
+\def\Arg{\operatorname{Arg}}
+\def\Log{\operatorname{Log}}
+\def\Res{\operatorname{Res}}
+\def\bd{\operatorname{bd}}
+\def\Bd{\text{bd}}
+\def\inter#1{\overset{\circ}\to{#1}} 
+\def\cl#1{\overline{#1}} 
+\def\Aut{\operatorname{Aut}}
+\def\sgn{\operatorname{sgn}}
+\def\op{\operatorname{op}}
+\def\r{\operatorname{r}}
+\def\p{\operatorname{\partial}}
+\def\lap{\operatorname{\Delta}}
+
+%
+\def\nedots{\mathinner{\mkern2mu\raise1pt\hbox{.}
+						\mkern2mu\raise4pt\hbox{.} \mkern2mu\raise7pt\hbox{.}\mkern1mu}}
+\def\endemo{\hfill\qed\enddemo }
+
+
+%FOR TEACHING 
+
+\def\tbox#1{\Zalpha$\boxed{\text{#1}}$}
+\def\q#1{\noindent {\bf#1.}\phantom{X}}
+\def\qq#1{\bigskip\noindent{\bf#1.}\phantom{.}}
+\def\soln{\medskip{\bf  Solution: }}
+
+
+\def\sov{\hglue-.30em$^{\star}$}
+

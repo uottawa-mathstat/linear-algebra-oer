@@ -1,0 +1,169 @@
+\section*{Problems}
+\addcontentsline{toc}{section}{Problems} 
+
+
+ 
+\begin{enumerate}
+\item A question with an asterisk `$ ^\ast$' (or two) indicates a bonus-level question.
+ \item You must justify all your responses.
+\end{enumerate}
+\smallskip
+
+
+
+ \begin{prob} \label{prob09.1} Give \underbar{two} distinct bases for each of the following subspaces, and hence give the dimension of each subspace.
+\medskip
+
+\begin{enumerate}[a)]
+
+\item  $\set{(2x, x) \in \R^2\st x\in \R}$\medskip
+% no
+
+\item\sov  $\set{(x, y) \in \R^2\st 3x - y=0 }$ \medskip
+%
+
+
+ 
+\item  $\set{(x, y, z) \in \R^3\st x+y-2z=0 }$   \medskip
+%
+
+\item\sov  $\set{(x, y, z, w) \in \R^4\st x-y+z-w=0 }$   \medskip
+%
+
+\item  $\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; b=c\Bigg\}$.\medskip \medskip
+%
+
+\item\sov  $\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; a+d=0\Bigg\}$. \medskip
+%
+
+\item  $\Bigg\{  \bmatrix a&0\\ 0&b\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\;  a, b \in \R\Bigg\}$. \medskip
+%
+
+
+\item\sov  $\Bigg\{  \bmatrix 0&-b\\ -b&0\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; b \in \R\Bigg\}$.      \medskip
+%
+
+\item  $\Bigg\{  \bmatrix a&b\\ c&d\endbmatrix \in \M_{2 \,2}(\R) \;\Bigg|\; a+b+c+d=0\Bigg\}$.      \medskip
+%
+\item\sov  $ \PP_n $.  \medskip
+%
+\item  $ \set{p \in \PP_2 \st  p(2)=0}$.  \medskip
+%
+
+\item\sov  $ \set{p \in \PP_3 \st  p(2)=p(3)=0}$.  \medskip
+%
+
+
+\item  $ \set{p \in \PP_2 \st  p(1)+p(-1)=0}$.      \medskip
+%
+\item\sov  $ \spn\{\sin x, \cos x\}$.      \medskip
+%
+\item  $ \spn\{1, \sin x, \cos x\}$.      \medskip
+%
+ \item\sov  $ \spn\{1, \sin^2 x, \cos^2 x\}$.      \medskip
+%
+
+\item$^\ast$  $\set{(x, x-3) \in \R^2\st x\in \R}$,  equipped with the \underbar{\it non-standard operations:--} Addition: $$(x,y) \tilde+ (x',y')=(x+x', y+y +3).$$ Multiplication of vectors  by  scalars $k\in \R$: 
+$$k \odot (x,y)=(kx, ky+3k-3).$$    
+%
+\item$^\ast$  $\set{(x, y, z) \in \R^3\st x+2y+z=2 }$; $V=\R^3$, \underbar{\it Non-standard operations:--} Addition: $$(x,y,z) \tilde+ (x',y',z')=(x+x', y+y,z+z'-2).$$ Multiplication of vectors  by  scalars $k\in \R$: $$k\odot (x,y,z)=(kx, ky, kz-2k+2).$$\medskip 
+%
+\end{enumerate}
+\emph{Hint for parts (k)\&(l): Recall the Factor/Remainder theorem from high school: if $p$ is a  polynomial in the variable $x$ of degree at least 1,  and $p(a)=0$ for some $a \in \R$, then $p$ has a factor of $x-a$, i.e., $p(x)=(x-a)q(x)$, where $q$ is a polynomial with $\deg(q)=\deg(p)-1$.)}
+
+
+
+\end{prob} \begin{prob} \label{prob09.2} Determine whether   the following  sets are bases of the indicated vector spaces.  
+  
+\begin{enumerate}[a)]
+\medskip
+\item  $\set{(1,2)} $; ($\R^2$) \medskip
+% yes
+\item\sov $\set{(1,2), (-2,-4)} $; ($\R^2$).\medskip
+% no
+
+\item $\set{(1,2), (3,4)} $; ($\R^2$).\medskip
+% no
+
+\item\sov $\set{(1,2), (3,4), (0,0)} $; ($\R^2$).\medskip
+% no
+
+\item  $\set{(1,2,3), (4,8,6)}$; ($\R^3$). \medskip
+%
+
+\item\sov $\set{(1,2,3), (4,8,7)}$; ($\R^3$).\medskip
+%
+
+\item $\set{(1,2,3), (4,8,7), (3,6,4)}$; ($\R^3$).\medskip
+%
+\item\sov $\set{(1,0,1,0), (0,1,0,1)}$; ($\R^4$).\medskip
+%
+
+\item  $\Big\{\bmatrix 1&0\\1&2\endbmatrix, \bmatrix 0&1\\0&1\endbmatrix \Big\}$; ($\M_{2 \,2}$)\medskip
+%
+
+\item\sov  $\Big\{\bmatrix 1&0\\1&2\endbmatrix, \bmatrix 0&1\\0&1\endbmatrix , \bmatrix 1&-2\\1&0\endbmatrix \Big\}$; ($\M_{2 \,2}$)\medskip
+%
+
+\item  $\Big\{\bmatrix 1&0\\0&0\endbmatrix, \bmatrix 0&1\\0&0\endbmatrix,\bmatrix 0&0\\1&0\endbmatrix,\bmatrix 0&0\\0&1\endbmatrix \Big\}$; ($\M_{2 \,2}$)\medskip
+%
+ 
+\item  $\set{1, 1-x, 1-2x}$; ($\PP_2$). \medskip
+%
+\item\sov  $\set{1, 1+x, x^2}$; ($\PP_2$). \medskip 
+%
+\item  $\set{ \sin x,  \cos x}$; ($\F(\R)$). \medskip  
+%
+\item\sov  $\set{1, \sin x, 2 \cos x}$; ($\F(\R)$). \medskip  
+%
+\item  $\set{2, 2\sin^2 x,  3\cos^2 x}$; ($\F(\R)$). \medskip  
+%
+\item$^{\ast\ast}$ $\set{(1,0), (0,0)}$; $ V=\R^2$,  \underbar{\it Non-standard operations:--} Addition: $$(x,y) \tilde+ (x',y')=(x+x', y+y-2).$$ Multiplication of vectors  by  scalars $k\in \R$: $$k\circledast (x,y)=(kx, ky-2k+2).$$     \medskip
+%
+\item$^{\ast\ast}$ $\set{(1,3), (2,4)}$; $ V=\R^2$,  \underbar{\it Non-standard operations:--} Addition: $$(x,y) \tilde+ (x',y')=(x+x', y+y-2).$$ Multiplication of vectors  by  scalars $k\in \R$: $$k\circledast (x,y)=(kx, ky-2k+2).$$     \medskip
+%
+\end{enumerate}
+ 
+
+\end{prob} \begin{prob} \label{prob09.3}
+Let  $f(x) =1+x$, $g(x) = x+ x^2$ and $h(x) = x+ x^2 + x^3$ be  polynomials in $\PP$ and  define
+$W=\spn\{f,g,h\}$.
+\smallskip
+\begin{enumerate}[a)]
+\item  Show that $f$, $g$ and $h$ are
+linearly independent. 
+\item Find a basis for $W$ and the dimension of $W$.
+\smallskip
+\item If $j(x) = 1-x^2 +x^3$  show that $j \in
+W$.
+\item What is $\dim \spn\{f,g,h,j\}$?
+\end{enumerate}
+\end{prob} \begin{prob} \label{prob09.4} Let $U=\set{(x,y,z,w) \in \R^4 \st x-y+z-w=0}$.\medskip
+\begin{enumerate}[a)]
+\item Find   a basis for $U$ and hence determine $\dim U$.
+
+
+\item  Extend your basis in (a) to a basis of $\R^4$. 
+\end{enumerate}
+ 
+
+\end{prob} \begin{prob} \label{prob09.5} Consider  the vector space
+$ \F[0,2]=\set{f \st f: [0,2] \to \R}$. (Give it the same operations as $\F(\R)$.) Suppose $f(x)= x$,  
+$\quad g(x)=\dfrac1{x+1}$ and let $$W=\spn\{f,g\}.$$
+
+\begin{enumerate}[a)]
+\item Show that $\set{f,g}$ is linearly independent. 
+\item  Find $\dim
+W$.
+\item  If $h(x)=x^2$, show that $h\notin W$. 
+\item  What is the dimension of  $\spn\{f,g,h\}$?
+\end{enumerate}
+
+
+\end{prob} \begin{prob} \label{prob09.6} Let  $\E=\set{``ax+by+ cz=d"\st a,b,c, d\in\R}$ be the set of linear equations with real coefficients in the variables $x$, $y$ and $z$. Equip $\E$ with the usual operations on equations that you learned in high school: addition of equations, denoted here by ``$\dsum$" and multiplication by scalars, denoted here by ``$\circledast$", as follows: 
+
+$$``ax+by+ cz=d" \dsum ``ex+fy+gz=h" =``(a+e)x + (b+f)y + (c+g)z=d+h"$$and
+$$ \forall   k\in \R,\quad    k\circledast``ax+by+ cz=d" = `` ka\, x+ kb \,y+ kc \,z = k\,d".$$
+
+In an earlier exercise, you showed that with these operations, $E$ is a vector space. Find a basis for $E$ and hence find $ \dim E$.
+\end{prob}

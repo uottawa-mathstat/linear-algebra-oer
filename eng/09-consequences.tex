@@ -1,0 +1,203 @@
+\chapter{Linear independence and spanning sets}
+
+\label{Chapter:08independence_span}
+
+Last time, we defined linear independence and linear dependence.
+A set of vectors $\{ \vv_1, \vv_2, \cdots, \vv_m\}$ 
+is \stress{linearly independent} (LI) if the \emph{only}
+solution to the dependence equation
+$$
+a_1\vv_1+\cdots +a_m\vv_m = \zero
+$$
+is the trivial solution ($a_1=0$, $\cdots$, $a_m=0$).  The opposite
+of this is:  the set of vectors is \stress{linearly dependent} (LD)
+if there \emph{is} a nontrivial solution to 
+$$
+a_1\vv_1+\cdots +a_m\vv_m = \zero
+$$
+meaning, there is a solution to this dependence equation in which
+\emph{not all coefficients are zero} (although \emph{some} might
+be).  In this case, such an equation (with some nonzero coefficients)
+is called a \defn{dependence relation} on that set.
+
+\section{Important Results about Linear Independence and Linear Dependence}
+
+We deduced many useful things about LI and LD sets:
+\begin{enumerate}
+\item A set $\{ \vv\}$ consisting of just one vector is LI if and only if $\vv \neq \zero$.
+\item If a set $S$ is LD, then any set containing $S$ is also LD.
+\item If a set $S$ is LI, then any subset of $S$ is also LI.
+\item $\{\zero\}$ is LD.
+\item Any set containing the zero vector is LD. 
+\item A set with two vectors is LD if and only if one of the vectors
+is a multiple of the other.
+\item A set with three or more vectors \emph{could be LD even if} no
+two vectors are multiples of one another.
+\end{enumerate}
+
+We concluded last time with the following very important statement:
+
+\begin{theorem}[Relation between linear dependence and spanning]\index{relation between linear dependence and spanning}\label{depspan} 
+A set $\{\vv_1, \cdots, \vv_m\}$ is LD if and only if there is at least
+one vector $\vv_k$  which is in the span of the rest.
+\end{theorem}
+
+\standout{Caution:  This theorem \emph{doesn't mean} that \emph{every} vector is a
+linear combination of the others.  For example, 
+$\{ (1,1), (2,2), (1,3)\}$ is LD \emph{but} $(1,3) \notin \spn\{(1,1),(2,2)\}$.}
+
+\begin{proof}
+We have to show both directions of the ``if and only if''.
+
+First, suppose $\{\vv_1, \cdots, \vv_m\}$ is LD.  So there is
+some nontrivial dependence equation
+$$
+a_1\vv_1 + \cdots + a_m\vv_m = \zero
+$$
+with not all $a_i = 0$.  Let's say that $a_1 \neq 0$ (we could always
+renumber the vectors so that this is the case).  Then we can solve for
+$\vv_1$:
+$$
+\vv_1 = \frac{-a_2}{a_1}\vv_2 + \cdots + \frac{-a_m}{a_1}\vv_m
+$$
+which just says $\vv_1 \in \spn\{ \vv_2, \cdots, \vv_m\}$.  Done.
+
+Now the other direction.  Suppose $\vv_n \in \spn\{ \vv_1, \cdots, \vv_{n-1}\}$.
+That means $\vv_n = b_1\vv_1 + \cdots + b_{n-1}\vv_{n-1}$.  So we have
+$$
+b_1\vv_1 + \cdots + b_{n-1}\vv_{n-1} + (-1)\vv_n = \zero
+$$ 
+and the coefficient of $\vv_n$ is $-1$, which is nonzero.  Hence this
+is a nontrivial dependence relation (it doesn't even matter if all
+the $b_i$ were zero).  Thus the set is LD.
+\end{proof}
+
+
+
+
+\section{Consequence:  Any linearly dependent spanning set can be reduced}
+
+This is how we're going to solve our problem!  
+
+\begin{myexample} Let $W = \spn\{ (1,0,0), (0,1,0), (1,1,0)\}$.  Since 
+$$(1,1,0) = (1,0,0)+(0,1,0) \in \spn\{(1,0,0), (0,1,0)\},$$
+and obviously $(1,0,0)$ and $(0,1,0)$ are also in $\spn\{(1,0,0), (0,1,0)\}$,
+it follows (from Theorem~\ref{span}) 
+that the span of these three vectors is contained in $\spn\{(1,0,0), (0,1,0)\}$.
+So we deduce that
+$$
+W = \spn\{(1,0,0), (0,1,0)\}.
+$$
+(Notice the skipped step:  we have $$W \subset \spn\{(1,0,0), (0,1,0)\}$$
+by our argument but we had $$\spn\{(1,0,0), (0,1,0)\} \subset W$$ as well
+(since the spanning set of the left side is a subset of the spanning 
+set on the right side),
+and that's why we have equality.) \end{myexample}
+
+This example illustrates the following general theorem:
+
+\begin{theorem}[Reducing spanning sets]\index{reducing spanning sets}\label{redspan}
+ Suppose $W= \spn\{ \vv_1, \cdots, \vv_m\}$.\hfill\break
+If $\vv_1 \in \spn\{\vv_2, \cdots, \vv_m\}$ then
+$$
+W = \spn\{ \vv_2, \cdots, \vv_m\}.
+$$
+\end{theorem}
+\begin{proof} It is clear that $\spn\{ \vv_2, \cdots, \vv_m\} \subseteq W$. 
+
+Now suppose $ \vv_1=b_2 \vv_2 +\cdots +b_m\vv_m$. If $w=a_1\vv_1 +\cdots +a_m\vv_m \in W$, then $$w =(a_1b_2 +a_2)\vv_2 +\cdots + (a_1b_m +a_m)\vv_m \in \spn\{ \vv_2, \cdots, \vv_m\}. $$
+Hence, $
+W \subseteq \spn\{ \vv_2, \cdots, \vv_m\}
+$, and so equality holds.
+\end{proof}
+
+Using the notation of the theorem above, note that $\vv_1 \in \spn\{\vv_2, \cdots, \vv_m\}$  implies (by Theorem \ref{depspan}) that $\{\vv_1,\vv_2, \cdots, \vv_m\}$ is LD.
+ 
+\standout{In other words:  We can DECREASE the size of any LINEARLY DEPENDENT
+spanning set.}
+
+Further, if $\{ \vv_2, \cdots, \vv_m\}
+$ is dependent (say, $\vv_2 \in \spn\{\vv_3, \cdots, \vv_m\})$, then $$W=\spn\{ \vv_1, \cdots, \vv_m\}=\spn\{ \vv_2, \cdots, \vv_m\}=\spn\{ \vv_3, \cdots, \vv_m\}.$$
+And you can keep doing this until what you're left with is a \emph{linearly 
+independent} spanning set for $W$.
+
+\section{Another consequence:  finding bigger linearly independent sets}
+
+We certainly have an inkling, now, that if you want a linearly
+independent set, you can't take too many vectors.  (But how many
+can you take?  Good question; we'll come back to this.)
+For now we have:
+
+\begin{theorem}[Enlarging linearly independent sets]\index{enlarging linearly independent sets}  \label{EnlargingLI}
+Suppose  $\{\vv_1, \cdots, \vv_m\}$ is a LI subset of a subspace $W$.
+For any $\vv \in W$, we have
+$$
+\{\vv, \vv_1, \cdots, \vv_m\} \; \textrm{is LI} \quad \Leftrightarrow \quad
+\vv \notin \spn\{\vv_1, \cdots, \vv_m\}.
+$$
+\end{theorem}
+
+\begin{proof}
+This is almost like Theorem \ref{depspan} (contrast and compare!).
+So it has a similar proof.
+
+Suppose the new larger set is LI.  Then by Theorem~\ref{redspan},
+NO element of $\{\vv, \vv_1, \cdots, \vv_m\}$ can be a linear
+combination of the rest.  In particular, $\vv$ can't be a
+linear combination of the rest.  That's the same as saying that
+$\vv \notin \spn\{\vv_1, \cdots, \vv_m\}$.
+
+Conversely, suppose $\vv  \notin \spn\{\vv_1, \cdots, \vv_m\}$.
+Let's show that $\{\vv, \vv_1, \cdots, \vv_m\}$ is LI.  Namely,
+if we consider the dependence equation:
+$$
+a_0\vv + a_1\vv_1 + \cdots + a_m\vv_m = \zero.
+$$
+We want to decide if this could have any nontrivial solutions.
+
+Well, if $a_0 \neq 0$, then we know (previous proof) that we
+could solve for $\vv$ in terms of the other vectors, but our
+hypothesis is that this is not the case.  So for sure we know
+that $a_0 = 0$.  
+
+But then what we have left is
+$$
+a_1\vv_1 + \cdots + a_m\vv_m = \zero
+$$
+which is a dependence equation for the set $\{\vv_1, \cdots,\vv_m\}$.
+This set
+is LI, so all these $a_i$ must be zero.
+
+Hence the only solution is the trivial
+one, which shows that $\{\vv, \vv_1, \cdots, \vv_m\}$ is LI.
+\end{proof}
+
+\standout{In other words:  we can INCREASE the size of
+any LINEARLY INDEPENDENT set so long as it does NOT already span our vector space.}
+
+\section{Examples} Let's see how to apply Theorem \ref{EnlargingLI}.
+
+\begin{myexample} The set $\{ x^2, 1+2x\} \subset \PP_3$ is LI, and $x^3 \notin \spn\{ x^2, 1+2x\}$  -- see the hints given for problems \ref{prob06.4} parts (e) and (f), or  example \ref{imp} on P. 81.    Thus,  
+$\{ x^3, x^2, 1+2x \}$ is LI. \end{myexample}
+
+\begin{myexample} The set $\left\{ \mat{0 & 1 \\ 0 & 0}, \mat{1 & 0 \\ 0 & 0} \right\}$
+is LI (since we showed that there is a bigger set containing this one that
+is LI, last time).   Moreover, 
+$$
+\mat{0 & 0 \\ 1 & 0} \notin \spn\left\{ \mat{0 & 1 \\ 0 & 0}, \mat{1 & 0 \\ 0 & 0} \right\}
+$$
+since you can't solve $\mat{0 & 0 \\ 1 & 0} = \mat{a & b\\0 & 0}$.
+Thus
+$$
+\left\{ \mat{0 & 1 \\ 0 & 0}, \mat{1 & 0 \\ 0 & 0}, \mat{0 & 0 \\ 1 & 0} \right\}
+$$
+is LI. \end{myexample}
+
+It can be hard work to find an element $\vv$ that is not in the
+span of your LI set!  Next chapter we'll start with some more thoughts
+on this.
+
+
+
+
+

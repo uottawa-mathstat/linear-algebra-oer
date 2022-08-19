@@ -1,0 +1,229 @@
+
+\begin{sol}{prob24.1}  Pour chacune des transformations suivantes, indiquez si elle est linéaire ou non.   
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item Si vous dites qu'elle ne l'est pas, donnez un contre-exemple.   
+\item Si vous dites qu'elle l'est, donnez une explication claire - en citant un théorème ou en donnant une {\it preuve valide dans tous les cas}. 
+\end{enumerate}
+\medskip
+\begin{enumerate}[]
+
+\medskip
+\item[(b)] $T:\R^3 \to \R^2$ d\'efinie par $T(x,y,z)=(2 z+x, y)$.
+
+\soln Il s'agit en effet d'une transformation linéaire, puisque la formule provient de la multiplication par la matrice $A=\scriptsize\bmatrix 1&0&2\\0&1&0 \endbmatrix$: si $\vv=\scriptsize\bmatrix x\\y\\z \endbmatrix \in \R^3$, alors $A\vv=\scriptsize\bmatrix x+2z\\y \endbmatrix$, qui est en effet la formule ci-dessus (écrite en une colonne).
+\medskip
+
+
+
+\item[(d)] $T:\R^2 \to \R^2$ d\'efinie par $T(\vv)=\bmatrix 0&-1\\ 1&0 \endbmatrix \vv$.
+
+\soln Il s'agit bien d'une transformation linéaire, puisque nous savons que la multiplication par une matrice donne toujours une transformation linéaire  (voir l'Exemple~\ref{ex:multmatlintrans}).
+\medskip
+
+
+
+
+\item[(f)] $T:\R^3 \to \R^3$ d\'efinie par $T(\vv)= \proj_{(1,1,-1)}(\vv)$.
+
+\soln Il s'agit d'une transformation linéaire. Nous pouvons le montrer de deux façons : par la définition, ou en trouvant la matrice standard associée à $T$.
+
+Tout d'abord, nous devons simplement écrire la formule de $T$ de manière plus explicite : $$ (1)\quad T(\vv)= \proj_{(1,1,-1)}(\vv)=\frac{\vv\cdot (1,1,-1)}{\|(1,1,-1)\|}(1,1,-1)=\frac{\vv\cdot (1,1,-1)}{3}(1,1,-1). $$ 
+Et en coordonnées cartésiennes, si $\vv=(x,y,z)$, cela donne
+$$(2)\quad T(\vv)=  \frac{(x,y,z)\cdot (1,1,-1)}{\|(1,1,-1)\|}(1,1,-1)= \frac{ (x+y-z )}{3}(1,1,-1)$$ ce qui se simplifie en 
+$$\frac13\Big(x+y-z,\,x+y-z,\,-x-y+z\Big)\,.$$
+
+\underbar{Méthode 1: Par la d\'efinition} 
+\smallskip
+\begin{enumerate}[(i)]
+\item Si $\uu, \vv \in \R^3$, alors l'égalité $(1)$ donne 
+\begin{equation*}
+\begin{split}
+ T(\uu+\vv) &=\frac{\uu\cdot (1,1,-1)}{3}(1,1,-1)+ \frac{\vv\cdot (1,1,-1)}{3}(1,1,-1) \\
+  &= \Big( \frac{\uu\cdot (1,1,-1)}{3}+ \frac{\vv\cdot (1,1,-1)}{3}\Big)(1,1,-1)\\
+  &= \frac{(\uu+\vv)\cdot (1,1,-1)}{3}(1,1,-1)\\
+  &= T(\uu)+T(\vv)\,.\\
+\end{split}\end{equation*}
+\item Si $k\in \R$ et $\vv\in \R^3$, alors
+ \begin{equation*}
+\begin{split}
+ T(k\,\vv) &=\frac{(k\,\vv)\cdot (1,1,-1)}{3}(1,1,-1) \\
+  &= k\,\Big( \frac{ \vv\cdot (1,1,-1)}{3}(1,1,-1)\Big)\\
+  &= k\,T(\vv)\,.\\
+\end{split}\end{equation*}
+\end{enumerate}
+Les points $(i)$ et $(ii)$ montrent que $T$ satisfait les deux conditions de la définition, et donc $T$ est bien une transformation linéaire.
+
+\medskip
+\underbar{Méthode 2: Par la matrice standard associée}
+
+En utilisant (2), on a $A= \dfrac13\bmatrix
+ 1& 1& -1\\
+ 1& 1& -1\\ 
+-1& -1& 1\endbmatrix$. Pour $\vv=\bmatrix x\\y\\z\endbmatrix$, on a :
+$$T(\vv)= \frac13\bmatrix x+y-z\\x+y-z\\-x-y+z\endbmatrix= \frac13\bmatrix
+ 1& 1& -1\\
+ 1& 1& -1\\ 
+-1& -1& 1\endbmatrix \, \bmatrix x\\y\\z\endbmatrix= A \vv.$$
+Par conséquent, $T$ est la multiplication par la matrice $A$ et ainsi, par l'Exemple~\ref{ex:multmatlintrans}, on a que $T$ est bien une transformation linéaire.
+\medskip
+
+
+\item[(h)] $T:\R^3 \to \R^3$ d\'efinie par $T(\vv)= \proj_{\vv}(1,1,-1)$.
+
+\soln À première vue, cela ressemble à la question (f), mais ça n'est pas tout à fait la même chose --- les vecteur $\vv$ et $(1,1,-1)$ on été échangés de place l'un l'autre. Et la différence est grande : ici, il ne s'agit pas d'une transformation linéaire ! Regardez d'abord la formule de $T$ : 
+$$T(\vv) =\frac{(1,1,-1)\cdot \vv }{\|\vv\|^2} (1,1,-1)\,.$$ 
+La dépendance en $\vv$ est plutôt complexe : ce vecteur apparaît au numérateur dans $(1,1,-1)\cdot \vv$ (ça c'est usuel, ce n'est pas trop embêtant), mais la sonnette d'alarme se déclenche lorsque l'on voit le facteur $\frac{1}{\|\vv\|^2}$ ! 
+
+Donnons donc un contre-exemple pour montrer que $T$ n'est pas linéaire.
+
+En prenant $\vv=(1,0,0)$, on voit que $T(\vv)=(1,1,-1)$, mais 
+$$T(2\vv)=T(2,0,0)=\frac12 (1,1,-1)\not= 2 (1,1,-1)=2 T(\vv)\,.$$ 
+Donc $T$ n'est pas linéaire.
+\medskip
+
+
+
+\item[(j)] $T:\R^3 \to \R^3$ d\'efinie par $T(\vv)= 2 \vv$.
+
+\soln Il s'agit d'une transformation linéaire. Il est facile de vérifier qu'elle satisfait les conditions de la définition, mais il est encore plus facile de noter que si $\vv\in \R^3$, alors $T(\vv)=2I_3\, \vv$, c'est-à-dire que $T$ est une multiplication par la matrice $2I_3$ et est donc bien une transformation linéaire. 
+\medskip
+
+
+
+\item[(l)] $T:\R^3 \to \R^2$ d\'efinie par $T(\vv)= A\vv$, où $A=\bmatrix 1&0&1\\ 1&2&3\endbmatrix$.
+
+\soln Il s'agit d'une transformation linéaire, puisqu'elle est définie par la multiplication par une matrice!
+\medskip
+
+\end{enumerate} 
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob24.2} Dans chacun des cas suivants, déterminez la matrice standard de $T$, puis utilisez-la pour trouver une base de $\ker( T)$ et une base de $\im( T)$. Enfin, vérifiez la conservation de la dimension (\textit{i.e.} le Théorème du rang). 
+
+
+\begin{enumerate}[]
+
+\medskip
+\item[(b)] $T:\R^3 \to \R^2$ d\'efinie par $T(x,y,z)=(2 z+x, y)$.
+
+\soln Nous avons vu dans \ref{prob24.1}(b) que la matrice standard pour cette transformation $T$ est la matrice $A=\scriptsize\bmatrix 1&0&2\\0&1&0 \endbmatrix$.
+Puisque $A$ est déjà sous forme MER, une base de $\ker (T)= \ker (A)$ est  
+$$\set{(-2,0,1)}\,.$$ 
+De plus, l'algorithme pour l'espace des colonnes donne la base suivante pour  $\im (T) = \im (A)$ :
+$$\set{(1,0), (0,1)}\,.$$
+\medskip
+
+
+
+\item[(d)] $T:\R^3 \to \R^3$ d\'efinie par $T(\vv)= \proj_{(1,1,-1)}(\vv)$.
+
+\soln Nous avons vu dans \ref{prob24.1}(f) que la matrice standard pour cette transformation $T$ est la matrice 
+$$A= \frac13\bmatrix
+ 1& 1& -1\\
+ 1& 1& -1\\ 
+-1& -1& 1\endbmatrix\,.$$
+Un simple calcul montre que la MER de $A$ est $\scriptsize\bmatrix 1 & 1 & -1 \\
+ 0 & 0 & 0 \\
+ 0 & 0 & 0  \endbmatrix$, et ainsi une base de $\ker(T)= \ker A$ est:
+ $$\set{(-1,1,0),(1,0,1)}\,.$$
+L'algorithme pour l'espace des colonnes donne la base suivante pour  $\im(T) = \col A$ :
+ $$\set{(1,1,-1)}\,.$$
+(Remarque : on pouvait s'y attendre car $T$ est la projection sur la droite dirigée par $(1,1,-1)$!)
+\medskip
+%(-s+t,s,t)
+
+
+\item[(f)]  $T:\R^3 \to \R^3$ d\'efinie par $T(\vv)= \proj_H(\vv)$, où $H$ est le plan passant par l'origine et de vecteur normal $(1,1,0)$.
+
+\soln Nous avons d'abord besoin de la formule pour $T$.  
+Une première technique pourrait consister à  trouver une base orthogonale de $H$ puis à utiliser la formule de projection; mais à la place, nous utiliserons la notion de vecteur normal : si $\nn$ est un vecteur normal quelconque au plan $H$ et que $\vv$ un vecteur quelconque dans $\R^3$, alors on sait que
+$$ \vv= \proj_\nn(\vv) + (\vv-\proj_\nn(\vv))\,,$$ 
+et que le vecteur $\ww=\vv-\proj_\nn(\vv)$ {\it est bien la projection orthogonale de $\vv$ sur $H$}, puisqu'il satisfait les conditions $(1)$ et $(2)$ du Théorème~$\ref{orthogproj}$ !\footnote{En effet, premièrement, notez que $\ww\cdot \nn=\big(\vv-\proj_\nn(\vv)\big)\cdot \nn =\big( \vv- \frac{\vv\cdot \nn}{\|\nn\|^2}\nn\big)\cdot \nn= \vv\cdot \nn - \frac{\vv\cdot \nn}{\|\nn\|^2}\nn\cdot \nn=\vv\cdot \nn-\vv\cdot \nn=0$, et donc il est vrai que $\ww=\vv-\proj_\nn(\vv)$ appartient à $H$. Deuxièmement, on a $\ww-\vv=(\vv-\proj_\nn(\vv)\big)-\vv= -\proj_\nn(\vv)$, lequel est bien orthogonal à $H$ puisque c'est un multiple du vecteur normal $\nn$. Faites un dessin pour vous en convaincre géométriquement.} Ainsi: 
+$$   T(\vv) = \proj_H(\vv)=  \vv-\proj_\nn(\vv) =\vv- \frac{\vv\cdot \nn}{\|\nn\|^2}\nn\,. $$
+
+Soit $\vv=(x,y,z)$. Comme $\nn=(1,1,0)$, on a
+$$T(x,y,z)=(x,y,z)- \frac{x+y}{2}(1,1,0)=(\frac{y-x}2,\frac{x-y}2, z )\,.$$
+Il est maintenant facile de vérifier que $T$ est une multiplication par la matrice 
+$$A=\frac12\bmatrix -1&1&0\\1&-1&0\\ 0&0&2\endbmatrix\,.$$
+Un calcul simple montre que la MER de $A$ est $\scriptsize\bmatrix 
+1 & -1 & 0 \\
+ 0 & 0 & 1 \\
+ 0 & 0 & 0 \endbmatrix$, et ainsi une base de $\ker(T)= \ker A$ est
+ $$\set{(1,1,0)}\,.$$ 
+(On pouvait s'y attendre car $T$ est la projection sur le plan passant par l'origine et de vecteur normal $(1,1,0)$.)
+L'algorithme pour l'espace des colonnes donne la base suivante de $\im (T) = \im( A)$:
+$$\set{(-1,1,0), (0,0,1)}\,,$$
+ et on peut v\'erifier que $\sp{(-1,1,0), (0,0,1)}=H$ comme attendu!
+
+ 
+\medskip
+
+\end{enumerate}
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob24.3} Pour chacun des énoncés suivants, indiquez s'il est (toujours) vrai ou s'il est (possiblement) faux.   
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item Si vous dites que l'\'enonc\'e peut être faux, donnez un contre-exemple.   
+\item Si vous dites que l'\'enonc\'e est vrai, donnez une explication claire - en citant un théorème ou en donnant une {\it preuve valide dans tous les cas}. 
+\end{enumerate}
+
+\medskip
+\begin{enumerate}[]
+ 
+
+\item[(b)] Si une transformation $T:\R^4 \to \R^2$ est lin\'eaire, alors $\dim \ker(T) \ge 2$.
+
+
+\soln Vrai, puisque $\dim \ker(T) + \dim \im(T) =4$ par le Théorème du rang et que $\dim \im(T) \le \dim \R^2 =2$ (car $\im(T)$ est un sous-espace de $\R^2$). Ainsi 
+$$\dim \ker(T) =4- \dim \im(T) \ge 4-2 =2\,.$$
+ 
+
+ 
+\item [(d)] Si une transformation $T:\R^3 \to \R^2$ est lin\'eaire et que $\set{\vv_1,\vv_2} \subset \R^3$ est lin\'eairement ind\'ependant, alors $\set{T(\vv_1),T(\vv_2)} \subset \R^2$ est aussi lin\'eairement ind\'ependant.
+
+\soln Faux. En effet, c'est seulement vrai si $\ker(T)=\set{\zero}$. Par exemple, si l'on définit $T:\R^3 \to \R^2$ par $T(x,y,z)=(0,0)$ et et qu'on considère $\vv_1=(1,0,0)$ et $\vv_2=(0,1,0)$, alors $\set{T(\vv_1), T(\vv_2)}$ n'est pas lin\'eairement indépendant car il contient le vecteur nul, alors que $\{\vv_1, \vv_2\}$ est bien LI.
+\medskip
+
+
+
+\item [(f)] Si une transformation $T:\R^3 \to \R^3$ est lin\'eaire et que $\ker(T)=\set{\zero}$, alors $\im(T)=\R^3$.
+
+\soln Vrai. Rappelons d'abord que $\dim \ker(T) + \dim \im(T) =3$ par le Théorème du rang. Si $\ker(T)=\set{\zero}$, alors $\dim \ker(T)=0$ et donc $\dim \im(T) =3-0=3$. Mais le seul sous-espace de $\R^n$ qui a dimension $n$ est lui-même (voir le Th\'eor\`eme~\ref{dimsubspaces}). Donc en prenant $n=3$, on obtient bien $\im(T)= \R^3$.
+\medskip
+
+\end{enumerate}
+
+\end{sol}
+
+\bigskip
+\begin{sol}{prob24.4}$^\ast$ Pour chacune des transformations suivantes, indiquez si elle est linéaire ou non.   
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item Si vous dites qu'elle ne l'est pas, donnez un contre-exemple.   
+\item Si vous dites qu'elle l'est, donnez une explication claire - en citant un théorème ou en donnant une {\it preuve valide dans tous les cas}. 
+\end{enumerate}
+ \medskip
+\begin{enumerate}[ ]
+ 
+\item[(b)] $T: \PP \to \PP$ d\'efinie par $T(p)(t)=\dsize \int_0^tp(s) ds$.
+
+\soln Vous avez vu en cours d'Intégration que si $p$ et $q$ sont des fonctions (intégrables), alors  
+$$\dsize \int_0^t(p+q)(s) ds= \dsize \int_0^tp(s) ds+ \dsize \int_0^tq(s) ds\,.$$ 
+(Vous en verrez même une preuve si vous prenez un cours d'Analyse réelle ou fonctionnelle.)
+De plus, vous avez également vu que si $k\in \R$ est un scalaire, alors 
+$$\int_0^t k\,p(s) ds= k\int_0^tp(s) ds\,.$$ 
+Ces deux relations mises ensemble montrent que $T$ est effectivement linéaire.
+\medskip 
+ 
+\item[(d)] $\det: \M_{2\,2} \to \R$ d\'efinie par $\det \bmatrix a&b\\c&d\endbmatrix = ad-bc.$
+
+\soln Le déterminant n'est pas linéaire. Par exemple si $A=\bmatrix 1&0\cr0&0\endbmatrix$ et $B=\bmatrix 0&0\cr0&1\endbmatrix$, alors $$\det(A+B)=\det \bmatrix 1&0\cr0&1\endbmatrix =1 \not= 0=0+0= \det A + \det B.$$ (Nous avions vu cet exemple dans la solution de l'Exercice \ref{prob21.4}(b) sur les déterminants).
+\medskip 
+\end{enumerate}
+\end{sol}

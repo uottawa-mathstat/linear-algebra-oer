@@ -1,0 +1,332 @@
+\chapter{Espaces vectoriels}
+\label{chapter:Fr_04-vectorspaces}
+
+Jusqu'à présent, nous avons vu qu'il n'est pas trop difficile de généraliser
+certaines notions sur les \stress{vecteurs} de $\R^2$ ou $\R^3$ à l'espace plus général $\R^n$.
+Avec cette idée en tête, nous appelons toujours \stress{vecteurs} les éléments de $\R^n$, même si nous ne pouvons plus vraiment
+les dessiner avec une flèche dans l'espace.  
+
+Dans le chapitre \ref{chapter:Fr_02-vectors} sur la géométrie vectorielle, nous avons aussi rencontrer quelques problèmes. Parmi les questions principales, on se demandait : quel est 
+l'analogue des droites et des plans en dimensions supérieures ? Et comment les décrire ?
+
+Dans ce chapitre, nous nous attaquons à ces questions, et pour ce faire, nous revenons un peu en arrière pour voir jusqu'à quel point
+nous pouvons généraliser la notion d'\stress{espace vectoriel}. 
+Est-ce que $\R^n$ est le seul objet qui se comporte comme $\R^2$ et $\R^3$, ou y a-t-il d'autres objets mathématiques
+qui, si on les regarde de la bonne façon, se comportent également comme $\R^2$ et $\R^3$ ?
+
+\section{Un premier exemple}
+Jusqu'ici, on ne peut nier le fait que les éléments de $\R$, $\R^2$ et $\R^3$ sont des 
+\defn{vecteurs géométriques}, puisqu'on peut les dessiner avec une flèche.
+Nous sommes également d'accord que nous pouvons toujours appeler \defn{vecteurs} les éléments de $\R^n$ pour $n \geq 4$.
+
+Cherchons maintenant des «~vecteurs~» qui ne sont pas dans $\R^n$ (et qui ne seront pas non plus géométriques).
+
+
+\begin{myexample} {\bf L'espace des équations « linéaires »}
+\label{exemple : l espace des equation lineaires}
+
+Considérons les trois équations $E_1$, $E_2$ et $E_3$ suivantes :
+\begin{alignat*}{2}
+E_1 &: \quad  &x-y-z &= -1; \\
+E_2 &: \quad &2x-y+z &= 1;\\
+E_3 &: \quad &-x+2y+4z &=4.
+\end{alignat*}
+Nous pouvons obtenir une nouvelle équation à partir de ces trois équations, en calculant par exemple 
+$$
+E_4 = E_2-2E_1 \quad : \quad y+3z=3
+$$
+ou encore
+$$
+E_5=E_1 + E_3 \quad : \quad y+3z = 3\ .
+$$
+On peut même dire qu'alors 
+$$
+E_2-2E_1 = E_1 + E_3,
+$$
+et il est légitime de ré-écrire ceci comme 
+$$
+3E_1 -E_2 + E_3 = 0\, ,
+$$
+où «~$0$~» ici représente l'équation «~$0=0$~».
+
+Mais que signifie réellement ceci ?
+\begin{itemize}
+\item On peut {\bf additionner} deux équations pour en obtenir une autre.
+\item On peut {\bf multiplier} une équation {\bf par un scalaire} et avoir
+une autre.
+\item Il existe une {\bf équation nulle} donnée par «~$0=0$~».  Appelons-la disons
+$E_0$.
+\item Les équations ont des {\bf opposés} : l'opposé de $E_1$ est 
+$$
+-E_1 : -x+y+z=1.
+$$
+Pourquoi est-ce l'opposé ?  Simplement parce que $(E_1) + (-E_1) = E_0$.
+\item Les « règles habituelles de l'arithmétique » sont respectées :
+\begin{itemize}
+\item $E_1 + E_2 = E_2+E_1$ («~commutativité~»);
+\item $E_1 + (E_2+E_3) = (E_1 + E_2) + E_3$ («~associativité~»);
+\item $k(E_1+E_2) = kE_1+kE_2$;
+\item $(k+l)E_1 = kE_1 + lE_1$;
+\item $(kl)E_1 = k(lE_1)$;
+\item $1 E_1 = E_1$.
+\end{itemize}
+\end{itemize}
+
+
+En d'autres termes, on retrouve {\bf exactement} les propriétés de $\R^n$ qu'on avait introduites dans le chapitre précédent!  
+Donc, même si nous n'avons pas (encore) de moyen d'écrire les «~équations~» comme des $n$-uplets de nombres,
+on peut voir que, algébriquement, elles se comportent vraiment comme des vecteurs.
+\end{myexample}
+
+
+
+
+\standout{Idée importante \#1 (de ce chapitre) : il existe en fait de nombreux espaces vectoriels autres que $\R^n$.}
+
+Pour comprendre l'intérêt de notre méthode, donnons un peu plus de détails.
+
+Considérons l'espace $\mathcal{E}$ de toutes les équations «~obtenues à partir~»   des  équations $E_1$, $E_2$ et $E_3$. Plus précisément, on dit que $\mathcal E$ est \stress{généré par} ou \stress{engendré par} ces trois équations, et il s'écrit :
+$$
+\mathcal{E} = \{ k_1E_1 + k_2 E_2 + k_3 E_3 \;| \; k_i \in \R\}.
+$$
+En fait, c'est l'ensemble des \emph{toutes} les combinaisons linéaires \index{combinaison linéaire} de $E_1$, $E_2$ et $E_3$, et on peut montrer que  $\mathcal{E}$ satisfait les crit\`eres d'un espace vectoriel dans le
+sens où il vérifie tous les points de la liste ci-dessus (on reviendra sur une définition plus formelle dans la suite).
+
+À présent, une question que l'on peut se poser est : étant donné $y_0\in\R$, est-ce que l'équation «~$y=y_0$~» est un élément de $\mathcal E$ ?
+C'est-à-dire, est-ce que nous pouvons l'écrire comme combinaisons linéaire de $E_1$, $E_2$ et $E_3$ pour certains coefficients $k_1, k_2, k_3$ ?
+
+\begin{myexample} Traitons une question plus facile :
+pouvons-nous trouver $a,b,y_0\in\R$ de sorte que l'équation $y=y_0$ soit égale à $aE_1+bE_2$ ? \\ 
+Réponse : NON, jamais.  Pourquoi ?\\
+Dans l'équation $aE_1+bE_2$, le coefficient devant la variable $x$ est $a+2b$, et celui devant
+$z$ est $-a+b$. On veut obtenir une équation de la forme «~$y=y_0$~» qui ne dépend que de la variable $y$, donc les coefficients devant $x$ et $z$ sont forcément nuls, c'est-à-dire $a+2b=0$ et $-a+b=0$. De ceci, on déduit que nécessairement $a=0$ et $b=0$ (vérifiez-le), ce qui donne
+ $aE_1+bE_2 = E_0$, l'équation nulle. Donc on ne pourra jamais obtenir une équation de la forme $y=y_0$ à partir de $E_1$ et $E_2$ seulement... 
+\end{myexample}
+
+(Nous considérerons plus tard des questions plus difficiles,
+mais la technique plus sophistiquée de l'\stress{élimination de Gauss-Jordan} qu'on introduira au chapitre~\ref{chapter:Fr_13-solvingsystems}
+sera en fait entièrement basée sur cette idée de ne prendre que des combinaisons linéaires
+d'équations).
+
+Application : la \emph{stœchiométrie} est la science qui étudie comment
+produire un certain composé chimique en faisant des réaction de composés chimiques 
+ élémentaires. En d'autres termes, si l'on dénote $\mathcal{E}$
+l'ensemble de toutes les réactions chimiques possibles, on peut dire que la stœchiométrie
+cherche la meilleure combinaison (linéaire) de réactions de $\mathcal E$ qui donnera le résultat souhaité.
+
+ 
+\standout {Idée importante \#2 (des deux prochains chapitres) : Pour répondre à certains problèmes, nous aurons besoin de
+comprendre les notions de sous-espace vectoriel et d'ensemble générateur.}
+
+\section{Alors, de quoi avons-nous vraiment besoin ?}
+Idée :  Les \stress{vecteurs} n'ont pas besoin d'être géométriques ni même des $n$-upplets.
+Cependant nous voulons avoir des propriétés similaires à celles connues sur les vecteurs.
+(Notez que nous allons mettre en pause les propriétés géométriques (comme le produit scalaire) pour quelques temps et nous nous concentrons sur l'algèbre).
+
+Nous avons donc besoin de : 
+\begin{itemize}
+\item un ensemble $V$, dont les éléments seront appelés «~vecteurs~»;
+\item une loi pour l'« addition » de deux « vecteurs » (notée $+$);
+\item une loi pour la « multiplication par un scalaire » d'un « vecteur » par un scalaire $c\in \R$ (notée $\cdot$ ou sans symbol),
+\end{itemize}
+tels que les 10 \defn{axiomes} suivants sont vérifiés :
+\begin{description}
+\item[\it Fermeture] (ces deux axiomes garantissent que $V$ est « suffisamment grand ») \\
+(1) La somme de deux vecteurs doit être à nouveau un vecteur: si $\uu, \vv \in V$, alors $\uu + \vv \in V$.\\
+(2) Le multiple scalaire d'un vecteur est un vecteur: si $\uu \in V$ et $c\in \R$, alors $c\,\uu \in V$.
+\item[\it Existence] (ces deux axiomes garantissent que $V$ satisfait les crit\`eres élémentaires de l'algèbre)\\
+(3) Il doit exister un vecteur nul $\zero$ dans $V$ qui satisfait
+$\zero + \uu = \uu$ pour tout $\uu \in V$.\\
+(4) Chaque vecteur de $V$ doit admettre un oppos\'e dans $V$: pour $\uu \in V$, il doit exister un vecteur $\vv \in V$  tel que $\uu + \vv = \zero$. On note habituellement $-\uu=\vv$ l'opposé de $\uu$.
+\item[\it Crit\`eres d'arithmétique] (Ces axiomes garantissent que les opérations se comportent comme dans $\R^n$) \\
+Pour tous $\uu, \vv, \ww \in V$ et tous $c,d\in\R$:\\
+(5) $\uu + \vv = \vv + \uu$;\\
+(6) $\uu + (\vv + \ww) = (\uu+\vv)+\ww$;\\
+(7) $c(\uu + \vv) = c\uu + c\vv$;\\
+(8) $(c+d)\uu = c\uu + d\uu$;\\
+(9) $c(d\uu) = (cd)\uu$;\\
+(10) $1\uu = \uu$.
+\end{description}
+
+\begin{definition}
+Tout ensemble $V$ muni de deux lois $+$ et $\cdot$ satisfaisant ces 10 axiomes est
+appelé \defn{espace vectoriel}.
+\end{definition}
+
+Notez qu'on peut aussi ajouter les deux formules suivantes pour tout vecteur $\uu\in V$ :
+$$0\cdot\uu = \zero \quad\quad\text{et}\quad\quad -\uu = (-1)\cdot\uu,$$
+mais ce ne sont pas des axiomes car on peut les obtenir à partir des 10 axiomes ci-dessus comme montré dans l'exercice \ref{prob04.14}.
+ 
+
+
+
+\section{Exemples d'espaces vectoriels}
+
+\begin{myexample} Munis des opérations habituelles $+$ et $\cdot$, les ensembles $\R$, $\R^2$, $\ldots$, $\R^n$ sont tous des espaces vectoriels. \end{myexample}
+
+\begin{myexample} L'ensemble $\mathcal{E}$ de \stress{toutes} les équations linéaires en $n$ variables muni des opérations habituelles est un espace vectoriel. \end{myexample}
+
+\begin{myexample} L'ensemble $V = \{\zero\}$ muni des lois suivantes 
+$\zero + \zero = \zero$ et $c \cdot \zero = \zero$  est un espace vectoriel. C'est l'\emph{espace vectoriel nul}.
+ (Attention : par contre, l'ensemble vide $\emptyset$ n'est pas un espace vectoriel car il ne contient pas $\zero$ et donc il contredit l'axiome $(3)$.) \end{myexample}
+
+\begin{myexample} L'ensemble $V = \{(x,2x) | x \in \R\}$ muni des opérations standards
+de $\R^2$ est un espace vectoriel car :
+\begin{itemize}
+\item FERMETURE (1) Soient $\uu, \vv \in V$.  On peut écrire $\uu = (x,2x)$ et $\vv = (y,2y)$ pour certains
+$x\in \R$ et $y\in \R$. Il suit que $\uu + \vv = (x+y, 2x+2y) = (x+y, 2(x+y))$, qui est bein dans $V$ parce qu'il est de la forme $(z,2z)$ 
+avec $z = x+y \in \R$.
+\item FERMETURE (2) Soient $\uu = (x,2x)$ et $c\in \R$.  Alors $c\uu = (cx,c(2x))=(cx,2(cx))$ qui est à son tour dans $V$, car il a la forme $(z,2z)$ avec $z=cx\in \R$.
+\item EXISTENCE (3) Le vecteur nul de $\R^2$ est $\zero = (0,0)$ et il est dans $V$ (prendre $x=0$). Il satisfait la condition $\zero + \uu = \uu$ pour tout $\uu \in\R^2$, donc a fortiori il vérifie la même condition pour tout $\uu \in V$ puisque $V\subseteq\R^2$.  D'où l'existence d'un vecteur nul dans $V$.
+\item EXISTENCE (4) L'opposé de $\uu = (x,2x)$ est $-\uu=(-x,-2x) = (-x,2(-x))$, puisque $(x,2x)+(-x,2(-x))=(0,0)$, et on voit que $(-x,2(-x))$ est bien dans $V$.  D'où l'existence d'un oppos\'e dans $V$.
+\item CRIT\`ERES D'ARITHM\'ETIQUE: comme on l'a vu dans les chapitres précédents, ces critères fonctionnent pour TOUS vecteurs $\uu, \vv, \ww$ de $\R^2$, donc ils fonctionnent encore  
+pour TOUS vecteurs $\uu, \vv,\ww$ de $V$ puisque $V\subseteq \R^2$.
+\end{itemize}
+Ainsi $V$ est un bien espace vectoriel car il vérifie les 10 axiomes. \end{myexample}
+
+\begin{myexample} L'ensemble $V = \{(x,x+2) | x\in \R\}$ muni des opérations habituelles dans $\R^2$ N'EST PAS un espace vectoriel. (Voir l'exercice \ref{prob04.1}, question (8), pour une variante avec une opération différente.)
+
+Pour montrer que $V$ n'est pas un espace vectoriel, il suffit de donner UN SEUL contre-exemple parmi les 10 axiomes, m\^eme si l'axiome n'est faux que pour UN SEUL vecteur.
+(Car dans un espace vectoriel, TOUS les axiomes doivent TOUJOURS être vrais et pour tout vecteurs.)
+
+Ceci étant dit, analysons quand même tous les axiomes juste pour voir comment ceux-ci peuvent échouer de manières différentes.
+ 
+\begin{itemize}
+\item FERMETURE (1) Prenez $(x,x+2)$ et $(y,y+2)$ de $V$.  Alors leur somme 
+$(x+y, x+y+4)$ n'a PAS la bonne forme $(z,z+2)$, par exemple prenez $z=0$.  En d'autres termes, lorsque vous ajoutez deux éléments de $V$, vous vous retrouvez à l'extérieur de $V$.  Cet ensemble n'est donc PAS FERMÉ pour l'addition, et l'axiome $(1)$ n'est pas vérifié.
+\item FERMETURE (2) Prenez $c\in\R$ et $\uu = (x,x+2)\in V$.  Alors $c\,\uu = (cx, cx+2c)$, et pour $c\neq 1$ on a $c\uu \notin V$... Donc  $V$ n'est PAS FERMÉ pour la multiplication par scalaire, et l'axiome $(2)$ n'est pas vérifié.
+\item EXISTENCE (3) Le vecteur nul $\zero=(0,0)$ de $\R^2$ n'est pas dans $V$, puisque 
+on ne peut pas avoir $(0,0) = (z,z+2)$ quelque soit $z\in \R$. Plus généralement, on peut montrer que $V$ n'admet aucun vecteur nul, et donc l'axiome $(3)$ n'est pas vérifié.
+\item EXISTENCE (4) L'oppos\'e de $\uu = (x,x+2)$ dans $\R^2$ est $-\uu = (-x,-x-2)$, mais il n'est pas un \'el\'ement de $V$. Plus généralement, on peut montrer qu'il n'y a pas l'existence de l'inverse pour tous les éléments de $V$, et donc l'axiome $(4)$ n'est pas vérifié.
+\item CRIT\`ERES D'ARITHM\'ETIQUE (5)-(10) : 
+ils sont tous vrais car $V$ est un sous-ensemble de $\R^2$.
+\end{itemize} 
+En fait, l'ensemble $V$ n'est pas un espace vectoriel car nous l'avons «~mal choisi~», il ne passe pas par le point $\zero\in\R^2$ et c'est en fait un \stress{sous-espace affine} de $\R^2$... (Voir sur internet pour plus d'informations).
+\end{myexample}
+
+\standout{Ce qu'il faut retenir : un sous-ensemble d'un espace vectoriel ne peut être un espace vectoriel
+vectoriel que s'il contient le vecteur nul $\zero$. En particulier les droites et les plans qui ne passent pas
+par l'origine \stress{ne sont pas des espaces vectoriels}.}
+
+\begin{definition}
+Une \defn{matrice} est un tableau de nombres. Elle est généralement notée entre crochets, et
+on dit que sa taille est $m \times n$ si elle comporte $m$ lignes et
+$n$ colonnes.  Par exemple, 
+$$\mat{1 & 2 & 3 \\ 4 & 5 & 6}$$
+est une matrice de $2 \times 3$.
+Deux matrices de la même taille peuvent être additionnées composante par composante comme suit :
+$$
+\mat{1 & 2 \\ 3 & 4} + \mat{5 & 6 \\ 7 & 8} = \mat{6 & 8 \\ 10 & 12}\,,
+$$
+et nous pouvons aussi les multiplier par des scalaires en multipliant toutes ces composantes par ce scalaire :
+$$
+2\mat{1 & 2 \\ 3 & 4} = \mat{2 & 4 \\ 6 & 8}\,.
+$$
+Notez que deux matrices sont égales si, et seulement si, toutes leurs composantes sont deux-à-deux égales. Par exemple :
+$$
+\mat{1 & 2 \\ 3 & 4} \neq \mat{ 3 & 4 \\1 & 2} \,.
+$$ 
+\end{definition}
+
+
+
+
+
+
+
+
+
+\begin{myexample}  L'ensemble $\displaystyle V = \mathcal M_{22}(\R) = \left\{ \mat{a & b \\ c & d} \Big| a,b,c,d \in \R \right\}$ muni des opérations ci-dessus est un espace vectoriel.
+Vérifions les axiomes.
+\begin{itemize}
+	\item[(1),(2)]Les critères de \stress{fermeture} sont vérifiés car (1) la somme de deux matrices de taille $2\times 2$  est encore une matrice
+$2\times 2$; et (2) les multiples scalaires d'une matrice $2\times 2$ sont encore des matrices  $2\times 2$.
+	\item[(3),(4)]Les critères d'\stress{existence} sont aussi satisfaits: (3) le vecteur nul est $\zero = {\scriptsize\mat{0&0 \\ 0& 0}} \in M_{2 2}(\R)$ car $A+\zero=A$ pour toute matrice $A$; 
+et (4) l'oppos\'e de $M={\scriptsize\mat{a&b\\c&d}}$ est $-M={\scriptsize\mat{-a&-b\\-c&-d}} \in M_{22}(\R)$ car lorsqu'on les additionne on obtient la matrice nulle.
+\end{itemize}
+Les critères d'arithmétique (5)-(10) découlent des propriétés déjà connues de
+ $\R^4$. Il est donc facile de les vérifier, mais on inclut quand bien même les
+preuves ci-dessous, avec parfois quelques techniques différentes.  
+Considérons $\uu = {\scriptsize\mat{u_1 & u_2\\ u_3 & u_4}}$, $\vv = {\scriptsize\mat{v_1&v_2\\ v_3&v_4}}$ deux matrices, et soient $c,d\in \R$.  Alors :
+\begin{itemize}
+\item[(5)] $\uu + \vv = \mat{u_1+v_1 & u_2+v_2\\ u_3+v_3 & u_4+v_4}$ et
+$\vv + \uu = \mat{v_1+u_1 & v_2+u_2\\ v_3+u_3 & v_4+u_4}$. D'où $\uu + \vv = \vv + \uu$.
+\item[(6)]  $\uu + (\vv + \ww) = \mat{u_1 & u_2 \\ u_3 & u_4}+ \mat{v_1+w_1 & v_2+w_2\\ v_3+w_3 & v_4+w_4} = \mat{ u_1 + (v_1+w_1) & u_2+(v_2+w_2) \\ u_3 + (v_3+w_3) & u_4+(v_4+w_4)}$, et 
+$(\uu + \vv) + \ww =  \mat{ (u_1 + v_1)+w_1 & (u_2+v_2)+w_2 \\ (u_3 + v_3)+w_3 & (u_4+v_4)+w_4}$. D'où $\uu + (\vv + \ww) = (\uu + \vv) + \ww$.
+\item[(7)] On a bien $c(\uu + \vv) = c\uu + c\vv$:
+\begin{align*}
+c(\uu + \vv) &= c \mat{u_1+v_1 & u_2+v_2\\ u_3+v_3 & u_4+v_4} \\
+&= \mat{c(u_1+v_1) & c(u_2+v_2)\\ c(u_3+v_3) & c(u_4+v_4)} \\
+&= \mat{cu_1+cv_1 &  cu_2+cv_2\\ cu_3+cv_3 & cu_4+cv_4}\\
+&= \mat{cu_1 & cu_2 \\ cu_3 & cu_4}+ \mat{cv_1&cv_2\\cv_3&cv_4}\\
+&= c\uu + c\vv\,.
+\end{align*} 
+\item[(8)] On a bien $(c+d)\uu = c\uu + d\uu$ :
+\begin{align*}
+(c+d)\uu &= (c+d)\mat{u_1 & u_2 \\ u_3 & u_4}\\
+&= \mat{(c+d)u_1 & (c+d)u_2 \\ (c+d)u_3 & (c+d)u_4}\\
+&= \mat{cu_1+du_1 & cu_2+du_2 \\ cu_3+du_3 & cu_4+du_4}\\
+&= \mat{cu_1 & cu_2 \\ cu_3 & cu_4}+\mat{du_1 & du_2 \\ du_3 & du_4}\\
+&= c\uu + d\uu,
+\end{align*}
+\item[(9)] On veut montrer que $a(b\uu) = (ab)\uu$. Comparons la $i$-ème composante de chaque côté, pour $1 \leq i \leq 4$.  
+À gauche, la $i$-ème composante est $a(b u_i)$, tandis qu'à droite elle est
+$(ab)u_i$. Comme on compare ces valeurs dans $\R$ qui est un espace vectoriel, on en déduit qu'on a bien l'égalité des $i$-ièmes composantes, et par la suite on obtient l'égalité désirée $a(b\uu) = (ab)\uu$.
+\item[(10)] La $i$-ième entrée de $1\uu$ est $1u_i$, qui est égal à la
+$i$-ème entrée $u_i$ de $\uu$. D'où $1\uu = \uu$.
+\end{itemize}
+Ainsi $\mathcal M_{22}(\R)$ muni de ces opérations est un espace vectoriel.
+\end{myexample}
+
+\standout{Plus généralement, l'ensemble $\mathcal M_{m\,n}(\R)$ de toutes les matrices $m\times n$, muni d'opérations similaires à celles décrites ci-dessus, est également un \stress{espace vectoriel}, et ceci est vrai pour tout $m,n \geq 1$ !}
+
+
+
+Notre prochain exemple est l'\stress{espace de fonctions}.  Nous établissons d'abord quelques notations.
+
+\begin{definition}
+Soit $[a,b]=\{x \in \R \,|\, a \leq x \leq b\}$ un intervalle.
+On dénote par
+$$
+\F\big([a,b]\big) = \{ f \,|\, f \colon [a,b] \to \R\}
+$$
+ l'ensemble de toutes les fonctions définies sur $[a,b]$ et à valeurs dans $\R$.
+Pour $f,g \in \F([a,b])$, on dit que $f=g$ si et seulement si $f(x)=g(x)$ 
+pour tout $x\in [a,b]$.  Aussi, nous définissons $f+g$ comme la fonction
+qui associe à $x$ la valeur $f(x)+g(x)$, c'est-à-dire :
+$$
+(f+g)(x) = f(x) + g(x)\,,
+$$
+et pour tout scalaire $c \in \R$, $cf$ est la fonction qui  à $x$ associe
+$cf(x)$, c'est-à-dire :
+$$
+(cf)(x) = c(f(x)).
+$$
+Géométriquement, l'addition correspond à l'addition verticale des graphes de $f$ et de $g$, et la multiplication par scalaire correspond à la dilatation du graphe de $f$ par un coefficient $c$.
+\end{definition}
+
+\begin{myexample} {\bf Espace des fonctions}
+
+Muni des ces deux lois, l'ensemble $\F([a,b])$ est un espace vectoriel.
+
+La vérification est laiss\'ee au lecteur.   
+(Les crit\`eres de fermeture sont vrais par définition.
+Notez que le vecteur nul est donné par la fonction nulle $\zero$ qui associe à tout $x$ la valeur $0$ ; l'oppos\'e de $f$ est la fonction $-f$ qui à $x$ associe $-f(x)$ ; et que les axiomes d'arithmétique sont une conséquence de ceux sur $\R$.)
+\end{myexample}
+
+\begin{myexample} Nous pouvons également considérer $\F(\R)$, l'ensemble de toutes les fonctions
+de $\R$ dans $\R$, muni des mêmes opérations. Il s'agit là encore d'un espace vectoriel !
+Notez que par exemple $\cos(x)$ et $x+x^2$ sont dans $\F(\R)$, et toute fonction polynomiale est également dans $\F(\R)$. En revanche, des fonctions comme 
+$\frac{1}{x}$ ou $\tan(x)$ ne sont pas dans $\F(\R)$ car elles ne sont pas
+définies sur $\R$ tout entier...   
+\end{myexample}
+
+Dans plusieurs de nos exemples, les axiomes d'arithmétique (5)-(10) étaient automatiquement vérifiés 
+car ils étaient vrais pour un «~plus grand~» ensemble de vecteurs. En d'autres termes, nous disposons d'un raccourci pour vérifier si
+un sous-ensemble d'un espace vectoriel est aussi
+un espace vectoriel (avec les \stress{mêmes opérations} !). Si c'est bien le cas, on l'appellera \stress{sous-espace vectoriel}.
+
+
+
+
+

@@ -1,0 +1,141 @@
+\section*{Exercices}
+\addcontentsline{toc}{section}{Exercices}
+
+
+\medskip {\bf Remarques:} 
+\begin{enumerate}
+\item Les questions marquées d'un astérisque $ ^\ast$ (ou deux) indiquent des questions de niveau bonus.
+ \item Vous devez justifier toutes vos réponses.
+\end{enumerate}
+\bigskip
+
+
+
+ \begin{prob} \label{prob24.1}  Pour chacune des transformations suivantes, indiquez si elle est linéaire ou non.   
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item Si vous dites qu'elle ne l'est pas, donnez un contre-exemple.   
+\item Si vous dites qu'elle l'est, donnez une explication claire - en citant un théorème ou en donnant une {\it preuve valide dans tous les cas}. 
+\end{enumerate}
+\medskip
+
+\begin{enumerate}[a)]
+\item  $T:\R^2 \to \R^3$ d\'efinie par $T(x,y)=(x, y, x+y)$.
+\medskip
+ 
+\item\sov~$T:\R^3 \to \R^2$ d\'efinie par $T(x,y,z)=(2 z+x, y)$.
+\medskip
+ 
+\item $T:\R^2 \to \R^2$ d\'efinie par $T(x,y)=(x, x y)$.
+\medskip
+ 
+
+\item\sov~$T:\R^2 \to \R^2$ d\'efinie par $T(\vv)=\bmatrix 0&-1\\ 1&0 \endbmatrix \vv$.
+\medskip
+ 
+\item $T:\R^3 \to \R^3$ d\'efinie par $T(\vv)= \vv\times (1,2,3)$, o\`u \og\  $\times$\ \fg\ d\'enote le produit vectoriel.
+\medskip
+ 
+
+\item\sov~$T:\R^3 \to \R^3$ d\'efinie par $T(\vv)= \proj_{(1,1,-1)}(\vv)$.
+\medskip
+ 
+\item $T:\R^3 \to \R^3$ d\'efinie par $T(\vv)= \vv-\proj_{(1,1,-1)}(\vv)$.
+\medskip
+ 
+\item\sov~$T:\R^3 \to \R^3$ d\'efinie par $T(\vv)= \proj_{\vv}(1,1,-1)$.
+\medskip
+ 
+\item $T:\R^3 \to \R^3$ d\'efinie par $T(\vv)= \big(\vv \cdot (1,1,-1)\big) (1,0,1)$.
+\medskip
+ 
+\item\sov~$T:\R^3 \to \R^3$ d\'efinie par $T(\vv)= 2 \vv$.
+\medskip
+ 
+\item $T:\R^3 \to \R^3$ d\'efinie par $T(\vv)= \proj_H(\vv)$, où $H$ est le plan passant par l'origine et de vecteur normal $(1,1,0)$.
+\medskip
+ 
+\item\sov~$T:\R^3 \to \R^2$ d\'efinie par $T(\vv)= A\vv$, où $A=\bmatrix 1&0&1\\ 1&2&3\endbmatrix$.
+\medskip
+
+\end{enumerate} 
+
+\end{prob} \begin{prob} \label{prob24.2} Dans chacun des cas suivants, déterminez la matrice standard de $T$, puis utilisez-la pour trouver une base de $\ker( T)$ et une base de $\im( T)$. Enfin, vérifiez la conservation de la dimension (\textit{i.e.} le Théorème du rang). 
+
+\medskip
+\begin{enumerate}[a)]
+\item $T:\R^2 \to \R^3$ d\'efinie par $T(x,y)=(x, y, x+y)$.
+\medskip
+ 
+\item\sov~$T:\R^3 \to \R^2$ d\'efinie par $T(x,y,z)=(2 z+x, y)$.
+\medskip
+ 
+\item $T:\R^3 \to \R^3$ d\'efinie par $T(\vv)= \vv\times (1,2,3)$, o\`u \og\  $\times$\ \fg\ d\'enote le produit vectoriel.
+\medskip
+ 
+\item\sov~$T:\R^3 \to \R^3$ d\'efinie par $T(\vv)= \proj_{(1,1,-1)}(\vv)$.
+\medskip
+ 
+\item $T:\R^3 \to \R^3$ d\'efinie par $T(\vv)= \vv-\proj_{(1,1,-1)}(\vv)$.
+\medskip
+ 
+\item\sov~$T:\R^3 \to \R^3$ d\'efinie par $T(\vv)= \proj_H(\vv)$, où $H$ est le plan passant par l'origine et de vecteur normal $(1,1,0)$.
+\medskip
+ 
+\end{enumerate}
+
+\end{prob} \begin{prob} \label{prob24.3}  Pour chacun des énoncés suivants, indiquez s'il est (toujours) vrai ou s'il est (possiblement) faux.   
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item Si vous dites que l'\'enonc\'e peut être faux, donnez un contre-exemple.   
+\item Si vous dites que l'\'enonc\'e est vrai, donnez une explication claire - en citant un théorème ou en donnant une {\it preuve valide dans tous les cas}. 
+\end{enumerate}
+\medskip
+\begin{enumerate}[a)]
+\item Si une transformation $T:\R^3 \to \R^2$ est lin\'eaire, alors $\ker(T) \not= \set{\zero}$.
+\medskip
+ 
+\item\sov~Si une transformation $T:\R^4 \to \R^2$ est lin\'eaire, alors $\dim \ker(T) \ge 2$.
+\medskip
+  
+\item Si une transformation $T:\R^4 \to \R^5$ est lin\'eaire, alors $\dim \im(T) \le 4$.
+\medskip
+ 
+\item\sov~Si une transformation $T:\R^3 \to \R^2$ est lin\'eaire et que $\set{\vv_1,\vv_2} \subset \R^3$ est lin\'eairement ind\'ependant, alors $\set{T(\vv_1),T(\vv_2)} \subset \R^2$ est aussi lin\'eairement ind\'ependant.
+\medskip
+ 
+\item Si une transformation $T:\R^3 \to \R^2$ est lin\'eaire, que $\ker(T)=\set{\zero}$ et que $\set{\vv_1,\vv_2} \subset \R^3$  est lin\'eairement ind\'ependant, alors $\set{T(\vv_1),T(\vv_2)} \subset \R^2$ est aussi lin\'eairement ind\'ependant.
+\medskip
+ 
+\item\sov~Si une transformation $T:\R^3 \to \R^3$ est lin\'eaire et que $\ker(T)=\set{\zero}$, alors $\im(T)=\R^3$.
+\medskip
+ 
+\item Si une transformation $T:\R^2 \to \R^3$ est lin\'eaire et que $\ker(T)=\set{\zero}$, alors $\im(T)=\R^3$.
+
+\end{enumerate}
+
+\end{prob} \begin{prob} \label{prob24.4}$^\ast$ Pour chacune des transformations suivantes, indiquez si elle est linéaire ou non.   
+   \smallskip    
+\begin{enumerate}[$\bullet$]
+\item Si vous dites qu'elle ne l'est pas, donnez un contre-exemple.   
+\item Si vous dites qu'elle l'est, donnez une explication claire - en citant un théorème ou en donnant une {\it preuve valide dans tous les cas}. 
+\end{enumerate}
+ \medskip
+\begin{enumerate}[a)]
+\item $T: \PP \to \PP$ d\'efinie par $T(p)=p'$, où $p'$ désigne la dérivée du polynôme $p$.
+\medskip
+ 
+\item\sov~$T: \PP \to \PP$ d\'efinie par $T(p)(t)=\dsize \int_0^tp(s) ds$.
+\medskip
+ 
+\item $\tr: \M_{2\,2} \to \R$ d\'efinie par $\tr\bmatrix a&b\\c&d\endbmatrix = a+d.$
+\medskip
+ 
+\item\sov~$\det: \M_{2\,2} \to \R$ d\'efinie par $\det \bmatrix a&b\\c&d\endbmatrix = ad-bc.$
+\medskip
+ 
+\item $T: \F(\R) \to \R$ d\'efinie par $T(f)=f(1)$.
+\medskip
+ 
+\end{enumerate}
+\end{prob}
